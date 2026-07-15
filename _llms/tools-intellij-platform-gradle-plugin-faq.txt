@@ -1,0 +1,430 @@
+# IntelliJ Platform Gradle Plugin – FAQ
+
+## 
+
+How to modify system properties of the `runIde` task?
+
+Using the [very same task documentation](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.JavaExec.html), configure [runIde](tools-intellij-platform-gradle-plugin-tasks.html#runIde) task:
+
+Kotlin:
+
+```KOTLIN
+tasks {
+  runIde {
+    jvmArgumentProviders += CommandLineArgumentProvider {
+      listOf("-Dname=value")
+    }
+  }
+}
+```
+
+Groovy:
+
+```GROOVY
+tasks {
+  runIde {
+    jvmArgumentProviders.add({
+      ["-Dname=value"]
+    } as CommandLineArgumentProvider)
+  }
+}
+
+```
+
+## 
+
+Task `runIdeForUiTests` not found
+
+The [runIdeForUiTests](tools-intellij-platform-gradle-plugin-tasks.html#runIdeForUiTests) is no longer registered by default.
+Follow the task documentation for more details.
+
+## 
+
+Missing `opentest4j` dependency in Test Framework
+
+Due to the [IJPL-157292](https://youtrack.jetbrains.com/issue/IJPL-157292/lib-testFramework.jar-is-missing-library-opentest4j) issue, the `opentest4j` dependency is not resolved when using `TestFrameworkType.Platform` or `TestFrameworkType.JUnit5`.
+
+This results in the `NoClassDefFoundError` exception:
+
+```
+java.lang.NoClassDefFoundError: org/opentest4j/AssertionFailedError
+```
+
+To apply the workaround, add the missing `org.opentest4j:opentest4j` test dependency to your Gradle build configuration:
+
+Kotlin:
+
+```KOTLIN
+dependencies {
+  // ...
+  testImplementation("org.opentest4j:opentest4j:1.3.0")
+}
+```
+
+Groovy:
+
+```GROOVY
+dependencies {
+  // ...
+  testImplementation 'org.opentest4j:opentest4j:1.3.0'
+}
+```
+
+## JUnit5 Test Framework refers to JUnit4
+
+Due to the [IJPL-159134](https://youtrack.jetbrains.com/issue/IJPL-159134/JUnit5-Test-Framework-refers-to-JUnit4-java.lang.NoClassDefFoundError-junit-framework-TestCase) issue, the JUnit5 Test Framework refers to JUnit4 classes when running test.
+
+This results in the `NoClassDefFoundError` exceptions:
+
+```
+Caused by: java.lang.NoClassDefFoundError: junit/framework/TestCase
+
+Caused by: java.lang.NoClassDefFoundError: org/junit/rules/TestRule
+```
+
+To apply the workaround, add the JUnit4 test runtime dependency to your Gradle build configuration:
+
+Kotlin:
+
+```KOTLIN
+dependencies {
+  // ...
+  testRuntimeOnly("junit:junit:4.13.2")
+}
+```
+
+Groovy:
+
+```GROOVY
+dependencies {
+  // ...
+  testRuntimeOnly 'junit:junit:4.13.2'
+}
+```
+
+## Dependency on bundled plugin is not resolved after migrating from 1.x
+
+Using [Gradle IntelliJ Plugin (1.x)](tools-gradle-intellij-plugin.html), specifying the directory name of the plugin was possible when adding a dependency on a bundled plugin
+for compatibility reasons.
+Now, using the actual plugin ID is required.
+For example, provide plugin ID `com.intellij.java` instead of its directory name `java`.
+A migration hint is provided for this and some other commonly used cases.
+
+See [Bundled and Other Plugins](plugin-dependencies.html#bundled-and-other-plugins) on how to get all bundled plugin IDs as well as a list of some commonly used ones.
+
+## How to disable the automatic reload of dynamic plugins?
+
+See [Enabling Auto-Reload](ide-development-instance.html#enabling-auto-reload) for important caveats.
+
+Disable auto-reload globally with [intellijPlatform.autoReload](tools-intellij-platform-gradle-plugin-extension.html#intellijPlatform-autoReload):
+
+Kotlin:
+
+```KOTLIN
+intellijPlatform {
+  autoReload = false
+}
+```
+
+Groovy:
+
+```GROOVY
+intellijPlatform {
+  autoReload = false
+}
+```
+
+It is also possible to disable it for a specific [runIde](tools-intellij-platform-gradle-plugin-tasks.html#runIde)-based task as follows:
+
+Kotlin:
+
+```KOTLIN
+tasks {
+  runIde {
+    autoReload = false
+  }
+}
+```
+
+Groovy:
+
+```GROOVY
+tasks {
+  runIde {
+    autoReload = false
+  }
+}
+```
+
+## How to disable building the searchable options?
+
+Building the searchable options can be disabled using [intellijPlatform.buildSearchableOptions](tools-intellij-platform-gradle-plugin-extension.html#intellijPlatform-instrumentCode):
+
+Kotlin:
+
+```KOTLIN
+intellijPlatform {
+  buildSearchableOptions = false
+}
+```
+
+Groovy:
+
+```GROOVY
+intellijPlatform {
+  buildSearchableOptions = false
+}
+```
+
+As a result of disabling building searchable options, the [Settings](settings.html) that your plugin provides won't be searchable in the `Settings` dialog.
+Disabling of the task is suggested for plugins that are not intended to provide custom settings.
+
+## 
+
+Gradle fails with `The request for this plugin could not be satisfied`
+
+Gradle may fail with the following exception if the IntelliJ Platform Gradle Plugin is applied to the project multiple times with version specified more than once:
+
+`The request for this plugin could not be satisfied because the plugin is already on the classpath with an unknown version, so compatibility cannot be checked.`
+
+When applying the plugin in the `settings.gradle.kts` file, the version needs to be omitted when applying it in other `build.gradle.kts` files.
+
+## How to show the log file of a sandbox instance?
+
+The most convenient way to see the logs of a running IDE is to add a tab to the Run tool window displaying the contents of `idea.log` file.
+In the Gradle `runIde` run configuration, add the log file path according to [sandbox location](ide-development-instance.html#the-development-instance-sandbox-directory) as described in [View logs](https://www.jetbrains.com/help/idea/setting-log-options.html).
+
+## 
+
+Task `setupDependencies` not found in root project 'projectName'
+
+This exception is thrown when there's no `setupDependencies` task present in the project scope.
+
+See [Migrating from Gradle IntelliJ Plugin](tools-intellij-platform-gradle-plugin-migration.html#setupdependencies) for more details.
+
+## How to expose my plugin API sources to dependent plugins?
+
+See the [Bundling Plugin API Sources](bundling-plugin-openapi-sources.html) section for details.
+
+## 
+
+How to mute specific problems in `pluginVerification`?
+
+To mute specific problems (for example, use of specific forbidden words in the plugin name), use the [freeArgs](tools-intellij-platform-gradle-plugin-extension.html#intellijPlatform-pluginVerification-freeArgs) parameter to pass a comma-separated list of problem IDs to be muted.
+
+See the list of [available options](https://github.com/JetBrains/intellij-plugin-verifier/?tab=readme-ov-file#specific-options).
+
+Kotlin:
+
+```KOTLIN
+intellijPlatform {
+  pluginVerification {
+    // ...
+    freeArgs = listOf(
+      "-mute",
+      "TemplateWordInPluginId,ForbiddenPluginIdPrefix"
+    )
+  }
+}
+```
+
+Groovy:
+
+```GROOVY
+intellijPlatform {
+  pluginVerification {
+    // ...
+    freeArgs = [
+      "-mute",
+      "TemplateWordInPluginId,ForbiddenPluginIdPrefix",
+    ]
+  }
+}
+```
+
+## JaCoCo Reports 0% Coverage
+
+The Gradle IntelliJ Plugin, when targeting the IntelliJ SDK `2022.1+`, uses the `PathClassLoader` class loader by the following system property:
+
+```
+-Djava.system.class.loader=com.intellij.util.lang.PathClassLoader
+```
+
+Because of that, JaCoCo – and other external tools that rely on classes available in the bootstrap class loader – fail to discover plugin classes.
+
+In addition, if the code instrumentation is enabled (see [intellij.instrumentCode](tools-intellij-platform-gradle-plugin-extension.html#intellijPlatform-instrumentCode)), it's required to switch to the compiled and instrumented output instead of default compiled classes.
+
+The following changes to your Gradle configuration file:
+
+Kotlin:
+
+```KOTLIN
+tasks {
+  withType<Test> {
+    configure<JacocoTaskExtension> {
+      isIncludeNoLocationClasses = true
+      excludes = listOf("jdk.internal.*")
+    }
+  }
+
+  jacocoTestReport {
+    classDirectories.setFrom(instrumentCode)
+  }
+
+  jacocoTestCoverageVerification {
+    classDirectories.setFrom(instrumentCode)
+  }
+}
+```
+
+Groovy:
+
+```GROOVY
+test {
+  jacoco {
+    includeNoLocationClasses = true
+    excludes = ["jdk.internal.*"]
+  }
+}
+
+jacocoTestReport {
+  classDirectories.setFrom(instrumentCode)
+}
+
+jacocoTestCoverageVerification {
+  classDirectories.setFrom(instrumentCode)
+}
+```
+
+## 
+
+Kotlin compiler throws `Out of memory. Java heap space` error
+
+Please upgrade to Kotlin 1.9.0. See the [Incremental compilation](using-kotlin.html#incremental-compilation) section if using Kotlin 1.8.20.
+
+## How to check the latest available EAP release?
+
+To list the IntelliJ Platform releases matching your criteria (IntelliJ Platform type, release channels, or build range),
+use the [printProductsReleases](tools-intellij-platform-gradle-plugin-tasks.html#printProductsReleases) task as follows:
+
+Kotlin:
+
+```KOTLIN
+import org.jetbrains.intellij.platform.gradle.IntelliJPlatformType
+import org.jetbrains.intellij.platform.gradle.models.ProductRelease
+
+tasks {
+  printProductsReleases {
+    channels = listOf(ProductRelease.Channel.EAP)
+    types = listOf(IntelliJPlatformType.IntellijIdea)
+    untilBuild = provider { null }
+
+    doLast {
+      val latestEap = productsReleases.get().max()
+    }
+  }
+}
+```
+
+Groovy:
+
+```GROOVY
+import org.jetbrains.intellij.platform.gradle.IntelliJPlatformType
+import org.jetbrains.intellij.platform.gradle.models.ProductRelease
+
+tasks {
+  printProductsReleases {
+    channels = [ProductRelease.Channel.EAP]
+    types = [IntelliJPlatformType.IntellijIdea]
+    untilBuild = null
+
+    doLast {
+      def latestEap = productsReleases.get().max()
+    }
+  }
+}
+```
+
+## The currently selected Java Runtime is not JetBrains Runtime (JBR)
+
+When running tests or IDE with your plugin loaded, it is necessary to use JetBrains Runtime (JBR).
+In the case, no JBR is found in the plugin configuration, there's the following warning logged by the [verifyPluginProjectConfiguration](tools-intellij-platform-gradle-plugin-tasks.html#verifyPluginProjectConfiguration) task:
+
+```
+The currently selected Java Runtime is not JetBrains Runtime (JBR).
+This may lead to unexpected IDE behaviors.
+Please use IntelliJ Platform binary release with bundled JBR
+or define it explicitly with project dependencies or JVM Toolchain.
+```
+
+To correctly run your tests or a specific IDE:
+
+* use a binary IDE distribution with bundled JetBrains Runtime, i.e., by referring to a local IDE [local(localPath)](tools-intellij-platform-gradle-plugin-dependencies-extension.html#custom-target-platforms) Kotlin: ```KOTLIN repositories { mavenCentral() intellijPlatform { defaultRepositories() } } dependencies { intellijPlatform { local("/Users/hsz/Applications/IntelliJ IDEA Ultimate.app") } } ``` Groovy: ```GROOVY repositories { mavenCentral() intellijPlatform { defaultRepositories() } } dependencies { intellijPlatform { local '/Users/hsz/Applications/IntelliJ IDEA Ultimate.app' } } ```
+
+* add an explicit dependency on a JetBrains Runtime with [jetbrainsRuntime()](tools-intellij-platform-gradle-plugin-dependencies-extension.html#java-runtime) Kotlin: ```KOTLIN repositories { mavenCentral() intellijPlatform { defaultRepositories() jetbrainsRuntime() } } dependencies { intellijPlatform { intellijIdea("2026.1.3") jetbrainsRuntime("...") } } ``` Groovy: ```GROOVY repositories { mavenCentral() intellijPlatform { defaultRepositories() jetbrainsRuntime() } } dependencies { intellijPlatform { intellijIdea '2026.1.3' jetbrainsRuntime '...' } } ```
+
+* specify the vendor when configuring the JVM Toolchain along with [Foojay Toolchains Plugin](https://github.com/gradle/foojay-toolchains): Kotlin: ```KOTLIN kotlin { jvmToolchain { languageVersion = JavaLanguageVersion.of(17) vendor = JvmVendorSpec.JETBRAINS } } ``` Groovy: ```GROOVY java { toolchain { languageVersion = JavaLanguageVersion.of(17) vendor = JvmVendorSpec.JETBRAINS } } ```
+
+## 
+
+Starting an external process `/usr/sbin/sysctl -n hw.cachelinesize` during configuration time is unsupported (macOS)
+
+When using a custom plugin repository on macOS, Gradle may fail with the following exception if the [Configuration Cache](https://docs.gradle.org/current/userguide/configuration_cache.html) is enabled:
+
+```TEXT
+org.gradle.api.InvalidUserCodeException: Starting an external process '/usr/sbin/sysctl -n hw.cachelinesize' during configuration time is unsupported.
+	at org.gradle.internal.classpath.Instrumented.start(Instrumented.java:314)
+	at io.smallrye.common.cpu.CacheInfo.parseProcessOutput(CacheInfo.java:213)
+```
+
+This is caused by the `undertow` library used for custom repository creation, which tries to determine the CPU cache level on macOS by executing an external process.
+
+To resolve this issue:
+
+1. Set the `smallrye.cpu.determine-cache-level` system property to `false` in your `gradle.properties` file:
+
+```PROPERTIES
+systemProp.smallrye.cpu.determine-cache-level=false
+```
+
+2. Force the `io.smallrye.common:smallrye-common-cpu` dependency version to `2.10.0` in the `buildscript` block of your `build.gradle.kts` (or `build.gradle`) file:
+
+Kotlin:
+
+```KOTLIN
+buildscript {
+  configurations.classpath {
+    resolutionStrategy {
+      force("io.smallrye.common:smallrye-common-cpu:2.10.0")
+    }
+  }
+}
+```
+
+Groovy:
+
+```GROOVY
+buildscript {
+  configurations.classpath {
+    resolutionStrategy {
+      force 'io.smallrye.common:smallrye-common-cpu:2.10.0'
+    }
+  }
+}
+```
+
+## 
+
+plugin.xml: `Cannot resolve plugin com.intellij.modules.vcs`
+
+Upgrade to the latest version of the IntelliJ Platform Gradle Plugin.
+
+Note: Something missing?
+
+If a topic is not covered in the above sections,
+let us know via the Feedback widget displayed on the right,
+or [other channels](getting-help.html#problems-with-the-guide).
+
+Be specific about the topics and reasons for adding them and leave your email in case we need
+more details. Thanks for your feedback!
+

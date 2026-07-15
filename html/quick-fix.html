@@ -1,0 +1,166 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF" data-resizable-sidebar="true"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="built-on" content="2026-06-21T21:30:54.916625"><!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5P98');</script>
+<!-- End Google Tag Manager -->
+<title>19. Quick Fix | IntelliJ Platform Plugin SDK</title><script type="application/json" id="virtual-toc-data">[{"id":"update-the-element-factory","level":0,"title":"Update the Element Factory","anchor":"#update-the-element-factory"},{"id":"define-an-intention-action","level":0,"title":"Define an Intention Action","anchor":"#define-an-intention-action"},{"id":"update-the-annotator","level":0,"title":"Update the Annotator","anchor":"#update-the-annotator"},{"id":"run-the-project","level":0,"title":"Run the Project","anchor":"#run-the-project"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.css" rel="stylesheet"><link rel="manifest" href="https://www.jetbrains.com/site.webmanifest"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content="https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png"><!-- Open Graph --><meta property="og:title" content="19. Quick Fix | IntelliJ Platform Plugin SDK"><meta property="og:description" content=""><meta property="og:image" content="https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png"><meta property="og:site_name" content="IntelliJ Platform Plugin SDK Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="https://plugins.jetbrains.com/docs/intellij/quick-fix.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@JBPlatform"><meta name="twitter:title" content="19. Quick Fix | IntelliJ Platform Plugin SDK"><meta name="twitter:description" content=""><meta name="twitter:creator" content="@JBPlatform"><meta name="twitter:image:src" content="https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png"><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "https://plugins.jetbrains.com/docs/intellij/quick-fix.html#webpage",
+    "url": "https://plugins.jetbrains.com/docs/intellij/quick-fix.html",
+    "name": "19. Quick Fix | IntelliJ Platform Plugin SDK",
+    "description": "",
+    "image": "https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "https://plugins.jetbrains.com/docs/intellij/#website",
+    "url": "https://plugins.jetbrains.com/docs/intellij/",
+    "name": "IntelliJ Platform Plugin SDK Help"
+}</script><!-- End Schema.org --></head><body data-id="quick_fix" data-main-title="19. Quick Fix" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="Custom Languages///custom_language_support_tutorial.md|Custom Language Support Tutorial" data-edit-url="https://github.com/JetBrains/intellij-sdk-docs/edit/main/topics/tutorials/custom_language_support/quick_fix.md"><!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5P98"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>IntelliJ Platform Plugin SDK  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="quick_fix" id="quick_fix.md">19. Quick Fix</h1><div class="micro-format" data-content="{&quot;microFormat&quot;:[&quot;\u003cp id\u003d\&quot;-wgmajd_15\&quot;\u003e\u003cspan class\u003d\&quot;control\&quot; id\u003d\&quot;-wgmajd_17\&quot;\u003eReference\u003c/span\u003e: \u003ca href\u003d\&quot;code-inspections-and-intentions.html\&quot; id\u003d\&quot;-wgmajd_18\&quot; data-tooltip\u003d\&quot;Introduction to analyzing the code and providing quick fixes for the found issues.\&quot;\u003eCode Inspections and Intentions\u003c/a\u003e\u003c/p\u003e&quot;,&quot;\u003cp id\u003d\&quot;-wgmajd_16\&quot;\u003e\u003cspan class\u003d\&quot;control\&quot; id\u003d\&quot;-wgmajd_19\&quot;\u003eCode\u003c/span\u003e: \u003ca href\u003d\&quot;https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/psi/SimpleElementFactory.java\&quot; id\u003d\&quot;-wgmajd_20\&quot; data-external\u003d\&quot;true\&quot; rel\u003d\&quot;noopener noreferrer\&quot; target\u003d\&quot;_blank\&quot;\u003e\u003ccode class\u003d\&quot;code\&quot; id\u003d\&quot;-wgmajd_23\&quot;\u003eSimpleElementFactory\u003c/code\u003e\u003c/a\u003e, \u003ca href\u003d\&quot;https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleCreatePropertyQuickFix.java\&quot; id\u003d\&quot;-wgmajd_21\&quot; data-external\u003d\&quot;true\&quot; rel\u003d\&quot;noopener noreferrer\&quot; target\u003d\&quot;_blank\&quot;\u003e\u003ccode class\u003d\&quot;code\&quot; id\u003d\&quot;-wgmajd_24\&quot;\u003eSimpleCreatePropertyQuickFix\u003c/code\u003e\u003c/a\u003e, \u003ca href\u003d\&quot;https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleAnnotator.java\&quot; id\u003d\&quot;-wgmajd_22\&quot; data-external\u003d\&quot;true\&quot; rel\u003d\&quot;noopener noreferrer\&quot; target\u003d\&quot;_blank\&quot;\u003e\u003ccode class\u003d\&quot;code\&quot; id\u003d\&quot;-wgmajd_25\&quot;\u003eSimpleAnnotator\u003c/code\u003e\u003c/a\u003e\u003c/p\u003e&quot;]}"></div><aside class="prompt" data-type="tip" data-title="" id="-wgmajd_12"><p id="-wgmajd_13">This page is part of multi-step <a href="custom-language-support-tutorial.html" id="-wgmajd_14" data-tooltip="Tutorial for creating a .properties-like custom language.">Custom Language Support Tutorial</a>. All previous steps must be executed in sequence for the code to work.</p></aside><p id="-wgmajd_6">A quick fix for a custom language supports the IntelliJ Platform-based IDE feature <a href="https://www.jetbrains.com/help/idea/intention-actions.html#apply-intention-actions" id="-wgmajd_26" data-external="true" rel="noopener noreferrer" target="_blank">Intention Actions</a>. For the Simple language, this tutorial adds a quick fix that helps to define an unresolved property from its usage.</p><section class="chapter"><h2 id="update-the-element-factory" data-toc="update-the-element-factory">Update the Element Factory</h2><p id="-wgmajd_27">The <a href="https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/psi/SimpleElementFactory.java" id="-wgmajd_29" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="-wgmajd_35">SimpleElementFactory</code></a> is updated to include two new methods to support the user choice of creating a new property for the Simple Language quick fix. The new <code class="code" id="-wgmajd_30">createCRLF()</code> method supports adding a newline to the end of the <a href="lexer-and-parser-definition.html#run-the-project" id="-wgmajd_31"><code class="code" id="-wgmajd_36">test.simple</code></a> file before adding a new property. A new overload of <code class="code" id="-wgmajd_32">createProperty()</code> creates a new <code class="code" id="-wgmajd_33">key</code>-<code class="code" id="-wgmajd_34">value</code> pair for Simple Language.</p><div class="code-block" data-lang="java" data-disable-link-processing="true">public class SimpleElementFactory {
+
+  public static SimpleProperty createProperty(Project project, String name) {
+    final SimpleFile file = createFile(project, name);
+    return (SimpleProperty) file.getFirstChild();
+  }
+
+  public static SimpleFile createFile(Project project, String text) {
+    String name = &quot;dummy.simple&quot;;
+    return (SimpleFile) PsiFileFactory.getInstance(project).createFileFromText(name, SimpleFileType.INSTANCE, text);
+  }
+
+  public static SimpleProperty createProperty(Project project, String name, String value) {
+    final SimpleFile file = createFile(project, name + &quot; = &quot; + value);
+    return (SimpleProperty) file.getFirstChild();
+  }
+
+  public static PsiElement createCRLF(Project project) {
+    final SimpleFile file = createFile(project, &quot;\n&quot;);
+    return file.getFirstChild();
+  }
+
+}
+</div></section><section class="chapter"><h2 id="define-an-intention-action" data-toc="define-an-intention-action">Define an Intention Action</h2><p id="-wgmajd_37">The <a href="https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleCreatePropertyQuickFix.java" id="-wgmajd_39" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="-wgmajd_43">SimpleCreatePropertyQuickFix</code></a> creates a property in the file chosen by the user - in this case, a Java file containing a <code class="code" id="-wgmajd_40">prefix:key</code> - and navigate to this property after creation. Under the hood, <code class="code" id="-wgmajd_41">SimpleCreatePropertyQuickFix</code> is an Intention Action. For a more in-depth example of an Intention Action, see <a href="https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/conditional_operator_intention" id="-wgmajd_42" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="-wgmajd_44">conditional_operator_intention</code></a>.</p><div class="code-block" data-lang="java" data-disable-link-processing="true">class SimpleCreatePropertyQuickFix extends BaseIntentionAction {
+
+  private final String key;
+
+  SimpleCreatePropertyQuickFix(String key) {
+    this.key = key;
+  }
+
+  @NotNull
+  @Override
+  public String getText() {
+    return &quot;Create property '&quot; + key + &quot;'&quot;;
+  }
+
+  @NotNull
+  @Override
+  public String getFamilyName() {
+    return &quot;Create property&quot;;
+  }
+
+  @Override
+  public boolean isAvailable(@NotNull Project project, Editor editor, PsiFile file) {
+    return true;
+  }
+
+  @Override
+  public void invoke(@NotNull final Project project, final Editor editor, PsiFile file) throws
+      IncorrectOperationException {
+    ApplicationManager.getApplication().invokeLater(() -&gt; {
+      Collection&lt;VirtualFile&gt; virtualFiles =
+          FileTypeIndex.getFiles(SimpleFileType.INSTANCE, GlobalSearchScope.allScope(project));
+      if (virtualFiles.size() == 1) {
+        createProperty(project, virtualFiles.iterator().next());
+      } else {
+        final FileChooserDescriptor descriptor =
+            FileChooserDescriptorFactory.createSingleFileDescriptor(SimpleFileType.INSTANCE);
+        descriptor.setRoots(ProjectUtil.guessProjectDir(project));
+        final VirtualFile file1 = FileChooser.chooseFile(descriptor, project, null);
+        if (file1 != null) {
+          createProperty(project, file1);
+        }
+      }
+    });
+  }
+
+  private void createProperty(final Project project, final VirtualFile file) {
+    WriteCommandAction.writeCommandAction(project).run(() -&gt; {
+      SimpleFile simpleFile = (SimpleFile) PsiManager.getInstance(project).findFile(file);
+      assert simpleFile != null;
+      ASTNode lastChildNode = simpleFile.getNode().getLastChildNode();
+      // TODO: Add another check for CRLF
+      if (lastChildNode != null/* &amp;&amp; !lastChildNode.getElementType().equals(SimpleTypes.CRLF)*/) {
+        simpleFile.getNode().addChild(SimpleElementFactory.createCRLF(project).getNode());
+      }
+      // IMPORTANT: change spaces to escaped spaces or the new node will only have the first word for the key
+      SimpleProperty property = SimpleElementFactory.createProperty(project, key.replaceAll(&quot; &quot;, &quot;\\\\ &quot;), &quot;&quot;);
+      simpleFile.getNode().addChild(property.getNode());
+      ((Navigatable) property.getLastChild().getNavigationElement()).navigate(true);
+      Editor editor = FileEditorManager.getInstance(project).getSelectedTextEditor();
+      assert editor != null;
+      editor.getCaretModel().moveCaretRelatively(2, 0, false, false, false);
+    });
+  }
+
+}
+</div></section><section class="chapter"><h2 id="update-the-annotator" data-toc="update-the-annotator">Update the Annotator</h2><p id="-wgmajd_45">When a <code class="code" id="-wgmajd_47">badProperty</code> annotation is created, the <code class="code" id="-wgmajd_48">badProperty.registerFix()</code> method in <a href="https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleAnnotator.java" id="-wgmajd_49" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="-wgmajd_51">SimpleAnnotator</code></a> is called. This method call registers the <code class="code" id="-wgmajd_50">SimpleCreatePropertyQuickFix</code> as the Intention Action for the IntelliJ Platform to use to correct the problem.</p><div class="code-block" data-lang="java" data-disable-link-processing="true">final class SimpleAnnotator implements Annotator {
+
+  // Define strings for the Simple language prefix - used for annotations, line markers, etc.
+  public static final String SIMPLE_PREFIX_STR = &quot;simple&quot;;
+  public static final String SIMPLE_SEPARATOR_STR = &quot;:&quot;;
+
+  @Override
+  public void annotate(@NotNull final PsiElement element, @NotNull AnnotationHolder holder) {
+    // Ensure the PSI Element is an expression
+    if (!(element instanceof PsiLiteralExpression literalExpression)) {
+      return;
+    }
+
+    // Ensure the PSI element contains a string that starts with the prefix and separator
+    String value = literalExpression.getValue() instanceof String ? (String) literalExpression.getValue() : null;
+    if (value == null || !value.startsWith(SIMPLE_PREFIX_STR + SIMPLE_SEPARATOR_STR)) {
+      return;
+    }
+
+    // Define the text ranges (start is inclusive, end is exclusive)
+    // &quot;simple:key&quot;
+    //  01234567890
+    TextRange prefixRange = TextRange.from(element.getTextRange().getStartOffset(), SIMPLE_PREFIX_STR.length() + 1);
+    TextRange separatorRange = TextRange.from(prefixRange.getEndOffset(), SIMPLE_SEPARATOR_STR.length());
+    TextRange keyRange = new TextRange(separatorRange.getEndOffset(), element.getTextRange().getEndOffset() - 1);
+
+    // highlight &quot;simple&quot; prefix and &quot;:&quot; separator
+    holder.newSilentAnnotation(HighlightSeverity.INFORMATION)
+        .range(prefixRange).textAttributes(DefaultLanguageHighlighterColors.KEYWORD).create();
+    holder.newSilentAnnotation(HighlightSeverity.INFORMATION)
+        .range(separatorRange).textAttributes(SimpleSyntaxHighlighter.SEPARATOR).create();
+
+
+    // Get the list of properties for given key
+    String key = value.substring(SIMPLE_PREFIX_STR.length() + SIMPLE_SEPARATOR_STR.length());
+    List&lt;SimpleProperty&gt; properties = SimpleUtil.findProperties(element.getProject(), key);
+    if (properties.isEmpty()) {
+      holder.newAnnotation(HighlightSeverity.ERROR, &quot;Unresolved property&quot;)
+          .range(keyRange)
+          .highlightType(ProblemHighlightType.LIKE_UNKNOWN_SYMBOL)
+          // ** Tutorial step 19. - Add a quick fix for the string containing possible properties
+          .withFix(new SimpleCreatePropertyQuickFix(key))
+          .create();
+    } else {
+      // Found at least one property, force the text attributes to Simple syntax value character
+      holder.newSilentAnnotation(HighlightSeverity.INFORMATION)
+          .range(keyRange).textAttributes(SimpleSyntaxHighlighter.VALUE).create();
+    }
+  }
+
+}
+</div></section><section class="chapter"><h2 id="run-the-project" data-toc="run-the-project">Run the Project</h2><p id="-wgmajd_52">Run the project by using the Gradle <a href="creating-plugin-project.html#running-a-plugin-with-the-runide-gradle-task" id="-wgmajd_58"><code class="code" id="-wgmajd_60">runIde</code></a> task. Open the test <a href="annotator.html#run-the-project" id="-wgmajd_59">Java file</a>.</p><p id="-wgmajd_53">To test <code class="code" id="-wgmajd_61">SimpleCreatePropertyQuickFix</code>, change <code class="code" id="-wgmajd_62">simple:website</code> to <code class="code" id="-wgmajd_63">simple:website.url</code>. The key <code class="code" id="-wgmajd_64">website.url</code> is highlighted by <code class="code" id="-wgmajd_65">SimpleAnnotator</code> as an invalid key, as shown below. Choose &quot;Create Property&quot;.</p><figure id="-wgmajd_54"><img alt="Quick Fix" src="images/quick_fix.png" title="Quick Fix" width="800" height="346"></figure><p id="-wgmajd_55">The IDE opens the <span class="filepath" id="-wgmajd_66">test.simple</span> file and adds <code class="code" id="-wgmajd_67">website.url</code> as a new key. Add the new value <code class="code" id="-wgmajd_68">jetbrains.com</code> for the new <code class="code" id="-wgmajd_69">website.url</code> key.</p><figure id="-wgmajd_56"><img alt="New Property" src="images/new_property.png" title="New Property" width="800" height="416"></figure><p id="-wgmajd_57">Now switch back to the Java file; the new key is highlighted as valid.</p></section><div class="last-modified">29 June 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="commenter.html" class="navigation-links__prev">18. Commenter</a><a href="documentation-provider.html" class="navigation-links__next">20. Documentation</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.js"></script></body></html>

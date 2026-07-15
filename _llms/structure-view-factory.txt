@@ -1,0 +1,168 @@
+# 14. Structure View Factory
+
+<tldr>
+Reference: [Structure View](structure-view.html)
+
+Code: [SimpleStructureViewFactory](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleStructureViewFactory.java),
+[SimpleStructureViewModel](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleStructureViewModel.java),
+[SimpleStructureViewElement](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleStructureViewElement.java)
+</tldr>
+
+Tip:
+
+This page is part of multi-step [Custom Language Support Tutorial](custom-language-support-tutorial.html).
+All previous steps must be executed in sequence for the code to work.
+
+The structure view can be customized for a specific file type.
+Creating a structure view factory allows showing the structure of any file in the Structure tool window or by invoking `Navigate | File Structure` for easy navigation between items in the current editor.
+
+## Define a Structure View Factory
+
+The [SimpleStructureViewFactory](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleStructureViewFactory.java)
+implements [PsiStructureViewFactory](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/editor-ui-api/src/com/intellij/lang/PsiStructureViewFactory.java).
+The `getStructureViewBuilder()` implementation reuses the IntelliJ Platform class [TreeBasedStructureViewBuilder](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/editor-ui-api/src/com/intellij/ide/structureView/TreeBasedStructureViewBuilder.java).
+At this point the project will not compile until `SimpleStructureViewModel` is [implemented below](#define-a-structure-view-model).
+
+```JAVA
+final class SimpleStructureViewFactory implements PsiStructureViewFactory {
+
+  @Override
+  public StructureViewBuilder getStructureViewBuilder(@NotNull final PsiFile psiFile) {
+    return new TreeBasedStructureViewBuilder() {
+      @NotNull
+      @Override
+      public StructureViewModel createStructureViewModel(@Nullable Editor editor) {
+        return new SimpleStructureViewModel(editor, psiFile);
+      }
+    };
+  }
+
+}
+```
+
+## Define a Structure View Model
+
+The [SimpleStructureViewModel](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleStructureViewModel.java) is created by implementing [StructureViewModel](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/editor-ui-api/src/com/intellij/ide/structureView/StructureViewModel.java), which defines the model for data displayed in the standard structure view.
+It also extends [StructureViewModelBase](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/editor-ui-api/src/com/intellij/ide/structureView/StructureViewModelBase.java), an implementation that links the model to a text editor.
+
+```JAVA
+public class SimpleStructureViewModel extends StructureViewModelBase implements
+    StructureViewModel.ElementInfoProvider {
+
+  public SimpleStructureViewModel(@Nullable Editor editor, PsiFile psiFile) {
+    super(psiFile, editor, new SimpleStructureViewElement(psiFile));
+  }
+
+  @NotNull
+  public Sorter @NotNull [] getSorters() {
+    return new Sorter[]{Sorter.ALPHA_SORTER};
+  }
+
+
+  @Override
+  public boolean isAlwaysShowsPlus(StructureViewTreeElement element) {
+    return false;
+  }
+
+  @Override
+  public boolean isAlwaysLeaf(StructureViewTreeElement element) {
+    return element.getValue() instanceof SimpleProperty;
+  }
+
+  @Override
+  protected Class<?> @NotNull [] getSuitableClasses() {
+    return new Class[]{SimpleProperty.class};
+  }
+
+}
+```
+
+## Define a Structure View Element
+
+The [SimpleStructureViewElement](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleStructureViewElement.java)
+implements [StructureViewTreeElement](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/editor-ui-api/src/com/intellij/ide/structureView/StructureViewTreeElement.java) and [SortableTreeElement](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/editor-ui-api/src/com/intellij/ide/util/treeView/smartTree/SortableTreeElement.java).
+The `StructureViewTreeElement` represents an element in the Structure View tree model.
+The `SortableTreeElement` represents an item in a smart tree that allows using text other than the presentable text as a key for alphabetic sorting.
+
+```JAVA
+public class SimpleStructureViewElement implements StructureViewTreeElement, SortableTreeElement {
+
+  private final NavigatablePsiElement myElement;
+
+  public SimpleStructureViewElement(NavigatablePsiElement element) {
+    this.myElement = element;
+  }
+
+  @Override
+  public Object getValue() {
+    return myElement;
+  }
+
+  @Override
+  public void navigate(boolean requestFocus) {
+    myElement.navigate(requestFocus);
+  }
+
+  @Override
+  public boolean canNavigate() {
+    return myElement.canNavigate();
+  }
+
+  @Override
+  public boolean canNavigateToSource() {
+    return myElement.canNavigateToSource();
+  }
+
+  @NotNull
+  @Override
+  public String getAlphaSortKey() {
+    String name = myElement.getName();
+    return name != null ? name : "";
+  }
+
+  @NotNull
+  @Override
+  public ItemPresentation getPresentation() {
+    ItemPresentation presentation = myElement.getPresentation();
+    return presentation != null ? presentation : new PresentationData();
+  }
+
+  @Override
+  public TreeElement @NotNull [] getChildren() {
+    if (myElement instanceof SimpleFile) {
+      List<SimpleProperty> properties = PsiTreeUtil.getChildrenOfTypeAsList(myElement, SimpleProperty.class);
+      List<TreeElement> treeElements = new ArrayList<>(properties.size());
+      for (SimpleProperty property : properties) {
+        treeElements.add(new SimpleStructureViewElement((SimplePropertyImpl) property));
+      }
+      return treeElements.toArray(new TreeElement[0]);
+    }
+    return EMPTY_ARRAY;
+  }
+
+}
+```
+
+## Register the Structure View Factory
+
+The `SimpleStructureViewFactory` implementation is registered with the IntelliJ Platform in the plugin configuration file using
+the [com.intellij.lang.structureViewExtension](https://jb.gg/ipe?extensions=com.intellij.lang.structureViewExtension) extension point
+.
+
+```XML
+<extensions defaultExtensionNs="com.intellij">
+  <lang.psiStructureViewFactory
+      language="Simple"
+      implementationClass="org.intellij.sdk.language.SimpleStructureViewFactory"/>
+</extensions>
+```
+
+## Run the Project
+
+Run the project by using the Gradle [runIde](creating-plugin-project.html#running-a-plugin-with-the-runide-gradle-task) task.
+
+Open the `test.simple` file and open `View | Tool Windows | Structure`.
+The IDE now supports a structure view of the Simple Language:
+
+![Structure View](images/structure_view.png)
+

@@ -1,0 +1,144 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF" data-resizable-sidebar="true"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="built-on" content="2026-06-21T21:30:54.605465"><!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5P98');</script>
+<!-- End Google Tag Manager -->
+<title>6. PSI Helpers and Utilities | IntelliJ Platform Plugin SDK</title><script type="application/json" id="virtual-toc-data">[{"id":"define-helper-methods-for-generated-psi-elements","level":0,"title":"Define Helper Methods for Generated PSI Elements","anchor":"#define-helper-methods-for-generated-psi-elements"},{"id":"update-grammar-and-regenerate-the-parser","level":0,"title":"Update Grammar and Regenerate the Parser","anchor":"#update-grammar-and-regenerate-the-parser"},{"id":"define-a-utility-to-search-properties","level":0,"title":"Define a Utility to Search Properties","anchor":"#define-a-utility-to-search-properties"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.css" rel="stylesheet"><link rel="manifest" href="https://www.jetbrains.com/site.webmanifest"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content="https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png"><!-- Open Graph --><meta property="og:title" content="6. PSI Helpers and Utilities | IntelliJ Platform Plugin SDK"><meta property="og:description" content=""><meta property="og:image" content="https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png"><meta property="og:site_name" content="IntelliJ Platform Plugin SDK Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="https://plugins.jetbrains.com/docs/intellij/psi-helper-and-utilities.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@JBPlatform"><meta name="twitter:title" content="6. PSI Helpers and Utilities | IntelliJ Platform Plugin SDK"><meta name="twitter:description" content=""><meta name="twitter:creator" content="@JBPlatform"><meta name="twitter:image:src" content="https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png"><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "https://plugins.jetbrains.com/docs/intellij/psi-helper-and-utilities.html#webpage",
+    "url": "https://plugins.jetbrains.com/docs/intellij/psi-helper-and-utilities.html",
+    "name": "6. PSI Helpers and Utilities | IntelliJ Platform Plugin SDK",
+    "description": "",
+    "image": "https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "https://plugins.jetbrains.com/docs/intellij/#website",
+    "url": "https://plugins.jetbrains.com/docs/intellij/",
+    "name": "IntelliJ Platform Plugin SDK Help"
+}</script><!-- End Schema.org --></head><body data-id="psi_helper_and_utilities" data-main-title="6. PSI Helpers and Utilities" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="Custom Languages///custom_language_support_tutorial.md|Custom Language Support Tutorial" data-edit-url="https://github.com/JetBrains/intellij-sdk-docs/edit/main/topics/tutorials/custom_language_support/psi_helper_and_utilities.md"><!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5P98"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>IntelliJ Platform Plugin SDK  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="psi_helper_and_utilities" id="psi_helper_and_utilities.md">6. PSI Helpers and Utilities</h1><div class="micro-format" data-content="{&quot;microFormat&quot;:[&quot;\u003cp id\u003d\&quot;-426nyi_13\&quot;\u003e\u003cspan class\u003d\&quot;control\&quot; id\u003d\&quot;-426nyi_14\&quot;\u003eCode\u003c/span\u003e: \u003ca href\u003d\&quot;https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/psi/impl/SimplePsiImplUtil.java\&quot; id\u003d\&quot;-426nyi_15\&quot; data-external\u003d\&quot;true\&quot; rel\u003d\&quot;noopener noreferrer\&quot; target\u003d\&quot;_blank\&quot;\u003e\u003ccode class\u003d\&quot;code\&quot; id\u003d\&quot;-426nyi_17\&quot;\u003eSimplePsiImplUtil\u003c/code\u003e\u003c/a\u003e, \u003ca href\u003d\&quot;https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleUtil.java\&quot; id\u003d\&quot;-426nyi_16\&quot; data-external\u003d\&quot;true\&quot; rel\u003d\&quot;noopener noreferrer\&quot; target\u003d\&quot;_blank\&quot;\u003e\u003ccode class\u003d\&quot;code\&quot; id\u003d\&quot;-426nyi_18\&quot;\u003eSimpleUtil\u003c/code\u003e\u003c/a\u003e\u003c/p\u003e&quot;]}"></div><aside class="prompt" data-type="tip" data-title="" id="-426nyi_12"><p id="-426nyi_19">This page is part of multi-step <a href="custom-language-support-tutorial.html" id="-426nyi_20" data-tooltip="Tutorial for creating a .properties-like custom language.">Custom Language Support Tutorial</a>. All previous steps must be executed in sequence for the code to work.</p></aside><p id="-426nyi_6">Helper classes and utilities can be embedded in the code generated by Grammar-Kit.</p><aside class="prompt" data-type="warning" data-title="" id="-426nyi_7"><p id="-426nyi_21">Note that due to the <a href="https://github.com/JetBrains/gradle-grammar-kit-plugin/issues/3" id="-426nyi_22" data-external="true" rel="noopener noreferrer" target="_blank">lack of support for two-pass generation</a>, extending PSI elements with methods via utils is not supported in <a href="tools-gradle-grammar-kit-plugin.html" id="-426nyi_23" data-tooltip="Gradle Grammar-Kit Plugin automates generating custom language lexers and parsers when using Grammar-Kit.">Gradle Grammar-Kit Plugin</a>.</p></aside><section class="chapter"><h2 id="define-helper-methods-for-generated-psi-elements" data-toc="define-helper-methods-for-generated-psi-elements">Define Helper Methods for Generated PSI Elements</h2><p id="-426nyi_24">Custom methods in <a href="psi.html" id="-426nyi_27" data-tooltip="Introduction to Program Structure Interface (PSI) responsible for parsing and creating the syntactic and semantic code model.">PSI</a> classes are defined separately, and Grammar-Kit embeds them into generated code. Define a utility class with these helper methods:</p><div class="code-block" data-lang="java">
+package org.intellij.sdk.language.psi.impl;
+
+import com.intellij.lang.ASTNode;
+import org.intellij.sdk.language.psi.SimpleProperty;
+import org.intellij.sdk.language.psi.SimpleTypes;
+
+public class SimplePsiImplUtil {
+
+  public static String getKey(SimpleProperty element) {
+    ASTNode keyNode = element.getNode().findChildByType(SimpleTypes.KEY);
+    if (keyNode != null) {
+      // IMPORTANT: Convert embedded escaped spaces to simple spaces
+      return keyNode.getText().replaceAll(&quot;\\\\ &quot;, &quot; &quot;);
+    } else {
+      return null;
+    }
+  }
+
+  public static String getValue(SimpleProperty element) {
+    ASTNode valueNode = element.getNode().findChildByType(SimpleTypes.VALUE);
+    if (valueNode != null) {
+      return valueNode.getText();
+    } else {
+      return null;
+    }
+  }
+
+}
+</div><p id="-426nyi_26">The parser generates the <code class="code" id="-426nyi_28">SimpleProperty</code> interface referenced in the code above.</p></section><section class="chapter"><h2 id="update-grammar-and-regenerate-the-parser" data-toc="update-grammar-and-regenerate-the-parser">Update Grammar and Regenerate the Parser</h2><p id="-426nyi_29">Now the utility class is added to the grammar file via the <code class="code" id="-426nyi_33">psiImplUtilClass</code> global attribute. Add the <code class="code" id="-426nyi_34">methods</code> attribute for a particular rule to specify which one should be used for PSI classes.</p><p id="-426nyi_30">Compare the <code class="code" id="-426nyi_35">property</code> rule below to the <a href="grammar-and-parser.html#define-the-grammar" id="-426nyi_36">previous definition</a>.</p><div class="code-block" data-lang="rbnf">
+{
+  parserClass=&quot;org.intellij.sdk.language.parser.SimpleParser&quot;
+
+  extends=&quot;com.intellij.extapi.psi.ASTWrapperPsiElement&quot;
+
+  psiClassPrefix=&quot;Simple&quot;
+  psiImplClassSuffix=&quot;Impl&quot;
+  psiPackage=&quot;org.intellij.sdk.language.psi&quot;
+  psiImplPackage=&quot;org.intellij.sdk.language.psi.impl&quot;
+
+  elementTypeHolderClass=&quot;org.intellij.sdk.language.psi.SimpleTypes&quot;
+  elementTypeClass=&quot;org.intellij.sdk.language.psi.SimpleElementType&quot;
+  tokenTypeClass=&quot;org.intellij.sdk.language.psi.SimpleTokenType&quot;
+
+  psiImplUtilClass=&quot;org.intellij.sdk.language.psi.impl.SimplePsiImplUtil&quot;
+}
+
+simpleFile ::= item_*
+
+private item_ ::= (property|COMMENT|CRLF)
+
+property ::= (KEY? SEPARATOR VALUE?) | KEY
+{
+  methods=[getKey getValue]
+}
+</div><p id="-426nyi_32">After including the above changes in the grammar, <a href="grammar-and-parser.html#generate-a-parser" id="-426nyi_37">regenerate</a> the parser and PSI classes.</p></section><section class="chapter"><h2 id="define-a-utility-to-search-properties" data-toc="define-a-utility-to-search-properties">Define a Utility to Search Properties</h2><p id="-426nyi_38">Create <a href="https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleUtil.java" id="-426nyi_40" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="-426nyi_42">SimpleUtil</code></a> utility class to search PSI elements for defined properties over the project. It will be used later when implementing <a href="completion-contributor.html" id="-426nyi_41" data-tooltip="Sample implementation of code completion in Simple language files.">code completion</a>.</p><div class="code-block" data-lang="java" data-disable-link-processing="true">public class SimpleUtil {
+
+  /**
+   * Searches the entire project for Simple language files with instances of the Simple property with the given key.
+   *
+   * @param project current project
+   * @param key     to check
+   * @return matching properties
+   */
+  public static List&lt;SimpleProperty&gt; findProperties(Project project, String key) {
+    List&lt;SimpleProperty&gt; result = new ArrayList&lt;&gt;();
+    Collection&lt;VirtualFile&gt; virtualFiles =
+        FileTypeIndex.getFiles(SimpleFileType.INSTANCE, GlobalSearchScope.allScope(project));
+    for (VirtualFile virtualFile : virtualFiles) {
+      SimpleFile simpleFile = (SimpleFile) PsiManager.getInstance(project).findFile(virtualFile);
+      if (simpleFile != null) {
+        SimpleProperty[] properties = PsiTreeUtil.getChildrenOfType(simpleFile, SimpleProperty.class);
+        if (properties != null) {
+          for (SimpleProperty property : properties) {
+            if (key.equals(property.getKey())) {
+              result.add(property);
+            }
+          }
+        }
+      }
+    }
+    return result;
+  }
+
+  public static List&lt;SimpleProperty&gt; findProperties(Project project) {
+    List&lt;SimpleProperty&gt; result = new ArrayList&lt;&gt;();
+    Collection&lt;VirtualFile&gt; virtualFiles =
+        FileTypeIndex.getFiles(SimpleFileType.INSTANCE, GlobalSearchScope.allScope(project));
+    for (VirtualFile virtualFile : virtualFiles) {
+      SimpleFile simpleFile = (SimpleFile) PsiManager.getInstance(project).findFile(virtualFile);
+      if (simpleFile != null) {
+        SimpleProperty[] properties = PsiTreeUtil.getChildrenOfType(simpleFile, SimpleProperty.class);
+        if (properties != null) {
+          Collections.addAll(result, properties);
+        }
+      }
+    }
+    return result;
+  }
+
+  /**
+   * Attempts to collect any comment elements above the Simple key/value pair.
+   */
+  public static @NotNull String findDocumentationComment(SimpleProperty property) {
+    List&lt;String&gt; result = new LinkedList&lt;&gt;();
+    PsiElement element = property.getPrevSibling();
+    while (element instanceof PsiComment || element instanceof PsiWhiteSpace) {
+      if (element instanceof PsiComment) {
+        String commentText = element.getText().replaceFirst(&quot;[!# ]+&quot;, &quot;&quot;);
+        result.add(commentText);
+      }
+      element = element.getPrevSibling();
+    }
+    return StringUtil.join(Lists.reverse(result), &quot;\n &quot;);
+  }
+
+}
+</div></section><div class="last-modified">29 June 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="syntax-highlighter-and-color-settings-page.html" class="navigation-links__prev">5. Syntax Highlighter and Color Settings Page</a><a href="annotator.html" class="navigation-links__next">7. Annotator</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.js"></script></body></html>

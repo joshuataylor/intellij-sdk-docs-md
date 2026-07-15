@@ -1,0 +1,148 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF" data-resizable-sidebar="true"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="built-on" content="2026-06-21T21:30:55.069389"><!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5P98');</script>
+<!-- End Google Tag Manager -->
+<title>2. Parsing Test | IntelliJ Platform Plugin SDK</title><script type="application/json" id="virtual-toc-data">[{"id":"update-grammar-and-regenerate-the-parser","level":0,"title":"Update Grammar and Regenerate the Parser","anchor":"#update-grammar-and-regenerate-the-parser"},{"id":"define-input-test-data","level":0,"title":"Define Input Test Data","anchor":"#define-input-test-data"},{"id":"copy-the-expected-psi-tree","level":0,"title":"Copy the Expected PSI Tree","anchor":"#copy-the-expected-psi-tree"},{"id":"define-the-output-reference-test-data","level":0,"title":"Define the Output Reference Test Data","anchor":"#define-the-output-reference-test-data"},{"id":"define-a-parsing-test","level":0,"title":"Define a Parsing Test","anchor":"#define-a-parsing-test"},{"id":"run-the-test","level":0,"title":"Run the Test","anchor":"#run-the-test"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.css" rel="stylesheet"><link rel="manifest" href="https://www.jetbrains.com/site.webmanifest"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content="https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png"><!-- Open Graph --><meta property="og:title" content="2. Parsing Test | IntelliJ Platform Plugin SDK"><meta property="og:description" content=""><meta property="og:image" content="https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png"><meta property="og:site_name" content="IntelliJ Platform Plugin SDK Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="https://plugins.jetbrains.com/docs/intellij/parsing-test.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@JBPlatform"><meta name="twitter:title" content="2. Parsing Test | IntelliJ Platform Plugin SDK"><meta name="twitter:description" content=""><meta name="twitter:creator" content="@JBPlatform"><meta name="twitter:image:src" content="https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png"><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "https://plugins.jetbrains.com/docs/intellij/parsing-test.html#webpage",
+    "url": "https://plugins.jetbrains.com/docs/intellij/parsing-test.html",
+    "name": "2. Parsing Test | IntelliJ Platform Plugin SDK",
+    "description": "",
+    "image": "https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "https://plugins.jetbrains.com/docs/intellij/#website",
+    "url": "https://plugins.jetbrains.com/docs/intellij/",
+    "name": "IntelliJ Platform Plugin SDK Help"
+}</script><!-- End Schema.org --></head><body data-id="parsing_test" data-main-title="2. Parsing Test" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="Custom Languages///writing_tests_for_plugins.md|Testing a Custom Language Plugin" data-edit-url="https://github.com/JetBrains/intellij-sdk-docs/edit/main/topics/tutorials/writing_tests_for_plugins/parsing_test.md"><!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5P98"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>IntelliJ Platform Plugin SDK  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="parsing_test" id="parsing_test.md">2. Parsing Test</h1><div class="micro-format" data-content="{&quot;microFormat&quot;:[&quot;\u003cp id\u003d\&quot;qrr7sv_14\&quot;\u003e\u003cspan class\u003d\&quot;control\&quot; id\u003d\&quot;qrr7sv_15\&quot;\u003eTested Functionality\u003c/span\u003e: \u003ca href\u003d\&quot;lexer-and-parser-definition.html\&quot; id\u003d\&quot;qrr7sv_16\&quot; data-tooltip\u003d\&quot;Sample implementation of Simple language lexer and parser.\&quot;\u003e4. Lexer and Parser Definition\u003c/a\u003e\u003c/p\u003e&quot;]}"></div><aside class="prompt" data-type="tip" data-title="" id="qrr7sv_13"><p id="qrr7sv_17">This page is part of multistep <a href="writing-tests-for-plugins.html" id="qrr7sv_18" data-tooltip="Tutorial demonstrating how to develop tests for custom language plugin features.">Testing a Custom Language Plugin</a> tutorial.</p></aside><p id="qrr7sv_5">For more complex Lexers (e.g., having additional logic), it is advisable to add separate tests inheriting from <a href="https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/testFramework/src/com/intellij/testFramework/LexerTestCase.java" id="qrr7sv_19" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="qrr7sv_20">LexerTestCase</code></a>.</p><section class="chapter"><h2 id="update-grammar-and-regenerate-the-parser" data-toc="update-grammar-and-regenerate-the-parser">Update Grammar and Regenerate the Parser</h2><p id="qrr7sv_21">Before creating the parsing test, ensure the parser definition (<span class="filepath" id="qrr7sv_24">Simple.bnf</span>) includes the lines shown below. These additional lines facilitate testing incorrect keys.</p><p id="qrr7sv_22">If the lines below are not present in <span class="filepath" id="qrr7sv_25">Simple.bnf</span>, replace the existing <code class="code" id="qrr7sv_26">property</code> definition with the lines below. Don't forget to regenerate the parser after updating the file! Right-click on the <span class="filepath" id="qrr7sv_27">Simple.bnf</span> file and select <span class="control" id="qrr7sv_28">Generate Parser Code</span>.</p><div class="code-block" data-lang="rbnf">
+property ::= (KEY? SEPARATOR VALUE?) | KEY {
+  pin=3
+  recoverWhile=&quot;recover_property&quot;
+  mixin=&quot;org.intellij.sdk.language.psi.impl.SimpleNamedElementImpl&quot;
+  implements=&quot;org.intellij.sdk.language.psi.SimpleNamedElement&quot;
+  methods=[getKey getValue getName setName getNameIdentifier getPresentation]
+}
+private recover_property ::= !(KEY|SEPARATOR|COMMENT)
+</div></section><section class="chapter"><h2 id="define-input-test-data" data-toc="define-input-test-data">Define Input Test Data</h2><p id="qrr7sv_29">Create the <span class="filepath" id="qrr7sv_31">ParsingTestData.simple</span> properties file in the <span class="filepath" id="qrr7sv_32">testData</span> folder. Note the last few lines define a purposely incorrect key.</p><div class="code-block" data-lang="properties" data-disable-link-processing="true"># You are reading the &quot;.properties&quot; entry.
+! The exclamation mark can also mark text as comments.
+website = https://en.wikipedia.org/
+
+language = English
+# The backslash below tells the application to continue reading
+# the value onto the next line.
+message = Welcome to \
+          Wikipedia!
+# Add spaces to the key
+key\ with\ spaces = This is the value that could be looked up with the key &quot;key with spaces&quot;.
+# Unicode
+tab : \u0009
+# test for illegal key attempt
+key\
+with\
+endofline = test</div></section><section class="chapter"><h2 id="copy-the-expected-psi-tree" data-toc="copy-the-expected-psi-tree">Copy the Expected PSI Tree</h2><p id="qrr7sv_33">The easiest way to get the expected PSI structure for any file is to use the <a href="explore-api.html#internalMode" id="qrr7sv_36">built-in PSI viewer</a>. Run the project and use <span class="menupath" id="qrr7sv_37">Tools | View PSI Structure...</span> (enable <a href="enabling-internal.html" id="qrr7sv_38" data-tooltip="Enabling the Internal Mode enables actions and tools useful in plugin development and diagnosing issues.">Internal Mode</a> explicitly for the IDE instance if the menu is not available).</p><figure id="qrr7sv_34"><img alt="PSI Tree Copy" src="images/plugin_copy_psi.png" title="PSI Tree Copy" width="2218" height="1514"></figure><p id="qrr7sv_35">Use the <span class="control" id="qrr7sv_39">Copy PSI</span> button to copy the expected PSI structure to the clipboard.</p></section><section class="chapter"><h2 id="define-the-output-reference-test-data" data-toc="define-the-output-reference-test-data">Define the Output Reference Test Data</h2><p id="qrr7sv_40">Create a file <span class="filepath" id="qrr7sv_42">ParsingTestData.txt</span> with the copied PSI tree.</p><div class="code-block" data-lang="properties" data-disable-link-processing="true">Simple File(0,493)
+  PsiComment(SimpleTokenType.COMMENT)('# You are reading the &quot;.properties&quot; entry.')(0,42)
+  PsiWhiteSpace('\n')(42,43)
+  PsiComment(SimpleTokenType.COMMENT)('! The exclamation mark can also mark text as comments.')(43,97)
+  PsiWhiteSpace('\n')(97,98)
+  SimplePropertyImpl(PROPERTY)(98,133)
+    PsiElement(SimpleTokenType.KEY)('website')(98,105)
+    PsiWhiteSpace(' ')(105,106)
+    PsiElement(SimpleTokenType.SEPARATOR)('=')(106,107)
+    PsiWhiteSpace(' ')(107,108)
+    PsiElement(SimpleTokenType.VALUE)('https://en.wikipedia.org/')(108,133)
+  PsiWhiteSpace('\n\n')(133,135)
+  SimplePropertyImpl(PROPERTY)(135,153)
+    PsiElement(SimpleTokenType.KEY)('language')(135,143)
+    PsiWhiteSpace(' ')(143,144)
+    PsiElement(SimpleTokenType.SEPARATOR)('=')(144,145)
+    PsiWhiteSpace(' ')(145,146)
+    PsiElement(SimpleTokenType.VALUE)('English')(146,153)
+  PsiWhiteSpace('\n')(153,154)
+  PsiComment(SimpleTokenType.COMMENT)('# The backslash below tells the application to continue reading')(154,217)
+  PsiWhiteSpace('\n')(217,218)
+  PsiComment(SimpleTokenType.COMMENT)('# the value onto the next line.')(218,249)
+  PsiWhiteSpace('\n')(249,250)
+  SimplePropertyImpl(PROPERTY)(250,293)
+    PsiElement(SimpleTokenType.KEY)('message')(250,257)
+    PsiWhiteSpace(' ')(257,258)
+    PsiElement(SimpleTokenType.SEPARATOR)('=')(258,259)
+    PsiWhiteSpace(' ')(259,260)
+    PsiElement(SimpleTokenType.VALUE)('Welcome to \\n          Wikipedia!')(260,293)
+  PsiWhiteSpace('\n')(293,294)
+  PsiComment(SimpleTokenType.COMMENT)('# Add spaces to the key')(294,317)
+  PsiWhiteSpace('\n')(317,318)
+  SimplePropertyImpl(PROPERTY)(318,411)
+    PsiElement(SimpleTokenType.KEY)('key\ with\ spaces')(318,335)
+    PsiWhiteSpace(' ')(335,336)
+    PsiElement(SimpleTokenType.SEPARATOR)('=')(336,337)
+    PsiWhiteSpace(' ')(337,338)
+    PsiElement(SimpleTokenType.VALUE)('This is the value that could be looked up with the key &quot;key with spaces&quot;.')(338,411)
+  PsiWhiteSpace('\n')(411,412)
+  PsiComment(SimpleTokenType.COMMENT)('# Unicode')(412,421)
+  PsiWhiteSpace('\n')(421,422)
+  SimplePropertyImpl(PROPERTY)(422,434)
+    PsiElement(SimpleTokenType.KEY)('tab')(422,425)
+    PsiWhiteSpace(' ')(425,426)
+    PsiElement(SimpleTokenType.SEPARATOR)(':')(426,427)
+    PsiWhiteSpace(' ')(427,428)
+    PsiElement(SimpleTokenType.VALUE)('\u0009')(428,434)
+  PsiWhiteSpace('\n')(434,435)
+  PsiComment(SimpleTokenType.COMMENT)('# test for illegal key attempt')(435,465)
+  PsiWhiteSpace('\n')(465,466)
+  SimplePropertyImpl(PROPERTY)(466,470)
+    PsiElement(SimpleTokenType.KEY)('key')(466,469)
+    PsiErrorElement:SimpleTokenType.SEPARATOR expected, got '\'(469,470)
+      PsiElement(BAD_CHARACTER)('\')(469,470)
+  PsiWhiteSpace('\n')(470,471)
+  SimplePropertyImpl(PROPERTY)(471,476)
+    PsiElement(SimpleTokenType.KEY)('with')(471,475)
+    PsiErrorElement:SimpleTokenType.SEPARATOR expected, got '\'(475,476)
+      PsiElement(BAD_CHARACTER)('\')(475,476)
+  PsiWhiteSpace('\n')(476,477)
+  SimplePropertyImpl(PROPERTY)(477,493)
+    PsiElement(SimpleTokenType.KEY)('endofline')(477,486)
+    PsiWhiteSpace(' ')(486,487)
+    PsiElement(SimpleTokenType.SEPARATOR)('=')(487,488)
+    PsiWhiteSpace(' ')(488,489)
+    PsiElement(SimpleTokenType.VALUE)('test')(489,493)
+</div></section><section class="chapter"><h2 id="define-a-parsing-test" data-toc="define-a-parsing-test">Define a Parsing Test</h2><p id="qrr7sv_43">Subclass <a href="https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/testFramework/src/com/intellij/testFramework/ParsingTestCase.java" id="qrr7sv_45" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="qrr7sv_49">ParsingTestCase</code></a> to create <code class="code" id="qrr7sv_46">SimpleParsingTest</code>: Override <code class="code" id="qrr7sv_47">getTestDataPath()</code>, and return the path from the root of this plugin module to the <span class="filepath" id="qrr7sv_48">testData</span> directory.</p><div class="code-block" data-lang="java" data-disable-link-processing="true">// Copyright 2000-2024 JetBrains s.r.o. and contributors. Use of this source code is governed by the Apache 2.0 license.
+
+package org.intellij.sdk.language;
+
+import com.intellij.testFramework.ParsingTestCase;
+
+public class SimpleParsingTest extends ParsingTestCase {
+
+  public SimpleParsingTest() {
+    super(&quot;&quot;, &quot;simple&quot;, new SimpleParserDefinition());
+  }
+
+  public void testParsingTestData() {
+    doTest(true);
+  }
+
+  /**
+   * @return path to test data file directory relative to root of this module.
+   */
+  @Override
+  protected String getTestDataPath() {
+    return &quot;src/test/testData&quot;;
+  }
+
+  @Override
+  protected boolean includeRanges() {
+    return true;
+  }
+
+}
+</div></section><section class="chapter"><h2 id="run-the-test" data-toc="run-the-test">Run the Test</h2><p id="qrr7sv_52">Run the test and make sure it's successful.</p><section class="procedure-steps"><div class="collapse"><div class="collapse__title"><h3 id="qrr7sv_53" data-toc="qrr7sv_53">Running tests</h3></div><div class="collapse__content"><ol class="list _decimal" id="qrr7sv_54" type="1"><li class="list__item" id="qrr7sv_58"><p id="qrr7sv_62">Open the <span class="control" id="qrr7sv_63">Gradle</span> Tool Window.</p></li><li class="list__item" id="qrr7sv_59"><p id="qrr7sv_64">Select the <span class="control" id="qrr7sv_65">simple_language_plugin</span> node. You may need to reimport it as a Gradle project.</p></li><li class="list__item" id="qrr7sv_60"><p id="qrr7sv_66">Drill down under <span class="control" id="qrr7sv_67">simple_language_plugin</span> to <span class="control" id="qrr7sv_68">Tasks</span>, <span class="control" id="qrr7sv_69">verification</span>, <span class="control" id="qrr7sv_70">test</span> task.</p></li><li class="list__item" id="qrr7sv_61"><p id="qrr7sv_71">Run the <span class="control" id="qrr7sv_72">test</span> task.</p></li></ol><p id="qrr7sv_55">The results are displayed in the <span class="control" id="qrr7sv_73">Run</span> Tool Window, and also written to the <span class="filepath" id="qrr7sv_74">simple_language_plugin/build/test-results/test</span> directory.</p><p id="qrr7sv_56">If the <span class="control" id="qrr7sv_75">Run</span> Tool Window displays the error <span class="emphasis" id="qrr7sv_76">Test events were not received</span>, do the following:</p><ol class="list _decimal" id="qrr7sv_57" type="1"><li class="list__item" id="qrr7sv_77"><p id="qrr7sv_80">In the <span class="control" id="qrr7sv_81">Gradle</span> Tool Window, drill down under <span class="control" id="qrr7sv_82">simple_language_plugin</span> to <span class="control" id="qrr7sv_83">Tasks</span>, <span class="control" id="qrr7sv_84">build</span>, <span class="control" id="qrr7sv_85">clean</span> task.</p></li><li class="list__item" id="qrr7sv_78"><p id="qrr7sv_86">Run the <span class="control" id="qrr7sv_87">clean</span> task, which deletes the <span class="filepath" id="qrr7sv_88">simple_language_plugin/build</span> directory.</p></li><li class="list__item" id="qrr7sv_79"><p id="qrr7sv_89">Restart the test.</p></li></ol><ol class="list _decimal"></ol></div></div></section></section><div class="last-modified">29 June 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="tests-prerequisites.html" class="navigation-links__prev">1. Tests Prerequisites</a><a href="completion-test.html" class="navigation-links__next">3. Completion Test</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.js"></script></body></html>

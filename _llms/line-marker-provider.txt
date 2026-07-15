@@ -1,0 +1,139 @@
+# 8. Line Marker Provider
+
+<tldr>
+Code: [SimpleLineMarkerProvider](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleLineMarkerProvider.java)
+</tldr>
+
+Tip:
+
+This page is part of multi-step [Custom Language Support Tutorial](custom-language-support-tutorial.html).
+All previous steps must be executed in sequence for the code to work.
+
+Line markers help annotate code with icons on the gutter.
+These markers can provide navigation targets to related code.
+
+## Define a Line Marker Provider
+
+A line marker provider annotates usages of Simple Language properties within Java code and provides navigation to the definition of these properties.
+The visual marker is a Simple Language icon in the gutter of the Editor window.
+
+The [SimpleLineMarkerProvider](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleLineMarkerProvider.java) subclasses [RelatedItemLineMarkerProvider](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/lang-api/src/com/intellij/codeInsight/daemon/RelatedItemLineMarkerProvider.java).
+For this example, override the `collectNavigationMarkers()` method to collect usage of a Simple Language [key and separators](language-and-filetype.html#define-the-language):
+
+```JAVA
+final class SimpleLineMarkerProvider extends RelatedItemLineMarkerProvider {
+
+  @Override
+  protected void collectNavigationMarkers(@NotNull PsiElement element,
+                                          @NotNull Collection<? super RelatedItemLineMarkerInfo<?>> result) {
+    // This must be an element with a literal expression as a parent
+    if (!(element instanceof PsiJavaTokenImpl) || !(element.getParent() instanceof PsiLiteralExpression literalExpression)) {
+      return;
+    }
+
+    // The literal expression must start with the Simple language literal expression
+    String value = literalExpression.getValue() instanceof String ? (String) literalExpression.getValue() : null;
+    if ((value == null) ||
+        !value.startsWith(SimpleAnnotator.SIMPLE_PREFIX_STR + SimpleAnnotator.SIMPLE_SEPARATOR_STR)) {
+      return;
+    }
+
+    // Get the Simple language property usage
+    Project project = element.getProject();
+    String possibleProperties = value.substring(
+        SimpleAnnotator.SIMPLE_PREFIX_STR.length() + SimpleAnnotator.SIMPLE_SEPARATOR_STR.length()
+    );
+    final List<SimpleProperty> properties = SimpleUtil.findProperties(project, possibleProperties);
+    if (!properties.isEmpty()) {
+      // Add the property to a collection of line marker info
+      NavigationGutterIconBuilder<PsiElement> builder =
+          NavigationGutterIconBuilder.create(SimpleIcons.FILE)
+              .setTargets(properties)
+              .setTooltipText("Navigate to Simple language property");
+      result.add(builder.createLineMarkerInfo(element));
+    }
+  }
+
+}
+```
+
+Extending from [GutterIconDescriptor](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/lang-api/src/com/intellij/codeInsight/daemon/GutterIconDescriptor.java) allows configuring gutter icons to be shown via `Settings | Editor | General | Gutter Icons`.
+
+## Best Practices for Implementing Line Marker Providers
+
+This section addresses important details about implementing a marker provider.
+
+The `collectNavigationMarkers()` method should:
+
+* Only return line marker information consistent with the element passed into the method. For example, do not return a class marker if `getLineMarkerInfo()` was called with an element that corresponds to a method.
+
+* Return line marker information for the appropriate element at the correct scope of the PSI tree. Return leaf elements only - i.e., the smallest possible elements. For example, do not return method marker for [PsiMethod](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/java/java-psi-api/src/com/intellij/psi/PsiMethod.java). Instead, return it for the [PsiIdentifier](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/java/java-psi-api/src/com/intellij/psi/PsiIdentifier.java) which contains the name of the method.
+
+![Line Marker Location](images/line_marker_location.png)
+What happens when a `LineMarkerProvider` returns marker information for a `PsiElement` that is a higher node in the PSI tree?
+For example, if `MyWrongLineMarkerProvider()` erroneously returns a `PsiMethod` instead of a `PsiIdentifier` element:
+
+```JAVA
+final class MyWrongLineMarkerProvider implements LineMarkerProvider {
+  public LineMarkerInfo getLineMarkerInfo(@NotNull PsiElement element) {
+    if (element instanceof PsiMethod) {
+      return new LineMarkerInfo(element, ...);
+    }
+    return null;
+  }
+}
+```
+
+The consequences of the `MyWrongLineMarkerProvider()` implementation have to do with how the IntelliJ Platform performs inspections.
+For performance reasons, inspection, and specifically the [LineMarkersPass](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/lang-impl/src/com/intellij/codeInsight/daemon/impl/LineMarkersPass.java) queries all [LineMarkerProviders](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/lang-api/src/com/intellij/codeInsight/daemon/LineMarkerProviders.java) in two phases:
+
+* The first pass is for all elements visible in the Editor window,
+
+* The second pass is for the rest of the elements in the file.
+
+If providers return nothing for either area, the line markers get cleared.
+However, if a method like `actionPerformed()` is not completely visible in the Editor window (as shown in the image above,) and `MyWrongLineMarkerProvider()` returns marker info for the `PsiMethod` instead of `PsiIdentifier`, then:
+
+* The first pass removes line marker info because whole `PsiMethod` isn't visible.
+
+* The second pass tries to add a line marker because `MyWrongLineMarkerProvider()` is called for the `PsiMethod`.
+
+As a result, the line marker icon would blink annoyingly.
+To fix this problem for this case, rewrite `MyWrongLineMarkerProvider` to return info for `PsiIdentifier` instead of `PsiMethod` as shown below:
+
+```JAVA
+final class MyCorrectLineMarkerProvider implements LineMarkerProvider {
+  public LineMarkerInfo getLineMarkerInfo(@NotNull PsiElement element) {
+    if (element instanceof PsiIdentifier &&
+            element.getParent() instanceof PsiMethod) {
+      return new LineMarkerInfo(element, ...);
+    }
+    return null;
+  }
+}
+```
+
+## Register the Line Marker Provider
+
+The `SimpleLineMarkerProvider` implementation is registered with the IntelliJ Platform in the plugin configuration file using
+the [com.intellij.codeInsight.lineMarkerProvider](https://jb.gg/ipe?extensions=com.intellij.codeInsight.lineMarkerProvider) extension point
+.
+
+```XML
+<extensions defaultExtensionNs="com.intellij">
+  <codeInsight.lineMarkerProvider
+      language="JAVA"
+      implementationClass="org.intellij.sdk.language.SimpleLineMarkerProvider"/>
+</extensions>
+```
+
+## Run the Project
+
+Run the plugin by using the Gradle [runIde](creating-plugin-project.html#running-a-plugin-with-the-runide-gradle-task) task.
+
+Open the Java [Test file](annotator.html#run-the-project).
+Now the icon appears next to line 3 on the gutter.
+A user can click on the icon to navigate to the property definition.
+
+![Line Marker](images/line_marker.png)
+

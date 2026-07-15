@@ -1,0 +1,302 @@
+# Settings Tutorial
+
+As discussed in the [Settings Guide](settings-guide.html), plugins can add Settings to IntelliJ Platform-based IDEs.
+The IDE displays the Settings in response to a user choosing `Settings`.
+Custom Settings are displayed and function like those native to the IDE.
+
+## Overview of Custom Settings Implementation
+
+Using the SDK code sample [settings](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/settings), this tutorial illustrates the steps to creating custom application-level settings.
+Many IntelliJ Platform Settings implementations use fewer classes, but the `settings` code sample factors the functionality into three classes for clarity:
+
+* The [AppSettingsConfigurable](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/settings/src/main/java/org/intellij/sdk/settings/AppSettingsConfigurable.java) is analogous to a Controller in the MVC model – it interacts with the other two Settings classes and the IntelliJ Platform,
+
+* The [AppSettings](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/settings/src/main/java/org/intellij/sdk/settings/AppSettings.java) is like a Model because it stores the Settings persistently,
+
+* The [AppSettingsComponent](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/settings/src/main/java/org/intellij/sdk/settings/AppSettingsComponent.java) is similar to a View because it displays and captures edits to the values of the Settings.
+
+The structure of the implementation is the same for Project Settings, but there are minor differences in the [Configurable implementation](settings-guide.html#constructors) and [extension point (EP) declaration](settings-guide.html#declaring-project-settings).
+
+Note:
+
+See
+[MarkdownSettings](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/plugins/markdown/core/src/org/intellij/plugins/markdown/settings/MarkdownSettings.kt)
+and
+[MarkdownSettingsConfigurable](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/plugins/markdown/core/src/org/intellij/plugins/markdown/settings/MarkdownSettingsConfigurable.kt)
+classes for the settings example implemented in Kotlin with usage of [Kotlin UI DSL](kotlin-ui-dsl-version-2.html).
+
+## 
+
+The `AppSettings` Class
+
+The `AppSettings` class persistently stores the custom Settings.
+It is based on the [IntelliJ Platform Persistence Model](persisting-state-of-components.html#using-persistentstatecomponent).
+
+### 
+
+Declaring `AppSettings`
+
+Given a [Light Service](plugin-services.html#light-services) is not used, the persistent data class must be declared as a [Service](plugin-services.html#declaring-a-service) EP in the `[plugin.xml](plugin-configuration-file.html)` file.
+If these were Project Settings, the [com.intellij.projectService](https://jb.gg/ipe?extensions=com.intellij.projectService) extension point
+would be used.
+However, because these are Application Settings, the [com.intellij.applicationService](https://jb.gg/ipe?extensions=com.intellij.applicationService) extension point
+is used with the fully qualified name (FQN) of the implementation class:
+
+```XML
+<extensions defaultExtensionNs="com.intellij">
+  <applicationService
+      serviceImplementation="org.intellij.sdk.settings.AppSettings"/>
+</extensions>
+```
+
+### 
+
+Creating the `AppSettings` Implementation
+
+As discussed in [Implementing the PersistentStateComponent Interface](persisting-state-of-components.html#implementing-the-persistentstatecomponent-interface), `AppSettings` uses the pattern of implementing [PersistentStateComponent](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/projectModel-api/src/com/intellij/openapi/components/PersistentStateComponent.java) parameterized by a separate state class:
+
+```JAVA
+@State(
+    name = "org.intellij.sdk.settings.AppSettings",
+    storages = @Storage("SdkSettingsPlugin.xml")
+)
+final class AppSettings
+    implements PersistentStateComponent<AppSettings.State> {
+
+  static class State {
+    @NonNls
+    public String userId = "John Smith";
+    public boolean ideaStatus = false;
+  }
+
+  private State myState = new State();
+
+  static AppSettings getInstance() {
+    return ApplicationManager.getApplication()
+        .getService(AppSettings.class);
+  }
+
+  @Override
+  public State getState() {
+    return myState;
+  }
+
+  @Override
+  public void loadState(@NotNull State state) {
+    myState = state;
+  }
+
+}
+```
+
+#### 
+
+`@Storage` Annotation
+
+The [@State](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/projectModel-api/src/com/intellij/openapi/components/State.java) annotation, located above the class declaration, [defines the data storage location](persisting-state-of-components.html#defining-the-storage-location).
+For `AppSettings`, the data `name` parameter is the FQN of the class.
+Using FQN is the best practice to follow and is required if custom data gets stored in the standard project or workspace files.
+
+The `storages` parameter uses the [@Storage](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/projectModel-api/src/com/intellij/openapi/components/Storage.java) annotation to define a custom filename for the `AppSettings` data.
+In this case, the file is located in the `options` directory of the [configuration directory](https://www.jetbrains.com/help/idea/tuning-the-ide.html#config-directory) for the IDE.
+
+#### Persistent State Class
+
+The `AppSettings` implementation contains an inner state class with two public fields: a `String` and a `boolean`.
+Conceptually, these fields hold the name of a user and whether that person is an IntelliJ IDEA user, respectively.
+See [Implementing the State Class](persisting-state-of-components.html#implementing-the-state-class) for more information about how `PersistentStateComponent` serializes public fields.
+
+#### 
+
+`AppSettings` Methods
+
+The fields are so limited and straightforward for this class that encapsulation is not used for simplicity.
+All that is needed for functionality is to override the two methods called by the IntelliJ Platform when a new component state is loaded (`PersistentStateComponent.loadState()`), and when a state is saved (`PersistentStateComponent.getState()`).
+See [PersistentStateComponent](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/projectModel-api/src/com/intellij/openapi/components/PersistentStateComponent.java) for more information about these methods.
+
+One static convenience method has been added – `AppSettings.getInstance()` – which allows `AppSettingsConfigurable` to easily acquire a reference to `AppSetting`.
+
+## 
+
+The `AppSettingsComponent` Class
+
+The role of the [AppSettingsComponent](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/settings/src/main/java/org/intellij/sdk/settings/AppSettingsComponent.java) is to provide a `JPanel` for the custom Settings to the IDE Settings Dialog.
+The `AppSettingsComponent` has-a `JPanel`, and is responsible for its lifetime.
+The `AppSettingsComponent` is instantiated by `AppSettingsConfigurable`.
+
+### 
+
+Creating the `AppSettingsComponent` Implementation
+
+The `AppSettingsComponent` defines a `JPanel` containing a [JBTextField](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/platform-api/src/com/intellij/ui/components/JBTextField.java) and a [JBCheckBox](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/platform-api/src/com/intellij/ui/components/JBCheckBox.java) to hold and display the data that maps to the [data fields of AppSettings.State](#persistent-state-class):
+
+```JAVA
+/**
+ * Supports creating and managing a {@link JPanel} for the Settings Dialog.
+ */
+public class AppSettingsComponent {
+
+  private final JPanel myMainPanel;
+  private final JBTextField myUserNameText = new JBTextField();
+  private final JBCheckBox myIdeaUserStatus = new JBCheckBox("IntelliJ IDEA user");
+
+  public AppSettingsComponent() {
+    myMainPanel = FormBuilder.createFormBuilder()
+        .addLabeledComponent(new JBLabel("User name:"), myUserNameText, 1, false)
+        .addComponent(myIdeaUserStatus, 1)
+        .addComponentFillVertically(new JPanel(), 0)
+        .getPanel();
+  }
+
+  public JPanel getPanel() {
+    return myMainPanel;
+  }
+
+  public JComponent getPreferredFocusedComponent() {
+    return myUserNameText;
+  }
+
+  @NotNull
+  public String getUserNameText() {
+    return myUserNameText.getText();
+  }
+
+  public void setUserNameText(@NotNull String newText) {
+    myUserNameText.setText(newText);
+  }
+
+  public boolean getIdeaUserStatus() {
+    return myIdeaUserStatus.isSelected();
+  }
+
+  public void setIdeaUserStatus(boolean newStatus) {
+    myIdeaUserStatus.setSelected(newStatus);
+  }
+
+}
+```
+
+#### 
+
+`AppSettingsComponent` Methods
+
+The constructor builds the `JPanel` using the convenient [FormBuilder](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/platform-api/src/com/intellij/util/ui/FormBuilder.java) and saves a reference to the `JPanel`.
+The rest of the class are simple accessors and mutators to encapsulate the UI components used on the `JPanel`.
+
+## 
+
+The `AppSettingsConfigurable` Class
+
+The methods of [AppSettingsConfigurable](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/settings/src/main/java/org/intellij/sdk/settings/AppSettingsConfigurable.java) are called by the IntelliJ Platform, and `AppSettingsConfigurable` in turn interacts with `AppSettingsComponent` and `AppSettings`.
+
+### 
+
+Declaring the `AppSettingsConfigurable`
+
+As described in [Declaring Application Settings](settings-guide.html#declaring-application-settings), the `com.intellij.applicationConfigurable` is used as the EP.
+An explanation of this declaration can be found in [Declaring Application Settings](settings-guide.html#declaring-application-settings):
+
+```XML
+<extensions defaultExtensionNs="com.intellij">
+  <applicationConfigurable
+      parentId="tools"
+      instance="org.intellij.sdk.settings.AppSettingsConfigurable"
+      id="org.intellij.sdk.settings.AppSettingsConfigurable"
+      displayName="SDK: Application Settings Example"/>
+</extensions>
+```
+
+### 
+
+Creating the `AppSettingsConfigurable` Implementation
+
+The `AppSettingsConfigurable` class implements [Configurable](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/ide-core/src/com/intellij/openapi/options/Configurable.java).
+The class has one field to hold a reference to the `AppSettingsComponent`.
+
+```JAVA
+/**
+ * Provides controller functionality for application settings.
+ */
+final class AppSettingsConfigurable implements Configurable {
+
+  private AppSettingsComponent mySettingsComponent;
+
+  // A default constructor with no arguments is required because
+  // this implementation is registered as an applicationConfigurable
+
+  @Nls(capitalization = Nls.Capitalization.Title)
+  @Override
+  public String getDisplayName() {
+    return "SDK: Application Settings Example";
+  }
+
+  @Override
+  public JComponent getPreferredFocusedComponent() {
+    return mySettingsComponent.getPreferredFocusedComponent();
+  }
+
+  @Nullable
+  @Override
+  public JComponent createComponent() {
+    mySettingsComponent = new AppSettingsComponent();
+    return mySettingsComponent.getPanel();
+  }
+
+  @Override
+  public boolean isModified() {
+    AppSettings.State state =
+        Objects.requireNonNull(AppSettings.getInstance().getState());
+    return !mySettingsComponent.getUserNameText().equals(state.userId) ||
+        mySettingsComponent.getIdeaUserStatus() != state.ideaStatus;
+  }
+
+  @Override
+  public void apply() {
+    AppSettings.State state =
+        Objects.requireNonNull(AppSettings.getInstance().getState());
+    state.userId = mySettingsComponent.getUserNameText();
+    state.ideaStatus = mySettingsComponent.getIdeaUserStatus();
+  }
+
+  @Override
+  public void reset() {
+    AppSettings.State state =
+        Objects.requireNonNull(AppSettings.getInstance().getState());
+    mySettingsComponent.setUserNameText(state.userId);
+    mySettingsComponent.setIdeaUserStatus(state.ideaStatus);
+  }
+
+  @Override
+  public void disposeUIResources() {
+    mySettingsComponent = null;
+  }
+
+}
+```
+
+#### 
+
+`AppSettingsConfigurable` Methods
+
+All the methods in this class are overrides of the methods in the `Configurable` interface.
+Readers are encouraged to review the Javadoc comments for the `Configurable` methods.
+Also, review notes about [IntelliJ Platform Interactions](settings-guide.html#intellij-platform-interactions-with-configurable) with `Configurable` methods.
+
+## Testing the Custom Settings Plugin
+
+After performing the steps described above, compile and run the plugin in a Development Instance to see the custom Settings available in the Settings Dialog.
+Open the IDE Settings by selecting `Settings | Tools | SDK: Application Settings Example`.
+The settings are preloaded with the default values:
+
+!["Settings Defaults"](images/settings_defaults.png)
+Now edit the settings values to "John Doe" and click the checkbox.
+Click the OK button to close the Settings dialog and save the changes.
+Exit the Development Instance.
+
+Open the file `code_samples/settings/build/idea-sandbox/config/options/SdkSettingsPlugin.xml` to see the Settings persistently stored.
+
+Tip:
+
+In this demonstration the file resides in `code_samples/settings/build/idea-sandbox/config/options/`.
+See [IDE Development Instances](ide-development-instance.html) for the general Development Instance case or [Default IDE directories](https://www.jetbrains.com/help/idea/tuning-the-ide.html#default-dirs) if the settings plugin is installed directly in the IDE.
+

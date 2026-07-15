@@ -1,0 +1,97 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF" data-resizable-sidebar="true"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="built-on" content="2026-06-21T21:30:55.228895"><!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5P98');</script>
+<!-- End Google Tag Manager -->
+<title>Frameworks | IntelliJ Platform Plugin SDK</title><script type="application/json" id="virtual-toc-data">[{"id":"creating-a-new-framework","level":0,"title":"Creating a New Framework","anchor":"#creating-a-new-framework"},{"id":"registering-framework","level":0,"title":"Registering Framework","anchor":"#registering-framework"},{"id":"setting-up-mandatory-attributes","level":0,"title":"Setting up Mandatory Attributes","anchor":"#setting-up-mandatory-attributes"},{"id":"creating-provider-for-enabling-framework-support","level":0,"title":"Creating Provider for Enabling Framework Support","anchor":"#creating-provider-for-enabling-framework-support"},{"id":"compile-and-run-the-plugin","level":0,"title":"Compile and Run the Plugin","anchor":"#compile-and-run-the-plugin"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.css" rel="stylesheet"><link rel="manifest" href="https://www.jetbrains.com/site.webmanifest"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content="https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png"><!-- Open Graph --><meta property="og:title" content="Frameworks | IntelliJ Platform Plugin SDK"><meta property="og:description" content=""><meta property="og:image" content="https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png"><meta property="og:site_name" content="IntelliJ Platform Plugin SDK Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="https://plugins.jetbrains.com/docs/intellij/framework.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@JBPlatform"><meta name="twitter:title" content="Frameworks | IntelliJ Platform Plugin SDK"><meta name="twitter:description" content=""><meta name="twitter:creator" content="@JBPlatform"><meta name="twitter:image:src" content="https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png"><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "https://plugins.jetbrains.com/docs/intellij/framework.html#webpage",
+    "url": "https://plugins.jetbrains.com/docs/intellij/framework.html",
+    "name": "Frameworks | IntelliJ Platform Plugin SDK",
+    "description": "",
+    "image": "https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "https://plugins.jetbrains.com/docs/intellij/#website",
+    "url": "https://plugins.jetbrains.com/docs/intellij/",
+    "name": "IntelliJ Platform Plugin SDK Help"
+}</script><!-- End Schema.org --></head><body data-id="framework" data-main-title="Frameworks" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="Project Structure///project_model.md|Project Model///project.md|Project///project_wizards_intro.md|Project Wizards///legacy_project_wizard.md|Legacy Project Wizard API" data-edit-url="https://github.com/JetBrains/intellij-sdk-docs/edit/main/topics/tutorials/framework.md"><!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5P98"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>IntelliJ Platform Plugin SDK  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="framework" id="framework.md">Frameworks</h1><p id="f1gt1o_4">The following tutorial shows how to support a custom framework type for a project and make this framework type embedded in a <a href="new-project-wizard.html" id="f1gt1o_11" data-tooltip="Implementing a custom project and module creation wizard.">project wizard</a> as a UI component. The examples in this tutorial rely heavily on the <a href="https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/framework_basics" id="f1gt1o_12" data-external="true" rel="noopener noreferrer" target="_blank">framework_basics</a> code sample.</p><aside class="prompt" data-type="warning" data-title="" id="f1gt1o_5"><p id="f1gt1o_13">Note that this feature requires a <a href="plugin-dependencies.html" id="f1gt1o_14" data-tooltip="Declaring dependencies on other IntelliJ Platform-based plugins.">dependency</a> on the <a href="idea.html#java-plugin" id="f1gt1o_15">Java Plugin</a>.</p></aside><section class="chapter"><h2 id="creating-a-new-framework" data-toc="creating-a-new-framework">Creating a New Framework</h2><p id="f1gt1o_16">In order to make a custom framework available and configurable for a project, the <a href="https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/java/idea-ui/src/com/intellij/framework/FrameworkTypeEx.java" id="f1gt1o_18" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="f1gt1o_20">FrameworkTypeEx</code></a> class needs to be extended, in this example to make the <a href="https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/framework_basics/src/main/java/org/intellij/sdk/framework/DemoFramework.java" id="f1gt1o_19" data-external="true" rel="noopener noreferrer" target="_blank">DemoFramework</a> class.</p><div class="code-block" data-lang="java">
+final class DemoFramework extends FrameworkTypeEx {
+}
+</div></section><section class="chapter"><h2 id="registering-framework" data-toc="registering-framework">Registering Framework</h2><p id="f1gt1o_21">The newly created framework class should be registered in <a href="https://jb.gg/ipe?extensions=com.intellij.framework.type" id="f1gt1o_26" data-tooltip="Browse usages in existing implementations of open-source plugins" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="f1gt1o_27">com.intellij.framework.type</code></a> extension point in <a href="https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/framework_basics/src/main/resources/META-INF/plugin.xml" id="f1gt1o_24" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="f1gt1o_28">plugin.xml</code></a> configuration file:</p><div class="code-block" data-lang="markup">
+&lt;extensions defaultExtensionNs=&quot;com.intellij&quot;&gt;
+  &lt;framework.type
+      implementation=&quot;org.intellij.sdk.framework.DemoFramework&quot;/&gt;
+&lt;/extensions&gt;
+</div></section><section class="chapter"><h2 id="setting-up-mandatory-attributes" data-toc="setting-up-mandatory-attributes">Setting up Mandatory Attributes</h2><p id="f1gt1o_29">The framework component should have a unique name passed as a string literal to the constructor. It is best if this is the FQN name of the class:</p><div class="code-block" data-lang="java">
+final class DemoFramework extends FrameworkTypeEx {
+
+  public static final String FRAMEWORK_ID =
+      &quot;org.intellij.sdk.framework.DemoFramework&quot;;
+
+  DemoFramework() {
+    super(FRAMEWORK_ID);
+  }
+}
+</div><p id="f1gt1o_31">The <span class="emphasis" id="f1gt1o_33">Presentable name</span> and <span class="emphasis" id="f1gt1o_34">icon</span> define the appearance of visual components related to the framework:</p><div class="code-block" data-lang="java">
+final class DemoFramework extends FrameworkTypeEx {
+  @NotNull
+  @Override
+  public String getPresentableName() {
+    return &quot;SDK Demo Framework&quot;;
+  }
+
+  @NotNull
+  @Override
+  public Icon getIcon() {
+    return SdkIcons.Sdk_default_icon;
+  }
+}
+</div></section><section class="chapter"><h2 id="creating-provider-for-enabling-framework-support" data-toc="creating-provider-for-enabling-framework-support">Creating Provider for Enabling Framework Support</h2><p id="f1gt1o_35">To make the framework set up available while executing the steps to create a project, the <code class="code" id="f1gt1o_37">DemoFramework.createProvider()</code> method must be implemented to return an object of type <a href="https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/java/idea-ui/src/com/intellij/framework/addSupport/FrameworkSupportInModuleConfigurable.java" id="f1gt1o_38" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="f1gt1o_40">FrameworkSupportInModuleConfigurable</code></a>, which adds the framework to a module. In this example the framework is added to any <a href="https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/lang-core/src/com/intellij/openapi/module/ModuleType.java" id="f1gt1o_39" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="f1gt1o_41">ModuleType</code></a> without checking, which is usually not the case.</p><div class="code-block" data-lang="java">
+@NotNull
+@Override
+public FrameworkSupportInModuleProvider createProvider() {
+  return new FrameworkSupportInModuleProvider() {
+    @NotNull
+    @Override
+    public FrameworkTypeEx getFrameworkType() {
+      return DemoFramework.this;
+    }
+
+    @NotNull
+    @Override
+    public FrameworkSupportInModuleConfigurable createConfigurable(
+        @NotNull FrameworkSupportModel model) {
+      return new FrameworkSupportInModuleConfigurable() {
+
+        @Override
+        public JComponent createComponent() {
+          return new JCheckBox(&quot;SDK Extra Option&quot;);
+        }
+
+        @Override
+        public void addSupport(@NotNull Module module,
+                               @NotNull ModifiableRootModel model,
+                               @NotNull ModifiableModelsProvider provider) {
+          // This is the place to set up a library, generate a specific file,
+          // and actually add framework support to a module.
+        }
+      };
+    }
+
+    @Override
+    public boolean isEnabledForModuleType(@NotNull ModuleType type) {
+      return true;
+    }
+  };
+}
+</div></section><section class="chapter"><h2 id="compile-and-run-the-plugin" data-toc="compile-and-run-the-plugin">Compile and Run the Plugin</h2><p id="f1gt1o_42">See <a href="code-samples.html" id="f1gt1o_45" data-tooltip="Accessing SDK Docs code samples.">Code Samples</a> on how to set up and run the plugin.</p><p id="f1gt1o_43">An extra option for configuring the newly created Demo custom framework should be available in the Project Wizard:</p><figure id="f1gt1o_44"><img alt="Custom Framework Support" src="images/custom_framework.png" title="Custom Framework Support" width="864" height="592"></figure></section><div class="last-modified">29 June 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="module-types.html" class="navigation-links__prev">Supporting Module Types</a><a href="module.html" class="navigation-links__next">Module</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.js"></script></body></html>

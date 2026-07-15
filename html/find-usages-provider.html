@@ -1,0 +1,84 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF" data-resizable-sidebar="true"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="built-on" content="2026-06-21T21:30:54.757579"><!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5P98');</script>
+<!-- End Google Tag Manager -->
+<title>11. Find Usages Provider | IntelliJ Platform Plugin SDK</title><script type="application/json" id="virtual-toc-data">[{"id":"define-a-find-usages-provider","level":0,"title":"Define a Find Usages Provider","anchor":"#define-a-find-usages-provider"},{"id":"register-the-find-usages-provider","level":0,"title":"Register the Find Usages Provider","anchor":"#register-the-find-usages-provider"},{"id":"run-the-project","level":0,"title":"Run the Project","anchor":"#run-the-project"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.css" rel="stylesheet"><link rel="manifest" href="https://www.jetbrains.com/site.webmanifest"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content="https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png"><!-- Open Graph --><meta property="og:title" content="11. Find Usages Provider | IntelliJ Platform Plugin SDK"><meta property="og:description" content=""><meta property="og:image" content="https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png"><meta property="og:site_name" content="IntelliJ Platform Plugin SDK Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="https://plugins.jetbrains.com/docs/intellij/find-usages-provider.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@JBPlatform"><meta name="twitter:title" content="11. Find Usages Provider | IntelliJ Platform Plugin SDK"><meta name="twitter:description" content=""><meta name="twitter:creator" content="@JBPlatform"><meta name="twitter:image:src" content="https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png"><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "https://plugins.jetbrains.com/docs/intellij/find-usages-provider.html#webpage",
+    "url": "https://plugins.jetbrains.com/docs/intellij/find-usages-provider.html",
+    "name": "11. Find Usages Provider | IntelliJ Platform Plugin SDK",
+    "description": "",
+    "image": "https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "https://plugins.jetbrains.com/docs/intellij/#website",
+    "url": "https://plugins.jetbrains.com/docs/intellij/",
+    "name": "IntelliJ Platform Plugin SDK Help"
+}</script><!-- End Schema.org --></head><body data-id="find_usages_provider" data-main-title="11. Find Usages Provider" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="Custom Languages///custom_language_support_tutorial.md|Custom Language Support Tutorial" data-edit-url="https://github.com/JetBrains/intellij-sdk-docs/edit/main/topics/tutorials/custom_language_support/find_usages_provider.md"><!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5P98"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>IntelliJ Platform Plugin SDK  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="find_usages_provider" id="find_usages_provider.md">11. Find Usages Provider</h1><div class="micro-format" data-content="{&quot;microFormat&quot;:[&quot;\u003cp id\u003d\&quot;wdig7c_12\&quot;\u003e\u003cspan class\u003d\&quot;control\&quot; id\u003d\&quot;wdig7c_15\&quot;\u003eReference\u003c/span\u003e: \u003ca href\u003d\&quot;find-usages.html\&quot; id\u003d\&quot;wdig7c_16\&quot; data-tooltip\u003d\&quot;Introduction to implementing Find Usages action in custom languages.\&quot;\u003eFind Usages\u003c/a\u003e\u003c/p\u003e&quot;,&quot;\u003cp id\u003d\&quot;wdig7c_13\&quot;\u003e\u003cspan class\u003d\&quot;control\&quot; id\u003d\&quot;wdig7c_17\&quot;\u003eCode\u003c/span\u003e: \u003ca href\u003d\&quot;https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleFindUsagesProvider.java\&quot; id\u003d\&quot;wdig7c_18\&quot; data-external\u003d\&quot;true\&quot; rel\u003d\&quot;noopener noreferrer\&quot; target\u003d\&quot;_blank\&quot;\u003e\u003ccode class\u003d\&quot;code\&quot; id\u003d\&quot;wdig7c_19\&quot;\u003eSimpleFindUsagesProvider\u003c/code\u003e\u003c/a\u003e\u003c/p\u003e&quot;,&quot;\u003cp id\u003d\&quot;wdig7c_14\&quot;\u003e\u003cspan class\u003d\&quot;control\&quot; id\u003d\&quot;wdig7c_20\&quot;\u003eTesting\u003c/span\u003e: \u003ca href\u003d\&quot;find-usages-test.html\&quot; id\u003d\&quot;wdig7c_21\&quot; data-tooltip\u003d\&quot;Implementing and running test for finding usages functionality implemented as a part of the Custom Language Support Tutorial.\&quot;\u003e8. Find Usages Test\u003c/a\u003e\u003c/p\u003e&quot;]}"></div><aside class="prompt" data-type="tip" data-title="" id="wdig7c_11"><p id="wdig7c_22">This page is part of multi-step <a href="custom-language-support-tutorial.html" id="wdig7c_23" data-tooltip="Tutorial for creating a .properties-like custom language.">Custom Language Support Tutorial</a>. All previous steps must be executed in sequence for the code to work.</p></aside><p id="wdig7c_6">A <code class="code" id="wdig7c_24">FindUsagesProvider</code> uses a word scanner to build an index of words in every file. A scanner breaks the text into words and defines the context for each word.</p><section class="chapter"><h2 id="define-a-find-usages-provider" data-toc="define-a-find-usages-provider">Define a Find Usages Provider</h2><p id="wdig7c_25">The <a href="https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleFindUsagesProvider.java" id="wdig7c_27" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="wdig7c_31">SimpleFindUsagesProvider</code></a> implements <a href="https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/indexing-api/src/com/intellij/lang/findUsages/FindUsagesProvider.java" id="wdig7c_28" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="wdig7c_32">FindUsagesProvider</code></a>. Using the <a href="https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/indexing-impl/src/com/intellij/lang/cacheBuilder/DefaultWordsScanner.java" id="wdig7c_29" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="wdig7c_33">DefaultWordsScanner</code></a> ensures the scanner implementation is thread-safe. See the comments in <code class="code" id="wdig7c_30">FindUsagesProvider</code> for more information.</p><div class="code-block" data-lang="java" data-disable-link-processing="true">final class SimpleFindUsagesProvider implements FindUsagesProvider {
+
+  @Override
+  public WordsScanner getWordsScanner() {
+    return new DefaultWordsScanner(new SimpleLexerAdapter(),
+        SimpleTokenSets.IDENTIFIERS,
+        SimpleTokenSets.COMMENTS,
+        TokenSet.EMPTY);
+  }
+
+  @Override
+  public boolean canFindUsagesFor(@NotNull PsiElement psiElement) {
+    return psiElement instanceof PsiNamedElement;
+  }
+
+  @Nullable
+  @Override
+  public String getHelpId(@NotNull PsiElement psiElement) {
+    return null;
+  }
+
+  @NotNull
+  @Override
+  public String getType(@NotNull PsiElement element) {
+    if (element instanceof SimpleProperty) {
+      return &quot;simple property&quot;;
+    }
+    return &quot;&quot;;
+  }
+
+  @NotNull
+  @Override
+  public String getDescriptiveName(@NotNull PsiElement element) {
+    if (element instanceof SimpleProperty) {
+      return ((SimpleProperty) element).getKey();
+    }
+    return &quot;&quot;;
+  }
+
+  @NotNull
+  @Override
+  public String getNodeText(@NotNull PsiElement element, boolean useFullName) {
+    if (element instanceof SimpleProperty) {
+      return ((SimpleProperty) element).getKey() +
+          SimpleAnnotator.SIMPLE_SEPARATOR_STR +
+          ((SimpleProperty) element).getValue();
+    }
+    return &quot;&quot;;
+  }
+
+}
+</div></section><section class="chapter"><h2 id="register-the-find-usages-provider" data-toc="register-the-find-usages-provider">Register the Find Usages Provider</h2><p id="wdig7c_34">The <code class="code" id="wdig7c_36">SimpleFindUsagesProvider</code> implementation is registered with the IntelliJ Platform in the plugin configuration file using the <a href="https://jb.gg/ipe?extensions=com.intellij.lang.findUsagesProvider" id="wdig7c_39" data-tooltip="Browse usages in existing implementations of open-source plugins" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="wdig7c_40">com.intellij.lang.findUsagesProvider</code></a> extension point.</p><div class="code-block" data-lang="markup">
+&lt;extensions defaultExtensionNs=&quot;com.intellij&quot;&gt;
+  &lt;lang.findUsagesProvider
+      language=&quot;Simple&quot;
+      implementationClass=&quot;org.intellij.sdk.language.SimpleFindUsagesProvider&quot;/&gt;
+&lt;/extensions&gt;
+</div></section><section class="chapter"><h2 id="run-the-project" data-toc="run-the-project">Run the Project</h2><p id="wdig7c_41">Run the plugin by using the Gradle <a href="creating-plugin-project.html#running-a-plugin-with-the-runide-gradle-task" id="wdig7c_44"><code class="code" id="wdig7c_45">runIde</code></a> task.</p><p id="wdig7c_42">The IDE now supports <a href="https://www.jetbrains.com/help/idea/find-highlight-usages.html" id="wdig7c_46" data-external="true" rel="noopener noreferrer" target="_blank">Find Usages</a> for any property with a reference:</p><figure id="wdig7c_43"><img alt="Find Usages" src="images/find_usages.png" title="Find Usages" width="800" height="474"></figure></section><div class="last-modified">29 June 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="reference-contributor.html" class="navigation-links__prev">10. Reference Contributor</a><a href="folding-builder.html" class="navigation-links__next">12. Folding Builder</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.js"></script></body></html>

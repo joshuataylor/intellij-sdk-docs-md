@@ -1,0 +1,82 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF" data-resizable-sidebar="true"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="built-on" content="2026-06-21T21:30:54.680153"><!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5P98');</script>
+<!-- End Google Tag Manager -->
+<title>Creating New Functions for Live Templates | IntelliJ Platform Plugin SDK</title><script type="application/json" id="virtual-toc-data">[{"id":"implementing-a-new-function","level":0,"title":"Implementing a New Function","anchor":"#implementing-a-new-function"},{"id":"adding-a-live-template","level":0,"title":"Adding a Live Template","anchor":"#adding-a-live-template"},{"id":"register-extension-point","level":0,"title":"Register Extension Point","anchor":"#register-extension-point"},{"id":"check-plugin","level":0,"title":"Check Plugin","anchor":"#check-plugin"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.css" rel="stylesheet"><link rel="manifest" href="https://www.jetbrains.com/site.webmanifest"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content="https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png"><!-- Open Graph --><meta property="og:title" content="Creating New Functions for Live Templates | IntelliJ Platform Plugin SDK"><meta property="og:description" content=""><meta property="og:image" content="https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png"><meta property="og:site_name" content="IntelliJ Platform Plugin SDK Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="https://plugins.jetbrains.com/docs/intellij/creating-live-template-functions.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@JBPlatform"><meta name="twitter:title" content="Creating New Functions for Live Templates | IntelliJ Platform Plugin SDK"><meta name="twitter:description" content=""><meta name="twitter:creator" content="@JBPlatform"><meta name="twitter:image:src" content="https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png"><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "https://plugins.jetbrains.com/docs/intellij/creating-live-template-functions.html#webpage",
+    "url": "https://plugins.jetbrains.com/docs/intellij/creating-live-template-functions.html",
+    "name": "Creating New Functions for Live Templates | IntelliJ Platform Plugin SDK",
+    "description": "",
+    "image": "https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "https://plugins.jetbrains.com/docs/intellij/#website",
+    "url": "https://plugins.jetbrains.com/docs/intellij/",
+    "name": "IntelliJ Platform Plugin SDK Help"
+}</script><!-- End Schema.org --></head><body data-id="creating_live_template_functions" data-main-title="Creating New Functions for Live Templates" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="Features///editing.md|Editing///live_templates.md|Live Templates" data-edit-url="https://github.com/JetBrains/intellij-sdk-docs/edit/main/topics/tutorials/live_templates/creating_live_template_functions.md"><!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5P98"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>IntelliJ Platform Plugin SDK  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="creating_live_template_functions" id="creating_live_template_functions.md">Creating New Functions for Live Templates</h1><p id="-9tpo5f_4">The <a href="https://www.jetbrains.com/help/idea/template-variables.html#predefined_functions" id="-9tpo5f_10" data-external="true" rel="noopener noreferrer" target="_blank">Predefined Functions</a> are the building blocks for creating <a href="https://www.jetbrains.com/help/idea/using-live-templates.html#live_templates_types" id="-9tpo5f_11" data-external="true" rel="noopener noreferrer" target="_blank">Parameterized Templates and Surround Templates</a>. However, sometimes the Predefined Functions are not enough.</p><p id="-9tpo5f_5">This tutorial illustrates how to add custom functions to an IntelliJ Platform plugin and make them available for use by Live Templates. As an example, a function is created to convert a selection to Title Case. Refer to the SDK code sample <a href="https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/live_templates" id="-9tpo5f_12" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="-9tpo5f_13">live_templates</code></a>.</p><section class="chapter"><h2 id="implementing-a-new-function" data-toc="implementing-a-new-function">Implementing a New Function</h2><p id="-9tpo5f_14">Under the hood, the predefined functions for Live Templates are called <span class="emphasis" id="-9tpo5f_17">macros</span>. A new custom function for Live Templates is implemented in <code class="code" id="-9tpo5f_18">TitleCaseMacro</code>, which extends <a href="https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/lang-impl/src/com/intellij/codeInsight/template/macro/MacroBase.java" id="-9tpo5f_19" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="-9tpo5f_21">MacroBase</code></a>. Three <code class="code" id="-9tpo5f_20">TitleCaseMacro</code> methods are of particular interest:</p><ul class="list _bullet" id="-9tpo5f_15"><li class="list__item" id="-9tpo5f_22"><p id="-9tpo5f_25">The <code class="code" id="-9tpo5f_26">TitleCaseMacro()</code> constructor passes the name and description of the macro to the parent constructor.</p></li><li class="list__item" id="-9tpo5f_23"><p id="-9tpo5f_27">The <code class="code" id="-9tpo5f_28">isAcceptableInContext()</code> method tests whether the macro is available in the current context. The test relies on the <a href="providing-live-templates.html#implement-templatecontexttype" id="-9tpo5f_29"><code class="code" id="-9tpo5f_31">MarkdownContext</code></a> object previously defined in the <code class="code" id="-9tpo5f_30">live_templates</code> plugin.</p></li><li class="list__item" id="-9tpo5f_24"><p id="-9tpo5f_32">The <code class="code" id="-9tpo5f_33">calculateResult()</code> method gets invoked when the titleCase function is used in a Live Template. The text to be capitalized is retrieved from the Live Template and converted to Title Case.</p></li></ul><div class="code-block" data-lang="java" data-disable-link-processing="true">final class TitleCaseMacro extends MacroBase {
+
+  public TitleCaseMacro() {
+    super(&quot;titleCase&quot;, &quot;titleCase(String)&quot;);
+  }
+
+  /**
+   * Strictly to uphold contract for constructors in base class.
+   */
+  private TitleCaseMacro(String name, String description) {
+    super(name, description);
+  }
+
+  @Override
+  protected Result calculateResult(Expression @NotNull [] params, ExpressionContext context, boolean quick) {
+    // Retrieve the text from the macro or selection, if any is available.
+    String text = getTextResult(params, context, true);
+    if (text == null) {
+      return null;
+    }
+    if (!text.isEmpty()) {
+      // Capitalize the start of every word
+      text = StringUtil.toTitleCase(text);
+    }
+    return new TextResult(text);
+  }
+
+  @Override
+  public boolean isAcceptableInContext(TemplateContextType context) {
+    // Might want to be less restrictive in future
+    return (context instanceof MarkdownContext);
+  }
+
+}
+</div></section><section class="chapter"><h2 id="adding-a-live-template" data-toc="adding-a-live-template">Adding a Live Template</h2><p id="-9tpo5f_34">Using the procedures previously discussed for <a href="providing-live-templates.html#template-creation" id="-9tpo5f_37">Template Creation</a> and <a href="providing-live-templates.html#export-the-live-template" id="-9tpo5f_38">Export the Live Template</a>, add a Live Template to the <a href="https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/live_templates/src/main/resources/liveTemplates" id="-9tpo5f_39" data-external="true" rel="noopener noreferrer" target="_blank">Markdown.xml</a> file for the plugin. The XML representation of an example Live Template using the new <code class="code" id="-9tpo5f_40">titleCase</code> function is listed below.</p><p id="-9tpo5f_35">There is only one variable, <code class="code" id="-9tpo5f_41">TITLE</code>. The expression for <code class="code" id="-9tpo5f_42">TITLE</code> evaluates to the <code class="code" id="-9tpo5f_43">titleCase</code> function provided by the plugin. The argument to the <code class="code" id="-9tpo5f_44">titleCase</code> function is <code class="code" id="-9tpo5f_45">SELECTION</code>, which tells the IntelliJ Platform to operate on the current selection.</p><div class="code-block" data-lang="markup">
+&lt;template
+    name=&quot;mc&quot;
+    value=&quot;$TITLE$&quot;
+    description=&quot;SDK: Convert to title case&quot;
+    toReformat=&quot;true&quot;
+    toShortenFQNames=&quot;false&quot;&gt;
+  &lt;variable
+      name=&quot;TITLE&quot;
+      expression=&quot;titleCase(SELECTION)&quot;
+      defaultValue=&quot;the quick brown fox&quot;
+      alwaysStopAt=&quot;true&quot;/&gt;
+  &lt;context&gt;
+    &lt;option name=&quot;MARKDOWN&quot; value=&quot;true&quot;/&gt;
+  &lt;/context&gt;
+&lt;/template&gt;
+</div></section><section class="chapter"><h2 id="register-extension-point" data-toc="register-extension-point">Register Extension Point</h2><p id="-9tpo5f_46">Using the <a href="https://jb.gg/ipe?extensions=com.intellij.liveTemplateMacro" id="-9tpo5f_50" data-tooltip="Browse usages in existing implementations of open-source plugins" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="-9tpo5f_51">com.intellij.liveTemplateMacro</code></a> extension point, register the implementation with the IntelliJ Platform.</p><div class="code-block" data-lang="markup">
+&lt;extensions defaultExtensionNs=&quot;com.intellij&quot;&gt;
+  &lt;liveTemplateMacro
+      implementation=&quot;org.intellij.sdk.liveTemplates.TitleCaseMacro&quot;/&gt;
+&lt;/extensions&gt;
+</div></section><section class="chapter"><h2 id="check-plugin" data-toc="check-plugin">Check Plugin</h2><p id="-9tpo5f_52">Now verify the plugin is working correctly.</p><ul class="list _bullet" id="-9tpo5f_53"><li class="list__item" id="-9tpo5f_54"><p id="-9tpo5f_58">Run the plugin in a Development Instance.</p></li><li class="list__item" id="-9tpo5f_55"><p id="-9tpo5f_59">Create a new file <code class="code" id="-9tpo5f_60">testing.md</code> and enter several words in lower case.</p></li><li class="list__item" id="-9tpo5f_56"><p id="-9tpo5f_61">Highlight the text and enter invoke <span class="menupath" id="-9tpo5f_62">Code | Surround With...</span> to open the <span class="control" id="-9tpo5f_63">Surround With</span> popup. Confirm that the <span class="control" id="-9tpo5f_64">SDK: Convert to title case</span> is available in the popup, and select it.</p></li><li class="list__item" id="-9tpo5f_57"><p id="-9tpo5f_65">The selected text will change to have each word capitalized.</p></li></ul></section><div class="last-modified">29 June 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="live-templates-configuration-file.html" class="navigation-links__prev">Live Templates Configuration File</a><a href="file-and-code-templates.html" class="navigation-links__next">File and Code Templates</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.js"></script></body></html>

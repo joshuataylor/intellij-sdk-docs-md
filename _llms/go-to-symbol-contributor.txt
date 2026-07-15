@@ -1,0 +1,128 @@
+# 13. Go To Symbol Contributor
+
+<tldr>
+Reference: [Go to Class and Go to Symbol](go-to-class-and-go-to-symbol.html)
+
+Code:
+[SimpleChooseByNameContributor](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleChooseByNameContributor.java),
+[SimplePsiImplUtil](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/psi/impl/SimplePsiImplUtil.java)
+</tldr>
+
+Tip:
+
+This page is part of multi-step [Custom Language Support Tutorial](custom-language-support-tutorial.html).
+All previous steps must be executed in sequence for the code to work.
+
+A Go to Symbol Contributor helps the user to navigate to any PSI element by its name.
+
+## Define a Helper Method for Generated PSI Elements
+
+To specify what a PSI element looks like in the `Navigate | Symbol` popup window, Structure tool window, or other components, it should implement `getPresentation()`.
+This method gets defined in the utility class `SimplePsiImplUtil`, and the parser and PSI classes must be regenerated.
+Add the following method to [SimplePsiImplUtil](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/psi/impl/SimplePsiImplUtil.java):
+
+```JAVA
+public static ItemPresentation getPresentation(final SimpleProperty element) {
+  return new ItemPresentation() {
+    @Nullable
+    @Override
+    public String getPresentableText() {
+      return element.getKey();
+    }
+
+    @Nullable
+    @Override
+    public String getLocationString() {
+      PsiFile containingFile = element.getContainingFile();
+      return containingFile == null ? null : containingFile.getName();
+    }
+
+    @Override
+    public Icon getIcon(boolean unused) {
+      return element.getIcon(0);
+    }
+  };
+}
+```
+
+In addition, to provide an icon for the displayed items, extend [IconProvider](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/core-api/src/com/intellij/ide/IconProvider.java) and register
+it in [com.intellij.iconProvider](https://jb.gg/ipe?extensions=com.intellij.iconProvider) extension point
+. See [SimplePropertyIconProvider](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimplePropertyIconProvider.java):
+
+```JAVA
+final class SimplePropertyIconProvider extends IconProvider {
+
+  @Override
+  public @Nullable Icon getIcon(@NotNull PsiElement element, int flags) {
+    return element instanceof SimpleProperty ? SimpleIcons.FILE : null;
+  }
+
+}
+```
+
+## Update Grammar and Regenerate the Parser
+
+Now add the `SimplePsiImplUtil.getPresentation()` to the `property` methods definition in the `Simple.bnf` grammar file by replacing the `property` definition with the lines below.
+Don't forget to regenerate the parser after updating the file!
+Right-click on the `Simple.bnf` file and select Generate Parser Code.
+
+```BNF
+property ::= (KEY? SEPARATOR VALUE?) | KEY {
+  mixin="org.intellij.sdk.language.psi.impl.SimpleNamedElementImpl"
+  implements="org.intellij.sdk.language.psi.SimpleNamedElement"
+  methods=[getKey getValue getName setName getNameIdentifier getPresentation]
+}
+```
+
+## Define a Go To Symbol Contributor
+
+To contribute items to `Navigate | Symbol` results, subclass [ChooseByNameContributorEx](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/lang-impl/src/com/intellij/navigation/ChooseByNameContributorEx.java)
+to create [SimpleChooseByNameContributor](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleChooseByNameContributor.java):
+
+```JAVA
+final class SimpleChooseByNameContributor implements ChooseByNameContributorEx {
+
+  @Override
+  public void processNames(@NotNull Processor<? super String> processor,
+                           @NotNull GlobalSearchScope scope,
+                           @Nullable IdFilter filter) {
+    Project project = Objects.requireNonNull(scope.getProject());
+    List<String> propertyKeys = ContainerUtil.map(
+        SimpleUtil.findProperties(project), SimpleProperty::getKey);
+    ContainerUtil.process(propertyKeys, processor);
+  }
+
+  @Override
+  public void processElementsWithName(@NotNull String name,
+                                      @NotNull Processor<? super NavigationItem> processor,
+                                      @NotNull FindSymbolParameters parameters) {
+    List<NavigationItem> properties = ContainerUtil.map(
+        SimpleUtil.findProperties(parameters.getProject(), name),
+        property -> (NavigationItem) property);
+    ContainerUtil.process(properties, processor);
+  }
+
+}
+```
+
+## Register the Go To Symbol Contributor
+
+The `SimpleChooseByNameContributor` implementation is registered with the IntelliJ Platform in the plugin configuration file
+using the [com.intellij.gotoSymbolContributor](https://jb.gg/ipe?extensions=com.intellij.gotoSymbolContributor) extension point
+.
+
+```XML
+<extensions defaultExtensionNs="com.intellij">
+  <gotoSymbolContributor
+      implementation="org.intellij.sdk.language.SimpleChooseByNameContributor"/>
+</extensions>
+```
+
+## Run the Project
+
+Run the plugin by using the Gradle [runIde](creating-plugin-project.html#running-a-plugin-with-the-runide-gradle-task) task.
+
+The IDE now supports navigating to a property definition by name pattern via `Navigate | Symbol` action.
+
+![Go To Symbol](images/go_to_symbol.png)
+

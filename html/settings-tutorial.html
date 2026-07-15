@@ -1,0 +1,172 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF" data-resizable-sidebar="true"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="built-on" content="2026-06-21T21:30:55.041056"><!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5P98');</script>
+<!-- End Google Tag Manager -->
+<title>Settings Tutorial | IntelliJ Platform Plugin SDK</title><script type="application/json" id="virtual-toc-data">[{"id":"overview-of-custom-settings-implementation","level":0,"title":"Overview of Custom Settings Implementation","anchor":"#overview-of-custom-settings-implementation"},{"id":"the-appsettings-class","level":0,"title":"The AppSettings Class","anchor":"#the-appsettings-class"},{"id":"declaring-appsettings","level":1,"title":"Declaring AppSettings","anchor":"#declaring-appsettings"},{"id":"creating-the-appsettings-implementation","level":1,"title":"Creating the AppSettings Implementation","anchor":"#creating-the-appsettings-implementation"},{"id":"the-appsettingscomponent-class","level":0,"title":"The AppSettingsComponent Class","anchor":"#the-appsettingscomponent-class"},{"id":"creating-the-appsettingscomponent-implementation","level":1,"title":"Creating the AppSettingsComponent Implementation","anchor":"#creating-the-appsettingscomponent-implementation"},{"id":"the-appsettingsconfigurable-class","level":0,"title":"The AppSettingsConfigurable Class","anchor":"#the-appsettingsconfigurable-class"},{"id":"declaring-the-appsettingsconfigurable","level":1,"title":"Declaring the AppSettingsConfigurable","anchor":"#declaring-the-appsettingsconfigurable"},{"id":"creating-the-appsettingsconfigurable-implementation","level":1,"title":"Creating the AppSettingsConfigurable Implementation","anchor":"#creating-the-appsettingsconfigurable-implementation"},{"id":"testing-the-custom-settings-plugin","level":0,"title":"Testing the Custom Settings Plugin","anchor":"#testing-the-custom-settings-plugin"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.css" rel="stylesheet"><link rel="manifest" href="https://www.jetbrains.com/site.webmanifest"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content="https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png"><!-- Open Graph --><meta property="og:title" content="Settings Tutorial | IntelliJ Platform Plugin SDK"><meta property="og:description" content=""><meta property="og:image" content="https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png"><meta property="og:site_name" content="IntelliJ Platform Plugin SDK Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="https://plugins.jetbrains.com/docs/intellij/settings-tutorial.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@JBPlatform"><meta name="twitter:title" content="Settings Tutorial | IntelliJ Platform Plugin SDK"><meta name="twitter:description" content=""><meta name="twitter:creator" content="@JBPlatform"><meta name="twitter:image:src" content="https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png"><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "https://plugins.jetbrains.com/docs/intellij/settings-tutorial.html#webpage",
+    "url": "https://plugins.jetbrains.com/docs/intellij/settings-tutorial.html",
+    "name": "Settings Tutorial | IntelliJ Platform Plugin SDK",
+    "description": "",
+    "image": "https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "https://plugins.jetbrains.com/docs/intellij/#website",
+    "url": "https://plugins.jetbrains.com/docs/intellij/",
+    "name": "IntelliJ Platform Plugin SDK Help"
+}</script><!-- End Schema.org --></head><body data-id="settings_tutorial" data-main-title="Settings Tutorial" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="Base Platform///settings.md|Settings" data-edit-url="https://github.com/JetBrains/intellij-sdk-docs/edit/main/topics/tutorials/settings_tutorial.md"><!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5P98"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>IntelliJ Platform Plugin SDK  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="settings_tutorial" id="settings_tutorial.md">Settings Tutorial</h1><p id="-29ya28_4">As discussed in the <a href="settings-guide.html" id="-29ya28_10" data-tooltip="Adding entries in Settings.">Settings Guide</a>, plugins can add Settings to IntelliJ Platform-based IDEs. The IDE displays the Settings in response to a user choosing <span class="menupath" id="-29ya28_11">Settings</span>. Custom Settings are displayed and function like those native to the IDE.</p><section class="chapter"><h2 id="overview-of-custom-settings-implementation" data-toc="overview-of-custom-settings-implementation">Overview of Custom Settings Implementation</h2><p id="-29ya28_12">Using the SDK code sample <a href="https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/settings" id="-29ya28_16" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="-29ya28_18">settings</code></a>, this tutorial illustrates the steps to creating custom application-level settings. Many IntelliJ Platform Settings implementations use fewer classes, but the <code class="code" id="-29ya28_17">settings</code> code sample factors the functionality into three classes for clarity:</p><ul class="list _bullet" id="-29ya28_13"><li class="list__item" id="-29ya28_19"><p id="-29ya28_22">The <a href="https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/settings/src/main/java/org/intellij/sdk/settings/AppSettingsConfigurable.java" id="-29ya28_23" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="-29ya28_24">AppSettingsConfigurable</code></a> is analogous to a Controller in the MVC model &ndash; it interacts with the other two Settings classes and the IntelliJ Platform,</p></li><li class="list__item" id="-29ya28_20"><p id="-29ya28_25">The <a href="https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/settings/src/main/java/org/intellij/sdk/settings/AppSettings.java" id="-29ya28_26" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="-29ya28_27">AppSettings</code></a> is like a Model because it stores the Settings persistently,</p></li><li class="list__item" id="-29ya28_21"><p id="-29ya28_28">The <a href="https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/settings/src/main/java/org/intellij/sdk/settings/AppSettingsComponent.java" id="-29ya28_29" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="-29ya28_30">AppSettingsComponent</code></a> is similar to a View because it displays and captures edits to the values of the Settings.</p></li></ul><p id="-29ya28_14">The structure of the implementation is the same for Project Settings, but there are minor differences in the <a href="settings-guide.html#constructors" id="-29ya28_31"><code class="code" id="-29ya28_33">Configurable</code> implementation</a> and <a href="settings-guide.html#declaring-project-settings" id="-29ya28_32">extension point (EP) declaration</a>.</p><aside class="prompt" data-type="note" data-title="" id="-29ya28_15"><p id="-29ya28_34">See <a href="https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/plugins/markdown/core/src/org/intellij/plugins/markdown/settings/MarkdownSettings.kt" id="-29ya28_35" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="-29ya28_38">MarkdownSettings</code></a> and <a href="https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/plugins/markdown/core/src/org/intellij/plugins/markdown/settings/MarkdownSettingsConfigurable.kt" id="-29ya28_36" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="-29ya28_39">MarkdownSettingsConfigurable</code></a> classes for the settings example implemented in Kotlin with usage of <a href="kotlin-ui-dsl-version-2.html" id="-29ya28_37" data-tooltip="Kotlin DSL for creating UI forms with input components bound to a state object.">Kotlin UI DSL</a>.</p></aside></section><section class="chapter"><h2 id="the-appsettings-class" data-toc="the-appsettings-class">The <code class="code" id="-29ya28_44">AppSettings</code> Class</h2><p id="-29ya28_41">The <code class="code" id="-29ya28_45">AppSettings</code> class persistently stores the custom Settings. It is based on the <a href="persisting-state-of-components.html#using-persistentstatecomponent" id="-29ya28_46">IntelliJ Platform Persistence Model</a>.</p><section class="chapter"><h3 id="declaring-appsettings" data-toc="declaring-appsettings">Declaring <code class="code" id="-29ya28_50">AppSettings</code></h3><p id="-29ya28_48">Given a <a href="plugin-services.html#light-services" id="-29ya28_51">Light Service</a> is not used, the persistent data class must be declared as a <a href="plugin-services.html#declaring-a-service" id="-29ya28_52">Service</a> EP in the <span class="filepath" id="-29ya28_53"><a href="plugin-configuration-file.html" id="-29ya28_60" data-tooltip="Plugin configuration file contains all the information about the plugin, as well as all registered extensions, actions, listeners, etc.">plugin.xml</a></span> file. If these were Project Settings, the <a href="https://jb.gg/ipe?extensions=com.intellij.projectService" id="-29ya28_57" data-tooltip="Browse usages in existing implementations of open-source plugins" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="-29ya28_61">com.intellij.projectService</code></a> extension point would be used. However, because these are Application Settings, the <a href="https://jb.gg/ipe?extensions=com.intellij.applicationService" id="-29ya28_59" data-tooltip="Browse usages in existing implementations of open-source plugins" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="-29ya28_62">com.intellij.applicationService</code></a> extension point is used with the fully qualified name (FQN) of the implementation class:</p><div class="code-block" data-lang="markup">
+&lt;extensions defaultExtensionNs=&quot;com.intellij&quot;&gt;
+  &lt;applicationService
+      serviceImplementation=&quot;org.intellij.sdk.settings.AppSettings&quot;/&gt;
+&lt;/extensions&gt;
+</div></section><section class="chapter"><h3 id="creating-the-appsettings-implementation" data-toc="creating-the-appsettings-implementation">Creating the <code class="code" id="-29ya28_69">AppSettings</code> Implementation</h3><p id="-29ya28_64">As discussed in <a href="persisting-state-of-components.html#implementing-the-persistentstatecomponent-interface" id="-29ya28_70">Implementing the PersistentStateComponent Interface</a>, <code class="code" id="-29ya28_71">AppSettings</code> uses the pattern of implementing <a href="https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/projectModel-api/src/com/intellij/openapi/components/PersistentStateComponent.java" id="-29ya28_72" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="-29ya28_73">PersistentStateComponent</code></a> parameterized by a separate state class:</p><div class="code-block" data-lang="java" data-disable-link-processing="true">@State(
+    name = &quot;org.intellij.sdk.settings.AppSettings&quot;,
+    storages = @Storage(&quot;SdkSettingsPlugin.xml&quot;)
+)
+final class AppSettings
+    implements PersistentStateComponent&lt;AppSettings.State&gt; {
+
+  static class State {
+    @NonNls
+    public String userId = &quot;John Smith&quot;;
+    public boolean ideaStatus = false;
+  }
+
+  private State myState = new State();
+
+  static AppSettings getInstance() {
+    return ApplicationManager.getApplication()
+        .getService(AppSettings.class);
+  }
+
+  @Override
+  public State getState() {
+    return myState;
+  }
+
+  @Override
+  public void loadState(@NotNull State state) {
+    myState = state;
+  }
+
+}
+</div><section class="chapter"><h4 id="storage-annotation" data-toc="storage-annotation"><code class="code" id="-29ya28_77">@Storage</code> Annotation</h4><p id="-29ya28_75">The <a href="https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/projectModel-api/src/com/intellij/openapi/components/State.java" id="-29ya28_78" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="-29ya28_82">@State</code></a> annotation, located above the class declaration, <a href="persisting-state-of-components.html#defining-the-storage-location" id="-29ya28_79">defines the data storage location</a>. For <code class="code" id="-29ya28_80">AppSettings</code>, the data <code class="code" id="-29ya28_81">name</code> parameter is the FQN of the class. Using FQN is the best practice to follow and is required if custom data gets stored in the standard project or workspace files.</p><p id="-29ya28_76">The <code class="code" id="-29ya28_83">storages</code> parameter uses the <a href="https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/projectModel-api/src/com/intellij/openapi/components/Storage.java" id="-29ya28_84" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="-29ya28_88">@Storage</code></a> annotation to define a custom filename for the <code class="code" id="-29ya28_85">AppSettings</code> data. In this case, the file is located in the <code class="code" id="-29ya28_86">options</code> directory of the <a href="https://www.jetbrains.com/help/idea/tuning-the-ide.html#config-directory" id="-29ya28_87" data-external="true" rel="noopener noreferrer" target="_blank">configuration directory</a> for the IDE.</p></section><section class="chapter"><h4 id="persistent-state-class" data-toc="persistent-state-class">Persistent State Class</h4><p id="-29ya28_89">The <code class="code" id="-29ya28_90">AppSettings</code> implementation contains an inner state class with two public fields: a <code class="code" id="-29ya28_91">String</code> and a <code class="code" id="-29ya28_92">boolean</code>. Conceptually, these fields hold the name of a user and whether that person is an IntelliJ IDEA user, respectively. See <a href="persisting-state-of-components.html#implementing-the-state-class" id="-29ya28_93">Implementing the State Class</a> for more information about how <code class="code" id="-29ya28_94">PersistentStateComponent</code> serializes public fields.</p></section><section class="chapter"><h4 id="appsettings-methods" data-toc="appsettings-methods"><code class="code" id="-29ya28_98">AppSettings</code> Methods</h4><p id="-29ya28_96">The fields are so limited and straightforward for this class that encapsulation is not used for simplicity. All that is needed for functionality is to override the two methods called by the IntelliJ Platform when a new component state is loaded (<code class="code" id="-29ya28_99">PersistentStateComponent.loadState()</code>), and when a state is saved (<code class="code" id="-29ya28_100">PersistentStateComponent.getState()</code>). See <a href="https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/projectModel-api/src/com/intellij/openapi/components/PersistentStateComponent.java" id="-29ya28_101" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="-29ya28_102">PersistentStateComponent</code></a> for more information about these methods.</p><p id="-29ya28_97">One static convenience method has been added &ndash; <code class="code" id="-29ya28_103">AppSettings.getInstance()</code> &ndash; which allows <code class="code" id="-29ya28_104">AppSettingsConfigurable</code> to easily acquire a reference to <code class="code" id="-29ya28_105">AppSetting</code>.</p></section></section></section><section class="chapter"><h2 id="the-appsettingscomponent-class" data-toc="the-appsettingscomponent-class">The <code class="code" id="-29ya28_109">AppSettingsComponent</code> Class</h2><p id="-29ya28_107">The role of the <a href="https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/settings/src/main/java/org/intellij/sdk/settings/AppSettingsComponent.java" id="-29ya28_110" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="-29ya28_116">AppSettingsComponent</code></a> is to provide a <code class="code" id="-29ya28_111">JPanel</code> for the custom Settings to the IDE Settings Dialog. The <code class="code" id="-29ya28_112">AppSettingsComponent</code> has-a <code class="code" id="-29ya28_113">JPanel</code>, and is responsible for its lifetime. The <code class="code" id="-29ya28_114">AppSettingsComponent</code> is instantiated by <code class="code" id="-29ya28_115">AppSettingsConfigurable</code>.</p><section class="chapter"><h3 id="creating-the-appsettingscomponent-implementation" data-toc="creating-the-appsettingscomponent-implementation">Creating the <code class="code" id="-29ya28_121">AppSettingsComponent</code> Implementation</h3><p id="-29ya28_118">The <code class="code" id="-29ya28_122">AppSettingsComponent</code> defines a <code class="code" id="-29ya28_123">JPanel</code> containing a <a href="https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/platform-api/src/com/intellij/ui/components/JBTextField.java" id="-29ya28_124" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="-29ya28_127">JBTextField</code></a> and a <a href="https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/platform-api/src/com/intellij/ui/components/JBCheckBox.java" id="-29ya28_125" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="-29ya28_128">JBCheckBox</code></a> to hold and display the data that maps to the <a href="#persistent-state-class" id="-29ya28_126">data fields of <code class="code" id="-29ya28_129">AppSettings.State</code></a>:</p><div class="code-block" data-lang="java" data-disable-link-processing="true">/**
+ * Supports creating and managing a {@link JPanel} for the Settings Dialog.
+ */
+public class AppSettingsComponent {
+
+  private final JPanel myMainPanel;
+  private final JBTextField myUserNameText = new JBTextField();
+  private final JBCheckBox myIdeaUserStatus = new JBCheckBox(&quot;IntelliJ IDEA user&quot;);
+
+  public AppSettingsComponent() {
+    myMainPanel = FormBuilder.createFormBuilder()
+        .addLabeledComponent(new JBLabel(&quot;User name:&quot;), myUserNameText, 1, false)
+        .addComponent(myIdeaUserStatus, 1)
+        .addComponentFillVertically(new JPanel(), 0)
+        .getPanel();
+  }
+
+  public JPanel getPanel() {
+    return myMainPanel;
+  }
+
+  public JComponent getPreferredFocusedComponent() {
+    return myUserNameText;
+  }
+
+  @NotNull
+  public String getUserNameText() {
+    return myUserNameText.getText();
+  }
+
+  public void setUserNameText(@NotNull String newText) {
+    myUserNameText.setText(newText);
+  }
+
+  public boolean getIdeaUserStatus() {
+    return myIdeaUserStatus.isSelected();
+  }
+
+  public void setIdeaUserStatus(boolean newStatus) {
+    myIdeaUserStatus.setSelected(newStatus);
+  }
+
+}
+</div><section class="chapter"><h4 id="appsettingscomponent-methods" data-toc="appsettingscomponent-methods"><code class="code" id="-29ya28_132">AppSettingsComponent</code> Methods</h4><p id="-29ya28_131">The constructor builds the <code class="code" id="-29ya28_133">JPanel</code> using the convenient <a href="https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/platform-api/src/com/intellij/util/ui/FormBuilder.java" id="-29ya28_134" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="-29ya28_137">FormBuilder</code></a> and saves a reference to the <code class="code" id="-29ya28_135">JPanel</code>. The rest of the class are simple accessors and mutators to encapsulate the UI components used on the <code class="code" id="-29ya28_136">JPanel</code>.</p></section></section></section><section class="chapter"><h2 id="the-appsettingsconfigurable-class" data-toc="the-appsettingsconfigurable-class">The <code class="code" id="-29ya28_142">AppSettingsConfigurable</code> Class</h2><p id="-29ya28_139">The methods of <a href="https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/settings/src/main/java/org/intellij/sdk/settings/AppSettingsConfigurable.java" id="-29ya28_143" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="-29ya28_147">AppSettingsConfigurable</code></a> are called by the IntelliJ Platform, and <code class="code" id="-29ya28_144">AppSettingsConfigurable</code> in turn interacts with <code class="code" id="-29ya28_145">AppSettingsComponent</code> and <code class="code" id="-29ya28_146">AppSettings</code>.</p><section class="chapter"><h3 id="declaring-the-appsettingsconfigurable" data-toc="declaring-the-appsettingsconfigurable">Declaring the <code class="code" id="-29ya28_151">AppSettingsConfigurable</code></h3><p id="-29ya28_149">As described in <a href="settings-guide.html#declaring-application-settings" id="-29ya28_152">Declaring Application Settings</a>, the <code class="code" id="-29ya28_153">com.intellij.applicationConfigurable</code> is used as the EP. An explanation of this declaration can be found in <a href="settings-guide.html#declaring-application-settings" id="-29ya28_154">Declaring Application Settings</a>:</p><div class="code-block" data-lang="markup">
+&lt;extensions defaultExtensionNs=&quot;com.intellij&quot;&gt;
+  &lt;applicationConfigurable
+      parentId=&quot;tools&quot;
+      instance=&quot;org.intellij.sdk.settings.AppSettingsConfigurable&quot;
+      id=&quot;org.intellij.sdk.settings.AppSettingsConfigurable&quot;
+      displayName=&quot;SDK: Application Settings Example&quot;/&gt;
+&lt;/extensions&gt;
+</div></section><section class="chapter"><h3 id="creating-the-appsettingsconfigurable-implementation" data-toc="creating-the-appsettingsconfigurable-implementation">Creating the <code class="code" id="-29ya28_159">AppSettingsConfigurable</code> Implementation</h3><p id="-29ya28_156">The <code class="code" id="-29ya28_160">AppSettingsConfigurable</code> class implements <a href="https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/ide-core/src/com/intellij/openapi/options/Configurable.java" id="-29ya28_161" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="-29ya28_163">Configurable</code></a>. The class has one field to hold a reference to the <code class="code" id="-29ya28_162">AppSettingsComponent</code>.</p><div class="code-block" data-lang="java" data-disable-link-processing="true">/**
+ * Provides controller functionality for application settings.
+ */
+final class AppSettingsConfigurable implements Configurable {
+
+  private AppSettingsComponent mySettingsComponent;
+
+  // A default constructor with no arguments is required because
+  // this implementation is registered as an applicationConfigurable
+
+  @Nls(capitalization = Nls.Capitalization.Title)
+  @Override
+  public String getDisplayName() {
+    return &quot;SDK: Application Settings Example&quot;;
+  }
+
+  @Override
+  public JComponent getPreferredFocusedComponent() {
+    return mySettingsComponent.getPreferredFocusedComponent();
+  }
+
+  @Nullable
+  @Override
+  public JComponent createComponent() {
+    mySettingsComponent = new AppSettingsComponent();
+    return mySettingsComponent.getPanel();
+  }
+
+  @Override
+  public boolean isModified() {
+    AppSettings.State state =
+        Objects.requireNonNull(AppSettings.getInstance().getState());
+    return !mySettingsComponent.getUserNameText().equals(state.userId) ||
+        mySettingsComponent.getIdeaUserStatus() != state.ideaStatus;
+  }
+
+  @Override
+  public void apply() {
+    AppSettings.State state =
+        Objects.requireNonNull(AppSettings.getInstance().getState());
+    state.userId = mySettingsComponent.getUserNameText();
+    state.ideaStatus = mySettingsComponent.getIdeaUserStatus();
+  }
+
+  @Override
+  public void reset() {
+    AppSettings.State state =
+        Objects.requireNonNull(AppSettings.getInstance().getState());
+    mySettingsComponent.setUserNameText(state.userId);
+    mySettingsComponent.setIdeaUserStatus(state.ideaStatus);
+  }
+
+  @Override
+  public void disposeUIResources() {
+    mySettingsComponent = null;
+  }
+
+}
+</div><section class="chapter"><h4 id="appsettingsconfigurable-methods" data-toc="appsettingsconfigurable-methods"><code class="code" id="-29ya28_166">AppSettingsConfigurable</code> Methods</h4><p id="-29ya28_165">All the methods in this class are overrides of the methods in the <code class="code" id="-29ya28_167">Configurable</code> interface. Readers are encouraged to review the Javadoc comments for the <code class="code" id="-29ya28_168">Configurable</code> methods. Also, review notes about <a href="settings-guide.html#intellij-platform-interactions-with-configurable" id="-29ya28_169">IntelliJ Platform Interactions</a> with <code class="code" id="-29ya28_170">Configurable</code> methods.</p></section></section></section><section class="chapter"><h2 id="testing-the-custom-settings-plugin" data-toc="testing-the-custom-settings-plugin">Testing the Custom Settings Plugin</h2><p id="-29ya28_171">After performing the steps described above, compile and run the plugin in a Development Instance to see the custom Settings available in the Settings Dialog. Open the IDE Settings by selecting <span class="menupath" id="-29ya28_176">Settings | Tools | SDK: Application Settings Example</span>. The settings are preloaded with the default values:</p><figure id="-29ya28_172"><img alt="&quot;Settings Defaults&quot;" src="images/settings_defaults.png" title="&quot;Settings Defaults&quot;" width="700" height="544"></figure><p id="-29ya28_173">Now edit the settings values to &quot;John Doe&quot; and click the checkbox. Click the <span class="control" id="-29ya28_177">OK</span> button to close the Settings dialog and save the changes. Exit the Development Instance.</p><p id="-29ya28_174">Open the file <span class="filepath" id="-29ya28_178">code_samples/settings/build/idea-sandbox/config/options/SdkSettingsPlugin.xml</span> to see the Settings persistently stored.</p><aside class="prompt" data-type="tip" data-title="" id="-29ya28_175"><p id="-29ya28_179">In this demonstration the file resides in <span class="filepath" id="-29ya28_180">code_samples/settings/build/idea-sandbox/config/options/</span>. See <a href="ide-development-instance.html" id="-29ya28_181" data-tooltip="Overview of the IDE instance used for running and debugging a plugin during development.">IDE Development Instances</a> for the general Development Instance case or <a href="https://www.jetbrains.com/help/idea/tuning-the-ide.html#default-dirs" id="-29ya28_182" data-external="true" rel="noopener noreferrer" target="_blank">Default IDE directories</a> if the <span class="control" id="-29ya28_183">settings</span> plugin is installed directly in the IDE.</p></aside></section><div class="last-modified">29 June 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="settings-groups.html" class="navigation-links__prev">Custom Settings Groups</a><a href="virtual-file-system.html" class="navigation-links__next">Virtual File System</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.js"></script></body></html>

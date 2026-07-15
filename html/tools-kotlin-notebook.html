@@ -1,0 +1,131 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF" data-resizable-sidebar="true"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="built-on" content="2026-06-21T21:30:56.374166"><!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5P98');</script>
+<!-- End Google Tag Manager -->
+<title>Kotlin Notebook Integration | IntelliJ Platform Plugin SDK</title><script type="application/json" id="virtual-toc-data">[{"id":"getting-started","level":0,"title":"Getting Started","anchor":"#getting-started"},{"id":"core-features","level":0,"title":"Core Features","anchor":"#core-features"},{"id":"ui-rendering","level":1,"title":"UI Rendering","anchor":"#ui-rendering"},{"id":"resource-management","level":1,"title":"Resource Management","anchor":"#resource-management"},{"id":"plugin-loading","level":1,"title":"Plugin Loading","anchor":"#plugin-loading"},{"id":"extension-registration","level":1,"title":"Extension Registration","anchor":"#extension-registration"},{"id":"variables","level":0,"title":"Global Variables","anchor":"#variables"},{"id":"notebook-helpers","level":0,"title":"Notebook Helpers","anchor":"#notebook-helpers"},{"id":"intellij-platform-helpers","level":0,"title":"IntelliJ Platform Helpers","anchor":"#intellij-platform-helpers"},{"id":"examples","level":0,"title":"Examples","anchor":"#examples"},{"id":"accessing-ide-information","level":1,"title":"Accessing IDE Information","anchor":"#accessing-ide-information"},{"id":"loading-and-using-plugins","level":1,"title":"Loading and Using Plugins","anchor":"#loading-and-using-plugins"},{"id":"registering-extension","level":1,"title":"Registering Extension","anchor":"#registering-extension"},{"id":"rendering-kotlin-ui-dsl-components","level":1,"title":"Rendering Kotlin UI DSL Components","anchor":"#rendering-kotlin-ui-dsl-components"},{"id":"rendering-dialog","level":1,"title":"Rendering Dialog","anchor":"#rendering-dialog"},{"id":"creating-disposable-tool-window","level":1,"title":"Creating Disposable Tool Window","anchor":"#creating-disposable-tool-window"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.css" rel="stylesheet"><link rel="manifest" href="https://www.jetbrains.com/site.webmanifest"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content="https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png"><!-- Open Graph --><meta property="og:title" content="Kotlin Notebook Integration | IntelliJ Platform Plugin SDK"><meta property="og:description" content=""><meta property="og:image" content="https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png"><meta property="og:site_name" content="IntelliJ Platform Plugin SDK Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="https://plugins.jetbrains.com/docs/intellij/tools-kotlin-notebook.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@JBPlatform"><meta name="twitter:title" content="Kotlin Notebook Integration | IntelliJ Platform Plugin SDK"><meta name="twitter:description" content=""><meta name="twitter:creator" content="@JBPlatform"><meta name="twitter:image:src" content="https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png"><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "https://plugins.jetbrains.com/docs/intellij/tools-kotlin-notebook.html#webpage",
+    "url": "https://plugins.jetbrains.com/docs/intellij/tools-kotlin-notebook.html",
+    "name": "Kotlin Notebook Integration | IntelliJ Platform Plugin SDK",
+    "description": "",
+    "image": "https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "https://plugins.jetbrains.com/docs/intellij/#website",
+    "url": "https://plugins.jetbrains.com/docs/intellij/",
+    "name": "IntelliJ Platform Plugin SDK Help"
+}</script><!-- End Schema.org --></head><body data-id="tools_kotlin_notebook" data-main-title="Kotlin Notebook Integration" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="Tooling" data-edit-url="https://github.com/JetBrains/intellij-sdk-docs/edit/main/topics/appendix/tools/tools_kotlin_notebook.md"><!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5P98"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>IntelliJ Platform Plugin SDK  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="tools_kotlin_notebook" data-label-id="2025.2" id="tools_kotlin_notebook.md">Kotlin Notebook Integration</h1><div class="micro-format" data-content="{&quot;microFormat&quot;:[&quot;\u003cp id\u003d\&quot;pfhy5x_14\&quot;\u003e\u003cspan class\u003d\&quot;control\&quot; id\u003d\&quot;pfhy5x_17\&quot;\u003eGitHub\u003c/span\u003e: \u003ca href\u003d\&quot;https://github.com/Kotlin/kotlin-notebook-intellij-platform\&quot; id\u003d\&quot;pfhy5x_18\&quot; data-external\u003d\&quot;true\&quot; rel\u003d\&quot;noopener noreferrer\&quot; target\u003d\&quot;_blank\&quot;\u003eKotlin Notebook IntelliJ Platform\u003c/a\u003e\u003c/p\u003e&quot;,&quot;\u003cp id\u003d\&quot;pfhy5x_15\&quot;\u003e\u003cspan class\u003d\&quot;control\&quot; id\u003d\&quot;pfhy5x_19\&quot;\u003eExamples\u003c/span\u003e: \u003ca href\u003d\&quot;https://github.com/Kotlin/kotlin-notebook-intellij-platform/tree/master/examples\&quot; id\u003d\&quot;pfhy5x_20\&quot; data-external\u003d\&quot;true\&quot; rel\u003d\&quot;noopener noreferrer\&quot; target\u003d\&quot;_blank\&quot;\u003eKotlin Notebook IntelliJ Platform examples\u003c/a\u003e\u003c/p\u003e&quot;,&quot;\u003cp id\u003d\&quot;pfhy5x_16\&quot;\u003e\u003cspan class\u003d\&quot;control\&quot; id\u003d\&quot;pfhy5x_21\&quot;\u003eJetBrains Platform Forum\u003c/span\u003e: \u003ca href\u003d\&quot;https://platform.jetbrains.com/c/intellij-platform/kotlin-notebook/25\&quot; id\u003d\&quot;pfhy5x_22\&quot; data-external\u003d\&quot;true\&quot; rel\u003d\&quot;noopener noreferrer\&quot; target\u003d\&quot;_blank\&quot;\u003eKotlin Notebook\u003c/a\u003e category\u003c/p\u003e&quot;]}"></div><p id="pfhy5x_6">The Kotlin Notebook IntelliJ Platform integration enables interactive development and experimentation with IntelliJ Platform APIs directly within a notebook environment. This integration allows developers to run IntelliJ Platform code within the active IDE runtime, removing traditional barriers associated with plugin project setup, compilation, and deployment.</p><p id="pfhy5x_7">Like Jupyter Notebooks, Kotlin Notebook provides an interactive platform for prototyping, testing, and exploring IntelliJ Platform functionality through executable code cells.</p><section class="chapter"><h2 id="getting-started" data-toc="getting-started">Getting Started</h2><p id="pfhy5x_23">To begin using the IntelliJ Platform integration:</p><section class="procedure-steps" id="pfhy5x_24"><ol class="list _decimal" id="pfhy5x_26" type="1"><li class="list__item" id="pfhy5x_27"><p id="pfhy5x_30">Create a new Kotlin Notebook file (<code class="code" id="pfhy5x_31">.ipynb</code>) in your project or as a scratch file using <kbd class="keystroke" id="pfhy5x_32" data-bypass="true"><span class="keystroke__value">⌘⇧N</span></kbd> on macOS or <kbd class="keystroke" id="pfhy5x_33" data-bypass="true"><span class="keystroke__value">Ctrl+Shift+N</span></kbd> on Windows/Linux.</p></li><li class="list__item" id="pfhy5x_28"><p id="pfhy5x_34"><span class="control" id="pfhy5x_35">Important</span>: Switch to <span class="control" id="pfhy5x_36">Run in IDE Process</span> mode in the notebook toolbar.</p></li><li class="list__item" id="pfhy5x_29"><p id="pfhy5x_37">In the first code cell, declare:</p><div class="code-block" data-lang="kotlin">
+%use intellij-platform
+</div></li></ol><ol class="list _decimal"></ol></section><p id="pfhy5x_25">Once executed, the necessary IntelliJ Platform libraries are loaded into the Kotlin Notebook classpath, making them available for import in subsequent cells.</p></section><section class="chapter"><h2 id="core-features" data-toc="core-features">Core Features</h2><section class="chapter"><h3 id="ui-rendering" data-toc="ui-rendering">UI Rendering</h3><p id="pfhy5x_43">The integration enables direct rendering of UI components within notebook cells. When working with <a href="kotlin-ui-dsl-version-2.html" id="pfhy5x_47" data-tooltip="Kotlin DSL for creating UI forms with input components bound to a state object.">Kotlin UI DSL</a> or standard Swing components, returning them as a response causes immediate rendering with full interactivity.</p><div class="code-block" data-lang="kotlin">
+import com.intellij.ui.dsl.builder.panel
+import java.awt.Dimension
+
+panel {
+  row {
+    checkBox(&quot;Check me!&quot;)
+  }
+}.apply {
+  size = Dimension(500, 200)
+}
+</div><p id="pfhy5x_45">Use the <code class="code" id="pfhy5x_48">runInEdt</code> helper to ensure code execution on the <a href="threading-model.html" id="pfhy5x_49" data-tooltip="Threading rules for reading and writing to IntelliJ Platform data models, running and canceling background processes, and avoiding UI freezes.">Event Dispatch Thread (EDT)</a> and handle exceptions gracefully:</p><div class="code-block" data-lang="kotlin">
+runInEdt {
+    // UI code that must run on EDT
+}
+</div></section><section class="chapter"><h3 id="resource-management" data-toc="resource-management">Resource Management</h3><p id="pfhy5x_50">The integration provides automatic resource management through the IntelliJ Platform's <a href="disposers.html" id="pfhy5x_52" data-tooltip="Cleaning up resources on plugin components' lifetime expiration.">Disposer</a> mechanism. A dedicated <code class="code" id="pfhy5x_53">notebookDisposable</code> variable allows registration of elements that need cleanup:</p><div class="code-block" data-lang="kotlin">
+Disposer.register(notebookDisposable, myDisposable)
+
+Disposer.register(notebookDisposable) {
+  // ...
+}
+</div></section><section class="chapter"><h3 id="plugin-loading" data-toc="plugin-loading">Plugin Loading</h3><p id="pfhy5x_54">By default, only the core IntelliJ Platform is loaded into the classpath. To use other plugins (bundled or installed), explicitly load them using:</p><div class="code-block" data-lang="kotlin">
+loadPlugins(&quot;Git4Idea&quot;, &quot;com.intellij.java&quot;)
+</div></section><section class="chapter"><h3 id="extension-registration" data-toc="extension-registration">Extension Registration</h3><p id="pfhy5x_56">Unlike traditional plugin development with <span class="filepath" id="pfhy5x_58">plugin.xml</span>, the integration provides programmatic extension registration:</p><div class="code-block" data-lang="kotlin">
+registerExtension(extensionPointName, instance)
+</div></section></section><section class="chapter"><h2 id="variables" data-toc="variables">Global Variables</h2><p id="pfhy5x_59">When the IntelliJ Platform integration is loaded, the following variables are automatically available in your Kotlin Notebook environment. These variables provide access to essential IDE components, configuration information, and management interfaces.</p><div class="table-wrapper"><table class="wide" id="pfhy5x_60"><thead><tr class="ijRowHead" id="pfhy5x_61"><th id="pfhy5x_69"><p>Variable</p></th><th id="pfhy5x_70"><p>Type</p></th><th id="pfhy5x_71"><p>Description</p></th></tr></thead><tbody><tr id="pfhy5x_62"><td id="pfhy5x_72"><p><code class="code" id="pfhy5x_75">idePath</code></p></td><td id="pfhy5x_73"><p><code class="code" id="pfhy5x_76">Path</code></p></td><td id="pfhy5x_74"><p>Represents the resolved file system path to the IntelliJ Platform installation directory.</p></td></tr><tr id="pfhy5x_63"><td id="pfhy5x_77"><p><code class="code" id="pfhy5x_80">ide</code></p></td><td id="pfhy5x_78"><p><a href="https://github.com/JetBrains/intellij-plugin-verifier/tree/1.407/intellij-plugin-structure/structure-ide/src/main/java/com/jetbrains/plugin/structure/ide/ProductInfoBasedIde.kt" id="pfhy5x_81" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="pfhy5x_82">ProductInfoBasedIde</code></a></p></td><td id="pfhy5x_79"><p>Represents an IDE instance, which allows interacting with plugins and resolving their dependencies based on the IDE's configuration.</p></td></tr><tr id="pfhy5x_64"><td id="pfhy5x_83"><p><code class="code" id="pfhy5x_86">notebookDisposable</code></p></td><td id="pfhy5x_84"><p><a href="https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/util/src/com/intellij/openapi/Disposable.java" id="pfhy5x_87" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="pfhy5x_88">Disposable</code></a></p></td><td id="pfhy5x_85"><p>Represents a disposable used for managing the IntelliJ Platform lifetime of the current notebook.</p></td></tr><tr id="pfhy5x_65"><td id="pfhy5x_89"><p><code class="code" id="pfhy5x_92">notebookPluginDescriptor</code></p></td><td id="pfhy5x_90"><p><a href="https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/core-impl/src/com/intellij/ide/plugins/IdeaPluginDescriptorImpl.kt" id="pfhy5x_93" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="pfhy5x_94">PluginMainDescriptor</code></a></p></td><td id="pfhy5x_91"><p>Represents a plugin descriptor for the plugin created with Kotlin Notebook IntelliJ Platform integration.</p></td></tr><tr id="pfhy5x_66"><td id="pfhy5x_95"><p><code class="code" id="pfhy5x_98">pluginManager</code></p></td><td id="pfhy5x_96"><p><a href="https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/core-impl/src/com/intellij/ide/plugins/PluginManager.java" id="pfhy5x_99" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="pfhy5x_100">PluginManager</code></a></p></td><td id="pfhy5x_97"><p>Instance of the <code class="code" id="pfhy5x_101">PluginManager</code>, which allows accessing information about plugins and their states in the current IDE environment.</p></td></tr><tr id="pfhy5x_67"><td id="pfhy5x_102"><p><code class="code" id="pfhy5x_105">pluginRepository</code></p></td><td id="pfhy5x_103"><p><a href="https://github.com/JetBrains/intellij-plugin-verifier/tree/1.407/intellij-plugin-verifier/verifier-repository/src/main/java/com/jetbrains/pluginverifier/repository/PluginRepository.kt" id="pfhy5x_106" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="pfhy5x_107">PluginRepository</code></a></p></td><td id="pfhy5x_104"><p>Instance of <code class="code" id="pfhy5x_108">PluginRepository</code>, responsible for managing plugins via the JetBrains Marketplace plugin repository.</p></td></tr><tr id="pfhy5x_68"><td id="pfhy5x_109"><p><code class="code" id="pfhy5x_112">productInfo</code></p></td><td id="pfhy5x_110"><p><a href="https://github.com/JetBrains/intellij-plugin-verifier/tree/1.407/intellij-plugin-structure/structure-intellij/src/main/java/com/jetbrains/plugin/structure/intellij/platform/ProductInfo.kt" id="pfhy5x_113" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="pfhy5x_114">ProductInfo</code></a></p></td><td id="pfhy5x_111"><p>Lazily initialized property containing current IntelliJ Platform product information.</p></td></tr></tbody></table></div></section><section class="chapter"><h2 id="notebook-helpers" data-toc="notebook-helpers">Notebook Helpers</h2><div class="table-wrapper"><table class="wide" id="pfhy5x_115"><thead><tr class="ijRowHead" id="pfhy5x_116"><th id="pfhy5x_120"><p>Function</p></th><th id="pfhy5x_121"><p>Description</p></th></tr></thead><tbody><tr id="pfhy5x_117"><td id="pfhy5x_122"><p><code class="code" id="pfhy5x_124">error(message: String)</code></p></td><td id="pfhy5x_123"><p>Throws an exception with the specified message, which will be printed as the cell's output.</p></td></tr><tr id="pfhy5x_118"><td id="pfhy5x_125"><p><code class="code" id="pfhy5x_127">loadPlugins(vararg pluginIds: String)</code></p></td><td id="pfhy5x_126"><p>Loads plugins installed in the current IDE into the script context based on their plugin IDs. This method also supports optionally loading plugin classes and class loaders.</p></td></tr><tr id="pfhy5x_119"><td id="pfhy5x_128"><p><code class="code" id="pfhy5x_130">runInEdt(block: () -&gt; Unit)</code></p></td><td id="pfhy5x_129"><p>Runs the given block in the <a href="threading-model.html" id="pfhy5x_131" data-tooltip="Threading rules for reading and writing to IntelliJ Platform data models, running and canceling background processes, and avoiding UI freezes.">Event Dispatch Thread (EDT)</a>. If an exception is thrown, it is displayed in the cell's output.</p></td></tr></tbody></table></div></section><section class="chapter"><h2 id="intellij-platform-helpers" data-toc="intellij-platform-helpers">IntelliJ Platform Helpers</h2><div class="table-wrapper"><table class="wide" id="pfhy5x_132"><thead><tr class="ijRowHead" id="pfhy5x_133"><th id="pfhy5x_138"><p>Function</p></th><th id="pfhy5x_139"><p>Description</p></th></tr></thead><tbody><tr id="pfhy5x_134"><td id="pfhy5x_140"><p><code class="code" id="pfhy5x_142">currentProject()</code></p></td><td id="pfhy5x_141"><p>Returns the current open <a href="https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/core-api/src/com/intellij/openapi/project/Project.java" id="pfhy5x_143" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="pfhy5x_144">Project</code></a> instance.</p></td></tr><tr id="pfhy5x_135"><td id="pfhy5x_145"><p><code class="code" id="pfhy5x_147">currentEditor()</code></p></td><td id="pfhy5x_146"><p>Returns the current <a href="https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/editor-ui-api/src/com/intellij/openapi/fileEditor/FileEditor.java" id="pfhy5x_148" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="pfhy5x_149">FileEditor</code></a> instance or null if no editor is open.</p></td></tr><tr id="pfhy5x_136"><td id="pfhy5x_150"><p><code class="code" id="pfhy5x_152">registerExtension(extensionPointName: ExtensionPointName&lt;T&gt;, instance: T)</code></p></td><td id="pfhy5x_151"><p>Registers an extension programmatically for the given extension point.</p></td></tr><tr id="pfhy5x_137"><td id="pfhy5x_153"><p><code class="code" id="pfhy5x_155">registerExtension(extensionPointName: String, instance: T)</code></p></td><td id="pfhy5x_154"><p>Registers an extension programmatically for the given extension point.</p></td></tr></tbody></table></div></section><section class="chapter"><h2 id="examples" data-toc="examples">Examples</h2><aside class="prompt" data-type="note" data-title="" id="pfhy5x_156"><p id="pfhy5x_163">See <a href="https://github.com/Kotlin/kotlin-notebook-intellij-platform/tree/master/examples" id="pfhy5x_164" data-external="true" rel="noopener noreferrer" target="_blank">Kotlin Notebook IntelliJ Platform</a> project repository for more examples.</p></aside><section class="chapter"><h3 id="accessing-ide-information" data-toc="accessing-ide-information">Accessing IDE Information</h3><div class="code-block" data-lang="kotlin">
+println(&quot;IDE: ${productInfo.name}&quot;)
+println(&quot;Version: ${productInfo.version}&quot;)
+println(&quot;Build: ${productInfo.buildNumber}&quot;)
+</div></section><section class="chapter"><h3 id="loading-and-using-plugins" data-toc="loading-and-using-plugins">Loading and Using Plugins</h3><div class="code-block" data-lang="kotlin">
+loadPlugins(&quot;com.intellij.gradle&quot;)
+</div><div class="code-block" data-lang="kotlin">
+import com.intellij.gradle.toolingExtension.util.GradleVersionUtil
+
+GradleVersionUtil.isCurrentGradleAtLeast(&quot;8.13.0&quot;)
+</div></section><section class="chapter"><h3 id="registering-extension" data-toc="registering-extension">Registering Extension</h3><div class="code-block" data-lang="kotlin">
+import com.intellij.codeInsight.editorActions.CopyPastePreProcessor
+import com.intellij.openapi.editor.Editor
+import com.intellij.openapi.editor.RawText
+import com.intellij.openapi.project.Project
+import com.intellij.psi.PsiFile
+
+class MyCopyPastePreProcessor : CopyPastePreProcessor {
+  override fun preprocessOnCopy(
+    file: PsiFile?,
+    startOffsets: IntArray?,
+    endOffsets: IntArray?,
+    text: String?,
+  ) = null
+
+  override fun preprocessOnPaste(
+    project: Project?,
+    file: PsiFile?,
+    editor: Editor?,
+    text: String?,
+    rawText: RawText?,
+  ) = &quot;Hello, World!&quot;
+}
+
+registerExtension(CopyPastePreProcessor.EP_NAME, MyCopyPastePreProcessor())
+</div></section><section class="chapter"><h3 id="rendering-kotlin-ui-dsl-components" data-toc="rendering-kotlin-ui-dsl-components">Rendering Kotlin UI DSL Components</h3><div class="code-block" data-lang="kotlin">
+import com.intellij.ui.dsl.builder.panel
+import java.awt.Dimension
+
+panel {
+  row {
+    checkBox(&quot;Check me!&quot;)
+      .comment(&quot;A comment for this checkbox&quot;)
+  }
+}.apply {
+  size = Dimension(500, 200)
+}
+</div></section><section class="chapter"><h3 id="rendering-dialog" data-toc="rendering-dialog">Rendering Dialog</h3><div class="code-block" data-lang="kotlin">
+import com.intellij.openapi.ui.Messages
+
+runInEdt {
+  Messages.showMessageDialog(
+    null,
+    &quot;This is a modal dialog message&quot;,
+    &quot;Dialog Title&quot;,
+    Messages.getInformationIcon()
+  )
+}
+</div></section><section class="chapter"><h3 id="creating-disposable-tool-window" data-toc="creating-disposable-tool-window">Creating Disposable Tool Window</h3><div class="code-block" data-lang="kotlin">
+import com.intellij.icons.AllIcons
+import com.intellij.openapi.application.runInEdt
+import com.intellij.openapi.util.Disposer
+import com.intellij.openapi.wm.ToolWindowManager
+
+val project = currentProject()
+val toolWindowManager = ToolWindowManager.getInstance(project)
+
+runInEdt {
+  val toolWindow = toolWindowManager.getToolWindow(&quot;My Tool Window&quot;)
+    ?: toolWindowManager.registerToolWindow(&quot;My Tool Window&quot;) {
+      icon = AllIcons.General.Error
+    }
+
+  Disposer.register(notebookDisposable) {
+    toolWindow.remove()
+  }
+}
+</div></section></section><div class="last-modified">08 August 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="tools-intellij-platform-gradle-plugin-faq.html" class="navigation-links__prev">IntelliJ Platform Gradle Plugin &ndash; FAQ</a><a href="tools-gradle-intellij-plugin.html" class="navigation-links__next">Gradle IntelliJ Plugin (1.x)</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.js"></script></body></html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF" data-resizable-sidebar="true"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="built-on" content="2026-06-21T21:30:56.308282"><!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5P98');</script>
+<!-- End Google Tag Manager -->
+<title>JetBrains Runtime (JBR) | IntelliJ Platform Plugin SDK</title><script type="application/json" id="virtual-toc-data">[{"id":"bundled-default","level":0,"title":"Bundled (Default)","anchor":"#bundled-default"},{"id":"obtained-with-intellij-platform-from-maven","level":0,"title":"Obtained with IntelliJ Platform from Maven","anchor":"#obtained-with-intellij-platform-from-maven"},{"id":"declared-explicitly","level":0,"title":"Declared Explicitly","anchor":"#declared-explicitly"},{"id":"foojay-toolchains-plugin","level":0,"title":"Foojay Toolchains Plugin","anchor":"#foojay-toolchains-plugin"},{"id":"project-sdk","level":0,"title":"Project SDK","anchor":"#project-sdk"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.css" rel="stylesheet"><link rel="manifest" href="https://www.jetbrains.com/site.webmanifest"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content="https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png"><!-- Open Graph --><meta property="og:title" content="JetBrains Runtime (JBR) | IntelliJ Platform Plugin SDK"><meta property="og:description" content=""><meta property="og:image" content="https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png"><meta property="og:site_name" content="IntelliJ Platform Plugin SDK Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="https://plugins.jetbrains.com/docs/intellij/tools-intellij-platform-gradle-plugin-jetbrains-runtime.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@JBPlatform"><meta name="twitter:title" content="JetBrains Runtime (JBR) | IntelliJ Platform Plugin SDK"><meta name="twitter:description" content=""><meta name="twitter:creator" content="@JBPlatform"><meta name="twitter:image:src" content="https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png"><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "https://plugins.jetbrains.com/docs/intellij/tools-intellij-platform-gradle-plugin-jetbrains-runtime.html#webpage",
+    "url": "https://plugins.jetbrains.com/docs/intellij/tools-intellij-platform-gradle-plugin-jetbrains-runtime.html",
+    "name": "JetBrains Runtime (JBR) | IntelliJ Platform Plugin SDK",
+    "description": "",
+    "image": "https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "https://plugins.jetbrains.com/docs/intellij/#website",
+    "url": "https://plugins.jetbrains.com/docs/intellij/",
+    "name": "IntelliJ Platform Plugin SDK Help"
+}</script><!-- End Schema.org --></head><body data-id="tools_intellij_platform_gradle_plugin_jetbrains_runtime" data-main-title="JetBrains Runtime (JBR)" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="Tooling///tools_intellij_platform_gradle_plugin.md|IntelliJ Platform Gradle Plugin (2.x)" data-edit-url="https://github.com/JetBrains/intellij-sdk-docs/edit/main/topics/appendix/tools/intellij_platform_gradle_plugin/tools_intellij_platform_gradle_plugin_jetbrains_runtime.md"><!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5P98"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>IntelliJ Platform Plugin SDK  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="tools_intellij_platform_gradle_plugin_jetbrains_runtime" id="tools_intellij_platform_gradle_plugin_jetbrains_runtime.md">JetBrains Runtime (JBR)</h1><aside class="prompt" data-type="tip" data-title="FAQ" id="ww93ef_13"><p id="ww93ef_14">See <a href="tools-intellij-platform-gradle-plugin-faq.html" id="ww93ef_15" data-tooltip="FAQ for using IntelliJ Platform Gradle Plugin (2.x)">IntelliJ Platform Gradle Plugin &ndash; FAQ</a> and <a href="tools-intellij-platform-gradle-plugin-migration.html" id="ww93ef_16" data-tooltip="IntelliJ Platform Gradle Plugin (2.x) migration guide from Gradle IntelliJ Plugin (1.x)">Migrating from Gradle IntelliJ Plugin (1.x)</a>.</p></aside><p id="ww93ef_5">JetBrains Runtime (JBR) is a custom version of OpenJDK, specifically optimized for IntelliJ-based IDEs. It supports enhanced class redefinition (DCEVM), includes the Java Chromium Embedded Framework (JCEF), and improves aspects such as font rendering and keyboard support, thereby enhancing overall performance. IDEs built on the IntelliJ Platform rely on JBR for running. Hence, when developing plugins using the IntelliJ Platform Gradle Plugin, it's essential to have JBR provided.</p><p id="ww93ef_6">For the best experience, it is recommended to rely on JBR bundled with the IntelliJ Platform used for development. If one is not available, i.e., when targeting IntelliJ Platform snapshot or nightly releases, there are other ways available for providing JetBrains Runtime in a required version or variant.</p><section class="chapter"><h2 id="bundled-default" data-toc="bundled-default">Bundled (Default)</h2><p id="ww93ef_17">IDE releases provided with JetBrains CDN (download.jetbrains.com) are OS-specific and contain JetBrains Runtime (JBR) already bundled within the archive. This is the recommended way for developing a plugin, as it comes in exactly the same version as JetBrains IDEs delivered to users.</p><p id="ww93ef_18">To use this approach, no extra steps are required but declare the IntelliJ Platform, see: <a href="tools-intellij-platform-gradle-plugin-dependencies-extension.html#target-platforms" id="ww93ef_19">Target Platforms</a>.</p></section><section class="chapter"><h2 id="obtained-with-intellij-platform-from-maven" data-toc="obtained-with-intellij-platform-from-maven">Obtained with IntelliJ Platform from Maven</h2><p id="ww93ef_20">If the IntelliJ Platform is resolved with the IntelliJ Maven Repository, it has no JetBrains Runtime (JBR) bundled. In such a case, it is necessary to provide it in the suitable version with the version read from the <span class="filepath" id="ww93ef_24">[intellijPlatform]/dependencies.txt</span> file.</p><p id="ww93ef_21">This can be easily achieved by using the <code class="code" id="ww93ef_25">jetbrainsRuntime()</code> repository helper pointing to <a href="https://github.com/JetBrains/JetBrainsRuntime/releases/" id="ww93ef_26" data-external="true" rel="noopener noreferrer" target="_blank">JetBrains Runtime GitHub Releases</a> and dependency helper with no arguments provided:</p><div class="tabs" id="ww93ef_22" data-group="languages" data-anchors="[ww93ef_27,ww93ef_28]"><div class="tabs__content" data-gtm="tab" id="ww93ef_27" data-sync-tabs="kotlin" data-title="Kotlin"><div class="code-block" data-lang="kotlin" data-title="Kotlin">
+repositories {
+  mavenCentral()
+  intellijPlatform {
+    defaultRepositories()
+    jetbrainsRuntime()
+    // ...
+  }
+}
+
+dependencies {
+  intellijPlatform {
+    intellijIdea(&quot;2026.1.3&quot;)
+
+    jetbrainsRuntime()
+
+    // ...
+  }
+}
+</div></div><div class="tabs__content" data-gtm="tab" id="ww93ef_28" data-sync-tabs="groovy" data-title="Groovy"><div class="code-block" data-lang="groovy" data-title="Groovy">
+repositories {
+  mavenCentral()
+  intellijPlatform {
+    defaultRepositories()
+    jetbrainsRuntime()
+    // ...
+  }
+}
+
+dependencies {
+  intellijPlatform {
+    intellijIdea '2026.1.3'
+
+    jetbrainsRuntime()
+
+    // ...
+  }
+}
+</div></div></div><p id="ww93ef_23"><span class="control" id="ww93ef_31">Note:</span> As of version <code class="code" id="ww93ef_32">2.2.0</code> of the IntelliJ Platform Gradle Plugin, explicitly specifying <code class="code" id="ww93ef_33">jetbrainsRuntime()</code> in the <code class="code" id="ww93ef_34">repositories</code> block is no longer necessary if you also have <code class="code" id="ww93ef_35">defaultRepositories()</code> specified.</p></section><section class="chapter"><h2 id="declared-explicitly" data-toc="declared-explicitly">Declared Explicitly</h2><p id="ww93ef_36">It is possible to explicitly specify JetBrains Runtime version, variant, or exact build with:</p><div class="tabs" id="ww93ef_37" data-group="languages" data-anchors="[ww93ef_50,ww93ef_51]"><div class="tabs__content" data-gtm="tab" id="ww93ef_50" data-sync-tabs="kotlin" data-title="Kotlin"><div class="code-block" data-lang="kotlin" data-title="Kotlin">
+repositories {
+  mavenCentral()
+  intellijPlatform {
+    defaultRepositories()
+    jetbrainsRuntime()
+    // ...
+  }
+}
+
+dependencies {
+  intellijPlatform {
+    intellijIdea(&quot;2026.1.3&quot;)
+
+    jetbrainsRuntime(version, variant, architecture)
+    // or
+    jetbrainsRuntimeExplicit(explicitVersion)
+
+    // ...
+  }
+}
+</div></div><div class="tabs__content" data-gtm="tab" id="ww93ef_51" data-sync-tabs="groovy" data-title="Groovy"><div class="code-block" data-lang="groovy" data-title="Groovy">
+repositories {
+  mavenCentral()
+  intellijPlatform {
+    defaultRepositories()
+    jetbrainsRuntime()
+    // ...
+  }
+}
+
+dependencies {
+  intellijPlatform {
+    intellijIdea '2026.1.3'
+
+    jetbrainsRuntime(version, variant, architecture)
+    // or
+    jetbrainsRuntimeExplicit(explicitVersion)
+
+    // ...
+  }
+}
+</div></div></div><p id="ww93ef_38"><span class="control" id="ww93ef_54">Note:</span> As of version <code class="code" id="ww93ef_55">2.2.0</code> of the IntelliJ Platform Gradle Plugin, explicitly specifying <code class="code" id="ww93ef_56">jetbrainsRuntime()</code> in the <code class="code" id="ww93ef_57">repositories</code> block is no longer necessary if you also have <code class="code" id="ww93ef_58">defaultRepositories()</code> specified.</p><p id="ww93ef_39">Provided <code class="code" id="ww93ef_59">version</code>, <code class="code" id="ww93ef_60">variant</code>, and <code class="code" id="ww93ef_61">architecture</code> parameters along with the <code class="code" id="ww93ef_62">explicitVersion</code> are used to resolve the JetBrains Runtime archives published on <a href="https://github.com/JetBrains/JetBrainsRuntime/releases/" id="ww93ef_63" data-external="true" rel="noopener noreferrer" target="_blank">GitHub Releases</a> page.</p><p id="ww93ef_40">To correctly understand the pattern, refer to the archive names in format:</p><div class="code-block" data-lang="none">
+jbr_[prefix]-[jdk]-[os]-[arch]-b[build].tar.gz
+</div><p id="ww93ef_42">e.g.:</p><div class="code-block" data-lang="none">
+jbr_jcef-21.0.3-osx-aarch64-b446.1.tar.gz
+</div><p id="ww93ef_44">which can be split into the following parts:</p><ul class="list _bullet" id="ww93ef_45"><li class="list__item" id="ww93ef_64"><p id="ww93ef_69"><code class="code" id="ww93ef_70">prefix</code> = <code class="code" id="ww93ef_71">jcef</code></p></li><li class="list__item" id="ww93ef_65"><p id="ww93ef_72"><code class="code" id="ww93ef_73">jdk</code> = <code class="code" id="ww93ef_74">21.0.3</code></p></li><li class="list__item" id="ww93ef_66"><p id="ww93ef_75"><code class="code" id="ww93ef_76">os</code> = <code class="code" id="ww93ef_77">osx</code></p></li><li class="list__item" id="ww93ef_67"><p id="ww93ef_78"><code class="code" id="ww93ef_79">arch</code> = <code class="code" id="ww93ef_80">aarch64</code></p></li><li class="list__item" id="ww93ef_68"><p id="ww93ef_81"><code class="code" id="ww93ef_82">build</code> = <code class="code" id="ww93ef_83">446.1</code></p></li></ul><p id="ww93ef_46">Note that the <code class="code" id="ww93ef_84">version</code> parameter is actually a combination of JDK and build numbers in format <code class="code" id="ww93ef_85">[jdk]b[build]</code>.</p><p id="ww93ef_47">To resolve the <code class="code" id="ww93ef_86">jbr_jcef-21.0.3-osx-aarch64-b446.1.tar.gz</code> archive, you can use:</p><ul class="list _bullet" id="ww93ef_48"><li class="list__item" id="ww93ef_87"><p id="ww93ef_90"><code class="code" id="ww93ef_91">jetbrainsRuntime(&quot;21.0.3b446.1&quot;, &quot;osx&quot;, &quot;aarch64&quot;)</code></p></li><li class="list__item" id="ww93ef_88"><p id="ww93ef_92"><code class="code" id="ww93ef_93">jetbrainsRuntime(&quot;21.0.3b446.1&quot;)</code> (<code class="code" id="ww93ef_94">os</code> and <code class="code" id="ww93ef_95">architecture</code> are by default resolved with the current environment)</p></li><li class="list__item" id="ww93ef_89"><p id="ww93ef_96"><code class="code" id="ww93ef_97">jetbrainsRuntimeExplicit(&quot;jbr_jcef-21.0.3-osx-aarch64-b446.1&quot;)</code></p></li></ul><p id="ww93ef_49">See the <a href="https://github.com/JetBrains/JetBrainsRuntime/releases" id="ww93ef_98" data-external="true" rel="noopener noreferrer" target="_blank">JetBrains Runtime releases page</a> for the list of available releases.</p></section><section class="chapter"><h2 id="foojay-toolchains-plugin" data-toc="foojay-toolchains-plugin">Foojay Toolchains Plugin</h2><p id="ww93ef_99">Since Gradle <code class="code" id="ww93ef_103">8.4</code>, it is possible to specify JetBrains as a known JVM vendor and instruct Gradle to search for JetBrains Runtime within available toolchains (see <a href="https://docs.gradle.org/current/userguide/toolchains.html" id="ww93ef_104" data-external="true" rel="noopener noreferrer" target="_blank">Toolchains for JVM projects</a>).</p><p id="ww93ef_100">Along with the <a href="https://github.com/gradle/foojay-toolchains" id="ww93ef_105" data-external="true" rel="noopener noreferrer" target="_blank">Foojay Toolchains Plugin</a>, Gradle can resolve JetBrains Runtime from the remote repository if the suitable JVM is not present:</p><div class="tabs" id="ww93ef_101" data-group="languages" data-anchors="[ww93ef_106,ww93ef_107]"><div class="tabs__content" data-gtm="tab" id="ww93ef_106" data-sync-tabs="kotlin" data-title="Kotlin"><p id="ww93ef_108"><span class="filepath" id="ww93ef_112">build.gradle.kts</span></p><div class="code-block" data-lang="kotlin" data-title="Kotlin">
+kotlin {
+  jvmToolchain {
+    languageVersion = JavaLanguageVersion.of(17)
+    vendor = JvmVendorSpec.JETBRAINS
+  }
+}
+</div><p id="ww93ef_110"><span class="filepath" id="ww93ef_113">settings.gradle.kts</span></p><div class="code-block" data-lang="kotlin" data-title="Kotlin">
+plugins {
+  id(&quot;org.gradle.toolchains.foojay-resolver-convention&quot;) version &quot;...&quot;
+}
+</div></div><div class="tabs__content" data-gtm="tab" id="ww93ef_107" data-sync-tabs="groovy" data-title="Groovy"><p id="ww93ef_114"><span class="filepath" id="ww93ef_118">build.gradle</span></p><div class="code-block" data-lang="groovy" data-title="Groovy">
+java {
+  toolchain {
+    languageVersion = JavaLanguageVersion.of(17)
+    vendor = JvmVendorSpec.JETBRAINS
+  }
+}
+</div><p id="ww93ef_116"><span class="filepath" id="ww93ef_119">settings.gradle</span></p><div class="code-block" data-lang="groovy" data-title="Groovy">
+plugins {
+  id 'org.gradle.toolchains.foojay-resolver-convention' version '...'
+}
+</div></div></div><p id="ww93ef_102">Please note that the latest available JetBrains Runtime release is always resolved, which may lead to unexpected behaviors.</p></section><section class="chapter"><h2 id="project-sdk" data-toc="project-sdk">Project SDK</h2><p id="ww93ef_120">When building or running a project directly from the IDE, it is possible to specify JetBrains Runtime in Project Settings as a Project SDK.</p><p id="ww93ef_121">Provided JBR will be eventually resolved and passed to Gradle tasks for running. However, this setting is ignored when running a project directly from the command line or CI.</p></section><div class="last-modified">22 April 2026</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="tools-intellij-platform-gradle-plugin-gradle-properties.html" class="navigation-links__prev">Gradle Properties</a><a href="tools-intellij-platform-gradle-plugin-migration.html" class="navigation-links__next">Migrating from Gradle IntelliJ Plugin (1.x)</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.js"></script></body></html>

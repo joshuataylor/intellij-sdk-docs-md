@@ -1,0 +1,255 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF" data-resizable-sidebar="true"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="built-on" content="2026-06-21T21:30:55.225657"><!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5P98');</script>
+<!-- End Google Tag Manager -->
+<title>Remote Procedure Calls (RPC) | IntelliJ Platform Plugin SDK</title><script type="application/json" id="virtual-toc-data">[{"id":"modules-overview","level":0,"title":"Modules Overview","anchor":"#modules-overview"},{"id":"shared-module","level":1,"title":"Shared Module","anchor":"#shared-module"},{"id":"frontend-module","level":1,"title":"Frontend Module","anchor":"#frontend-module"},{"id":"backend-module","level":1,"title":"Backend Module","anchor":"#backend-module"},{"id":"implementing-rpc-communication","level":0,"title":"Implementing RPC Communication","anchor":"#implementing-rpc-communication"},{"id":"rpc-interface","level":1,"title":"RPC Interface","anchor":"#rpc-interface"},{"id":"rpc-backend-implementation","level":1,"title":"RPC Backend Implementation","anchor":"#rpc-backend-implementation"},{"id":"calling-rpc-from-frontend","level":1,"title":"Calling RPC from Frontend","anchor":"#calling-rpc-from-frontend"},{"id":"serializable-types","level":0,"title":"Serializable Types","anchor":"#serializable-types"},{"id":"data-transfer-objects","level":1,"title":"Data Transfer Objects","anchor":"#data-transfer-objects"},{"id":"id-types","level":1,"title":"ID Types","anchor":"#id-types"},{"id":"rpc-examples","level":0,"title":"RPC Examples","anchor":"#rpc-examples"},{"id":"subscribing-to-the-backend-state","level":1,"title":"Subscribing to the Backend State","anchor":"#subscribing-to-the-backend-state"},{"id":"pushing-events-from-backend-to-frontend","level":1,"title":"Pushing Events from Backend to Frontend","anchor":"#pushing-events-from-backend-to-frontend"},{"id":"faq","level":0,"title":"FAQ","anchor":"#faq"},{"id":"what-to-do-with-abstractmethoderror","level":1,"title":"What to do with AbstractMethodError?","anchor":"#what-to-do-with-abstractmethoderror"},{"id":"how-to-efficiently-transfer-byte","level":1,"title":"How to efficiently transfer byte[]?","anchor":"#how-to-efficiently-transfer-byte"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.css" rel="stylesheet"><link rel="manifest" href="https://www.jetbrains.com/site.webmanifest"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content="https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png"><!-- Open Graph --><meta property="og:title" content="Remote Procedure Calls (RPC) | IntelliJ Platform Plugin SDK"><meta property="og:description" content=""><meta property="og:image" content="https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png"><meta property="og:site_name" content="IntelliJ Platform Plugin SDK Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="https://plugins.jetbrains.com/docs/intellij/remote-procedure-calls.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@JBPlatform"><meta name="twitter:title" content="Remote Procedure Calls (RPC) | IntelliJ Platform Plugin SDK"><meta name="twitter:description" content=""><meta name="twitter:creator" content="@JBPlatform"><meta name="twitter:image:src" content="https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png"><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "https://plugins.jetbrains.com/docs/intellij/remote-procedure-calls.html#webpage",
+    "url": "https://plugins.jetbrains.com/docs/intellij/remote-procedure-calls.html",
+    "name": "Remote Procedure Calls (RPC) | IntelliJ Platform Plugin SDK",
+    "description": "",
+    "image": "https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "https://plugins.jetbrains.com/docs/intellij/#website",
+    "url": "https://plugins.jetbrains.com/docs/intellij/",
+    "name": "IntelliJ Platform Plugin SDK Help"
+}</script><!-- End Schema.org --></head><body data-id="remote_procedure_calls" data-main-title="Remote Procedure Calls (RPC)" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="Plugins///split_mode_and_remote_development.md|Split Mode (Remote Development)" data-edit-url="https://github.com/JetBrains/intellij-sdk-docs/edit/main/topics/basics/remote_development/remote_procedure_calls.md"><!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5P98"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>IntelliJ Platform Plugin SDK  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="remote_procedure_calls" data-label-id="2025.3" id="remote_procedure_calls.md">Remote Procedure Calls (RPC)</h1><p id="z7r3dyo_5">This article walks through how remote calls (RPC) are set up in <a href="split-mode-and-remote-development.html" id="z7r3dyo_11" data-tooltip="Design plugins for both monolithic IDEs and split-process IDE sessions, and validate frontend and backend behavior from the start.">Split Mode</a> and refers to code in the publicly available <a href="https://github.com/JetBrains/intellij-platform-modular-plugin-template" id="z7r3dyo_12" data-external="true" rel="noopener noreferrer" target="_blank">modular plugin template</a>.</p><section class="chapter"><h2 id="modules-overview" data-toc="modules-overview">Modules Overview</h2><p id="z7r3dyo_13">The plugin is split into three modules: <span class="control" id="z7r3dyo_17">shared</span>, <span class="control" id="z7r3dyo_18">frontend</span>, and <span class="control" id="z7r3dyo_19">backend</span>. The following sections explain how the module dependencies are configured.</p><section class="chapter"><h3 id="shared-module" data-toc="shared-module">Shared Module</h3><p id="z7r3dyo_20">The shared module defines the RPC interface. It needs the <code class="code" id="z7r3dyo_23">rpc</code> and <code class="code" id="z7r3dyo_24">kotlinx.serialization</code> plugins.</p><p id="z7r3dyo_21"><a href="https://github.com/JetBrains/intellij-platform-modular-plugin-template/blob/main/shared/build.gradle.kts" id="z7r3dyo_25" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="z7r3dyo_26">shared/build.gradle.kts</code></a>:</p><div class="code-block" data-lang="kotlin">
+plugins {
+  id(&quot;rpc&quot;)
+  id(&quot;org.jetbrains.kotlin.jvm&quot;)
+  id(&quot;org.jetbrains.kotlin.plugin.serialization&quot;)
+}
+dependencies {
+  intellijPlatform {
+    intellijIdea(libs.versions.intellij.platform)
+  }
+}
+</div></section><section class="chapter"><h3 id="frontend-module" data-toc="frontend-module">Frontend Module</h3><p id="z7r3dyo_27">The frontend module depends on <code class="code" id="z7r3dyo_30">:shared</code> and needs the <code class="code" id="z7r3dyo_31">rpc</code> plugin as well.</p><p id="z7r3dyo_28"><a href="https://github.com/JetBrains/intellij-platform-modular-plugin-template/blob/main/frontend/build.gradle.kts" id="z7r3dyo_32" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="z7r3dyo_33">frontend/build.gradle.kts</code></a>:</p><div class="code-block" data-lang="kotlin">
+plugins {
+  id(&quot;rpc&quot;)
+  id(&quot;org.jetbrains.kotlin.jvm&quot;)
+  id(&quot;org.jetbrains.kotlin.plugin.serialization&quot;)
+}
+dependencies {
+  intellijPlatform {
+    intellijIdea(libs.versions.intellij.platform)
+    bundledModule(&quot;intellij.platform.frontend&quot;)
+    // ...
+  }
+  compileOnly(project(&quot;:shared&quot;))
+}
+</div></section><section class="chapter"><h3 id="backend-module" data-toc="backend-module">Backend Module</h3><p id="z7r3dyo_34">The backend module depends on <code class="code" id="z7r3dyo_39">:shared</code> and requires <code class="code" id="z7r3dyo_40">intellij.platform.kernel.backend</code> and <code class="code" id="z7r3dyo_41">intellij.platform.rpc.backend</code>.</p><p id="z7r3dyo_35"><a href="https://github.com/JetBrains/intellij-platform-modular-plugin-template/blob/main/backend/build.gradle.kts" id="z7r3dyo_42" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="z7r3dyo_43">backend/build.gradle.kts</code></a>:</p><div class="code-block" data-lang="kotlin">
+plugins {
+  id(&quot;rpc&quot;)
+  id(&quot;org.jetbrains.kotlin.jvm&quot;)
+  id(&quot;org.jetbrains.kotlin.plugin.serialization&quot;)
+}
+
+dependencies {
+  intellijPlatform {
+    intellijIdea(libs.versions.intellij.platform)
+    bundledModule(&quot;intellij.platform.kernel.backend&quot;)
+    bundledModule(&quot;intellij.platform.rpc.backend&quot;)
+    bundledModule(&quot;intellij.platform.backend&quot;)
+  }
+  compileOnly(project(&quot;:shared&quot;))
+}
+</div><p id="z7r3dyo_37">Also declare the backend platform module dependency in <a href="https://github.com/JetBrains/intellij-platform-modular-plugin-template/blob/main/backend/src/main/resources/modular.plugin.backend.xml" id="z7r3dyo_44" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="z7r3dyo_45">backend/src/main/resources/modular.plugin.backend.xml</code></a>:</p><div class="code-block" data-lang="markup">
+&lt;idea-plugin&gt;
+  &lt;dependencies&gt;
+    &lt;module name=&quot;intellij.platform.backend&quot;/&gt;
+    &lt;module name=&quot;intellij.platform.kernel.backend&quot;/&gt;
+    &lt;module name=&quot;modular.plugin.shared&quot;/&gt;
+  &lt;/dependencies&gt;
+  &lt;!-- ... --&gt;
+&lt;/idea-plugin&gt;
+</div></section></section><section class="chapter"><h2 id="implementing-rpc-communication" data-toc="implementing-rpc-communication">Implementing RPC Communication</h2><section class="chapter"><h3 id="rpc-interface" data-toc="rpc-interface">RPC Interface</h3><p id="z7r3dyo_49">Introduce the RPC interface in the shared module.</p><p id="z7r3dyo_50"><a href="https://github.com/JetBrains/intellij-platform-modular-plugin-template/blob/main/shared/src/main/kotlin/org/jetbrains/plugins/template/ChatRepositoryRpcApi.kt" id="z7r3dyo_55" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="z7r3dyo_56">ChatRepositoryRpcApi</code></a>:</p><div class="code-block" data-lang="kotlin">
+@Rpc
+interface ChatRepositoryRpcApi : RemoteApi&lt;Unit&gt; {
+  companion object {
+    suspend fun getInstance(): ChatRepositoryRpcApi {
+      return RemoteApiProviderService.resolve(
+        remoteApiDescriptor&lt;ChatRepositoryRpcApi&gt;()
+      )
+    }
+  }
+
+  suspend fun getMessagesFlow(projectId: ProjectId): Flow&lt;List&lt;ChatMessageDto&gt;&gt;
+  suspend fun sendMessage(projectId: ProjectId, messageContent: String)
+}
+</div><p id="z7r3dyo_52">RPC interface must follow the rules:</p><ol class="list _decimal" id="z7r3dyo_53" type="1"><li class="list__item" id="z7r3dyo_57"><p id="z7r3dyo_60">The interface must be annotated with <a href="https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/fleet/rpc/srcCommonMain/fleet/rpc/FleetApi.kt" id="z7r3dyo_61" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="z7r3dyo_62">@Rpc</code></a>.</p></li><li class="list__item" id="z7r3dyo_58"><p id="z7r3dyo_63">All functions must be <a href="https://kotlinlang.org/docs/coroutines-basics.html#suspending-functions" id="z7r3dyo_64" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="z7r3dyo_65">suspend</code></a>.</p></li><li class="list__item" id="z7r3dyo_59"><p id="z7r3dyo_66">All parameters and return types must be <code class="code" id="z7r3dyo_68">@Serializable</code>. They are essentially data transfer objects (DTOs) widely used in client-server application development.</p><ul class="list _bullet" id="z7r3dyo_67"><li class="list__item" id="z7r3dyo_69"><p id="z7r3dyo_72">Primitives, <code class="code" id="z7r3dyo_73">String</code>, <code class="code" id="z7r3dyo_74">Flow</code>, <code class="code" id="z7r3dyo_75">Deferred</code> are serializable by default.</p></li><li class="list__item" id="z7r3dyo_70"><p id="z7r3dyo_76">Enums are not serializable by default. Mark them as <code class="code" id="z7r3dyo_77">@Serializable</code> explicitly.</p></li><li class="list__item" id="z7r3dyo_71"><p id="z7r3dyo_78">Classes must be annotated with <code class="code" id="z7r3dyo_79">@Serializable</code> and must contain only other serializable fields</p></li></ul></li></ol><p id="z7r3dyo_54">For convenience, introduce <code class="code" id="z7r3dyo_80">suspend getInstanceAsync()</code> so the frontend can easily acquire the instance.</p></section><section class="chapter"><h3 id="rpc-backend-implementation" data-toc="rpc-backend-implementation">RPC Backend Implementation</h3><p id="z7r3dyo_81">Add a class implementing the RPC interface in the backend module.</p><p id="z7r3dyo_82"><a href="https://github.com/JetBrains/intellij-platform-modular-plugin-template/blob/main/backend/src/main/kotlin/org/jetbrains/plugins/template/BackendChatRepositoryRpcApi.kt" id="z7r3dyo_90" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="z7r3dyo_91">BackendChatRepositoryRpcApi</code></a>:</p><div class="code-block" data-lang="kotlin">
+class BackendChatRepositoryRpcApi : ChatRepositoryRpcApi {
+  override suspend fun getMessagesFlow(projectId: ProjectId): Flow&lt;List&lt;ChatMessageDto&gt;&gt; {
+    val backendProject = projectId.findProjectOrNull()
+       ?: return emptyFlow()
+    return BackendChatRepositoryModel.getInstance(backendProject)
+      .getMessagesFlow()
+  }
+
+  override suspend fun sendMessage(
+    projectId: ProjectId,
+    messageContent: String
+  ) {
+    val backendProject = projectId.findProjectOrNull() ?: return
+    return BackendChatRepositoryModel.getInstance(backendProject)
+      .sendMessage(messageContent)
+  }
+}
+</div><p id="z7r3dyo_84">Implement <a href="https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/kernel/rpc.backend/src/RemoteApiProvider.kt" id="z7r3dyo_92" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="z7r3dyo_93">RemoteApiProvider</code></a>, which registers the RPC implementation with the platform.</p><p id="z7r3dyo_85"><a href="https://github.com/JetBrains/intellij-platform-modular-plugin-template/blob/main/backend/src/main/kotlin/org/jetbrains/plugins/template/BackendRpcApiProvider.kt" id="z7r3dyo_94" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="z7r3dyo_95">BackendRpcApiProvider</code></a>:</p><div class="code-block" data-lang="kotlin">
+internal class BackendRpcApiProvider : RemoteApiProvider {
+  override fun RemoteApiProvider.Sink.remoteApis() {
+    remoteApi(remoteApiDescriptor&lt;ChatRepositoryRpcApi&gt;()) {
+      BackendChatRepositoryRpcApi()
+    }
+  }
+}
+</div><p id="z7r3dyo_87">Register the provider in the <a href="https://jb.gg/ipe?extensions=com.intellij.platform.rpc.backend.remoteApiProvider" id="z7r3dyo_98" data-tooltip="Browse usages in existing implementations of open-source plugins" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="z7r3dyo_99">com.intellij.platform.rpc.backend.remoteApiProvider</code></a> extension point.</p><p id="z7r3dyo_88"><a href="https://github.com/JetBrains/intellij-platform-modular-plugin-template/blob/main/backend/src/main/resources/modular.plugin.backend.xml" id="z7r3dyo_100" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="z7r3dyo_101">backend/src/main/resources/modular.plugin.backend.xml</code></a>:</p><div class="code-block" data-lang="markup">
+&lt;idea-plugin&gt;
+  &lt;!-- ... --&gt;
+  &lt;extensions defaultExtensionNs=&quot;com.intellij&quot;&gt;
+    &lt;platform.rpc.backend.remoteApiProvider
+      implementation=&quot;com.example.BackendRpcApiProvider&quot;/&gt;
+  &lt;/extensions&gt;
+&lt;/idea-plugin&gt;
+</div></section><section class="chapter"><h3 id="calling-rpc-from-frontend" data-toc="calling-rpc-from-frontend">Calling RPC from Frontend</h3><p id="z7r3dyo_102"><a href="https://github.com/JetBrains/intellij-platform-modular-plugin-template/blob/main/shared/src/main/kotlin/org/jetbrains/plugins/template/ChatRepositoryRpcApi.kt" id="z7r3dyo_106" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="z7r3dyo_107">ChatRepositoryRpcApi</code></a> can be called on the frontend:</p><div class="code-block" data-lang="kotlin">
+val chatRepositoryApi = ChatRepositoryRpcApi.getInstance()
+chatRepositoryApi.getMessagesFlow(project.projectId())
+chatRepositoryApi.sendMessage(project.projectId(), messageContent)
+</div><p id="z7r3dyo_104">Note that all <code class="code" id="z7r3dyo_108">getInstanceAsync()</code>, <code class="code" id="z7r3dyo_109">getMessagesFlow()</code>, and <code class="code" id="z7r3dyo_110">sendMessage()</code> functions are <code class="code" id="z7r3dyo_111">suspend</code>. They must be called in some <a href="kotlin-coroutines.html" id="z7r3dyo_112" data-tooltip="Introduction to Kotlin Coroutines in the IntelliJ Platform.">coroutine</a> context.</p><section class="chapter"><h4 id="rpc-error-handling" data-toc="rpc-error-handling">RPC Error Handling</h4><p id="z7r3dyo_113">Calling an RPC API may fail with an <code class="code" id="z7r3dyo_118">RpcClientException</code>, for example, if there are communication problems, service is not ready, etc. For instance, this may happen if the client tries to execute the call while the backend is not fully initialized, if a network problem occurs, or if the backend is restarted while a call is being executed.</p><p id="z7r3dyo_114">Such errors can be mitigated by using the <a href="https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/fleet/rpc/srcCommonMain/fleet/rpc/client/Durable.kt" id="z7r3dyo_119" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="z7r3dyo_120">durable</code></a> wrapper function.</p><div class="code-block" data-lang="kotlin">
+durable {
+  ChatRepositoryRpcApi.getInstanceAsync()
+    .getMessagesFlow(project.projectId())
+    .collect { valueFromBackend -&gt;
+      ... // process the message
+    }
+}
+</div><p id="z7r3dyo_116">It will retry the call in case discovery of the backend RPC implementation fails.</p><aside class="prompt" data-type="tip" data-title="" id="z7r3dyo_117"><p id="z7r3dyo_121">Consider using <code class="code" id="z7r3dyo_122">durable</code> especially when working with long-lived RPC flows, so that an exception there is handled properly and the corresponding feature keeps working.</p></aside></section></section></section><section class="chapter"><h2 id="serializable-types" data-toc="serializable-types">Serializable Types</h2><p id="z7r3dyo_123">All parameters and return types must be <code class="code" id="z7r3dyo_129">@Serializable</code>.</p><aside class="prompt" data-type="tip" data-title="" id="z7r3dyo_124"><p id="z7r3dyo_130">See the <a href="https://kotlinlang.org/docs/serialization.html" id="z7r3dyo_131" data-external="true" rel="noopener noreferrer" target="_blank">Kotlin serialization documentation</a> for more information about <code class="code" id="z7r3dyo_132">kotlinx.serialization</code>.</p></aside><p id="z7r3dyo_125">General rules:</p><ul class="list _bullet" id="z7r3dyo_126"><li class="list__item" id="z7r3dyo_133"><p id="z7r3dyo_136">Primitives, <code class="code" id="z7r3dyo_137">String</code>, <code class="code" id="z7r3dyo_138">Flow</code>, <code class="code" id="z7r3dyo_139">Deferred</code> are serializable by default.</p></li><li class="list__item" id="z7r3dyo_134"><p id="z7r3dyo_140">Enums are <span class="control" id="z7r3dyo_141">not serializable</span> by default and must be annotated with <code class="code" id="z7r3dyo_142">@Serializable</code>.</p></li><li class="list__item" id="z7r3dyo_135"><p id="z7r3dyo_143">For types like <code class="code" id="z7r3dyo_144">LocalDateTime</code>, implement a custom <code class="code" id="z7r3dyo_145">KSerializer</code> (see <a href="#data-transfer-objects" id="z7r3dyo_146">Data Transfer Objects</a>).</p></li></ul><section class="chapter"><h3 id="data-transfer-objects" data-toc="data-transfer-objects">Data Transfer Objects</h3><p id="z7r3dyo_147">Domain objects are not always directly serializable for transport over RPC.</p><p id="z7r3dyo_148">In the example plugin, <a href="https://github.com/JetBrains/intellij-platform-modular-plugin-template/blob/main/shared/src/main/kotlin/org/jetbrains/plugins/template/ChatMessage.kt" id="z7r3dyo_155" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="z7r3dyo_158">ChatMessage</code></a> is the domain model used on both sides, but it contains <code class="code" id="z7r3dyo_156">LocalDateTime</code>, which is not natively supported by <code class="code" id="z7r3dyo_157">kotlinx.serialization</code>.</p><p id="z7r3dyo_149">The solution is a dedicated DTO class in the shared module, for example, <a href="https://github.com/JetBrains/intellij-platform-modular-plugin-template/blob/main/shared/src/main/kotlin/org/jetbrains/plugins/template/dtos.kt" id="z7r3dyo_159" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="z7r3dyo_160">ChatMessageDto</code></a>:</p><div class="code-block" data-lang="kotlin">
+@Serializable
+data class ChatMessageDto(
+  val id: String,
+  val content: String,
+  val author: String,
+  val isMyMessage: Boolean,
+  @Serializable(with = LocalDateTimeSerializer::class)
+  val timestamp: LocalDateTime,
+  val type: ChatMessage.ChatMessageType
+)
+
+fun ChatMessageDto.toChatMessage(): ChatMessage { /* ... */ }
+fun ChatMessage.toChatMessageDto(): ChatMessageDto { /* ... */ }
+</div><p id="z7r3dyo_151">Custom <code class="code" id="z7r3dyo_161">KSerializer</code> implementations can handle types that are not natively serializable, for example, <a href="https://github.com/JetBrains/intellij-platform-modular-plugin-template/blob/main/shared/src/main/kotlin/org/jetbrains/plugins/template/serializers.kt" id="z7r3dyo_162" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="z7r3dyo_163">LocalDateTimeSerializer</code></a>:</p><div class="code-block" data-lang="kotlin">
+object LocalDateTimeSerializer : KSerializer&lt;LocalDateTime&gt; {
+  private val formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME
+
+  override val descriptor: SerialDescriptor =
+    PrimitiveSerialDescriptor(&quot;LocalDateTime&quot;, PrimitiveKind.STRING)
+
+  override fun serialize(encoder: Encoder, value: LocalDateTime) {
+    encoder.encodeString(value.format(formatter))
+  }
+
+  override fun deserialize(decoder: Decoder): LocalDateTime {
+    return LocalDateTime.parse(decoder.decodeString(), formatter)
+  }
+}
+</div><p id="z7r3dyo_153">The RPC interface uses the DTO, and each side converts to and from the domain model as needed:</p><ul class="list _bullet" id="z7r3dyo_154"><li class="list__item" id="z7r3dyo_164"><p id="z7r3dyo_166">Backend: converts <code class="code" id="z7r3dyo_167">ChatMessage -&gt; ChatMessageDto</code> before emitting via <code class="code" id="z7r3dyo_168">getMessagesFlow()</code></p></li><li class="list__item" id="z7r3dyo_165"><p id="z7r3dyo_169">Frontend: converts <code class="code" id="z7r3dyo_170">ChatMessageDto -&gt; ChatMessage</code> after receiving via <code class="code" id="z7r3dyo_171">toChatMessage()</code></p></li></ul></section><section class="chapter"><h3 id="id-types" data-toc="id-types">ID Types</h3><p id="z7r3dyo_172">To pass classes commonly used in IntelliJ Platform through RPC, use ID types and helper functions allowing to serialize and deserialize between the full and ID types:</p><div class="table-wrapper"><table class="wide" id="z7r3dyo_173"><thead><tr class="ijRowHead" id="z7r3dyo_175"><th id="z7r3dyo_180"><p>Full Type</p></th><th id="z7r3dyo_181"><p>ID Type</p></th><th id="z7r3dyo_182"><p>Serialization</p></th><th id="z7r3dyo_183"><p>Deserialization</p></th></tr></thead><tbody><tr id="z7r3dyo_176"><td id="z7r3dyo_184"><p><a href="https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/core-api/src/com/intellij/openapi/project/Project.java" id="z7r3dyo_188" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="z7r3dyo_189">Project</code></a></p></td><td id="z7r3dyo_185"><p><a href="https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/project/shared/src/ProjectId.kt" id="z7r3dyo_190" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="z7r3dyo_191">ProjectId</code></a></p></td><td id="z7r3dyo_186"><p><code class="code" id="z7r3dyo_192">Project.projectId()</code><br><code class="code" id="z7r3dyo_194">Project.projectIdOrNull()</code></p></td><td id="z7r3dyo_187"><p><code class="code" id="z7r3dyo_195">ProjectId.findProject()</code><br><code class="code" id="z7r3dyo_197">ProjectId.findProjectOrNull()</code></p></td></tr><tr id="z7r3dyo_177"><td id="z7r3dyo_198"><p><a href="https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/core-api/src/com/intellij/openapi/vfs/VirtualFile.java" id="z7r3dyo_202" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="z7r3dyo_203">VirtualFile</code></a></p></td><td id="z7r3dyo_199"><p><a href="https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/platform-impl/rpc/src/com/intellij/ide/vfs/VirtualFileId.kt" id="z7r3dyo_204" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="z7r3dyo_205">VirtualFileId</code></a></p></td><td id="z7r3dyo_200"><p><code class="code" id="z7r3dyo_206">VirtualFile.rpcId()</code></p></td><td id="z7r3dyo_201"><p><code class="code" id="z7r3dyo_207">VirtualFileId.virtualFile()</code></p></td></tr><tr id="z7r3dyo_178"><td id="z7r3dyo_208"><p><a href="https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/editor-ui-api/src/com/intellij/openapi/editor/Editor.java" id="z7r3dyo_212" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="z7r3dyo_213">Editor</code></a></p></td><td id="z7r3dyo_209"><p><a href="https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/platform-impl/src/com/intellij/openapi/editor/impl/EditorId.kt" id="z7r3dyo_214" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="z7r3dyo_215">EditorId</code></a></p></td><td id="z7r3dyo_210"><p><code class="code" id="z7r3dyo_216">Editor.editorId()</code><br><code class="code" id="z7r3dyo_218">Editor.editorIdOrNull()</code></p></td><td id="z7r3dyo_211"><p><code class="code" id="z7r3dyo_219">EditorId.findEditor()</code><br><code class="code" id="z7r3dyo_221">EditorId.findEditorOrNull()</code></p></td></tr><tr id="z7r3dyo_179"><td id="z7r3dyo_222"><p><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.desktop/javax/swing/Icon.html" id="z7r3dyo_226" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="z7r3dyo_227">Icon</code></a></p></td><td id="z7r3dyo_223"><p><a href="https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/platform-impl/rpc/src/com/intellij/ide/ui/icons/IconId.kt" id="z7r3dyo_228" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="z7r3dyo_229">IconId</code></a></p></td><td id="z7r3dyo_224"><p><code class="code" id="z7r3dyo_230">Icon.rpcId()</code><br><code class="code" id="z7r3dyo_232">Icon.rpcIdOrNull()</code></p></td><td id="z7r3dyo_225"><p><code class="code" id="z7r3dyo_233">IconId.icon()</code></p></td></tr></tbody></table></div><p id="z7r3dyo_174">Note that these objects are not fully serializable, so the frontend only receives parts of the backend object. If possible, use only IDs on the frontend and work with the full objects on the backend side.</p></section></section><section class="chapter"><h2 id="rpc-examples" data-toc="rpc-examples">RPC Examples</h2><section class="chapter"><h3 id="subscribing-to-the-backend-state" data-toc="subscribing-to-the-backend-state">Subscribing to the Backend State</h3><p id="z7r3dyo_236"><a href="https://github.com/JetBrains/intellij-platform-modular-plugin-template/blob/main/backend/src/main/kotlin/org/jetbrains/plugins/template/BackendChatRepositoryModel.kt" id="z7r3dyo_244" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="z7r3dyo_246">BackendChatRepositoryModel</code></a> holds a <code class="code" id="z7r3dyo_245">MutableStateFlow</code> of messages on the backend:</p><div class="code-block" data-lang="kotlin">
+@Service(Service.Level.PROJECT)
+class BackendChatRepositoryModel {
+  private val _messages = MutableStateFlow(
+     listOf(/* initial messages */)
+  )
+
+  fun getMessagesFlow(): Flow&lt;List&lt;ChatMessageDto&gt;&gt; {
+    return _messages.map { messagesList -&gt;
+      messagesList.map(ChatMessage::toChatMessageDto)
+    }
+  }
+
+  suspend fun sendMessage(messageContent: String) {
+    // appends to _messages, triggering flow emissions
+  }
+}
+</div><p id="z7r3dyo_238">The <a href="https://github.com/JetBrains/intellij-platform-modular-plugin-template/blob/main/backend/src/main/kotlin/org/jetbrains/plugins/template/BackendChatRepositoryRpcApi.kt" id="z7r3dyo_247" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="z7r3dyo_248">BackendChatRepositoryRpcApi</code></a> RPC implementation simply delegates to this service:</p><div class="code-block" data-lang="kotlin">
+class BackendChatRepositoryRpcApi : ChatRepositoryRpcApi {
+  override suspend fun getMessagesFlow(projectId: ProjectId): Flow&lt;List&lt;ChatMessageDto&gt;&gt; {
+    val backendProject = projectId.findProjectOrNull()
+      ?: return emptyFlow()
+    return BackendChatRepositoryModel.getInstance(backendProject)
+      .getMessagesFlow()
+  }
+}
+</div><p id="z7r3dyo_240">On the frontend, <a href="https://github.com/JetBrains/intellij-platform-modular-plugin-template/blob/main/frontend/src/main/kotlin/org/jetbrains/plugins/template/chatApp/viewmodel/FrontendChatRepositoryModel.kt" id="z7r3dyo_249" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="z7r3dyo_251">FrontendChatRepositoryModel</code></a> subscribes to this flow and exposes it as a <code class="code" id="z7r3dyo_250">StateFlow</code>:</p><div class="code-block" data-lang="kotlin">
+@Service(Level.PROJECT)
+class FrontendChatRepositoryModel(
+  private val project: Project,
+  coroutineScope: CoroutineScope
+) : ChatRepositoryApi {
+  override val messagesFlow: StateFlow&lt;List&lt;ChatMessage&gt;&gt; = flow {
+    durable {
+      ChatRepositoryRpcApi.getInstanceAsync()
+        .getMessagesFlow(project.projectId())
+        .collect { valueFromBackend -&gt;
+          val mappedValue = valueFromBackend.map { messageDto -&gt;
+            messageDto.toChatMessage()
+          }
+          emit(mappedValue)
+      }
+    }
+  }.stateIn(
+     coroutineScope,
+     initialValue = emptyList(),
+     started = SharingStarted.Lazily
+  )
+}
+</div><p id="z7r3dyo_242">In the code above, <code class="code" id="z7r3dyo_252">messagesFlow</code> is initialized with an empty list. Since services are initialized lazily, the first subscriber will trigger the RPC connection, but the state will be <code class="code" id="z7r3dyo_253">emptyList()</code> until the first backend emission arrives.</p><p id="z7r3dyo_243">If this matters for an implemented feature, make sure the service is initialized before its first use &mdash; for example, via subscribing to updates from the backend inside a dedicated <a href="https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/core-api/src/com/intellij/openapi/startup/StartupActivity.kt" id="z7r3dyo_254" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="z7r3dyo_255">ProjectActivity</code></a>.</p></section><section class="chapter"><h3 id="pushing-events-from-backend-to-frontend" data-toc="pushing-events-from-backend-to-frontend">Pushing Events from Backend to Frontend</h3><p id="z7r3dyo_256">To push events from the backend to the frontend without an explicit request, use <a href="https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/remote-topics/shared/src/com/intellij/platform/rpc/topics/ApplicationRemoteTopic.kt" id="z7r3dyo_267" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="z7r3dyo_269">ApplicationRemoteTopic</code></a> or <a href="https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/remote-topics/shared/src/com/intellij/platform/rpc/topics/ProjectRemoteTopic.kt" id="z7r3dyo_268" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="z7r3dyo_270">ProjectRemoteTopic</code></a> instead of a regular RPC call.</p><p id="z7r3dyo_257">Example:</p><ol class="list _decimal" id="z7r3dyo_258" type="1"><li class="list__item" id="z7r3dyo_271"><p id="z7r3dyo_272">Define topic and event in the shared module:</p></li></ol><div class="code-block" data-lang="kotlin">
+// shared module
+@Serializable
+data class NewMessageEvent(
+  val projectId: ProjectId,
+  val messageId: String
+)
+
+val NEW_MESSAGE_TOPIC: ProjectRemoteTopic&lt;NewMessageEvent&gt; =
+    ProjectRemoteTopic(&quot;chat.newMessage&quot;, NewMessageEvent.serializer())
+</div><ol class="list _decimal" id="z7r3dyo_260" type="1" start="2"><li class="list__item" id="z7r3dyo_273"><p id="z7r3dyo_274">Send events from the backend module:</p></li></ol><div class="code-block" data-lang="kotlin">
+// backend module
+class BackendChatRepositoryModel {
+  suspend fun sendMessage(messageContent: String) {
+    val userMessage = chatMessageFactory.createUserMessage(messageContent)
+    _messages.value += userMessage
+
+    NEW_MESSAGE_TOPIC.send(
+       NewMessageEvent(project.projectId(), userMessage.id)
+    )
+  }
+}
+</div><ol class="list _decimal" id="z7r3dyo_262" type="1" start="3"><li class="list__item" id="z7r3dyo_275"><p id="z7r3dyo_276">Handle events in the frontend module:</p></li></ol><div class="code-block" data-lang="kotlin">
+// frontend module
+class NewMessageEventListener : ProjectRemoteTopicListener&lt;NewMessageEvent&gt; {
+  override val topic = NEW_MESSAGE_TOPIC
+
+  override fun handleEvent(event: NewMessageEvent) {
+    // React to the new message event
+  }
+}
+</div><ol class="list _decimal" id="z7r3dyo_264" type="1" start="4"><li class="list__item" id="z7r3dyo_277"><p id="z7r3dyo_278">Register the listener via extension point in <code class="code" id="z7r3dyo_279">modular.plugin.frontend.xml</code>:</p></li></ol><div class="code-block" data-lang="markup">
+&lt;extensions defaultExtensionNs=&quot;com.intellij&quot;&gt;
+  &lt;platform.rpc.projectRemoteTopicListener
+    implementation=&quot;org.jetbrains.plugins.template.NewMessageEventListener&quot;/&gt;
+&lt;/extensions&gt;
+</div><aside class="prompt" data-type="tip" data-title="" id="z7r3dyo_266"><p id="z7r3dyo_280">See <code class="code" id="z7r3dyo_281">ApplicationRemoteTopic</code>/<code class="code" id="z7r3dyo_282">ProjectRemoteTopic</code>'s docs for more details.</p></aside></section></section><section class="chapter"><h2 id="faq" data-toc="faq">FAQ</h2><section class="chapter"><h3 id="what-to-do-with-abstractmethoderror" data-toc="what-to-do-with-abstractmethoderror">What to do with <code class="code" id="z7r3dyo_289">AbstractMethodError</code>?</h3><p id="z7r3dyo_286">If an error like this occurs:</p><div class="code-block" data-lang="none">
+java.lang.AbstractMethodError: Receiver class InterfaceApiClientStub
+does not define or inherit an implementation of the resolved method
+'abstract void foo()' of interface InterfaceApi.
+</div><p id="z7r3dyo_288">Make sure that all the functions in the interface are <code class="code" id="z7r3dyo_290">suspend</code>.</p></section><section class="chapter"><h3 id="how-to-efficiently-transfer-byte" data-toc="how-to-efficiently-transfer-byte">How to efficiently transfer <code class="code" id="z7r3dyo_296">byte[]</code>?</h3><p id="z7r3dyo_292">Wrap the data into a <a href="https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/fleet/rpc/srcCommonMain/fleet/rpc/core/Serialization.kt" id="z7r3dyo_297" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="z7r3dyo_298">fleet.rpc.core.Blob</code></a> for the sake of reducing the serialization overhead.</p><aside class="prompt" data-type="note" data-title="Something missing?" id="z7r3dyo_295"><p id="z7r3dyo_299">If a topic is not covered in the above sections, let us know via the <span class="control" id="z7r3dyo_301">Feedback</span> widget displayed on the right, or <a href="getting-help.html#problems-with-the-guide" id="z7r3dyo_302">other channels</a>.</p><p id="z7r3dyo_300">Be specific about the topics and reasons for adding them and leave your email in case we need more details. Thanks for your feedback!</p></aside></section></section><div class="last-modified">22 April 2026</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="split-mode-feature-development.html" class="navigation-links__prev">Implementing a Feature for Split Mode</a><a href="frontend-backend-shared-apis.html" class="navigation-links__next">Frontend, Backend, and Shared APIs</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.js"></script></body></html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF" data-resizable-sidebar="true"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="built-on" content="2026-06-21T21:30:54.909403"><!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5P98');</script>
+<!-- End Google Tag Manager -->
+<title>Web Types | IntelliJ Platform Plugin SDK</title><script type="application/json" id="virtual-toc-data">[{"id":"file-structure","level":0,"title":"File Structure","anchor":"#file-structure"},{"id":"including-web-types","level":0,"title":"Including Web Types","anchor":"#including-web-types"},{"id":"special-properties","level":0,"title":"Special Properties","anchor":"#special-properties"},{"id":"symbol-kinds","level":0,"title":"Symbol Kinds","anchor":"#symbol-kinds"},{"id":"direct-support","level":1,"title":"Direct Support","anchor":"#direct-support"},{"id":"angular","level":1,"title":"Angular","anchor":"#angular"},{"id":"vue","level":1,"title":"Vue","anchor":"#vue"},{"id":"web-components","level":1,"title":"Web Components","anchor":"#web-components"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.css" rel="stylesheet"><link rel="manifest" href="https://www.jetbrains.com/site.webmanifest"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content="https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png"><!-- Open Graph --><meta property="og:title" content="Web Types | IntelliJ Platform Plugin SDK"><meta property="og:description" content=""><meta property="og:image" content="https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png"><meta property="og:site_name" content="IntelliJ Platform Plugin SDK Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="https://plugins.jetbrains.com/docs/intellij/polysymbols-web-types.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@JBPlatform"><meta name="twitter:title" content="Web Types | IntelliJ Platform Plugin SDK"><meta name="twitter:description" content=""><meta name="twitter:creator" content="@JBPlatform"><meta name="twitter:image:src" content="https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png"><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "https://plugins.jetbrains.com/docs/intellij/polysymbols-web-types.html#webpage",
+    "url": "https://plugins.jetbrains.com/docs/intellij/polysymbols-web-types.html",
+    "name": "Web Types | IntelliJ Platform Plugin SDK",
+    "description": "",
+    "image": "https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "https://plugins.jetbrains.com/docs/intellij/#website",
+    "url": "https://plugins.jetbrains.com/docs/intellij/",
+    "name": "IntelliJ Platform Plugin SDK Help"
+}</script><!-- End Schema.org --></head><body data-id="polysymbols_web_types" data-main-title="Web Types" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="Custom Languages///custom_language_support.md|Custom Language Support///symbols.md|Symbols///polysymbols.md|Poly Symbols" data-edit-url="https://github.com/JetBrains/intellij-sdk-docs/edit/main/topics/reference_guide/custom_language_support/polysymbols_web_types.md"><!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5P98"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>IntelliJ Platform Plugin SDK  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="polysymbols_web_types" data-label-id="2025.2" id="polysymbols_web_types.md">Web Types</h1><p id="z14zxws_5">Web Types is a JSON metadata format, which provides an easy way to contribute statically defined Poly Symbols. The JSON Web Types detailed schema can be accessed by <a href="https://github.com/JetBrains/web-types/blob/master/schema/web-types.json" id="z14zxws_13" data-external="true" rel="noopener noreferrer" target="_blank">following this link</a>. The format is open source and IDE-agnostic by itself. However, currently it is being actively used mostly by JetBrains IDEs.</p><p id="z14zxws_6">Originally, it was created to facilitate the contribution of statically defined symbols for the <a href="https://vuejs.org/" id="z14zxws_14" data-external="true" rel="noopener noreferrer" target="_blank">Vue</a> framework, which may explain the presence of some deprecated properties in the schema.</p><p id="z14zxws_7">A simple Web Types file looks as follows, where this file defines a <code class="code" id="z14zxws_15">my-element</code> HTML element with a <code class="code" id="z14zxws_16">foo</code> attribute:</p><div class="code-block" data-lang="json">
+{
+  &quot;$schema&quot;: &quot;https://raw.githubusercontent.com/JetBrains/web-types/master/schema/web-types.json&quot;,
+  &quot;name&quot;: &quot;example&quot;,
+  &quot;version&quot;: &quot;0.0.1&quot;,
+  &quot;description-markup&quot;: &quot;markdown&quot;,
+  &quot;contributions&quot;: {
+    &quot;html&quot;: {
+      &quot;elements&quot;: [
+        {
+          &quot;name&quot;: &quot;my-element&quot;,
+          &quot;description&quot;: &quot;A custom HTML element&quot;,
+          &quot;doc-url&quot;: &quot;https://example.com/docs/my-element&quot;,
+          &quot;attributes&quot;: [
+            {
+              &quot;name&quot;: &quot;foo&quot;,
+              &quot;description&quot;: &quot;A custom attribute of `my-element`&quot;
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
+</div><section class="chapter"><h2 id="file-structure" data-toc="file-structure">File Structure</h2><p id="z14zxws_17">The Web Types file should, at least, contain <code class="code" id="z14zxws_25">name</code>, <code class="code" id="z14zxws_26">version</code> and <code class="code" id="z14zxws_27">contributions</code> properties. It should also include <code class="code" id="z14zxws_28">$schema</code> property which can be either <code class="code" id="z14zxws_29">https://raw.githubusercontent.com/JetBrains/web-types/master/schema/web-types.json</code> or <code class="code" id="z14zxws_30">http://json.schemastore.org/web-types</code>. The schema contains detailed documentation for all the JSON entities.</p><p id="z14zxws_18">Directly under <code class="code" id="z14zxws_31">contributions</code> property are listed namespaces with their contributions. Currently only <code class="code" id="z14zxws_32">html</code>, <code class="code" id="z14zxws_33">css</code> or <code class="code" id="z14zxws_34">js</code> namespaces are allowed. However, in the future this limitation will be lifted to support Web Types for other technologies.</p><p id="z14zxws_19">The <code class="code" id="z14zxws_35">namespace</code> object contains symbol kind names listed as properties. Some symbol kinds are predefined and directly supported by IDE (see <a href="#direct-support" id="z14zxws_36">Direct Support</a> for reference). The kind of symbol should be related to its role. For instance, a Vue directive should be of the kind <code class="code" id="z14zxws_37">vue-directives</code>. Each framework should define a set of custom symbol kinds if needed. Reference for the most important symbol kinds defined by frameworks supported by IDEs is below.</p><p id="z14zxws_20">Each symbol kind name property of a namespace object is an array of symbol contributions. A symbol contribution should have at least a name. Contributions in addition to standard properties can define sub-contributions and custom properties. A custom property is a JSON property, whose value is of a simple type (string, number or boolean), or is an array of simple types. If a contribution&rsquo;s JSON property&rsquo;s value is an object value or an array of objects, it is treated as a list of sub-contributions. Such contributions will be assigned to the same namespace as the parent contributions. To use a different namespace for sub-contributions, nest symbol kind JSON property name under a <code class="code" id="z14zxws_38">js</code>, <code class="code" id="z14zxws_39">css</code> or <code class="code" id="z14zxws_40">html</code> property, e.g.:</p><div class="code-block" data-lang="json">
+{
+  &quot;contributions&quot;: {
+    &quot;html&quot;: {
+      &quot;elements&quot;: [
+        {
+          &quot;name&quot;: &quot;my-element&quot;,
+          &quot;description&quot;: &quot;A custom HTML element&quot;,
+          &quot;attributes&quot;: [
+            {
+              &quot;name&quot;: &quot;foo&quot;,
+              &quot;description&quot;: &quot;A custom HTML attribute of `my-element`&quot;
+            }
+          ],
+          &quot;css&quot;: {
+            &quot;properties&quot;: [
+              {
+                &quot;name&quot;: &quot;--bg-color&quot;,
+                &quot;description&quot;: &quot;Background color of my-element&quot;
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
+</div><p id="z14zxws_22">In the example below, Web Types contributes information that the <code class="code" id="z14zxws_41">my-element</code> HTML element supports a custom CSS property <code class="code" id="z14zxws_42">--bg-color</code>. The <code class="code" id="z14zxws_43">attributes</code> are implicitly under the <code class="code" id="z14zxws_44">html</code> namespace. To contribute a <code class="code" id="z14zxws_45">foo</code> attribute, one could also write it in longer form:</p><div class="code-block" data-lang="json">
+{
+  &quot;name&quot;: &quot;my-element&quot;,
+  &quot;description&quot;: &quot;A custom HTML element&quot;,
+  &quot;html&quot;: {
+    &quot;attributes&quot;: [
+      {
+        &quot;name&quot;: &quot;foo&quot;,
+        &quot;description&quot;: &quot;A custom attribute of `my-element`&quot;
+      }
+    ]
+  }
+}
+</div><p id="z14zxws_24">Each Web Types contribution is represented in the Poly Symbols framework by a <a href="https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/polySymbols/src/com/intellij/polySymbols/search/PsiSourcedPolySymbol.kt" id="z14zxws_46" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="z14zxws_48">PsiSourcedPolySymbol</code></a> object. All the Web Types contributions are mapped one-to-one, and custom properties are accessible through <code class="code" id="z14zxws_47">properties</code> property.</p></section><section class="chapter"><h2 id="including-web-types" data-toc="including-web-types">Including Web Types</h2><p id="z14zxws_49">Web Types can currently be discovered by the IDE in the following ways:</p><dl id="z14zxws_50" data-style="title-top"><dt id="z14zxws_51" data-expandable="false">NPM</dt><dd><p id="z14zxws_55">The IDE will automatically discover any Web Types shipped with the NPM library and specified in the <code class="code" id="z14zxws_56">web-types</code> property of <code class="code" id="z14zxws_57">package.json</code>. The property accepts a string or an array of strings with relative paths to Web Types files shipped with the package.</p></dd><dt id="z14zxws_52" data-expandable="false">Local Project</dt><dd><p id="z14zxws_59">In your JavaScript projects in <code class="code" id="z14zxws_60">package.json</code> files, you can specify <code class="code" id="z14zxws_61">web-types</code> property similarly to the NPM package. The property accepts a string or an array of strings with relative paths to Web Types files within the project.</p></dd><dt id="z14zxws_53" data-expandable="false">IDE Plugin</dt><dd><p id="z14zxws_63">You can ship Web Types JSON with your IDE plugin. To point an IDE to its location, use <a href="https://jb.gg/ipe?extensions=com.intellij.polySymbols.webTypes" id="z14zxws_68" data-tooltip="Browse usages in existing implementations of open-source plugins" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="z14zxws_69">com.intellij.polySymbols.webTypes</code></a> extension point and pass the file location in <code class="code" id="z14zxws_65">source</code> attribute value. With <code class="code" id="z14zxws_66">enableByDefault</code> attribute, you can choose whether the Web Types file should be contributed to Poly Symbols scope by default, or only if an NPM package with the same name is present in the project.</p></dd></dl></section><section class="chapter"><h2 id="special-properties" data-toc="special-properties">Special Properties</h2><dl id="z14zxws_70" data-style="title-top"><dt id="z14zxws_71" data-expandable="false"><code class="code" id="z14zxws_76">inject-language</code></dt><dd><p id="z14zxws_75">Supported by <code class="code" id="z14zxws_77">html/elements</code> and <code class="code" id="z14zxws_78">html/attributes</code>, allows to inject the specified language into HTML element text or HTML attribute value.</p></dd><dt id="z14zxws_72" data-expandable="false"><code class="code" id="z14zxws_81">doc-hide-pattern</code></dt><dd><p id="z14zxws_80">If a symbol uses a RegEx pattern, usually it will be displayed in a documentation popup section &quot;pattern&quot;. Setting this property to <code class="code" id="z14zxws_82">true</code> hides that section.</p></dd><dt id="z14zxws_73" data-expandable="false"><code class="code" id="z14zxws_85">hide-from-completion</code></dt><dd><p id="z14zxws_84">By default, all symbols show up in code completion. Setting this property to <code class="code" id="z14zxws_86">true</code> prevents a symbol from showing up in the code completion.</p></dd></dl></section><section class="chapter"><h2 id="symbol-kinds" data-toc="symbol-kinds">Symbol Kinds</h2><p id="z14zxws_87">Web Types files are used internally by IDEs and tools to define rules for frameworks. Following is the reference for symbol kinds used by framework support.</p><section class="chapter"><h3 id="direct-support" data-toc="direct-support">Direct Support</h3><p id="z14zxws_92">IDEs provide direct support for the following symbol kinds:</p><ul class="list _bullet" id="z14zxws_93"><li class="list__item" id="z14zxws_95"><p id="z14zxws_103"><code class="code" id="z14zxws_104">html/elements</code></p></li><li class="list__item" id="z14zxws_96"><p id="z14zxws_105"><code class="code" id="z14zxws_106">html/attributes</code></p></li><li class="list__item" id="z14zxws_97"><p id="z14zxws_107"><code class="code" id="z14zxws_108">css/properties</code></p></li><li class="list__item" id="z14zxws_98"><p id="z14zxws_109"><code class="code" id="z14zxws_110">css/pseudo-classes</code></p></li><li class="list__item" id="z14zxws_99"><p id="z14zxws_111"><code class="code" id="z14zxws_112">css/pseudo-elements</code></p></li><li class="list__item" id="z14zxws_100"><p id="z14zxws_113"><code class="code" id="z14zxws_114">css/functions</code></p></li><li class="list__item" id="z14zxws_101"><p id="z14zxws_115"><code class="code" id="z14zxws_116">css/classes</code></p></li><li class="list__item" id="z14zxws_102"><p id="z14zxws_117"><code class="code" id="z14zxws_118">css/parts</code> (<span class="emphasis" id="z14zxws_119">since 2023.2</span>)</p></li></ul><p id="z14zxws_94">Prior to 2023.1, IDEs were required to have JavaScript plugin installed for the support to work.</p></section><section class="chapter"><h3 id="angular" data-toc="angular">Angular</h3><p id="z14zxws_120">Angular plugin Web Types are available <a href="https://github.com/JetBrains/intellij-plugins/tree/idea/261.25134.95/Angular/angular-backend/resources/web-types" id="z14zxws_122" data-external="true" rel="noopener noreferrer" target="_blank">here</a> for reference. Any Web Types file targeting only Angular support should have <code class="code" id="z14zxws_123">framework</code> property set to <code class="code" id="z14zxws_124">angular</code>. Highlights: <code class="code" id="z14zxws_125">js/ng-custom-events</code> contribute symbols with patterns for any custom events supported by Angular <code class="code" id="z14zxws_126">EventManager</code>s, e.g.:</p><div class="code-block" data-lang="json">
+{
+  &quot;ng-custom-events&quot;: [
+    {
+      &quot;name&quot;: &quot;Custom modifiers for declarative events handling&quot;,
+      &quot;priority&quot;: &quot;normal&quot;,
+      &quot;pattern&quot;: {
+        &quot;template&quot;: [
+          {
+            &quot;items&quot;: {
+              &quot;path&quot;: &quot;/js/events&quot;,
+              &quot;includeVirtual&quot;: false
+            }
+          },
+          {
+            &quot;items&quot;: &quot;ng-event-plugins-modifiers&quot;,
+            &quot;template&quot;: [
+              &quot;.&quot;,
+              &quot;#...&quot;,
+              &quot;#item:modifiers&quot;
+            ],
+            &quot;priority&quot;: &quot;high&quot;,
+            &quot;repeat&quot;: true,
+            &quot;unique&quot;: true,
+            &quot;required&quot;: false
+          }
+        ]
+      },
+      &quot;ng-event-plugins-modifiers&quot;: [
+        {
+          &quot;name&quot;: &quot;prevent&quot;
+        },
+        {
+          &quot;name&quot;: &quot;stop&quot;
+        }
+      ]
+    }
+  ]
+}
+</div></section><section class="chapter"><h3 id="vue" data-toc="vue">Vue</h3><p id="z14zxws_127">Vue plugin Web Types are available <a href="https://github.com/JetBrains/intellij-plugins/tree/idea/261.25134.95/vuejs/vuejs-backend/resources/web-types" id="z14zxws_133" data-external="true" rel="noopener noreferrer" target="_blank">here</a> for reference. Any Web Types file targeting only Vue support should have <code class="code" id="z14zxws_134">framework</code> property set to <code class="code" id="z14zxws_135">vue</code>. Highlights:</p><dl id="z14zxws_128" data-style="title-top"><dt id="z14zxws_136" data-expandable="false"><code class="code" id="z14zxws_141">/html/vue-components</code></dt><dd><p id="z14zxws_140">Use <code class="code" id="z14zxws_142">/html/vue-components</code> to contribute Vue components.</p></dd><dt id="z14zxws_137" data-expandable="false"><code class="code" id="z14zxws_146">/html/vue-directives</code></dt><dd><p id="z14zxws_144">Use <code class="code" id="z14zxws_147">/html/vue-directives</code> to contribute Vue directives. Use <code class="code" id="z14zxws_148">attribute-value</code> property to specify the type of value expression. E.g.:</p><div class="code-block" data-lang="json">
+{
+  &quot;attribute-value&quot;: {
+    &quot;type&quot;: &quot;boolean&quot;,
+    &quot;required&quot;: true
+  }
+}
+</div></dd><dt id="z14zxws_138" data-expandable="false"><code class="code" id="z14zxws_151">/html/vue-file-top-elements</code></dt><dd><p id="z14zxws_150">Use <code class="code" id="z14zxws_152">/html/vue-file-top-elements</code> to contribute any custom top-level elements available in Vue Single Component File</p></dd></dl><p id="z14zxws_129">A Vue <code class="code" id="z14zxws_153">/html/vue-components</code> contribution supports:</p><dl id="z14zxws_130" data-style="title-top"><dt id="z14zxws_154" data-expandable="false"><code class="code" id="z14zxws_161">/html/props</code></dt><dd><p id="z14zxws_159">Use <code class="code" id="z14zxws_162">/html/props</code> to contribute Vue component props, e.g:</p><div class="code-block" data-lang="json">
+{
+  &quot;props&quot;: [{
+    &quot;name&quot;: &quot;appear&quot;,
+    &quot;description&quot;: &quot;Whether to apply transition on initial render.&quot;,
+    &quot;type&quot;: &quot;boolean&quot;,
+    &quot;default&quot;: &quot;false&quot;
+  }]
+}
+</div></dd><dt id="z14zxws_155" data-expandable="false"><code class="code" id="z14zxws_166">/html/slots</code></dt><dd><p id="z14zxws_164">Use <code class="code" id="z14zxws_167">/html/slots</code> to contribute Vue component slots. For scoped slots, use <code class="code" id="z14zxws_168">vue-properties</code> to provide a list of scoped slot properties. Example:</p><div class="code-block" data-lang="json">
+{
+  &quot;slots&quot;: [{
+    &quot;name&quot;: &quot;img&quot;,
+    &quot;description&quot;: &quot;Expects the [v-img](/components/images) component.&quot;,
+    &quot;doc-url&quot;: &quot;https://vuetifyjs.com/en/api/v-app-bar/#slots&quot;,
+    &quot;vue-properties&quot;: [
+      {
+        &quot;name&quot;: &quot;props&quot;,
+        &quot;type&quot;: &quot;{ height: string, src: string | srcObject }&quot;
+      }
+    ]
+  }]
+}
+</div></dd><dt id="z14zxws_156" data-expandable="false"><code class="code" id="z14zxws_172">/js/events</code></dt><dd><p id="z14zxws_170">Use <code class="code" id="z14zxws_173">/js/events</code> to contribute Vue component events, e.g.:</p><div class="code-block" data-lang="json">
+{
+  &quot;js&quot;: {
+    &quot;events&quot;: [
+      {
+        &quot;name&quot;: &quot;input&quot;,
+        &quot;description&quot;: &quot;The updated bound model&quot;
+      }
+    ]
+  }
+}
+</div></dd><dt id="z14zxws_157" data-expandable="false"><code class="code" id="z14zxws_177">html/vue-model</code></dt><dd><p id="z14zxws_175">Use <code class="code" id="z14zxws_178">html/vue-model</code> to contribute settings for Vue model directive. E.g.:</p><div class="code-block" data-lang="json">
+{
+  &quot;vue-model&quot;: {
+    &quot;prop&quot;: &quot;show&quot;,
+    &quot;event&quot;: &quot;input&quot;
+  }
+}
+</div></dd></dl><p id="z14zxws_131">A Vue <code class="code" id="z14zxws_179">/html/vue-directives</code> contribution supports:</p><dl id="z14zxws_132" data-style="title-top"><dt id="z14zxws_180" data-expandable="false"><code class="code" id="z14zxws_185">/html/argument</code></dt><dd><p id="z14zxws_183">Use <code class="code" id="z14zxws_186">/html/argument</code> as a Vue directive argument. E.g.:</p><div class="code-block" data-lang="json">
+{
+  &quot;argument&quot;: {
+    &quot;name&quot;: &quot;attribute or property name&quot;,
+    &quot;description&quot;: &quot;Optional attribute or property name&quot;,
+    &quot;pattern&quot;: {
+      &quot;items&quot;: [
+        {
+          &quot;path&quot;: &quot;/html/attributes&quot;,
+          &quot;includeVirtual&quot;: false
+        }
+      ]
+    }
+  }
+}
+</div></dd><dt id="z14zxws_181" data-expandable="false"><code class="code" id="z14zxws_190">/html/modifiers</code></dt><dd><p id="z14zxws_188">Use <code class="code" id="z14zxws_191">/html/modifiers</code> as a Vue directive modifier. E.g.:</p><div class="code-block" data-lang="json">
+{
+  &quot;modifiers&quot;: [
+    {
+      &quot;name&quot;: &quot;body&quot;,
+      &quot;description&quot;: &quot;Make the mask append to the body element&quot;,
+      &quot;type&quot;: &quot;boolean&quot;
+    },
+    {
+      &quot;name&quot;: &quot;fullscreen&quot;,
+      &quot;type&quot;: &quot;boolean&quot;
+    }
+  ]
+}
+</div></dd></dl></section><section class="chapter"><h3 id="web-components" data-toc="web-components">Web Components</h3><p id="z14zxws_192">For Lit support, install it in your Node project as a <code class="code" id="z14zxws_197">devDependency</code> <code class="code" id="z14zxws_198">@web-types/lit</code>. Web Types are available <a href="https://github.com/JetBrains/web-types/blob/master/packages/lit/lit%402.0.0/lit.web-types.json" id="z14zxws_199" data-external="true" rel="noopener noreferrer" target="_blank">here</a> for reference.</p><p id="z14zxws_193">Web Components should use:</p><ul class="list _bullet" id="z14zxws_194"><li class="list__item" id="z14zxws_200"><p id="z14zxws_203"><code class="code" id="z14zxws_204">/html/attributes</code>: for attributes available in HTML</p></li><li class="list__item" id="z14zxws_201"><p id="z14zxws_205"><code class="code" id="z14zxws_206">/js/properties</code>: for Web Component DOM class properties</p></li><li class="list__item" id="z14zxws_202"><p id="z14zxws_207"><code class="code" id="z14zxws_208">/js/events</code>: for Web Component events</p></li></ul><p id="z14zxws_195">Example Web Component:</p><div class="code-block" data-lang="json">
+{
+  &quot;$schema&quot;: &quot;https://raw.githubusercontent.com/JetBrains/web-types/master/schema/web-types.json&quot;,
+  &quot;name&quot;: &quot;Cool library&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;js-types-syntax&quot;: &quot;typescript&quot;,
+  &quot;description-markup&quot;: &quot;markdown&quot;,
+  &quot;contributions&quot;: {
+    &quot;html&quot;: {
+      &quot;elements&quot;: [
+        {
+          &quot;name&quot;: &quot;cool-component&quot;,
+          &quot;description&quot;: &quot;Use the cool component to make your website more attractive.&quot;,
+          &quot;doc-url&quot;: &quot;https://example.com/docs/cool-component&quot;,
+          &quot;attributes&quot;: [
+            {
+              &quot;name&quot;: &quot;color&quot;,
+              &quot;description&quot;: &quot;Choose color for coolness&quot;,
+              &quot;default&quot;: &quot;blue&quot;,
+              &quot;required&quot;: false,
+              &quot;doc-url&quot;: &quot;https://example.com/docs/cool-component#attrs&quot;,
+              &quot;value&quot;: {
+                &quot;type&quot;: &quot;string&quot;
+              }
+            }
+          ],
+          &quot;slots&quot;: [
+            {
+              &quot;name&quot;: &quot;container&quot;
+            }
+          ],
+          &quot;events&quot;: [
+            {
+              &quot;name&quot;: &quot;color:changed&quot;,
+              &quot;description&quot;: &quot;Emitted when color changes&quot;
+            }
+          ],
+          &quot;js&quot;: {
+            &quot;properties&quot;: [
+              {
+                &quot;name&quot;: &quot;color&quot;,
+                &quot;type&quot;: &quot;string&quot;,
+                &quot;default&quot;: &quot;blue&quot;
+              }
+            ]
+          },
+          &quot;css&quot;: {
+            &quot;properties&quot;: [
+              {
+                &quot;name&quot;: &quot;--cool-degree&quot;
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
+</div></section></section><div class="last-modified">22 April 2026</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="polysymbols-context.html" class="navigation-links__prev">Poly Symbols Context</a><a href="navigation.html" class="navigation-links__next">Navigation</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.js"></script></body></html>

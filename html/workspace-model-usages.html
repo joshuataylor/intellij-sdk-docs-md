@@ -1,0 +1,230 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF" data-resizable-sidebar="true"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="built-on" content="2026-06-21T21:30:55.474079"><!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5P98');</script>
+<!-- End Google Tag Manager -->
+<title>Usage Examples | IntelliJ Platform Plugin SDK</title><script type="application/json" id="virtual-toc-data">[{"id":"module","level":0,"title":"Module","anchor":"#module"},{"id":"search-module-by-name","level":1,"title":"Search Module by Name","anchor":"#search-module-by-name"},{"id":"rename-module","level":1,"title":"Rename Module","anchor":"#rename-module"},{"id":"moduleentity-creation","level":1,"title":"ModuleEntity Creation","anchor":"#moduleentity-creation"},{"id":"add-library-dependency-to-module","level":1,"title":"Add Library Dependency to Module","anchor":"#add-library-dependency-to-module"},{"id":"searching-for-module-containing-path","level":1,"title":"Searching for Module-Containing Path","anchor":"#searching-for-module-containing-path"},{"id":"library","level":0,"title":"Library","anchor":"#library"},{"id":"libraryentity-creation","level":1,"title":"LibraryEntity Creation","anchor":"#libraryentity-creation"},{"id":"searching-for-library-by-root-type-and-url","level":1,"title":"Searching for Library by Root Type and URL","anchor":"#searching-for-library-by-root-type-and-url"},{"id":"roots","level":0,"title":"Roots","anchor":"#roots"},{"id":"add-content-root-and-source-root-for-module","level":1,"title":"Add Content Root and Source Root for Module","anchor":"#add-content-root-and-source-root-for-module"},{"id":"adding-different-types-of-library-roots","level":1,"title":"Adding Different Types of Library Roots","anchor":"#adding-different-types-of-library-roots"},{"id":"miscellaneous","level":0,"title":"Miscellaneous","anchor":"#miscellaneous"},{"id":"migration-of-caches-relying-on-librarymodule","level":1,"title":"Migration of Caches Relying on Library/Module","anchor":"#migration-of-caches-relying-on-librarymodule"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.css" rel="stylesheet"><link rel="manifest" href="https://www.jetbrains.com/site.webmanifest"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content="https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png"><!-- Open Graph --><meta property="og:title" content="Usage Examples | IntelliJ Platform Plugin SDK"><meta property="og:description" content=""><meta property="og:image" content="https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png"><meta property="og:site_name" content="IntelliJ Platform Plugin SDK Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="https://plugins.jetbrains.com/docs/intellij/workspace-model-usages.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@JBPlatform"><meta name="twitter:title" content="Usage Examples | IntelliJ Platform Plugin SDK"><meta name="twitter:description" content=""><meta name="twitter:creator" content="@JBPlatform"><meta name="twitter:image:src" content="https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png"><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "https://plugins.jetbrains.com/docs/intellij/workspace-model-usages.html#webpage",
+    "url": "https://plugins.jetbrains.com/docs/intellij/workspace-model-usages.html",
+    "name": "Usage Examples | IntelliJ Platform Plugin SDK",
+    "description": "",
+    "image": "https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "https://plugins.jetbrains.com/docs/intellij/#website",
+    "url": "https://plugins.jetbrains.com/docs/intellij/",
+    "name": "IntelliJ Platform Plugin SDK Help"
+}</script><!-- End Schema.org --></head><body data-id="workspace_model_usages" data-main-title="Usage Examples" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="Project Structure///workspace_model.md|Workspace Model" data-edit-url="https://github.com/JetBrains/intellij-sdk-docs/edit/main/topics/reference_guide/workspace_model/workspace_model_usages.md"><!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5P98"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>IntelliJ Platform Plugin SDK  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="workspace_model_usages" data-label-id="2024.2" id="workspace_model_usages.md">Usage Examples</h1><p id="z3qbwq6_5">See also <a href="workspace-model-entity-mutation.html" id="z3qbwq6_10" data-tooltip="Workspace Model Entity mutation">Entity Mutation</a> and <a href="workspace-model-entity-read.html" id="z3qbwq6_11" data-tooltip="Entity read of Workspace Entities">Entity Read</a> topics.</p><section class="chapter"><h2 id="module" data-toc="module">Module</h2><section class="chapter"><h3 id="search-module-by-name" data-toc="search-module-by-name">Search Module by Name</h3><div class="code-block" data-lang="kotlin">
+val moduleId = ModuleId(&quot;moduleName&quot;)
+val entityStorage: ImmutableEntityStorage =
+  WorkspaceModel.getInstance(project).currentSnapshot
+entityStorage.resolve(moduleId)
+</div></section><section class="chapter"><h3 id="rename-module" data-toc="rename-module">Rename Module</h3><div class="code-block" data-lang="kotlin">
+val workspaceModel = WorkspaceModel.getInstance(project)
+val moduleEntity: ModuleEntity =
+  workspaceModel.currentSnapshot.resolve(ModuleId(moduleName))
+writeAction {
+  workspaceModel.update(&quot;Change module name&quot;) { builder -&gt;
+    builder.modifyModuleEntity(moduleEntity) {
+      this.name = newModuleName
+    }
+  }
+}
+</div></section><section class="chapter"><h3 id="moduleentity-creation" data-toc="moduleentity-creation"><code class="code" id="z3qbwq6_22">ModuleEntity</code> Creation</h3><p id="z3qbwq6_20">Creating a new <a href="https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/workspace/jps/src/com/intellij/platform/workspace/jps/entities/module.kt" id="z3qbwq6_23" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="z3qbwq6_26">ModuleEntity</code></a>, the legacy bridge will be created by the platform. An important part here is the entity source. To serialize an entity in project configuration files under the <span class="filepath" id="z3qbwq6_24">.idea</span> folder, use <a href="https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/workspace/jps/src/com/intellij/platform/workspace/jps/jpsEntitySources.kt" id="z3qbwq6_25" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="z3qbwq6_27">JpsProjectFileEntitySource</code></a>.</p><div class="tabs" id="z3qbwq6_21" data-anchors="[z3qbwq6_28,z3qbwq6_29]"><div class="tabs__content" data-gtm="tab" id="z3qbwq6_28" data-title="2024.3+"><div class="code-block" data-lang="kotlin" data-title="Kotlin">
+import com.intellij.workspaceModel.ide.legacyBridge.LegacyBridgeJpsEntitySourceFactory
+// ...
+
+val workspaceModel = WorkspaceModel.getInstance(project)
+val moduleId = ModuleId(moduleName)
+if (moduleId in workspaceModel.currentSnapshot) {
+  // Module with such `ModuleId` already exists
+  ...
+}
+
+val baseModuleDir = workspaceModel.getVirtualFileUrlManager()
+  .getOrCreateFromUrl(&quot;file://foo/bar&quot;)
+val moduleEntitySource =
+    LegacyBridgeJpsEntitySourceFactory.getInstance(project)
+        .createEntitySourceForModule(baseModuleDir, null)
+WorkspaceModel.getInstance(project).update(&quot;Add new module&quot;) { builder -&gt;
+  val moduleEntity =
+      ModuleEntity(moduleName, emptyList(), moduleEntitySource)
+  builder.addEntity(moduleEntity)
+}
+</div></div><div class="tabs__content" data-gtm="tab" id="z3qbwq6_29" data-title="2024.2"><div class="code-block" data-lang="kotlin" data-title="Kotlin">
+import com.intellij.workspaceModel.ide.impl.LegacyBridgeJpsEntitySourceFactory
+// ...
+
+val workspaceModel = WorkspaceModel.getInstance(project)
+val moduleId = ModuleId(moduleName)
+if (moduleId in workspaceModel.currentSnapshot) {
+  // Module with such `ModuleId` already exists
+  ...
+}
+
+val baseModuleDir = workspaceModel.getVirtualFileUrlManager()
+  .getOrCreateFromUrl(&quot;file://foo/bar&quot;)
+val moduleEntitySource =
+    LegacyBridgeJpsEntitySourceFactory
+        .createEntitySourceForModule(project, baseModuleDir, null)
+WorkspaceModel.getInstance(project).update(&quot;Add new module&quot;) { builder -&gt;
+  val moduleEntity =
+      ModuleEntity(moduleName, emptyList(), moduleEntitySource)
+  builder.addEntity(moduleEntity)
+}
+</div><aside class="prompt" data-type="tip" data-title="" id="z3qbwq6_33"><p id="z3qbwq6_34">Note that <a href="https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/projectModel-impl/src/com/intellij/workspaceModel/ide/impl/LegacyBridgeJpsEntitySourceFactory.kt" id="z3qbwq6_35" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="z3qbwq6_36">LegacyBridgeJpsEntitySourceFactory</code></a> is an internal API. It is exceptionally allowed to use it in plugins.</p></aside></div></div></section><section class="chapter"><h3 id="add-library-dependency-to-module" data-toc="add-library-dependency-to-module">Add Library Dependency to Module</h3><p id="z3qbwq6_37">A project-level library is added as a dependency to the module.</p><div class="code-block" data-lang="kotlin">
+val workspaceModel = WorkspaceModel.getInstance(project)
+val moduleEntity = workspaceModel.currentSnapshot
+  .resolve(ModuleId(moduleName)) ?: return
+workspaceModel.update(&quot;Adding new module dependency&quot;) { builder -&gt;
+  builder.modifyModuleEntity(moduleEntity) {
+    val libraryId = LibraryId(
+      libraryName,
+      LibraryTableId.ProjectLibraryTableId
+    )
+    this.dependencies.add(
+      LibraryDependency(libraryId, false, DependencyScope.COMPILE)
+    )
+  }
+}
+</div></section><section class="chapter"><h3 id="searching-for-module-containing-path" data-toc="searching-for-module-containing-path">Searching for Module-Containing Path</h3><p id="z3qbwq6_39">Search for content roots and source roots with required URLs and determine the <code class="code" id="z3qbwq6_41">ModuleEntity</code> to which they belong.</p><div class="code-block" data-lang="kotlin">
+val workspaceModel = WorkspaceModel.getInstance(project)
+val virtualFileUrl = workspaceModel.getVirtualFileUrlManager()
+  .getOrCreateFromUrl(&quot;file://foo/bar/src&quot;)
+
+workspaceModel.currentSnapshot.getVirtualFileUrlIndex()
+  .findEntitiesByUrl(virtualFileUrl)
+  .mapNotNull {
+    if (it is SourceRootEntity) {
+      it.contentRoot.module
+    } else if (it is ContentRootEntity) {
+      it.module
+    } else {
+      null
+    }
+  }
+</div></section></section><section class="chapter"><h2 id="library" data-toc="library">Library</h2><section class="chapter"><h3 id="libraryentity-creation" data-toc="libraryentity-creation"><code class="code" id="z3qbwq6_47">LibraryEntity</code> Creation</h3><p id="z3qbwq6_45">Creating a new <a href="https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/workspace/jps/src/com/intellij/platform/workspace/jps/entities/dependencies.kt" id="z3qbwq6_48" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="z3qbwq6_49">LibraryEntity</code></a>, the legacy bridge will be created by the platform.</p><div class="tabs" id="z3qbwq6_46" data-anchors="[z3qbwq6_50,z3qbwq6_51]"><div class="tabs__content" data-gtm="tab" id="z3qbwq6_50" data-title="2024.3+"><div class="code-block" data-lang="kotlin" data-title="Kotlin">
+import com.intellij.workspaceModel.ide.legacyBridge.LegacyBridgeJpsEntitySourceFactory
+// ...
+
+val currentSnapshot = WorkspaceModel.getInstance(project).currentSnapshot
+val libraryTableId = LibraryTableId.ProjectLibraryTableId
+
+val libraryId = LibraryId(libraryName, libraryTableId)
+if (libraryId in currentSnapshot) {
+  // Library with such `LibraryId` already exist
+  ...
+}
+
+val libraryEntitySource =
+    LegacyBridgeJpsEntitySourceFactory.getInstance(project)
+        .createEntitySourceForProjectLibrary(null)
+val libraryEntity = LibraryEntity(
+  libraryName,
+  libraryTableId, emptyList(),
+  libraryEntitySource
+)
+WorkspaceModel.getInstance(project).update(&quot;Add new library&quot;) { builder -&gt;
+  builder.addEntity(libraryEntity)
+}
+</div></div><div class="tabs__content" data-gtm="tab" id="z3qbwq6_51" data-title="2024.2"><div class="code-block" data-lang="kotlin" data-title="Kotlin">
+import com.intellij.workspaceModel.ide.impl.LegacyBridgeJpsEntitySourceFactory
+// ...
+
+val currentSnapshot = WorkspaceModel.getInstance(project).currentSnapshot
+val libraryTableId = LibraryTableId.ProjectLibraryTableId
+
+val libraryId = LibraryId(libraryName, libraryTableId)
+if (libraryId in currentSnapshot) {
+  // Library with such `LibraryId` already exist
+  ...
+}
+
+val libraryEntitySource =
+    LegacyBridgeJpsEntitySourceFactory
+        .createEntitySourceForProjectLibrary(project, null)
+val libraryEntity = LibraryEntity(
+  libraryName,
+  libraryTableId, emptyList(),
+  libraryEntitySource
+)
+WorkspaceModel.getInstance(project).update(&quot;Add new library&quot;) { builder -&gt;
+  builder.addEntity(libraryEntity)
+}
+</div><aside class="prompt" data-type="tip" data-title="" id="z3qbwq6_86"><p id="z3qbwq6_87">Note that <a href="https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/projectModel-impl/src/com/intellij/workspaceModel/ide/impl/LegacyBridgeJpsEntitySourceFactory.kt" id="z3qbwq6_88" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="z3qbwq6_89">LegacyBridgeJpsEntitySourceFactory</code></a> is an internal API. It is exceptionally allowed to use it in plugins.</p></aside></div></div></section><section class="chapter"><h3 id="searching-for-library-by-root-type-and-url" data-toc="searching-for-library-by-root-type-and-url">Searching for Library by Root Type and URL</h3><div class="code-block" data-lang="kotlin">
+val workspaceModel = WorkspaceModel.getInstance(project)
+val virtualFileUrlManager = workspaceModel.getVirtualFileUrlManager()
+// URL that we will look for in library entities
+val virtualFileUrl = virtualFileUrlManager
+  .getOrCreateFromUrl(&quot;file://foo/bar&quot;)
+workspaceModel.currentSnapshot.getVirtualFileUrlIndex()
+  .findEntitiesByUrl(virtualFileUrl).filterIsInstance&lt;LibraryEntity&gt;().filter {
+    it.roots.any {
+      it.url == virtualFileUrl &amp;&amp;
+              it.type == LibraryRootTypeId.SOURCES
+    }
+  }
+</div></section></section><section class="chapter"><h2 id="roots" data-toc="roots">Roots</h2><section class="chapter"><h3 id="add-content-root-and-source-root-for-module" data-toc="add-content-root-and-source-root-for-module">Add Content Root and Source Root for Module</h3><div class="code-block" data-lang="kotlin">
+val workspaceModel = WorkspaceModel.getInstance(project)
+val virtualFileUrlManager = workspaceModel.getVirtualFileUrlManager()
+
+val moduleEntity = workspaceModel.currentSnapshot
+  .resolve(ModuleId(moduleName)) ?: ...
+val contentRootUrl = virtualFileUrlManager
+  .getOrCreateFromUrl(&quot;file://foo/bar&quot;)
+val sourceRootUrl = virtualFileUrlManager
+  .getOrCreateFromUrl(&quot;file://foo/bar/src&quot;)
+workspaceModel.update(&quot;Adding source root&quot;) { builder -&gt;
+  val contentRootEntity = ContentRootEntity(contentRootUrl, emptyList(), moduleEntity.entitySource) {
+    val sourceRootEntity =
+      SourceRootEntity(
+        sourceRootUrl,
+        SourceRootTypeId(&quot;java-source&quot;),
+        moduleEntity.entitySource
+      )
+    this.sourceRoots = mutableListOf(sourceRootEntity)
+  }
+  builder.modifyModuleEntity(moduleEntity) {
+    this.contentRoots = mutableListOf(contentRootEntity)
+  }
+}
+</div></section><section class="chapter"><h3 id="adding-different-types-of-library-roots" data-toc="adding-different-types-of-library-roots">Adding Different Types of Library Roots</h3><p id="z3qbwq6_59">Two library roots of different types are defined, and a new exclude root is added.</p><div class="code-block" data-lang="kotlin">
+val workspaceModel = WorkspaceModel.getInstance(project)
+val virtualFileUrlManager = workspaceModel.getVirtualFileUrlManager()
+val libraryEntity = workspaceModel.currentSnapshot
+  .resolve(
+    LibraryId(
+      libraryName,
+      LibraryTableId.ProjectLibraryTableId
+    )
+  ) ?: ...
+
+val sourceRoot = LibraryRoot(
+  virtualFileUrlManager
+    .getOrCreateFromUrl(&quot;file://foo/bar&quot;), LibraryRootTypeId.SOURCES
+)
+val compiledRoot = LibraryRoot(
+  virtualFileUrlManager
+    .getOrCreateFromUrl(&quot;file://foo/baz&quot;), LibraryRootTypeId.COMPILED
+)
+workspaceModel.update(&quot;Adding library roots&quot;) { builder -&gt;
+  builder.modifyLibraryEntity(libraryEntity) {
+    this.roots = mutableListOf(sourceRoot, compiledRoot)
+    // Adding new exclude root
+    val virtualFileUrl = virtualFileUrlManager
+      .getOrCreateFromUrl(&quot;file://foo/out&quot;)
+    this.excludedRoots =
+      excludedRoots + ExcludeUrlEntity(virtualFileUrl, this.entitySource)
+  }
+}
+</div></section></section><section class="chapter"><h2 id="miscellaneous" data-toc="miscellaneous">Miscellaneous</h2><section class="chapter"><h3 id="migration-of-caches-relying-on-librarymodule" data-toc="migration-of-caches-relying-on-librarymodule">Migration of Caches Relying on <code class="code" id="z3qbwq6_67">Library</code>/<code class="code" id="z3qbwq6_68">Module</code></h3><p id="z3qbwq6_63">Using <code class="code" id="z3qbwq6_69">Library</code> or <code class="code" id="z3qbwq6_70">Module</code> as a key on maps has a number of disadvantages:</p><ul class="list _bullet" id="z3qbwq6_64"><li class="list__item" id="z3qbwq6_71"><p id="z3qbwq6_73">Can&rsquo;t be used as a key for collections that rely on hashcode calculation, as these objects are mutable by their nature.</p></li><li class="list__item" id="z3qbwq6_72"><p id="z3qbwq6_74">The fact that they extend <code class="code" id="z3qbwq6_75">Disposable</code> (see <a href="disposers.html" id="z3qbwq6_76" data-tooltip="Cleaning up resources on plugin components' lifetime expiration.">Disposer and Disposable</a>) imposes additional difficulties.</p></li></ul><p id="z3qbwq6_65">To eliminate these shortcomings, use <a href="https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/workspace/storage/src/com/intellij/platform/workspace/storage/EntityPointer.kt" id="z3qbwq6_77" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="z3qbwq6_79">EntityPointer</code></a>. It represents a pointer to an entity which can be stored anywhere. The pointer can be obtained via <a href="https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/workspace/storage/src/com/intellij/platform/workspace/storage/WorkspaceEntity.kt" id="z3qbwq6_78" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="z3qbwq6_80">WorkspaceEntity.createPointer()</code></a>. An instance of this class stores an internal ID of the entity and doesn't contain the pointer to the original storage, so it's ok to store them in long-living data structures as it won't create a memory leak.</p><p id="z3qbwq6_66">The pointer will resolve to the same entity for the same storage and will survive modifications. If the entity is removed or replaced by a different one via <a href="https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/workspace/storage/src/com/intellij/platform/workspace/storage/MutableEntityStorage.kt" id="z3qbwq6_81" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="z3qbwq6_84">MutableEntityStorage.replaceBySource()</code></a>, the pointer may either resolve to <code class="code" id="z3qbwq6_82">null</code> or to a completely different entity which reused the same internal ID. To be sure that the pointer resolves to the original entity, also <a href="workspace-model-event-listening.html" id="z3qbwq6_83" data-tooltip="Listening to Workspace Model events">subscribe to changes</a> in the storage.</p></section></section><div class="last-modified">29 June 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="workspace-model-event-listening.html" class="navigation-links__prev">Event Listening</a><a href="external-system-integration.html" class="navigation-links__next">External System Integration</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.js"></script></body></html>

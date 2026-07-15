@@ -1,0 +1,111 @@
+# GoLand Extension Point and Listener List
+
+<tldr>
+Product-Specific Plugin Development: [GoLand](goland.html)
+
+See Also: [Extensions](plugin-extensions.html), [Listeners](plugin-listeners.html)
+</tldr>
+
+See [IntelliJ Platform Extension Point and Listener List](intellij-platform-extension-point-list.html) for IntelliJ Platform.
+
+22 Extension Points and 9 Listeners
+
+## Legend
+
+Tip:
+
+See also [Explore the IntelliJ Platform API](explore-api.html) for more information and strategies.
+
+### Listeners
+
+Topic
+searches for usages inside existing implementations of open-source IntelliJ Platform plugins via [IntelliJ Platform Explorer](https://jb.gg/ipe).
+
+Listener
+links corresponding listener to implement.
+
+See [Listeners](plugin-listeners.html) on how to register listeners.
+
+### Extension Points
+
+Extension Point
+searches for usages inside existing implementations of open-source IntelliJ Platform plugins via [IntelliJ Platform Explorer](https://jb.gg/ipe).
+
+Implementation
+is the related Extension Point class.
+
+See [Extensions](plugin-extensions.html) on how to declare extensions in your plugin.
+
+### Tags
+
+See [Verifying Plugin Compatibility](verifying-plugin-compatibility.html) for overview of API status.
+
+| Tag |Description |Details |
+-----------------------------
+| ![Deprecated](https://img.shields.io/badge/-Deprecated-lightgrey?style=flat-square) |Deprecated API |See code documentation for replacement. |
+| ![Removal](https://img.shields.io/badge/-Removal-red?style=flat-square) |Scheduled for Removal API |Annotated with [@ApiStatus.ScheduledForRemoval](https://github.com/JetBrains/java-annotations/tree/24.0.0/common/src/main/java/org/jetbrains/annotations/ApiStatus.java).                             See code documentation for replacement.   |
+| ![Obsolete](https://img.shields.io/badge/-Obsolete-grey?style=flat-square)                          |Obsolete API |Annotated with [@ApiStatus.Obsolete](https://github.com/JetBrains/java-annotations/tree/24.0.0/common/src/main/java/org/jetbrains/annotations/ApiStatus.java).                             Do not use in new code, see code documentation for replacement.   |
+| ![Experimental API](https://img.shields.io/badge/-Experimental-violet?style=flat-square)                               |Experimental API |Annotated with [@ApiStatus.Experimental](https://github.com/JetBrains/java-annotations/tree/24.0.0/common/src/main/java/org/jetbrains/annotations/ApiStatus.java).                             API might be altered or removed without prior notice.   |
+| ![Internal API](https://img.shields.io/badge/-Internal-darkred?style=flat-square) |Internal API |Annotated with [@ApiStatus.Internal](https://github.com/JetBrains/java-annotations/tree/24.0.0/common/src/main/java/org/jetbrains/annotations/ApiStatus.java).                             Must not be used by third party plugins, see [Internal API Migration](api-internal.html).   |
+| ![Project-Level](https://img.shields.io/badge/-Project--Level-blue?style=flat-square) |Project-LevelExtension Point/Topic   |Can have [Project](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/core-api/src/com/intellij/openapi/project/Project.java)                             as constructor parameter.                               - Extension Point: declared with `area="IDEA_PROJECT"`                               - Listener: registered in [&lt;projectListeners&gt;](plugin-configuration-file.html#idea-plugin__projectListeners)                                |
+| ![DumbAware](https://img.shields.io/badge/-DumbAware-darkgreen?style=flat-square) |`DumbAware`                             Extension Point   |Implementations marked with [DumbAware](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/core-api/src/com/intellij/openapi/project/DumbAware.java)                             will be processed during [dumb                                 mode](indexing-and-psi-stubs.html#dumb-mode).                          |
+| ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |Non-DynamicExtension Point   |Installation/update of plugin requires restarting the IDE, see [Dynamic Plugins](dynamic-plugins.html).                          |
+
+## GoLand
+
+### GoLand – Listeners
+
+| Topic |Listener |
+-------------------
+| [GoLibrariesService#LIBRARIES_TOPIC](https://jb.gg/ipe/listeners?topics=com.goide.project.GoLibrariesService.LibrariesListener) |`LibrariesListener` |
+| [GoModuleSettings#BUILD_TARGET_TOPIC](https://jb.gg/ipe/listeners?topics=com.goide.project.GoModuleSettings.BuildTargetListener)  ![Project-Level](https://img.shields.io/badge/-Project--Level-blue?style=flat-square) |`BuildTargetListener` |
+| [GoModuleSettings#GO_SUPPORT_TOPIC](https://jb.gg/ipe/listeners?topics=com.goide.project.GoModuleSettings.GoSupportListener)  ![Project-Level](https://img.shields.io/badge/-Project--Level-blue?style=flat-square) |`GoSupportListener` |
+| [GoProjectLifecycleListener#TOPIC](https://jb.gg/ipe/listeners?topics=com.goide.project.GoProjectLifecycleListener) |`GoProjectLifecycleListener` |
+| [GoDownloadSdkService#SDK_DOWNLOAD_TOPIC](https://jb.gg/ipe/listeners?topics=com.goide.sdk.download.SdkDownloadListener) |`SdkDownloadListener` |
+| [VgoUpdateProgressManager#UPDATE_PROGRESS_TOPIC](https://jb.gg/ipe/listeners?topics=com.goide.vgo.VgoStatusTracker.VgoUpdateProgressManager.VgoModuleUpdateProgressListener)  ![Project-Level](https://img.shields.io/badge/-Project--Level-blue?style=flat-square) |`VgoModuleUpdateProgressListener` |
+| [VgoProjectSettings#VGO_INTEGRATION_TOPIC](https://jb.gg/ipe/listeners?topics=com.goide.vgo.configuration.VgoProjectSettings.IntegrationListener) |`IntegrationListener` |
+| [VgoToolchainService#TOOLCHAIN_SCAN_TOPIC](https://jb.gg/ipe/listeners?topics=com.goide.vgo.sdk.VgoToolchainService.ToolchainScanListener)  ![Project-Level](https://img.shields.io/badge/-Project--Level-blue?style=flat-square) |`ToolchainScanListener` |
+| [GoLinterFmtOnSaveSettings#TOPIC](https://jb.gg/ipe/listeners?topics=com.intellij.go.linter.fmt.GoLinterFmtOnSaveSettings.FmtOnSaveListener) |`FmtOnSaveListener` |
+
+### intellij.go.impl.xml
+
+| Extension Point |Implementation |
+-----------------------------------
+| [com.goide.consoleDecorator](https://jb.gg/ipe?extensions=com.goide.consoleDecorator)      ![Internal](https://img.shields.io/badge/-Internal-darkred?style=flat-square) |`GoConsoleDecorator` |
+| [com.goide.dfa.api](https://jb.gg/ipe?extensions=com.goide.dfa.api)      |`GoDfaApi` |
+| [com.goide.dlv.positionConverterFactory](https://jb.gg/ipe?extensions=com.goide.dlv.positionConverterFactory)      |`DlvPositionConverterFactory` |
+| [com.goide.documentation.packageVersionProvider](https://jb.gg/ipe?extensions=com.goide.documentation.packageVersionProvider)      |`GoDocumentationPackageVersionProvider` |
+| [com.goide.execution.defaultTargetEnvironmentProvider](https://jb.gg/ipe?extensions=com.goide.execution.defaultTargetEnvironmentProvider)      |`DefaultTargetEnvironmentProvider` |
+| [com.goide.executorExtension](https://jb.gg/ipe?extensions=com.goide.executorExtension)      |`GoExecutorExtension` |
+| [com.goide.fileWatcherBridge](https://jb.gg/ipe?extensions=com.goide.fileWatcherBridge)      |`GoFileWatcherBridge` |
+| [com.goide.highlighting.errorAnnotatorSuppressor](https://jb.gg/ipe?extensions=com.goide.highlighting.errorAnnotatorSuppressor)      |`GoErrorAnnotatorSuppressor` |
+| [com.goide.importResolver](https://jb.gg/ipe?extensions=com.goide.importResolver)      |`GoImportResolver` |
+| [com.goide.importsFilter](https://jb.gg/ipe?extensions=com.goide.importsFilter)      |`GoImportsFilter` |
+| [com.goide.packageFactory](https://jb.gg/ipe?extensions=com.goide.packageFactory)      |`GoPackageFactory` |
+| [com.goide.runConfigurationExtension](https://jb.gg/ipe?extensions=com.goide.runConfigurationExtension)      |`GoRunConfigurationExtension` |
+| [com.goide.sdk.sdkVetoer](https://jb.gg/ipe?extensions=com.goide.sdk.sdkVetoer)      |`GoBasedSdkVetoer` |
+| [com.goide.sdk.targetSdkVersionProvider](https://jb.gg/ipe?extensions=com.goide.sdk.targetSdkVersionProvider)      |`GoTargetSdkVersionProvider` |
+| [com.goide.sdkProvider](https://jb.gg/ipe?extensions=com.goide.sdkProvider)      |`GoSdkProvider` |
+| [com.goide.support](https://jb.gg/ipe?extensions=com.goide.support)      |`GoLangSupport` |
+
+### intellij.go.watchers.xml
+
+| Extension Point |Implementation |
+-----------------------------------
+| [com.goide.fileWatcherMigrationHandler](https://jb.gg/ipe?extensions=com.goide.fileWatcherMigrationHandler)      |`GoFileWatcherMigrationHandler` |
+
+### openapi.xml
+
+| Extension Point |Implementation |
+-----------------------------------
+| [com.goide.documentation.additionalDocumentationProvider](https://jb.gg/ipe?extensions=com.goide.documentation.additionalDocumentationProvider)      |`GoAdditionalDocumentationProvider` |
+| [com.goide.importPathsProvider](https://jb.gg/ipe?extensions=com.goide.importPathsProvider)      |`GoImportPathsProvider` |
+| [com.goide.imports.weigher](https://jb.gg/ipe?extensions=com.goide.imports.weigher)      |`GoImportsWeigher` |
+| [com.goide.rootsProvider](https://jb.gg/ipe?extensions=com.goide.rootsProvider)      |`GoRootsProvider` |
+
+### vgo.xml
+
+| Extension Point |Implementation |
+-----------------------------------
+| [com.goide.go126FeaturesTabOpener](https://jb.gg/ipe?extensions=com.goide.go126FeaturesTabOpener)      |`Go126FeaturesTabOpener` |
+

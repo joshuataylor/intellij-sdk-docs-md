@@ -1,0 +1,424 @@
+# CLion Extension Point and Listener List
+
+<tldr>
+Product-Specific Plugin Development: [CLion](clion.html)
+
+See Also: [Extensions](plugin-extensions.html), [Listeners](plugin-listeners.html)
+</tldr>
+
+Tip:
+
+See [IntelliJ Platform Extension Point and Listener List](intellij-platform-extension-point-list.html) for IntelliJ Platform.
+
+168 Extension Points and 49 Listeners
+
+## Legend
+
+Tip:
+
+See also [Explore the IntelliJ Platform API](explore-api.html) for more information and strategies.
+
+### Listeners
+
+Topic
+searches for usages inside existing implementations of open-source IntelliJ Platform plugins via [IntelliJ Platform Explorer](https://jb.gg/ipe).
+
+Listener
+links corresponding listener to implement.
+
+See [Listeners](plugin-listeners.html) on how to register listeners.
+
+### Extension Points
+
+Extension Point
+searches for usages inside existing implementations of open-source IntelliJ Platform plugins via [IntelliJ Platform Explorer](https://jb.gg/ipe).
+
+Implementation
+is the related Extension Point class.
+
+See [Extensions](plugin-extensions.html) on how to declare extensions in your plugin.
+
+### Tags
+
+See [Verifying Plugin Compatibility](verifying-plugin-compatibility.html) for overview of API status.
+
+| Tag |Description |Details |
+-----------------------------
+| ![Deprecated](https://img.shields.io/badge/-Deprecated-lightgrey?style=flat-square) |Deprecated API |See code documentation for replacement. |
+| ![Removal](https://img.shields.io/badge/-Removal-red?style=flat-square) |Scheduled for Removal API |Annotated with [@ApiStatus.ScheduledForRemoval](https://github.com/JetBrains/java-annotations/tree/24.0.0/common/src/main/java/org/jetbrains/annotations/ApiStatus.java).                             See code documentation for replacement.   |
+| ![Obsolete](https://img.shields.io/badge/-Obsolete-grey?style=flat-square)                          |Obsolete API |Annotated with [@ApiStatus.Obsolete](https://github.com/JetBrains/java-annotations/tree/24.0.0/common/src/main/java/org/jetbrains/annotations/ApiStatus.java).                             Do not use in new code, see code documentation for replacement.   |
+| ![Experimental API](https://img.shields.io/badge/-Experimental-violet?style=flat-square)                               |Experimental API |Annotated with [@ApiStatus.Experimental](https://github.com/JetBrains/java-annotations/tree/24.0.0/common/src/main/java/org/jetbrains/annotations/ApiStatus.java).                             API might be altered or removed without prior notice.   |
+| ![Internal API](https://img.shields.io/badge/-Internal-darkred?style=flat-square) |Internal API |Annotated with [@ApiStatus.Internal](https://github.com/JetBrains/java-annotations/tree/24.0.0/common/src/main/java/org/jetbrains/annotations/ApiStatus.java).                             Must not be used by third party plugins, see [Internal API Migration](api-internal.html).   |
+| ![Project-Level](https://img.shields.io/badge/-Project--Level-blue?style=flat-square) |Project-LevelExtension Point/Topic   |Can have [Project](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/core-api/src/com/intellij/openapi/project/Project.java)                             as constructor parameter.                               - Extension Point: declared with `area="IDEA_PROJECT"`                               - Listener: registered in [&lt;projectListeners&gt;](plugin-configuration-file.html#idea-plugin__projectListeners)                                |
+| ![DumbAware](https://img.shields.io/badge/-DumbAware-darkgreen?style=flat-square) |`DumbAware`                             Extension Point   |Implementations marked with [DumbAware](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/core-api/src/com/intellij/openapi/project/DumbAware.java)                             will be processed during [dumb                                 mode](indexing-and-psi-stubs.html#dumb-mode).                          |
+| ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |Non-DynamicExtension Point   |Installation/update of plugin requires restarting the IDE, see [Dynamic Plugins](dynamic-plugins.html).                          |
+
+## CLion
+
+### CLion – Listeners
+
+| Topic |Listener |
+-------------------
+| [CubeMXManager#TOPIC](https://jb.gg/ipe/listeners?topics=com.intellij.clion.embedded.stm32cubemx.CubeMXManager.CubeStatusListener) |`CubeStatusListener` |
+| [WestProjectListener.Companion#TOPIC](https://jb.gg/ipe/listeners?topics=com.intellij.clion.west.WestProjectListener) |`WestProjectListener` |
+| [WestConfigListener.Companion#TOPIC](https://jb.gg/ipe/listeners?topics=com.intellij.clion.west.config.WestConfigListener) |`WestConfigListener` |
+| [Listener.Companion#TOPIC](https://jb.gg/ipe/listeners?topics=com.intellij.clion.west.settings.WestSettings.Listener) |`Listener` |
+| [FileSymbolTablesCache#OUT_OF_CODE_BLOCK_TOPIC](https://jb.gg/ipe/listeners?topics=com.intellij.psi.util.PsiModificationTracker.Listener)  ![Project-Level](https://img.shields.io/badge/-Project--Level-blue?style=flat-square) |[Listener](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/core-api/src/com/intellij/psi/util/PsiModificationTracker.java) |
+| [ConsistencyErrorTopicListener.Companion#TOPIC](https://jb.gg/ipe/listeners?topics=com.intellij.rml.dfa.utils.ConsistencyErrorTopicListener) |`ConsistencyErrorTopicListener` |
+| [CMakeSettingsListener.Companion#TOPIC](https://jb.gg/ipe/listeners?topics=com.jetbrains.cidr.cpp.cmake.CMakeSettingsListener) |`CMakeSettingsListener` |
+| [Listener.Companion#TOPIC](https://jb.gg/ipe/listeners?topics=com.jetbrains.cidr.cpp.cmake.python.CMakePythonSdkService.Companion.Listener) |`Listener` |
+| [Listener.Companion#TOPIC](https://jb.gg/ipe/listeners?topics=com.jetbrains.cidr.cpp.cmake.python.CMakePythonSettingListenerService.Companion.Listener) |`Listener` |
+| [Listener.Companion#TOPIC](https://jb.gg/ipe/listeners?topics=com.jetbrains.cidr.cpp.cmake.python.CMakePythonSettingsService.Listener) |`Listener` |
+| [CMakeWorkspaceListener#TOPIC](https://jb.gg/ipe/listeners?topics=com.jetbrains.cidr.cpp.cmake.workspace.CMakeWorkspaceListener) |`CMakeWorkspaceListener` |
+| [CompDBSettingsListener.Companion#TOPIC](https://jb.gg/ipe/listeners?topics=com.jetbrains.cidr.cpp.compdb.settings.CompDBSettingsListener) |`CompDBSettingsListener` |
+| [CLionExternalBuildManagerListener#TOPIC](https://jb.gg/ipe/listeners?topics=com.jetbrains.cidr.cpp.execution.external.build.CLionExternalBuildManagerListener) |`CLionExternalBuildManagerListener` |
+| [ClionProjectToolManagerListener.Companion#TOPIC](https://jb.gg/ipe/listeners?topics=com.jetbrains.cidr.cpp.execution.external.build.ClionProjectToolManagerListener) |`ClionProjectToolManagerListener` |
+| [DebugTargetService#changesTopic](https://jb.gg/ipe/listeners?topics=com.jetbrains.cidr.cpp.execution.gdbserver.debugtargets.DebugTargetService.DebugTargetsChangeTopic) |`DebugTargetsChangeTopic` |
+| [MakefileBuildTargetsManagerListener#TOPIC](https://jb.gg/ipe/listeners?topics=com.jetbrains.cidr.cpp.makefile.execution.build.MakefileBuildTargetsManagerListener) |`MakefileBuildTargetsManagerListener` |
+| [MakefileSettingsListener.Companion#TOPIC](https://jb.gg/ipe/listeners?topics=com.jetbrains.cidr.cpp.makefile.settings.MakefileSettingsListener) |`MakefileSettingsListener` |
+| [CLionToolchainDebuggerProvider#TOPIC](https://jb.gg/ipe/listeners?topics=com.jetbrains.cidr.cpp.toolchains.CLionToolchainDebuggerListener)  ![Experimental](https://img.shields.io/badge/-Experimental-violet?style=flat-square) ![Internal](https://img.shields.io/badge/-Internal-darkred?style=flat-square) |`CLionToolchainDebuggerListener` |
+| [CPPToolchainsConfigurable#TOPIC](https://jb.gg/ipe/listeners?topics=com.jetbrains.cidr.cpp.toolchains.CPPToolchainsConfigurable.Listener) |`Listener` |
+| [CPPToolchainsListener#TOPIC](https://jb.gg/ipe/listeners?topics=com.jetbrains.cidr.cpp.toolchains.CPPToolchainsListener) |`CPPToolchainsListener` |
+| [CidrBuildListener#TOPIC](https://jb.gg/ipe/listeners?topics=com.jetbrains.cidr.execution.build.CidrBuildListener)  ![Project-Level](https://img.shields.io/badge/-Project--Level-blue?style=flat-square) |`CidrBuildListener` |
+| [CidrHighlighterNotifierService#TOPIC](https://jb.gg/ipe/listeners?topics=com.jetbrains.cidr.execution.testing.CidrHighlighterNotifierService.LineMarkNotifier) |`LineMarkNotifier` |
+| [CidrTestScopeService#TEST_SCOPE_LISTENER_TOPIC](https://jb.gg/ipe/listeners?topics=com.jetbrains.cidr.execution.testing.CidrTestScopeService.TestScopeListener) |`TestScopeListener` |
+| [ExternalModuleImportListener#TOPIC](https://jb.gg/ipe/listeners?topics=com.jetbrains.cidr.external.system.service.ExternalModuleImportListener) |`ExternalModuleImportListener` |
+| [ExternalWorkspaceListener#TOPIC](https://jb.gg/ipe/listeners?topics=com.jetbrains.cidr.external.system.workspace.ExternalWorkspaceListener) |`ExternalWorkspaceListener` |
+| [ClangLanguageServiceProviderListener#TOPIC](https://jb.gg/ipe/listeners?topics=com.jetbrains.cidr.lang.daemon.clang.clangd.ClangLanguageServiceProviderListener) |`ClangLanguageServiceProviderListener` |
+| [ClangServerListener#TOPIC](https://jb.gg/ipe/listeners?topics=com.jetbrains.cidr.lang.daemon.clang.clangd.lsp.server.ClangServerListener) |`ClangServerListener` |
+| [ClangTelemetryListener#TOPIC](https://jb.gg/ipe/listeners?topics=com.jetbrains.cidr.lang.daemon.clang.clangd.lsp.telemetry.ClangTelemetryListener) |`ClangTelemetryListener` |
+| [ClangMemoryUsageWatchDogListener#TOPIC](https://jb.gg/ipe/listeners?topics=com.jetbrains.cidr.lang.daemon.clang.clangd.memory.ClangMemoryUsageWatchDogListener) |`ClangMemoryUsageWatchDogListener` |
+| [OCLanguageServiceReparsingPassListener#TOPIC](https://jb.gg/ipe/listeners?topics=com.jetbrains.cidr.lang.daemon.clang.clangd.reparsing.OCLanguageServiceReparsingPassListener) |`OCLanguageServiceReparsingPassListener` |
+| [ClangdSettingsListener#TOPIC](https://jb.gg/ipe/listeners?topics=com.jetbrains.cidr.lang.daemon.clang.clangd.settings.ClangdSettingsListener) |`ClangdSettingsListener` |
+| [ClangdSettingsListener#TOPIC_UI](https://jb.gg/ipe/listeners?topics=com.jetbrains.cidr.lang.daemon.clang.clangd.settings.ClangdSettingsListener) |`ClangdSettingsListener` |
+| [CidrInjectionListener#INJECTION_TOPIC](https://jb.gg/ipe/listeners?topics=com.jetbrains.cidr.lang.editor.CidrInjectionListener) |`CidrInjectionListener` |
+| [OCInclusionContextListener#TOPIC](https://jb.gg/ipe/listeners?topics=com.jetbrains.cidr.lang.preprocessor.OCInclusionContextListener) |`OCInclusionContextListener` |
+| [FileSymbolTableCacheListener#TOPIC](https://jb.gg/ipe/listeners?topics=com.jetbrains.cidr.lang.symbols.symtable.FileSymbolTableCacheListener) |`FileSymbolTableCacheListener` |
+| [FileSymbolTablesPackListener#TOPIC](https://jb.gg/ipe/listeners?topics=com.jetbrains.cidr.lang.symbols.symtable.FileSymbolTablesPackListener) |`FileSymbolTablesPackListener` |
+| [OCFileSymbolTableListener#TOPIC](https://jb.gg/ipe/listeners?topics=com.jetbrains.cidr.lang.symbols.symtable.OCFileSymbolTableListener) |`OCFileSymbolTableListener` |
+| [OCSymbolBuildingListener#TOPIC](https://jb.gg/ipe/listeners?topics=com.jetbrains.cidr.lang.symbols.symtable.building.OCSymbolBuildingListener) |`OCSymbolBuildingListener` |
+| [OCWorkspaceListener#TOPIC](https://jb.gg/ipe/listeners?topics=com.jetbrains.cidr.lang.workspace.OCWorkspaceListener) |`OCWorkspaceListener` |
+| [Listener.Companion#TOPIC](https://jb.gg/ipe/listeners?topics=com.jetbrains.cidr.meson.project.MesonModelManager.Listener) |`Listener` |
+| [MesonSettingsListener.Companion#TOPIC](https://jb.gg/ipe/listeners?topics=com.jetbrains.cidr.meson.settings.MesonSettingsListener) |`MesonSettingsListener` |
+| [PackageManagerEventListener.Companion#TOPIC](https://jb.gg/ipe/listeners?topics=com.jetbrains.cidr.packagemanager.vcpkg.PackageManagerEventListener) |`PackageManagerEventListener` |
+| [VcpkgListener.Companion#TOPIC](https://jb.gg/ipe/listeners?topics=com.jetbrains.cidr.packagemanager.vcpkg.VcpkgListener)  ![Internal](https://img.shields.io/badge/-Internal-darkred?style=flat-square) |`VcpkgListener` |
+| [CidrRootConfigurationListener#TOPIC](https://jb.gg/ipe/listeners?topics=com.jetbrains.cidr.project.CidrRootConfigurationListener) |`CidrRootConfigurationListener` |
+| [CidrWorkspaceInstantaneousStateChangeListener#TOPIC](https://jb.gg/ipe/listeners?topics=com.jetbrains.cidr.project.workspace.CidrWorkspaceInstantaneousStateChangeListener)  ![Project-Level](https://img.shields.io/badge/-Project--Level-blue?style=flat-square) |`CidrWorkspaceInstantaneousStateChangeListener` |
+| [CidrWorkspaceListener#TOPIC](https://jb.gg/ipe/listeners?topics=com.jetbrains.cidr.project.workspace.CidrWorkspaceListener) |`CidrWorkspaceListener` |
+| [OCRootsSynchronizerListener#TOPIC](https://jb.gg/ipe/listeners?topics=com.jetbrains.cidr.project.workspace.OCRootsSynchronizerListener) |`OCRootsSynchronizerListener` |
+| [RemoteDeploymentListener#TOPIC](https://jb.gg/ipe/listeners?topics=com.jetbrains.cidr.system.RemoteDeploymentListener) |`RemoteDeploymentListener` |
+| [AllowedModules#INVALIDATION_TOPIC](https://jb.gg/ipe/listeners?topics=java.lang.Runnable) |`Runnable` |
+
+### com.intellij.clion.west
+
+| Extension Point |Implementation |
+-----------------------------------
+| [com.intellij.clion.west.westEnvironmentContributor](https://jb.gg/ipe?extensions=com.intellij.clion.west.westEnvironmentContributor)      |`WestEnvironmentContributor` |
+
+### intellij.c.core.xml
+
+| Extension Point |Implementation |
+-----------------------------------
+| [cidr.lang.actionConfigurationCustomizerRenameOptOut](https://jb.gg/ipe?extensions=cidr.lang.actionConfigurationCustomizerRenameOptOut)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`OCActionConfigurationCustomizerRenameOptOut` |
+| [cidr.lang.annotatorHelper](https://jb.gg/ipe?extensions=cidr.lang.annotatorHelper)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`OCAnnotatorHelper` |
+| [cidr.lang.autoImportHelper](https://jb.gg/ipe?extensions=cidr.lang.autoImportHelper)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`OCAutoImportHelper` |
+| [cidr.lang.buildSymbolsVeto](https://jb.gg/ipe?extensions=cidr.lang.buildSymbolsVeto)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`OCBuildSymbolsVetoExtension` |
+| [cidr.lang.callStructureProvider](https://jb.gg/ipe?extensions=cidr.lang.callStructureProvider)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`PolyglotCallStructureProvider` |
+| [cidr.lang.customHeaderProvider](https://jb.gg/ipe?extensions=cidr.lang.customHeaderProvider)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`CustomHeaderProvider` |
+| [cidr.lang.doxygenExtension](https://jb.gg/ipe?extensions=cidr.lang.doxygenExtension)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`Doxygen` |
+| [cidr.lang.externalResolver](https://jb.gg/ipe?extensions=cidr.lang.externalResolver)      |`OCExternalResolver` |
+| [cidr.lang.fileToBuildSymbolsCollector](https://jb.gg/ipe?extensions=cidr.lang.fileToBuildSymbolsCollector)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`FileToBuildSymbolsCollector` |
+| [cidr.lang.foreignUsagesRenameProcessor](https://jb.gg/ipe?extensions=cidr.lang.foreignUsagesRenameProcessor)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`OCForeignUsagesRenameProcessor` |
+| [cidr.lang.groupedFileNaming](https://jb.gg/ipe?extensions=cidr.lang.groupedFileNaming)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`OCGroupedFileNaming` |
+| [cidr.lang.includeHelper](https://jb.gg/ipe?extensions=cidr.lang.includeHelper)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`OCIncludeHelper` |
+| [cidr.lang.includeHierarchyProvider](https://jb.gg/ipe?extensions=cidr.lang.includeHierarchyProvider)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |[HierarchyProvider](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/lang-api/src/com/intellij/ide/hierarchy/HierarchyProvider.java) |
+| [cidr.lang.initialBuildingActivity](https://jb.gg/ipe?extensions=cidr.lang.initialBuildingActivity)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`OCInitialBuildingActivity` |
+| [cidr.lang.languageKindContributor](https://jb.gg/ipe?extensions=cidr.lang.languageKindContributor)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`OCLanguageKindContributor` |
+| [cidr.lang.libraryFileConfigurationProvider](https://jb.gg/ipe?extensions=cidr.lang.libraryFileConfigurationProvider)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`OCLibraryFileResolveConfigurationProvider` |
+| [cidr.lang.moduleBuilder.statisticsCollectorFactory](https://jb.gg/ipe?extensions=cidr.lang.moduleBuilder.statisticsCollectorFactory)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`ModuleCacheBuilderStatisticsCollectorFactory` |
+| [cidr.lang.moduleMapManagerRequestor](https://jb.gg/ipe?extensions=cidr.lang.moduleMapManagerRequestor)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`ModuleMapManagerRequestor` |
+| [cidr.lang.moduleMapPlatformTypeProvider](https://jb.gg/ipe?extensions=cidr.lang.moduleMapPlatformTypeProvider)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`ModuleMapPlatformTypeProvider` |
+| [cidr.lang.moduleMapRootSerializer](https://jb.gg/ipe?extensions=cidr.lang.moduleMapRootSerializer)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`ModuleMapRootSerializer` |
+| [cidr.lang.moduleMapSearchRootProvider](https://jb.gg/ipe?extensions=cidr.lang.moduleMapSearchRootProvider)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`ModuleMapSearchRootProvider` |
+| [cidr.lang.moduleResolver](https://jb.gg/ipe?extensions=cidr.lang.moduleResolver)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`OCModuleResolver` |
+| [cidr.lang.ocAdditionalFileSymbolTableBuilder](https://jb.gg/ipe?extensions=cidr.lang.ocAdditionalFileSymbolTableBuilder)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`OCAdditionalFileSymbolTableBuilder` |
+| [cidr.lang.ocDirectInheritorsSearch](https://jb.gg/ipe?extensions=cidr.lang.ocDirectInheritorsSearch)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |[QueryExecutor](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/core-api/src/com/intellij/util/QueryExecutor.java) |
+| [cidr.lang.ocInclusionContextLazyGetDefinitionProvider](https://jb.gg/ipe?extensions=cidr.lang.ocInclusionContextLazyGetDefinitionProvider)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`OCInclusionContextLazyGetDefinitionProvider` |
+| [cidr.lang.ocResolveRootAndConfigurationProvider](https://jb.gg/ipe?extensions=cidr.lang.ocResolveRootAndConfigurationProvider)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`OCResolveRootAndConfigurationProvider` |
+| [cidr.lang.renameHandlerExtension](https://jb.gg/ipe?extensions=cidr.lang.renameHandlerExtension)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`OCRenameHandlerExtension` |
+| [cidr.lang.renameProcessorExtension](https://jb.gg/ipe?extensions=cidr.lang.renameProcessorExtension)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`OCRenameProcessorExtension` |
+| [cidr.lang.resourceCompletionProviders](https://jb.gg/ipe?extensions=cidr.lang.resourceCompletionProviders)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`OCResourceCompletionProviders` |
+| [cidr.lang.resourceFilesProvider](https://jb.gg/ipe?extensions=cidr.lang.resourceFilesProvider)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`OCResourceFilesProvider` |
+| [cidr.lang.searchHelper](https://jb.gg/ipe?extensions=cidr.lang.searchHelper)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`OCSearchHelper` |
+| [cidr.lang.serializerProvider](https://jb.gg/ipe?extensions=cidr.lang.serializerProvider)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`SerializerProvider` |
+| [cidr.lang.symbolTableProvider](https://jb.gg/ipe?extensions=cidr.lang.symbolTableProvider)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`FileSymbolTableProvider` |
+| [cidr.lang.testFramework](https://jb.gg/ipe?extensions=cidr.lang.testFramework)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`OCTestFramework` |
+| [cidr.lang.typeStructureProvider](https://jb.gg/ipe?extensions=cidr.lang.typeStructureProvider)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`PolyglotTypeStructureProvider` |
+| [cidr.requiredForCidrSmartMode](https://jb.gg/ipe?extensions=cidr.requiredForCidrSmartMode)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`RequiredForCidrSmartMode` |
+
+### intellij.c.testing.xml
+
+| Extension Point |Implementation |
+-----------------------------------
+| [cidr.lang.testing.potentialTestHolderRootsProvider](https://jb.gg/ipe?extensions=cidr.lang.testing.potentialTestHolderRootsProvider)      |`CidrPotentialTestHolderRootsProvider` |
+| [cidr.lang.testing.testIndexContributor](https://jb.gg/ipe?extensions=cidr.lang.testing.testIndexContributor)      |`CidrTestIndexContributor` |
+
+### intellij.cidr.clangd.core.xml
+
+| Extension Point |Implementation |
+-----------------------------------
+| [clangd.clangQuickFixProvider](https://jb.gg/ipe?extensions=clangd.clangQuickFixProvider)      |`ClangQuickFixProvider` |
+| [clangd.clangTidyAnnotationApplier](https://jb.gg/ipe?extensions=clangd.clangTidyAnnotationApplier)      |`ClangTidyAnnotationApplier` |
+| [clangd.clangTidyInspectionNameProvider](https://jb.gg/ipe?extensions=clangd.clangTidyInspectionNameProvider)      ![Internal](https://img.shields.io/badge/-Internal-darkred?style=flat-square) |`CLionClangTidyInspectionNameProvider` |
+| [clangd.clangTidyResolveInfoProvider](https://jb.gg/ipe?extensions=clangd.clangTidyResolveInfoProvider)      |`ClangTidyResolveInfoProvider` |
+| [clangd.clangdAnnotatorUtil](https://jb.gg/ipe?extensions=clangd.clangdAnnotatorUtil)      |`ClangAnnotatorUtil` |
+| [clangd.clangdBridge](https://jb.gg/ipe?extensions=clangd.clangdBridge)      |`ClangdBridgeInterface` |
+| [clangd.externalCompletionProvider](https://jb.gg/ipe?extensions=clangd.externalCompletionProvider)      ![DumbAware](https://img.shields.io/badge/-DumbAware-darkgreen?style=flat-square) |`ExternalCompletionProvider` |
+| [clangd.settingsProvider](https://jb.gg/ipe?extensions=clangd.settingsProvider)      ![Internal](https://img.shields.io/badge/-Internal-darkred?style=flat-square) |`ClangdSettingsProvider` |
+
+### intellij.cidr.clangFormat.common.xml
+
+| Extension Point |Implementation |
+-----------------------------------
+| [com.intellij.clangFormatProvider](https://jb.gg/ipe?extensions=com.intellij.clangFormatProvider)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`ClangFormatChangeSettingsProvider` |
+
+### intellij.cidr.coverage.xml
+
+| Extension Point |Implementation |
+-----------------------------------
+| [cidr.coverage.coverageComposer](https://jb.gg/ipe?extensions=cidr.coverage.coverageComposer)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`CidrCoverageComposer` |
+| [cidr.coverage.coverageComposerRunner](https://jb.gg/ipe?extensions=cidr.coverage.coverageComposerRunner)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`CidrCoverageComposerRunner` |
+| [cidr.coverage.coverageDataFileProvider](https://jb.gg/ipe?extensions=cidr.coverage.coverageDataFileProvider)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`CidrCoverageDataFileProvider` |
+| [cidr.coverage.coverageErrorProcessor](https://jb.gg/ipe?extensions=cidr.coverage.coverageErrorProcessor)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`CidrCoverageErrorProcessor` |
+| [cidr.coverage.coverageViewExtensionProvider](https://jb.gg/ipe?extensions=cidr.coverage.coverageViewExtensionProvider)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`CidrCoverageViewExtensionProvider` |
+| [cidr.coverage.gcovCoverageToolsProvider](https://jb.gg/ipe?extensions=cidr.coverage.gcovCoverageToolsProvider)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`GCovCoverageToolProvider` |
+| [cidr.coverage.llvmCoverageToolsProvider](https://jb.gg/ipe?extensions=cidr.coverage.llvmCoverageToolsProvider)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`LLVMCoverageToolsProvider` |
+
+### intellij.cidr.debugger.core.xml
+
+| Extension Point |Implementation |
+-----------------------------------
+| [cidr.debugger.backendConsoleInjectionHelper](https://jb.gg/ipe?extensions=cidr.debugger.backendConsoleInjectionHelper)      |`BackendConsoleInjectionHelper` |
+| [cidr.debugger.contentProvider](https://jb.gg/ipe?extensions=cidr.debugger.contentProvider)      |`CidrDebuggerContentProvider` |
+| [cidr.debugger.customDebuggerProvider](https://jb.gg/ipe?extensions=cidr.debugger.customDebuggerProvider)      |`CidrCustomDebuggerProvider` |
+| [cidr.debugger.debugProcessConfigurator](https://jb.gg/ipe?extensions=cidr.debugger.debugProcessConfigurator)      |`CidrDebugProcessConfigurator` |
+| [cidr.debugger.debugProcessSoftwareBreakpointInterceptor](https://jb.gg/ipe?extensions=cidr.debugger.debugProcessSoftwareBreakpointInterceptor)      |`CidrDebugProcessSoftwareBreakpointInterceptor` |
+| [cidr.debugger.debuggerMessagesProvider](https://jb.gg/ipe?extensions=cidr.debugger.debuggerMessagesProvider)      ![Internal](https://img.shields.io/badge/-Internal-darkred?style=flat-square) |`CidrDebuggerMessagesProvider` |
+| [cidr.debugger.disasmRegisterProvider](https://jb.gg/ipe?extensions=cidr.debugger.disasmRegisterProvider)      ![Experimental](https://img.shields.io/badge/-Experimental-violet?style=flat-square) |`CidrDisasmRegisterProvider` |
+| [cidr.debugger.editorsExtension](https://jb.gg/ipe?extensions=cidr.debugger.editorsExtension)      |`CidrDebuggerEditorsExtension` |
+| [cidr.debugger.formatters.natvis.provider](https://jb.gg/ipe?extensions=cidr.debugger.formatters.natvis.provider)      |`NatvisFileProvider` |
+| [cidr.debugger.frameChildrenContributor](https://jb.gg/ipe?extensions=cidr.debugger.frameChildrenContributor)      |`CidrFrameChildrenContributor` |
+| [cidr.debugger.frameLocalsModifier](https://jb.gg/ipe?extensions=cidr.debugger.frameLocalsModifier)      ![Internal](https://img.shields.io/badge/-Internal-darkred?style=flat-square) |`CidrFrameLocalsModifier` |
+| [cidr.debugger.fullValueEvaluatorProvider](https://jb.gg/ipe?extensions=cidr.debugger.fullValueEvaluatorProvider)      ![Experimental](https://img.shields.io/badge/-Experimental-violet?style=flat-square) |`CidrFullValueEvaluatorProvider` |
+| [cidr.debugger.imageViewerProvider](https://jb.gg/ipe?extensions=cidr.debugger.imageViewerProvider)      |`CidrImageViewerProvider` |
+| [cidr.debugger.languageSupport](https://jb.gg/ipe?extensions=cidr.debugger.languageSupport)      |`CidrDebuggerLanguageSupport` |
+| [cidr.debugger.lineBreakpointFileTypesProvider](https://jb.gg/ipe?extensions=cidr.debugger.lineBreakpointFileTypesProvider)      |`CidrLineBreakpointFileTypesProvider` |
+| [cidr.debugger.localVariablesFilterHandler](https://jb.gg/ipe?extensions=cidr.debugger.localVariablesFilterHandler)      |`LocalVariablesFilterHandler` |
+| [cidr.debugger.modulesHandler](https://jb.gg/ipe?extensions=cidr.debugger.modulesHandler)      ![Experimental](https://img.shields.io/badge/-Experimental-violet?style=flat-square) |`CidrDebuggerModulesHandler` |
+| [cidr.debugger.nativeSelfProfilerPathProvider](https://jb.gg/ipe?extensions=cidr.debugger.nativeSelfProfilerPathProvider)      |`NativeSelfProfilerPathProvider` |
+| [cidr.debugger.stepFilters.provider](https://jb.gg/ipe?extensions=cidr.debugger.stepFilters.provider)      |`StepFiltersProvider` |
+| [cidr.debugger.stepFiltersCustomizer](https://jb.gg/ipe?extensions=cidr.debugger.stepFiltersCustomizer)      |`CidrDebuggerStepFiltersCustomizer` |
+| [cidr.debugger.suspendThreadSelector](https://jb.gg/ipe?extensions=cidr.debugger.suspendThreadSelector)      |`CidrSuspendThreadSelector` |
+| [cidr.debugger.valueRendererExtension](https://jb.gg/ipe?extensions=cidr.debugger.valueRendererExtension)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`ValueRendererExtension` |
+| [cidr.debugger.valueRendererFactory](https://jb.gg/ipe?extensions=cidr.debugger.valueRendererFactory)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`ValueRendererFactory` |
+| [cidr.debugger.visualStudioLocator](https://jb.gg/ipe?extensions=cidr.debugger.visualStudioLocator)      |`CidrVisualStudioLocator` |
+
+### intellij.cidr.execution.xml
+
+| Extension Point |Implementation |
+-----------------------------------
+| [cidr.buildConfigurationProvider](https://jb.gg/ipe?extensions=cidr.buildConfigurationProvider)      |`CidrBuildConfigurationProvider` |
+| [cidr.projectTaskContextProvider](https://jb.gg/ipe?extensions=cidr.projectTaskContextProvider)      |`CidrProjectTaskContextProvider` |
+| [cidr.resolveConfigurationProvider](https://jb.gg/ipe?extensions=cidr.resolveConfigurationProvider)      |`CidrResolveConfigurationProvider` |
+| [cidr.runConfigurationExtension](https://jb.gg/ipe?extensions=cidr.runConfigurationExtension)      |`CidrRunConfigurationExtensionBase` |
+| [cidr.targetConfigurationHelper](https://jb.gg/ipe?extensions=cidr.targetConfigurationHelper)      |`CidrTargetConfigurationHelper` |
+| [cidr.testFrameworkDetector](https://jb.gg/ipe?extensions=cidr.testFrameworkDetector)      |`CidrTestFrameworkDetector` |
+
+### intellij.cidr.lang.base.xml
+
+| Extension Point |Implementation |
+-----------------------------------
+| [cidr.lang.annotatorInspectionToolProvider](https://jb.gg/ipe?extensions=cidr.lang.annotatorInspectionToolProvider)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`Supplier` |
+| [cidr.lang.dfaInspectionConfig](https://jb.gg/ipe?extensions=cidr.lang.dfaInspectionConfig)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`OCDFAInspectionConfig` |
+| [cidr.lang.externalInspections](https://jb.gg/ipe?extensions=cidr.lang.externalInspections)      |`OCExternalInspections` |
+| [cidr.lang.fileTypeHelper](https://jb.gg/ipe?extensions=cidr.lang.fileTypeHelper)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`OCFileTypeHelper` |
+| [cidr.lang.languageKindHelper](https://jb.gg/ipe?extensions=cidr.lang.languageKindHelper)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`OCLanguageKindCalculatorHelper` |
+| [cidr.lang.languageKindProvider](https://jb.gg/ipe?extensions=cidr.lang.languageKindProvider)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`OCLanguageKindProvider` |
+| [cidr.lang.navigatableSymbolSearcherBridge](https://jb.gg/ipe?extensions=cidr.lang.navigatableSymbolSearcherBridge)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`NavigatableSymbolSearcherBridge` |
+| [cidr.lang.newFileLangBackendHandler](https://jb.gg/ipe?extensions=cidr.lang.newFileLangBackendHandler)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`OCNewFileLangBackendHandler` |
+| [cidr.lang.newFileModelHandlerProvider](https://jb.gg/ipe?extensions=cidr.lang.newFileModelHandlerProvider)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`OCNewFileProjectModelHandlerProvider` |
+| [cidr.lang.projectWizardFilesFormatter](https://jb.gg/ipe?extensions=cidr.lang.projectWizardFilesFormatter)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`CidrProjectWizardFilesFormatter` |
+| [cidr.lang.standaloneInspectionToolProvider](https://jb.gg/ipe?extensions=cidr.lang.standaloneInspectionToolProvider)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`Supplier` |
+
+### intellij.cidr.profiling.xml
+
+| Extension Point |Implementation |
+-----------------------------------
+| [cidr.profiler.memory.environmentProvider](https://jb.gg/ipe?extensions=cidr.profiler.memory.environmentProvider)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`MemoryProfileEnvironmentProvider` |
+| [cidr.profiler.memory.presentation](https://jb.gg/ipe?extensions=cidr.profiler.memory.presentation)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`MemoryProfilePresentation` |
+| [cidr.profiler.valgrind.disabler](https://jb.gg/ipe?extensions=cidr.profiler.valgrind.disabler)      |`ValgrindDisabler` |
+| [cidr.profiler.valgrind.executionContext](https://jb.gg/ipe?extensions=cidr.profiler.valgrind.executionContext)      |`ValgrindExecutionContext` |
+
+### intellij.cidr.projectModel.xml
+
+| Extension Point |Implementation |
+-----------------------------------
+| [cidr.lang.appleFrameworkFilter](https://jb.gg/ipe?extensions=cidr.lang.appleFrameworkFilter)      ![Project-Level](https://img.shields.io/badge/-Project--Level-blue?style=flat-square) |`AppleFrameworkFilter` |
+| [cidr.lang.codeInsightUnavailabilityHighlighter](https://jb.gg/ipe?extensions=cidr.lang.codeInsightUnavailabilityHighlighter)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`OCCodeInsightUnavailabilityHighlighter` |
+| [cidr.lang.compilerKindProvider](https://jb.gg/ipe?extensions=cidr.lang.compilerKindProvider)      |`OCCompilerKindProvider` |
+| [cidr.lang.compilerResolver](https://jb.gg/ipe?extensions=cidr.lang.compilerResolver)      ![Project-Level](https://img.shields.io/badge/-Project--Level-blue?style=flat-square) |`OCCompilerResolver` |
+| [cidr.lang.fileScopeProvider](https://jb.gg/ipe?extensions=cidr.lang.fileScopeProvider)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`OCFileScopeProvider` |
+| [cidr.lang.fileWideHighlighter](https://jb.gg/ipe?extensions=cidr.lang.fileWideHighlighter)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) ![DumbAware](https://img.shields.io/badge/-DumbAware-darkgreen?style=flat-square) |`FileWideHighlighter` |
+| [cidr.lang.headerSearchRootFactory](https://jb.gg/ipe?extensions=cidr.lang.headerSearchRootFactory)      |`HeadersSearchRootFactory` |
+| [cidr.lang.resolveConfigurationSelector](https://jb.gg/ipe?extensions=cidr.lang.resolveConfigurationSelector)      |`OCResolveConfigurationSelector` |
+| [cidr.projectModel.deserializingVetoCondition](https://jb.gg/ipe?extensions=cidr.projectModel.deserializingVetoCondition)      |`OCWorkspaceDeserializingVetoCondition` |
+| [cidr.projectModel.msvcPchHelper](https://jb.gg/ipe?extensions=cidr.projectModel.msvcPchHelper)      |`OCMsvcPchHelper` |
+| [cidr.projectModel.resolveConfigurationChooser](https://jb.gg/ipe?extensions=cidr.projectModel.resolveConfigurationChooser)      ![Internal](https://img.shields.io/badge/-Internal-darkred?style=flat-square) |`OCResolveConfigurationChooser` |
+| [cidr.projectModel.runAfterOCWorkspaceIsInitialized](https://jb.gg/ipe?extensions=cidr.projectModel.runAfterOCWorkspaceIsInitialized)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`RunAfterOCWorkspaceIsInitialized` |
+| [cidr.projectModel.runAfterOCWorkspaceIsLoaded](https://jb.gg/ipe?extensions=cidr.projectModel.runAfterOCWorkspaceIsLoaded)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`RunAfterOCWorkspaceIsLoaded` |
+| [cidr.projectModel.supportedFileChecker](https://jb.gg/ipe?extensions=cidr.projectModel.supportedFileChecker)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`OCSupportedFileChecker` |
+| [cidr.projectModel.unloadedResolveContextsManager](https://jb.gg/ipe?extensions=cidr.projectModel.unloadedResolveContextsManager)      |`OCUnloadedResolveContextsManager` |
+| [cidr.projectModel.workspaceLoadedCheck](https://jb.gg/ipe?extensions=cidr.projectModel.workspaceLoadedCheck)      |`OCWorkspaceLoadedChecker` |
+| [com.intellij.cidrCommandLineParser](https://jb.gg/ipe?extensions=com.intellij.cidrCommandLineParser)      ![Project-Level](https://img.shields.io/badge/-Project--Level-blue?style=flat-square) |`CidrCommandLineParser` |
+
+### intellij.cidr.runner.xml
+
+| Extension Point |Implementation |
+-----------------------------------
+| [cidr.targetToConfigProvider](https://jb.gg/ipe?extensions=cidr.targetToConfigProvider)      |`CidrTargetToConfigProvider` |
+
+### intellij.cidr.translateCode.xml
+
+| Extension Point |Implementation |
+-----------------------------------
+| [cidr.showAssembly.translatorProviders](https://jb.gg/ipe?extensions=cidr.showAssembly.translatorProviders)      |`CidrTranslatorProvider` |
+
+### intellij.cidr.util.execution.xml
+
+| Extension Point |Implementation |
+-----------------------------------
+| [cidr.util.pluginPathMapper](https://jb.gg/ipe?extensions=cidr.util.pluginPathMapper)      |`CidrPluginPathMapper` |
+
+### intellij.cidr.workspaceModel.xml
+
+| Extension Point |Implementation |
+-----------------------------------
+| [cidr.lang.ownModuleDetector](https://jb.gg/ipe?extensions=cidr.lang.ownModuleDetector)      |`CidrOwnModuleDetector` |
+| [cidr.project.is.known.checker](https://jb.gg/ipe?extensions=cidr.project.is.known.checker)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`KnownProjectChecker` |
+| [cidr.project.moduleNameProvider](https://jb.gg/ipe?extensions=cidr.project.moduleNameProvider)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`CidrWorkspaceModuleNameProvider` |
+| [cidr.project.moduleTypeProvider](https://jb.gg/ipe?extensions=cidr.project.moduleTypeProvider)      |`CidrModuleTypeProvider` |
+| [cidr.project.rootsBuilderProvider](https://jb.gg/ipe?extensions=cidr.project.rootsBuilderProvider)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`Provider` |
+| [cidr.project.workspaceProvider](https://jb.gg/ipe?extensions=cidr.project.workspaceProvider)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`CidrWorkspaceProvider` |
+| [com.jetbrains.cidr.fus.projectModelTypeProvider](https://jb.gg/ipe?extensions=com.jetbrains.cidr.fus.projectModelTypeProvider)      |`CidrProjectModelTypeProvider` |
+
+### intellij.clion.execution.xml
+
+| Extension Point |Implementation |
+-----------------------------------
+| [cidr.debugger.targets.provider](https://jb.gg/ipe?extensions=cidr.debugger.targets.provider)      |`DebugTargetsProvider` |
+| [cidr.testBuildSystemSupport](https://jb.gg/ipe?extensions=cidr.testBuildSystemSupport)      |`CidrTestBuildSystemSupport` |
+| [clion.buildToolWindowActivator.contributor](https://jb.gg/ipe?extensions=clion.buildToolWindowActivator.contributor)      |`Contributor` |
+| [clion.compoundConfigurationContext](https://jb.gg/ipe?extensions=clion.compoundConfigurationContext)      |`CidrCompoundConfigurationContext` |
+| [clion.externalConfigurationProvider](https://jb.gg/ipe?extensions=clion.externalConfigurationProvider)      |`CLionExternalConfigurationProvider` |
+| [clion.showAssembly.funcInfoProvider](https://jb.gg/ipe?extensions=clion.showAssembly.funcInfoProvider)      |`CLionShowAssemblyFuncInfoProvider` |
+
+### intellij.clion.featuresTrainer.xml
+
+| Extension Point |Implementation |
+-----------------------------------
+| [training.clion.lessons](https://jb.gg/ipe?extensions=training.clion.lessons)      |`CLionExternalLessons` |
+
+### intellij.clion.makefile.core.xml
+
+| Extension Point |Implementation |
+-----------------------------------
+| [clion.makefile.buildSystemDetector](https://jb.gg/ipe?extensions=clion.makefile.buildSystemDetector)      |`MkBuildSystemDetector` |
+| [clion.makefile.projectPreConfigurator](https://jb.gg/ipe?extensions=clion.makefile.projectPreConfigurator)      |`MkProjectPreConfigurator` |
+
+### intellij.clion.projectStatus.xml
+
+| Extension Point |Implementation |
+-----------------------------------
+| [cidr.project.notifications.editorNotificationWarningProvider](https://jb.gg/ipe?extensions=cidr.project.notifications.editorNotificationWarningProvider)      |`EditorNotificationWarningProvider` |
+| [cidr.project.popup.projectFixesProvider](https://jb.gg/ipe?extensions=cidr.project.popup.projectFixesProvider)      |`ProjectFixesProvider` |
+| [cidr.project.widget.widgetStatusProvider](https://jb.gg/ipe?extensions=cidr.project.widget.widgetStatusProvider)      |`WidgetStatusProvider` |
+
+### intellij.clion.radler.core.xml
+
+| Extension Point |Implementation |
+-----------------------------------
+| [com.intellij.clion.radler.core.inspections.headlessStartupExtension](https://jb.gg/ipe?extensions=com.intellij.clion.radler.core.inspections.headlessStartupExtension)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`RadHeadlessStartupExtension` |
+| [com.intellij.clion.radler.junie.testRunner](https://jb.gg/ipe?extensions=com.intellij.clion.radler.junie.testRunner)      |`TestRunner` |
+| [com.intellij.clion.radler.radQuickFixHandler](https://jb.gg/ipe?extensions=com.intellij.clion.radler.radQuickFixHandler)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`RadQuickFixHandler` |
+| [com.intellij.rider.refactoringPageProvider](https://jb.gg/ipe?extensions=com.intellij.rider.refactoringPageProvider)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`RefactoringPageProvider` |
+
+### intellij.clion.radler.testing.xml
+
+| Extension Point |Implementation |
+-----------------------------------
+| [com.intellij.clion.radler.testing.testFrameworkExtension](https://jb.gg/ipe?extensions=com.intellij.clion.radler.testing.testFrameworkExtension)      |`RadTestFrameworkExtension` |
+
+### intellij.clion.runFile.xml
+
+| Extension Point |Implementation |
+-----------------------------------
+| [cidr.cpp.runFile.entryPointDetector](https://jb.gg/ipe?extensions=cidr.cpp.runFile.entryPointDetector)      |`CppFileEntryPointDetector` |
+
+### intellij.clion.toolchains.xml
+
+| Extension Point |Implementation |
+-----------------------------------
+| [cidr.debugger.toolchainDebuggerProvider](https://jb.gg/ipe?extensions=cidr.debugger.toolchainDebuggerProvider)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) ![Experimental](https://img.shields.io/badge/-Experimental-violet?style=flat-square) ![Internal](https://img.shields.io/badge/-Internal-darkred?style=flat-square) |`CLionToolchainDebuggerProvider` |
+| [cidr.devEnvironmentChecker](https://jb.gg/ipe?extensions=cidr.devEnvironmentChecker)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`DevEnvironmentChecker` |
+| [clion.toolchains.resolveConfigurationToolchainProvider](https://jb.gg/ipe?extensions=clion.toolchains.resolveConfigurationToolchainProvider)      ![Internal](https://img.shields.io/badge/-Internal-darkred?style=flat-square) |`OCResolveConfigurationToolchainProvider` |
+
+### intellij.clion.wizard.xml
+
+| Extension Point |Implementation |
+-----------------------------------
+| [cidr.openWizardStepProvider](https://jb.gg/ipe?extensions=cidr.openWizardStepProvider)      |`OpenWizardStepProvider` |
+
+### intellij.cmake.core.xml
+
+| Extension Point |Implementation |
+-----------------------------------
+| [com.intellij.cmake.buildStep](https://jb.gg/ipe?extensions=com.intellij.cmake.buildStep)      |`CMakeBuildProcessListenerCreator` |
+| [com.intellij.cmake.cmakeSettingsFlavorProvider](https://jb.gg/ipe?extensions=com.intellij.cmake.cmakeSettingsFlavorProvider)      |`CMakeSettingsFlavorProvider` |
+| [com.intellij.cmake.defaultProfileProvider](https://jb.gg/ipe?extensions=com.intellij.cmake.defaultProfileProvider)      |`CMakeDefaultProfileProvider` |
+| [com.intellij.cmake.flavorProvider](https://jb.gg/ipe?extensions=com.intellij.cmake.flavorProvider)      |`CMakeFlavorProvider` |
+| [com.intellij.cmake.languageKindRecognizer](https://jb.gg/ipe?extensions=com.intellij.cmake.languageKindRecognizer)      |`CMakeLanguageKindRecognizer` |
+| [com.intellij.cmake.loadOnStartupDependency](https://jb.gg/ipe?extensions=com.intellij.cmake.loadOnStartupDependency)      |`FutureProvider` |
+| [com.intellij.cmake.profileLoadContributor](https://jb.gg/ipe?extensions=com.intellij.cmake.profileLoadContributor)      |`FutureProvider` |
+| [com.intellij.cmake.runnerStep](https://jb.gg/ipe?extensions=com.intellij.cmake.runnerStep)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`CMakeRunnerStep` |
+| [com.intellij.cmake.toolWindowFocusContributor](https://jb.gg/ipe?extensions=com.intellij.cmake.toolWindowFocusContributor)      |`CMakeToolWindowFocusContributor` |
+| [com.intellij.cmake.workspace.enabledProfileInitializer](https://jb.gg/ipe?extensions=com.intellij.cmake.workspace.enabledProfileInitializer)      |`CMakeEnabledProfileInitializer` |
+| [com.intellij.cmake.workspace.listener](https://jb.gg/ipe?extensions=com.intellij.cmake.workspace.listener)      ![Deprecated](https://img.shields.io/badge/-Deprecated-lightgrey?style=flat-square) ![Removal](https://img.shields.io/badge/-Removal-red?style=flat-square) |`CMakeWorkspaceListenerSuspending` |
+| [com.intellij.cmake.workspace.profileEnvironmentContributor](https://jb.gg/ipe?extensions=com.intellij.cmake.workspace.profileEnvironmentContributor)      |`CMakeProfileEnvironmentContributor` |
+
+### intellij.cmake.psi.xml
+
+| Extension Point |Implementation |
+-----------------------------------
+| [com.intellij.cmake.bundledDocumentationProvider](https://jb.gg/ipe?extensions=com.intellij.cmake.bundledDocumentationProvider)      |`CMakeBundledDocumentationProvider` |
+| [com.intellij.cmake.completion.environmentProvider](https://jb.gg/ipe?extensions=com.intellij.cmake.completion.environmentProvider)      |`CMakeEnvironmentVariableProvider` |
+| [com.intellij.cmake.fileLocationProvider](https://jb.gg/ipe?extensions=com.intellij.cmake.fileLocationProvider)      |`CMakeFileLocationProvider` |
+
+### intellij.cmake.python.xml
+
+| Extension Point |Implementation |
+-----------------------------------
+| [com.intellij.cmake.python.configurableCustomizer](https://jb.gg/ipe?extensions=com.intellij.cmake.python.configurableCustomizer)      ![Internal](https://img.shields.io/badge/-Internal-darkred?style=flat-square) |`CMakePythonConfigurableCustomizer` |
+
+### intellij.rml.dfa.devtools.xml
+
+| Extension Point |Implementation |
+-----------------------------------
+| [com.intellij.rml.dfa.devtools.debug.provider](https://jb.gg/ipe?extensions=com.intellij.rml.dfa.devtools.debug.provider)      |`DfaDebugProvider` |
+
+### intellij.rml.dfa.impl.xml
+
+| Extension Point |Implementation |
+-----------------------------------
+| [com.intellij.rml.dfa.impl.DfaDebugExtension](https://jb.gg/ipe?extensions=com.intellij.rml.dfa.impl.DfaDebugExtension)      |`DfaDebugExtension` |
+| [com.intellij.rml.dfa.ir.serialization.provider](https://jb.gg/ipe?extensions=com.intellij.rml.dfa.ir.serialization.provider)      |`IrSerializationProvider` |
+

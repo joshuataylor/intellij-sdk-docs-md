@@ -1,0 +1,100 @@
+# 11. Find Usages Provider
+
+<tldr>
+Reference: [Find Usages](find-usages.html)
+
+Code: [SimpleFindUsagesProvider](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleFindUsagesProvider.java)
+
+Testing: [8. Find Usages Test](find-usages-test.html)
+</tldr>
+
+Tip:
+
+This page is part of multi-step [Custom Language Support Tutorial](custom-language-support-tutorial.html).
+All previous steps must be executed in sequence for the code to work.
+
+A `FindUsagesProvider` uses a word scanner to build an index of words in every file.
+A scanner breaks the text into words and defines the context for each word.
+
+## Define a Find Usages Provider
+
+The [SimpleFindUsagesProvider](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleFindUsagesProvider.java) implements [FindUsagesProvider](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/indexing-api/src/com/intellij/lang/findUsages/FindUsagesProvider.java).
+Using the [DefaultWordsScanner](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/indexing-impl/src/com/intellij/lang/cacheBuilder/DefaultWordsScanner.java) ensures the scanner implementation is thread-safe.
+See the comments in `FindUsagesProvider` for more information.
+
+```JAVA
+final class SimpleFindUsagesProvider implements FindUsagesProvider {
+
+  @Override
+  public WordsScanner getWordsScanner() {
+    return new DefaultWordsScanner(new SimpleLexerAdapter(),
+        SimpleTokenSets.IDENTIFIERS,
+        SimpleTokenSets.COMMENTS,
+        TokenSet.EMPTY);
+  }
+
+  @Override
+  public boolean canFindUsagesFor(@NotNull PsiElement psiElement) {
+    return psiElement instanceof PsiNamedElement;
+  }
+
+  @Nullable
+  @Override
+  public String getHelpId(@NotNull PsiElement psiElement) {
+    return null;
+  }
+
+  @NotNull
+  @Override
+  public String getType(@NotNull PsiElement element) {
+    if (element instanceof SimpleProperty) {
+      return "simple property";
+    }
+    return "";
+  }
+
+  @NotNull
+  @Override
+  public String getDescriptiveName(@NotNull PsiElement element) {
+    if (element instanceof SimpleProperty) {
+      return ((SimpleProperty) element).getKey();
+    }
+    return "";
+  }
+
+  @NotNull
+  @Override
+  public String getNodeText(@NotNull PsiElement element, boolean useFullName) {
+    if (element instanceof SimpleProperty) {
+      return ((SimpleProperty) element).getKey() +
+          SimpleAnnotator.SIMPLE_SEPARATOR_STR +
+          ((SimpleProperty) element).getValue();
+    }
+    return "";
+  }
+
+}
+```
+
+## Register the Find Usages Provider
+
+The `SimpleFindUsagesProvider` implementation is registered with the IntelliJ Platform in the plugin configuration file using
+the [com.intellij.lang.findUsagesProvider](https://jb.gg/ipe?extensions=com.intellij.lang.findUsagesProvider) extension point
+.
+
+```XML
+<extensions defaultExtensionNs="com.intellij">
+  <lang.findUsagesProvider
+      language="Simple"
+      implementationClass="org.intellij.sdk.language.SimpleFindUsagesProvider"/>
+</extensions>
+```
+
+## Run the Project
+
+Run the plugin by using the Gradle [runIde](creating-plugin-project.html#running-a-plugin-with-the-runide-gradle-task) task.
+
+The IDE now supports [Find Usages](https://www.jetbrains.com/help/idea/find-highlight-usages.html) for any property with a reference:
+
+![Find Usages](images/find_usages.png)
+

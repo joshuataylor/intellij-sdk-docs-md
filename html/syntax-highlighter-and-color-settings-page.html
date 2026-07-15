@@ -1,0 +1,164 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF" data-resizable-sidebar="true"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="built-on" content="2026-06-21T21:30:54.56598"><!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5P98');</script>
+<!-- End Google Tag Manager -->
+<title>5. Syntax Highlighter and Color Settings Page | IntelliJ Platform Plugin SDK</title><script type="application/json" id="virtual-toc-data">[{"id":"define-a-syntax-highlighter","level":0,"title":"Define a Syntax Highlighter","anchor":"#define-a-syntax-highlighter"},{"id":"define-a-syntax-highlighter-factory","level":1,"title":"Define a Syntax Highlighter Factory","anchor":"#define-a-syntax-highlighter-factory"},{"id":"register-the-syntax-highlighter-factory","level":1,"title":"Register the Syntax Highlighter Factory","anchor":"#register-the-syntax-highlighter-factory"},{"id":"run-the-project-with-default-colors","level":1,"title":"Run the Project with Default Colors","anchor":"#run-the-project-with-default-colors"},{"id":"define-a-color-settings-page","level":0,"title":"Define a Color Settings Page","anchor":"#define-a-color-settings-page"},{"id":"register-the-color-settings-page","level":1,"title":"Register the Color Settings Page","anchor":"#register-the-color-settings-page"},{"id":"run-the-project","level":1,"title":"Run the Project","anchor":"#run-the-project"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.css" rel="stylesheet"><link rel="manifest" href="https://www.jetbrains.com/site.webmanifest"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content="https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png"><!-- Open Graph --><meta property="og:title" content="5. Syntax Highlighter and Color Settings Page | IntelliJ Platform Plugin SDK"><meta property="og:description" content=""><meta property="og:image" content="https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png"><meta property="og:site_name" content="IntelliJ Platform Plugin SDK Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="https://plugins.jetbrains.com/docs/intellij/syntax-highlighter-and-color-settings-page.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@JBPlatform"><meta name="twitter:title" content="5. Syntax Highlighter and Color Settings Page | IntelliJ Platform Plugin SDK"><meta name="twitter:description" content=""><meta name="twitter:creator" content="@JBPlatform"><meta name="twitter:image:src" content="https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png"><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "https://plugins.jetbrains.com/docs/intellij/syntax-highlighter-and-color-settings-page.html#webpage",
+    "url": "https://plugins.jetbrains.com/docs/intellij/syntax-highlighter-and-color-settings-page.html",
+    "name": "5. Syntax Highlighter and Color Settings Page | IntelliJ Platform Plugin SDK",
+    "description": "",
+    "image": "https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "https://plugins.jetbrains.com/docs/intellij/#website",
+    "url": "https://plugins.jetbrains.com/docs/intellij/",
+    "name": "IntelliJ Platform Plugin SDK Help"
+}</script><!-- End Schema.org --></head><body data-id="syntax_highlighter_and_color_settings_page" data-main-title="5. Syntax Highlighter and Color Settings Page" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="Custom Languages///custom_language_support_tutorial.md|Custom Language Support Tutorial" data-edit-url="https://github.com/JetBrains/intellij-sdk-docs/edit/main/topics/tutorials/custom_language_support/syntax_highlighter_and_color_settings_page.md"><!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5P98"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>IntelliJ Platform Plugin SDK  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="syntax_highlighter_and_color_settings_page" id="syntax_highlighter_and_color_settings_page.md">5. Syntax Highlighter and Color Settings Page</h1><div class="micro-format" data-content="{&quot;microFormat&quot;:[&quot;\u003cp id\u003d\&quot;-cgxlkd_11\&quot;\u003e\u003cspan class\u003d\&quot;control\&quot; id\u003d\&quot;-cgxlkd_13\&quot;\u003eReference\u003c/span\u003e: \u003ca href\u003d\&quot;syntax-highlighting-and-error-highlighting.html\&quot; id\u003d\&quot;-cgxlkd_14\&quot; data-tooltip\u003d\&quot;Highlighting syntax and semantic code errors on multiple levels.\&quot;\u003eSyntax and Error Highlighting\u003c/a\u003e\u003c/p\u003e&quot;,&quot;\u003cp id\u003d\&quot;-cgxlkd_12\&quot;\u003e\u003cspan class\u003d\&quot;control\&quot; id\u003d\&quot;-cgxlkd_15\&quot;\u003eCode\u003c/span\u003e: \u003ca href\u003d\&quot;https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleSyntaxHighlighter.java\&quot; id\u003d\&quot;-cgxlkd_16\&quot; data-external\u003d\&quot;true\&quot; rel\u003d\&quot;noopener noreferrer\&quot; target\u003d\&quot;_blank\&quot;\u003e\u003ccode class\u003d\&quot;code\&quot; id\u003d\&quot;-cgxlkd_19\&quot;\u003eSimpleSyntaxHighlighter\u003c/code\u003e\u003c/a\u003e, \u003ca href\u003d\&quot;https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleSyntaxHighlighterFactory.java\&quot; id\u003d\&quot;-cgxlkd_17\&quot; data-external\u003d\&quot;true\&quot; rel\u003d\&quot;noopener noreferrer\&quot; target\u003d\&quot;_blank\&quot;\u003e\u003ccode class\u003d\&quot;code\&quot; id\u003d\&quot;-cgxlkd_20\&quot;\u003eSimpleSyntaxHighlighterFactory\u003c/code\u003e\u003c/a\u003e, \u003ca href\u003d\&quot;https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleColorSettingsPage.java\&quot; id\u003d\&quot;-cgxlkd_18\&quot; data-external\u003d\&quot;true\&quot; rel\u003d\&quot;noopener noreferrer\&quot; target\u003d\&quot;_blank\&quot;\u003e\u003ccode class\u003d\&quot;code\&quot; id\u003d\&quot;-cgxlkd_21\&quot;\u003eSimpleColorSettingsPage\u003c/code\u003e\u003c/a\u003e\u003c/p\u003e&quot;]}"></div><aside class="prompt" data-type="tip" data-title="" id="-cgxlkd_10"><p id="-cgxlkd_22">This page is part of multi-step <a href="custom-language-support-tutorial.html" id="-cgxlkd_23" data-tooltip="Tutorial for creating a .properties-like custom language.">Custom Language Support Tutorial</a>. All previous steps must be executed in sequence for the code to work.</p></aside><p id="-cgxlkd_6">The first level of syntax highlighting is based on the lexer output, and is provided by <code class="code" id="-cgxlkd_24">SyntaxHighlighter</code>. A plugin can also define color settings based on <code class="code" id="-cgxlkd_25">ColorSettingPage</code> so the user can configure highlight colors.</p><section class="chapter"><h2 id="define-a-syntax-highlighter" data-toc="define-a-syntax-highlighter">Define a Syntax Highlighter</h2><p id="-cgxlkd_26">The <a href="https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleSyntaxHighlighter.java" id="-cgxlkd_31" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="-cgxlkd_34">SimpleSyntaxHighlighter</code></a> class extends <a href="https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/editor-ui-api/src/com/intellij/openapi/fileTypes/SyntaxHighlighterBase.java" id="-cgxlkd_32" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="-cgxlkd_35">SyntaxHighlighterBase</code></a>. As recommended in <a href="color-scheme-management.html#text-attribute-key-dependency" id="-cgxlkd_33">Color Scheme Management</a>, the Simple Language highlighting text attributes are specified as a dependency on one of standard IntelliJ Platform keys. For the Simple Language, define only one scheme.</p><div class="code-block" data-lang="java" data-disable-link-processing="true">public class SimpleSyntaxHighlighter extends SyntaxHighlighterBase {
+
+  public static final TextAttributesKey SEPARATOR =
+      createTextAttributesKey(&quot;SIMPLE_SEPARATOR&quot;, DefaultLanguageHighlighterColors.OPERATION_SIGN);
+  public static final TextAttributesKey KEY =
+      createTextAttributesKey(&quot;SIMPLE_KEY&quot;, DefaultLanguageHighlighterColors.KEYWORD);
+  public static final TextAttributesKey VALUE =
+      createTextAttributesKey(&quot;SIMPLE_VALUE&quot;, DefaultLanguageHighlighterColors.STRING);
+  public static final TextAttributesKey COMMENT =
+      createTextAttributesKey(&quot;SIMPLE_COMMENT&quot;, DefaultLanguageHighlighterColors.LINE_COMMENT);
+  public static final TextAttributesKey BAD_CHARACTER =
+      createTextAttributesKey(&quot;SIMPLE_BAD_CHARACTER&quot;, HighlighterColors.BAD_CHARACTER);
+
+
+  private static final TextAttributesKey[] BAD_CHAR_KEYS = new TextAttributesKey[]{BAD_CHARACTER};
+  private static final TextAttributesKey[] SEPARATOR_KEYS = new TextAttributesKey[]{SEPARATOR};
+  private static final TextAttributesKey[] KEY_KEYS = new TextAttributesKey[]{KEY};
+  private static final TextAttributesKey[] VALUE_KEYS = new TextAttributesKey[]{VALUE};
+  private static final TextAttributesKey[] COMMENT_KEYS = new TextAttributesKey[]{COMMENT};
+  private static final TextAttributesKey[] EMPTY_KEYS = new TextAttributesKey[0];
+
+  @NotNull
+  @Override
+  public Lexer getHighlightingLexer() {
+    return new SimpleLexerAdapter();
+  }
+
+  @Override
+  public TextAttributesKey @NotNull [] getTokenHighlights(IElementType tokenType) {
+    if (tokenType.equals(SimpleTypes.SEPARATOR)) {
+      return SEPARATOR_KEYS;
+    }
+    if (tokenType.equals(SimpleTypes.KEY)) {
+      return KEY_KEYS;
+    }
+    if (tokenType.equals(SimpleTypes.VALUE)) {
+      return VALUE_KEYS;
+    }
+    if (tokenType.equals(SimpleTypes.COMMENT)) {
+      return COMMENT_KEYS;
+    }
+    if (tokenType.equals(TokenType.BAD_CHARACTER)) {
+      return BAD_CHAR_KEYS;
+    }
+    return EMPTY_KEYS;
+  }
+
+}
+</div><section class="chapter"><h3 id="define-a-syntax-highlighter-factory" data-toc="define-a-syntax-highlighter-factory">Define a Syntax Highlighter Factory</h3><p id="-cgxlkd_36">The factory provides a standard way for the IntelliJ Platform to instantiate the syntax highlighter for Simple Language files. Here, <a href="https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleSyntaxHighlighterFactory.java" id="-cgxlkd_38" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="-cgxlkd_40">SimpleSyntaxHighlighterFactory</code></a> subclasses <a href="https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/editor-ui-api/src/com/intellij/openapi/fileTypes/SyntaxHighlighterFactory.java" id="-cgxlkd_39" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="-cgxlkd_41">SyntaxHighlighterFactory</code></a>.</p><div class="code-block" data-lang="java" data-disable-link-processing="true">final class SimpleSyntaxHighlighterFactory extends SyntaxHighlighterFactory {
+
+  @NotNull
+  @Override
+  public SyntaxHighlighter getSyntaxHighlighter(Project project, VirtualFile virtualFile) {
+    return new SimpleSyntaxHighlighter();
+  }
+
+}
+</div></section><section class="chapter"><h3 id="register-the-syntax-highlighter-factory" data-toc="register-the-syntax-highlighter-factory">Register the Syntax Highlighter Factory</h3><p id="-cgxlkd_42">Register the factory with the IntelliJ Platform in the plugin configuration file using the <a href="https://jb.gg/ipe?extensions=com.intellij.lang.syntaxHighlighterFactory" id="-cgxlkd_46" data-tooltip="Browse usages in existing implementations of open-source plugins" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="-cgxlkd_47">com.intellij.lang.syntaxHighlighterFactory</code></a> extension point.</p><div class="code-block" data-lang="markup">
+&lt;extensions defaultExtensionNs=&quot;com.intellij&quot;&gt;
+  &lt;lang.syntaxHighlighterFactory
+      language=&quot;Simple&quot;
+      implementationClass=&quot;org.intellij.sdk.language.SimpleSyntaxHighlighterFactory&quot;/&gt;
+&lt;/extensions&gt;
+</div></section><section class="chapter"><h3 id="run-the-project-with-default-colors" data-toc="run-the-project-with-default-colors">Run the Project with Default Colors</h3><p id="-cgxlkd_48">Open the example Simple Language <a href="lexer-and-parser-definition.html#run-the-project" id="-cgxlkd_50">properties file</a> (<code class="code" id="-cgxlkd_51">test.simple</code>) in the IDE Development Instance. The colors for Simple Language Key, Separator, and Value highlighting default to the IDE <span class="emphasis" id="-cgxlkd_52">Language Defaults</span> for Keyword, Braces, Operators, and Strings, respectively.</p><figure id="-cgxlkd_49"><img alt="Syntax highlighter" src="images/syntax_highlighter.png" title="Syntax highlighter" width="800" height="387"></figure></section></section><section class="chapter"><h2 id="define-a-color-settings-page" data-toc="define-a-color-settings-page">Define a Color Settings Page</h2><p id="-cgxlkd_53">The color settings page adds the ability for users to customize color settings for the highlighting in Simple Language files. The <a href="https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleColorSettingsPage.java" id="-cgxlkd_59" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="-cgxlkd_61">SimpleColorSettingsPage</code></a> implements <a href="https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/platform-api/src/com/intellij/openapi/options/colors/ColorSettingsPage.java" id="-cgxlkd_60" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="-cgxlkd_62">ColorSettingsPage</code></a>.</p><div class="code-block" data-lang="java" data-disable-link-processing="true">final class SimpleColorSettingsPage implements ColorSettingsPage {
+
+  private static final AttributesDescriptor[] DESCRIPTORS = new AttributesDescriptor[]{
+      new AttributesDescriptor(&quot;Key&quot;, SimpleSyntaxHighlighter.KEY),
+      new AttributesDescriptor(&quot;Separator&quot;, SimpleSyntaxHighlighter.SEPARATOR),
+      new AttributesDescriptor(&quot;Value&quot;, SimpleSyntaxHighlighter.VALUE),
+      new AttributesDescriptor(&quot;Bad value&quot;, SimpleSyntaxHighlighter.BAD_CHARACTER)
+  };
+
+  @Override
+  public Icon getIcon() {
+    return SimpleIcons.FILE;
+  }
+
+  @NotNull
+  @Override
+  public SyntaxHighlighter getHighlighter() {
+    return new SimpleSyntaxHighlighter();
+  }
+
+  @NotNull
+  @Override
+  public String getDemoText() {
+    return &quot;&quot;&quot;
+        # You are reading the &quot;.properties&quot; entry.
+        ! The exclamation mark can also mark text as comments.
+        website = https://en.wikipedia.org/
+        language = English
+        # The backslash below tells the application to continue reading
+        # the value onto the next line.
+        message = Welcome to \\
+                  Wikipedia!
+        # Add spaces to the key
+        key\\ with\\ spaces = This is the value that could be looked up with the key &quot;key with spaces&quot;.
+        # Unicode
+        tab : \\u0009&quot;&quot;&quot;;
+  }
+
+  @Nullable
+  @Override
+  public Map&lt;String, TextAttributesKey&gt; getAdditionalHighlightingTagToDescriptorMap() {
+    return null;
+  }
+
+  @Override
+  public AttributesDescriptor @NotNull [] getAttributeDescriptors() {
+    return DESCRIPTORS;
+  }
+
+  @Override
+  public ColorDescriptor @NotNull [] getColorDescriptors() {
+    return ColorDescriptor.EMPTY_ARRAY;
+  }
+
+  @NotNull
+  @Override
+  public String getDisplayName() {
+    return &quot;Simple&quot;;
+  }
+
+}
+</div><p id="-cgxlkd_55">It is supported to group related attributes like operators or braces by separating the nodes with <code class="code" id="-cgxlkd_63">//</code>, e.g.:</p><div class="code-block" data-lang="java">
+AttributesDescriptor[] DESCRIPTORS = new AttributesDescriptor[] {
+    new AttributesDescriptor(&quot;Operators//Plus&quot;, MySyntaxHighlighter.PLUS),
+    new AttributesDescriptor(&quot;Operators//Minus&quot;, MySyntaxHighlighter.MINUS),
+    new AttributesDescriptor(&quot;Operators//Advanced//Sigma&quot;, MySyntaxHighlighter.SIGMA),
+    new AttributesDescriptor(&quot;Operators//Advanced//Pi&quot;, MySyntaxHighlighter.PI),
+    //...
+};
+</div><section class="chapter"><h3 id="register-the-color-settings-page" data-toc="register-the-color-settings-page">Register the Color Settings Page</h3><p id="-cgxlkd_64">Register the Simple Language color settings page with the IntelliJ Platform in the plugin configuration file using the <a href="https://jb.gg/ipe?extensions=com.intellij.colorSettingsPage" id="-cgxlkd_68" data-tooltip="Browse usages in existing implementations of open-source plugins" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="-cgxlkd_69">com.intellij.colorSettingsPage</code></a> extension point.</p><div class="code-block" data-lang="markup">
+&lt;extensions defaultExtensionNs=&quot;com.intellij&quot;&gt;
+  &lt;colorSettingsPage
+      implementation=&quot;org.intellij.sdk.language.SimpleColorSettingsPage&quot;/&gt;
+&lt;/extensions&gt;
+</div></section><section class="chapter"><h3 id="run-the-project" data-toc="run-the-project">Run the Project</h3><p id="-cgxlkd_70">Run the project by using the Gradle <a href="creating-plugin-project.html#running-a-plugin-with-the-runide-gradle-task" id="-cgxlkd_73"><code class="code" id="-cgxlkd_74">runIde</code></a> task.</p><p id="-cgxlkd_71">In the IDE Development Instance, open the Simple Language highlight settings page: <span class="menupath" id="-cgxlkd_75">Settings | Editor | Color Scheme | Simple</span>. Each color initially inherits from a <span class="control" id="-cgxlkd_76">Language Defaults</span> value.</p><figure id="-cgxlkd_72"><img alt="Color Settings Page" src="images/color_settings_page.png" title="Color Settings Page" width="800" height="579"></figure></section></section><div class="last-modified">29 June 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="lexer-and-parser-definition.html" class="navigation-links__prev">4. Lexer and Parser Definition</a><a href="psi-helper-and-utilities.html" class="navigation-links__next">6. PSI Helpers and Utilities</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.js"></script></body></html>

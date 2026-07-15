@@ -1,0 +1,77 @@
+# The IntelliJ Platform
+
+The IntelliJ Platform is not a product in and of itself but provides a platform for building IDEs.
+It is used to power JetBrains products such as [IntelliJ IDEA](https://www.jetbrains.com/idea/).
+It is also Open Source and can be used by third parties to build IDEs, such as [Android Studio](https://developer.android.com/studio/index.html) from Google.
+
+The IntelliJ Platform provides all the infrastructure that these IDEs need to provide rich language tooling support.
+It is a component-driven, cross-platform JVM-based application host with a high-level user interface toolkit for creating [tool windows](tool-windows.html), tree views, and lists (supporting fast search) as well as popup menus and [dialogs](dialog-wrapper.html).
+
+The IntelliJ Platform has a full-text [editor](editors.html) with abstract implementations of [syntax highlighting](analyzing.html), [code folding](folding-builder.html), [code completion](code-completion.html), and other rich text [editing features](editing.html).
+An image editor is also included.
+
+Furthermore, it includes open APIs to build standard IDE functionality, such as a [project model](project.html) and a [build system](external-system-integration.html).
+It also provides an infrastructure for a rich debugging experience, with language-agnostic advanced breakpoint support, call stacks, watch windows, and expression evaluation.
+
+But the IntelliJ Platform's real power comes from the Program Structure Interface ([PSI](psi.html)).
+It is a set of functionalities used to parse files, build rich syntactic and semantic models of the code, and build [indexes](indexing-and-psi-stubs.html) from this data.
+PSI powers a lot of functionalities, from quick navigating to [files](psi-files.html), types, and [symbols](symbols.html), to the contents of [code completion](code-completion.html) popups and [find usages](find-usages.html), [code inspections](code-inspections.html), and code rewriting, for quick fixes or [refactorings](rename-refactoring.html), as well as many other features.
+
+The IntelliJ Platform includes [parsers](implementing-parser-and-psi.html) and a PSI model for many languages, and its extensible nature means that it is possible to [add support for other languages](custom-language-support.html).
+
+## Plugins
+
+Products built on the IntelliJ Platform are extensible applications, with the platform being responsible for creating [Extensions](plugin-extensions.html).
+The IntelliJ Platform fully supports [plugins](developing-plugins.html), and JetBrains hosts the [JetBrains Marketplace](https://plugins.jetbrains.com), which can be used to distribute plugins that support one or more of the products.
+It is also possible to distribute plugins using a [Custom Plugin Repository](custom-plugin-repository.html).
+
+Plugins can extend the platform in many ways, from adding a simple menu item to adding support for a complete language, build system, and debugger.
+Many of the existing IntelliJ Platform features are implemented as plugins that can be included or excluded depending on the needs of the end product.
+See the [Quick Start Guide](plugins-quick-start.html) for more details.
+
+Note: Plugin Alternatives
+
+In some cases, implementing an actual IntelliJ Platform plugin might not be necessary, as [alternative solutions](plugin-alternatives.html) exist.
+
+## Open Source
+
+The IntelliJ Platform is Open Source, under the [Apache License](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/LICENSE.txt), and [hosted on GitHub](https://github.com/JetBrains/intellij-community).
+
+While this guide refers to the IntelliJ Platform as a separate entity, there is no "IntelliJ Platform" GitHub repository.
+Instead, the platform is considered to be an almost complete overlap with the [IntelliJ Platform](idea.html) (the GitHub repository linked above is the [JetBrains/intellij-community](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/README.md) repository).
+
+The version of the IntelliJ Platform is defined by the version of the corresponding IntelliJ IDEA release.
+For example, to build a plugin against IntelliJ IDEA (2019.1.1), build #191.6707.61 means specifying the same build number tag to get the correct IntelliJ Platform files from the `intellij-community` repository.
+See the [Build Number Ranges](build-number-ranges.html) page for more information about build numbers corresponding to version numbering.
+
+Typically, an IDE that is based on the IntelliJ Platform will include the `intellij-community` repository as a Git submodule and provide configuration to describe which plugins from the `intellij-community`, and which custom plugins will make up the product.
+
+## IDEs Based on the IntelliJ Platform
+
+The IntelliJ Platform underlies many JetBrains IDEs.
+[IntelliJ IDEA](idea.html) is a superset of the IntelliJ Platform but includes closed-source plugins ([see this feature comparison](https://www.jetbrains.com/idea/features/editions_comparison_matrix.html)).
+Similarly, other products such as [WebStorm](webstorm.html) and [DataGrip](data-grip.html) are based on the IntelliJ Platform, but with a different set of plugins included and excluding other default plugins.
+This allows plugins to target multiple products, as each product will include base functionality and a selection of plugins from the IntelliJ Platform repository.
+
+The following IDEs are based on the IntelliJ Platform:
+
+* [JetBrains](https://www.jetbrains.com) IDEs: * [AppCode](app-code.html) * [CLion](clion.html) * [DataGrip](data-grip.html) * [DataSpell](https://www.jetbrains.com/dataspell/) * [GoLand](goland.html) * [IntelliJ IDEA](idea.html) * [MPS](https://www.jetbrains.com/mps/) * [PhpStorm](phpstorm.html) * [PyCharm](pycharm.html) * [Rider](#rider) * [RubyMine](rubymine.html) * [RustRover](https://www.jetbrains.com/rust/) * [WebStorm](webstorm.html)
+
+* [Android Studio](android-studio.html) IDE from Google
+
+* [Jmix Studio](https://www.jmix.io/tools/)
+
+### Rider
+
+JetBrains [Rider](rider.html) uses the IntelliJ Platform differently than other IntelliJ-based IDEs.
+It uses the IntelliJ Platform to provide the user interface for a C# and .NET IDE, with the standard IntelliJ editors, tool windows, debugging experience, etc.
+It also integrates into the standard Find Usages and Search Everywhere UI and uses code completion, syntax highlighting, and so on.
+
+However, Rider doesn't create a full [PSI](psi.html) (syntactic and semantic) model for C# files.
+Instead, it reuses [ReSharper](https://www.jetbrains.com/resharper/) to provide language functionality.
+All the C# PSI models, inspections, code rewritings, such as quick fixes, and refactorings are run out of the process, in a command-line version of ReSharper.
+This means that creating a plugin for Rider involves two parts: a plugin that lives in the IntelliJ "front end" to show user interface, and a plugin that lives in the ReSharper "back end" to analyze and work with the C# PSI.
+
+Fortunately, many plugins can simply work with the ReSharper backend.
+Rider takes care of displaying the results of inspections and code completion, and many plugins can be implemented without requiring an IntelliJ UI component.
+

@@ -1,0 +1,118 @@
+# Combo Box
+
+<tldr>
+Implementation: [ComboBox](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/platform-api/src/com/intellij/openapi/ui/ComboBox.java)
+</tldr>
+
+A combo box combines a [drop down list](drop-down.html) and an [input field](input-field.html), allowing the user to select a value from the list or enter a custom value.
+
+![A preview of a combo box](images/combobox.png)
+
+Use [ComboBox](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/platform-api/src/com/intellij/openapi/ui/ComboBox.java) instead of `javax.swing.JComboBox`.
+To make combo box editable invoke:
+
+```JAVA
+comboBox.setEditable(true);
+```
+
+## When to use
+
+### Select value or enter custom
+
+When the user needs to select a value or enter a custom value, use the combo box:
+
+![A font size  that allows selecting predefined values as well as entering a custom value](images/combobox_when_to_use_1.png)
+
+### Return to previous states
+
+Use a combo box if users may need to revisit previous values, such as saving entered paths for quick selection later:
+
+![A  with an open menu with previously selected values](images/combobox_when_to_use_2.png)
+
+## When not to use
+
+### The number of options is finite
+
+If the number of options is finite, and there is no need to enter custom values, use a [dropdown list](drop-down.html) or [radio buttons](radio-button.html):
+
+![The Theme dropdown with a predefined list of values](images/combobox_when_not_to_use_1.png)
+
+### Impossible to list values
+
+If it is not possible to list the most likely choices, use an [input field](input-field.html) instead:
+
+![A port number input](images/combobox_when_not_to_use_2.png)
+
+### Large list with expected values
+
+If the list is big, and the user knows what value they need and won’t review the list, use an input field with completion:
+
+![An input field with a completion popup](images/combobox_when_not_to_use_3.png)
+
+## How to use
+
+### Label and default value
+
+For the [label](drop-down.html#label) and the [default value](drop-down.html#default-value) apply the same rules as for the
+[dropdown list](drop-down.html).
+
+### Initial state
+
+If there are no values in the list initially, replace the combo box with an input field.
+This way, users won't waste their time clicking the empty combo box to find out that there are no options available.
+
+|        Incorrect![An incorrect example of a repository input field without values](images/combobox_how_to_use_1_incorrect.png)      |       Correct![A correct example of a repository input field without values](images/combobox_how_to_use_1_correct.png)      |
+
+Replace the input field with a combo box after a value has been entered and confirmed:
+
+|        Incorrect![An incorrect example of a repository input field without values](images/combobox_how_to_use_2_incorrect.png)      |       Correct![A correct example of a repository input field without values](images/combobox_how_to_use_2_correct.png)      |
+
+### Menu items
+
+#### Predefined options
+
+Show the predefined or most likely options in the list. Follow the rules for [dropdown menu items](drop-down.html#menu-items).
+
+#### Previous inputs
+
+If the user needs to return to previous inputs, add such values to the end of the list when the confirmation button in the dialog is clicked:
+
+![A combo box with previously entered values in the menu](images/combobox_menu_items_1.png)
+
+#### Built-in button
+
+Use [built-in buttons](built-in-button.html) to add values or expand the combo box, e.g., the browse button:
+
+![A combo box with the browse built-in button](images/combobox_menu_items_2.png)
+
+## Validation
+
+If the user enters an invalid value, highlight the combo box with red and show an error message in a tooltip. For
+more details, see [validation errors](validation-errors.html).
+
+![A combo box with an error message](images/combobox_validation.png)
+
+## How to layout
+
+Follow the [labeled input controls](layout.html#labeled-input-controls).
+
+## Built-in behaviour
+
+### Opening the menu
+
+The combo box menu opens by clicking on the arrow button on the right or pressing the `Down` arrow key when the combo box is focused.
+The menu opens down by default. If there is not enough space, the menu opens up.
+
+### Selected value
+
+The value that was shown in the closed combo box is selected in the open menu. A value in the list is not selected if a custom value was entered.
+
+### Moving the selection
+
+The selection is moved and the value in the combo box is updated by pressing the Up and Down arrow keys. When using a mouse, the selection is changed on mouse hover, the value is updated by clicking the mouse button or pressing `Enter`.
+
+### Closing the menu
+
+The menu remains opened until the user clicks the item in the list, presses `Enter` or `Esc`, clicks outside the menu,
+or switches to another app.
+

@@ -1,0 +1,143 @@
+# 7. Annotator
+
+<tldr>
+Reference: [Annotator](syntax-highlighting-and-error-highlighting.html#annotator)
+
+Code: [SimpleAnnotator](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleAnnotator.java)
+
+Testing: [4. Annotator Test](annotator-test.html)
+</tldr>
+
+Tip:
+
+This page is part of multi-step [Custom Language Support Tutorial](custom-language-support-tutorial.html).
+All previous steps must be executed in sequence for the code to work.
+
+An `Annotator` helps highlight and annotate any code based on specific rules.
+This section adds annotation functionality to support the Simple Language in the context of Java code.
+
+## Required Project Configuration Changes
+
+Classes defined in this step of the tutorial depend on `com.intellij.psi.PsiLiteralExpression` (the PSI representation for String literals in Java code) at runtime.
+
+A dependency on the [Java plugin](idea.html#java-plugin) must be [declared explicitly](plugin-dependencies.html).
+First, add a dependency on the Java plugin in the Gradle build script:
+
+```KOTLIN
+dependencies {
+  intellijPlatform {
+    // ...
+    bundledPlugin("com.intellij.java")
+  }
+}
+```
+
+See `[build.gradle.kts](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/build.gradle.kts)` for the reference.
+
+Then, declare the dependency in `[plugin.xml](plugin-configuration-file.html)` (use code insight)
+
+```XML
+<depends>com.intellij.java</depends>
+```
+
+## Define an Annotator
+
+The [SimpleAnnotator](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleAnnotator.java) subclasses [Annotator](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/analysis-api/src/com/intellij/lang/annotation/Annotator.java).
+Consider a literal string that starts with "simple:" as a prefix of a Simple Language key.
+It isn't part of the Simple Language, but it is a useful convention for detecting Simple Language keys embedded as string literals in other languages, like Java.
+Annotate the `simple:key` literal expression and differentiate between a well-formed vs. an unresolved property.
+
+```JAVA
+final class SimpleAnnotator implements Annotator {
+
+  // Define strings for the Simple language prefix - used for annotations, line markers, etc.
+  public static final String SIMPLE_PREFIX_STR = "simple";
+  public static final String SIMPLE_SEPARATOR_STR = ":";
+
+  @Override
+  public void annotate(@NotNull final PsiElement element, @NotNull AnnotationHolder holder) {
+    // Ensure the PSI Element is an expression
+    if (!(element instanceof PsiLiteralExpression literalExpression)) {
+      return;
+    }
+
+    // Ensure the PSI element contains a string that starts with the prefix and separator
+    String value = literalExpression.getValue() instanceof String ? (String) literalExpression.getValue() : null;
+    if (value == null || !value.startsWith(SIMPLE_PREFIX_STR + SIMPLE_SEPARATOR_STR)) {
+      return;
+    }
+
+    // Define the text ranges (start is inclusive, end is exclusive)
+    // "simple:key"
+    //  01234567890
+    TextRange prefixRange = TextRange.from(element.getTextRange().getStartOffset(), SIMPLE_PREFIX_STR.length() + 1);
+    TextRange separatorRange = TextRange.from(prefixRange.getEndOffset(), SIMPLE_SEPARATOR_STR.length());
+    TextRange keyRange = new TextRange(separatorRange.getEndOffset(), element.getTextRange().getEndOffset() - 1);
+
+    // highlight "simple" prefix and ":" separator
+    holder.newSilentAnnotation(HighlightSeverity.INFORMATION)
+        .range(prefixRange).textAttributes(DefaultLanguageHighlighterColors.KEYWORD).create();
+    holder.newSilentAnnotation(HighlightSeverity.INFORMATION)
+        .range(separatorRange).textAttributes(SimpleSyntaxHighlighter.SEPARATOR).create();
+
+
+    // Get the list of properties for given key
+    String key = value.substring(SIMPLE_PREFIX_STR.length() + SIMPLE_SEPARATOR_STR.length());
+    List<SimpleProperty> properties = SimpleUtil.findProperties(element.getProject(), key);
+    if (properties.isEmpty()) {
+      holder.newAnnotation(HighlightSeverity.ERROR, "Unresolved property")
+          .range(keyRange)
+          .highlightType(ProblemHighlightType.LIKE_UNKNOWN_SYMBOL)
+          // ** Tutorial step 19. - Add a quick fix for the string containing possible properties
+          .withFix(new SimpleCreatePropertyQuickFix(key))
+          .create();
+    } else {
+      // Found at least one property, force the text attributes to Simple syntax value character
+      holder.newSilentAnnotation(HighlightSeverity.INFORMATION)
+          .range(keyRange).textAttributes(SimpleSyntaxHighlighter.VALUE).create();
+    }
+  }
+
+}
+```
+
+Tip: SimpleCreatePropertyQuickFix
+
+If the above code is copied at this stage of the tutorial, then remove the line below the comment ** Tutorial step 19. … as
+`SimpleCreatePropertyQuickFix` is not defined until [later](quick-fix.html) in the tutorial.
+
+## Register the Annotator
+
+Using the [com.intellij.annotator](https://jb.gg/ipe?extensions=com.intellij.annotator) extension point
+in the plugin configuration file, register the Simple Language annotator class for `JAVA` language:
+
+```XML
+<extensions defaultExtensionNs="com.intellij">
+  <annotator
+      language="JAVA"
+      implementationClass="org.intellij.sdk.language.SimpleAnnotator"/>
+</extensions>
+```
+
+## Run the Project
+
+Run the plugin by using the Gradle [runIde](creating-plugin-project.html#running-a-plugin-with-the-runide-gradle-task) task.
+
+As a test, define the following Java file containing a Simple Language `prefix:value` pair:
+
+```JAVA
+public class Test {
+  public static void main(String[] args) {
+    System.out.println("simple:website");
+  }
+}
+```
+
+Open this Java file in an IDE Development Instance running the `simple_language_plugin` to check if the IDE resolves a property:
+
+![Annotator](images/annotator.png)
+If the property is an undefined name, the annotator flags the code with an error.
+
+![Unresolved property](images/unresolved_property.png)
+Try changing the Simple Language [color settings](syntax-highlighter-and-color-settings-page.html#run-the-project) to differentiate the annotation from the default language color settings.
+

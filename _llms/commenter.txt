@@ -1,0 +1,81 @@
+# 18. Commenter
+
+<tldr>
+Reference: [Comment Code](additional-minor-features.html#comment-code)
+
+Code: [SimpleCommenter](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleCommenter.java)
+
+Testing: [9. Commenter Test](commenter-test.html)
+</tldr>
+
+Tip:
+
+This page is part of multi-step [Custom Language Support Tutorial](custom-language-support-tutorial.html).
+All previous steps must be executed in sequence for the code to work.
+
+A commenter enables the user to comment-out a line of code at the cursor or selected code automatically.
+The [Commenter](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/core-api/src/com/intellij/lang/Commenter.java) defines support for `Code | Comment with Line Comment` and `Code | Comment with Block Comment` actions.
+
+## Define a Commenter
+
+The [SimpleCommenter](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleCommenter.java) for Simple Language defines the line comment prefix as `#`.
+
+```JAVA
+final class SimpleCommenter implements Commenter {
+
+  @Override
+  public String getLineCommentPrefix() {
+    return "#";
+  }
+
+  @Override
+  public String getBlockCommentPrefix() {
+    return "";
+  }
+
+  @Nullable
+  @Override
+  public String getBlockCommentSuffix() {
+    return null;
+  }
+
+  @Nullable
+  @Override
+  public String getCommentedBlockCommentPrefix() {
+    return null;
+  }
+
+  @Nullable
+  @Override
+  public String getCommentedBlockCommentSuffix() {
+    return null;
+  }
+
+}
+```
+
+## Register the Commenter
+
+The `SimpleCommenter` implementation is registered in the plugin configuration file using the [com.intellij.lang.commenter](https://jb.gg/ipe?extensions=com.intellij.lang.commenter) extension point
+.
+
+```XML
+<extensions defaultExtensionNs="com.intellij">
+  <lang.commenter
+      language="Simple"
+      implementationClass="org.intellij.sdk.language.SimpleCommenter"/>
+</extensions>
+```
+
+## Run the Project
+
+Run the plugin by using the Gradle [runIde](creating-plugin-project.html#running-a-plugin-with-the-runide-gradle-task) task.
+
+Open the example Simple Language [properties file](lexer-and-parser-definition.html#run-the-project) in the IDE Development Instance.
+Place the cursor at the `website` line.
+Select `Code | Comment with Line Comment`.
+The line is converted to a comment.
+Select `Code | Comment with Line Comment` again, and the comment is converted back to active code.
+
+![Commenter](images/commenter.png)
+

@@ -1,0 +1,111 @@
+# Built-In Button
+
+A built-in button is an icon placed inside an input control.
+
+![Built-in-button](images/built_in_button.png)
+
+### Implementation
+
+To place a button inside a text field, use [ExtendableTextField](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/platform-api/src/com/intellij/ui/components/fields/ExtendableTextField.java) and
+its `addExtension()` method.
+
+## When to use
+
+Use a built-in button instead of adding a separate [button](button.html) on the right where possible to save space and declutter the interface:
+
+| Correct ![Browse button](images/built_in_button_browse_correct.png) |Incorrect ![Incorrect browse button](images/built_in_button_browse_incorrect.png) |
+
+### Browse
+
+Use the Browse icon to select a single file or a folder from the disc.
+
+![Browse](images/built_in_button_browse.png)
+#### Implementation
+
+A combo box with the Browse button:
+
+Kotlin:
+
+```KOTLIN
+val browseExtension = ExtendableTextComponent.Extension.create(
+    AllIcons.General.OpenDisk,
+    AllIcons.General.OpenDiskHover,
+    "Open file",
+    { System.out.println("Browse file clicked") }
+)
+val extComboBox = ComboBox<String>(STRING_VALUES)
+extComboBox.setEditable(true)
+extComboBox.setEditor(object : BasicComboBoxEditor() {
+  override fun createEditorComponent(): JTextField {
+    val ecbEditor = ExtendableTextField()
+    ecbEditor.addExtension(browseExtension)
+    ecbEditor.setBorder(null)
+    return ecbEditor
+  }
+})
+```
+
+Java:
+
+```JAVA
+ExtendableTextComponent.Extension browseExtension =
+  ExtendableTextComponent.Extension.create(
+    AllIcons.General.OpenDisk,
+    AllIcons.General.OpenDiskHover,
+    "Open file",
+    () -> System.out.println("Browse file clicked")
+  );
+ComboBox<String> extComboBox = new ComboBox<>(STRING_VALUES);
+extComboBox.setEditable(true);
+extComboBox.setEditor(new BasicComboBoxEditor() {
+  @Override
+  protected JTextField createEditorComponent() {
+    ExtendableTextField ecbEditor = new ExtendableTextField();
+    ecbEditor.addExtension(browseExtension);
+    ecbEditor.setBorder(null);
+    return ecbEditor;
+  }
+});
+```
+
+### Expand a field
+
+If the input text can be long and the place is constrained,
+use an input field with the Expand button:
+
+![Collapsed built-in button](images/built_in_button_collapsed.png)
+Expanded field:
+
+![Expanded built-in button](images/built_in_button_expanded.png)
+
+### List values
+
+Use the List icon to select a value from the list of objects such as classes, methods, or environment variables:
+
+![List of values](images/built_in_button_list.png)
+
+### Add value
+
+Use the Add button to select multiple values, such as files, variables, folder paths. The selected values will be added to the existing list.
+
+![Add a value to the field](images/built_in_button_add.png)
+
+## When not to use
+
+### Cut, Copy, Paste
+
+Do not use the Copy, Paste or Cut button. Instead, make sure these actions are available on pressing `Cmd/Ctrl+X`, `Cmd/Ctrl+C`, and `Cmd/Ctrl+V` shortcuts or  from the context menu.
+
+|      Correct     ![Browse button](images/built_in_button_copy_correct.png)  |     Incorrect     ![Incorrect browse button](images/built_in_button_copy_incorrect.png)  |
+
+### Help, Info
+
+Do not use the Help or Info buttons to open an external link or a hint. Use the [context help](context-help.html) instead.
+
+| Correct ![Context help ](images/built_in_button_help_correct.png) |Incorrect ![Incorrect browse button](images/built_in_button_help_incorrect.png) |
+
+## Shortcut
+
+The shortcut for a built-in button is `Shift+Enter`.
+The shortcut activates only when the input field with the button is focused.
+

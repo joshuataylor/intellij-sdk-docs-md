@@ -1,0 +1,121 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF" data-resizable-sidebar="true"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="built-on" content="2026-06-21T21:30:54.775881"><!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5P98');</script>
+<!-- End Google Tag Manager -->
+<title>12. Folding Builder | IntelliJ Platform Plugin SDK</title><script type="application/json" id="virtual-toc-data">[{"id":"define-a-folding-builder","level":0,"title":"Define a Folding Builder","anchor":"#define-a-folding-builder"},{"id":"register-the-folding-builder","level":0,"title":"Register the Folding Builder","anchor":"#register-the-folding-builder"},{"id":"run-the-project","level":0,"title":"Run the Project","anchor":"#run-the-project"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.css" rel="stylesheet"><link rel="manifest" href="https://www.jetbrains.com/site.webmanifest"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content="https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png"><!-- Open Graph --><meta property="og:title" content="12. Folding Builder | IntelliJ Platform Plugin SDK"><meta property="og:description" content=""><meta property="og:image" content="https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png"><meta property="og:site_name" content="IntelliJ Platform Plugin SDK Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="https://plugins.jetbrains.com/docs/intellij/folding-builder.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@JBPlatform"><meta name="twitter:title" content="12. Folding Builder | IntelliJ Platform Plugin SDK"><meta name="twitter:description" content=""><meta name="twitter:creator" content="@JBPlatform"><meta name="twitter:image:src" content="https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png"><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "https://plugins.jetbrains.com/docs/intellij/folding-builder.html#webpage",
+    "url": "https://plugins.jetbrains.com/docs/intellij/folding-builder.html",
+    "name": "12. Folding Builder | IntelliJ Platform Plugin SDK",
+    "description": "",
+    "image": "https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "https://plugins.jetbrains.com/docs/intellij/#website",
+    "url": "https://plugins.jetbrains.com/docs/intellij/",
+    "name": "IntelliJ Platform Plugin SDK Help"
+}</script><!-- End Schema.org --></head><body data-id="folding_builder" data-main-title="12. Folding Builder" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="Custom Languages///custom_language_support_tutorial.md|Custom Language Support Tutorial" data-edit-url="https://github.com/JetBrains/intellij-sdk-docs/edit/main/topics/tutorials/custom_language_support/folding_builder.md"><!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5P98"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>IntelliJ Platform Plugin SDK  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="folding_builder" id="folding_builder.md">12. Folding Builder</h1><div class="micro-format" data-content="{&quot;microFormat&quot;:[&quot;\u003cp id\u003d\&quot;-5x46nn_12\&quot;\u003e\u003cspan class\u003d\&quot;control\&quot; id\u003d\&quot;-5x46nn_14\&quot;\u003eCode\u003c/span\u003e: \u003ca href\u003d\&quot;https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleFoldingBuilder.java\&quot; id\u003d\&quot;-5x46nn_15\&quot; data-external\u003d\&quot;true\&quot; rel\u003d\&quot;noopener noreferrer\&quot; target\u003d\&quot;_blank\&quot;\u003e\u003ccode class\u003d\&quot;code\&quot; id\u003d\&quot;-5x46nn_16\&quot;\u003eSimpleFoldingBuilder\u003c/code\u003e\u003c/a\u003e\u003c/p\u003e&quot;,&quot;\u003cp id\u003d\&quot;-5x46nn_13\&quot;\u003e\u003cspan class\u003d\&quot;control\&quot; id\u003d\&quot;-5x46nn_17\&quot;\u003eTesting\u003c/span\u003e: \u003ca href\u003d\&quot;folding-test.html\&quot; id\u003d\&quot;-5x46nn_18\&quot; data-tooltip\u003d\&quot;Implementing and running test for folding builder implemented as a part of the Custom Language Support Tutorial.\&quot;\u003e7. Folding Test\u003c/a\u003e\u003c/p\u003e&quot;]}"></div><aside class="prompt" data-type="tip" data-title="" id="-5x46nn_11"><p id="-5x46nn_19">This page is part of multi-step <a href="custom-language-support-tutorial.html" id="-5x46nn_20" data-tooltip="Tutorial for creating a .properties-like custom language.">Custom Language Support Tutorial</a>. All previous steps must be executed in sequence for the code to work.</p></aside><p id="-5x46nn_6">A folding builder identifies the folding regions in the code. In this step of the tutorial, the folding builder is used to identify folding regions and replace the regions with specific text. Rather than the usual practice of using a folding builder to collapse a class, method, or comments to fewer lines, the folding builder replaces Simple Language keys with their corresponding values.</p><section class="chapter"><h2 id="define-a-folding-builder" data-toc="define-a-folding-builder">Define a Folding Builder</h2><p id="-5x46nn_21">The <a href="https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleFoldingBuilder.java" id="-5x46nn_27" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="-5x46nn_29">SimpleFoldingBuilder</code></a> replaces usages of properties with their values by default. Start by subclassing <a href="https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/core-api/src/com/intellij/lang/folding/FoldingBuilderEx.java" id="-5x46nn_28" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="-5x46nn_30">FoldingBuilderEx</code></a></p><p id="-5x46nn_22">Note that <code class="code" id="-5x46nn_31">SimpleFoldingBuilder</code> is marked <a href="indexing-and-psi-stubs.html#DumbAwareAPI" id="-5x46nn_32">dumb aware</a>, which means the class is allowed to run in <a href="indexing-and-psi-stubs.html#dumb-mode" id="-5x46nn_33">dumb mode</a>, when indexes are in background update.</p><aside class="prompt" data-type="note" data-title="" id="-5x46nn_23"><p id="-5x46nn_34">A folding builder must implement <a href="https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/core-api/src/com/intellij/openapi/project/DumbAware.java" id="-5x46nn_35" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="-5x46nn_36">DumbAware</code></a> to function in this tutorial and pass tests.</p></aside><p id="-5x46nn_24">The <code class="code" id="-5x46nn_37">buildFoldRegions()</code> method searches down a PSI tree from <code class="code" id="-5x46nn_38">root</code> to find all literal expressions containing the <a href="annotator.html#define-an-annotator" id="-5x46nn_39">simple prefix</a> <code class="code" id="-5x46nn_40">simple:</code>. The remainder of such a string is expected to contain a Simple Language key, and so the text range is stored as a <a href="https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/core-api/src/com/intellij/lang/folding/FoldingDescriptor.java" id="-5x46nn_41" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="-5x46nn_42">FoldingDescriptor</code></a>.</p><p id="-5x46nn_25">The <code class="code" id="-5x46nn_43">getPlaceholderText()</code> method retrieves the Simple Language value corresponding to the key associated with the (ASTNode) provided. The IntelliJ Platform uses the value to substitute for the key when the code gets folded.</p><div class="code-block" data-lang="java" data-disable-link-processing="true">final class SimpleFoldingBuilder extends FoldingBuilderEx implements DumbAware {
+
+  @Override
+  public FoldingDescriptor @NotNull [] buildFoldRegions(@NotNull PsiElement root,
+                                                        @NotNull Document document,
+                                                        boolean quick) {
+    // Initialize the group of folding regions that will expand/collapse together.
+    FoldingGroup group = FoldingGroup.newGroup(SimpleAnnotator.SIMPLE_PREFIX_STR);
+    // Initialize the list of folding regions
+    List&lt;FoldingDescriptor&gt; descriptors = new ArrayList&lt;&gt;();
+
+    root.accept(new JavaRecursiveElementWalkingVisitor() {
+
+      @Override
+      public void visitLiteralExpression(@NotNull PsiLiteralExpression literalExpression) {
+        super.visitLiteralExpression(literalExpression);
+
+        String value = PsiLiteralUtil.getStringLiteralContent(literalExpression);
+        if (value != null &amp;&amp;
+            value.startsWith(SimpleAnnotator.SIMPLE_PREFIX_STR + SimpleAnnotator.SIMPLE_SEPARATOR_STR)) {
+          Project project = literalExpression.getProject();
+          String key = value.substring(
+              SimpleAnnotator.SIMPLE_PREFIX_STR.length() + SimpleAnnotator.SIMPLE_SEPARATOR_STR.length()
+          );
+          // find SimpleProperty for the given key in the project
+          SimpleProperty simpleProperty = ContainerUtil.getOnlyItem(SimpleUtil.findProperties(project, key));
+          if (simpleProperty != null) {
+            // Add a folding descriptor for the literal expression at this node.
+            descriptors.add(new FoldingDescriptor(literalExpression.getNode(),
+                new TextRange(literalExpression.getTextRange().getStartOffset() + 1,
+                    literalExpression.getTextRange().getEndOffset() - 1),
+                group, Collections.singleton(simpleProperty)));
+          }
+        }
+      }
+    });
+
+    return descriptors.toArray(FoldingDescriptor.EMPTY_ARRAY);
+  }
+
+  /**
+   * Gets the Simple Language 'value' string corresponding to the 'key'
+   *
+   * @param node Node corresponding to PsiLiteralExpression containing a string in the format
+   *             SIMPLE_PREFIX_STR + SIMPLE_SEPARATOR_STR + Key, where Key is
+   *             defined by the Simple language file.
+   */
+  @Nullable
+  @Override
+  public String getPlaceholderText(@NotNull ASTNode node) {
+    if (node.getPsi() instanceof PsiLiteralExpression psiLiteralExpression) {
+      String text = PsiLiteralUtil.getStringLiteralContent(psiLiteralExpression);
+      if (text == null) {
+        return null;
+      }
+
+      String key = text.substring(SimpleAnnotator.SIMPLE_PREFIX_STR.length() +
+          SimpleAnnotator.SIMPLE_SEPARATOR_STR.length());
+
+      SimpleProperty simpleProperty = ContainerUtil.getOnlyItem(
+          SimpleUtil.findProperties(psiLiteralExpression.getProject(), key)
+      );
+      if (simpleProperty == null) {
+        return StringUtil.THREE_DOTS;
+      }
+
+      String propertyValue = simpleProperty.getValue();
+      // IMPORTANT: keys can come with no values, so a test for null is needed
+      // IMPORTANT: Convert embedded \n to backslash n, so that the string will look
+      // like it has LF embedded in it and embedded &quot; to escaped &quot;
+      if (propertyValue == null) {
+        return StringUtil.THREE_DOTS;
+      }
+
+      return propertyValue
+          .replaceAll(&quot;\n&quot;, &quot;\\n&quot;)
+          .replaceAll(&quot;\&quot;&quot;, &quot;\\\\\&quot;&quot;);
+    }
+
+    return null;
+  }
+
+  @Override
+  public boolean isCollapsedByDefault(@NotNull ASTNode node) {
+    return true;
+  }
+
+}
+</div></section><section class="chapter"><h2 id="register-the-folding-builder" data-toc="register-the-folding-builder">Register the Folding Builder</h2><p id="-5x46nn_44">The <code class="code" id="-5x46nn_46">SimpleFoldingBuilder</code> implementation is registered with the IntelliJ Platform in the plugin configuration file using the <a href="https://jb.gg/ipe?extensions=com.intellij.lang.foldingBuilder" id="-5x46nn_49" data-tooltip="Browse usages in existing implementations of open-source plugins" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="-5x46nn_50">com.intellij.lang.foldingBuilder</code></a> extension point.</p><div class="code-block" data-lang="markup">
+&lt;extensions defaultExtensionNs=&quot;com.intellij&quot;&gt;
+  &lt;lang.foldingBuilder
+      language=&quot;JAVA&quot;
+      implementationClass=&quot;org.intellij.sdk.language.SimpleFoldingBuilder&quot;/&gt;
+&lt;/extensions&gt;
+</div></section><section class="chapter"><h2 id="run-the-project" data-toc="run-the-project">Run the Project</h2><p id="-5x46nn_51">Run the plugin by using the Gradle <a href="creating-plugin-project.html#running-a-plugin-with-the-runide-gradle-task" id="-5x46nn_54"><code class="code" id="-5x46nn_55">runIde</code></a> task.</p><p id="-5x46nn_52">Now when a Java file is opened in the editor, it shows the property's value instead of the key. This is because <code class="code" id="-5x46nn_56">SimpleFoldingBuilder.isCollapsedByDefault()</code> always returns <code class="code" id="-5x46nn_57">true</code>. Try using <span class="menupath" id="-5x46nn_58">Code | Folding | Expand All</span> to show the key rather than the value.</p><figure id="-5x46nn_53"><img alt="Folding" src="images/folding.png" title="Folding" width="800" height="342"></figure></section><div class="last-modified">29 June 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="find-usages-provider.html" class="navigation-links__prev">11. Find Usages Provider</a><a href="go-to-symbol-contributor.html" class="navigation-links__next">13. Go To Symbol Contributor</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.js"></script></body></html>
