@@ -1,7 +1,7 @@
 # IntelliJ Platform Gradle Plugin (2.x)
 
 <tldr>
-Current Release: 2.16.0
+Current Release: 2.18.1
 
 GitHub: [Releases &amp; Changelog](https://github.com/JetBrains/intellij-platform-gradle-plugin/releases), [Issue Tracker](https://github.com/JetBrains/intellij-platform-gradle-plugin/issues)
 
@@ -45,7 +45,7 @@ Kotlin:
 
 ```KOTLIN
 plugins {
-  id("org.jetbrains.intellij.platform") version "2.16.0"
+  id("org.jetbrains.intellij.platform") version "2.18.1"
 }
 ```
 
@@ -53,7 +53,7 @@ Groovy:
 
 ```GROOVY
 plugins {
-  id 'org.jetbrains.intellij.platform' version '2.16.0'
+  id 'org.jetbrains.intellij.platform' version '2.18.1'
 }
 ```
 
@@ -221,7 +221,7 @@ Kotlin:
 import org.jetbrains.intellij.platform.gradle.extensions.intellijPlatform
 
 plugins {
-  id("org.jetbrains.intellij.platform.settings") version "2.16.0"
+  id("org.jetbrains.intellij.platform.settings") version "2.18.1"
 }
 
 dependencyResolutionManagement {
@@ -245,7 +245,7 @@ Groovy:
 import org.jetbrains.intellij.platform.gradle.extensions.intellijPlatform
 
 plugins {
-  id 'org.jetbrains.intellij.platform.settings' version '2.16.0'
+  id 'org.jetbrains.intellij.platform.settings' version '2.18.1'
 }
 
 dependencyResolutionManagement {
@@ -450,7 +450,7 @@ repositories {
 
 dependencies {
   intellijPlatform {
-    intellijIdea("2026.1.3")
+    intellijIdea("2026.1.4")
 
     bundledPlugin("com.intellij.java")
     plugin("org.intellij.scala", "2024.1.4")
@@ -469,7 +469,7 @@ repositories {
 
 dependencies {
   intellijPlatform {
-    intellijIdea '2026.1.3'
+    intellijIdea '2026.1.4'
 
     bundledPlugin 'com.intellij.java'
     plugin 'org.intellij.scala', '2024.1.4'
@@ -495,7 +495,7 @@ Kotlin:
 
 ```KOTLIN
 plugins {
-  id("org.jetbrains.intellij.platform") version "2.16.0"
+  id("org.jetbrains.intellij.platform") version "2.18.1"
 }
 ```
 
@@ -503,7 +503,7 @@ Groovy:
 
 ```GROOVY
 plugins {
-  id 'org.jetbrains.intellij.platform' version '2.16.0'
+  id 'org.jetbrains.intellij.platform' version '2.18.1'
 }
 ```
 

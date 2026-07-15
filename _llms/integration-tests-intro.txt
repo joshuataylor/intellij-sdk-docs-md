@@ -17,10 +17,24 @@ The Starter framework exclusively supports JUnit 5, as it leverages JUnit 5's ex
 To create a new task - `integrationTest`, define new test source roots - `integrationTest`, and add required dependencies, update the `build.gradle.kts` file:
 
 ```KOTLIN
+import org.jetbrains.intellij.platform.gradle.*
+
+plugins {
+  //...
+  id("org.jetbrains.intellij.platform") version "2.18.1"
+}
+
 sourceSets {
   create("integrationTest") {
     compileClasspath += sourceSets.main.get().output
     runtimeClasspath += sourceSets.main.get().output
+  }
+}
+
+repositories {
+  //...
+  intellijPlatform {
+    defaultRepositories()
   }
 }
 
@@ -31,6 +45,7 @@ val integrationTestImplementation by configurations.getting {
 dependencies {
   intellijPlatform {
     //...
+    intellijIdea("2026.1")
     testFramework(TestFrameworkType.Starter, configurationName = "integrationTestImplementation")
   }
 
@@ -56,6 +71,8 @@ The following dependencies are required:
 * `org.kodein.di:kodein-di-jvm` is a dependency injection framework used by Starter for configuration.
 
 * `org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm` is required for Starter framework which is implemented using Kotlin coroutines.
+
+* `intellijIdeaUltimate(...)` the IDE version for which the plugin is compiled
 
 This configuration does the following:
 
@@ -90,19 +107,19 @@ Now that the configuration is complete, it's time to write the first integration
 Create a new Kotlin file in `src/integrationTest/kotlin` with the following code:
 
 ```KOTLIN
+import com.intellij.ide.starter.driver.engine.runIdeWithDriver
 import com.intellij.ide.starter.ide.IdeProductProvider
 import com.intellij.ide.starter.models.TestCase
-import com.intellij.ide.starter.plugins.PluginConfigurator
 import com.intellij.ide.starter.project.NoProject
 import com.intellij.ide.starter.runner.Starter
+import org.junit.jupiter.api.Test
 
 class PluginTest {
   @Test
   fun simpleTestWithoutProject() {
     Starter.newContext(
       testName = "testExample",
-      TestCase(IdeProductProvider.IC, projectInfo = NoProject)
-        .withVersion("2024.3"),
+      TestCase(IdeInfo.IdeaUltimate, projectInfo = NoProject)
     ).apply {
       val pathToPlugin = System.getProperty("path.to.build.plugin")
       PluginConfigurator(this).installPluginFromDir(Path.of(pathToPlugin))
@@ -116,27 +133,52 @@ Let's break down each part of the test:
 
 ### 1. Context Creation
 
+262+:
+
 ```KOTLIN
 Starter.newContext(
   testName = "testExample",
-  TestCase(IdeProductProvider.IC, projectInfo = NoProject
-).withVersion("2024.3"))
+  TestCase(IdeInfo.IdeaUltimate, projectInfo = NoProject))
 ```
+
+Pre-262:
+
+```KOTLIN
+Starter.newContext(
+  testName = "testExample",
+  TestCase(IdeProductProvider.IU, projectInfo = NoProject))
+```
+
+Note:
+
+Starting with version 262, the recommended way to indicate the IDE has changed from `IdeProductProvider.IU` to `IdeInfo.IdeaUltimate`.
 
 The Context object stores IDE runtime configuration:
 
 * IDE type (e.g., IntelliJ IDEA, PhpStorm, GoLand).
 
-* IDE version (2024.3 in this example).
-
 * Project configuration (using `NoProject` for this example).
 
 * Custom VM options, paths, and SDK settings.
 
-The `testName` parameter defines the folder name for test artifacts, which is useful when running multiple IDE instances in a single test.
-The test case uses IntelliJ IDEA version 2024.3, and starts the IDE without any project, so the welcome screen will be shown.
+By default, the IDE version provided by the sandbox is used for tests. A different version can be specified with:
 
-### 2. Plugin Installation
+262+:
+
+```KOTLIN
+TestCase(IdeInfo.IdeaUltimate, projectInfo = NoProject).withVersion("2024.3")
+```
+
+Pre-262:
+
+```KOTLIN
+TestCase(IdeProductProvider.IU, projectInfo = NoProject).withVersion("2024.3")
+```
+
+The `testName` parameter defines the folder name for test artifacts, which is useful when running multiple IDE instances in a single test.
+The test case starts the IDE without any project, so the welcome screen will be shown.
+
+### 2. Plugin Installation (Optional)
 
 ```KOTLIN
 .apply {
@@ -145,11 +187,11 @@ The test case uses IntelliJ IDEA version 2024.3, and starts the IDE without any 
 }
 ```
 
-This step configures plugin installation using the plugin path defined in the Gradle configuration with the `path.to.build.plugin` system property.
+This step configures the installation of the plugin being developed, using the plugin distribution path defined in the Gradle configuration with the `path.to.build.plugin` system property.
 
 Note:
 
-[PluginConfigurator](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/tools/intellij.tools.ide.starter/src/com/intellij/ide/starter/plugins/PluginConfigurator.kt) can install plugins from local paths or Marketplace.
+[PluginConfigurator](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/tools/intellij.tools.ide.starter/src/com/intellij/ide/starter/plugins/PluginConfigurator.kt) can install plugins from local paths or Marketplace.
 
 ### 3. IDE Life Cycle Management
 
@@ -198,11 +240,11 @@ Let's modify the test to open a project.
 
 The framework supports several ways to specify test projects:
 
-* [GitHub projects](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/tools/intellij.tools.ide.starter/src/com/intellij/ide/starter/project/GitHubProject.kt): ```KOTLIN GitHubProject.fromGithub( branchName = "master", "JetBrains/ij-perf-report-aggregator" ) ```
+* [GitHub projects](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/tools/intellij.tools.ide.starter/src/com/intellij/ide/starter/project/GitHubProject.kt): ```KOTLIN GitHubProject.fromGithub( branchName = "master", "JetBrains/ij-perf-report-aggregator" ) ```
 
-* [Remote archives](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/tools/intellij.tools.ide.starter/src/com/intellij/ide/starter/project/RemoteArchiveProjectInfo.kt): ```KOTLIN RemoteArchiveProjectInfo( "https://github.com/example/repo/archive/master.zip" ) ```
+* [Remote archives](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/tools/intellij.tools.ide.starter/src/com/intellij/ide/starter/project/RemoteArchiveProjectInfo.kt): ```KOTLIN RemoteArchiveProjectInfo( "https://github.com/example/repo/archive/master.zip" ) ```
 
-* [Local projects](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/tools/intellij.tools.ide.starter/src/com/intellij/ide/starter/project/LocalProjectInfo.kt): ```KOTLIN LocalProjectInfo( Path("src/test/resources/test-projects/simple-project") ) ```
+* [Local projects](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/tools/intellij.tools.ide.starter/src/com/intellij/ide/starter/project/LocalProjectInfo.kt): ```KOTLIN LocalProjectInfo( Path("src/test/resources/test-projects/simple-project") ) ```
 
 The following example shows how to open a GitHub project:
 
@@ -212,15 +254,15 @@ fun simpleTest() {
   Starter.newContext(
     "testExample",
     TestCase(
-      IdeProductProvider.IC,
+      IdeInfo.IdeaUltimate,
       GitHubProject.fromGithub(
         branchName = "master",
         repoRelativeUrl = "JetBrains/ij-perf-report-aggregator"
       )
-    ).withVersion("2024.2")
+    )
   ).apply {
     val pathToPlugin = System.getProperty("path.to.build.plugin")
-    PluginConfigurator(this).installPluginFromFolder(File(pathToPlugin))
+    PluginConfigurator(this).installPluginFromDir(Path.of(pathToPlugin))
   }.runIdeWithDriver().useDriverAndCloseIde {
     waitForIndicators(5.minutes)
   }
@@ -242,13 +284,13 @@ Due to the two-process architecture:
 
 * Exceptions in the IDE process aren't automatically propagated to the test process.
 
-* A bundled plugin collects exceptions from the IDE's [MessageBus](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/extensions/src/com/intellij/util/messages/MessageBus.kt).
+* A bundled plugin collects exceptions from the IDE's [MessageBus](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/extensions/src/com/intellij/util/messages/MessageBus.kt).
 
 * These exceptions are stored in the error folder within the logs.
 
-* The Starter framework collects exceptions from the IDE and pass them to the method `reportTestFailure` in object registered as [CIServer](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/tools/intellij.tools.ide.starter/src/com/intellij/ide/starter/ci/CIServer.kt) in DI.
+* The Starter framework collects exceptions from the IDE and pass them to the method `reportTestFailure` in object registered as [CIServer](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/tools/intellij.tools.ide.starter/src/com/intellij/ide/starter/ci/CIServer.kt) in DI.
 
-TeamCity reporting is used by default, falling back to [NoCIServer](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/tools/intellij.tools.ide.starter/src/com/intellij/ide/starter/ci/NoCIServer.kt) for other environments.
+TeamCity reporting is used by default, falling back to [NoCIServer](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/tools/intellij.tools.ide.starter/src/com/intellij/ide/starter/ci/NoCIServer.kt) for other environments.
 However, this can be customized by using Kodein Dependency Injection.
 
 The following example shows how to make tests fail when IDE exceptions occur:
@@ -286,6 +328,22 @@ This extensibility pattern can be applied to customize other aspects of the Star
 Here's the complete test implementation that forms the foundation for future plugin testing:
 
 ```KOTLIN
+import com.intellij.driver.sdk.waitForIndicators
+import com.intellij.ide.starter.ci.CIServer
+import com.intellij.ide.starter.ci.NoCIServer
+import com.intellij.ide.starter.di.di
+import com.intellij.ide.starter.driver.engine.runIdeWithDriver
+import com.intellij.ide.starter.ide.IdeProductProvider
+import com.intellij.ide.starter.models.TestCase
+import com.intellij.ide.starter.project.GitHubProject
+import com.intellij.ide.starter.project.NoProject
+import com.intellij.ide.starter.runner.Starter
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.fail
+import org.kodein.di.DI
+import org.kodein.di.bindSingleton
+import kotlin.time.Duration.Companion.minutes
+
 class PluginTest {
   init {
     di = DI {
@@ -309,16 +367,13 @@ class PluginTest {
     val result = Starter.newContext(
       "testExample",
       TestCase(
-        IdeProductProvider.IC,
+        IdeInfo.IdeaUltimate,
         GitHubProject.fromGithub(
           branchName = "master",
           repoRelativeUrl = "JetBrains/ij-perf-report-aggregator"
         )
-      ).withVersion("2024.2")
-    ).apply {
-      val pathToPlugin = System.getProperty("path.to.build.plugin")
-      PluginConfigurator(this).installPluginFromFolder(File(pathToPlugin))
-    }.runIdeWithDriver().useDriverAndCloseIde {
+      )
+    ).runIdeWithDriver().useDriverAndCloseIde {
       waitForIndicators(5.minutes)
     }
   }

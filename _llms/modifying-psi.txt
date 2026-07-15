@@ -13,13 +13,13 @@ See [the Documents article](documents.html#what-are-the-rules-of-working-with-do
 The PSI elements to add to the tree or replace existing PSI elements are usually created from text.
 In most cases, the flow is:
 
-1. Use [PsiFileFactory.createFileFromText()](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/core-api/src/com/intellij/psi/PsiFileFactory.java) to create a new file that contains the code construct that needs to be added to the tree or used as a replacement for an existing element. See also [How do I create a PSI file?](psi-files.html#how-do-i-create-a-psi-file).
+1. Use [PsiFileFactory.createFileFromText()](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/psi/PsiFileFactory.java) to create a new file that contains the code construct that needs to be added to the tree or used as a replacement for an existing element. See also [How do I create a PSI file?](psi-files.html#how-do-i-create-a-psi-file).
 
 2. Traverse the resulting tree to locate the required element and then pass it to `add()` or `replace()`.
 
 Most languages provide factory methods to create specific code constructs more easily, for example:
 
-* [PsiJavaParserFacade](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/java/java-psi-api/src/com/intellij/psi/PsiJavaParserFacade.java) class contains methods such as `createMethodFromText()`, which creates a Java method from the given text
+* [PsiJavaParserFacade](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/java/java-psi-api/src/com/intellij/psi/PsiJavaParserFacade.java) class contains methods such as `createMethodFromText()`, which creates a Java method from the given text
 
 * [SimpleElementFactory.createProperty()](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/psi/SimpleElementFactory.java) creating a Simple language property
 
@@ -96,14 +96,14 @@ This method ensures that the built structure is the same as what the parser prod
 
 When working with PSI modification functions, do not create individual whitespace nodes (spaces or line breaks) from text.
 Instead, all whitespace modifications are performed by the formatter, which follows the code style settings selected by the user.
-Formatting is automatically performed at the end of every command and can be also performed manually with [CodeStyleManager.reformat(PsiElement)](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/core-api/src/com/intellij/psi/codeStyle/CodeStyleManager.java) if needed.
+Formatting is automatically performed at the end of every command and can be also performed manually with [CodeStyleManager.reformat(PsiElement)](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/psi/codeStyle/CodeStyleManager.java) if needed.
 
 Also, when working with Java code (or with code in other languages with a similar import mechanism such as Groovy or Python), do not create imports manually.
-Instead, use fully qualified names in generated code and then call [JavaCodeStyleManager.shortenClassReferences()](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/java/java-psi-api/src/com/intellij/psi/codeStyle/JavaCodeStyleManager.java) (or the equivalent API for the code language).
+Instead, use fully qualified names in generated code and then call [JavaCodeStyleManager.shortenClassReferences()](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/java/java-psi-api/src/com/intellij/psi/codeStyle/JavaCodeStyleManager.java) (or the equivalent API for the code language).
 This ensures that the imports are created according to the user's code style settings and inserted into the file's correct place.
 
 ## Combining PSI and Document Modifications
 
 In some cases, after modifying a PSI, it is required to perform an operation on the modified document (for example, start a [live template](live-templates.html)).
-To complete the PSI-based post-processing (such as formatting) and commit the changes to the document, call [PsiDocumentManager.doPostponedOperationsAndUnblockDocument()](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/core-api/src/com/intellij/psi/PsiDocumentManager.java).
+To complete the PSI-based post-processing (such as formatting) and commit the changes to the document, call [PsiDocumentManager.doPostponedOperationsAndUnblockDocument()](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/psi/PsiDocumentManager.java).
 

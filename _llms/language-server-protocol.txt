@@ -37,7 +37,7 @@ Relevant `build.gradle.kts` configuration:
 
 ```KOTLIN
 plugins {
-  id("org.jetbrains.intellij.platform") version "2.16.0"
+  id("org.jetbrains.intellij.platform") version "2.18.1"
 }
 
 repositories {
@@ -50,7 +50,7 @@ repositories {
 
 dependencies {
   intellijPlatform {
-    intellijIdea("2026.1.3")
+    intellijIdea("2026.1.4")
   }
 }
 ```
@@ -69,7 +69,7 @@ plugins {
 }
 
 intellij {
-  version = "2026.1.3"
+  version = "2026.1.4"
   type = "IU"
 }
 ```
@@ -229,7 +229,7 @@ See the [Customization](#customization) section for details.
 
 ## Basic Implementation
 
-As a reference, check out the [Prisma ORM](https://plugins.jetbrains.com/plugin/20686-prisma-orm) open-source plugin implementation: [Prisma ORM LSP](https://github.com/JetBrains/intellij-plugins/tree/idea/261.25134.95/prisma/src/org/intellij/prisma/ide/lsp)
+As a reference, check out the [Prisma ORM](https://plugins.jetbrains.com/plugin/20686-prisma-orm) open-source plugin implementation: [Prisma ORM LSP](https://github.com/JetBrains/intellij-plugins/tree/idea/261.26222.65/prisma/src/org/intellij/prisma/ide/lsp)
 
 Procedure: Minimal LSP Plugin Setup
 
@@ -276,7 +276,7 @@ To access LSP API source code and documentation see [IDE Setup](#ide-setup).
 To fine-tune or disable the implementation of LSP-based features, plugins may return a customized `LspCustomization` object from the `LspServerDescriptor.lspCustomization` property.
 Available customization options are described by `LspCustomization`'s properties.
 
-For example, see [PrismaLspServerDescriptor](https://github.com/JetBrains/intellij-plugins/tree/idea/261.25134.95/prisma/src/org/intellij/prisma/ide/lsp/PrismaLspServerDescriptor.kt).
+For example, see [PrismaLspServerDescriptor](https://github.com/JetBrains/intellij-plugins/tree/idea/261.26222.65/prisma/src/org/intellij/prisma/ide/lsp/PrismaLspServerDescriptor.kt).
 
 The new API is backward-compatible.
 Plugin LSP customizations implemented via deprecated `LspServerDescriptor`'s properties will work in 2025.2.
@@ -328,7 +328,7 @@ When considering the LSP-based approach, it is important to assess the following
 
 The following open-source plugins make use of LSP:
 
-* [Prisma ORM](https://github.com/JetBrains/intellij-plugins/tree/idea/261.25134.95/prisma/src/org/intellij/prisma/ide/lsp)
+* [Prisma ORM](https://github.com/JetBrains/intellij-plugins/tree/idea/261.26222.65/prisma/src/org/intellij/prisma/ide/lsp)
 
 Explore third-party plugins using LSP on [IntelliJ Platform Explorer](https://jb.gg/ipe?extensions=com.intellij.platform.lsp.serverSupportProvider).
 

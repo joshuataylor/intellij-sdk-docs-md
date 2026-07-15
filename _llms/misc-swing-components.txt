@@ -4,7 +4,7 @@
 
 `Messages`
 
-[Messages](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/platform-api/src/com/intellij/openapi/ui/Messages.java) provides a way to show simple
+[Messages](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/platform-api/src/com/intellij/openapi/ui/Messages.java) provides a way to show simple
 message boxes, input dialogs (modal dialogs with a text field), and chooser dialogs (modal dialogs with a combo box).
 On macOS, the message boxes use the native UI.
 
@@ -19,7 +19,7 @@ Refer to the [Notification Balloons](notification-balloons.html) topic for more 
 
 `JBSplitter`
 
-[JBSplitter](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/platform-api/src/com/intellij/ui/JBSplitter.java) is a replacement for the standard
+[JBSplitter](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/platform-api/src/com/intellij/ui/JBSplitter.java) is a replacement for the standard
 [Swing JSplitPane](https://docs.oracle.com/en/java/javase/24/docs/api/java.desktop/javax/swing/JSplitPane.html) class.
 Unlike some other JetBrains-enhanced Swing components, it is not a drop-in replacement and has a different API.
 However, to achieve a consistent user experience, it is recommended to use `JBSplitter` instead of the standard `JSplitPane`.
@@ -33,7 +33,7 @@ To enable it, call the `setSplitterProportionKey()` method and pass the unique I
 
 `JBTabs`
 
-[JBTabs](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/platform-api/src/com/intellij/ui/tabs/JBTabs.java) is an implementation of the tab control, used for editor tabs and a few other components.
+[JBTabs](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/platform-api/src/com/intellij/ui/tabs/JBTabs.java) is an implementation of the tab control, used for editor tabs and a few other components.
 It has a significantly different look & feel compared to the standard Swing tabs and looks less native on the macOS platform,
 so it's up to the developer to choose which tab control would be more appropriate.
 

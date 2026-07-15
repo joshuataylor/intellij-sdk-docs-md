@@ -6,7 +6,7 @@ Product Help: [Quick Documentation](https://www.jetbrains.com/help/idea/viewing-
 
 Quick Documentation helps users by showing documentation, e.g., for classes, functions, or methods inside the editor.
 Plugin authors implement
-[DocumentationProvider](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/analysis-api/src/com/intellij/lang/documentation/DocumentationProvider.java)
+[DocumentationProvider](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/analysis-api/src/com/intellij/lang/documentation/DocumentationProvider.java)
 to show documentation for particular [PSI elements](psi-elements.html).
 
 Implementations of `DocumentationProvider` can be registered either at the [com.intellij.documentationProvider](https://jb.gg/ipe?extensions=com.intellij.documentationProvider) extension point
@@ -20,7 +20,7 @@ The bigger picture here is that documentation providers co-exist and if there is
 the first one that returns a value different from `null` wins.
 
 Although discouraged, the ordering of documentation providers can be influenced by using the `order` attribute when registering the extension.
-For instance, PythonCore [plugin.xml](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/python/pluginCore/resources/META-INF/plugin.xml) uses the following to call the external documentation
+For instance, PythonCore [plugin.xml](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/python/pluginCore/resources/META-INF/plugin.xml) uses the following to call the external documentation
 provider before the default one (registered with `id="pythonDocumentationProvider"`):
 
 ```XML

@@ -86,7 +86,7 @@ Several tooling features are available to help configure bean class extension po
 
 #### Required Properties
 
-Properties annotated with [RequiredElement](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/core-api/src/com/intellij/openapi/extensions/RequiredElement.java) are inserted automatically and validated.
+Properties annotated with [RequiredElement](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/openapi/extensions/RequiredElement.java) are inserted automatically and validated.
 
 If the given property is allowed to have an explicit empty value, set `allowEmpty` to `true`.
 
@@ -114,7 +114,7 @@ A required parent type can be specified in the [extension point declaration](plu
 
 #### Custom resolve
 
-Property name `language` (or ending in `*Language`) resolves to all present [Language](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/core-api/src/com/intellij/lang/Language.java) IDs.
+Property name `language` (or ending in `*Language`) resolves to all present [Language](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/lang/Language.java) IDs.
 
 Similarly, `action` and `actionId` (2024.3+) resolve to all registered [&lt;action&gt;](plugin-configuration-file.html#idea-plugin__actions__action) IDs.
 

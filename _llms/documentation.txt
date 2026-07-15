@@ -34,21 +34,21 @@ Procedure: Overall Approach
 
 `DocumentationTargetProvider`
 : Implement
-[DocumentationTargetProvider](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/lang-impl/src/com/intellij/platform/backend/documentation/DocumentationTargetProvider.java)
+[DocumentationTargetProvider](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/lang-impl/src/com/intellij/platform/backend/documentation/DocumentationTargetProvider.java)
 and register it as [com.intellij.platform.backend.documentation.targetProvider](https://jb.gg/ipe?extensions=com.intellij.platform.backend.documentation.targetProvider) extension point
 to build documentation
 for a certain offset in a `PsiFile` by overriding `documentationTargets()`.
 
 `PsiDocumentationTargetProvider`
 : Implement
-[PsiDocumentationTargetProvider](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/lang-impl/src/com/intellij/platform/backend/documentation/PsiDocumentationTargetProvider.java)
+[PsiDocumentationTargetProvider](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/lang-impl/src/com/intellij/platform/backend/documentation/PsiDocumentationTargetProvider.java)
 and register it as [com.intellij.platform.backend.documentation.psiTargetProvider](https://jb.gg/ipe?extensions=com.intellij.platform.backend.documentation.psiTargetProvider) extension point
 to build documentation
 for PSI elements by overriding `documentationTarget()`.
 
 `SymbolDocumentationTargetProvider`
 : Implement
-[SymbolDocumentationTargetProvider](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/lang-impl/src/com/intellij/platform/backend/documentation/SymbolDocumentationTargetProvider.java)
+[SymbolDocumentationTargetProvider](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/lang-impl/src/com/intellij/platform/backend/documentation/SymbolDocumentationTargetProvider.java)
 and register it as [com.intellij.platform.backend.documentation.symbolTargetProvider](https://jb.gg/ipe?extensions=com.intellij.platform.backend.documentation.symbolTargetProvider) extension point
 to build documentation
 for [Symbols](symbols.html) by overriding `documentationTarget()`.
@@ -58,11 +58,11 @@ for [Symbols](symbols.html) by overriding `documentationTarget()`.
 `DocumentationTarget`
 
 Each of the implementations above returns instances of
-[DocumentationTarget](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/lang-impl/src/com/intellij/platform/backend/documentation/DocumentationTarget.kt).
+[DocumentationTarget](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/lang-impl/src/com/intellij/platform/backend/documentation/DocumentationTarget.kt).
 The main work is done in `computeDocumentation()` where the documentation is built from the available
 information.
 If a plugin implemented the now deprecated
-[DocumentationProvider](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/analysis-api/src/com/intellij/lang/documentation/DocumentationProvider.java)
+[DocumentationProvider](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/analysis-api/src/com/intellij/lang/documentation/DocumentationProvider.java)
 before, then `computeDocumentation()` should do the work that was formerly done in
 `DocumentationProvider.generateDoc()`.
 
@@ -76,16 +76,16 @@ When implementing the `createPointer()` method, it is essential to handle invali
 Unlike PSI elements, the `DocumentationTarget` API does not include an `isValid()` method and the returned pointer is expected
 to be `null` if the instance (and all contained objects) cannot be restored.
 See
-[KotlinDocumentationTarget.createPointer()](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/plugins/kotlin/code-insight/kotlin.code-insight.k2/src/org/jetbrains/kotlin/idea/k2/codeinsight/quickDoc/KotlinDocumentationTarget.kt)
+[KotlinDocumentationTarget.createPointer()](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/plugins/kotlin/code-insight/kotlin.code-insight.k2/src/org/jetbrains/kotlin/idea/k2/codeinsight/quickDoc/KotlinDocumentationTarget.kt)
 as a reference.
 
 ### Examples
 
-* [KotlinPsiDocumentationTargetProvider](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/plugins/kotlin/code-insight/kotlin.code-insight.k2/src/org/jetbrains/kotlin/idea/k2/codeinsight/quickDoc/KotlinPsiDocumentationTargetProvider.kt)
+* [KotlinPsiDocumentationTargetProvider](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/plugins/kotlin/code-insight/kotlin.code-insight.k2/src/org/jetbrains/kotlin/idea/k2/codeinsight/quickDoc/KotlinPsiDocumentationTargetProvider.kt)
 
-* [KotlinDocumentationTarget](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/plugins/kotlin/code-insight/kotlin.code-insight.k2/src/org/jetbrains/kotlin/idea/k2/codeinsight/quickDoc/KotlinDocumentationTarget.kt)
+* [KotlinDocumentationTarget](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/plugins/kotlin/code-insight/kotlin.code-insight.k2/src/org/jetbrains/kotlin/idea/k2/codeinsight/quickDoc/KotlinDocumentationTarget.kt)
 
-* [PsiElementDocumentationTarget](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/lang-impl/src/com/intellij/lang/documentation/psi/PsiElementDocumentationTarget.kt)
+* [PsiElementDocumentationTarget](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/lang-impl/src/com/intellij/lang/documentation/psi/PsiElementDocumentationTarget.kt)
 
 ## Documentation Provider API
 
@@ -95,9 +95,9 @@ As of IntelliJ Platform version 2023.1, the Documentation Provider API is deprec
 authors should use the [Documentation Target API](#documentation-target-api) instead.
 
 Custom language developers usually extend from
-[AbstractDocumentationProvider](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/analysis-api/src/com/intellij/lang/documentation/AbstractDocumentationProvider.java)
+[AbstractDocumentationProvider](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/analysis-api/src/com/intellij/lang/documentation/AbstractDocumentationProvider.java)
 instead of implementing the
-[DocumentationProvider](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/analysis-api/src/com/intellij/lang/documentation/DocumentationProvider.java) interface.
+[DocumentationProvider](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/analysis-api/src/com/intellij/lang/documentation/DocumentationProvider.java) interface.
 This implementation needs to be registered in [com.intellij.lang.documentationProvider](https://jb.gg/ipe?extensions=com.intellij.lang.documentationProvider) extension point
 .
 
@@ -114,31 +114,31 @@ Once these steps are completed, the following additional features can be impleme
 
 * Implement `getDocumentationElementForLookupItem()` to return a suitable PSI element for the given lookup element when `View | Quick Documentation` is called on an element of the autocompletion popup.
 
-* Implement `getUrlFor()` and [ExternalDocumentationProvider](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/analysis-api/src/com/intellij/lang/documentation/ExternalDocumentationProvider.java) to fetch documentation for elements from online resources.
+* Implement `getUrlFor()` and [ExternalDocumentationProvider](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/analysis-api/src/com/intellij/lang/documentation/ExternalDocumentationProvider.java) to fetch documentation for elements from online resources.
 
 ### Examples
 
 The [custom language tutorial](documentation-provider.html) contains a step-by-step guide for the `DocumentationProvider` of the Simple language.
 In addition, several implementations of other languages exist in the IntelliJ Platform code, for instance:
 
-* The [Properties Language plugin](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/plugins/properties) has a small and easy-to-understand [DocumentationProvider](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/plugins/properties/src/com/intellij/lang/properties/PropertiesDocumentationProvider.java) similar to the one shown in the custom language tutorial.
+* The [Properties Language plugin](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/plugins/properties) has a small and easy-to-understand [DocumentationProvider](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/plugins/properties/src/com/intellij/lang/properties/PropertiesDocumentationProvider.java) similar to the one shown in the custom language tutorial.
 
-* Usage examples for `DocumentationMarkup` can be found in [ThemeJsonDocumentationProvider](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/plugins/devkit/intellij.devkit.themes/src/ThemeJsonDocumentationProvider.java).
+* Usage examples for `DocumentationMarkup` can be found in [ThemeJsonDocumentationProvider](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/plugins/devkit/intellij.devkit.themes/src/ThemeJsonDocumentationProvider.java).
 
 ## Further tips
 
 Additionally, custom actions can be incorporated into documentation inlays and popups using the
-[DocumentationActionProvider](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/lang-impl/src/com/intellij/codeInsight/documentation/DocumentationActionProvider.java).
+[DocumentationActionProvider](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/lang-impl/src/com/intellij/codeInsight/documentation/DocumentationActionProvider.java).
 This provider should be registered with the [com.intellij.documentationActionProvider](https://jb.gg/ipe?extensions=com.intellij.documentationActionProvider) extension point
 .
 
 How the documentation for the target element is created is up to the custom language developer.
 A common choice is to extract and format documentation comments.
 To format the documentation contents, you should use
-[DocumentationMarkup](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/analysis-api/src/com/intellij/lang/documentation/DocumentationMarkup.java)
+[DocumentationMarkup](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/analysis-api/src/com/intellij/lang/documentation/DocumentationMarkup.java)
 to achieve a consistent output.
 
 Tip:
 
-Use [HtmlSyntaxInfoUtil](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/lang-impl/src/com/intellij/openapi/editor/richcopy/HtmlSyntaxInfoUtil.java) to create Lexer-based highlighted code samples.
+Use [HtmlSyntaxInfoUtil](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/lang-impl/src/com/intellij/openapi/editor/richcopy/HtmlSyntaxInfoUtil.java) to create Lexer-based highlighted code samples.
 

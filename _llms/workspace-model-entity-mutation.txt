@@ -1,15 +1,15 @@
 # Entity Mutation
 
 All modifications of
-[WorkspaceModel](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/backend/workspace/src/WorkspaceModel.kt)
+[WorkspaceModel](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/backend/workspace/src/WorkspaceModel.kt)
 are executed through a special mutable version of the store, represented by the
-[MutableEntityStorage](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/workspace/storage/src/com/intellij/platform/workspace/storage/MutableEntityStorage.kt)
+[MutableEntityStorage](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/workspace/storage/src/com/intellij/platform/workspace/storage/MutableEntityStorage.kt)
 interface.
 It can be used to build a storage from scratch or modify an existing storage in a way which requires reading its state after
 modifications. Instances of this interface aren't thread-safe.
 
 All modifications inside the IDE process are executed via
-[WorkspaceModel.update()](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/backend/workspace/src/WorkspaceModel.kt).
+[WorkspaceModel.update()](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/backend/workspace/src/WorkspaceModel.kt).
 
 Two main modification scenarios exist: small lightweight and batch operations (for complex computations).
 
@@ -19,7 +19,7 @@ Two main modification scenarios exist: small lightweight and batch operations (f
 
 To add a new entity to the storage, create it by calling the `companion` object of its interface and then
 pass it to the
-[MutableEntityStorage.addEntity()](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/workspace/storage/src/com/intellij/platform/workspace/storage/MutableEntityStorage.kt)
+[MutableEntityStorage.addEntity()](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/workspace/storage/src/com/intellij/platform/workspace/storage/MutableEntityStorage.kt)
 function:
 
 ```KOTLIN
@@ -41,13 +41,13 @@ An entire tree of entities can be prepared first, then add the root to the stora
 ### Modifying and Removing Entities
 
 To modify or remove an entity, find its instance in the
-[MutableEntityStorage](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/workspace/storage/src/com/intellij/platform/workspace/storage/MutableEntityStorage.kt)
+[MutableEntityStorage](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/workspace/storage/src/com/intellij/platform/workspace/storage/MutableEntityStorage.kt)
 instance.
 This can be done by:
 
-* resolving its [SymbolicEntityId](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/workspace/storage/src/com/intellij/platform/workspace/storage/SymbolicEntityId.kt) via [SymbolicEntityId.resolve()](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/workspace/storage/src/com/intellij/platform/workspace/storage/SymbolicEntityId.kt)
+* resolving its [SymbolicEntityId](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/workspace/storage/src/com/intellij/platform/workspace/storage/SymbolicEntityId.kt) via [SymbolicEntityId.resolve()](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/workspace/storage/src/com/intellij/platform/workspace/storage/SymbolicEntityId.kt)
 
-* resolving an [EntityPointer](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/workspace/storage/src/com/intellij/platform/workspace/storage/EntityPointer.kt) via [EntityPointer.resolve()](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/workspace/storage/src/com/intellij/platform/workspace/storage/EntityPointer.kt)
+* resolving an [EntityPointer](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/workspace/storage/src/com/intellij/platform/workspace/storage/EntityPointer.kt) via [EntityPointer.resolve()](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/workspace/storage/src/com/intellij/platform/workspace/storage/EntityPointer.kt)
 
 * iterating by children of another entity
 
@@ -68,7 +68,7 @@ WorkspaceModel.getInstance(project).updateProjectModel("Update module") { builde
 
 There are two equivalent ways to add a child entity to an existing parent entity.
 
-* Specify the parent when creating the child and add the child via [MutableEntityStorage.addEntity()](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/workspace/storage/src/com/intellij/platform/workspace/storage/MutableEntityStorage.kt):
+* Specify the parent when creating the child and add the child via [MutableEntityStorage.addEntity()](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/workspace/storage/src/com/intellij/platform/workspace/storage/MutableEntityStorage.kt):
 
 ```KOTLIN
 val contentRoot = ContentRootEntity(url, emptyList(), entitySource) {
@@ -77,7 +77,7 @@ val contentRoot = ContentRootEntity(url, emptyList(), entitySource) {
 builder.addEntity(contentRoot)
 ```
 
-* Call [MutableEntityStorage.modifyEntity()](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/workspace/storage/src/com/intellij/platform/workspace/storage/MutableEntityStorage.kt) on the parent entity and modify its property to include the new child:
+* Call [MutableEntityStorage.modifyEntity()](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/workspace/storage/src/com/intellij/platform/workspace/storage/MutableEntityStorage.kt) on the parent entity and modify its property to include the new child:
 
 ```KOTLIN
 val contentRoot = ContentRootEntity(url, emptyList(), entitySource)
@@ -87,7 +87,7 @@ builder.modifyContentRootEntity(module) {
 ```
 
 To remove a child entity, it is enough to call
-[MutableEntityStorage.removeEntity()](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/workspace/storage/src/com/intellij/platform/workspace/storage/MutableEntityStorage.kt)
+[MutableEntityStorage.removeEntity()](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/workspace/storage/src/com/intellij/platform/workspace/storage/MutableEntityStorage.kt)
 for it, the reference in its parent will be updated automatically.
 Also, if the reference to the parent is declared as non-null in the child interface, it is enough to modify the reference to the children
 in the parent entity:
@@ -104,13 +104,13 @@ the storage.
 ## Batch Operations
 
 Besides operation with individual entities,
-[MutableEntityStorage](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/workspace/storage/src/com/intellij/platform/workspace/storage/MutableEntityStorage.kt)
+[MutableEntityStorage](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/workspace/storage/src/com/intellij/platform/workspace/storage/MutableEntityStorage.kt)
 supports two batch operations: `applyChangesFrom()` and `replaceBySource()`.
 
 ### Apply Changes From
 
 Each instance of
-[MutableEntityStorage](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/workspace/storage/src/com/intellij/platform/workspace/storage/MutableEntityStorage.kt)
+[MutableEntityStorage](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/workspace/storage/src/com/intellij/platform/workspace/storage/MutableEntityStorage.kt)
 records changes made in it: addition, modification, and removal of entities.
 Such changes made in one instance may be applied to a different instance by calling its `applyChangesFrom()` function.
 
@@ -190,7 +190,7 @@ Changes shouldn't be applied immediately, so they're accumulated in a builder an
 ### Replace By Source
 
 Partially replace the storage with the new one based on the predicate on
-[WorkspaceEntity.entitySource](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/workspace/storage/src/com/intellij/platform/workspace/storage/WorkspaceEntity.kt).
+[WorkspaceEntity.entitySource](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/workspace/storage/src/com/intellij/platform/workspace/storage/WorkspaceEntity.kt).
 This operation updates the part of the storage affected by the change, trying to minimize the number of changes in the entities.
 
 Usually, entities in the workspace model storage are created from data loaded from some configuration files.
@@ -200,7 +200,7 @@ so a different approach is used.
 Each entity must specify its `WorkspaceEntity.entitySource` describing where the entity comes from.
 
 The diagram below shows a schematic example of the
-[MutableEntityStorage.replaceBySource()](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/workspace/storage/src/com/intellij/platform/workspace/storage/MutableEntityStorage.kt)
+[MutableEntityStorage.replaceBySource()](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/workspace/storage/src/com/intellij/platform/workspace/storage/MutableEntityStorage.kt)
 operation.
 The color represents the type of entity source.
 In this example it is called with the predicate `{ entitySource is YellowEntitySource }`.
@@ -298,7 +298,7 @@ This will affect only changed entities created from Maven.
 ##### Working with JPS Build System
 
 For entities loaded from configuration files from the `.idea` directory,
-[WorkspaceEntity.entitySource](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/workspace/storage/src/com/intellij/platform/workspace/storage/WorkspaceEntity.kt)
+[WorkspaceEntity.entitySource](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/workspace/storage/src/com/intellij/platform/workspace/storage/WorkspaceEntity.kt)
 points to the corresponding XML file.
 When the IDE detects changes in some configuration files, it loads new entities from the created
 and modified files to a separate `MutableEntityStorage` instance.

@@ -1,7 +1,7 @@
 # Drop-Down List
 
 <tldr>
-Implementation: [ComboBox](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/platform-api/src/com/intellij/openapi/ui/ComboBox.java)
+Implementation: [ComboBox](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/platform-api/src/com/intellij/openapi/ui/ComboBox.java)
 </tldr>
 
 A drop-down list is a control that displays a list of choices on click and allows selecting one option.

@@ -5,9 +5,9 @@ Caret position was discussed in terms of Logical Position, Visual Position, and 
 This tutorial introduces the Editor Action system, which handles actions activated by keystroke events in the editor.
 Two classes from the [editor_basics](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/editor_basics) code sample are used to illustrate:
 
-* Using an IntelliJ Platform [EditorActionHandler](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/platform-api/src/com/intellij/openapi/editor/actionSystem/EditorActionHandler.java) to manipulate a caret.
+* Using an IntelliJ Platform [EditorActionHandler](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/platform-api/src/com/intellij/openapi/editor/actionSystem/EditorActionHandler.java) to manipulate a caret.
 
-* Creating and registering a custom [TypedActionHandler](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/platform-api/src/com/intellij/openapi/editor/actionSystem/TypedActionHandler.java) to intercept keystrokes and change the document.
+* Creating and registering a custom [TypedActionHandler](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/platform-api/src/com/intellij/openapi/editor/actionSystem/TypedActionHandler.java) to intercept keystrokes and change the document.
 
 ## 
 
@@ -74,13 +74,13 @@ public class EditorHandlerIllustration extends AnAction {
 
 Acquiring the Correct `EditorActionHandler`
 
-When the `EditorHandlerIllustration.actionPerformed()` method clones the caret, it should use the appropriate IntelliJ Platform [EditorActionHandler](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/platform-api/src/com/intellij/openapi/editor/actionSystem/EditorActionHandler.java).
-An instance of [EditorActionManager](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/platform-api/src/com/intellij/openapi/editor/actionSystem/EditorActionManager.java) is required to get the correct `EditorActionHandler`.
+When the `EditorHandlerIllustration.actionPerformed()` method clones the caret, it should use the appropriate IntelliJ Platform [EditorActionHandler](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/platform-api/src/com/intellij/openapi/editor/actionSystem/EditorActionHandler.java).
+An instance of [EditorActionManager](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/platform-api/src/com/intellij/openapi/editor/actionSystem/EditorActionManager.java) is required to get the correct `EditorActionHandler`.
 The `EditorActionManager` class provides a static method to do this.
 
-To request the correct `EditorActionHandler` from `EditorActionManager`, consult the [IdeActions](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/ide-core/src/com/intellij/openapi/actionSystem/IdeActions.java) interface for the correct constant to pass into the `EditorActionManager.getActionHandler()` method.
+To request the correct `EditorActionHandler` from `EditorActionManager`, consult the [IdeActions](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/ide-core/src/com/intellij/openapi/actionSystem/IdeActions.java) interface for the correct constant to pass into the `EditorActionManager.getActionHandler()` method.
 For cloning a caret below the primary caret, the constant is `ACTION_EDITOR_CLONE_CARET_BELOW`.
-Based on that constant, the `EditorActionManager` returns an instance of [CloneCaretActionHandler](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/platform-impl/src/com/intellij/openapi/editor/actions/CloneCaretActionHandler.java), a subclass of `EditorActionHandler`.
+Based on that constant, the `EditorActionManager` returns an instance of [CloneCaretActionHandler](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/platform-impl/src/com/intellij/openapi/editor/actions/CloneCaretActionHandler.java), a subclass of `EditorActionHandler`.
 
 ```JAVA
 // Snippet from EditorHandlerIllustration.actionPerformed()
@@ -115,7 +115,7 @@ public class EditorHandlerIllustration extends AnAction {
 
 Creating a Custom `TypedActionHandler`
 
-The [TypedActionHandler](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/platform-api/src/com/intellij/openapi/editor/actionSystem/TypedActionHandler.java) interface is the basis for classes that handle keystroke events from the editor.
+The [TypedActionHandler](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/platform-api/src/com/intellij/openapi/editor/actionSystem/TypedActionHandler.java) interface is the basis for classes that handle keystroke events from the editor.
 Custom implementations of the class are registered to handle editor keystroke events and receive a callback for each keystroke.
 The steps below explain how to use `TypedActionHandler` to customize the behavior of the editor when keystroke events are received.
 
@@ -123,7 +123,7 @@ The steps below explain how to use `TypedActionHandler` to customize the behavio
 
 Implementing a Custom `TypedActionHandler` Class
 
-First, a subclass such as `MyTypedHandler` is created based on [TypedActionHandler](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/platform-api/src/com/intellij/openapi/editor/actionSystem/TypedActionHandler.java).
+First, a subclass such as `MyTypedHandler` is created based on [TypedActionHandler](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/platform-api/src/com/intellij/openapi/editor/actionSystem/TypedActionHandler.java).
 The class overrides the method `TypedActionHandler.execute()`, which is the callback for editor keystroke events.
 
 ### Implementing the Keystroke Event Handling Logic
@@ -153,7 +153,7 @@ final class MyTypedHandler implements TypedActionHandler {
 Registering a Custom `TypedActionHandler`
 
 A custom implementation of `TypedActionHandler` must be registered to replace the existing typing handler to receive editor keystroke events.
-The registration is done through the [TypedAction](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/platform-api/src/com/intellij/openapi/editor/actionSystem/TypedAction.java) class.
+The registration is done through the [TypedAction](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/platform-api/src/com/intellij/openapi/editor/actionSystem/TypedAction.java) class.
 
 As is shown in the snippet below, the `EditorActionManager` is used to get access to the `TypedAction` class.
 The method `TypedAction.setupHandler()` is used to register the custom `MyTypedHandler` class:

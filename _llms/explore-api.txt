@@ -87,7 +87,7 @@ It's important that you're familiar with
 source code, as well as other basic features of IntelliJ IDEA.
 
 Many developers keep the
-[IntelliJ Platform source code](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/README.md)
+[IntelliJ Platform source code](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/README.md)
 open in a separate IDE project while working on their plugin.
 Others search the source code of the IntelliJ Platform that is attached by default when using a [Gradle](creating-plugin-project.html)-based project.
 While both methods work, it should be noted that developing plugins without inspecting the IntelliJ Platform code is nearly impossible,

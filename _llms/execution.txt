@@ -57,47 +57,47 @@ ProgramRunner -r-> RunContentBuilder
 
 ### Configuration Classes
 
-[RunProfile](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/execution/src/com/intellij/execution/configurations/RunProfile.java) is a base interface for things that can be executed (e.g., an application started via a `main()` method, a test or test suite, a remote debug session to a specific host, etc.).
+[RunProfile](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/execution/src/com/intellij/execution/configurations/RunProfile.java) is a base interface for things that can be executed (e.g., an application started via a `main()` method, a test or test suite, a remote debug session to a specific host, etc.).
 It is responsible for building a process that is run and creates a `RunProfileState`.
 
-[RunProfileState](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/execution/src/com/intellij/execution/configurations/RunProfileState.java) holds the information about the process ready to be started, like the command line, current working directory, and environment variables.
+[RunProfileState](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/execution/src/com/intellij/execution/configurations/RunProfileState.java) holds the information about the process ready to be started, like the command line, current working directory, and environment variables.
 The existence of `RunProfileState` allows extensions and other components to patch the run profile and modify the parameters before the process gets executed.
 See [standard run profile state classes](#run-profile-state).
 
-[RunConfiguration](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/execution/src/com/intellij/execution/configurations/RunConfiguration.java) is a specific type of run profile, which can be managed and persisted by users from UI.
+[RunConfiguration](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/execution/src/com/intellij/execution/configurations/RunConfiguration.java) is a specific type of run profile, which can be managed and persisted by users from UI.
 See the [Run Configurations](run-configurations.html) section for more details.
 
 ### Execution Classes
 
-[Executor](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/execution/src/com/intellij/execution/Executor.java) describes a specific way of executing run profiles.
+[Executor](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/execution/src/com/intellij/execution/Executor.java) describes a specific way of executing run profiles.
 The three default executors provided by the IntelliJ Platform are:
 
-* [DefaultRunExecutor](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/execution/src/com/intellij/execution/executors/DefaultRunExecutor.java) (Run)
+* [DefaultRunExecutor](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/execution/src/com/intellij/execution/executors/DefaultRunExecutor.java) (Run)
 
-* [DefaultDebugExecutor](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/xdebugger-api/src/com/intellij/execution/executors/DefaultDebugExecutor.java) (Debug)
+* [DefaultDebugExecutor](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/xdebugger-api/src/com/intellij/execution/executors/DefaultDebugExecutor.java) (Debug)
 
-* [CoverageExecutor](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/plugins/coverage-common/src/com/intellij/coverage/CoverageExecutor.java) (Run with Coverage)
+* [CoverageExecutor](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/plugins/coverage-common/src/com/intellij/coverage/CoverageExecutor.java) (Run with Coverage)
 
 Custom implementations are rarely required (it may be necessary, e.g., when a profiler integration is implemented).
 Executor implementations are registered in the [com.intellij.executor](https://jb.gg/ipe?extensions=com.intellij.executor) extension point
 .
 
-[ProgramRunner](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/execution/src/com/intellij/execution/runners/ProgramRunner.java) is responsible for the [execution workflow](#execution-workflow) of a `RunProfile` with a certain `Executor`.
+[ProgramRunner](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/execution/src/com/intellij/execution/runners/ProgramRunner.java) is responsible for the [execution workflow](#execution-workflow) of a `RunProfile` with a certain `Executor`.
 ProgramRunner` implementations are registered in the [com.intellij.programRunner](https://jb.gg/ipe?extensions=com.intellij.programRunner) extension point
 .
 
-[ExecutionEnvironment](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/execution/src/com/intellij/execution/runners/ExecutionEnvironment.java) object aggregates all the objects and settings required to execute the process.
+[ExecutionEnvironment](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/execution/src/com/intellij/execution/runners/ExecutionEnvironment.java) object aggregates all the objects and settings required to execute the process.
 It is used by the `ProgramRunner.execute()` method.
 
-[RunContentBuilder](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/execution-impl/src/com/intellij/execution/runners/RunContentBuilder.java) is responsible for building the content of the Run or Debug tool window.
+[RunContentBuilder](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/execution-impl/src/com/intellij/execution/runners/RunContentBuilder.java) is responsible for building the content of the Run or Debug tool window.
 The content is built by the `ProgramRunner` executing the process.
 
-[ExecutionResult](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/execution/src/com/intellij/execution/ExecutionResult.java) is prepared by `RunProfileState` class before execution and contains `ExecutionConsole` and `ProcessHandler`.
+[ExecutionResult](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/execution/src/com/intellij/execution/ExecutionResult.java) is prepared by `RunProfileState` class before execution and contains `ExecutionConsole` and `ProcessHandler`.
 
-[ExecutionConsole](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/execution/src/com/intellij/execution/ui/ExecutionConsole.java) is a component displaying the result of executing the process.
+[ExecutionConsole](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/execution/src/com/intellij/execution/ui/ExecutionConsole.java) is a component displaying the result of executing the process.
 It can be a console, a test results view, or another similar component.
 
-[ProcessHandler](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/util/src/com/intellij/execution/process/ProcessHandler.java) is an object attached to the executed process and allows controlling and accessing the information about the process.
+[ProcessHandler](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/util/src/com/intellij/execution/process/ProcessHandler.java) is an object attached to the executed process and allows controlling and accessing the information about the process.
 See [standard process handler class](#process-handler).
 
 ## Execution Workflow
@@ -130,25 +130,25 @@ It starts the process, attaches a `ProcessHandler` to its input and output strea
 3. The `RunContentBuilder` object is created and invoked to display the execution console in a Run or Debug tool window tab.
 
 Example:
-[RunAnythingCommandProvider.runCommand()](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/lang-impl/src/com/intellij/ide/actions/runAnything/activity/RunAnythingCommandProvider.java), which programmatically executes a command typed by a user in the Run Anything popup
+[RunAnythingCommandProvider.runCommand()](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/lang-impl/src/com/intellij/ide/actions/runAnything/activity/RunAnythingCommandProvider.java), which programmatically executes a command typed by a user in the Run Anything popup
 
 ## Standard Base Classes
 
 ### Run Profile State
 
-The standard base class used as an implementation of `RunProfileState` is [CommandLineState](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/execution/src/com/intellij/execution/configurations/CommandLineState.java).
+The standard base class used as an implementation of `RunProfileState` is [CommandLineState](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/execution/src/com/intellij/execution/configurations/CommandLineState.java).
 It contains the logic for putting together a running process and a console into an `ExecutionResult` but doesn't know anything about how the process is actually started.
-For starting the process, it's recommended to use the [GeneralCommandLine](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/platform-util-io/src/com/intellij/execution/configurations/GeneralCommandLine.java) class, which takes care of setting up the command line parameters and executing the process.
+For starting the process, it's recommended to use the [GeneralCommandLine](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/platform-util-io/src/com/intellij/execution/configurations/GeneralCommandLine.java) class, which takes care of setting up the command line parameters and executing the process.
 
-Alternatively, if the process is a JVM-based one, use the [JavaCommandLineState](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/java/execution/impl/src/com/intellij/execution/configurations/JavaCommandLineState.java) base class.
+Alternatively, if the process is a JVM-based one, use the [JavaCommandLineState](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/java/execution/impl/src/com/intellij/execution/configurations/JavaCommandLineState.java) base class.
 It handles the JVM command line parameters and can take care of details like calculating the classpath for the JVM.
 Note that using this class requires a [dependency](plugin-dependencies.html) on the [Java Plugin](idea.html#java-plugin).
 
 ### Process Handler
 
-The standard class for monitoring the execution of a process and capturing its output is [OSProcessHandler](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/platform-util-io/src/com/intellij/execution/process/OSProcessHandler.java).
+The standard class for monitoring the execution of a process and capturing its output is [OSProcessHandler](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/platform-util-io/src/com/intellij/execution/process/OSProcessHandler.java).
 Once an instance of `OSProcessHandler` is created from either a `GeneralCommandLine` or a `Process` object, call the `startNotify()` method to capture its output.
-To display the exit status of the process in the console, attach a [ProcessTerminatedListener](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/ide-core/src/com/intellij/execution/process/ProcessTerminatedListener.java) to the `OSProcessHandler`.
+To display the exit status of the process in the console, attach a [ProcessTerminatedListener](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/ide-core/src/com/intellij/execution/process/ProcessTerminatedListener.java) to the `OSProcessHandler`.
 
 ### Displaying Process Output
 
@@ -156,24 +156,24 @@ When a process execution is handled with `CommandLineState`, a console view will
 
 Alternatively, it can be handled with the following steps:
 
-1. [TextConsoleBuilderFactory.createBuilder(project).getConsole()](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/execution/src/com/intellij/execution/filters/TextConsoleBuilderFactory.java) creates a [ConsoleView](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/execution/src/com/intellij/execution/ui/ConsoleView.java) instance.
+1. [TextConsoleBuilderFactory.createBuilder(project).getConsole()](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/execution/src/com/intellij/execution/filters/TextConsoleBuilderFactory.java) creates a [ConsoleView](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/execution/src/com/intellij/execution/ui/ConsoleView.java) instance.
 
 2. `ConsoleView.attachToProcess()` attaches it to the output of a process.
 
-If the running process uses [ANSI escape codes to color its output](https://en.wikipedia.org/wiki/ANSI_escape_code#Colors), use the [ColoredProcessHandler](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/platform-util-io/src/com/intellij/execution/process/ColoredProcessHandler.java) class to display the colors in the IDE console.
+If the running process uses [ANSI escape codes to color its output](https://en.wikipedia.org/wiki/ANSI_escape_code#Colors), use the [ColoredProcessHandler](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/platform-util-io/src/com/intellij/execution/process/ColoredProcessHandler.java) class to display the colors in the IDE console.
 
 #### Console Filters
 
-Console [Filter](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/execution/src/com/intellij/execution/filters/Filter.java) allows converting certain strings found in the process output to clickable hyperlinks.
-To attach a filter to the console, use `CommandLineState.addConsoleFilters()` or [TextConsoleBuilder.addFilter()](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/execution/src/com/intellij/execution/filters/TextConsoleBuilder.java) if the console is created manually.
-Two standard filter implementations are [RegexpFilter](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/lang-api/src/com/intellij/execution/filters/RegexpFilter.java) and [UrlFilter](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/execution-impl/src/com/intellij/execution/filters/UrlFilter.java).
+Console [Filter](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/execution/src/com/intellij/execution/filters/Filter.java) allows converting certain strings found in the process output to clickable hyperlinks.
+To attach a filter to the console, use `CommandLineState.addConsoleFilters()` or [TextConsoleBuilder.addFilter()](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/execution/src/com/intellij/execution/filters/TextConsoleBuilder.java) if the console is created manually.
+Two standard filter implementations are [RegexpFilter](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/lang-api/src/com/intellij/execution/filters/RegexpFilter.java) and [UrlFilter](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/execution-impl/src/com/intellij/execution/filters/UrlFilter.java).
 
-Console filters can be also provided by implementing [ConsoleFilterProvider](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/lang-api/src/com/intellij/execution/filters/ConsoleFilterProvider.java) and registering
+Console filters can be also provided by implementing [ConsoleFilterProvider](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/lang-api/src/com/intellij/execution/filters/ConsoleFilterProvider.java) and registering
 it in [com.intellij.consoleFilterProvider](https://jb.gg/ipe?extensions=com.intellij.consoleFilterProvider) extension point
 .
 
 ## Listening for Execution Events
 
-Implement [ExecutionListener](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/execution/src/com/intellij/execution/ExecutionListener.java) and subscribe to [ExecutionManager#EXECUTION_TOPIC](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/execution/src/com/intellij/execution/ExecutionManager.kt).
+Implement [ExecutionListener](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/execution/src/com/intellij/execution/ExecutionListener.java) and subscribe to [ExecutionManager#EXECUTION_TOPIC](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/execution/src/com/intellij/execution/ExecutionManager.kt).
 The listener allows for listening to several phases of the process execution lifecycle.
 

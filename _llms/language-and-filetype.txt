@@ -14,7 +14,7 @@ This page is part of multi-step [Custom Language Support Tutorial](custom-langua
 All previous steps must be executed in sequence for the code to work.
 
 The IntelliJ Platform determines file type by examining the name of a file.
-Each language has [Language](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/core-api/src/com/intellij/lang/Language.java) and [LanguageFileType](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/core-api/src/com/intellij/openapi/fileTypes/LanguageFileType.java) objects defining the language.
+Each language has [Language](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/lang/Language.java) and [LanguageFileType](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/openapi/fileTypes/LanguageFileType.java) objects defining the language.
 Register the `LanguageFileType` with the IntelliJ Platform in the plugin configuration file.
 
 ## Define the Language
@@ -50,7 +50,7 @@ public class SimpleIcons {
 
 ## Define a File Type
 
-The [SimpleFileType](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleFileType.java) is defined by subclassing [LanguageFileType](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/core-api/src/com/intellij/openapi/fileTypes/LanguageFileType.java):
+The [SimpleFileType](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleFileType.java) is defined by subclassing [LanguageFileType](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/openapi/fileTypes/LanguageFileType.java):
 
 ```JAVA
 public final class SimpleFileType extends LanguageFileType {

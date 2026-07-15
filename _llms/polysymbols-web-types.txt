@@ -115,7 +115,7 @@ To contribute a `foo` attribute, one could also write it in longer form:
 ```
 
 Each Web Types contribution is represented in the Poly Symbols framework by a
-[PsiSourcedPolySymbol](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/polySymbols/src/com/intellij/polySymbols/search/PsiSourcedPolySymbol.kt)
+[PsiSourcedPolySymbol](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/polySymbols/src/com/intellij/polySymbols/search/PsiSourcedPolySymbol.kt)
 object.
 All the Web Types contributions are mapped one-to-one, and custom properties are accessible through `properties` property.
 
@@ -182,7 +182,7 @@ Prior to 2023.1, IDEs were required to have JavaScript plugin installed for the 
 ### Angular
 
 Angular plugin Web Types are available
-[here](https://github.com/JetBrains/intellij-plugins/tree/idea/261.25134.95/Angular/angular-backend/resources/web-types)
+[here](https://github.com/JetBrains/intellij-plugins/tree/idea/261.26222.65/Angular/angular-backend/resources/web-types)
 for reference.
 Any Web Types file targeting only Angular support should have `framework` property set to `angular`.
 Highlights: `js/ng-custom-events` contribute symbols with patterns for any custom events supported by Angular `EventManager`s, e.g.:
@@ -231,7 +231,7 @@ Highlights: `js/ng-custom-events` contribute symbols with patterns for any custo
 ### Vue
 
 Vue plugin Web Types are available
-[here](https://github.com/JetBrains/intellij-plugins/tree/idea/261.25134.95/vuejs/vuejs-backend/resources/web-types)
+[here](https://github.com/JetBrains/intellij-plugins/tree/idea/261.26222.65/vuejs/vuejs-backend/resources/web-types)
 for reference.
 Any Web Types file targeting only Vue support should have `framework` property set to `vue`.
 Highlights:

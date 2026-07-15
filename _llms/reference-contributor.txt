@@ -22,13 +22,13 @@ Resolving references means the ability to go from the usage of an element to its
 
 Note:
 
-Every PSI element that can be renamed or referenced needs to implement [PsiNamedElement](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/core-api/src/com/intellij/psi/PsiNamedElement.java) interface.
+Every PSI element that can be renamed or referenced needs to implement [PsiNamedElement](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/psi/PsiNamedElement.java) interface.
 
 ## Define a Named Element Class
 
 The classes below show how the Simple Language fulfills the need to implement `PsiNamedElement`.
 
-The [SimpleNamedElement](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/psi/SimpleNamedElement.java) interface is subclassed from [PsiNameIdentifierOwner](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/core-api/src/com/intellij/psi/PsiNameIdentifierOwner.java).
+The [SimpleNamedElement](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/psi/SimpleNamedElement.java) interface is subclassed from [PsiNameIdentifierOwner](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/psi/PsiNameIdentifierOwner.java).
 
 ```JAVA
 public interface SimpleNamedElement extends PsiNameIdentifierOwner {
@@ -36,7 +36,7 @@ public interface SimpleNamedElement extends PsiNameIdentifierOwner {
 }
 ```
 
-The [SimpleNamedElementImpl](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/psi/impl/SimpleNamedElementImpl.java) class implements the `SimpleNamedElement` interface and extends [ASTWrapperPsiElement](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/core-impl/src/com/intellij/extapi/psi/ASTWrapperPsiElement.java).
+The [SimpleNamedElementImpl](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/psi/impl/SimpleNamedElementImpl.java) class implements the `SimpleNamedElement` interface and extends [ASTWrapperPsiElement](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-impl/src/com/intellij/extapi/psi/ASTWrapperPsiElement.java).
 
 ```JAVA
 public abstract class SimpleNamedElementImpl extends ASTWrapperPsiElement implements SimpleNamedElement {
@@ -126,8 +126,8 @@ property ::= (KEY? SEPARATOR VALUE?) | KEY {
 ## Define a Reference
 
 Now define a reference class [SimpleReference.java](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleReference.java) to resolve a property from its usage.
-As a single reference can [resolve to multiple](references-and-resolve.html#resolving-to-multiple-targets) Simple properties, it implements [PsiPolyVariantReference](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/core-api/src/com/intellij/psi/PsiPolyVariantReference.java).
-To simplify the implementation, [PsiPolyVariantReferenceBase](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/core-api/src/com/intellij/psi/PsiPolyVariantReferenceBase.java) is used as a base class.
+As a single reference can [resolve to multiple](references-and-resolve.html#resolving-to-multiple-targets) Simple properties, it implements [PsiPolyVariantReference](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/psi/PsiPolyVariantReference.java).
+To simplify the implementation, [PsiPolyVariantReferenceBase](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/psi/PsiPolyVariantReferenceBase.java) is used as a base class.
 
 ```JAVA
 final class SimpleReference extends PsiPolyVariantReferenceBase<PsiElement> {
@@ -173,7 +173,7 @@ final class SimpleReference extends PsiPolyVariantReferenceBase<PsiElement> {
 ## Define a Reference Contributor
 
 A reference contributor allows the `simple_language_plugin` to provide references to Simple Language from elements in other languages such as Java.
-Create [SimpleReferenceContributor](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleReferenceContributor.java) by subclassing [PsiReferenceContributor](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/core-api/src/com/intellij/psi/PsiReferenceContributor.java).
+Create [SimpleReferenceContributor](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleReferenceContributor.java) by subclassing [PsiReferenceContributor](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/psi/PsiReferenceContributor.java).
 Contribute a reference to each usage of a property:
 
 ```JAVA
@@ -230,7 +230,7 @@ The [Rename refactoring](https://www.jetbrains.com/help/idea/rename-refactorings
 ## Define a Refactoring Support Provider
 
 Support for in-place refactoring is specified explicitly in a refactoring support provider.
-Create [SimpleRefactoringSupportProvider](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleRefactoringSupportProvider.java) by subclassing [RefactoringSupportProvider](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/refactoring/src/com/intellij/lang/refactoring/RefactoringSupportProvider.java)
+Create [SimpleRefactoringSupportProvider](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleRefactoringSupportProvider.java) by subclassing [RefactoringSupportProvider](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/refactoring/src/com/intellij/lang/refactoring/RefactoringSupportProvider.java)
 As long as an element is a `SimpleProperty` it is allowed to be refactored:
 
 ```JAVA

@@ -9,7 +9,7 @@ See also [Targeting Multiple IDE Versions](build-number-ranges.html#multipleIDEV
 ## Plugin Verifier
 
 <tldr>
-Current Release: 1.407
+Current Release: 1.408
 
 GitHub: [Releases &amp; Changelog](https://github.com/JetBrains/intellij-plugin-verifier/releases), [Issue Tracker](https://youtrack.jetbrains.com/issues/MP?q=%23%7BPlugin%20Verifier%7D%20)
 

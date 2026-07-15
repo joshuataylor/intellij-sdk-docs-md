@@ -48,7 +48,7 @@ The Gradle plugin must be chosen depending on the target
 
 AWT input event handlers no longer run under write-intent lock
 : Custom input handlers (`KeyListener`, `MouseAdapter`, etc.) no longer execute under the [write-intent lock](threading-model.html#read-write-lock).
-If PSI or other write-intent-protected data needs to be accessed in these handlers, explicitly acquire a read action using [ReadAction.nonBlocking().submit()](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/core-api/src/com/intellij/openapi/application/ReadAction.java) or coroutine-based equivalents such as [readAction {}](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/core-api/src/com/intellij/openapi/application/coroutines.kt).
+If PSI or other write-intent-protected data needs to be accessed in these handlers, explicitly acquire a read action using [ReadAction.nonBlocking().submit()](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/openapi/application/ReadAction.java) or coroutine-based equivalents such as [readAction {}](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/openapi/application/coroutines.kt).
 
 #### PolySymbols
 
@@ -62,21 +62,21 @@ If PSI or other write-intent-protected data needs to be accessed in these handle
 : additionally `name` property was renamed to `kindName` and `qualifiedKind` properties and parameters across the package
 were renamed to `kind`
 
-The following classes no longer implement [PsiModificationTracker](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/core-api/src/com/intellij/psi/util/PsiModificationTracker.java) (this requirement was confusing):
+The following classes no longer implement [PsiModificationTracker](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/psi/util/PsiModificationTracker.java) (this requirement was confusing):
 
-* [PolySymbolScope](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolScope.kt)
+* [PolySymbolScope](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolScope.kt)
 
-* [PolySymbolQueryExecutor](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolQueryExecutor.kt)
+* [PolySymbolQueryExecutor](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolQueryExecutor.kt)
 
-* [PolySymbolQueryResultsCustomizer](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolQueryResultsCustomizer.kt)
+* [PolySymbolQueryResultsCustomizer](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolQueryResultsCustomizer.kt)
 
 Implementing `PsiModificationTracker` was replaced by `modificationTracker` property for the following classes:
 
-* [PolyContextRulesProvider](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/polySymbols/src/com/intellij/polySymbols/context/PolyContextRulesProvider.kt)
+* [PolyContextRulesProvider](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/polySymbols/src/com/intellij/polySymbols/context/PolyContextRulesProvider.kt)
 
-* [PolySymbolNamesProvider](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolNamesProvider.kt)
+* [PolySymbolNamesProvider](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolNamesProvider.kt)
 
-* [PolySymbolNameConversionRulesProvider](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolNameConversionRulesProvider.kt)
+* [PolySymbolNameConversionRulesProvider](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolNameConversionRulesProvider.kt)
 
 ### Java Plugin 2026.1
 
@@ -276,4 +276,69 @@ The migration should be done according to the [migration guide](https://kotlin.g
 
 `org.jetbrains.kotlin.js.descriptorUtils.DescriptorUtilsKt.getNameIfStandardType(KotlinType)` method removed
 : [Migrate to K2 (Analysis API)](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
+
+### CLion 2026.2
+
+The C/C++ language engine based on `com.intellij.cidr.lang` (CLion Classic) is no longer bundled with CLion.
+CLion Nova, based on the ReSharper C++ engine, is now the default and the only bundled C/C++ engine.
+The classic APIs remain available via the [C/C++ Language Support via Classic Engine](https://plugins.jetbrains.com/plugin/32355-c-c--language-support-via-classic-engine) plugin (ID `com.intellij.cidr.lang`).
+Plugins depending on these APIs must declare a dependency on the Marketplace plugin using [plugin(&quot;com.intellij.cidr.lang&quot;, &quot;&lt;version&gt;&quot;)](tools-intellij-platform-gradle-plugin-dependencies-extension.html#non-bundled-plugin).
+See [C/C++ Language Engine: Nova and Classic](clion.html#language-engine) for setup details and CLion Nova API replacements.
+
+`com.jetbrains.cidr.lang.OCFileType` class removed
+: The Classic C/C++ engine is no longer bundled. Depend on the [C/C++ Language Support via Classic Engine](https://plugins.jetbrains.com/plugin/32355-c-c--language-support-via-classic-engine) plugin to keep using it, or migrate to `com.jetbrains.rider.cpp.fileType.CppFileType` (CLion Nova).
+
+`com.jetbrains.cidr.lang.OCLanguage` class removed
+: The Classic C/C++ engine is no longer bundled. Depend on the [C/C++ Language Support via Classic Engine](https://plugins.jetbrains.com/plugin/32355-c-c--language-support-via-classic-engine) plugin to keep using it, or migrate to `com.jetbrains.rider.cpp.fileType.CppLanguage` (CLion Nova).
+
+`com.jetbrains.cidr.lang.psi.OCFile` class removed
+: Depend on the [C/C++ Language Support via Classic Engine](https://plugins.jetbrains.com/plugin/32355-c-c--language-support-via-classic-engine) plugin to keep using it, or use `com.jetbrains.rider.cpp.fileType.psi.CppFile` (CLion Nova) for file-level access only.
+
+CLion Nova has no frontend PSI, so the remaining `com.jetbrains.cidr.lang` classes — PSI, symbols, types, and resolve/references — have no replacement; depend on the Classic Engine plugin to keep using them.
+
+## 2026.3
+
+### IntelliJ Platform 2026.3
+
+#### Kotlin UI DSL 1.0 Removal
+
+Kotlin UI DSL Version 1 (the `com.intellij.ui.layout` DSL entry points) has been completely removed.
+Any access to the removed classes will lead to compilation or runtime errors.
+The migration should be done according to the [Kotlin UI DSL Version 2 migration guide](https://plugins.jetbrains.com/docs/intellij/kotlin-ui-dsl.html#migration-to-version-2).
+
+`com.intellij.ui.layout.BaseBuilder` class removed
+: [Migrate to Kotlin UI DSL Version 2](https://plugins.jetbrains.com/docs/intellij/kotlin-ui-dsl.html#migration-to-version-2).
+
+`com.intellij.ui.layout.CCFlags` class removed
+: [Migrate to Kotlin UI DSL Version 2](https://plugins.jetbrains.com/docs/intellij/kotlin-ui-dsl.html#migration-to-version-2).
+
+`com.intellij.ui.layout.Cell` class removed
+: [Migrate to Kotlin UI DSL Version 2](https://plugins.jetbrains.com/docs/intellij/kotlin-ui-dsl.html#migration-to-version-2).
+
+`com.intellij.ui.layout.CellBuilder` class removed
+: [Migrate to Kotlin UI DSL Version 2](https://plugins.jetbrains.com/docs/intellij/kotlin-ui-dsl.html#migration-to-version-2).
+
+`com.intellij.ui.layout.CellMarker` class removed
+: [Migrate to Kotlin UI DSL Version 2](https://plugins.jetbrains.com/docs/intellij/kotlin-ui-dsl.html#migration-to-version-2).
+
+`com.intellij.ui.layout.LCFlags` class removed
+: [Migrate to Kotlin UI DSL Version 2](https://plugins.jetbrains.com/docs/intellij/kotlin-ui-dsl.html#migration-to-version-2).
+
+`com.intellij.ui.layout.LayoutBuilder` class removed
+: [Migrate to Kotlin UI DSL Version 2](https://plugins.jetbrains.com/docs/intellij/kotlin-ui-dsl.html#migration-to-version-2).
+
+`com.intellij.ui.layout.LayoutBuilderImpl` class removed
+: [Migrate to Kotlin UI DSL Version 2](https://plugins.jetbrains.com/docs/intellij/kotlin-ui-dsl.html#migration-to-version-2).
+
+`com.intellij.ui.layout.LayoutImplKt` class removed
+: [Migrate to Kotlin UI DSL Version 2](https://plugins.jetbrains.com/docs/intellij/kotlin-ui-dsl.html#migration-to-version-2).
+
+`com.intellij.ui.layout.LayoutKt` class removed
+: [Migrate to Kotlin UI DSL Version 2](https://plugins.jetbrains.com/docs/intellij/kotlin-ui-dsl.html#migration-to-version-2).
+
+`com.intellij.ui.layout.Row` class removed
+: [Migrate to Kotlin UI DSL Version 2](https://plugins.jetbrains.com/docs/intellij/kotlin-ui-dsl.html#migration-to-version-2).
+
+`com.intellij.ui.layout.RowBuilder` class removed
+: [Migrate to Kotlin UI DSL Version 2](https://plugins.jetbrains.com/docs/intellij/kotlin-ui-dsl.html#migration-to-version-2).
 

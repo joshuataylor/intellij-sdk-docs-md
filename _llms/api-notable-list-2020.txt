@@ -16,10 +16,10 @@ Reparsing of `IReparseableLeafElementType`
 : For elements whose `IElementType` implements this interface, platform attempts reparse when a modification is made right before or after the leaf element preventing reparsing the whole file.
 
 Generating HTML fragments
-: Use [HtmlBuilder](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/util/src/com/intellij/openapi/util/text/HtmlBuilder.java) for generating formatted content, e.g., for [Documentation](documentation.html).
+: Use [HtmlBuilder](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/util/src/com/intellij/openapi/util/text/HtmlBuilder.java) for generating formatted content, e.g., for [Documentation](documentation.html).
 
 Extensible HTML Lexer/Parser
-: Implement [HtmlEmbeddedContentSupport](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/xml/xml-parser/src/com/intellij/html/embedding/HtmlEmbeddedContentSupport.kt) and register in [com.intellij.html.embeddedContentSupport](https://jb.gg/ipe?extensions=com.intellij.html.embeddedContentSupport) extension point
+: Implement [HtmlEmbeddedContentSupport](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/xml/xml-parser/src/com/intellij/html/embedding/HtmlEmbeddedContentSupport.kt) and register in [com.intellij.html.embeddedContentSupport](https://jb.gg/ipe?extensions=com.intellij.html.embeddedContentSupport) extension point
 to embed arbitrary tokens into any tag or attribute.
 Please note that old API from `com.intellij.lexer.BaseHtmlLexer` is no longer working.
 
@@ -27,18 +27,18 @@ Action System
 : New features in [Action System](action-system.html): `<override-text>` works now for [&lt;group&gt;](plugin-configuration-file.html#idea-plugin__actions__group) as well, [&lt;synonym&gt;](plugin-configuration-file.html#idea-plugin__actions__action__synonym) provides alternative names when searching for actions, and groups can be excluded from search results.
 
 Welcome Screen customization
-: To provide additional custom tabs, implement [WelcomeTabFactory](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/platform-api/src/com/intellij/openapi/wm/WelcomeTabFactory.java) and register in [com.intellij.welcomeTabFactory](https://jb.gg/ipe?extensions=com.intellij.welcomeTabFactory) extension point
+: To provide additional custom tabs, implement [WelcomeTabFactory](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/platform-api/src/com/intellij/openapi/wm/WelcomeTabFactory.java) and register in [com.intellij.welcomeTabFactory](https://jb.gg/ipe?extensions=com.intellij.welcomeTabFactory) extension point
 .
 
 File Type association with the IDE
-: To control file type association with the IDE in the operating system, implement [OSFileIdeAssociation](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/core-api/src/com/intellij/openapi/fileTypes/OSFileIdeAssociation.java).
+: To control file type association with the IDE in the operating system, implement [OSFileIdeAssociation](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/openapi/fileTypes/OSFileIdeAssociation.java).
 
 Reader Mode customization
-: Implement [ReaderModeProvider](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/editor-ui-api/src/com/intellij/codeInsight/actions/ReaderModeProvider.kt) and register in [com.intellij.readerModeProvider](https://jb.gg/ipe?extensions=com.intellij.readerModeProvider) extension point
+: Implement [ReaderModeProvider](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/editor-ui-api/src/com/intellij/codeInsight/actions/ReaderModeProvider.kt) and register in [com.intellij.readerModeProvider](https://jb.gg/ipe?extensions=com.intellij.readerModeProvider) extension point
 to apply custom settings for files rendered in reader mode. Provide `com.intellij.codeInsight.actions.ReaderModeMatcher` to disable Reader Mode for particular set of files.
 
 Text Editor customization
-: Implement [TextEditorCustomizer](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/platform-impl/src/com/intellij/openapi/fileEditor/impl/text/TextEditorCustomizer.kt) and register in [com.intellij.textEditorCustomizer](https://jb.gg/ipe?extensions=com.intellij.textEditorCustomizer) extension point
+: Implement [TextEditorCustomizer](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/platform-impl/src/com/intellij/openapi/fileEditor/impl/text/TextEditorCustomizer.kt) and register in [com.intellij.textEditorCustomizer](https://jb.gg/ipe?extensions=com.intellij.textEditorCustomizer) extension point
 to customize created editors.
 
 Note: `TextEditorCustomizer` has been marked internal since 2024.2.
@@ -66,7 +66,7 @@ Constructor Injection in `Configurable` forbidden
 
 Tooltip descriptions for icons
 : Register resource bundle via [com.intellij.iconDescriptionBundle](https://jb.gg/ipe?extensions=com.intellij.iconDescriptionBundle) extension point
-to provide tooltips automatically for all [SimpleColoredComponent](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/platform-api/src/com/intellij/ui/SimpleColoredComponent.java) renderers.
+to provide tooltips automatically for all [SimpleColoredComponent](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/platform-api/src/com/intellij/ui/SimpleColoredComponent.java) renderers.
 
 Specify incompatibility with Module
 : A plugin can [mark itself incompatible](plugin-compatibility.html#declaring-incompatibility-with-module) if IDE contains specified module.
@@ -82,14 +82,14 @@ FileType mapping via hashbang (`#!`)
 . [Issue](https://youtrack.jetbrains.com/issue/IDEA-175757)
 
 Add information to About dialog
-: Implement [AboutPopupDescriptionProvider](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/platform-impl/src/com/intellij/ide/AboutPopupDescriptionProvider.kt) and register in [com.intellij.aboutPopupDescriptionProvider](https://jb.gg/ipe?extensions=com.intellij.aboutPopupDescriptionProvider) extension point
+: Implement [AboutPopupDescriptionProvider](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/platform-impl/src/com/intellij/ide/AboutPopupDescriptionProvider.kt) and register in [com.intellij.aboutPopupDescriptionProvider](https://jb.gg/ipe?extensions=com.intellij.aboutPopupDescriptionProvider) extension point
 .
 
 Previewing Intention/Quick Fix
-: To support preview in intention popup, suitable [FileModifier](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/analysis-api/src/com/intellij/codeInsight/intention/FileModifier.java) must be provided (default implementation `FileModifier.getFileModifierForPreview()` works for most cases).
+: To support preview in intention popup, suitable [FileModifier](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/analysis-api/src/com/intellij/codeInsight/intention/FileModifier.java) must be provided (default implementation `FileModifier.getFileModifierForPreview()` works for most cases).
 
 Delegate Run Anything/Terminal commands to IDE features
-: Switch to matching IDE feature by implementing [TerminalShellCommandHandler](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/execution-impl/src/com/intellij/terminal/TerminalShellCommandHandler.kt) ([com.intellij.terminal.shellCommandHandler](https://jb.gg/ipe?extensions=com.intellij.terminal.shellCommandHandler) extension point
+: Switch to matching IDE feature by implementing [TerminalShellCommandHandler](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/execution-impl/src/com/intellij/terminal/TerminalShellCommandHandler.kt) ([com.intellij.terminal.shellCommandHandler](https://jb.gg/ipe?extensions=com.intellij.terminal.shellCommandHandler) extension point
 ). [Blog post](https://blog.jetbrains.com/idea/2020/07/run-ide-features-from-the-terminal/)
 
 Deprecating JavaFX in favor of JCEF
@@ -99,7 +99,7 @@ ASM Library 8.0.1
 : Updated from 7.0.1.
 
 Validating Lexer for editor highlighting
-: Lexer is wrapped using [ValidatingLexerWrapper](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/editor-ui-ex/src/com/intellij/openapi/editor/ex/util/ValidatingLexerWrapper.java) to verify it generates a continuous sequence of tokens and doesn't stall during iteration.
+: Lexer is wrapped using [ValidatingLexerWrapper](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/editor-ui-ex/src/com/intellij/openapi/editor/ex/util/ValidatingLexerWrapper.java) to verify it generates a continuous sequence of tokens and doesn't stall during iteration.
 
 ### IntelliJ IDEA 2020.2
 
@@ -113,14 +113,14 @@ Unbundled plugins
 Dynamic Plugins
 : [Compatible plugins](dynamic-plugins.html) can be installed, updated and uninstalled without requiring IDE restart.
 
-[com.intellij.openapi.application.TransactionGuard](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/core-api/src/com/intellij/openapi/application/TransactionGuard.java) deprecated
+[com.intellij.openapi.application.TransactionGuard](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/openapi/application/TransactionGuard.java) deprecated
 : Usage is deprecated and can be replaced with `com.intellij.openapi.application.Application.invokeLater()` in most cases, please consult Javadoc for more details.
 
 `RecursionManager.assertOnMissedCache()` enabled by default in tests
-: Please see [RecursionManager.CachingPreventedException](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/util/src/com/intellij/openapi/util/RecursionManager.java) Javadoc and [this issue](https://youtrack.jetbrains.com/issue/IDEA-228809) for details.
+: Please see [RecursionManager.CachingPreventedException](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/util/src/com/intellij/openapi/util/RecursionManager.java) Javadoc and [this issue](https://youtrack.jetbrains.com/issue/IDEA-228809) for details.
 
 `ResolveCache` using `IdempotenceChecker` in tests
-: Reports when the same reference resolves non-equivalent results in different threads, see [IdempotenceChecker](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/core-impl/src/com/intellij/util/IdempotenceChecker.java).
+: Reports when the same reference resolves non-equivalent results in different threads, see [IdempotenceChecker](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-impl/src/com/intellij/util/IdempotenceChecker.java).
 
 Refactoring dialog: builtin "Open in editor" option
 : Set `addOpenInEditorCheckbox` constructor parameter to enable it in custom `RefactoringDialog` implementation.
@@ -136,7 +136,7 @@ Override text presentation for actions depending on menu context
 : Set the [&lt;override-text&gt;](plugin-configuration-file.html#idea-plugin__actions__action__override-text) element within the [&lt;action&gt;](plugin-configuration-file.html#idea-plugin__actions__action) declaration in `[plugin.xml](plugin-configuration-file.html)`.
 
 Changes in Project Open/Import
-: Import from Existing Sources has been removed from the Welcome Screen, leaving only Open or Import, which calls a different extension than the one previously used to contribute a wizard step to Import from Existing Sources (which is still available in the File menu). To support Open or Import, a plugin must provide [ProjectOpenProcessor](https://github.com/JetBrains/intellij-community/tree/idea/261.25134.95/platform/platform-api/src/com/intellij/projectImport/ProjectOpenProcessor.kt).
+: Import from Existing Sources has been removed from the Welcome Screen, leaving only Open or Import, which calls a different extension than the one previously used to contribute a wizard step to Import from Existing Sources (which is still available in the File menu). To support Open or Import, a plugin must provide [ProjectOpenProcessor](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/platform-api/src/com/intellij/projectImport/ProjectOpenProcessor.kt).
 `ProjectOpenProcessor.canOpenProject()` should return `true` for the folder selected by the user only if it guarantees `doOpenProject()` can handle it. If there are several matching processors, a simple chooser dialog is shown. If additional manual configuration is necessary, a modal dialog can be shown in `doOpenProject()` - however, it is highly recommended performing all setup automatically (like Maven and Gradle plugins do).
 
 ### IntelliJ IDEA 2020.1
