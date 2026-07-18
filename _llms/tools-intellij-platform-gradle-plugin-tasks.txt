@@ -1847,7 +1847,7 @@ Sources: [VerifyPluginTask](https://github.com/JetBrains/intellij-platform-gradl
 
 Runs the [IntelliJ Plugin Verifier](verifying-plugin-compatibility.html) CLI tool to check the binary compatibility with specified IDE builds.
 
-Due to caching, the latest Plugin Verifier release version (1.408) might not be picked up by Gradle immediately.
+Due to caching, the latest Plugin Verifier release version (1.409) might not be picked up by Gradle immediately.
 In such cases, [refresh dependencies](https://docs.gradle.org/current/userguide/dependency_caching.html#sec:refreshing-dependencies)
 manually.
 

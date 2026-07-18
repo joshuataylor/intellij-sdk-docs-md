@@ -38403,6 +38403,7 @@ This data is updated daily and also available in [JSON](https://jb.gg/android-st
 
 | Release Name |Channel |Version |IntelliJ IDEA Version |Release Date |
 -----------------------------------------------------------------------
+| Quail 4    2026.1.4 Canary 1   |![Canary](https://img.shields.io/badge/-Canary-lightgrey?style=flat-square) |2026.1.4.1AI‑261.26222.65.2614.15872890   |2026.1.4261.26222.65   |Jul 16, 2026 |
 | Quail 3    2026.1.3 RC 1   |![RC](https://img.shields.io/badge/-RC-red?style=flat-square) |2026.1.3.5AI‑261.26222.65.2613.15847520   |2026.1.4261.26222.65   |Jul 14, 2026 |
 | Quail 3    2026.1.3 Canary 4   |![Canary](https://img.shields.io/badge/-Canary-lightgrey?style=flat-square) |2026.1.3.4AI‑261.26222.65.2613.15822653   |2026.1.4261.26222.65   |Jul 9, 2026 |
 | Quail 3    2026.1.3 Canary 3   |![Canary](https://img.shields.io/badge/-Canary-lightgrey?style=flat-square) |2026.1.3.3AI‑261.25134.95.2613.15772639   |2026.1.3261.25134.95   |Jul 2, 2026 |
@@ -50357,7 +50358,7 @@ See also [Targeting Multiple IDE Versions](build-number-ranges.html#multipleIDEV
 ## Plugin Verifier
 
 <tldr>
-Current Release: 1.408
+Current Release: 1.409
 
 GitHub: [Releases &amp; Changelog](https://github.com/JetBrains/intellij-plugin-verifier/releases), [Issue Tracker](https://youtrack.jetbrains.com/issues/MP?q=%23%7BPlugin%20Verifier%7D%20)
 
@@ -59489,7 +59490,7 @@ Sources: [VerifyPluginTask](https://github.com/JetBrains/intellij-platform-gradl
 
 Runs the [IntelliJ Plugin Verifier](verifying-plugin-compatibility.html) CLI tool to check the binary compatibility with specified IDE builds.
 
-Due to caching, the latest Plugin Verifier release version (1.408) might not be picked up by Gradle immediately.
+Due to caching, the latest Plugin Verifier release version (1.409) might not be picked up by Gradle immediately.
 In such cases, [refresh dependencies](https://docs.gradle.org/current/userguide/dependency_caching.html#sec:refreshing-dependencies)
 manually.
 
@@ -61049,7 +61050,7 @@ See also:
 
 `PluginBean`
 
-[PluginBean](https://github.com/JetBrains/intellij-plugin-verifier/tree/1.408/intellij-plugin-structure/structure-intellij/src/main/java/com/jetbrains/plugin/structure/intellij/beans/PluginBean.java)
+[PluginBean](https://github.com/JetBrains/intellij-plugin-verifier/tree/1.409/intellij-plugin-structure/structure-intellij/src/main/java/com/jetbrains/plugin/structure/intellij/beans/PluginBean.java)
 
 Describes the content of the `plugin.xml` file.
 
@@ -66166,12 +66167,12 @@ These variables provide access to essential IDE components, configuration inform
 | Variable |Type |Description |
 -------------------------------
 | `idePath` |`Path` |Represents the resolved file system path to the IntelliJ Platform installation directory. |
-| `ide` |[ProductInfoBasedIde](https://github.com/JetBrains/intellij-plugin-verifier/tree/1.408/intellij-plugin-structure/structure-ide/src/main/java/com/jetbrains/plugin/structure/ide/ProductInfoBasedIde.kt) |Represents an IDE instance, which allows interacting with plugins and resolving their dependencies based on the IDE's configuration. |
+| `ide` |[ProductInfoBasedIde](https://github.com/JetBrains/intellij-plugin-verifier/tree/1.409/intellij-plugin-structure/structure-ide/src/main/java/com/jetbrains/plugin/structure/ide/ProductInfoBasedIde.kt) |Represents an IDE instance, which allows interacting with plugins and resolving their dependencies based on the IDE's configuration. |
 | `notebookDisposable` |[Disposable](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/util/src/com/intellij/openapi/Disposable.java) |Represents a disposable used for managing the IntelliJ Platform lifetime of the current notebook. |
 | `notebookPluginDescriptor` |[PluginMainDescriptor](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-impl/src/com/intellij/ide/plugins/IdeaPluginDescriptorImpl.kt) |Represents a plugin descriptor for the plugin created with Kotlin Notebook IntelliJ Platform integration. |
 | `pluginManager` |[PluginManager](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-impl/src/com/intellij/ide/plugins/PluginManager.java) |Instance of the `PluginManager`, which allows accessing information about plugins and their states in the current IDE environment. |
-| `pluginRepository` |[PluginRepository](https://github.com/JetBrains/intellij-plugin-verifier/tree/1.408/intellij-plugin-verifier/verifier-repository/src/main/java/com/jetbrains/pluginverifier/repository/PluginRepository.kt) |Instance of `PluginRepository`, responsible for managing plugins via the JetBrains Marketplace plugin repository. |
-| `productInfo` |[ProductInfo](https://github.com/JetBrains/intellij-plugin-verifier/tree/1.408/intellij-plugin-structure/structure-intellij/src/main/java/com/jetbrains/plugin/structure/intellij/platform/ProductInfo.kt) |Lazily initialized property containing current IntelliJ Platform product information. |
+| `pluginRepository` |[PluginRepository](https://github.com/JetBrains/intellij-plugin-verifier/tree/1.409/intellij-plugin-verifier/verifier-repository/src/main/java/com/jetbrains/pluginverifier/repository/PluginRepository.kt) |Instance of `PluginRepository`, responsible for managing plugins via the JetBrains Marketplace plugin repository. |
+| `productInfo` |[ProductInfo](https://github.com/JetBrains/intellij-plugin-verifier/tree/1.409/intellij-plugin-structure/structure-intellij/src/main/java/com/jetbrains/plugin/structure/intellij/platform/ProductInfo.kt) |Lazily initialized property containing current IntelliJ Platform product information. |
 
 ## Notebook Helpers
 
