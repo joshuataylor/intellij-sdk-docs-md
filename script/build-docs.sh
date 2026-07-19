@@ -30,7 +30,8 @@ UPSTREAM_REMOTE="${UPSTREAM_REMOTE:-https://github.com/JetBrains/intellij-sdk-do
 UPSTREAM_REF="${UPSTREAM_REF:-main}"
 
 REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-SHA_FILE="$REPO/.upstream-sha"
+PUB="$REPO/docs"                 # published output lives under docs/
+SHA_FILE="$PUB/.upstream-sha"
 NOTES="${NOTES:-$REPO/.upstream-changes.txt}"
 
 # With no argument, manage our own clone under .upstream (gitignored).
@@ -142,25 +143,38 @@ if [[ -n "${NO_PUBLISH:-}" ]]; then
 fi
 
 # ------------------------------------------------------------------- publish
-# Repo layout: html/ + _llms/ + llms.txt + misc/ (metadata). --delete so pages
-# removed upstream also disappear here.
-echo "==> Publishing into $REPO"
-mkdir -p "$REPO/html" "$REPO/_llms" "$REPO/misc"
+# Repo layout, all under docs/:
+#   docs/html/     generated site
+#   docs/docs/     per-topic llms text, tracked as .md (builder emits _llms/*.txt)
+#   docs/llms.txt  single-file index
+#   docs/misc/     metadata (TOC, sitemap, ...)
+# --delete so pages removed upstream also disappear here.
+echo "==> Publishing into $PUB"
+mkdir -p "$PUB/html" "$PUB/docs" "$PUB/misc"
 
-rsync -a --delete --include '*.html' --exclude '*' "$SITE_DIR/" "$REPO/html/"
-rsync -a --delete "$SITE_DIR/_llms/" "$REPO/_llms/"
-cp "$SITE_DIR/llms.txt" "$REPO/llms.txt"
+rsync -a --delete --include '*.html' --exclude '*' "$SITE_DIR/" "$PUB/html/"
+
+# Stage renamed copies so rsync --delete can still drop topics that went away
+# upstream; renaming in place after the sync would defeat that.
+RENAMED="$SITE_DIR/_llms_md"
+rm -rf "$RENAMED"; mkdir -p "$RENAMED"
+for f in "$SITE_DIR"/_llms/*.txt; do
+  cp "$f" "$RENAMED/$(basename "$f" .txt).md"
+done
+rsync -a --delete "$RENAMED/" "$PUB/docs/"
+
+cp "$SITE_DIR/llms.txt" "$PUB/llms.txt"
 
 for f in config.json HelpTOC.json Map.jhm sitemap.xml current.help.version \
          api-object-digest.json starting-page-*.json; do
-  cp "$SITE_DIR"/$f "$REPO/misc/" 2>/dev/null || true
+  cp "$SITE_DIR"/$f "$PUB/misc/" 2>/dev/null || true
 done
 
 [[ -n "$upstream_sha" ]] && echo "$upstream_sha" > "$SHA_FILE"
 
-echo "    html:  $(ls "$REPO/html" | wc -l)"
-echo "    _llms: $(ls "$REPO/_llms" | wc -l)"
-echo "    misc:  $(ls "$REPO/misc" | wc -l)"
+echo "    html: $(ls "$PUB/html" | wc -l)"
+echo "    docs: $(ls "$PUB/docs" | wc -l)"
+echo "    misc: $(ls "$PUB/misc" | wc -l)"
 
 # -------------------------------------------------------------------- commit
 cd "$REPO"

@@ -83,7 +83,7 @@ jobs:
           {
             echo "Rebuild docs as of $timestamp"
             echo
-            [[ -f .upstream-sha ]] && echo "upstream: $(cut -c1-9 .upstream-sha)"
+            [[ -f docs/.upstream-sha ]] && echo "upstream: $(cut -c1-9 docs/.upstream-sha)"
             echo
             cat .upstream-changes.txt 2>/dev/null || true
           } > "$RUNNER_TEMP/commit-message.txt"
