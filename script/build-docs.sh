@@ -1,15 +1,20 @@
 #!/usr/bin/env bash
 # Build the IntelliJ SDK docs with the Writerside Docker builder, publish the
-# result into this repo, and commit it.
+# HTML + llms text into this repo, and commit it.
 # https://www.jetbrains.com/help/writerside/build-with-docker.html
 #
-# Runs on kit, where both the Docker daemon and the sources live.
+#   ./script/build-docs.sh              # clone/update upstream, build, publish, commit
+#   ./script/build-docs.sh /path/to/src # build an existing checkout instead
 #
-#   ./script/build-docs.sh [sources-dir]
-#
-# sources-dir defaults to SRC below. Options:
+# Options:
+#   FORCE=1       build even when upstream has not moved since the last sync
 #   NO_COMMIT=1   publish into the repo but leave the changes uncommitted
-#   NO_PUBLISH=1  build only; leave output in <sources>/build, touch nothing
+#   NO_PUBLISH=1  build only; leave output under <src>/build, touch nothing
+#
+# Requires docker, git, rsync and unzip. Runs anywhere the Docker daemon and the
+# sources share a filesystem -- note that `-v` paths resolve on the DAEMON host,
+# so pointing DOCKER_HOST/context at a remote machine will silently mount an
+# empty directory and the builder fails with: Open solution: "sources", 0 modules.
 set -euo pipefail
 
 BUILDER_TAG="${BUILDER_TAG:-2026.06.8817}"
@@ -21,12 +26,75 @@ IMAGE="jetbrains/writerside-builder:${BUILDER_TAG}"
 # Using "intellij" fails with: Cannot find product "intellij" in module "intellij-sdk".
 INSTANCE="${INSTANCE:-intellij-sdk/ijs}"
 
-SRC="${1:-/home/josh/dev/plugins/intellij-sdk-docs}"
+UPSTREAM_REMOTE="${UPSTREAM_REMOTE:-https://github.com/JetBrains/intellij-sdk-docs.git}"
+UPSTREAM_REF="${UPSTREAM_REF:-main}"
+
 REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+SHA_FILE="$REPO/.upstream-sha"
+NOTES="${NOTES:-$REPO/.upstream-changes.txt}"
+
+# With no argument, manage our own clone under .upstream (gitignored).
+SRC="${1:-}"
+MANAGED=""
+if [[ -z "$SRC" ]]; then
+  SRC="${CLONE_DIR:-$REPO/.upstream}"
+  MANAGED=1
+fi
+
+last_sha="$(cat "$SHA_FILE" 2>/dev/null || true)"
+
+if [[ -n "$MANAGED" ]]; then
+  # A full clone is deliberate: Writerside derives each page's "last modified"
+  # date from git history, so a --depth 1 clone would stamp every page with the
+  # same date. Keep the clone around and fetch into it on later runs.
+  if [[ -d "$SRC/.git" ]]; then
+    echo "==> Updating $SRC"
+    git -C "$SRC" fetch --quiet origin "$UPSTREAM_REF"
+    git -C "$SRC" reset --hard --quiet FETCH_HEAD
+    git -C "$SRC" clean -fdq
+  else
+    echo "==> Cloning $UPSTREAM_REMOTE"
+    git clone --quiet --branch "$UPSTREAM_REF" "$UPSTREAM_REMOTE" "$SRC"
+  fi
+fi
 
 [[ -f "$SRC/writerside.cfg" ]] || {
   echo "ERROR: no writerside.cfg in $SRC" >&2; exit 1; }
 SRC="$(cd "$SRC" && pwd)"
+
+upstream_sha=""
+if [[ -d "$SRC/.git" ]]; then
+  upstream_sha="$(git -C "$SRC" rev-parse HEAD)"
+  last_short="<none>"
+  [[ -n "$last_sha" ]] && last_short="${last_sha:0:9}"
+  echo "    upstream: ${upstream_sha:0:9}  (last synced: $last_short)"
+fi
+
+# Every build regenerates element ids and the built-on timestamp, so a rebuild
+# always produces a diff. Skip unchanged upstream to avoid hourly commit noise.
+if [[ -z "${FORCE:-}" && -n "$upstream_sha" && "$upstream_sha" == "$last_sha" ]]; then
+  echo "==> Upstream unchanged, nothing to do (FORCE=1 to rebuild anyway)"
+  exit 0
+fi
+
+# Commit body: what moved upstream since the last sync.
+{
+  if [[ -z "$upstream_sha" ]]; then
+    echo "(sources not a git checkout -- no upstream commit range)"
+  elif [[ -z "$last_sha" ]]; then
+    echo "No recorded baseline -- latest 20 upstream commits:"
+    echo
+    git -C "$SRC" log --no-merges --max-count=20 --pretty=format:'- %h %s' "$upstream_sha"
+    echo
+  elif [[ "$last_sha" == "$upstream_sha" ]]; then
+    echo "(no new upstream commits -- forced rebuild)"
+  else
+    echo "Upstream changes since ${last_sha:0:9}:"
+    echo
+    git -C "$SRC" log --no-merges --pretty=format:'- %h %s' "${last_sha}..${upstream_sha}"
+    echo
+  fi
+} > "$NOTES"
 
 OUT_DIR="$SRC/build/artifacts"
 SITE_DIR="$SRC/build/site"
@@ -88,24 +156,37 @@ for f in config.json HelpTOC.json Map.jhm sitemap.xml current.help.version \
   cp "$SITE_DIR"/$f "$REPO/misc/" 2>/dev/null || true
 done
 
+[[ -n "$upstream_sha" ]] && echo "$upstream_sha" > "$SHA_FILE"
+
 echo "    html:  $(ls "$REPO/html" | wc -l)"
 echo "    _llms: $(ls "$REPO/_llms" | wc -l)"
 echo "    misc:  $(ls "$REPO/misc" | wc -l)"
 
 # -------------------------------------------------------------------- commit
 cd "$REPO"
-if [[ -n "$(git status --porcelain)" ]]; then
-  if [[ -n "${NO_COMMIT:-}" ]]; then
-    echo "==> NO_COMMIT set, leaving $(git status --porcelain | wc -l) changes staged-free"
-    exit 0
-  fi
-  git add -A
-  # commit.gpgsign is on for this repo, so the commit needs a TTY for the
-  # passphrase prompt. Run this script from a real terminal on kit (or over
-  # `ssh -t`); a plain non-interactive `ssh josh '...'` fails with
-  # "gpg: signing failed: Inappropriate ioctl for device".
-  git commit -q -m "Rebuild docs (writerside-builder ${BUILDER_TAG})"
-  echo "==> Committed: $(git log --oneline -1)"
-else
+git add -A
+if git diff --cached --quiet; then
   echo "==> No changes to commit"
+  exit 0
 fi
+
+if [[ -n "${NO_COMMIT:-}" ]]; then
+  echo "==> NO_COMMIT set, $(git diff --cached --name-only | wc -l) files staged"
+  exit 0
+fi
+
+{
+  echo "Rebuild docs as of $(TZ=UTC date +'%Y-%m-%d %H:%M:%S UTC')"
+  echo
+  echo "writerside-builder: $BUILDER_TAG"
+  [[ -n "$upstream_sha" ]] && echo "upstream: ${upstream_sha:0:9}"
+  echo
+  cat "$NOTES"
+} > "$REPO/.commit-message.txt"
+
+# commit.gpgsign is on for this repo, so an interactive run needs a TTY for the
+# passphrase prompt. A non-interactive `ssh host '...'` fails with
+# "gpg: signing failed: Inappropriate ioctl for device" -- use `ssh -t`.
+git commit -q -F "$REPO/.commit-message.txt"
+rm -f "$REPO/.commit-message.txt" "$NOTES"
+echo "==> Committed: $(git log --oneline -1)"

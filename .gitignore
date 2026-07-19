@@ -1,0 +1,8 @@
+# Upstream JetBrains/intellij-sdk-docs clone managed by script/build-docs.sh
+.upstream/
+
+# Scratch files written while assembling a commit
+.upstream-changes.txt
+.commit-message.txt
+
+.DS_Store

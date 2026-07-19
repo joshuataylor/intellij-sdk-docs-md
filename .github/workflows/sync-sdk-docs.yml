@@ -1,0 +1,91 @@
+name: Sync IntelliJ SDK docs
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+
+on:
+  schedule:
+    - cron: '0 * * * *'
+  workflow_dispatch:
+    inputs:
+      force:
+        description: 'Rebuild even if upstream has not moved'
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+env:
+  UPSTREAM_REMOTE: https://github.com/JetBrains/intellij-sdk-docs.git
+  CLONE_DIR: ${{ github.workspace }}/.upstream
+
+jobs:
+  sync:
+    name: Build and publish
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - name: Fetch sources
+        uses: actions/checkout@v7
+        with:
+          ref: main
+
+      # The Writerside builder image unpacks to ~6GB, which does not fit
+      # alongside the runner's preinstalled toolchains.
+      - name: Maximize build space
+        uses: jlumbroso/free-disk-space@v1.3.1
+        with:
+          tool-cache: false
+          large-packages: false
+
+      - name: Restore upstream git cache
+        uses: actions/cache/restore@v6
+        with:
+          # Cache only .git -- build-docs.sh rebuilds the working tree from it
+          # via reset --hard, keeping the cache small.
+          path: ${{ env.CLONE_DIR }}/.git
+          # Cache keys are immutable, so save under a per-run key and restore
+          # the most recent one via the shared prefix.
+          key: sdk-docs-git-${{ github.run_id }}
+          restore-keys: sdk-docs-git-
+
+      - name: Build and publish
+        id: build
+        env:
+          FORCE: ${{ inputs.force && '1' || '' }}
+          # Commits are made by the bot below, not by the script.
+          NO_COMMIT: '1'
+        # The cache restores only .git; build-docs.sh rebuilds the working tree
+        # from it via fetch + reset --hard before building.
+        run: ./script/build-docs.sh
+
+      - name: Save upstream git cache
+        if: always()
+        uses: actions/cache/save@v6
+        with:
+          path: ${{ env.CLONE_DIR }}/.git
+          key: sdk-docs-git-${{ github.run_id }}
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git status --short | head -20
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          timestamp=$(TZ=UTC date +'%Y-%m-%d %H:%M:%S UTC')
+          {
+            echo "Rebuild docs as of $timestamp"
+            echo
+            [[ -f .upstream-sha ]] && echo "upstream: $(cut -c1-9 .upstream-sha)"
+            echo
+            cat .upstream-changes.txt 2>/dev/null || true
+          } > "$RUNNER_TEMP/commit-message.txt"
+          git commit -q -F "$RUNNER_TEMP/commit-message.txt"
+          git push origin main
