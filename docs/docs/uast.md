@@ -20,7 +20,7 @@ Some known examples are:
 
 * [Android Studio](android-studio.html)
 
-* [Plugin DevKit](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/plugins/devkit/devkit-core)
+* [Plugin DevKit](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/plugins/devkit/devkit-core)
 
 ## Which languages are supported?
 
@@ -35,19 +35,19 @@ Some known examples are:
 ## What about modifying PSI?
 
 UAST is a read-only API.
-There are experimental [UastCodeGenerationPlugin](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/uast/uast-common-ide/src/org/jetbrains/uast/generate/UastCodeGenerationPlugin.kt) and [JvmElementActionsFactory](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/java/java-analysis-api/src/com/intellij/lang/jvm/actions/JvmElementActionsFactory.kt) classes, but they are currently not recommended for external usage.
+There are experimental [UastCodeGenerationPlugin](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/uast/uast-common-ide/src/org/jetbrains/uast/generate/UastCodeGenerationPlugin.kt) and [JvmElementActionsFactory](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/java/java-analysis-api/src/com/intellij/lang/jvm/actions/JvmElementActionsFactory.kt) classes, but they are currently not recommended for external usage.
 
 ## Working with UAST
 
-The base element of UAST is [UElement](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/uast/uast-common/src/org/jetbrains/uast/baseElements/UElement.kt).
-All common base sub-interfaces are located in the [declarations](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/uast/uast-common/src/org/jetbrains/uast/declarations) and [expressions](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/uast/uast-common/src/org/jetbrains/uast/expressions) directories of the uast module.
+The base element of UAST is [UElement](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/uast/uast-common/src/org/jetbrains/uast/baseElements/UElement.kt).
+All common base sub-interfaces are located in the [declarations](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/uast/uast-common/src/org/jetbrains/uast/declarations) and [expressions](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/uast/uast-common/src/org/jetbrains/uast/expressions) directories of the uast module.
 
 All these sub-interfaces provide methods to get the information about common syntax elements:
-[UClass](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/uast/uast-common/src/org/jetbrains/uast/declarations/UClass.kt) about class declarations, [UIfExpression](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/uast/uast-common/src/org/jetbrains/uast/controlStructures/UIfExpression.kt) about conditional expressions, and so on.
+[UClass](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/uast/uast-common/src/org/jetbrains/uast/declarations/UClass.kt) about class declarations, [UIfExpression](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/uast/uast-common/src/org/jetbrains/uast/controlStructures/UIfExpression.kt) about conditional expressions, and so on.
 
 ### PSI to UAST Conversion
 
-To obtain UAST for a given `PsiElement` of one of the supported languages, use [UastFacade](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/uast/uast-common/src/org/jetbrains/uast/UastContext.kt) class or [UastContextKt.toUElement()](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/uast/uast-common/src/org/jetbrains/uast/UastContext.kt):
+To obtain UAST for a given `PsiElement` of one of the supported languages, use [UastFacade](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/uast/uast-common/src/org/jetbrains/uast/UastContext.kt) class or [UastContextKt.toUElement()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/uast/uast-common/src/org/jetbrains/uast/UastContext.kt):
 
 Java:
 
@@ -119,13 +119,13 @@ Note: both `sourcePsi` and `javaPsi` can be [converted](#psi-to-uast-conversion)
 
 In UAST there is no unified way to get children of the `UElement` (though it is possible to get its parent via `UElement#uastParent`).
 Thus, the only way to walk the UAST as a tree is passing the
-[UastVisitor](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/uast/uast-common/src/org/jetbrains/uast/visitor/UastVisitor.kt) to `UElement.accept()` method.
+[UastVisitor](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/uast/uast-common/src/org/jetbrains/uast/visitor/UastVisitor.kt) to `UElement.accept()` method.
 
 Note: there is a convention in UAST-visitors that a visitor will not be passed to children if `visit*()` returns `true`.
 Otherwise, `UastVisitor` will continue the walk into depth.
 
-`UastVisitor` can be converted to [PsiElementVisitor](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/psi/PsiElementVisitor.java) using [UastVisitorAdapter](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/java/java-analysis-api/src/com/intellij/uast/UastVisitorAdapter.java)
-or [UastHintedVisitorAdapter](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/java/java-analysis-api/src/com/intellij/uast/UastHintedVisitorAdapter.kt).
+`UastVisitor` can be converted to [PsiElementVisitor](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/psi/PsiElementVisitor.java) using [UastVisitorAdapter](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/java/java-analysis-api/src/com/intellij/uast/UastVisitorAdapter.java)
+or [UastHintedVisitorAdapter](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/java/java-analysis-api/src/com/intellij/uast/UastHintedVisitorAdapter.kt).
 The latter is preferable as it offers better performance and more predictable results.
 
 As a general rule, it's recommended to abstain from using `UastVisitor`: if you don't need to process many `UElement`s of different types and if the structure of elements is not very important, then it is better to walk the PSI-tree using `PsiElementVisitor` and [convert](#psi-to-uast-conversion) each `PsiElement` to its corresponding UAST explicitly via `UastContext.toUElement()`.
@@ -152,11 +152,11 @@ For really hard performance optimization consider using `UastLanguagePlugin.getP
 
 `ULiteralExpression` should not be used for strings
 
-[ULiteralExpression](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/uast/uast-common/src/org/jetbrains/uast/expressions/ULiteralExpression.kt) represents
+[ULiteralExpression](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/uast/uast-common/src/org/jetbrains/uast/expressions/ULiteralExpression.kt) represents
 literal values like numbers, booleans, and string.
 Although string values are also literals, `ULiteralExpression` is not very handy to work with them.
 For instance, it doesn't handle Kotlin's string interpolations.
-To process string literals when evaluating their value or to perform language injection, use [UInjectionHost](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/uast/uast-common/src/org/jetbrains/uast/expressions/UInjectionHost.kt) instead.
+To process string literals when evaluating their value or to perform language injection, use [UInjectionHost](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/uast/uast-common/src/org/jetbrains/uast/expressions/UInjectionHost.kt) instead.
 
 ### 
 
@@ -214,10 +214,10 @@ To inspect UAST Tree, invoke the [internal action](enabling-internal.html) `Tool
 
 ### Inspections
 
-Use [AbstractBaseUastLocalInspectionTool](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/java/java-analysis-api/src/com/intellij/codeInspection/AbstractBaseUastLocalInspectionTool.java) as the base class and specify `language="UAST"` in registration.
+Use [AbstractBaseUastLocalInspectionTool](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/java/java-analysis-api/src/com/intellij/codeInspection/AbstractBaseUastLocalInspectionTool.java) as the base class and specify `language="UAST"` in registration.
 If the inspection targets only a subset of default types (`UFile`, `UClass`, `UField`, and `UMethod`), specify `UElement`s as hints in the overloaded constructor to improve performance.
 
-Use [ProblemsHolder.registerUProblem()](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/java/java-analysis-api/src/com/intellij/codeInspection/problemHolderUtil.kt) extension functions for registering problems (2023.2).
+Use [ProblemsHolder.registerUProblem()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/java/java-analysis-api/src/com/intellij/codeInspection/problemHolderUtil.kt) extension functions for registering problems (2023.2).
 
 ### Line Marker
 

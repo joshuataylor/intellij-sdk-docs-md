@@ -8,7 +8,7 @@ Using the SDK code sample [action_basics](https://github.com/JetBrains/intellij-
 
 ## Creating a Custom Action
 
-Custom actions extend the abstract class [AnAction](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnAction.java).
+Custom actions extend the abstract class [AnAction](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnAction.java).
 Classes that extend it should override `AnAction.update()` and must override `AnAction.actionPerformed()`.
 
 * The `update()` method implements the code that enables or disables an action.
@@ -184,7 +184,7 @@ The code below gets information from the `anActionEvent` input parameter and con
 A generic icon, and the `message` and `title` attributes from the invoking menu action are displayed.
 However, code in this method could manipulate a project, invoke an inspection, change the contents of a file, etc.
 
-For demonstration purposes, the `AnActionEvent.getData()` method tests if a [Navigatable](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/pom/Navigatable.java) object is available.
+For demonstration purposes, the `AnActionEvent.getData()` method tests if a [Navigatable](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/pom/Navigatable.java) object is available.
 If so, information about the selected element is added to the dialog.
 
 See [Determining the Action Context](action-system.html#determining-the-action-context) for more information about accessing information from the `AnActionEvent` input parameter.

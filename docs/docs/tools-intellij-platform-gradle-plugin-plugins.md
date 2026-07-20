@@ -159,7 +159,7 @@ dependencies {
   implementation(project(":submodule"))
 
   intellijPlatform {
-    intellijIdea("2026.1.4")
+    intellijIdea("2026.2")
   }
 }
 ```
@@ -209,7 +209,7 @@ dependencies {
   implementation project(':submodule')
 
   intellijPlatform {
-    intellijIdea '2026.1.4'
+    intellijIdea '2026.2'
   }
 }
 ```
@@ -287,7 +287,7 @@ dependencies {
   implementation(project(":submodule"))
 
   intellijPlatform {
-    intellijIdea("2026.1.4")
+    intellijIdea("2026.2")
   }
 }
 ```
@@ -346,7 +346,7 @@ dependencies {
   implementation project(':submodule')
 
   intellijPlatform {
-    intellijIdea '2026.1.4'
+    intellijIdea '2026.2'
   }
 }
 ```

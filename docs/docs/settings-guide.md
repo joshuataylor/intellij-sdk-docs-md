@@ -24,7 +24,7 @@ See [Inspecting Settings](internal-ui-inspector.html#inspecting-settings) on how
 Custom Settings implementations are declared in the `[plugin.xml](plugin-configuration-file.html)` file using one of two extension points (EP), depending on the level of the Settings.
 Many [attributes](#settings-declaration-attributes) are shared between the EP declarations.
 
-Application and Project Settings typically provide an implementation based on the [Configurable](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/ide-core/src/com/intellij/openapi/options/Configurable.java) interface because they do not have runtime dependencies.
+Application and Project Settings typically provide an implementation based on the [Configurable](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/ide-core/src/com/intellij/openapi/options/Configurable.java) interface because they do not have runtime dependencies.
 See [Implementations for Settings Extension Points](#implementations-for-settings-extension-points) for more information.
 
 Note:
@@ -78,7 +78,7 @@ See [Settings Declaration Attributes](#settings-declaration-attributes) for deta
 
 ### Settings Declaration Attributes
 
-Readers are encouraged to review the Javadoc comments for [Configurable](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/ide-core/src/com/intellij/openapi/options/Configurable.java) because the attribute information applies to `ConfigurableProvider` as well as `Configurable`, as noted.
+Readers are encouraged to review the Javadoc comments for [Configurable](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/ide-core/src/com/intellij/openapi/options/Configurable.java) because the attribute information applies to `ConfigurableProvider` as well as `Configurable`, as noted.
 This section provides some additional clarification of those comments.
 
 #### Table of Attributes
@@ -132,15 +132,15 @@ Implementations for [com.intellij.applicationConfigurable](https://jb.gg/ipe?ext
 and [com.intellij.projectConfigurable](https://jb.gg/ipe?extensions=com.intellij.projectConfigurable) extension point
 can have one of two bases:
 
-* The [Configurable](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/ide-core/src/com/intellij/openapi/options/Configurable.java) interface, which provides a named configurable component with a Swing form. Most Settings providers are based on the `Configurable` interface or one of its sub- or supertypes.
+* The [Configurable](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/ide-core/src/com/intellij/openapi/options/Configurable.java) interface, which provides a named configurable component with a Swing form. Most Settings providers are based on the `Configurable` interface or one of its sub- or supertypes.
 
-* The [ConfigurableProvider](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/ide-core/src/com/intellij/openapi/options/ConfigurableProvider.java) class, which can hide a configurable component from the Settings dialog based on runtime conditions.
+* The [ConfigurableProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/ide-core/src/com/intellij/openapi/options/ConfigurableProvider.java) class, which can hide a configurable component from the Settings dialog based on runtime conditions.
 
 ### 
 
 The `Configurable` Interface
 
-Many Settings in the `intellij-community` code base implement `Configurable` or one of its subtypes, such as [SearchableConfigurable](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/ide-core/src/com/intellij/openapi/options/SearchableConfigurable.java).
+Many Settings in the `intellij-community` code base implement `Configurable` or one of its subtypes, such as [SearchableConfigurable](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/ide-core/src/com/intellij/openapi/options/SearchableConfigurable.java).
 Readers are encouraged to review the Javadoc comments for `Configurable`.
 
 #### Constructors
@@ -149,7 +149,7 @@ Implementations must meet several requirements for constructors.
 
 * Application Settings implementations, declared using the [applicationConfigurable EP](#declaring-application-settings), must have a default constructor with no arguments.
 
-* Project Settings implementations, declared using the [projectConfigurable EP](#declaring-project-settings), must declare a constructor with a single argument of type [Project](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/openapi/project/Project.java).
+* Project Settings implementations, declared using the [projectConfigurable EP](#declaring-project-settings), must declare a constructor with a single argument of type [Project](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/project/Project.java).
 
 * Constructor injection (other than for `Project`) is not allowed.
 
@@ -174,7 +174,7 @@ A few high-level points are reviewed here:
 
 * A `Configurable` instance's lifetime ends when OK or Cancel is selected in the Settings Dialog. An instance's `Configurable.disposeUIResources()` is called when the Settings Dialog is closing.
 
-To open the Settings dialog or show a specific `Configurable`, see [ShowSettingsUtil](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/platform-api/src/com/intellij/openapi/options/ShowSettingsUtil.java).
+To open the Settings dialog or show a specific `Configurable`, see [ShowSettingsUtil](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-api/src/com/intellij/openapi/options/ShowSettingsUtil.java).
 
 #### 
 
@@ -199,7 +199,7 @@ Additional Interfaces Based on `Configurable`
 
 There are classes in the IntelliJ Platform specialized in particular types of Settings.
 These subtypes are based on `com.intellij.openapi.options.ConfigurableEP`.
-For example, `Settings | Editor | General | Appearance` allows adding Settings via [EditorSmartKeysConfigurableEP](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/lang-impl/src/com/intellij/application/options/editor/EditorSmartKeysConfigurableEP.java)
+For example, `Settings | Editor | General | Appearance` allows adding Settings via [EditorSmartKeysConfigurableEP](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/lang-impl/src/com/intellij/application/options/editor/EditorSmartKeysConfigurableEP.java)
 registered in [com.intellij.editorSmartKeysConfigurable](https://jb.gg/ipe?extensions=com.intellij.editorSmartKeysConfigurable) extension point
 .
 
@@ -207,15 +207,15 @@ registered in [com.intellij.editorSmartKeysConfigurable](https://jb.gg/ipe?exten
 
 Existing implementations of `Configurable` in the IntelliJ Platform that can serve as a reference are:
 
-* [ConsoleConfigurable](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/lang-impl/src/com/intellij/execution/console/ConsoleConfigurable.java) (application configurable)
+* [ConsoleConfigurable](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/lang-impl/src/com/intellij/execution/console/ConsoleConfigurable.java) (application configurable)
 
-* [AutoImportOptionsConfigurable](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/lang-impl/src/com/intellij/application/options/editor/AutoImportOptionsConfigurable.kt) (project configurable)
+* [AutoImportOptionsConfigurable](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/lang-impl/src/com/intellij/application/options/editor/AutoImportOptionsConfigurable.kt) (project configurable)
 
 ### 
 
 The `ConfigurableProvider` Class
 
-The [ConfigurableProvider](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/ide-core/src/com/intellij/openapi/options/ConfigurableProvider.java) class only provides a `Configurable` implementation if its runtime conditions are met.
+The [ConfigurableProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/ide-core/src/com/intellij/openapi/options/ConfigurableProvider.java) class only provides a `Configurable` implementation if its runtime conditions are met.
 The IntelliJ Platform first calls the `ConfigurableProvider.canCreateConfigurable()`, which evaluates runtime conditions to determine if Settings changes make sense in the current context.
 If the Settings make sense to display, `canCreateConfigurable()` returns `true`.
 In that case the IntelliJ Platform calls `ConfigurableProvider.createConfigurable()`, which returns the `Configurable` instance for its Settings implementation.
@@ -225,7 +225,7 @@ The use of `ConfigurableProvider` as a basis for a Settings implementation is de
 
 Examples:
 
-* [RunToolbarSettingsConfigurableProvider](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/execution-impl/src/com/intellij/execution/runToolbar/RunToolbarSettingsConfigurableProvider.kt)
+* [RunToolbarSettingsConfigurableProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/execution-impl/src/com/intellij/execution/runToolbar/RunToolbarSettingsConfigurableProvider.kt)
 
-* [VcsManagerConfigurableProvider](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/vcs-impl/src/com/intellij/openapi/vcs/configurable/VcsManagerConfigurableProvider.java)
+* [VcsManagerConfigurableProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/vcs-impl/src/com/intellij/openapi/vcs/configurable/VcsManagerConfigurableProvider.java)
 

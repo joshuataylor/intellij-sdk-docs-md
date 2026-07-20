@@ -5,20 +5,20 @@ Making use of these controls in your plugin ensures a consistent user experience
 
 Popups can optionally display a title, are optionally movable and resizable (and support remembering their size), and can be nested (show another popup when an item is selected).
 
-The [JBPopupFactory](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/platform-api/src/com/intellij/openapi/ui/popup/JBPopupFactory.java) interface allows you to create popups that display different kinds of components, depending on your specific needs.
+The [JBPopupFactory](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-api/src/com/intellij/openapi/ui/popup/JBPopupFactory.java) interface allows you to create popups that display different kinds of components, depending on your specific needs.
 The most commonly used methods are:
 
 | Method |Description |
 -----------------------
-| `createComponentPopupBuilder()` |Generic, allows showing any [Swing](https://docs.oracle.com/javase/tutorial/uiswing/) component.  See [ComponentPopupBuilder](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/platform-api/src/com/intellij/openapi/ui/popup/ComponentPopupBuilder.java)'s methods for possible options.  Example: [IntentionPreviewPopupUpdateProcessor](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/lang-impl/src/com/intellij/codeInsight/intention/impl/preview/IntentionPreviewPopupUpdateProcessor.kt) creating a popup rendering the intention preview.   |
-| `createPopupChooserBuilder()` |For choosing one or more items from a plain `java.util.List`.  See [PopupChooserBuilder](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/platform-api/src/com/intellij/openapi/ui/popup/PopupChooserBuilder.java)'s methods for possible options.  Example: [ShowMessageHistoryAction](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/vcs-impl/src/com/intellij/openapi/vcs/actions/ShowMessageHistoryAction.kt) creating a popup with recent commit messages history in the commit message text area.   |
-| `createConfirmation()` |For choosing between two options, and performing different actions depending on which option is selected.  Example: [VariableInplaceRenamer](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/lang-impl/src/com/intellij/refactoring/rename/inplace/VariableInplaceRenamer.java) creating confirmation popup after invalid variable name is provided in the inplace rename action.   |
-| `createActionGroupPopup()` |Show actions from an [Action Group](grouping-actions-tutorial.html) and executes the action selected by the user.  Example: [ShowRecentFindUsagesGroup](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/lang-impl/src/com/intellij/find/impl/ShowRecentFindUsagesGroup.java) invoked via `Edit / Find Usages / Recent Find Usages` and showing recent find usages group popup.   |
+| `createComponentPopupBuilder()` |Generic, allows showing any [Swing](https://docs.oracle.com/javase/tutorial/uiswing/) component.  See [ComponentPopupBuilder](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-api/src/com/intellij/openapi/ui/popup/ComponentPopupBuilder.java)'s methods for possible options.  Example: [IntentionPreviewPopupUpdateProcessor](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/lang-impl/src/com/intellij/codeInsight/intention/impl/preview/IntentionPreviewPopupUpdateProcessor.kt) creating a popup rendering the intention preview.   |
+| `createPopupChooserBuilder()` |For choosing one or more items from a plain `java.util.List`.  See [PopupChooserBuilder](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-api/src/com/intellij/openapi/ui/popup/PopupChooserBuilder.java)'s methods for possible options.  Example: [ShowMessageHistoryAction](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/vcs-impl/src/com/intellij/openapi/vcs/actions/ShowMessageHistoryAction.kt) creating a popup with recent commit messages history in the commit message text area.   |
+| `createConfirmation()` |For choosing between two options, and performing different actions depending on which option is selected.  Example: [VariableInplaceRenamer](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/lang-impl/src/com/intellij/refactoring/rename/inplace/VariableInplaceRenamer.java) creating confirmation popup after invalid variable name is provided in the inplace rename action.   |
+| `createActionGroupPopup()` |Show actions from an [Action Group](grouping-actions-tutorial.html) and executes the action selected by the user.  Example: [ShowRecentFindUsagesGroup](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/lang-impl/src/com/intellij/find/impl/ShowRecentFindUsagesGroup.java) invoked via `Edit / Find Usages / Recent Find Usages` and showing recent find usages group popup.   |
 
 ## Action Groups
 
 Action group popups support different ways of choosing an action from the keyboard, in addition to the normal arrow keys.
-By passing one of the constants in the [JBPopupFactory.ActionSelectionAid](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/platform-api/src/com/intellij/openapi/ui/popup/JBPopupFactory.java) enumeration, you can choose whether an action can be selected by
+By passing one of the constants in the [JBPopupFactory.ActionSelectionAid](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-api/src/com/intellij/openapi/ui/popup/JBPopupFactory.java) enumeration, you can choose whether an action can be selected by
 
 * pressing a key corresponding to its sequential number
 
@@ -34,10 +34,10 @@ For popups with a variable and potentially large number of items, speed search t
 To create a list-like popup which is more flexible than a simple
 [JList](https://docs.oracle.com/en/java/javase/24/docs/api/java.desktop/javax/swing/JList.html)
 and doesn't represent the possible choices as actions in an action group, use
-[JBPopupFactory.createListPopup()](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/platform-api/src/com/intellij/openapi/ui/popup/JBPopupFactory.java)
+[JBPopupFactory.createListPopup()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-api/src/com/intellij/openapi/ui/popup/JBPopupFactory.java)
 with a
-[ListPopupStep](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/ide-core/src/com/intellij/openapi/ui/popup/ListPopupStep.java)
-implementation (usually, [BaseListPopupStep](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/platform-api/src/com/intellij/openapi/ui/popup/util/BaseListPopupStep.java) is used as a base).
+[ListPopupStep](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/ide-core/src/com/intellij/openapi/ui/popup/ListPopupStep.java)
+implementation (usually, [BaseListPopupStep](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-api/src/com/intellij/openapi/ui/popup/util/BaseListPopupStep.java) is used as a base).
 The key methods to override are:
 
 * `getTextFor()` - returning the text to display for an item
@@ -59,7 +59,7 @@ To perform some action when the popup is closed, use one of the following approa
 
 * attach a listener to it using the `addListener()` method
 
-* override a method of the popup contents such as [PopupStep.onChosen()](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-ui/src/openapi/ui/popup/PopupStep.java)
+* override a method of the popup contents such as [PopupStep.onChosen()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-ui/src/openapi/ui/popup/PopupStep.java)
 
 * attach an event handler to your own component within the popup
 

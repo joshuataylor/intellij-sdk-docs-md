@@ -19,6 +19,9 @@ Note: IDE and Java Versions
 Java version must be set depending on the target
 [platform version](build-number-ranges.html#platformVersions).
 
+2026.2+
+: Java 25
+
 2024.2+
 : Java 21
 
@@ -67,7 +70,7 @@ This shouldn't affect binary compatibility, but an explicit dependency should be
 
 The annotation `com.intellij.openapi.components.Storage` cannot be used at top-level
 : Actually, it has never been correct.
-The annotation can be used only in [@State.storages](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/projectModel-api/src/com/intellij/openapi/components/State.java).
+The annotation can be used only in [@State.storages](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/projectModel-api/src/com/intellij/openapi/components/State.java).
 See [IJPL-207245](https://youtrack.jetbrains.com/issue/IJPL-207245) for details.
 
 The `org.intellij.intelliLang` plugin requires Gradle dependency on bundled module `intellij.platform.langInjection`
@@ -248,7 +251,7 @@ instead of now removed Kotlin methods with default parameters.
 ### IntelliJ Platform 2025.1
 
 Code scheduled with `SwingUtilities.invokeLater` and `SwingUtilities.invokeAndWait` does not hold the write-intent lock
-: Consider using an explicit wrapping with [ReadAction.compute()](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/openapi/application/ReadAction.java) or [WriteAction.run(ThrowableRunnable&lt;E&gt;)](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/openapi/application/WriteAction.java).
+: Consider using an explicit wrapping with [ReadAction.compute()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/application/ReadAction.java) or [WriteAction.run(ThrowableRunnable&lt;E&gt;)](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/application/WriteAction.java).
 See [Threading Model](threading-model.html).
 
 Coroutines running under `Dispatchers.Main` do not hold the write-intent lock

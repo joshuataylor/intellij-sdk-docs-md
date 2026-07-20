@@ -36,16 +36,16 @@ See [Interoperability with Project Model API](workspace-model.html#interoperabil
 
 To work with projects and project files, use the following classes and interfaces:
 
-* [Project](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/openapi/project/Project.java)
+* [Project](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/project/Project.java)
 
-* [ProjectRootManager](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/projectModel-api/src/com/intellij/openapi/roots/ProjectRootManager.java)
+* [ProjectRootManager](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/projectModel-api/src/com/intellij/openapi/roots/ProjectRootManager.java)
 
-* [ProjectManager](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/projectModel-api/src/com/intellij/openapi/project/ProjectManager.java)
+* [ProjectManager](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/projectModel-api/src/com/intellij/openapi/project/ProjectManager.java)
 
-* [ProjectFileIndex](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/projectModel-api/src/com/intellij/openapi/roots/ProjectFileIndex.java)
+* [ProjectFileIndex](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/projectModel-api/src/com/intellij/openapi/roots/ProjectFileIndex.java)
 
-Other classes for working with the project model are located in the [projectModel-api.openapi](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/projectModel-api/src/com/intellij/openapi) package.
-Basic API classes and interfaces for the concepts of [Project](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/openapi/project/Project.java), [Module](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/openapi/module/Module.java) and [Application](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/openapi/application/Application.java)  are placed in the [core-api.openapi](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/openapi) package.
+Other classes for working with the project model are located in the [projectModel-api.openapi](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/projectModel-api/src/com/intellij/openapi) package.
+Basic API classes and interfaces for the concepts of [Project](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/project/Project.java), [Module](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/module/Module.java) and [Application](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/application/Application.java)  are placed in the [core-api.openapi](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi) package.
 
 ### 
 
@@ -55,17 +55,17 @@ A Project instance is available in multiple contexts:
 
 | Context |API |
 ----------------
-| [Action](action-system.html) |[AnActionEvent.getProject()](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnActionEvent.java)  [DataContext.getData(CommonDataKeys.PROJECT)](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-ui/src/openapi/actionSystem/DataContext.java)   |
-| [Editor](editor-basics.html) |[Editor.getProject()](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/editor-ui-api/src/com/intellij/openapi/editor/Editor.java) |
-| [Module](module.html) |[Module.getProject()](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/openapi/module/Module.java) |
-| [PSI](psi.html) |[PsiElement.getProject()](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/psi/PsiElement.java) |
-| [Tests](testing-plugins.html) |[IdeaProjectTestFixture.getProject()](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/testFramework/src/com/intellij/testFramework/fixtures/IdeaProjectTestFixture.java) |
+| [Action](action-system.html) |[AnActionEvent.getProject()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnActionEvent.java)  [DataContext.getData(CommonDataKeys.PROJECT)](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-ui/src/openapi/actionSystem/DataContext.java)   |
+| [Editor](editor-basics.html) |[Editor.getProject()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/editor-ui-api/src/com/intellij/openapi/editor/Editor.java) |
+| [Module](module.html) |[Module.getProject()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/module/Module.java) |
+| [PSI](psi.html) |[PsiElement.getProject()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/psi/PsiElement.java) |
+| [Tests](testing-plugins.html) |[IdeaProjectTestFixture.getProject()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/testFramework/src/com/intellij/testFramework/fixtures/IdeaProjectTestFixture.java) |
 
 It is also possible to retrieve projects in generic contexts:
 
-* Project from [VirtualFile](virtual-file.html): * [ProjectLocator.guessProjectForFile(VirtualFile)](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/openapi/project/ProjectLocator.kt) - returns any project containing a given file. * [ProjectLocator.getProjectsForFile(VirtualFile)](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/openapi/project/ProjectLocator.kt) - returns the list of projects that a given file is a part of.
+* Project from [VirtualFile](virtual-file.html): * [ProjectLocator.guessProjectForFile(VirtualFile)](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/project/ProjectLocator.kt) - returns any project containing a given file. * [ProjectLocator.getProjectsForFile(VirtualFile)](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/project/ProjectLocator.kt) - returns the list of projects that a given file is a part of.
 
-* List of currently opened projects: [ProjectManager.getOpenProjects()](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/projectModel-api/src/com/intellij/openapi/project/ProjectManager.java)
+* List of currently opened projects: [ProjectManager.getOpenProjects()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/projectModel-api/src/com/intellij/openapi/project/ProjectManager.java)
 
 ### Getting a List of Source Roots for All Modules in a Project
 
@@ -85,7 +85,7 @@ Messages.showInfoMessage("Source roots for the " + projectName +
 
 ### Checking If a File Belongs to a Project
 
-Use [ProjectFileIndex](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/projectModel-api/src/com/intellij/openapi/roots/ProjectFileIndex.java) to get this information:
+Use [ProjectFileIndex](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/projectModel-api/src/com/intellij/openapi/roots/ProjectFileIndex.java) to get this information:
 
 ```JAVA
 ProjectFileIndex projectFileIndex =
@@ -108,7 +108,7 @@ Note that this method returns `null` if the file or directory does not belong to
 
 ### Checking Whether a File or Directory Is Related to the Project Libraries
 
-The [ProjectFileIndex](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/projectModel-api/src/com/intellij/openapi/roots/ProjectFileIndex.java) interface implements a number of methods you can use to check whether the specified file belongs to the project library classes or library sources:
+The [ProjectFileIndex](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/projectModel-api/src/com/intellij/openapi/roots/ProjectFileIndex.java) interface implements a number of methods you can use to check whether the specified file belongs to the project library classes or library sources:
 
 * `isLibraryClassFile()`: Returns `true` if the specified `virtualFile` is a compiled class file.
 
@@ -124,8 +124,8 @@ See [SDK](sdk.html) for more details.
 
 ## Changing the Project Structure
 
-Utility classes used for modifying the project structure can be found in the package [projectModel-impl.openapi](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/projectModel-impl/src/com/intellij/openapi).
-Its [roots](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/projectModel-impl/src/com/intellij/openapi/roots) subpackage contains instances and utilities intended for work with project and module source roots, including [ModuleRootModificationUtil](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/projectModel-api/src/com/intellij/openapi/roots/ModuleRootModificationUtil.java) and [ProjectRootUtil](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/projectModel-impl/src/com/intellij/openapi/projectRoots/impl/ProjectRootUtil.java).
+Utility classes used for modifying the project structure can be found in the package [projectModel-impl.openapi](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/projectModel-impl/src/com/intellij/openapi).
+Its [roots](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/projectModel-impl/src/com/intellij/openapi/roots) subpackage contains instances and utilities intended for work with project and module source roots, including [ModuleRootModificationUtil](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/projectModel-api/src/com/intellij/openapi/roots/ModuleRootModificationUtil.java) and [ProjectRootUtil](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/projectModel-impl/src/com/intellij/openapi/projectRoots/impl/ProjectRootUtil.java).
 Project structure changes need to be performed in [write action](threading-model.html#write-actions).
 
 Refer to the [project_model](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/project_model/src/main/java/org/intellij/sdk/project/model/ModificationAction.java) code sample to learn how project structure modification can be implemented.
@@ -151,5 +151,5 @@ The event only notifies that something has changed; if more details are needed a
 
 ## Receiving Notification About Project Close/Open Events
 
-Use [ProjectManagerListener](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/projectModel-api/src/com/intellij/openapi/project/ProjectManagerListener.java) [listener](plugin-listeners.html) or [project open activity](plugin-components.html#project-open).
+Use [ProjectManagerListener](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/projectModel-api/src/com/intellij/openapi/project/ProjectManagerListener.java) [listener](plugin-listeners.html) or [project open activity](plugin-components.html#project-open).
 

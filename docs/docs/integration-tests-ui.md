@@ -19,7 +19,7 @@ These UI frameworks organize elements in a parent-child hierarchy, similar to HT
 
 Every UI element (except top-level containers) must have a parent container, creating a clear hierarchical structure.
 
-The Driver framework provides a Kotlin DSL that mirrors this hierarchy (see [com.intellij.driver.sdk.ui.components](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/remote-driver/test-sdk/src/com/intellij/driver/sdk/ui/components/)).
+The Driver framework provides a Kotlin DSL that mirrors this hierarchy (see [com.intellij.driver.sdk.ui.components](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/remote-driver/test-sdk/src/com/intellij/driver/sdk/ui/components/)).
 
 Here's an example:
 
@@ -97,7 +97,7 @@ The element corresponds to the following button:
 
 ![Integration tests ui sample](images/integration_tests_ui_sample.png)
 Similar to web testing frameworks like Selenium, XPath is used to locate components.
-The Driver framework provides a simple XPath builder [QueryBuilder](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/remote-driver/test-sdk/src/com/intellij/driver/sdk/ui/QueryBuilder.kt).
+The Driver framework provides a simple XPath builder [QueryBuilder](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/remote-driver/test-sdk/src/com/intellij/driver/sdk/ui/QueryBuilder.kt).
 
 For reliable component identification, prioritize these attributes, which can be found with predefined methods in `QueryBuilder`:
 
@@ -141,7 +141,7 @@ To click the Current File button:
 x(xQuery { byVisibleText("Current File") }).click()
 ```
 
-The [x()](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/remote-driver/test-sdk/src/com/intellij/driver/sdk/ui/Finder.kt) call creates a lazy reference to the component.
+The [x()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/remote-driver/test-sdk/src/com/intellij/driver/sdk/ui/Finder.kt) call creates a lazy reference to the component.
 It means that the XPath query isn't executed immediately and component lookup happens only when an action (like `click()`) is invoked.
 
 Here's a part of a test that incorporates UI interaction:

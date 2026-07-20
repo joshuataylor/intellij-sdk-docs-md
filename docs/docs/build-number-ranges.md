@@ -126,6 +126,7 @@ Early Access Program (EAP) releases of upcoming versions are available [here](ht
 
 | IntelliJ Platform version |Branch |Java version |
 ---------------------------------------------------
+| 2026.2 |[261](https://github.com/JetBrains/intellij-community/tree/261) |25 |
 | 2026.1 |[261](https://github.com/JetBrains/intellij-community/tree/261) |21 |
 | 2025.3 |[253](https://github.com/JetBrains/intellij-community/tree/253) |21 |
 | 2025.2 |[252](https://github.com/JetBrains/intellij-community/tree/252) |21 |

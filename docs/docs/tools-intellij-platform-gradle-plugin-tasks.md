@@ -1210,7 +1210,7 @@ Prints the list of bundled plugins available within the currently targeted Intel
 <tldr>
 Available in: [Platform](tools-intellij-platform-gradle-plugin-plugins.html#platform), [Module](tools-intellij-platform-gradle-plugin-plugins.html#module), [Base](tools-intellij-platform-gradle-plugin-plugins.html#base), [GrammarKit](tools-intellij-platform-gradle-plugin-plugins.html#grammarkit)
 
-Extends: [DefaultTask](https://docs.gradle.org/current/dsl/org.gradle.api.DefaultTask.html), [ProductReleasesValueSource.FilterParameters](tools-intellij-platform-gradle-plugin-types.html#ProductReleasesValueSource-FilterParameters)
+Extends: [DefaultTask](https://docs.gradle.org/current/dsl/org.gradle.api.DefaultTask.html), [ProductReleasesValueSource.FilterParameters](tools-intellij-platform-gradle-plugin-types.html#ProductReleasesFilterParameters)
 
 Sources: [PrintProductsReleasesTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.18.1/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/PrintProductsReleasesTask.kt)
 </tldr>
@@ -1220,7 +1220,7 @@ Prints the list of binary product releases that, by default, match the currently
 and [intellijPlatform.pluginConfiguration.ideaVersion.untilBuild](tools-intellij-platform-gradle-plugin-extension.html#intellijPlatform-pluginConfiguration-ideaVersion-untilBuild) properties.
 
 The filter used for retrieving the release list can be customized by using properties provided with
-[ProductReleasesValueSource.FilterParameters](tools-intellij-platform-gradle-plugin-types.html#ProductReleasesValueSource-FilterParameters).
+[ProductReleasesValueSource.FilterParameters](tools-intellij-platform-gradle-plugin-types.html#ProductReleasesFilterParameters).
 
 ### 
 
@@ -1236,7 +1236,7 @@ Default value
 
 See also:
 
-* [Types: ProductReleasesValueSource.FilterParameters](tools-intellij-platform-gradle-plugin-types.html#ProductReleasesValueSource-FilterParameters)
+* [Types: ProductReleasesValueSource.FilterParameters](tools-intellij-platform-gradle-plugin-types.html#ProductReleasesFilterParameters)
 
 ## 
 

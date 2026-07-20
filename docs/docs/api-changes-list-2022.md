@@ -19,6 +19,9 @@ Note: IDE and Java Versions
 Java version must be set depending on the target
 [platform version](build-number-ranges.html#platformVersions).
 
+2026.2+
+: Java 25
+
 2024.2+
 : Java 21
 

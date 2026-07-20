@@ -24,13 +24,13 @@ Color keys of a combo box
 
 Each key has two default color values: one for IntelliJ Light and another for Darcula. Example: `ComboBox.background` is #FFFFFF in IntelliJ Light and #3C3F41 in Darcula.
 
-Keys allow creating [custom color themes](themes-getting-started.html). A custom theme is one of the default themes plus a set of color keys with new values in a JSON file. Example: the High contrast theme is a custom theme based on Darcula. New color values are stored in the [HighContrast.theme.json](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/platform-resources/src/themes/HighContrast.theme.json) JSON file.
+Keys allow creating [custom color themes](themes-getting-started.html). A custom theme is one of the default themes plus a set of color keys with new values in a JSON file. Example: the High contrast theme is a custom theme based on Darcula. New color values are stored in the [HighContrast.theme.json](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-resources/src/themes/HighContrast.theme.json) JSON file.
 
 See custom themes in the [JetBrains Marketplace](https://plugins.jetbrains.com/search?tags=Theme) repository.
 
 See the meanings of the parts in a color key in the [key naming scheme](themes-metadata.html#key-naming-scheme).
 
-See a complete list of keys with their descriptions in the JSON files: [IntelliJPlatform.themeMetadata.json](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/platform-resources/src/themes/metadata/IntelliJPlatform.themeMetadata.json), [JDK.themeMetadata.json](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/platform-resources/src/themes/metadata/JDK.themeMetadata.json).
+See a complete list of keys with their descriptions in the JSON files: [IntelliJPlatform.themeMetadata.json](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-resources/src/themes/metadata/IntelliJPlatform.themeMetadata.json), [JDK.themeMetadata.json](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-resources/src/themes/metadata/JDK.themeMetadata.json).
 
 See the color values for the currently selected theme in the LaF Defaults dialog:
 
@@ -53,7 +53,7 @@ For IntelliJ designers:
 
 * Provide color keys in design specifications to be sure that the correct keys are used.
 
-* When a new key is implemented, check that [IntelliJPlatform.themeMetadata.json](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/platform-resources/src/themes/metadata/IntelliJPlatform.themeMetadata.json) has the new key with the `since` parameter and description, and the old keys are deprecated.
+* When a new key is implemented, check that [IntelliJPlatform.themeMetadata.json](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-resources/src/themes/metadata/IntelliJPlatform.themeMetadata.json) has the new key with the `since` parameter and description, and the old keys are deprecated.
 
 If a color is needed:
 

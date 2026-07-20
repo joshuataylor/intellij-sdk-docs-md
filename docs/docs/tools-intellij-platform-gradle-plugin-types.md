@@ -123,7 +123,7 @@ See also:
 Represents information about the IntelliJ Platform product.
 
 The information is retrieved from the `product-info.json` file in the IntelliJ Platform directory.
-See also the corresponding [product-info.schema.json](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/buildData/resources/product-info.schema.json).
+See also the corresponding [product-info.schema.json](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/buildData/resources/product-info.schema.json).
 
 | Name |Description |
 ---------------------
@@ -182,9 +182,9 @@ See also:
 
 ## 
 
-`ProductReleasesValueSource.FilterParameters`
+`ProductReleasesFilterParameters`
 
-[ProductReleasesValueSource.FilterParameters](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.18.1/src/main/kotlin/org/jetbrains/intellij/platform/gradle/providers/ProductReleasesValueSource.kt)
+[ProductReleasesValueSource](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.18.1/src/main/kotlin/org/jetbrains/intellij/platform/gradle/providers/ProductReleasesFilterParameters.kt)
 
 Interface that provides a clear way to filter binary product releases for IntelliJ Plugin Verifier.
 

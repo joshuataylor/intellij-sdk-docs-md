@@ -27,8 +27,8 @@ Tip:
 
 Indexing is a potentially lengthy process.
 It's performed in the background, and during this time, all IDE features are restricted to the ones that don't require indexes: basic text editing, version control, etc.
-This restriction is managed by [DumbService](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/openapi/project/DumbService.kt).
-Violations are reported via [IndexNotReadyException](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/openapi/project/IndexNotReadyException.java), see its documentation for information on how to adapt callers.
+This restriction is managed by [DumbService](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/project/DumbService.kt).
+Violations are reported via [IndexNotReadyException](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/project/IndexNotReadyException.java), see its documentation for information on how to adapt callers.
 
 `DumbService` provides API to query whether the IDE is currently in "dumb" mode (where index access is not allowed) or "smart" mode (with all index built and ready to use).
 It also provides ways of delaying code execution until indexes are ready.
@@ -49,7 +49,7 @@ that can potentially be marked as `DumbAware`.
 #### Extension Points
 
 Implementations of certain [extension points](plugin-extension-points.html) can be marked as available during Dumb Mode by implementing
-[DumbAware](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/openapi/project/DumbAware.java).
+[DumbAware](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/project/DumbAware.java).
 Such extension points are marked with the
 ![DumbAware](https://img.shields.io/badge/-DumbAware-darkgreen?style=flat-square)
 tag in [IntelliJ Platform Extension Point and Listener List](intellij-platform-extension-point-list.html).
@@ -60,11 +60,11 @@ Since 2024.2, this includes also [intentions](code-intentions.html) and [quick-f
 
 #### Actions
 
-For [actions](action-system.html) available during Dumb Mode, extend [DumbAwareAction](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/ide-core/src/com/intellij/openapi/project/DumbAwareAction.java) (do not override `AnAction.isDumbAware()` instead).
+For [actions](action-system.html) available during Dumb Mode, extend [DumbAwareAction](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/ide-core/src/com/intellij/openapi/project/DumbAwareAction.java) (do not override `AnAction.isDumbAware()` instead).
 
 #### Other API
 
-Other API might indicate its Dumb Mode compatibility by extending [PossiblyDumbAware](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/openapi/project/PossiblyDumbAware.java).
+Other API might indicate its Dumb Mode compatibility by extending [PossiblyDumbAware](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/project/PossiblyDumbAware.java).
 
 ### Testing
 
@@ -82,17 +82,17 @@ Sometimes, the following conditions hold:
 * The data can be recalculated lazily on request without significant performance penalties.
 
 A [file-based index](file-based-indexes.html) can be used in such cases, but file gists provide a way to perform data calculation lazily, caching on disk, and a more lightweight API.
-Please see [VirtualFileGist](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/indexing-api/src/com/intellij/util/gist/VirtualFileGist.java) and [PsiFileGist](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/indexing-api/src/com/intellij/util/gist/PsiFileGist.java) documentation.
+Please see [VirtualFileGist](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/indexing-api/src/com/intellij/util/gist/VirtualFileGist.java) and [PsiFileGist](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/indexing-api/src/com/intellij/util/gist/PsiFileGist.java) documentation.
 
 Tip:
 
-Note performance implications noted in [VirtualFileGist](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/indexing-api/src/com/intellij/util/gist/VirtualFileGist.java) Javadoc.
+Note performance implications noted in [VirtualFileGist](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/indexing-api/src/com/intellij/util/gist/VirtualFileGist.java) Javadoc.
 
 Example:
 
-* `VirtualFileGist`: [ImageInfoIndex](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/images/src/org/intellij/images/index/ImageInfoIndex.java) calculating image dimensions/bit depth needed to be displayed in specific parts of UI.
+* `VirtualFileGist`: [ImageInfoIndex](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/images/src/org/intellij/images/index/ImageInfoIndex.java) calculating image dimensions/bit depth needed to be displayed in specific parts of UI.
 
-* `PsiFileGist`: [JavaSimplePropertyGist](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/java/java-indexing-impl/src/com/intellij/psi/impl/JavaSimplePropertyGist.kt) providing simple properties in Java
+* `PsiFileGist`: [JavaSimplePropertyGist](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/java/java-indexing-impl/src/com/intellij/psi/impl/JavaSimplePropertyGist.kt) providing simple properties in Java
 
 ## Improving Indexing Performance
 
@@ -106,15 +106,15 @@ These are additionally available in HTML format starting with 2021.1.
 Use [lexer](implementing-lexer.html) information instead of parsed trees if possible.
 
 If impossible, use light AST which doesn't create memory-hungry AST nodes inside, so traversing it might be faster.
-Obtain [LighterAST](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/lang/LighterAST.java) by casting `FileContent` input parameter to [PsiDependentFileContent](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/util/indexing/PsiDependentFileContent.java) and calling `getLighterAST()`.
+Obtain [LighterAST](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/lang/LighterAST.java) by casting `FileContent` input parameter to [PsiDependentFileContent](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/util/indexing/PsiDependentFileContent.java) and calling `getLighterAST()`.
 Make sure to traverse only the nodes you need to.
-See also [RecursiveLighterASTNodeWalkingVisitor](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-impl/src/com/intellij/psi/impl/source/tree/RecursiveLighterASTNodeWalkingVisitor.java) and [LightTreeUtil](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-impl/src/com/intellij/psi/impl/source/tree/LightTreeUtil.java) for useful utility methods.
+See also [RecursiveLighterASTNodeWalkingVisitor](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-impl/src/com/intellij/psi/impl/source/tree/RecursiveLighterASTNodeWalkingVisitor.java) and [LightTreeUtil](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-impl/src/com/intellij/psi/impl/source/tree/LightTreeUtil.java) for useful utility methods.
 
-For [stub index](stub-indexes.html), implement [LightStubBuilder](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-impl/src/com/intellij/psi/stubs/LightStubBuilder.java).
+For [stub index](stub-indexes.html), implement [LightStubBuilder](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-impl/src/com/intellij/psi/stubs/LightStubBuilder.java).
 
-If a custom language contains lazy-parseable elements that never or rarely contain any stubs, consider implementing [StubBuilder.skipChildProcessingWhenBuildingStubs()](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/psi/StubBuilder.java) (preferably using Lexer/node text).
+If a custom language contains lazy-parseable elements that never or rarely contain any stubs, consider implementing [StubBuilder.skipChildProcessingWhenBuildingStubs()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/psi/StubBuilder.java) (preferably using Lexer/node text).
 
-For indexing XML, also consider using [NanoXmlUtil](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/indexing-impl/src/com/intellij/util/xml/NanoXmlUtil.java).
+For indexing XML, also consider using [NanoXmlUtil](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/indexing-impl/src/com/intellij/util/xml/NanoXmlUtil.java).
 
 ### Shared Project Indexes
 

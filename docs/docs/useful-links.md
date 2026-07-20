@@ -38,7 +38,7 @@ Use [Writerside](https://plugins.jetbrains.com/plugin/20158-writerside) to creat
 
 * [IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template)
 
-* [IntelliJ Platform](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/README.md)
+* [IntelliJ Platform](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/README.md)
 
 * [IntelliJ Plugins](https://github.com/JetBrains/intellij-plugins)
 

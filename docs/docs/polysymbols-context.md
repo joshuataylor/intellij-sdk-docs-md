@@ -35,7 +35,7 @@ which is enabled.
 
 `PolyContextProvider`
 
-The most straightforward way to contribute context is to register a [PolyContextProvider](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/polySymbols/src/com/intellij/polySymbols/context/PolyContextProvider.kt)
+The most straightforward way to contribute context is to register a [PolyContextProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/polySymbols/src/com/intellij/polySymbols/context/PolyContextProvider.kt)
 through [com.intellij.polySymbols.context](https://jb.gg/ipe?extensions=com.intellij.polySymbols.context) extension point
 and override one of `isEnabled()` methods
 to detect a context of a particular name and kind, e.g.:
@@ -239,9 +239,9 @@ for the dependency and the `enableByDefault` attribute set to `true`.
 
 `PolyContextRulesProvider`
 
-Context rules can also be provided dynamically through [PolyContextRulesProvider](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/polySymbols/src/com/intellij/polySymbols/context/PolyContextRulesProvider.kt).
+Context rules can also be provided dynamically through [PolyContextRulesProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/polySymbols/src/com/intellij/polySymbols/context/PolyContextRulesProvider.kt).
 
-To do that, register a [PolySymbolQueryConfigurator](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolQueryConfigurator.kt)
+To do that, register a [PolySymbolQueryConfigurator](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolQueryConfigurator.kt)
 through [com.intellij.polySymbols.queryConfigurator](https://jb.gg/ipe?extensions=com.intellij.polySymbols.queryConfigurator) extension point
 and implement `getContextRulesProviders()`.
 It is important that the results are stable, because any unexpected change in the rules will cause
@@ -295,7 +295,7 @@ When choosing between different patterns matching the same file name, the follow
 
 `PolyContextSourceProximityProvider`
 
-[PolyContextSourceProximityProvider](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/polySymbols/src/com/intellij/polySymbols/context/PolyContextSourceProximityProvider.kt) allows providing evaluation logic for the context rules. It should be used when
+[PolyContextSourceProximityProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/polySymbols/src/com/intellij/polySymbols/context/PolyContextSourceProximityProvider.kt) allows providing evaluation logic for the context rules. It should be used when
 working on integrating support for a package manager or a language which has a way to define global libraries. The provider should be registered
 through [com.intellij.polySymbols.contextSourceProximityProvider](https://jb.gg/ipe?extensions=com.intellij.polySymbols.contextSourceProximityProvider) extension point
 .

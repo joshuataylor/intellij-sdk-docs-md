@@ -19,6 +19,9 @@ Note: IDE and Java Versions
 Java version must be set depending on the target
 [platform version](build-number-ranges.html#platformVersions).
 
+2026.2+
+: Java 25
+
 2024.2+
 : Java 21
 
@@ -42,49 +45,82 @@ The Gradle plugin must be chosen depending on the target
 (Obsolete)
 1.10.1+
 
-## 2026.1
+## 2026.3
 
-### IntelliJ Platform 2026.1
+### IntelliJ Platform 2026.3
 
-AWT input event handlers no longer run under write-intent lock
-: Custom input handlers (`KeyListener`, `MouseAdapter`, etc.) no longer execute under the [write-intent lock](threading-model.html#read-write-lock).
-If PSI or other write-intent-protected data needs to be accessed in these handlers, explicitly acquire a read action using [ReadAction.nonBlocking().submit()](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/openapi/application/ReadAction.java) or coroutine-based equivalents such as [readAction {}](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/openapi/application/coroutines.kt).
+#### Kotlin UI DSL 1.0 Removal
 
-#### PolySymbols
+Kotlin UI DSL Version 1 (the `com.intellij.ui.layout` DSL entry points) has been completely removed.
+Any access to the removed classes will lead to compilation or runtime errors.
+The migration should be done according to the [Kotlin UI DSL Version 2 migration guide](kotlin-ui-dsl.html#migration-to-version-2).
 
-`com.intellij.polySymbols.PolySymbol.getOrigin()` method removed
-: The property was confusing and in many cases was not used. Its functionality is replaced by:
-: * `framework` property - provide `com.intellij.polySymbols.html.HtmlFrameworkSymbolsSupport.HtmlFrameworkIdProperty` value through `PolySymbol.Property` mechanism
-: * `defaultIcon` property - implement `icon` property and return `true` for `PolySymbol.DocHideIconProperty` through `PolySymbol.Property` mechanism
-: * `typeSupport` property - provide `com.intellij.polySymbols.utils.PolySymbolTypeSupport.TypeSupportProperty` value through `PolySymbol.Property` mechanism
+`com.intellij.ui.layout.BaseBuilder` class removed
+: [Migrate to Kotlin UI DSL Version 2](kotlin-ui-dsl.html#migration-to-version-2).
 
-`com.intellij.polySymbols.PolySymbolQualifiedKind` class renamed to `com.intellij.polySymbols.PolySymbolKind`
-: additionally `name` property was renamed to `kindName` and `qualifiedKind` properties and parameters across the package
-were renamed to `kind`
+`com.intellij.ui.layout.CCFlags` class removed
+: [Migrate to Kotlin UI DSL Version 2](kotlin-ui-dsl.html#migration-to-version-2).
 
-The following classes no longer implement [PsiModificationTracker](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/psi/util/PsiModificationTracker.java) (this requirement was confusing):
+`com.intellij.ui.layout.Cell` class removed
+: [Migrate to Kotlin UI DSL Version 2](kotlin-ui-dsl.html#migration-to-version-2).
 
-* [PolySymbolScope](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolScope.kt)
+`com.intellij.ui.layout.CellBuilder` class removed
+: [Migrate to Kotlin UI DSL Version 2](kotlin-ui-dsl.html#migration-to-version-2).
 
-* [PolySymbolQueryExecutor](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolQueryExecutor.kt)
+`com.intellij.ui.layout.CellMarker` class removed
+: [Migrate to Kotlin UI DSL Version 2](kotlin-ui-dsl.html#migration-to-version-2).
 
-* [PolySymbolQueryResultsCustomizer](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolQueryResultsCustomizer.kt)
+`com.intellij.ui.layout.LCFlags` class removed
+: [Migrate to Kotlin UI DSL Version 2](kotlin-ui-dsl.html#migration-to-version-2).
 
-Implementing `PsiModificationTracker` was replaced by `modificationTracker` property for the following classes:
+`com.intellij.ui.layout.LayoutBuilder` class removed
+: [Migrate to Kotlin UI DSL Version 2](kotlin-ui-dsl.html#migration-to-version-2).
 
-* [PolyContextRulesProvider](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/polySymbols/src/com/intellij/polySymbols/context/PolyContextRulesProvider.kt)
+`com.intellij.ui.layout.LayoutBuilderImpl` class removed
+: [Migrate to Kotlin UI DSL Version 2](kotlin-ui-dsl.html#migration-to-version-2).
 
-* [PolySymbolNamesProvider](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolNamesProvider.kt)
+`com.intellij.ui.layout.LayoutImplKt` class removed
+: [Migrate to Kotlin UI DSL Version 2](kotlin-ui-dsl.html#migration-to-version-2).
 
-* [PolySymbolNameConversionRulesProvider](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolNameConversionRulesProvider.kt)
+`com.intellij.ui.layout.LayoutKt` class removed
+: [Migrate to Kotlin UI DSL Version 2](kotlin-ui-dsl.html#migration-to-version-2).
 
-### Java Plugin 2026.1
+`com.intellij.ui.layout.Row` class removed
+: [Migrate to Kotlin UI DSL Version 2](kotlin-ui-dsl.html#migration-to-version-2).
 
-The Java plugin has been split into several modules with their own classloaders.
-This shouldn't affect plugins that use standard `<depends>com.intellij.java</depends>` dependency.
-If a plugin depends on specific Java plugin modules directly, the dependencies should be updated to reference the new module names.
+`com.intellij.ui.layout.RowBuilder` class removed
+: [Migrate to Kotlin UI DSL Version 2](kotlin-ui-dsl.html#migration-to-version-2).
 
 ## 2026.2
+
+### IntelliJ Platform 2026.2
+
+#### PolySymbols 2026.2
+
+`com.intellij.polySymbols.search.PsiSourcedPolySymbol` class renamed to `com.intellij.polySymbols.search.PsiLinkedPolySymbol`
+: Use [PsiLinkedPolySymbol](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/polySymbols/src/com/intellij/polySymbols/search/PsiLinkedPolySymbol.kt) instead.
+Additionally, the `source` property was renamed to `linkedElement`.
+
+`com.intellij.polySymbols.utils.PsiSourcedPolySymbolDelegate` class renamed to `com.intellij.polySymbols.utils.PsiLinkedPolySymbolDelegate`
+: Use [PsiLinkedPolySymbolDelegate](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/polySymbols/src/com/intellij/polySymbols/utils/PsiLinkedPolySymbolDelegate.kt) instead.
+
+`com.intellij.polySymbols.refactoring.PsiSourcedPolySymbolRefactoringHelper` class renamed to `com.intellij.polySymbols.refactoring.PsiLinkedPolySymbolRefactoringHelper`
+: Use [PsiLinkedPolySymbolRefactoringHelper](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/polySymbols/backend/src/com/intellij/polySymbols/refactoring/PsiLinkedPolySymbolRefactoringHelper.kt) instead.
+
+`com.intellij.polySymbols.refactoring.PsiSourcedPolySymbolRenameHandler` class renamed to `com.intellij.polySymbols.refactoring.PsiLinkedPolySymbolRenameHandler`
+: Use [PsiLinkedPolySymbolRenameHandler](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/polySymbols/backend/src/com/intellij/polySymbols/refactoring/PsiLinkedPolySymbolRenameHandler.kt) instead.
+
+`com.intellij.polySymbols.search.PsiSourcedPolySymbolProvider` class renamed to `com.intellij.polySymbols.search.PsiLinkedPolySymbolProvider`
+: Use [PsiLinkedPolySymbolProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/polySymbols/backend/src/com/intellij/polySymbols/search/PsiLinkedPolySymbolProvider.kt) instead.
+
+`com.intellij.polySymbols.search.PsiSourcedPolySymbolReference` class renamed to `com.intellij.polySymbols.search.PsiLinkedPolySymbolReference`
+: Use [PsiLinkedPolySymbolReference](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/polySymbols/backend/src/com/intellij/polySymbols/search/PsiLinkedPolySymbolReference.kt) instead.
+
+`com.intellij.polySymbols.search.PsiSourcedPolySymbolReferenceSearcher` class renamed to `com.intellij.polySymbols.search.PsiLinkedPolySymbolReferenceSearcher`
+: Use [PsiLinkedPolySymbolReferenceSearcher](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/polySymbols/backend/src/com/intellij/polySymbols/search/PsiLinkedPolySymbolReferenceSearcher.kt) instead.
+
+`com.intellij.polySymbols.search.PsiSourcedPolySymbolRequestResultProcessor` class renamed to `com.intellij.polySymbols.search.PsiLinkedPolySymbolRequestResultProcessor`
+: Use [PsiLinkedPolySymbolRequestResultProcessor](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/polySymbols/backend/src/com/intellij/polySymbols/search/PsiLinkedPolySymbolRequestResultProcessor.kt) instead.
 
 ### Kotlin Plugin 2026.2
 
@@ -296,49 +332,52 @@ See [C/C++ Language Engine: Nova and Classic](clion.html#language-engine) for se
 
 CLion Nova has no frontend PSI, so the remaining `com.jetbrains.cidr.lang` classes — PSI, symbols, types, and resolve/references — have no replacement; depend on the Classic Engine plugin to keep using them.
 
-## 2026.3
+## 2026.1
 
-### IntelliJ Platform 2026.3
+### IntelliJ Platform 2026.1
 
-#### Kotlin UI DSL 1.0 Removal
+AWT input event handlers no longer run under write-intent lock
+: Custom input handlers (`KeyListener`, `MouseAdapter`, etc.) no longer execute under the [write-intent lock](threading-model.html#read-write-lock).
+If PSI or other write-intent-protected data needs to be accessed in these handlers, explicitly acquire a read action using [ReadAction.nonBlocking().submit()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/application/ReadAction.java) or coroutine-based equivalents such as [readAction {}](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/application/coroutines.kt).
 
-Kotlin UI DSL Version 1 (the `com.intellij.ui.layout` DSL entry points) has been completely removed.
-Any access to the removed classes will lead to compilation or runtime errors.
-The migration should be done according to the [Kotlin UI DSL Version 2 migration guide](https://plugins.jetbrains.com/docs/intellij/kotlin-ui-dsl.html#migration-to-version-2).
+#### Language Server Protocol (LSP) 2026.1.4
 
-`com.intellij.ui.layout.BaseBuilder` class removed
-: [Migrate to Kotlin UI DSL Version 2](https://plugins.jetbrains.com/docs/intellij/kotlin-ui-dsl.html#migration-to-version-2).
+In 2026.1.4, key LSP classes were [renamed](language-server-protocol.html#lsp-api-refactoring).
+`LspServerManager` was renamed to `LspClientManager` and the service is registered only under the new interface.
+Plugins retrieving `LspServerManager` via `project.service<LspServerManager>()` or similar methods will get null.
+Use `LspClientManager.getInstance(project)` instead, or `LspServerManager.getInstance(project)` to support versions before 2026.4.1.
 
-`com.intellij.ui.layout.CCFlags` class removed
-: [Migrate to Kotlin UI DSL Version 2](https://plugins.jetbrains.com/docs/intellij/kotlin-ui-dsl.html#migration-to-version-2).
+#### PolySymbols 2026.1
 
-`com.intellij.ui.layout.Cell` class removed
-: [Migrate to Kotlin UI DSL Version 2](https://plugins.jetbrains.com/docs/intellij/kotlin-ui-dsl.html#migration-to-version-2).
+`com.intellij.polySymbols.PolySymbol.getOrigin()` method removed
+: The property was confusing and in many cases was not used. Its functionality is replaced by:
+: * `framework` property - provide `com.intellij.polySymbols.html.HtmlFrameworkSymbolsSupport.HtmlFrameworkIdProperty` value through `PolySymbol.Property` mechanism
+: * `defaultIcon` property - implement `icon` property and return `true` for `PolySymbol.DocHideIconProperty` through `PolySymbol.Property` mechanism
+: * `typeSupport` property - provide `com.intellij.polySymbols.utils.PolySymbolTypeSupport.TypeSupportProperty` value through `PolySymbol.Property` mechanism
 
-`com.intellij.ui.layout.CellBuilder` class removed
-: [Migrate to Kotlin UI DSL Version 2](https://plugins.jetbrains.com/docs/intellij/kotlin-ui-dsl.html#migration-to-version-2).
+`com.intellij.polySymbols.PolySymbolQualifiedKind` class renamed to `com.intellij.polySymbols.PolySymbolKind`
+: additionally `name` property was renamed to `kindName` and `qualifiedKind` properties and parameters across the package
+were renamed to `kind`
 
-`com.intellij.ui.layout.CellMarker` class removed
-: [Migrate to Kotlin UI DSL Version 2](https://plugins.jetbrains.com/docs/intellij/kotlin-ui-dsl.html#migration-to-version-2).
+The following classes no longer implement [PsiModificationTracker](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/psi/util/PsiModificationTracker.java) (this requirement was confusing):
 
-`com.intellij.ui.layout.LCFlags` class removed
-: [Migrate to Kotlin UI DSL Version 2](https://plugins.jetbrains.com/docs/intellij/kotlin-ui-dsl.html#migration-to-version-2).
+* [PolySymbolScope](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolScope.kt)
 
-`com.intellij.ui.layout.LayoutBuilder` class removed
-: [Migrate to Kotlin UI DSL Version 2](https://plugins.jetbrains.com/docs/intellij/kotlin-ui-dsl.html#migration-to-version-2).
+* [PolySymbolQueryExecutor](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolQueryExecutor.kt)
 
-`com.intellij.ui.layout.LayoutBuilderImpl` class removed
-: [Migrate to Kotlin UI DSL Version 2](https://plugins.jetbrains.com/docs/intellij/kotlin-ui-dsl.html#migration-to-version-2).
+* [PolySymbolQueryResultsCustomizer](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolQueryResultsCustomizer.kt)
 
-`com.intellij.ui.layout.LayoutImplKt` class removed
-: [Migrate to Kotlin UI DSL Version 2](https://plugins.jetbrains.com/docs/intellij/kotlin-ui-dsl.html#migration-to-version-2).
+Implementing `PsiModificationTracker` was replaced by `modificationTracker` property for the following classes:
 
-`com.intellij.ui.layout.LayoutKt` class removed
-: [Migrate to Kotlin UI DSL Version 2](https://plugins.jetbrains.com/docs/intellij/kotlin-ui-dsl.html#migration-to-version-2).
+* [PolyContextRulesProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/polySymbols/src/com/intellij/polySymbols/context/PolyContextRulesProvider.kt)
 
-`com.intellij.ui.layout.Row` class removed
-: [Migrate to Kotlin UI DSL Version 2](https://plugins.jetbrains.com/docs/intellij/kotlin-ui-dsl.html#migration-to-version-2).
+* [PolySymbolNamesProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolNamesProvider.kt)
 
-`com.intellij.ui.layout.RowBuilder` class removed
-: [Migrate to Kotlin UI DSL Version 2](https://plugins.jetbrains.com/docs/intellij/kotlin-ui-dsl.html#migration-to-version-2).
+* [PolySymbolNameConversionRulesProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolNameConversionRulesProvider.kt)
+
+### Java Plugin 2026.1
+
+The Java plugin has been split into several modules with their own classloaders.
+This shouldn't affect plugins that use standard `<depends>com.intellij.java</depends>` dependency.
+If a plugin depends on specific Java plugin modules directly, the dependencies should be updated to reference the new module names.
 

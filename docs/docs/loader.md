@@ -1,7 +1,7 @@
 # Loader
 
 <tldr>
-Implementation: [AnimatedIcon.Default](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/ide-core/src/com/intellij/ui/AnimatedIcon.java)
+Implementation: [AnimatedIcon.Default](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/ide-core/src/com/intellij/ui/AnimatedIcon.java)
 
 Related: [Animated Icons](icons.html#animated-icons)
 </tldr>

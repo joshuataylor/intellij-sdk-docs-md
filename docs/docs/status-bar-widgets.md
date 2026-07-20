@@ -12,13 +12,13 @@ For example, the status bar contains the widget showing the encoding of the curr
 Due to the prominent presentation and limited space, they should be used only for information or settings that are relevant enough to be "always" shown.
 
 The starting point for extending the status bar with new widgets is the
-[StatusBarWidgetFactory](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/platform-api/src/com/intellij/openapi/wm/StatusBarWidgetFactory.java)
+[StatusBarWidgetFactory](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-api/src/com/intellij/openapi/wm/StatusBarWidgetFactory.java)
 interface, which is registered in the [com.intellij.statusBarWidgetFactory](https://jb.gg/ipe?extensions=com.intellij.statusBarWidgetFactory) extension point
 .
 Note: `id` attribute must be provided in `plugin.xml` registration and match value from `StatusBarWidgetFactory.getId()`.
 
 In case a widget provides information or functionality related to the editor files, consider extending the
-[StatusBarEditorBasedWidgetFactory](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/platform-impl/src/com/intellij/openapi/wm/impl/status/widget/StatusBarEditorBasedWidgetFactory.kt)
+[StatusBarEditorBasedWidgetFactory](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-impl/src/com/intellij/openapi/wm/impl/status/widget/StatusBarEditorBasedWidgetFactory.kt)
 class.
 
 Each widget factory returns a new widget from `createWidget()`.
@@ -26,14 +26,14 @@ To control the disposing of a widget, implement the `disposeWidget()`.
 To dispose it, use `Disposer.dispose(widget)`.
 
 Any widget must implement the
-[StatusBarWidget](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/ide-core/src/com/intellij/openapi/wm/StatusBarWidget.kt)
+[StatusBarWidget](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/ide-core/src/com/intellij/openapi/wm/StatusBarWidget.kt)
 interface.
 
 To reuse the IntelliJ Platform implementation, you can extend one of two classes:
 
-* [EditorBasedWidget](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/platform-impl/src/com/intellij/openapi/wm/impl/status/EditorBasedWidget.kt)
+* [EditorBasedWidget](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-impl/src/com/intellij/openapi/wm/impl/status/EditorBasedWidget.kt)
 
-* [EditorBasedStatusBarPopup](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/platform-impl/src/com/intellij/openapi/wm/impl/status/EditorBasedStatusBarPopup.kt)
+* [EditorBasedStatusBarPopup](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-impl/src/com/intellij/openapi/wm/impl/status/EditorBasedStatusBarPopup.kt)
 
 ## 
 
@@ -45,11 +45,11 @@ This identifier may be necessary to later get a widget instance.
 
 Use one of the existing predefined widget appearance options:
 
-* `com.intellij.openapi.wm.StatusBarWidget.IconPresentation` Widget with only an icon. Example: [PowerSaveStatusWidgetFactory](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/platform-impl/src/com/intellij/openapi/wm/impl/status/PowerSaveStatusWidgetFactory.java)
+* `com.intellij.openapi.wm.StatusBarWidget.IconPresentation` Widget with only an icon. Example: [PowerSaveStatusWidgetFactory](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-impl/src/com/intellij/openapi/wm/impl/status/PowerSaveStatusWidgetFactory.java)
 
-* `com.intellij.openapi.wm.StatusBarWidget.TextPresentation` Widget with only a text. Example: [SkipWindowDeactivationEventsAction.StatusWidget](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/platform-impl/internal/src/com/intellij/internal/SkipWindowDeactivationEventsAction.kt)
+* `com.intellij.openapi.wm.StatusBarWidget.TextPresentation` Widget with only a text. Example: [SkipWindowDeactivationEventsAction.StatusWidget](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-impl/internal/src/com/intellij/internal/SkipWindowDeactivationEventsAction.kt)
 
-* `com.intellij.openapi.wm.StatusBarWidget.MultipleTextValuesPresentation` Widget with a text and a popup. Example: [DvcsStatusWidget](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/dvcs-impl/src/com/intellij/dvcs/ui/DvcsStatusWidget.java)
+* `com.intellij.openapi.wm.StatusBarWidget.MultipleTextValuesPresentation` Widget with a text and a popup. Example: [DvcsStatusWidget](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/dvcs-impl/src/com/intellij/dvcs/ui/DvcsStatusWidget.java)
 
 Note:
 
@@ -58,12 +58,12 @@ Note that they can't be combined to get, for example, an icon and a text.
 To use the selected appearance, return a class that implements one of the above interfaces from `getPresentation()`.
 
 To create a widget with custom content, it should implement the
-[CustomStatusBarWidget](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/platform-api/src/com/intellij/openapi/wm/CustomStatusBarWidget.java)
+[CustomStatusBarWidget](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-api/src/com/intellij/openapi/wm/CustomStatusBarWidget.java)
 interface.
 Override `getComponent()` to return the custom widget's component to display.
 
 Example:
-[MemoryUsagePanel](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/platform-impl/src/com/intellij/openapi/wm/impl/status/MemoryUsagePanel.java)
+[MemoryUsagePanel](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-impl/src/com/intellij/openapi/wm/impl/status/MemoryUsagePanel.java)
 
 ## 
 
@@ -96,7 +96,7 @@ To update a widget, use `update()`.
 
 By default, widgets aren't shown in [LightEdit](https://www.jetbrains.com/help/idea/lightedit-mode.html) mode.
 To show a widget, implement
-[LightEditCompatible](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/ide/lightEdit/LightEditCompatible.java)
+[LightEditCompatible](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/ide/lightEdit/LightEditCompatible.java)
 in your factory.
 
 ## FAQ

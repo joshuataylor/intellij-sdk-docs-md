@@ -91,7 +91,7 @@ Alternatively, specify `com.jetbrains.intellij.javascript:javascript-test-framew
 
 When learning new plugin development, it is helpful to have some representative projects for reference:
 
-* [Vue.js](https://github.com/JetBrains/intellij-plugins/tree/idea/261.26222.65/vuejs)
+* [Vue.js](https://github.com/JetBrains/intellij-plugins/tree/idea/262.8665.258/vuejs)
 
 * [JS Toolbox](https://github.com/andresdominguez/jsToolbox)
 

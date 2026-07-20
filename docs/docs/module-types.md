@@ -31,7 +31,7 @@ Add a new `com.intellij.moduleType` implementation with the IntelliJ Platform in
 
 Implement `ModuleType` Interface
 
-Create the `DemoModuleType` implementation based on [ModuleType](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/lang-core/src/com/intellij/openapi/module/ModuleType.java).
+Create the `DemoModuleType` implementation based on [ModuleType](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/lang-core/src/com/intellij/openapi/module/ModuleType.java).
 
 `getNodeIcon()` should return module type specific icon.
 
@@ -84,7 +84,7 @@ final class DemoModuleType extends ModuleType<DemoModuleBuilder> {
 
 ## Implement Custom Module Builder
 
-Create `DemoModuleBuilder` based on [ModuleBuilder](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/lang-core/src/com/intellij/ide/util/projectWizard/ModuleBuilder.java).
+Create `DemoModuleBuilder` based on [ModuleBuilder](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/lang-core/src/com/intellij/ide/util/projectWizard/ModuleBuilder.java).
 
 ```JAVA
 public class DemoModuleBuilder extends ModuleBuilder {
@@ -110,7 +110,7 @@ public class DemoModuleBuilder extends ModuleBuilder {
 ## Provide Custom Wizard Steps
 
 Provide a straightforward implementation of UI components for the project creating stage.
-Create a generic `DemoModuleWizardStep` based on [ModuleWizardStep](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/lang-core/src/com/intellij/ide/util/projectWizard/ModuleWizardStep.java)
+Create a generic `DemoModuleWizardStep` based on [ModuleWizardStep](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/lang-core/src/com/intellij/ide/util/projectWizard/ModuleWizardStep.java)
 
 ```JAVA
 public class DemoModuleWizardStep extends ModuleWizardStep {

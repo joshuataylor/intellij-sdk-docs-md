@@ -467,7 +467,7 @@ Element Patterns
 : Add a new section about [Element Patterns](element-patterns.html) that are used when implementing [Completion Contributors](completion-contributor.html) or [PSI Reference Contributors](psi-references.html#contributed-references).
 
 Editor - Text Selection
-: Add a new section about [Text Selection EPs](text-selection.html) and describe [ExtendWordSelectionHandler](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/lang-api/src/com/intellij/codeInsight/editorActions/ExtendWordSelectionHandler.java).
+: Add a new section about [Text Selection EPs](text-selection.html) and describe [ExtendWordSelectionHandler](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/lang-api/src/com/intellij/codeInsight/editorActions/ExtendWordSelectionHandler.java).
 
 SDK Setup Assistance
 : Added a code sample to the SDK tutorial that expands on [assisting in the setup of an SDK](sdk.html#assisting-in-setting-up-an-sdk).

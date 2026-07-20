@@ -111,19 +111,19 @@ The scope of implicitly acquiring the write intent lock on EDT differs depending
 
 2023.3+:
 
-Write intent lock is acquired automatically when operation is invoked on EDT with [Application.invokeLater()](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/openapi/application/Application.java).
+Write intent lock is acquired automatically when operation is invoked on EDT with [Application.invokeLater()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/application/Application.java).
 
 Earlier versions:
 
 Write intent lock is acquired automatically when operation is invoked on EDT with methods such as:
 
-* [Application.invokeLater()](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/openapi/application/Application.java),
+* [Application.invokeLater()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/application/Application.java),
 
 * [SwingUtilities.invokeLater()](https://docs.oracle.com/javase/8/docs/api/javax/swing/SwingUtilities.html#invokeLater-java.lang.Runnable-),
 
-* [UIUtil.invokeAndWaitIfNeeded()](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/util/ui/src/com/intellij/util/ui/UIUtil.java),
+* [UIUtil.invokeAndWaitIfNeeded()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/util/ui/src/com/intellij/util/ui/UIUtil.java),
 
-* [EdtInvocationManager.invokeLaterIfNeeded()](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/util/src/com/intellij/util/ui/EdtInvocationManager.java),
+* [EdtInvocationManager.invokeLaterIfNeeded()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/util/src/com/intellij/util/ui/EdtInvocationManager.java),
 
 * and other similar methods
 
@@ -145,13 +145,13 @@ If the read operation itself is long, consider using [non-blocking read actions]
 
 #### API
 
-* [ReadAction](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/openapi/application/ReadAction.java) `run()` or `compute()`: Kotlin: ```KOTLIN val psiFile = ReadAction.compute<PsiFile, Throwable> { // read and return PsiFile } ``` Warning: Plugins implemented in Kotlin and targeting versions 2024.1+ should use suspending [readAction()](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/openapi/application/coroutines.kt). See also [Coroutine Read Actions](coroutine-read-actions.html). Java: ```JAVA PsiFile psiFile = ReadAction.compute(() -> { // read and return PsiFile }); ```
+* [ReadAction](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/application/ReadAction.java) `run()` or `compute()`: Kotlin: ```KOTLIN val psiFile = ReadAction.compute<PsiFile, Throwable> { // read and return PsiFile } ``` Warning: Plugins implemented in Kotlin and targeting versions 2024.1+ should use suspending [readAction()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/application/coroutines.kt). See also [Coroutine Read Actions](coroutine-read-actions.html). Java: ```JAVA PsiFile psiFile = ReadAction.compute(() -> { // read and return PsiFile }); ```
 
 ##### Alternative APIs
 
-* [Application.runReadAction()](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/openapi/application/Application.java): Kotlin: ```KOTLIN val psiFile = ApplicationManager.application.runReadAction { // read and return PsiFile } ``` Java: ```JAVA PsiFile psiFile = ApplicationManager.getApplication() .runReadAction((Computable<PsiFile>)() -> { // read and return PsiFile }); ``` Note that this API is considered low-level and should be avoided.
+* [Application.runReadAction()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/application/Application.java): Kotlin: ```KOTLIN val psiFile = ApplicationManager.application.runReadAction { // read and return PsiFile } ``` Java: ```JAVA PsiFile psiFile = ApplicationManager.getApplication() .runReadAction((Computable<PsiFile>)() -> { // read and return PsiFile }); ``` Note that this API is considered low-level and should be avoided.
 
-* Kotlin [runReadAction()](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/openapi/application/actions.kt): ```KOTLIN val psiFile = runReadAction { // read and return PsiFile } ``` Note that this API is obsolete since 2024.1.
+* Kotlin [runReadAction()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/application/actions.kt): ```KOTLIN val psiFile = runReadAction { // read and return PsiFile } ``` Note that this API is obsolete since 2024.1.
 
 #### Rules
 
@@ -229,13 +229,13 @@ gantt
 
 #### API
 
-* [WriteAction](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/openapi/application/WriteAction.java) `run()` or `compute()`: Kotlin: ```KOTLIN WriteAction.run<Throwable> { // write data } ``` Warning: Plugins implemented in Kotlin and targeting versions 2024.1+ should use suspending [writeAction()](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/openapi/application/coroutines.kt). Java: ```JAVA WriteAction.run(() -> { // write data }); ```
+* [WriteAction](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/application/WriteAction.java) `run()` or `compute()`: Kotlin: ```KOTLIN WriteAction.run<Throwable> { // write data } ``` Warning: Plugins implemented in Kotlin and targeting versions 2024.1+ should use suspending [writeAction()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/application/coroutines.kt). Java: ```JAVA WriteAction.run(() -> { // write data }); ```
 
 ##### Alternative APIs
 
-* [Application.runWriteAction()](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/openapi/application/Application.java): Kotlin: ```KOTLIN ApplicationManager.application.runWriteAction { // write data } ``` Java: ```JAVA ApplicationManager.getApplication().runWriteAction(() -> { // write data }); ``` Note that this API is considered low-level and should be avoided.
+* [Application.runWriteAction()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/application/Application.java): Kotlin: ```KOTLIN ApplicationManager.application.runWriteAction { // write data } ``` Java: ```JAVA ApplicationManager.getApplication().runWriteAction(() -> { // write data }); ``` Note that this API is considered low-level and should be avoided.
 
-* Kotlin [runWriteAction()](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/openapi/application/actions.kt): ```KOTLIN runWriteAction { // write data } ``` Note that this API is obsolete since 2024.1.
+* Kotlin [runWriteAction()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/application/actions.kt): ```KOTLIN runWriteAction { // write data } ``` Note that this API is obsolete since 2024.1.
 
 #### Rules
 
@@ -263,7 +263,7 @@ Tip:
 
 ## Invoking Operations on EDT and Modality
 
-Operations that write data on EDT should be invoked with `Application.invokeLater()` because it allows specifying the modality state ([ModalityState](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/openapi/application/ModalityState.java)) for the scheduled operation.
+Operations that write data on EDT should be invoked with `Application.invokeLater()` because it allows specifying the modality state ([ModalityState](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/application/ModalityState.java)) for the scheduled operation.
 This is not supported by `SwingUtilities.invokeLater()` and similar APIs.
 
 Warning:
@@ -349,7 +349,7 @@ gantt
 
 The following table presents methods providing useful modality states to be passed to `Application.invokeLater()`:
 
-| [ModalityState](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/openapi/application/ModalityState.java) |Description |
+| [ModalityState](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/application/ModalityState.java) |Description |
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | `defaultModalityState()`  Used if none specified   |If invoked from EDT, it uses the `ModalityState.current()`.  If invoked from a background process started with `ProgressManager`, the operation can be executed in the same dialog that the process started.  This is the optimal choice in most cases.   |
 | `current()` |The operation can be executed when the modality state stack doesn't grow since the operation was scheduled. |
@@ -359,7 +359,7 @@ The following table presents methods providing useful modality states to be pass
 
 Note:
 
-If EDT activity needs to access a [file-based index](indexing-and-psi-stubs.html) (for example, it is doing any project-wide PSI analysis, resolves references, or performs other tasks depending on indexes), use [DumbService.smartInvokeLater()](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/openapi/project/DumbService.kt).
+If EDT activity needs to access a [file-based index](indexing-and-psi-stubs.html) (for example, it is doing any project-wide PSI analysis, resolves references, or performs other tasks depending on indexes), use [DumbService.smartInvokeLater()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/project/DumbService.kt).
 This API also supports `ModalityState` and runs the operation after all possible indexing processes have been completed.
 
 ## Non-Blocking Read Actions
@@ -431,9 +431,9 @@ Plugins targeting versions 2024.1+ should use Write Allowing Read Actions availa
 
 To run a non-blocking read action, use one of the available APIs:
 
-* [ReadAction.nonBlocking()](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/openapi/application/ReadAction.java) which returns [NonBlockingReadAction](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/openapi/application/NonBlockingReadAction.java) (NBRA). NBRA handles restarting the action out-of-the-box.
+* [ReadAction.nonBlocking()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/application/ReadAction.java) which returns [NonBlockingReadAction](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/application/NonBlockingReadAction.java) (NBRA). NBRA handles restarting the action out-of-the-box.
 
-* [ReadAction.computeCancellable()](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/openapi/application/ReadAction.java) which computes the result immediately in the current thread or throws an exception if there is a running or requested write action.
+* [ReadAction.computeCancellable()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/application/ReadAction.java) which computes the result immediately in the current thread or throws an exception if there is a running or requested write action.
 
 In both cases, when a read action is started and a write action occurs in the meantime, the read action is marked as canceled.
 Read actions must [check for cancellation](background-processes.html#handling-cancellation) often enough to trigger actual cancellation.
@@ -457,7 +457,7 @@ Meanwhile, try to speed up what you can in your plugin as it will be generally b
 
 #### Action Update
 
-For implementations of [AnAction](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnAction.java), plugin authors should specifically
+For implementations of [AnAction](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnAction.java), plugin authors should specifically
 review the documentation of `AnAction.getActionUpdateThread()` in the [Action System](action-system.html) section as it describes how threading works for actions.
 
 #### Minimize Write Actions Scope
@@ -467,9 +467,9 @@ To speed them up, as much as possible should be moved out of the write action in
 
 #### Slow Operations on EDT Assertion
 
-Some of the long operations are reported by [SlowOperations.assertSlowOperationsAreAllowed()](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/util/SlowOperations.java).
+Some of the long operations are reported by [SlowOperations.assertSlowOperationsAreAllowed()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/util/SlowOperations.java).
 According to its Javadoc, they must be moved to BGT.
-This can be achieved with the techniques mentioned in the Javadoc, [background processes](background-processes.html), [Application.executeOnPooledThread()](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/openapi/application/Application.java), or [coroutines](kotlin-coroutines.html) (recommended for plugins targeting 2024.1+).
+This can be achieved with the techniques mentioned in the Javadoc, [background processes](background-processes.html), [Application.executeOnPooledThread()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/application/Application.java), or [coroutines](kotlin-coroutines.html) (recommended for plugins targeting 2024.1+).
 Note that the assertion is enabled in IDE EAP versions, [internal mode](enabling-internal.html), or [development instance](ide-development-instance.html), and regular users don't see them in the IDE.
 This will change in the future, so fixing these exceptions is required.
 
@@ -480,11 +480,11 @@ Ideally, they should only clear some caches.
 
 It is also possible to schedule background processing of events.
 In such cases, be prepared that some new events might be delivered before the background processing starts – and thus the world might have changed by that moment or even in the middle of background processing.
-Consider using [MergingUpdateQueue](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/ide-core/src/com/intellij/util/ui/update/MergingUpdateQueue.kt) and [NBRA](#non-blocking-read-actions-api) to mitigate these issues.
+Consider using [MergingUpdateQueue](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/ide-core/src/com/intellij/util/ui/update/MergingUpdateQueue.kt) and [NBRA](#non-blocking-read-actions-api) to mitigate these issues.
 
 ### VFS Events
 
-Massive batches of VFS events can be pre-processed in the background with [AsyncFileListener](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/openapi/vfs/AsyncFileListener.java).
+Massive batches of VFS events can be pre-processed in the background with [AsyncFileListener](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/vfs/AsyncFileListener.java).
 
 ### Investigating UI Freezes
 
@@ -494,11 +494,11 @@ See the [Investigating IntelliJ Platform UI Freezes](https://blog.jetbrains.com/
 
 IntelliJ Platform sources include Kotlin Notebooks helping to understand the core concepts of the threading model:
 
-1. [Context Propagation](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/docs/notebooks/1-ContextPropagation.ipynb)
+1. [Context Propagation](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/docs/notebooks/1-ContextPropagation.ipynb)
 
-2. [Cancellation Model](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/docs/notebooks/2-CancellationModel.ipynb)
+2. [Cancellation Model](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/docs/notebooks/2-CancellationModel.ipynb)
 
-3. [Read-Write Lock](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/docs/notebooks/3-ReadWriteLock.ipynb)
+3. [Read-Write Lock](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/docs/notebooks/3-ReadWriteLock.ipynb)
 
 The notebooks contain concept explanations accompanied by code that can be run interactively in the IDE.
 Code can be changed for experimentation.
@@ -511,7 +511,7 @@ See more information about the integration of [Kotlin Notebooks with the Intelli
 
 Use `Application.isDispatchThread()`.
 
-If code must be invoked on EDT and the current thread can be EDT or BGT, use [UIUtil.invokeLaterIfNeeded()](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/util/ui/src/com/intellij/util/ui/UIUtil.java).
+If code must be invoked on EDT and the current thread can be EDT or BGT, use [UIUtil.invokeLaterIfNeeded()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/util/ui/src/com/intellij/util/ui/UIUtil.java).
 If the current thread is EDT, this method will run code immediately or will schedule a later invocation if the current thread is BGT.
 
 ### Why write actions are currently allowed only on EDT?

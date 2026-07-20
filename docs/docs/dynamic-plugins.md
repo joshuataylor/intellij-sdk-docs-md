@@ -43,7 +43,7 @@ If a plugin defines its own custom extension points, they must adhere to specifi
 
 ### Configurables Depending on Extension Points
 
-Any [Configurable](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/ide-core/src/com/intellij/openapi/options/Configurable.java) which depends on dynamic extension points must implement `Configurable.WithEpDependencies`.
+Any [Configurable](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/ide-core/src/com/intellij/openapi/options/Configurable.java) which depends on dynamic extension points must implement `Configurable.WithEpDependencies`.
 
 ### No Use of Service Overrides
 
@@ -59,11 +59,11 @@ Loading and unloading plugins happens in [EDT](threading-model.html) and under w
 
 `CachedValue`
 
-Loading/Unloading a plugin clears all cached values created using [CachedValuesManager](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/psi/util/CachedValuesManager.java).
+Loading/Unloading a plugin clears all cached values created using [CachedValuesManager](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/psi/util/CachedValuesManager.java).
 
 ### Do Not Store PSI
 
-Do not store references to PSI elements in objects which can survive plugin loading or unloading; use [SmartPsiElementPointer](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/psi/SmartPsiElementPointer.java) instead.
+Do not store references to PSI elements in objects which can survive plugin loading or unloading; use [SmartPsiElementPointer](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/psi/SmartPsiElementPointer.java) instead.
 
 ### 
 
@@ -73,19 +73,19 @@ Replace with `String` from `Language.getID()`/`FileType.getName()` (use inspecti
 
 ### Plugin Load/Unload Events
 
-Register [DynamicPluginListener](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/ide/plugins/DynamicPluginListener.kt) [application listener](plugin-listeners.html) to receive updates on plugin load/unload events.
+Register [DynamicPluginListener](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/ide/plugins/DynamicPluginListener.kt) [application listener](plugin-listeners.html) to receive updates on plugin load/unload events.
 
 This can be used to, for example:
 
 * cancel long-running activities or disallow unloading due to ongoing processes
 
-* clearing data from `UserDataHolder` objects (see `clearInjectorCache()` and `dropFileCaches()` in [InjectedLanguageManagerImpl](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/analysis-impl/src/com/intellij/psi/impl/source/tree/injected/InjectedLanguageManagerImpl.java))
+* clearing data from `UserDataHolder` objects (see `clearInjectorCache()` and `dropFileCaches()` in [InjectedLanguageManagerImpl](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/analysis-impl/src/com/intellij/psi/impl/source/tree/injected/InjectedLanguageManagerImpl.java))
 
 * and similar cases
 
 ### Resource Cleanup
 
-Use [Services](plugin-services.html) implementing [Disposable](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/util/src/com/intellij/openapi/Disposable.java) and perform cleanup in `Disposable.dispose()`.
+Use [Services](plugin-services.html) implementing [Disposable](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/util/src/com/intellij/openapi/Disposable.java) and perform cleanup in `Disposable.dispose()`.
 
 ## Troubleshooting
 

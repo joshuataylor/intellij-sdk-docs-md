@@ -1,6 +1,6 @@
 # Virtual Files
 
-A [VirtualFile](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/openapi/vfs/VirtualFile.java) (VF) is the IntelliJ Platform's representation of a file in a [Virtual File System (VFS)](virtual-file-system.html).
+A [VirtualFile](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/vfs/VirtualFile.java) (VF) is the IntelliJ Platform's representation of a file in a [Virtual File System (VFS)](virtual-file-system.html).
 
 Most commonly, a virtual file is a file in a local file system.
 However, the IntelliJ Platform supports multiple pluggable file system implementations, so virtual files can also represent classes in a JAR file, old revisions of files loaded from a version control repository, and so on.
@@ -12,11 +12,11 @@ Contents of a `VirtualFile` are treated as a stream of bytes, but concepts like 
 
 | Context |API |
 ----------------
-| [Action](action-system.html) |[AnActionEvent.getData(PlatformDataKeys.VIRTUAL_FILE)](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnActionEvent.java)  [AnActionEvent.getData(PlatformDataKeys.VIRTUAL_FILE_ARRAY)](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnActionEvent.java) for multiple selection   |
-| [Document](documents.html) |[FileDocumentManager.getFile()](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/openapi/fileEditor/FileDocumentManager.java) |
-| [PSI File](psi-files.html) |[PsiFile.getVirtualFile()](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/psi/PsiFile.java) (may return `null` if the PSI file exists only in memory) |
-| File Name |[FilenameIndex.getVirtualFilesByName()](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/indexing-api/src/com/intellij/psi/search/FilenameIndex.java) |
-| Local File System Path |[LocalFileSystem.findFileByIoFile()](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/analysis-api/src/com/intellij/openapi/vfs/LocalFileSystem.java)  [VirtualFileManager.findFileByNioPath()/refreshAndFindFileByNioPath()](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/openapi/vfs/VirtualFileManager.java)   |
+| [Action](action-system.html) |[AnActionEvent.getData(PlatformDataKeys.VIRTUAL_FILE)](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnActionEvent.java)  [AnActionEvent.getData(PlatformDataKeys.VIRTUAL_FILE_ARRAY)](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnActionEvent.java) for multiple selection   |
+| [Document](documents.html) |[FileDocumentManager.getFile()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/fileEditor/FileDocumentManager.java) |
+| [PSI File](psi-files.html) |[PsiFile.getVirtualFile()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/psi/PsiFile.java) (may return `null` if the PSI file exists only in memory) |
+| File Name |[FilenameIndex.getVirtualFilesByName()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/indexing-api/src/com/intellij/psi/search/FilenameIndex.java) |
+| Local File System Path |[LocalFileSystem.findFileByIoFile()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/analysis-api/src/com/intellij/openapi/vfs/LocalFileSystem.java)  [VirtualFileManager.findFileByNioPath()/refreshAndFindFileByNioPath()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/vfs/VirtualFileManager.java)   |
 
 ## What can I do with it?
 
@@ -37,7 +37,7 @@ Invoking a VFS refresh might be necessary for accessing a file that has just bee
 A particular file on a disk is represented by equal `VirtualFile` instances for the IDE process's entire lifetime.
 There may be several instances corresponding to the same file, and they can be garbage-collected.
 
-The file is a [UserDataHolder](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/util/src/com/intellij/openapi/util/UserDataHolder.java), and the user data is shared between those equal instances.
+The file is a [UserDataHolder](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/util/src/com/intellij/openapi/util/UserDataHolder.java), and the user data is shared between those equal instances.
 If a file is deleted, its corresponding `VirtualFile` instance becomes invalid (`isValid()` returns `false`), and operations cause exceptions.
 
 ## How do I create a virtual file?
@@ -56,7 +56,7 @@ Since version 2026.2, changes to a `VirtualFile` (`getOutputStream()` or `setBin
 With content writing I/O moved outside the enclosing write action, the enclosing write action finishes quicker, thus reducing UI freezes.
 The I/O postponing is invisible for access via VFS – VFS maintains the illusion that the update is fully finished while it is still ongoing.
 However, it may be visible if the same file is accessed bypassing VFS, either via `java.io`/`java.nio` API directly or from an external process.
-To ensure changes have been applied forcibly – for example, to read the new file content from an external process – use [ManagingFS.getInstance().flushPendingUpdates()](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/analysis-api/src/com/intellij/openapi/vfs/newvfs/ManagingFS.java) (outside write action).
+To ensure changes have been applied forcibly – for example, to read the new file content from an external process – use [ManagingFS.getInstance().flushPendingUpdates()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/analysis-api/src/com/intellij/openapi/vfs/newvfs/ManagingFS.java) (outside write action).
 
 Changes in the underlying files also reach VFS with some (normally, short) delay.
 `VirtualFile.refresh()` could be used to ensure the changes are noticed.
@@ -69,7 +69,7 @@ Note:
 
 See [Virtual File System Events](virtual-file-system.html#virtual-file-system-events) for important details.
 
-Implement [BulkFileListener](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/openapi/vfs/newvfs/BulkFileListener.java) and subscribe to the [message bus](messaging-infrastructure.html) topic `VirtualFileManager.VFS_CHANGES`.
+Implement [BulkFileListener](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/vfs/newvfs/BulkFileListener.java) and subscribe to the [message bus](messaging-infrastructure.html) topic `VirtualFileManager.VFS_CHANGES`.
 For example:
 
 ```JAVA
@@ -85,23 +85,23 @@ project.getMessageBus().connect().subscribe(
 
 See [Message Infrastructure](messaging-infrastructure.html) and [Plugin Listeners](plugin-listeners.html) for more details.
 
-For a non-blocking alternative see [AsyncFileListener](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/openapi/vfs/AsyncFileListener.java).
+For a non-blocking alternative see [AsyncFileListener](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/vfs/AsyncFileListener.java).
 
 ## Are there any utilities for analyzing and manipulating virtual files?
 
-[VfsUtil](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/analysis-api/src/com/intellij/openapi/vfs/VfsUtil.java) and [VfsUtilCore](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/openapi/vfs/VfsUtilCore.java) provide utility methods for analyzing files in the Virtual File System.
+[VfsUtil](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/analysis-api/src/com/intellij/openapi/vfs/VfsUtil.java) and [VfsUtilCore](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/vfs/VfsUtilCore.java) provide utility methods for analyzing files in the Virtual File System.
 
 For storing a large set of Virtual Files, use the dedicated `VfsUtilCore.createCompactVirtualFileSet()` method.
 
-Use [ProjectLocator](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/openapi/project/ProjectLocator.kt) to find the projects that contain a given virtual file.
+Use [ProjectLocator](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/project/ProjectLocator.kt) to find the projects that contain a given virtual file.
 
 ## How do I extend VFS?
 
-To provide an alternative file system implementation (for example, an FTP file system), implement the [VirtualFileSystem](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/openapi/vfs/VirtualFileSystem.java) class (most likely you'll also need to implement `VirtualFile`),
+To provide an alternative file system implementation (for example, an FTP file system), implement the [VirtualFileSystem](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/vfs/VirtualFileSystem.java) class (most likely you'll also need to implement `VirtualFile`),
 and register your implementation via [com.intellij.virtualFileSystem](https://jb.gg/ipe?extensions=com.intellij.virtualFileSystem) extension point
 .
 
-To hook into operations performed in the local file system (for example, when developing a version control system integration that needs custom rename/move handling), implement [LocalFileOperationsHandler](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/analysis-api/src/com/intellij/openapi/vfs/LocalFileOperationsHandler.java) and register it via `LocalFileSystem.registerAuxiliaryFileOperationsHandler()`.
+To hook into operations performed in the local file system (for example, when developing a version control system integration that needs custom rename/move handling), implement [LocalFileOperationsHandler](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/analysis-api/src/com/intellij/openapi/vfs/LocalFileOperationsHandler.java) and register it via `LocalFileSystem.registerAuxiliaryFileOperationsHandler()`.
 
 ## What are the rules for working with VFS?
 
@@ -111,7 +111,7 @@ See [Virtual File System](virtual-file-system.html) for a detailed description o
 
 See:
 
-* [FilePropertyPusher](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/projectModel-api/src/com/intellij/openapi/roots/impl/FilePropertyPusher.java)
+* [FilePropertyPusher](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/projectModel-api/src/com/intellij/openapi/roots/impl/FilePropertyPusher.java)
 
-* [FileAttribute](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/analysis-api/src/com/intellij/openapi/vfs/newvfs/FileAttribute.java)
+* [FileAttribute](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/analysis-api/src/com/intellij/openapi/vfs/newvfs/FileAttribute.java)
 

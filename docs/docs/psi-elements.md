@@ -7,13 +7,13 @@ A PSI element, in its turn, can have child PSI elements.
 PSI elements and operations at the level of individual PSI elements are used to explore the source code's internal structure as it is interpreted by the IntelliJ Platform.
 For example, you can use PSI elements to perform code analysis, such as [code inspections](https://www.jetbrains.com/help/idea/code-inspection.html) or [intention actions](https://www.jetbrains.com/idea/help/intention-actions.html).
 
-The [PsiElement](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/psi/PsiElement.java) class is the common base class for PSI elements.
+The [PsiElement](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/psi/PsiElement.java) class is the common base class for PSI elements.
 
 Tip:
 
-PSI classes for specific languages usually start with a language prefix, for example, [JsonArray](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/json/gen/com/intellij/json/psi/JsonArray.java).
+PSI classes for specific languages usually start with a language prefix, for example, [JsonArray](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/json/gen/com/intellij/json/psi/JsonArray.java).
 
-The Java PSI API, developed many years ago when there was no plan to support other languages, uses the `Psi` prefix, for example, [PsiIdentifier](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/java/java-psi-api/src/com/intellij/psi/PsiIdentifier.java) or [PsiElementFactory](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/java/java-psi-api/src/com/intellij/psi/PsiElementFactory.java).
+The Java PSI API, developed many years ago when there was no plan to support other languages, uses the `Psi` prefix, for example, [PsiIdentifier](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/java/java-psi-api/src/com/intellij/psi/PsiIdentifier.java) or [PsiElementFactory](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/java/java-psi-api/src/com/intellij/psi/PsiElementFactory.java).
 Don't confuse Java with the core PSI API.
 
 To use Java PSI API, [add a dependency](plugin-dependencies.html) on the Java plugin.
@@ -22,9 +22,9 @@ To use Java PSI API, [add a dependency](plugin-dependencies.html) on the Java pl
 
 | Context |API |
 ----------------
-| [Action](action-system.html) |[AnActionEvent.getData(CommonDataKeys.PSI_ELEMENT)](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnActionEvent.java)  Note: If an editor is currently open and the element under caret is a [reference](psi-references.html), this will return the result of resolving the reference.   |
-| [PSI File](psi-files.html) |[PsiFile.findElementAt(offset)](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/psi/PsiFile.java) - This returns a leaf element at the specified offset, normally a lexer token. Use `PsiTreeUtil.getParentOfType()` to find the element of the exact type.  [PsiRecursiveElementWalkingVisitor](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/psi/PsiRecursiveElementWalkingVisitor.java)   |
-| [Reference](psi-references.html) |[PsiReference.resolve()](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/psi/PsiReference.java) |
+| [Action](action-system.html) |[AnActionEvent.getData(CommonDataKeys.PSI_ELEMENT)](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnActionEvent.java)  Note: If an editor is currently open and the element under caret is a [reference](psi-references.html), this will return the result of resolving the reference.   |
+| [PSI File](psi-files.html) |[PsiFile.findElementAt(offset)](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/psi/PsiFile.java) - This returns a leaf element at the specified offset, normally a lexer token. Use `PsiTreeUtil.getParentOfType()` to find the element of the exact type.  [PsiRecursiveElementWalkingVisitor](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/psi/PsiRecursiveElementWalkingVisitor.java)   |
+| [Reference](psi-references.html) |[PsiReference.resolve()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/psi/PsiReference.java) |
 
 ## What can I do with PSI elements?
 

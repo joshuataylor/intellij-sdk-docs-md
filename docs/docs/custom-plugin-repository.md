@@ -20,7 +20,7 @@ Gradle plugin [IntelliJ plugin uploader](https://github.com/brian-mcnamara/plugi
 
 To avoid collisions between private plugins and those hosted on JetBrains Marketplace, an organization can [reserve plugin IDs](https://plugins.jetbrains.com/docs/marketplace/reserved-plugin-ids.html).
 
-To provide custom authentication, implement [PluginRepositoryAuthProvider](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/platform-impl/src/com/intellij/ide/plugins/auth/PluginRepositoryAuthProvider.java)
+To provide custom authentication, implement [PluginRepositoryAuthProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-impl/src/com/intellij/ide/plugins/auth/PluginRepositoryAuthProvider.java)
 registered in [com.intellij.pluginRepositoryAuthProvider](https://jb.gg/ipe?extensions=com.intellij.pluginRepositoryAuthProvider) extension point
 .
 

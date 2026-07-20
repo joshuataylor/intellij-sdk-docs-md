@@ -50,7 +50,7 @@ repositories {
 
 dependencies {
   intellijPlatform {
-    intellijIdea("2026.1.4")
+    intellijIdea("2026.2")
   }
 }
 ```
@@ -69,7 +69,7 @@ plugins {
 }
 
 intellij {
-  version = "2026.1.4"
+  version = "2026.2"
   type = "IU"
 }
 ```
@@ -107,7 +107,7 @@ The `plugin.xml` configuration file must specify the dependency on the IntelliJ 
 
 Since 2024.2, LSP API sources are provided with the `IntelliJ IDEA sources` artifact.
 See [Attaching Sources in the IDE](tools-intellij-platform-gradle-plugin.html#attaching-sources-in-the-ide) on how to enable downloading sources.
-Then, use `Navigate | Class...` to open the `LspServerManager` class.
+Then, use `Navigate | Class...` to open the `LspServerState` class.
 In the opened editor, invoke Download IntelliJ Platform sources to download and attach sources.
 
 #### Earlier IDE Versions
@@ -138,7 +138,7 @@ The LSP support provided by the IntelliJ Platform covers the following features 
 
 Note:
 
-All the above features are enabled by default and can be controlled via `LspServerDescriptor.getLspCustomization()`.
+All the above features are enabled by default and can be controlled via [LspClientDescriptor.lspCustomization](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/lsp/src/api/LspClientDescriptor.kt) (since 2026.1.4), or [LspServerDescriptor.lspCustomization](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/lsp/src/api/LspServerDescriptor.kt)` (before 2026.1.4).
 See the [Customization](#customization) section for details.
 
 ### 2025.3
@@ -229,14 +229,36 @@ See the [Customization](#customization) section for details.
 
 ## Basic Implementation
 
-As a reference, check out the [Prisma ORM](https://plugins.jetbrains.com/plugin/20686-prisma-orm) open-source plugin implementation: [Prisma ORM LSP](https://github.com/JetBrains/intellij-plugins/tree/idea/261.26222.65/prisma/src/org/intellij/prisma/ide/lsp)
+As a reference, check out the [Prisma ORM](https://plugins.jetbrains.com/plugin/20686-prisma-orm) open-source plugin implementation: [Prisma ORM LSP](https://github.com/JetBrains/intellij-plugins/tree/idea/262.8665.258/prisma/src/org/intellij/prisma/ide/lsp)
+
+Tip:
+
+The basic implementation differs between version 2026.1.4 and older because of [LSP API classes renaming](#lsp-api-refactoring).
 
 Procedure: Minimal LSP Plugin Setup
 
 ### Status Bar Integration
 
 A dedicated Language Services status bar widget is available to monitor the status of all LSP servers.
-Override `LspServerSupportProvider.createLspServerWidgetItem()` to provide a custom icon and link to [Settings](settings.html) page (if available).
+
+2026.1.4+:
+
+Override [LspIntegrationProvider.createWidgetItem()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/lsp/src/api/LspIntegrationProvider.kt) to provide a custom icon and link to [the settings page](settings.html) (if available).
+
+```KOTLIN
+override fun createWidgetItem(
+  lspClient: LspClient,
+  currentFile: VirtualFile?
+) =
+  LspClientWidgetItem(
+    lspClient, currentFile,
+    FooIcons.PluginIcon, FooConfigurable::class.java
+  )
+```
+
+Pre-2026.1.4:
+
+Override [LspServerSupportProvider.createLspServerWidgetItem()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/lsp/src/api/LspServerSupportProvider.kt) to provide a custom icon and link to [the settings page](settings.html) (if available).
 
 ```KOTLIN
 override fun createLspServerWidgetItem(
@@ -273,17 +295,17 @@ To access LSP API source code and documentation see [IDE Setup](#ide-setup).
 
 2025.2+:
 
-To fine-tune or disable the implementation of LSP-based features, plugins may return a customized `LspCustomization` object from the `LspServerDescriptor.lspCustomization` property.
+To fine-tune or disable the implementation of LSP-based features, plugins may return a customized [LspCustomization](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/lsp/src/api/customization/LspCustomization.kt) object from the `LspClientDescriptor.lspCustomization` (`LspServerDescriptor.lspCustomization` before 2026.1.4) property.
 Available customization options are described by `LspCustomization`'s properties.
 
-For example, see [PrismaLspServerDescriptor](https://github.com/JetBrains/intellij-plugins/tree/idea/261.26222.65/prisma/src/org/intellij/prisma/ide/lsp/PrismaLspServerDescriptor.kt).
+For example, see [PrismaLspClientDescriptor](https://github.com/JetBrains/intellij-plugins/tree/idea/262.8665.258/prisma/src/org/intellij/prisma/ide/lsp/PrismaLspClientDescriptor.kt).
 
 The new API is backward-compatible.
 Plugin LSP customizations implemented via deprecated `LspServerDescriptor`'s properties will work in 2025.2.
 New LSP features will be customizable only via the new API.
 
 Starting with 2026.1.2, on-type formatting ([textDocument/onTypeFormatting](https://microsoft.github.io/language-server-protocol/specification/#textDocument_onTypeFormatting)) is the first LSP feature disabled by default.
-Review your servers and enable `LspOnTypeFormattingSupport` via `LspServerDescriptor.lspCustomization` where formatting while typing is appropriate.
+Review your servers and enable [LspOnTypeFormattingCustomizer](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/lsp/src/api/customization/LspOnTypeFormattingCustomizer.kt) via `LspClientDescriptor.lspCustomization` where formatting while typing is appropriate.
 
 Pre-2025.2:
 
@@ -293,9 +315,9 @@ Warning:
 
 Note that LSP support is in active development and some customization options are available only in newer versions.
 
-To handle custom (undocumented) requests and notifications from the LSP server, override the `LspServerDescriptor.createLsp4jClient()` function and the `Lsp4jClient` class according to their documentation.
+To handle custom (undocumented) requests and notifications from the LSP server, override the `LspClientDescriptor.createLsp4jClient()` (`LspServerDescriptor.createLsp4jClient()` before 2026.1.4) function and the `Lsp4jClient` class according to their documentation.
 
-To send custom (undocumented) requests and notifications to the LSP server, override `LspServerDescriptor.lsp4jServerClass` property and implement the `LspClientNotification` and/or `LspRequest` classes.
+To send custom (undocumented) requests and notifications to the LSP server, override `LspClientDescriptor.lsp4jServerClass` (`LspServerDescriptor.lsp4jServerClass` before 2026.1.4) property and implement the `LspClientNotification` and/or `LspRequest` classes.
 The documentation in the source code includes implementation examples.
 
 ## Troubleshooting
@@ -326,11 +348,28 @@ When considering the LSP-based approach, it is important to assess the following
 
 ## Sample Plugins
 
-The following open-source plugins make use of LSP:
+Explore third-party plugins using LSP:
 
-* [Prisma ORM](https://github.com/JetBrains/intellij-plugins/tree/idea/261.26222.65/prisma/src/org/intellij/prisma/ide/lsp)
+* [com.intellij.platform.lsp.integrationProvider](https://jb.gg/ipe?extensions=com.intellij.platform.lsp.integrationProvider) - since 2026.1.4
 
-Explore third-party plugins using LSP on [IntelliJ Platform Explorer](https://jb.gg/ipe?extensions=com.intellij.platform.lsp.serverSupportProvider).
+* [com.intellij.platform.lsp.serverSupportProvider](https://jb.gg/ipe?extensions=com.intellij.platform.lsp.serverSupportProvider) - before 2026.1.4
+
+## LSP API Refactoring
+
+In 2026.1.4, the LSP API classes were renamed to align with LSP terminology, where the IDE acts as the client communicating with an external language server process.
+Classes with old names are deprecated, but they are preserved in the API and fully functional.
+
+The following table lists the key classes renaming:
+
+| Old |New |
+------------
+| [LspServerSupportProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/lsp/src/api/LspServerSupportProvider.kt) EP: `com.intellij.platform.lsp.serverSupportProvider` |[LspIntegrationProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/lsp/src/api/LspIntegrationProvider.kt) EP: `com.intellij.platform.lsp.integrationProvider` |
+| `LspServerSupportProvider.LspServerStarter` |`LspIntegrationProvider.LspClientStarter` |
+| [LspServerDescriptor](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/lsp/src/api/LspServerDescriptor.kt) |[LspClientDescriptor](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/lsp/src/api/LspClientDescriptor.kt) |
+| [ProjectWideLspServerDescriptor](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/lsp/src/api/ProjectWideLspServerDescriptor.kt) |[ProjectWideLspClientDescriptor](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/lsp/src/api/ProjectWideLspClientDescriptor.kt) |
+| [LspServer](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/lsp/src/api/LspServer.kt) |[LspClient](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/lsp/src/api/LspClient.kt) |
+| [LspServerManager](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/lsp/src/api/LspServerManager.kt) |[LspClientManager](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/lsp/src/api/LspClientManager.kt) Service is registered for the `LspClientManager` interface only; `project.service<LspServerManager>()` returns null. Use `LspClientManager.getInstance()` (or `LspServerManager.getInstance(project)` to support versions before 2026.4.1). |
+| [LspServerWidgetItem](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/lsp/src/api/lsWidget/LspServerWidgetItem.kt) |[LspClientWidgetItem](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/lsp/src/api/lsWidget/LspClientWidgetItem.kt) |
 
 Note: Something missing?
 

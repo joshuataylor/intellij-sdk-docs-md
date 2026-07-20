@@ -1,7 +1,7 @@
 # Tabs
 
 <tldr>
-Implementation: [JBTabbedPane](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/platform-api/src/com/intellij/ui/components/JBTabbedPane.java)
+Implementation: [JBTabbedPane](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-api/src/com/intellij/ui/components/JBTabbedPane.java)
 </tldr>
 
 ![Tabs](images/01_Tabs.png)
@@ -12,7 +12,7 @@ Use tabs to organize related content. Follow rules for [Groups of controls](grou
 
 Note:
 
-For editor tabs, use another component — [JBEditorTabs](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/platform-api/src/com/intellij/ui/tabs/impl/JBEditorTabs.kt)
+For editor tabs, use another component — [JBEditorTabs](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-api/src/com/intellij/ui/tabs/impl/JBEditorTabs.kt)
 
 In tool windows, tabs are generated automatically. See [Tool window](tool-window.html).
 

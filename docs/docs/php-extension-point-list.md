@@ -10,7 +10,7 @@ Tip:
 
 See [IntelliJ Platform Extension Point and Listener List](intellij-platform-extension-point-list.html) for IntelliJ Platform.
 
-66 Extension Points and 11 Listeners
+68 Extension Points and 11 Listeners
 
 ## Legend
 
@@ -49,8 +49,8 @@ See [Verifying Plugin Compatibility](verifying-plugin-compatibility.html) for ov
 | ![Obsolete](https://img.shields.io/badge/-Obsolete-grey?style=flat-square)                          |Obsolete API |Annotated with [@ApiStatus.Obsolete](https://github.com/JetBrains/java-annotations/tree/24.0.0/common/src/main/java/org/jetbrains/annotations/ApiStatus.java).                             Do not use in new code, see code documentation for replacement.   |
 | ![Experimental API](https://img.shields.io/badge/-Experimental-violet?style=flat-square)                               |Experimental API |Annotated with [@ApiStatus.Experimental](https://github.com/JetBrains/java-annotations/tree/24.0.0/common/src/main/java/org/jetbrains/annotations/ApiStatus.java).                             API might be altered or removed without prior notice.   |
 | ![Internal API](https://img.shields.io/badge/-Internal-darkred?style=flat-square) |Internal API |Annotated with [@ApiStatus.Internal](https://github.com/JetBrains/java-annotations/tree/24.0.0/common/src/main/java/org/jetbrains/annotations/ApiStatus.java).                             Must not be used by third party plugins, see [Internal API Migration](api-internal.html).   |
-| ![Project-Level](https://img.shields.io/badge/-Project--Level-blue?style=flat-square) |Project-LevelExtension Point/Topic   |Can have [Project](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/openapi/project/Project.java)                             as constructor parameter.                               - Extension Point: declared with `area="IDEA_PROJECT"`                               - Listener: registered in [&lt;projectListeners&gt;](plugin-configuration-file.html#idea-plugin__projectListeners)                                |
-| ![DumbAware](https://img.shields.io/badge/-DumbAware-darkgreen?style=flat-square) |`DumbAware`                             Extension Point   |Implementations marked with [DumbAware](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/openapi/project/DumbAware.java)                             will be processed during [dumb                                 mode](indexing-and-psi-stubs.html#dumb-mode).                          |
+| ![Project-Level](https://img.shields.io/badge/-Project--Level-blue?style=flat-square) |Project-LevelExtension Point/Topic   |Can have [Project](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/project/Project.java)                             as constructor parameter.                               - Extension Point: declared with `area="IDEA_PROJECT"`                               - Listener: registered in [&lt;projectListeners&gt;](plugin-configuration-file.html#idea-plugin__projectListeners)                                |
+| ![DumbAware](https://img.shields.io/badge/-DumbAware-darkgreen?style=flat-square) |`DumbAware`                             Extension Point   |Implementations marked with [DumbAware](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/project/DumbAware.java)                             will be processed during [dumb                                 mode](indexing-and-psi-stubs.html#dumb-mode).                          |
 | ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |Non-DynamicExtension Point   |Installation/update of plugin requires restarting the IDE, see [Dynamic Plugins](dynamic-plugins.html).                          |
 
 ## PhpStorm
@@ -75,7 +75,6 @@ See [Verifying Plugin Compatibility](verifying-plugin-compatibility.html) for ov
 
 | Extension Point |Implementation |
 -----------------------------------
-| [com.intellij.phing.phpFileDescriptionProvider](https://jb.gg/ipe?extensions=com.intellij.phing.phpFileDescriptionProvider)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`PhingPhpFileDescriptionProvider` |
 | [com.intellij.phing.propertyFilesManager](https://jb.gg/ipe?extensions=com.intellij.phing.propertyFilesManager)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`PropertyFilesManager` |
 
 ### com.intellij.php.psalm
@@ -97,7 +96,7 @@ See [Verifying Plugin Compatibility](verifying-plugin-compatibility.html) for ov
 | [com.intellij.php.debug.template.configurable](https://jb.gg/ipe?extensions=com.intellij.php.debug.template.configurable)      ![Internal](https://img.shields.io/badge/-Internal-darkred?style=flat-square) ![Project-Level](https://img.shields.io/badge/-Project--Level-blue?style=flat-square) |`PhpTemplateDebugConfigurable` |
 | [com.intellij.php.debug.templateLanguage](https://jb.gg/ipe?extensions=com.intellij.php.debug.templateLanguage)      ![Internal](https://img.shields.io/badge/-Internal-darkred?style=flat-square) |`PhpTemplateLanguagePathMapper` |
 | [com.intellij.php.typeProvider2](https://jb.gg/ipe?extensions=com.intellij.php.typeProvider2)      ![Deprecated](https://img.shields.io/badge/-Deprecated-lightgrey?style=flat-square) |`PhpTypeProvider2` |
-| [com.intellij.phpDeadCode](https://jb.gg/ipe?extensions=com.intellij.phpDeadCode)      |[EntryPoint](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/analysis-api/src/com/intellij/codeInspection/reference/EntryPoint.java) |
+| [com.intellij.phpDeadCode](https://jb.gg/ipe?extensions=com.intellij.phpDeadCode)      |[EntryPoint](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/analysis-api/src/com/intellij/codeInspection/reference/EntryPoint.java) |
 | [com.intellij.phpRunConfigurationExtension](https://jb.gg/ipe?extensions=com.intellij.phpRunConfigurationExtension)      |`PhpRunConfigurationExtension` |
 | [com.jetbrains.php.arrayShapesProvider](https://jb.gg/ipe?extensions=com.jetbrains.php.arrayShapesProvider)      |`PhpArrayShapesProvider` |
 | [com.jetbrains.php.baseLexerProvider](https://jb.gg/ipe?extensions=com.jetbrains.php.baseLexerProvider)      ![Internal](https://img.shields.io/badge/-Internal-darkred?style=flat-square) |`PhpBaseLexerProvider` |
@@ -112,6 +111,7 @@ See [Verifying Plugin Compatibility](verifying-plugin-compatibility.html) for ov
 | [com.jetbrains.php.customFunctionPredicate](https://jb.gg/ipe?extensions=com.jetbrains.php.customFunctionPredicate)      ![Internal](https://img.shields.io/badge/-Internal-darkred?style=flat-square) |`PhpCustomFunctionPredicateIndex` |
 | [com.jetbrains.php.customTemplatesNamesProvider](https://jb.gg/ipe?extensions=com.jetbrains.php.customTemplatesNamesProvider)      ![Experimental](https://img.shields.io/badge/-Experimental-violet?style=flat-square) |`PhpCustomTemplatesNamesProvider` |
 | [com.jetbrains.php.debug.mapping.localPathFixer](https://jb.gg/ipe?extensions=com.jetbrains.php.debug.mapping.localPathFixer)      |`PhpLocalPathFixer` |
+| [com.jetbrains.php.deploymentIntegration](https://jb.gg/ipe?extensions=com.jetbrains.php.deploymentIntegration)      ![Internal](https://img.shields.io/badge/-Internal-darkred?style=flat-square) |`PhpDeploymentIntegration` |
 | [com.jetbrains.php.deprecationFixesProvider](https://jb.gg/ipe?extensions=com.jetbrains.php.deprecationFixesProvider)      |`PhpDeprecationQuickFixesProvider` |
 | [com.jetbrains.php.deprecationProvider](https://jb.gg/ipe?extensions=com.jetbrains.php.deprecationProvider)      |`PhpDeprecationProvider` |
 | [com.jetbrains.php.dfaStateFromAssertionProvider](https://jb.gg/ipe?extensions=com.jetbrains.php.dfaStateFromAssertionProvider)      |`PhpDfaStateFromAssertionProvider` |
@@ -122,6 +122,7 @@ See [Verifying Plugin Compatibility](verifying-plugin-compatibility.html) for ov
 | [com.jetbrains.php.frameworkProjectConfigurableProvider](https://jb.gg/ipe?extensions=com.jetbrains.php.frameworkProjectConfigurableProvider)      |`PhpFrameworkConfigurableProvider` |
 | [com.jetbrains.php.frameworkUsageProvider](https://jb.gg/ipe?extensions=com.jetbrains.php.frameworkUsageProvider)      |`PhpFrameworkUsageProvider` |
 | [com.jetbrains.php.includedPathsContributor](https://jb.gg/ipe?extensions=com.jetbrains.php.includedPathsContributor)      |`PhpIncludedPathsContributor` |
+| [com.jetbrains.php.injectableLanguageProvider](https://jb.gg/ipe?extensions=com.jetbrains.php.injectableLanguageProvider)      ![Internal](https://img.shields.io/badge/-Internal-darkred?style=flat-square) |`PhpInjectableLanguageProvider` |
 | [com.jetbrains.php.injectionExternalFragmentSubstProvider](https://jb.gg/ipe?extensions=com.jetbrains.php.injectionExternalFragmentSubstProvider)      ![Project-Level](https://img.shields.io/badge/-Project--Level-blue?style=flat-square) |`PhpInjectionExternalFragmentSubstProvider` |
 | [com.jetbrains.php.keyTypeProvider](https://jb.gg/ipe?extensions=com.jetbrains.php.keyTypeProvider)      ![Internal](https://img.shields.io/badge/-Internal-darkred?style=flat-square) |`PhpKeyTypeProvider` |
 | [com.jetbrains.php.libraryRoot](https://jb.gg/ipe?extensions=com.jetbrains.php.libraryRoot)      ![Internal](https://img.shields.io/badge/-Internal-darkred?style=flat-square) |`PhpLibraryRootProvider` |
@@ -173,17 +174,18 @@ See [Verifying Plugin Compatibility](verifying-plugin-compatibility.html) for ov
 -----------------------------------
 | [com.intellij.php.docTagParserExtension](https://jb.gg/ipe?extensions=com.intellij.php.docTagParserExtension)      ![Internal](https://img.shields.io/badge/-Internal-darkred?style=flat-square) |`PhpDocTagParser` |
 
-### phpstorm-customization.xml
-
-| Extension Point |Implementation |
------------------------------------
-| [com.intellij.webcore.phpFrameworkExclusionProvider](https://jb.gg/ipe?extensions=com.intellij.webcore.phpFrameworkExclusionProvider)      ![Internal](https://img.shields.io/badge/-Internal-darkred?style=flat-square) |`PhpFrameworkExclusionProvider` |
-
-### phpstorm-remote-interpreter-plugin.xml
+### org.jetbrains.plugins.phpstorm-remote-interpreter
 
 | Extension Point |Implementation |
 -----------------------------------
 | [com.jetbrains.php.remote.interpreter.ui.customConfigProvider](https://jb.gg/ipe?extensions=com.jetbrains.php.remote.interpreter.ui.customConfigProvider)      |`PhpProjectConfigComponentProvider` |
 | [com.jetbrains.php.remote.phpHelperScriptProvider](https://jb.gg/ipe?extensions=com.jetbrains.php.remote.phpHelperScriptProvider)      |`PhpHelperScriptProvider` |
+| [com.jetbrains.php.remote.remoteProcessCoverageManager](https://jb.gg/ipe?extensions=com.jetbrains.php.remote.remoteProcessCoverageManager)      |`PhpRemoteProcessCoverageManager` |
 | [com.jetbrains.php.remote.remoteProcessManager](https://jb.gg/ipe?extensions=com.jetbrains.php.remote.remoteProcessManager)      |`PhpRemoteProcessManager` |
+
+### phpstorm-customization.xml
+
+| Extension Point |Implementation |
+-----------------------------------
+| [com.intellij.webcore.phpFrameworkExclusionProvider](https://jb.gg/ipe?extensions=com.intellij.webcore.phpFrameworkExclusionProvider)      ![Internal](https://img.shields.io/badge/-Internal-darkred?style=flat-square) |`PhpFrameworkExclusionProvider` |
 

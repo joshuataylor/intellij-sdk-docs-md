@@ -6,7 +6,7 @@
 
 Compared to [Swing JTextArea](https://docs.oracle.com/en/java/javase/24/docs/api/java.desktop/javax/swing/JTextArea.html), the IntelliJ Platform's editor component has a ton of advantages: syntax highlighting support, code completion, code folding, and much more.
 [Editors](editors.html) are normally displayed in editor tabs, but they can be embedded in dialogs or tool windows, too.
-This is enabled by the [EditorTextField](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/platform-impl/src/com/intellij/ui/EditorTextField.java) component.
+This is enabled by the [EditorTextField](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-impl/src/com/intellij/ui/EditorTextField.java) component.
 
 The following attributes can be specified:
 
@@ -16,35 +16,35 @@ The following attributes can be specified:
 
 * Whether the text field is single-line or multiline.
 
-Further customizations are possible by subclassing and overriding `createEditor()` and applying [EditorCustomization](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/platform-impl/src/com/intellij/ui/EditorCustomization.java).
+Further customizations are possible by subclassing and overriding `createEditor()` and applying [EditorCustomization](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-impl/src/com/intellij/ui/EditorCustomization.java).
 Several commonly needed customization implementations exist, including:
 
-* [SpellCheckingEditorCustomization](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/spellchecker/src/com/intellij/spellchecker/ui/SpellCheckingEditorCustomization.java) disables spellchecking
+* [SpellCheckingEditorCustomization](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/spellchecker/src/com/intellij/spellchecker/ui/SpellCheckingEditorCustomization.java) disables spellchecking
 
-* [HorizontalScrollBarEditorCustomization](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/platform-impl/src/com/intellij/ui/HorizontalScrollBarEditorCustomization.java) to turn on/off horizontal scrollbar
+* [HorizontalScrollBarEditorCustomization](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-impl/src/com/intellij/ui/HorizontalScrollBarEditorCustomization.java) to turn on/off horizontal scrollbar
 
-* [ErrorStripeEditorCustomization](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/platform-impl/src/com/intellij/ui/ErrorStripeEditorCustomization.java) to turn on/off error stripes on the right
+* [ErrorStripeEditorCustomization](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-impl/src/com/intellij/ui/ErrorStripeEditorCustomization.java) to turn on/off error stripes on the right
 
 `EditorTextField` has a number of subclasses that can be used as needed for additional features.
 
 If you want to use an editor as an input field in a dialog, then consider using
-[LanguageTextField](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/platform-impl/src/com/intellij/ui/LanguageTextField.java)
+[LanguageTextField](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-impl/src/com/intellij/ui/LanguageTextField.java)
 as it provides a more accessible API.
 
 ### Providing Completion
 
 If you want to add autocompletion to the editor, then use
-[TextFieldWithCompletion](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/platform-impl/src/com/intellij/util/textCompletion/TextFieldWithCompletion.java).
+[TextFieldWithCompletion](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-impl/src/com/intellij/util/textCompletion/TextFieldWithCompletion.java).
 The constructor takes as an argument a class that implements
-[TextCompletionProvider](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/platform-impl/src/com/intellij/util/textCompletion/TextCompletionProvider.java)
+[TextCompletionProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-impl/src/com/intellij/util/textCompletion/TextCompletionProvider.java)
 to provide autocompletion variants.
 Use
-[TextFieldCompletionProvider](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/lang-impl/src/com/intellij/util/TextFieldCompletionProvider.java)
+[TextFieldCompletionProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/lang-impl/src/com/intellij/util/TextFieldCompletionProvider.java)
 to create your own provider.
 For this, override `addCompletionVariants()` and add completion variants using `CompletionResultSet.addElement()`.
 
 See also
-[TextFieldCompletionProviderDumbAware](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/lang-impl/src/com/intellij/util/TextFieldCompletionProviderDumbAware.java)
+[TextFieldCompletionProviderDumbAware](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/lang-impl/src/com/intellij/util/TextFieldCompletionProviderDumbAware.java)
 for completion even at the indexing stage.
 
 See [Code Completion](code-completion.html) to learn more about completion.
@@ -58,11 +58,11 @@ If your plugin depends on Java functionality, see [Java](plugin-compatibility.ht
 A common use case for `EditorTextField` is entering the name of a Java class or package.
 This can be accomplished with the following steps:
 
-* Use [JavaCodeFragmentFactory.createReferenceCodeFragment()](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/java/java-psi-api/src/com/intellij/psi/JavaCodeFragmentFactory.java) to create a code fragment representing the class or package name;
+* Use [JavaCodeFragmentFactory.createReferenceCodeFragment()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/java/java-psi-api/src/com/intellij/psi/JavaCodeFragmentFactory.java) to create a code fragment representing the class or package name;
 
-* Call [PsiDocumentManager.getDocument()](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/psi/PsiDocumentManager.java) to get the document corresponding to the code fragment;
+* Call [PsiDocumentManager.getDocument()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/psi/PsiDocumentManager.java) to get the document corresponding to the code fragment;
 
-* Pass the returned document to the [EditorTextField](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/platform-impl/src/com/intellij/ui/EditorTextField.java) constructor or its `setDocument()` method.
+* Pass the returned document to the [EditorTextField](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-impl/src/com/intellij/ui/EditorTextField.java) constructor or its `setDocument()` method.
 
 ```JAVA
 PsiFile psiFile = PsiDocumentManager.getInstance(project)

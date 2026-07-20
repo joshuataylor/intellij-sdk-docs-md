@@ -10,7 +10,7 @@ The syntax and error highlighting are performed on multiple levels: [Lexer](#lex
 
 ## Text Attributes Key
 
-How a particular range of text should be highlighted is defined via [TextAttributesKey](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/openapi/editor/colors/TextAttributesKey.java).
+How a particular range of text should be highlighted is defined via [TextAttributesKey](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/editor/colors/TextAttributesKey.java).
 An instance of this class is created for every distinct type of item that should be highlighted (keyword, number, string literal, etc.).
 
 The `TextAttributesKey` defines the default attributes applied to items of the corresponding type (for example, keywords are bold, numbers are blue, string literals are bold and green).
@@ -24,8 +24,8 @@ The underlying `TextAttributeKey`'s external name for items in `Settings | Edito
 
 ## Color Settings
 
-The mapping of the `TextAttributesKey` to specific attributes used in an editor is defined by the [EditorColorsScheme](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/editor-ui-api/src/com/intellij/openapi/editor/colors/EditorColorsScheme.java) class.
-It can be configured by the user via `Settings | Editor | Color Scheme` by providing an implementation of [ColorSettingPage](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/platform-api/src/com/intellij/openapi/options/colors/ColorSettingsPage.java) registered
+The mapping of the `TextAttributesKey` to specific attributes used in an editor is defined by the [EditorColorsScheme](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/editor-ui-api/src/com/intellij/openapi/editor/colors/EditorColorsScheme.java) class.
+It can be configured by the user via `Settings | Editor | Color Scheme` by providing an implementation of [ColorSettingPage](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-api/src/com/intellij/openapi/options/colors/ColorSettingsPage.java) registered
 in [com.intellij.colorSettingsPage](https://jb.gg/ipe?extensions=com.intellij.colorSettingsPage) extension point
 .
 To look up the external name for a setting in the IDE, use [UI Inspector](internal-ui-inspector.html#inspecting-settings).
@@ -35,7 +35,7 @@ Thus, it will work automatically for custom languages that provide a syntax high
 
 Examples:
 
-* [ColorSettingsPage](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/plugins/properties/src/com/intellij/lang/properties/PropertiesColorsPage.java) for [Properties language plugin](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/plugins/properties)
+* [ColorSettingsPage](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/plugins/properties/src/com/intellij/lang/properties/PropertiesColorsPage.java) for [Properties language plugin](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/plugins/properties)
 
 * [Custom Language Support Tutorial: Color Settings Page](syntax-highlighter-and-color-settings-page.html)
 
@@ -45,39 +45,39 @@ See the note about Language Defaults and support for additional color schemes in
 
 ## Lexer
 
-The first syntax highlighting level is based on the lexer output and is provided through the [SyntaxHighlighter](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/editor-ui-api/src/com/intellij/openapi/fileTypes/SyntaxHighlighter.java) interface.
+The first syntax highlighting level is based on the lexer output and is provided through the [SyntaxHighlighter](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/editor-ui-api/src/com/intellij/openapi/fileTypes/SyntaxHighlighter.java) interface.
 The syntax highlighter returns the `TextAttributesKey` instances for each token type, which needs special highlighting.
-For highlighting lexer errors use [HighlighterColors.BAD_CHARACTER](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/openapi/editor/HighlighterColors.java).
+For highlighting lexer errors use [HighlighterColors.BAD_CHARACTER](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/editor/HighlighterColors.java).
 
 Examples:
 
-* [SyntaxHighlighter](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/plugins/properties/properties-psi-api/src/com/intellij/lang/properties/PropertiesHighlighter.java) implementation for [Properties language plugin](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/plugins/properties)
+* [SyntaxHighlighter](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/plugins/properties/properties-psi-api/src/com/intellij/lang/properties/PropertiesHighlighter.java) implementation for [Properties language plugin](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/plugins/properties)
 
 * [Custom Language Support Tutorial: Syntax Highlighter](syntax-highlighter-and-color-settings-page.html)
 
 Tip: Creating highlighted code sample
 
-Use [HtmlSyntaxInfoUtil](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/lang-impl/src/com/intellij/openapi/editor/richcopy/HtmlSyntaxInfoUtil.java) to create Lexer-based highlighted code samples, e.g., for usage in documentation.
+Use [HtmlSyntaxInfoUtil](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/lang-impl/src/com/intellij/openapi/editor/richcopy/HtmlSyntaxInfoUtil.java) to create Lexer-based highlighted code samples, e.g., for usage in documentation.
 
 ### Semantic Highlighting
 
 [Semantic highlighting](https://www.jetbrains.com/help/idea/configuring-colors-and-fonts.html#semantic-highlighting) provides an additional coloring layer to improve the visual distinction of several related items (e.g., method parameters, local variables).
 
-Register [RainbowVisitor](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/analysis-impl/src/com/intellij/codeInsight/daemon/RainbowVisitor.java)
+Register [RainbowVisitor](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/analysis-impl/src/com/intellij/codeInsight/daemon/RainbowVisitor.java)
 in [com.intellij.highlightVisitor](https://jb.gg/ipe?extensions=com.intellij.highlightVisitor) extension point
 .
-[Color Settings](#color-settings) must implement [RainbowColorSettingsPage](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/platform-api/src/com/intellij/openapi/options/colors/RainbowColorSettingsPage.java) in addition.
+[Color Settings](#color-settings) must implement [RainbowColorSettingsPage](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-api/src/com/intellij/openapi/options/colors/RainbowColorSettingsPage.java) in addition.
 
 ## Parser
 
 The second level of error highlighting happens during parsing.
-If, according to the grammar of the language, a particular sequence of tokens is invalid, the [PsiBuilder.error()](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/lang/PsiBuilder.java) method can highlight the invalid tokens and display an error message showing why they are not valid.
+If, according to the grammar of the language, a particular sequence of tokens is invalid, the [PsiBuilder.error()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/lang/PsiBuilder.java) method can highlight the invalid tokens and display an error message showing why they are not valid.
 
 See [Syntax Errors](syntax-errors.html) on how to programmatically suppress these errors in certain contexts.
 
 ## Annotator
 
-The third level of highlighting is performed through the [Annotator](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/analysis-api/src/com/intellij/lang/annotation/Annotator.java) interface.
+The third level of highlighting is performed through the [Annotator](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/analysis-api/src/com/intellij/lang/annotation/Annotator.java) interface.
 A plugin can register one or more annotators in the [com.intellij.annotator](https://jb.gg/ipe?extensions=com.intellij.annotator) extension point
 , and these annotators are called during the background highlighting pass to process the elements in the custom language's PSI tree.
 Attribute `language` should be set to the Language ID where this annotator applies to.
@@ -118,21 +118,21 @@ holder.newSilentAnnotation(HighlightSeverity.INFORMATION)
 
 Examples:
 
-* [Annotator](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/plugins/properties/properties-psi-impl/src/com/intellij/lang/properties/PropertiesAnnotator.java) for [Properties language plugin](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/plugins/properties)
+* [Annotator](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/plugins/properties/properties-psi-impl/src/com/intellij/lang/properties/PropertiesAnnotator.java) for [Properties language plugin](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/plugins/properties)
 
 * [Custom Language Support Tutorial: Annotator](annotator.html)
 
 ## External Annotator
 
 If the custom language employs external tools for validating files in the language (for example, using the Xerces library for XML schema validation),
-it can provide an implementation of the [ExternalAnnotator](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/analysis-api/src/com/intellij/lang/annotation/ExternalAnnotator.java) interface and register
+it can provide an implementation of the [ExternalAnnotator](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/analysis-api/src/com/intellij/lang/annotation/ExternalAnnotator.java) interface and register
 it in [com.intellij.externalAnnotator](https://jb.gg/ipe?extensions=com.intellij.externalAnnotator) extension point
 (`language` attribute must be specified).
 
 The `ExternalAnnotator` highlighting has the lowest priority and is invoked only after all other background processing has completed.
-It uses the same [AnnotationHolder](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/analysis-api/src/com/intellij/lang/annotation/AnnotationHolder.java) interface for converting the output of the external tool into editor highlighting.
+It uses the same [AnnotationHolder](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/analysis-api/src/com/intellij/lang/annotation/AnnotationHolder.java) interface for converting the output of the external tool into editor highlighting.
 
-To skip running specific `ExternalAnnotator` for a given file, register an [ExternalAnnotatorsFilter](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/analysis-api/src/com/intellij/lang/ExternalAnnotatorsFilter.java) extension
+To skip running specific `ExternalAnnotator` for a given file, register an [ExternalAnnotatorsFilter](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/analysis-api/src/com/intellij/lang/ExternalAnnotatorsFilter.java) extension
 in [com.intellij.daemon.externalAnnotatorsFilter](https://jb.gg/ipe?extensions=com.intellij.daemon.externalAnnotatorsFilter) extension point
 .
 
@@ -143,7 +143,7 @@ To enable running `ExternalAnnotator` during indexing in [dumb mode](indexing-an
 Existing highlighting can be suppressed programmatically in certain contexts, see [Controlling Highlighting](controlling-highlighting.html).
 
 To force re-highlighting all open or specific file(s) (e.g., after changing plugin-specific settings), use
-[DaemonCodeAnalyzer.restart()](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/analysis-api/src/com/intellij/codeInsight/daemon/DaemonCodeAnalyzer.java).
+[DaemonCodeAnalyzer.restart()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/analysis-api/src/com/intellij/codeInsight/daemon/DaemonCodeAnalyzer.java).
 
 ## Order of Running Highlighting
 

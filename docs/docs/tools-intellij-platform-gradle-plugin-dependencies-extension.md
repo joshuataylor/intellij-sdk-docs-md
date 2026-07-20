@@ -18,7 +18,7 @@ Example:
 
 * setup Maven Central and [defaultRepositories()](tools-intellij-platform-gradle-plugin-repositories-extension.html#default-repositories)
 
-* target IntelliJ IDEA 2026.1.4
+* target IntelliJ IDEA 2026.2
 
 * add dependency on the bundled Java plugin
 
@@ -41,7 +41,7 @@ repositories {
 
 dependencies {
   intellijPlatform {
-    intellijIdea("2026.1.4")
+    intellijIdea("2026.2")
 
     bundledPlugin("com.intellij.java")
 
@@ -68,7 +68,7 @@ repositories {
 
 dependencies {
   intellijPlatform {
-    intellijIdea '2026.1.4'
+    intellijIdea '2026.2'
 
     bundledPlugin 'com.intellij.java'
 
@@ -182,7 +182,7 @@ repositories {
 
 dependencies {
   intellijPlatform {
-    intellijIdea("2026.1.4")
+    intellijIdea("2026.2")
   }
 }
 ```
@@ -198,7 +198,7 @@ repositories {
 
 dependencies {
   intellijPlatform {
-    intellijIdea '2026.1.4'
+    intellijIdea '2026.2'
   }
 }
 ```
@@ -226,7 +226,7 @@ repositories {
 
 dependencies {
   intellijPlatform {
-    intellijIdea("2026.1.4") {
+    intellijIdea("2026.2") {
       useInstaller = false
     }
   }
@@ -244,7 +244,7 @@ repositories {
 
 dependencies {
   intellijPlatform {
-    intellijIdea("2026.1.4") {
+    intellijIdea("2026.2") {
       useInstaller = false
     }
   }

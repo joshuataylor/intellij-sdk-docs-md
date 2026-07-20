@@ -19,6 +19,9 @@ Note: IDE and Java Versions
 Java version must be set depending on the target
 [platform version](build-number-ranges.html#platformVersions).
 
+2026.2+
+: Java 25
+
 2024.2+
 : Java 21
 
@@ -338,7 +341,7 @@ Add implementation for `com.intellij.openapi.fileEditor.FileEditor.getFile()`
 
 JSON Widget suppressor [com.intellij.json.jsonWidgetSuppressor](https://jb.gg/ipe?extensions=com.intellij.json.jsonWidgetSuppressor) extension point
 
-: Override new method [JsonWidgetSuppressor.isCandidateForSuppress(VirtualFile, Project)](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/json/backend/src/com/jetbrains/jsonSchema/extension/JsonWidgetSuppressor.java) for quick check in [EDT](threading-model.html) before `suppressSwitcherWidget()` is called on a background thread.
+: Override new method [JsonWidgetSuppressor.isCandidateForSuppress(VirtualFile, Project)](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/json/backend/src/com/jetbrains/jsonSchema/extension/JsonWidgetSuppressor.java) for quick check in [EDT](threading-model.html) before `suppressSwitcherWidget()` is called on a background thread.
 
 ### HTTP Client Plugin 2021.1
 

@@ -100,7 +100,7 @@ The RPC interface must:
 
 * be annotated with `@Rpc`
 
-* implement [RemoteApi&lt;Unit&gt;](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/fleet/rpc/srcCommonMain/fleet/rpc/FleetApi.kt)
+* implement [RemoteApi&lt;Unit&gt;](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/fleet/rpc/srcCommonMain/fleet/rpc/FleetApi.kt)
 
 * have only `suspend` functions
 
@@ -130,7 +130,7 @@ In some cases, however, it is required to initiate some UI display from within t
 For example, a long backend process may want to show a notification after it finishes.
 Consider using the Remote Topic API in such cases:
 
-* Declare a project- or application-level topic in the shared plugin module by using the [ProjectRemoteTopic](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/remote-topics/shared/src/com/intellij/platform/rpc/topics/ProjectRemoteTopic.kt) or [ApplicationRemoteTopic](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/remote-topics/shared/src/com/intellij/platform/rpc/topics/ApplicationRemoteTopic.kt), respectively
+* Declare a project- or application-level topic in the shared plugin module by using the [ProjectRemoteTopic](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/remote-topics/shared/src/com/intellij/platform/rpc/topics/ProjectRemoteTopic.kt) or [ApplicationRemoteTopic](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/remote-topics/shared/src/com/intellij/platform/rpc/topics/ApplicationRemoteTopic.kt), respectively
 
 * Subscribe to the topic in the frontend plugin module via the [com.intellij.platform.rpc.applicationRemoteTopicListener](https://jb.gg/ipe?extensions=com.intellij.platform.rpc.applicationRemoteTopicListener) extension point – code to display the desired notification can be invoked here
 
@@ -156,7 +156,7 @@ The code is valid from the point of view of this guide, and the feature works as
 Now that the general functionality works as expected, consider reviewing the list of frequently occurring problems and suggested solutions for them.
 Necessity of tuning the code depends on the specifics of the feature.
 
-1. Handle reconnection: wrap RPC calls in [durable {}](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/fleet/rpc/srcCommonMain/fleet/rpc/client/Durable.kt); this wrapper will restart the call if a network error occurs.
+1. Handle reconnection: wrap RPC calls in [durable {}](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/fleet/rpc/srcCommonMain/fleet/rpc/client/Durable.kt); this wrapper will restart the call if a network error occurs.
 Be careful with any side effects your code inside the durable block produces – ideally, avoid them.
 Example: [RecentFileModelSynchronizer.kt](https://github.com/JetBrains/intellij-community/blob/1c3952828ff3af2d18f99a6721c48bb22f97bd57/platform/recentFiles/frontend/src/com/intellij/platform/recentFiles/frontend/model/RecentFileModelSynchronizer.kt)
 
@@ -171,7 +171,7 @@ If the frontend action decides to touch backend entities in the `AnAction.action
 
 3. (advanced) In some complicated cases, the `action.update()` method might require both frontend and backend entities to be available simultaneously.
 Such cases must be addressed individually depending on a specific feature description.
-There are examples of shared, eventually synchronized state implementations in the IntelliJ Platform codebase, for example, in the [Recent Files implementation](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/recentFiles).
+There are examples of shared, eventually synchronized state implementations in the IntelliJ Platform codebase, for example, in the [Recent Files implementation](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/recentFiles).
 There, an eventually consistent mutable shared state is implemented to make it possible to access the data model on both the frontend and the backend with no RPC calls required for access.
 
 4. Consider approaching us on the [JetBrains Platform Forum](https://platform.jetbrains.com) to discuss what could be done in your specific case.

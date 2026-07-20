@@ -34,7 +34,7 @@ A good ID completes this phrase: "Notifications in this group tell the user abou
 
 ## Timeline notification
 
-Next, create a new [Notification](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/ide-core/src/com/intellij/notification/Notifications.java) instance.
+Next, create a new [Notification](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/ide-core/src/com/intellij/notification/Notifications.java) instance.
 The constructor takes three arguments:
 
 1. Notification group ID
@@ -66,7 +66,7 @@ See [Notifications Product Help](https://www.jetbrains.com/help/idea/notificatio
 ## Notification Icons
 
 Customize the notification icon according to [message severity](balloon.html#message-severity).
-Use the constants from [NotificationType](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/ide-core/src/com/intellij/notification/NotificationType.java).
+Use the constants from [NotificationType](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/ide-core/src/com/intellij/notification/NotificationType.java).
 
 1. Generic information: `INFORMATION`.
 

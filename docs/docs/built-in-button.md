@@ -6,7 +6,7 @@ A built-in button is an icon placed inside an input control.
 
 ### Implementation
 
-To place a button inside a text field, use [ExtendableTextField](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/platform-api/src/com/intellij/ui/components/fields/ExtendableTextField.java) and
+To place a button inside a text field, use [ExtendableTextField](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-api/src/com/intellij/ui/components/fields/ExtendableTextField.java) and
 its `addExtension()` method.
 
 ## When to use

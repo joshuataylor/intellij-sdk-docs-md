@@ -1,7 +1,7 @@
 # Split Icon Button
 
 <tldr>
-Implementation: [SplitButtonAction](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/platform-impl/src/com/intellij/openapi/actionSystem/SplitButtonAction.java)
+Implementation: [SplitButtonAction](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-impl/src/com/intellij/openapi/actionSystem/SplitButtonAction.java)
 </tldr>
 
 A split icon button appears on a horizontal [toolbar](toolbar.html) and consists of two parts: the main icon and a triangle icon for the action list.

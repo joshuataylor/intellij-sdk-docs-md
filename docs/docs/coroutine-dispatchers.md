@@ -59,7 +59,7 @@ suspend fun readDataFromFile(): Data {
 
 ## EDT Dispatcher
 
-The [Dispatchers.EDT](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/openapi/application/coroutines.kt) dispatcher is used for executing UI actions on the Swing Event Dispatch Thread.
+The [Dispatchers.EDT](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/application/coroutines.kt) dispatcher is used for executing UI actions on the Swing Event Dispatch Thread.
 `Dispatchers.EDT` dispatches onto EDT within the context [modality state](threading-model.html#invoking-operations-on-edt-and-modality).
 
 ### 

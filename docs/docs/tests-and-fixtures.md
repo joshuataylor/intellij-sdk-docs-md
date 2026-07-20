@@ -18,8 +18,8 @@ Tip: Configuring Test Frameworks (2024.2+)
 
 All required [test-framework dependencies](tools-intellij-platform-gradle-plugin-dependencies-extension.html#testing) must be declared explicitly.
 
-With the former approach, you can use classes such as [BasePlatformTestCase](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/testFramework/src/com/intellij/testFramework/fixtures/BasePlatformTestCase.java).
+With the former approach, you can use classes such as [BasePlatformTestCase](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/testFramework/src/com/intellij/testFramework/fixtures/BasePlatformTestCase.java).
 
-With the latter approach, you use the [IdeaTestFixtureFactory](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/testFramework/src/com/intellij/testFramework/fixtures/IdeaTestFixtureFactory.java) class to create instances of fixtures for the test environment.
+With the latter approach, you use the [IdeaTestFixtureFactory](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/testFramework/src/com/intellij/testFramework/fixtures/IdeaTestFixtureFactory.java) class to create instances of fixtures for the test environment.
 You need to call the fixture creation and setup methods from the test setup method used by your test framework.
 

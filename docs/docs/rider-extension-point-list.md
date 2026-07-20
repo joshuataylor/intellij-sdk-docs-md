@@ -10,7 +10,7 @@ Tip:
 
 See [IntelliJ Platform Extension Point and Listener List](intellij-platform-extension-point-list.html) for IntelliJ Platform.
 
-160 Extension Points and 9 Listeners
+168 Extension Points and 10 Listeners
 
 ## Legend
 
@@ -49,8 +49,8 @@ See [Verifying Plugin Compatibility](verifying-plugin-compatibility.html) for ov
 | ![Obsolete](https://img.shields.io/badge/-Obsolete-grey?style=flat-square)                          |Obsolete API |Annotated with [@ApiStatus.Obsolete](https://github.com/JetBrains/java-annotations/tree/24.0.0/common/src/main/java/org/jetbrains/annotations/ApiStatus.java).                             Do not use in new code, see code documentation for replacement.   |
 | ![Experimental API](https://img.shields.io/badge/-Experimental-violet?style=flat-square)                               |Experimental API |Annotated with [@ApiStatus.Experimental](https://github.com/JetBrains/java-annotations/tree/24.0.0/common/src/main/java/org/jetbrains/annotations/ApiStatus.java).                             API might be altered or removed without prior notice.   |
 | ![Internal API](https://img.shields.io/badge/-Internal-darkred?style=flat-square) |Internal API |Annotated with [@ApiStatus.Internal](https://github.com/JetBrains/java-annotations/tree/24.0.0/common/src/main/java/org/jetbrains/annotations/ApiStatus.java).                             Must not be used by third party plugins, see [Internal API Migration](api-internal.html).   |
-| ![Project-Level](https://img.shields.io/badge/-Project--Level-blue?style=flat-square) |Project-LevelExtension Point/Topic   |Can have [Project](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/openapi/project/Project.java)                             as constructor parameter.                               - Extension Point: declared with `area="IDEA_PROJECT"`                               - Listener: registered in [&lt;projectListeners&gt;](plugin-configuration-file.html#idea-plugin__projectListeners)                                |
-| ![DumbAware](https://img.shields.io/badge/-DumbAware-darkgreen?style=flat-square) |`DumbAware`                             Extension Point   |Implementations marked with [DumbAware](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/core-api/src/com/intellij/openapi/project/DumbAware.java)                             will be processed during [dumb                                 mode](indexing-and-psi-stubs.html#dumb-mode).                          |
+| ![Project-Level](https://img.shields.io/badge/-Project--Level-blue?style=flat-square) |Project-LevelExtension Point/Topic   |Can have [Project](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/project/Project.java)                             as constructor parameter.                               - Extension Point: declared with `area="IDEA_PROJECT"`                               - Listener: registered in [&lt;projectListeners&gt;](plugin-configuration-file.html#idea-plugin__projectListeners)                                |
+| ![DumbAware](https://img.shields.io/badge/-DumbAware-darkgreen?style=flat-square) |`DumbAware`                             Extension Point   |Implementations marked with [DumbAware](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/project/DumbAware.java)                             will be processed during [dumb                                 mode](indexing-and-psi-stubs.html#dumb-mode).                          |
 | ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |Non-DynamicExtension Point   |Installation/update of plugin requires restarting the IDE, see [Dynamic Plugins](dynamic-plugins.html).                          |
 
 ## Rider
@@ -59,11 +59,12 @@ See [Verifying Plugin Compatibility](verifying-plugin-compatibility.html) for ov
 
 | Topic |Listener |
 -------------------
-| [RiderStyleCopConfigurable#STYLE_COP_CONFIGURABLE_TOPIC](https://jb.gg/ipe/listeners?topics=com.intellij.application.options.editor.EditorOptionsListener) |[EditorOptionsListener](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/platform-impl/src/com/intellij/application/options/editor/EditorOptionsListener.java) |
+| [RiderStyleCopConfigurable#STYLE_COP_CONFIGURABLE_TOPIC](https://jb.gg/ipe/listeners?topics=com.intellij.application.options.editor.EditorOptionsListener) |[EditorOptionsListener](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-impl/src/com/intellij/application/options/editor/EditorOptionsListener.java) |
+| [AzuriteSessionListener.Companion#TOPIC](https://jb.gg/ipe/listeners?topics=com.jetbrains.rider.azureFunctions.azurite.services.AzuriteSessionListener) |`AzuriteSessionListener` |
 | [SSHCredentialsInClipboardNotifier.Companion#SSH_CREDENTIALS_IN_CLIPBOARD_TOPIC](https://jb.gg/ipe/listeners?topics=com.jetbrains.rider.debugger.attach.remoting.SSHCredentialsInClipboardNotifier) |`SSHCredentialsInClipboardNotifier` |
 | [DotnetDebuggerSymbolsLoadedListener.Companion#TOPIC](https://jb.gg/ipe/listeners?topics=com.jetbrains.rider.debugger.modulesView.actions.DotnetDebuggerSymbolsLoadedListener) |`DotnetDebuggerSymbolsLoadedListener` |
 | [FrontendTypedHandlerManager#BEFORE_TYPING_SENT](https://jb.gg/ipe/listeners?topics=com.jetbrains.rider.editorActions.IFrontendTypingListener) |`IFrontendTypingListener` |
-| [RiderDockerDeploymentListener.Companion#TOPIC](https://jb.gg/ipe/listeners?topics=com.jetbrains.rider.plugins.appender.docker.deployment.RiderDockerDeploymentListener) |`RiderDockerDeploymentListener` |
+| [Tracker.Companion#TOPIC](https://jb.gg/ipe/listeners?topics=com.jetbrains.rider.ideaInterop.vfs.VfsWarmQueue.Tracker) |`Tracker` |
 | [AutoAttachDebuggerListener.Companion#TOPIC](https://jb.gg/ipe/listeners?topics=com.jetbrains.rider.run.AutoAttachDebuggerListener) |`AutoAttachDebuggerListener` |
 | [PublishConfigurationValidationListener.Companion#TOPIC](https://jb.gg/ipe/listeners?topics=com.jetbrains.rider.run.configurations.publishing.PublishConfigurationValidationListener) |`PublishConfigurationValidationListener` |
 | [MSBuildEvaluationListener.Companion#TOPIC](https://jb.gg/ipe/listeners?topics=com.jetbrains.rider.run.environment.MSBuildEvaluationListener) |`MSBuildEvaluationListener` |
@@ -115,6 +116,14 @@ See [Verifying Plugin Compatibility](verifying-plugin-compatibility.html) for ov
 | Extension Point |Implementation |
 -----------------------------------
 | [com.intellij.rider.debugger.filters.provider](https://jb.gg/ipe?extensions=com.intellij.rider.debugger.filters.provider)      |`RiderDebuggerFiltersProvider` |
+| [com.intellij.rider.debugger.link.provider](https://jb.gg/ipe?extensions=com.intellij.rider.debugger.link.provider)      |`RiderDebuggerLinkProvider` |
+
+### intellij.rider.dotnet.exception.reporter.xml
+
+| Extension Point |Implementation |
+-----------------------------------
+| [com.intellij.rider.credentials.provider](https://jb.gg/ipe?extensions=com.intellij.rider.credentials.provider)      |`ICredentialsProvider` |
+| [com.intellij.rider.exception.reporter.additional.info](https://jb.gg/ipe?extensions=com.intellij.rider.exception.reporter.additional.info)      ![Internal](https://img.shields.io/badge/-Internal-darkred?style=flat-square) |`RiderExceptionReporterAdditionalInfo` |
 
 ### intellij.rider.plugins.appender.database.xml
 
@@ -184,7 +193,6 @@ See [Verifying Plugin Compatibility](verifying-plugin-compatibility.html) for ov
 | [com.intellij.rider.backendCrashAnalyser](https://jb.gg/ipe?extensions=com.intellij.rider.backendCrashAnalyser)      |`BackendCrashAnalyzer` |
 | [com.intellij.rider.backendLogXmlPathProvider](https://jb.gg/ipe?extensions=com.intellij.rider.backendLogXmlPathProvider)      |`RiderCustomBackendLogXmlPathProvider` |
 | [com.intellij.rider.codeStyleContentConverter](https://jb.gg/ipe?extensions=com.intellij.rider.codeStyleContentConverter)      |`RiderCodeStyleContentPageConverter` |
-| [com.intellij.rider.credentials.provider](https://jb.gg/ipe?extensions=com.intellij.rider.credentials.provider)      |`ICredentialsProvider` |
 | [com.intellij.rider.customNonSolutionRootsPredicate](https://jb.gg/ipe?extensions=com.intellij.rider.customNonSolutionRootsPredicate)      |`CustomNonSolutionRootsPredicate` |
 | [com.intellij.rider.documentBehaviour](https://jb.gg/ipe?extensions=com.intellij.rider.documentBehaviour)      |`RiderDocumentBehaviour` |
 | [com.intellij.rider.editors.customBackendLanguageSupport](https://jb.gg/ipe?extensions=com.intellij.rider.editors.customBackendLanguageSupport)      |`RiderCustomBackendLanguageSupport` |
@@ -212,6 +220,12 @@ See [Verifying Plugin Compatibility](verifying-plugin-compatibility.html) for ov
 -----------------------------------
 | [com.intellij.rider.rdclient.breakingWorkflowChangeInterceptor](https://jb.gg/ipe?extensions=com.intellij.rider.rdclient.breakingWorkflowChangeInterceptor)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) ![Experimental](https://img.shields.io/badge/-Experimental-violet?style=flat-square) ![Internal](https://img.shields.io/badge/-Internal-darkred?style=flat-square) |`RiderBreakingWorkflowChangeInterceptor` |
 
+### intellij.rider.ssh.remoteMac.xml
+
+| Extension Point |Implementation |
+-----------------------------------
+| [com.intellij.rider.multiplatform.remoteConfiguratorStep](https://jb.gg/ipe?extensions=com.intellij.rider.multiplatform.remoteConfiguratorStep)      |`ConfiguratorStep` |
+
 ### RiderDebugger.xml
 
 | Extension Point |Implementation |
@@ -219,6 +233,7 @@ See [Verifying Plugin Compatibility](verifying-plugin-compatibility.html) for ov
 | [com.intellij.dotNetHotReloadFileTypeProvider](https://jb.gg/ipe?extensions=com.intellij.dotNetHotReloadFileTypeProvider)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`DotNetHotReloadFileTypeProvider` |
 | [com.intellij.rider.debugger.evaluation.advice](https://jb.gg/ipe?extensions=com.intellij.rider.debugger.evaluation.advice)      |`DebugEvalAdviceProvider` |
 | [com.intellij.rider.debugger.remote.additionalFilesProvider](https://jb.gg/ipe?extensions=com.intellij.rider.debugger.remote.additionalFilesProvider)      |`AdditionalRemoteDebuggerFilesProvider` |
+| [com.intellij.rider.debugger.remoteAttachSupport](https://jb.gg/ipe?extensions=com.intellij.rider.debugger.remoteAttachSupport)      |`RiderRemoteAttachSupport` |
 
 ### RiderExtensionPoints.xml
 
@@ -238,7 +253,7 @@ See [Verifying Plugin Compatibility](verifying-plugin-compatibility.html) for ov
 | [com.intellij.rider.action.technical.support.info.provider](https://jb.gg/ipe?extensions=com.intellij.rider.action.technical.support.info.provider)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`RiderTechnicalSupportInfoProvider` |
 | [com.intellij.rider.breakpoint.customPanelProvider](https://jb.gg/ipe?extensions=com.intellij.rider.breakpoint.customPanelProvider)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`IDotNetLineBreakpointCustomPanelsProvider` |
 | [com.intellij.rider.breakpoint.customPopupActionsProvider](https://jb.gg/ipe?extensions=com.intellij.rider.breakpoint.customPopupActionsProvider)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`IDotNetLineBreakpointPopupActionsProvider` |
-| [com.intellij.rider.build.riderBuildConsoleDecorator](https://jb.gg/ipe?extensions=com.intellij.rider.build.riderBuildConsoleDecorator)      ![Project-Level](https://img.shields.io/badge/-Project--Level-blue?style=flat-square) |`RiderBuildConsoleDecorator` |
+| [com.intellij.rider.build.riderBuildErrorExplainService](https://jb.gg/ipe?extensions=com.intellij.rider.build.riderBuildErrorExplainService)      ![Project-Level](https://img.shields.io/badge/-Project--Level-blue?style=flat-square) |`RiderBuildErrorExplainService` |
 | [com.intellij.rider.buildButtonModeProvider](https://jb.gg/ipe?extensions=com.intellij.rider.buildButtonModeProvider)      |`BuildButtonModeProvider` |
 | [com.intellij.rider.codeLens.vcsDeclarationRangesProvider](https://jb.gg/ipe?extensions=com.intellij.rider.codeLens.vcsDeclarationRangesProvider)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`VcsDeclarationRangesProvider` |
 | [com.intellij.rider.completion.csharpIdentifierPartHelper](https://jb.gg/ipe?extensions=com.intellij.rider.completion.csharpIdentifierPartHelper)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) ![Project-Level](https://img.shields.io/badge/-Project--Level-blue?style=flat-square) |`CSharpIdentifierPartHelper` |
@@ -249,7 +264,6 @@ See [Verifying Plugin Compatibility](verifying-plugin-compatibility.html) for ov
 | [com.intellij.rider.contributedLanguageElementNameCrawler](https://jb.gg/ipe?extensions=com.intellij.rider.contributedLanguageElementNameCrawler)      |`RiderContributedLanguageElementNameCrawler` |
 | [com.intellij.rider.debug.breakpoint.handler.factory](https://jb.gg/ipe?extensions=com.intellij.rider.debug.breakpoint.handler.factory)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`IDotNetSupportedBreakpointHandlerFactory` |
 | [com.intellij.rider.debugger.editAndContinue.dotNetEncInfoAutodetect](https://jb.gg/ipe?extensions=com.intellij.rider.debugger.editAndContinue.dotNetEncInfoAutodetect)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) ![Project-Level](https://img.shields.io/badge/-Project--Level-blue?style=flat-square) |`DotNetEncInfoAutodetect` |
-| [com.intellij.rider.debugger.link.provider](https://jb.gg/ipe?extensions=com.intellij.rider.debugger.link.provider)      |`RiderDebuggerLinkProvider` |
 | [com.intellij.rider.debugger.value.presenter](https://jb.gg/ipe?extensions=com.intellij.rider.debugger.value.presenter)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`RiderDebuggerValuePresenter` |
 | [com.intellij.rider.debuggerSupportPolicy](https://jb.gg/ipe?extensions=com.intellij.rider.debuggerSupportPolicy)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`RiderDebuggerSupportPolicy` |
 | [com.intellij.rider.editSourceSuppressor](https://jb.gg/ipe?extensions=com.intellij.rider.editSourceSuppressor)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`RiderEditSourceSuppressor` |
@@ -258,6 +272,10 @@ See [Verifying Plugin Compatibility](verifying-plugin-compatibility.html) for ov
 | [com.intellij.rider.fileTemplating.postCreateAction](https://jb.gg/ipe?extensions=com.intellij.rider.fileTemplating.postCreateAction)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) ![Project-Level](https://img.shields.io/badge/-Project--Level-blue?style=flat-square) |`RiderNewFileFromTemplateExtension` |
 | [com.intellij.rider.filesIndexingRuleProvider](https://jb.gg/ipe?extensions=com.intellij.rider.filesIndexingRuleProvider)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`RiderFilesIndexingRuleProvider` |
 | [com.intellij.rider.findPopupProjectScopeProvider](https://jb.gg/ipe?extensions=com.intellij.rider.findPopupProjectScopeProvider)      |`FindPopupProjectScopeProvider` |
+| [com.intellij.rider.gameEngineAssetIndexProvider](https://jb.gg/ipe?extensions=com.intellij.rider.gameEngineAssetIndexProvider)      ![Project-Level](https://img.shields.io/badge/-Project--Level-blue?style=flat-square) |`IGameEngineAssetIndexProvider` |
+| [com.intellij.rider.gameEngineSceneProvider](https://jb.gg/ipe?extensions=com.intellij.rider.gameEngineSceneProvider)      ![Project-Level](https://img.shields.io/badge/-Project--Level-blue?style=flat-square) |`IGameEngineSceneProvider` |
+| [com.intellij.rider.gameEngineScreenshotProvider](https://jb.gg/ipe?extensions=com.intellij.rider.gameEngineScreenshotProvider)      ![Project-Level](https://img.shields.io/badge/-Project--Level-blue?style=flat-square) |`IGameEngineScreenshotProvider` |
+| [com.intellij.rider.gameEngineViewportCameraProvider](https://jb.gg/ipe?extensions=com.intellij.rider.gameEngineViewportCameraProvider)      ![Project-Level](https://img.shields.io/badge/-Project--Level-blue?style=flat-square) |`IGameEngineViewportCameraProvider` |
 | [com.intellij.rider.godotDetector](https://jb.gg/ipe?extensions=com.intellij.rider.godotDetector)      |`GodotDetector` |
 | [com.intellij.rider.gotoCustomizer](https://jb.gg/ipe?extensions=com.intellij.rider.gotoCustomizer)      |`GotoCustomizer` |
 | [com.intellij.rider.guidPresenter](https://jb.gg/ipe?extensions=com.intellij.rider.guidPresenter)      ![Project-Level](https://img.shields.io/badge/-Project--Level-blue?style=flat-square) |`GuidGeneratorPresenter` |
@@ -268,8 +286,10 @@ See [Verifying Plugin Compatibility](verifying-plugin-compatibility.html) for ov
 | [com.intellij.rider.pencils.inspectionToolGroup](https://jb.gg/ipe?extensions=com.intellij.rider.pencils.inspectionToolGroup)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`n/a` |
 | [com.intellij.rider.pencils.pencilsFilterGroup](https://jb.gg/ipe?extensions=com.intellij.rider.pencils.pencilsFilterGroup)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`n/a` |
 | [com.intellij.rider.problemsView.actionsHandler](https://jb.gg/ipe?extensions=com.intellij.rider.problemsView.actionsHandler)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`RiderProblemsViewActionsHandler` |
+| [com.intellij.rider.problemsView.problemTypeContributor](https://jb.gg/ipe?extensions=com.intellij.rider.problemsView.problemTypeContributor)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`RiderProblemsViewTypeUiProvider` |
 | [com.intellij.rider.problemsView.problems.notifier](https://jb.gg/ipe?extensions=com.intellij.rider.problemsView.problems.notifier)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`ProblemsViewNotifier` |
 | [com.intellij.rider.problemsView.problems.processor](https://jb.gg/ipe?extensions=com.intellij.rider.problemsView.problems.processor)      |`RiderProblemsDiffProcessor` |
+| [com.intellij.rider.problemsView.safeCode.inspectionProblemContributor](https://jb.gg/ipe?extensions=com.intellij.rider.problemsView.safeCode.inspectionProblemContributor)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`RiderSafeCodeInspectionProblemContributor` |
 | [com.intellij.rider.publish.publishSettingsProvider](https://jb.gg/ipe?extensions=com.intellij.rider.publish.publishSettingsProvider)      ![Project-Level](https://img.shields.io/badge/-Project--Level-blue?style=flat-square) |`IPublishRuntimeCoreSettingsProvider` |
 | [com.intellij.rider.publishConfigurationProvider](https://jb.gg/ipe?extensions=com.intellij.rider.publishConfigurationProvider)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`RiderContextPublishProvider` |
 | [com.intellij.rider.reader.mode.matcher](https://jb.gg/ipe?extensions=com.intellij.rider.reader.mode.matcher)      |`RiderCustomReaderModeMatcher` |
@@ -286,12 +306,12 @@ See [Verifying Plugin Compatibility](verifying-plugin-compatibility.html) for ov
 | [com.intellij.rider.run.configurations.project](https://jb.gg/ipe?extensions=com.intellij.rider.run.configurations.project)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) ![Project-Level](https://img.shields.io/badge/-Project--Level-blue?style=flat-square) |`DotNetProjectConfigurationExtension` |
 | [com.intellij.rider.run.configurations.riderCoreDumpConfigurationProvider](https://jb.gg/ipe?extensions=com.intellij.rider.run.configurations.riderCoreDumpConfigurationProvider)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`RiderCoreDumpConfigurationProvider` |
 | [com.intellij.rider.run.configurations.uwp](https://jb.gg/ipe?extensions=com.intellij.rider.run.configurations.uwp)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) ![Project-Level](https://img.shields.io/badge/-Project--Level-blue?style=flat-square) |`UwpConfigurationExtension` |
-| [com.intellij.rider.run.dotNetProfileConsoleViewProvider](https://jb.gg/ipe?extensions=com.intellij.rider.run.dotNetProfileConsoleViewProvider)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`DotNetProfileConsoleViewProviderExtension` |
 | [com.intellij.rider.runToPopupShowPolicy](https://jb.gg/ipe?extensions=com.intellij.rider.runToPopupShowPolicy)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) ![Project-Level](https://img.shields.io/badge/-Project--Level-blue?style=flat-square) |`RiderRunToPopupShowPolicy` |
 | [com.intellij.rider.runWidgetSuspenderExtension](https://jb.gg/ipe?extensions=com.intellij.rider.runWidgetSuspenderExtension)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) ![Project-Level](https://img.shields.io/badge/-Project--Level-blue?style=flat-square) |`RunWidgetSuspenderExtension` |
 | [com.intellij.rider.runtime.dotNetRuntimeAutodetect](https://jb.gg/ipe?extensions=com.intellij.rider.runtime.dotNetRuntimeAutodetect)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) ![Project-Level](https://img.shields.io/badge/-Project--Level-blue?style=flat-square) |`DotNetRuntimeAutodetect` |
 | [com.intellij.rider.solutionConfigurationPresenter](https://jb.gg/ipe?extensions=com.intellij.rider.solutionConfigurationPresenter)      |`SolutionConfigurationPresenter` |
 | [com.intellij.rider.solutionConfigurationToolbarCustomizer](https://jb.gg/ipe?extensions=com.intellij.rider.solutionConfigurationToolbarCustomizer)      |`SolutionConfigurationToolbarCustomizer` |
+| [com.intellij.rider.ui.toolwindow.contentProvider](https://jb.gg/ipe?extensions=com.intellij.rider.ui.toolwindow.contentProvider)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) ![Internal](https://img.shields.io/badge/-Internal-darkred?style=flat-square) |`RiderToolWindowContentProviderExtension` |
 | [com.intellij.rider.unitTesting.actionsProvider](https://jb.gg/ipe?extensions=com.intellij.rider.unitTesting.actionsProvider)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) ![Project-Level](https://img.shields.io/badge/-Project--Level-blue?style=flat-square) |`RiderUnitTestActionsProvider` |
 | [com.intellij.rider.unitTesting.sessionHandler](https://jb.gg/ipe?extensions=com.intellij.rider.unitTesting.sessionHandler)      ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |`IRiderUnitTestDebuggerSessionsHandler` |
 | [com.intellij.rider.unityDetector](https://jb.gg/ipe?extensions=com.intellij.rider.unityDetector)      ![Project-Level](https://img.shields.io/badge/-Project--Level-blue?style=flat-square) |`UnityDetector` |
@@ -311,7 +331,6 @@ See [Verifying Plugin Compatibility](verifying-plugin-compatibility.html) for ov
 | Extension Point |Implementation |
 -----------------------------------
 | [com.intellij.rider.android.ndk.provider](https://jb.gg/ipe?extensions=com.intellij.rider.android.ndk.provider)      |`AndroidNdkPathProvider` |
-| [com.intellij.rider.multiplatform.remoteConfiguratorStep](https://jb.gg/ipe?extensions=com.intellij.rider.multiplatform.remoteConfiguratorStep)      |`ConfiguratorStep` |
 | [com.intellij.rider.runConfigurationHandler](https://jb.gg/ipe?extensions=com.intellij.rider.runConfigurationHandler)      |`RunConfigurationHandlerBase` |
 
 ### RiderNuGet.xml

@@ -4,7 +4,7 @@ The Credentials Store API allows you to store sensitive user data securely, like
 
 ## How to Use
 
-Use [PasswordSafe](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/credential-store/src/ide/passwordSafe/PasswordSafe.kt) to work with credentials.
+Use [PasswordSafe](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/credential-store/src/ide/passwordSafe/PasswordSafe.kt) to work with credentials.
 
 Common Utility Method:
 
@@ -26,7 +26,7 @@ private CredentialAttributes createCredentialAttributes(String key) {
 }
 ```
 
-The [generateServiceName()](https://github.com/JetBrains/intellij-community/tree/idea/261.26222.65/platform/credential-store/src/credentialStore/CredentialAttributes.kt) function helps name credentials in a consistent way so that they can be easily recognized in password managers and when users are asked to allow the IDE to access a secret.
+The [generateServiceName()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/credential-store/src/credentialStore/CredentialAttributes.kt) function helps name credentials in a consistent way so that they can be easily recognized in password managers and when users are asked to allow the IDE to access a secret.
 Consider passing a subsystem name that identifies the plugin or its area of functionality, and a key that identifies the specific secret (for example, account name for password, server name for access token, etc.).
 Examples:
 
