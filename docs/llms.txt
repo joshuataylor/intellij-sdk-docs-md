@@ -53560,13 +53560,15 @@ and visit
 The following pages list the notable changes in IDE and plugin releases with required/recommended steps to take by plugin authors.
 Plugin authors are encouraged to verify their compatible releases and take advantage of the latest API additions.
 
+* [Changes in 2026.*](api-notable-list-2026.html)
+
 * [Changes in 2025.*](api-notable-list-2025.html)
 
 * [Changes in 2024.*](api-notable-list-2024.html)
 
-* [Changes in 2023.*](api-notable-list-2023.html)
-
 ### Older Versions
+
+* [Changes in 2023.*](api-notable-list-2023.html)
 
 * [Changes in 2022.*](api-notable-list-2022.html)
 
