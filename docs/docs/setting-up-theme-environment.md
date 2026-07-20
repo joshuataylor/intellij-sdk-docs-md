@@ -37,9 +37,6 @@ Java version must be set depending on the target
 2024.2+
 : Java 21
 
-2022.3+
-: Java 17
-
 Procedure: Add JDK
 
 The second step is adding IntelliJ Platform Plugin SDK that will use the JDK configured in the first step.

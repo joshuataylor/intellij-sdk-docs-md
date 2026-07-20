@@ -25,9 +25,6 @@ Java version must be set depending on the target
 2024.2+
 : Java 21
 
-2022.3+
-: Java 17
-
 ## 2020.3
 
 ### IntelliJ Platform 2020.3
