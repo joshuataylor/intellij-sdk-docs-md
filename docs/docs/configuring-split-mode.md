@@ -93,12 +93,14 @@ The following tables list recommended versions of Gradle plugins and libraries f
 ### Gradle Plugins
 
 | IntelliJ Platform |`rpc` |`org.jetbrains.kotlin.plugin.serialization` |
+| 2026.2 |2.4.0-RC-0.1 |2.4.0 |
 | 2026.1 |2.3.20-RC2-0.1 |2.3.20 |
 | 2025.3 |2.1.20-0.1 |2.1.20 |
 
 ### Libraries
 
 | IntelliJ Platform |`kotlinx-serialization-core-jvm` |`kotlinx-serialization-json-jvm` |
+| 2026.2 |1.9.0 |1.9.0 |
 | 2026.1 |1.9.0 |1.9.0 |
 | 2025.3 |1.7.3 |1.7.3 |
 
