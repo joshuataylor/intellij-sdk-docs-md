@@ -12,6 +12,7 @@ This data is updated daily and also available in [JSON](https://jb.gg/android-st
 | Release Name |Channel |Version |IntelliJ IDEA Version |Release Date |
 -----------------------------------------------------------------------
 | Quail 4    2026.1.4 Canary 1   |![Canary](https://img.shields.io/badge/-Canary-lightgrey?style=flat-square) |2026.1.4.1AI‑261.26222.65.2614.15872890   |2026.1.4261.26222.65   |Jul 16, 2026 |
+| Quail 3    2026.1.3 RC 2   |![RC](https://img.shields.io/badge/-RC-red?style=flat-square) |2026.1.3.6AI‑261.26222.65.2613.15882241   |2026.1.4261.26222.65   |Jul 20, 2026 |
 | Quail 3    2026.1.3 RC 1   |![RC](https://img.shields.io/badge/-RC-red?style=flat-square) |2026.1.3.5AI‑261.26222.65.2613.15847520   |2026.1.4261.26222.65   |Jul 14, 2026 |
 | Quail 3    2026.1.3 Canary 4   |![Canary](https://img.shields.io/badge/-Canary-lightgrey?style=flat-square) |2026.1.3.4AI‑261.26222.65.2613.15822653   |2026.1.4261.26222.65   |Jul 9, 2026 |
 | Quail 3    2026.1.3 Canary 3   |![Canary](https://img.shields.io/badge/-Canary-lightgrey?style=flat-square) |2026.1.3.3AI‑261.25134.95.2613.15772639   |2026.1.3261.25134.95   |Jul 2, 2026 |
