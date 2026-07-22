@@ -31,5 +31,5 @@ Install and enable [Grammar-Kit](https://plugins.jetbrains.com/plugin/6606-gramm
 
 ## Create a Project
 
-Create an empty [IntelliJ Platform Plugin project](creating-plugin-project.html) or start using [IntelliJ Platform Plugin Template](plugin-github-template.html) when creating a plugin hosted on GitHub.
+Create an empty [IntelliJ Platform Plugin project](creating-plugin-project.html).
 

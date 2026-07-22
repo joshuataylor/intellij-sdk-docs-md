@@ -216,7 +216,7 @@ For example, see `simple_language_plugin/src/main/resources/META-INF/plugin.xml`
 
 ## Run the Project
 
-Run the plugin by using the Gradle [runIde](creating-plugin-project.html#running-a-plugin-with-the-runide-gradle-task) task.
+[Run](creating-plugin-project.html#running-the-plugin) the plugin.
 
 Create a `test.simple`  file with the following content:
 

@@ -92,7 +92,7 @@ the [com.intellij.lang.findUsagesProvider](https://jb.gg/ipe?extensions=com.inte
 
 ## Run the Project
 
-Run the plugin by using the Gradle [runIde](creating-plugin-project.html#running-a-plugin-with-the-runide-gradle-task) task.
+[Run](creating-plugin-project.html#running-the-plugin) the plugin.
 
 The IDE now supports [Find Usages](https://www.jetbrains.com/help/idea/find-highlight-usages.html) for any property with a reference:
 

@@ -121,7 +121,7 @@ in the plugin configuration file, register the Simple Language annotator class f
 
 ## Run the Project
 
-Run the plugin by using the Gradle [runIde](creating-plugin-project.html#running-a-plugin-with-the-runide-gradle-task) task.
+[Run](creating-plugin-project.html#running-the-plugin) the plugin.
 
 As a test, define the following Java file containing a Simple Language `prefix:value` pair:
 

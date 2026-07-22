@@ -69,7 +69,7 @@ configuration file using the [com.intellij.navbar](https://jb.gg/ipe?extensions=
 
 ## Run the Project
 
-Run the project by using the Gradle [runIde](creating-plugin-project.html#running-a-plugin-with-the-runide-gradle-task) task.
+[Run](creating-plugin-project.html#running-the-plugin) the plugin.
 
 Open the `test.simple` file and position the caret on any property.
 The navigation bar displays the name and icon of this property.

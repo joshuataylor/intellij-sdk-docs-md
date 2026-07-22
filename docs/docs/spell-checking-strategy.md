@@ -97,7 +97,7 @@ configuration file using the [com.intellij.spellchecker.support](https://jb.gg/i
 
 ## Run the Project
 
-Run the project by using the Gradle [runIde](creating-plugin-project.html#running-a-plugin-with-the-runide-gradle-task) task.
+[Run](creating-plugin-project.html#running-the-plugin) the plugin.
 
 Open the `test.simple` file and make an intentional spelling mistake.
 The IDE will highlight the error and suggest a quick fix.

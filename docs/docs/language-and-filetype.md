@@ -105,7 +105,7 @@ in `[plugin.xml](plugin-configuration-file.html)` and registered with `*.simple`
 
 ## Run the Project
 
-Run the plugin by using the Gradle [runIde](creating-plugin-project.html#running-a-plugin-with-the-runide-gradle-task) task.
+[Run](creating-plugin-project.html#running-the-plugin) the plugin.
 
 Create an empty file with the extension `.simple`, and IntelliJ IDEA automatically associates it with our language.
 Note the appearance of the Simple Language file icon next to the `test.simple` file in the Project Tool Window, and the editor tab for the file.

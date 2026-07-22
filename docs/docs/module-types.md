@@ -9,7 +9,7 @@ The source code for the [module](https://github.com/JetBrains/intellij-sdk-code-
 ## Pre-Requirements
 
 Create an empty plugin project.
-See the [Creating a Plugin Gradle Project](creating-plugin-project.html) section for details.
+See the [Creating a Plugin Project](creating-plugin-project.html) section for details.
 
 Note:
 

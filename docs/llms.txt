@@ -326,7 +326,7 @@ This page is intended to list the key topics that a plugin author would be inter
 
 ## Essential Concepts
 
-* [Developing a Plugin](developing-plugins.html).
+* [Introduction to Plugin Development](developing-plugins.html).
 
 * [Testing Overview](testing-plugins.html).
 
@@ -762,7 +762,7 @@ Each roadmap should contain:
 Use the standard intellij-community copyright notice in all sample plugins authored by JetBrains:
 
 ```TEXT
-Copyright 2000-2023 JetBrains s.r.o. and contributors. Use of this source code is governed by the Apache 2.0 license.
+Copyright 2000-2026 JetBrains s.r.o. and contributors. Use of this source code is governed by the Apache 2.0 license.
 ```
 
 Note:
@@ -853,18 +853,18 @@ code_samples/
 ## Gradle Build Script Conventions
 
 SDK code samples must be developed [using Gradle](creating-plugin-project.html).
-As of this writing, the use of Gradle in SDK code samples still relies heavily on the `plugin.xml` for specifying the plugin configuration.
-At a later, second phase, the SDK code samples will transition to rely more on the Gradle configuration.
 
 The default contents of a Gradle build script file are produced by the [New Project Wizard](creating-plugin-project.html#create-ide-plugin).
 A consistent structure for an SDK code sample's Gradle build script file is essential for clarity and is based on the default produced by the project wizard.
 Comments in SDK code sample Gradle build scripts should only draw attention to the parts of the Gradle configuration that are unique for a plugin.
 
-For SDK code samples, a few alterations are needed to the default `build.gradle.kts` file produced by the plugin wizard:
+For SDK code samples, a few alterations are needed to the default Gradle build script configuration files produced by the plugin wizard:
 
-* Maintain the Gradle properties `version` (`project.version`) and `group` (`project.group`). See the [Plugin Gradle Properties](creating-plugin-project.html#plugin-gradle-properties-and-plugin-configuration-file-elements) section for how these Gradle properties relate to the elements in `plugin.xml`.
+* `rootProject.name` in `setting.gradle.kts`
 
-* Add the following statement to the [Patching DSL](tools-gradle-intellij-plugin.html#tasks-patchpluginxml) (`patchPluginXml {...}`) section: ```KOTLIN // Patches <version> value in plugin.xml version.set(project.version) sinceBuild.set("221") untilBuild.set("223.*") ```
+* `version` and `group` in `gradle.properties`
+
+* [&lt;id&gt;](plugin-configuration-file.html#idea-plugin__id) and [&lt;name&gt;](plugin-configuration-file.html#idea-plugin__name) elements in `plugin.xml`
 
 ## plugin.xml Conventions
 
@@ -951,7 +951,7 @@ Links to the corresponding tutorial or reference page in this tutorial, as well 
 
 ## Using Gradle
 
-All sample plugins are based on Gradle, see [Creating a Plugin Gradle Project](creating-plugin-project.html) to get started.
+All sample plugins are based on Gradle, see [Creating a Plugin Project](creating-plugin-project.html) to get started.
 
 Additionally, the [Working with Gradle in IntelliJ IDEA](https://youtu.be/6V6G3RyxEMk) screencast offers a thorough introduction to Gradle functionality inside IntelliJ IDEA.
 
@@ -980,7 +980,7 @@ Invoke Reload All Gradle Projects from the Gradle tool window toolbar if necessa
 
 ## Running Code Samples
 
-Run the plugin by using the Gradle [runIde](creating-plugin-project.html#executing-the-plugin) task shown under the corresponding project's Tasks node in the Gradle tool window.
+See [Running the Plugin](creating-plugin-project.html#running-the-plugin).
 
 
 
@@ -1103,6 +1103,9 @@ and visit
 ## 2026
 
 ### July
+
+Creating a Plugin Project
+: [Creating a Plugin Project](creating-plugin-project.html) section has been revamped to describe the newest plugin creation workflow using the IDE Plugin generator.
 
 Error Reporting
 : Add a new page with details about [Error Reporting](error-reporting.html).
@@ -1583,7 +1586,7 @@ Dynamic Plugins update
 : Added new sections Code and Troubleshooting to [Dynamic Plugins](dynamic-plugins.html).
 
 GitHub IntelliJ Platform Plugin Template
-: Create new plugins with a preconfigured project scaffold and CI in [one click](plugin-github-template.html).
+: Create new plugins with a preconfigured project scaffold and CI in [one click](https://github.com/JetBrains/intellij-platform-plugin-template).
 
 Disposer & Disposable
 : Added [reference](disposers.html) discussing resource cleanup/management.
@@ -1658,7 +1661,7 @@ It will familiarize you with the working environment, project structure, and fre
 
 * [Plugin Types](plugin-types.html)
 
-* [Developing a Plugin](developing-plugins.html)
+* [Introduction to Plugin Development](developing-plugins.html)
 
 * [Split Mode (Remote Development)](split-mode-and-remote-development.html)
 
@@ -1874,64 +1877,32 @@ The [Foldable ProjectView](https://plugins.jetbrains.com/plugin/17288-foldable-p
 
 
 
-# Developing a Plugin
-
-IntelliJ Platform plugins can be developed by using [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) as your IDE.
-It is highly recommended to always use the latest available version, as the plugin development tooling support from Plugin DevKit continues supporting new features.
-
-Before starting with the actual development, make sure to understand all requirements to achieve best [Plugin User Experience (UX)](plugin-user-experience.html).
+# Introduction to Plugin Development
 
 Note: Plugin Alternatives
 
 In some cases, implementing an actual IntelliJ Platform plugin might not be necessary, as [alternative solutions](plugin-alternatives.html) exist.
 
-## Gradle Plugin
+IntelliJ Platform plugins can be developed by using [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) with the [Plugin DevKit](https://plugins.jetbrains.com/plugin/22851-plugin-devkit) plugin installed.
+It is highly recommended to always use the latest available version of the IDE and Plugin DevKit, as the plugin development tooling is constantly improved.
 
-The recommended solution for building IntelliJ Platform plugins is using [Gradle](https://www.gradle.org) with
-a dedicated Gradle plugin:
-[IntelliJ Platform Gradle Plugin (2.x)](tools-intellij-platform-gradle-plugin.html) or
-[Gradle IntelliJ Plugin (1.x)](tools-gradle-intellij-plugin.html) (obsolete).
+Before starting with the actual development, make sure to understand all requirements to achieve best [Plugin User Experience (UX)](plugin-user-experience.html).
 
-Warning: Gradle Plugin
+## Gradle Build System
 
-The Gradle plugin must be chosen depending on the target
-[platform version](build-number-ranges.html#platformVersions).
-
-2024.2+
-: Requires
-[IntelliJ Platform Gradle Plugin (2.x)](tools-intellij-platform-gradle-plugin.html)
-
-2022.3+
-: Recommended
-[IntelliJ Platform Gradle Plugin (2.x)](tools-intellij-platform-gradle-plugin.html)
-: Requires
-[Gradle IntelliJ Plugin (1.x)](tools-gradle-intellij-plugin.html)
-(Obsolete)
-1.10.1+
+The recommended solution for building IntelliJ Platform plugins is using the [Gradle build system](https://www.gradle.org) with a dedicated Gradle plugin:
+[IntelliJ Platform Gradle Plugin](tools-intellij-platform-gradle-plugin.html).
 
 The IntelliJ IDEA provides the necessary plugins to support Gradle-based plugin development: Gradle and Plugin DevKit.
-To verify these plugins are installed and enabled, see the help section about [Managing Plugins](https://www.jetbrains.com/help/idea/managing-plugins.html).
+To verify these plugins are installed and enabled, see the [Install plugins](https://www.jetbrains.com/help/idea/managing-plugins.html) help section.
 
-Warning: Installing Plugin DevKit plugin
+### IntelliJ Platform Gradle Plugin
 
-Plugin DevKit
-plugin must be installed from JetBrains Marketplace ([Plugin Homepage](https://plugins.jetbrains.com/plugin/22851-plugin-devkit))
-as it is not bundled since version 2023.3.
+IntelliJ Platform Gradle Plugin manages the dependencies of a plugin project – both the base IDE and other [plugin dependencies](plugin-dependencies.html).
+It provides tasks to run the IDE with the plugin and to package and [publish](publishing-plugin.html#publishing-plugin-with-gradle) it to the [JetBrains Marketplace](https://plugins.jetbrains.com).
+It allows verifying that the plugin is not affected by [API changes](api-changes-list.html) and is backward compatible.
 
-The Gradle plugin manages the dependencies of a plugin project – both the base IDE and other [plugin dependencies](plugin-dependencies.html).
-It provides tasks to run the IDE with your plugin and to package and [publish](publishing-plugin.html#publishing-plugin-with-gradle) your plugin to the [JetBrains Marketplace](https://plugins.jetbrains.com).
-To make sure that a plugin is not affected by [API changes](api-changes-list.html), which may happen between major releases of the platform, you can quickly verify your plugin against other IDEs and releases.
-
-There are two main ways of creating a new Gradle-based IntelliJ Platform plugin project:
-
-* dedicated generator available in the [New Project Wizard](https://www.jetbrains.com/help/idea/new-project-wizard.html) – it creates a minimal plugin project with all the required files
-
-* [IntelliJ Platform Plugin Template](plugin-github-template.html) available on GitHub – in addition to the required project files, it includes configuration of the GitHub Actions CI workflows
-
-This documentation section describes the plugin structure generated with the New Project wizard, but the project generated with IntelliJ Platform Plugin Template covers all the described files and directories.
-See [IntelliJ Platform Plugin Template](plugin-github-template.html) for more information about the advantages of this approach and instructions on how to use it.
-
-### Alternatives
+### Alternatives to Gradle
 
 The old DevKit project model and workflow are still supported in existing projects and are recommended for [creating theme plugins](developing-themes.html).
 See how to [migrate a DevKit plugin to Gradle](migrating-plugin-devkit-to-gradle.html).
@@ -1940,13 +1911,13 @@ A dedicated [SBT plugin](https://github.com/JetBrains/sbt-idea-plugin) is availa
 
 ## Plugin Development Workflow
 
-* [Creating a Plugin Gradle Project](creating-plugin-project.html) * [IntelliJ Platform Plugin Template](plugin-github-template.html)
+* [Creating a Plugin Project](creating-plugin-project.html)
 
-* [Configuring IntelliJ Platform Gradle Plugin (2.x)](configuring-gradle.html) * [Configuring Gradle IntelliJ Plugin (1.x)](configuring-plugin-project.html) (Obsolete)
+* [Configuring IntelliJ Platform Gradle Plugin](configuring-gradle.html) (optional)
 
-* [Configuring a Plugin for Split Mode](configuring-split-mode.html)
+* [Configuring a Plugin for Split Mode](configuring-split-mode.html) (optional)
 
-* [Configuring Kotlin Support](using-kotlin.html)
+* [Configuring Kotlin Support](using-kotlin.html) (optional)
 
 * [Plugin Signing](plugin-signing.html)
 
@@ -1954,300 +1925,54 @@ A dedicated [SBT plugin](https://github.com/JetBrains/sbt-idea-plugin) is availa
 
 
 
-# Creating a Plugin Gradle Project
+# Creating a Plugin Project
 
-This documentation page describes a Gradle-based plugin project generated with the [New Project Wizard](https://www.jetbrains.com/help/idea/new-project-wizard.html)
-in IntelliJ IDEA, but the project generated with [IntelliJ Platform Plugin Template](plugin-github-template.html) covers all the described files and directories.
+The recommended approach to creating a plugin is the IDE Plugin wizard available in IntelliJ IDEA.
+The wizard is available when Gradle and Plugin DevKit plugins are [installed and enabled](https://www.jetbrains.com/help/idea/managing-plugins.html).
 
-Note: Plan for Split Mode
+It is also possible to create plugins via the web [IDE Plugin generator](https://plugins.jetbrains.com/generator).
 
-New plugin projects should be implemented in a way that supports working in Remote Development mode or so-called [Split Mode](split-mode-and-remote-development.html).
-Review [Split Mode (Remote Development)](split-mode-and-remote-development.html) before settling on module boundaries.
+Note:
 
-## Creating a Plugin with New Project Wizard
+This page describes the wizard available in IntelliJ IDEA 2026.1 and newer.
 
-To enable the IDE Plugin wizard, make sure Gradle and Plugin DevKit plugins are installed and enabled.
+The IDE Plugin wizard available in older versions may differ in available options.
+If you can't use the newest IDE, consider generating a project via the [web generator](https://plugins.jetbrains.com/generator) and opening the generated project in the IDE.
 
-Warning: Installing Plugin DevKit plugin
+Procedure: Create an IDE Plugin
 
-Plugin DevKit
-plugin must be installed from JetBrains Marketplace ([Plugin Homepage](https://plugins.jetbrains.com/plugin/22851-plugin-devkit))
-as it is not bundled since version 2023.3.
+The created project structure is described in the `README.md` file in the Project structure section.
 
-Procedure: Create IDE Plugin
+## Running the Plugin
 
-### Components of a Wizard-Generated Gradle IntelliJ Platform Plugin
+Note:
 
-For the `my_plugin` example created with the steps described above, the following directory content is created:
+If the Add sample code checkbox was not checked during the project generation, add sample code.
+For example, follow the [Creating Actions](creating-actions-tutorial.html) tutorial to add a menu action.
 
-```PLANTUML
-@startuml
+Classic Plugin:
 
-skinparam TitleFontName JetBrains Sans
-skinparam TitleFontStyle plain
-skinparam TitleFontSize 16
-skinparam DefaultTextAlignment left
-
-title
-  my_plugin
-  |_ .run
-    |_ Run IDE with Plugin.run.xml
-  |_ gradle
-    |_ wrapper
-      |_ gradle-wrapper.jar
-      |_ gradle-wrapper.properties
-  |_ src
-    |_ main
-      |_ kotlin
-      |_ resources
-        |_ META-INF
-          |_ plugin.xml
-          |_ pluginIcon.svg
-  |_ .gitignore
-  |_ build.gradle.kts
-  |_ gradle.properties
-  |_ gradlew
-  |_ gradlew.bat
-  |_ settings.gradle.kts
-end title
-@enduml
-```
-
-* The default IntelliJ Platform `build.gradle.kts` file (see [below](#build-gradle-kts)).
-
-* The `gradle.properties` file, containing properties used by Gradle build script.
-
-* The `settings.gradle.kts` file, containing a definition of the `rootProject.name` and required repositories.
-
-* The Gradle Wrapper files in the `gradle` directory. The `gradle-wrapper.properties` file specifies the version of Gradle to be used to build the plugin. If needed, the IDE downloads the version of Gradle specified in this file automatically.
-
-* The `META-INF` directory under the default `main` [source set](https://docs.gradle.org/current/userguide/java_plugin.html#sec:java_project_layout) contains the [plugin configuration file](plugin-configuration-file.html) and [plugin logo](plugin-icon-file.html).
-
-* The Run IDE with Plugin [run configuration](https://www.jetbrains.com/help/idea/run-debug-configuration.html).
-
-#### 
-
-`build.gradle.kts` Gradle Build File
-
-The generated `my_plugin` project `build.gradle.kts` file depends on the IDE version used to generate the project:
-
-* 2025.1+: [IntelliJ Platform Gradle Plugin (2.x)](tools-intellij-platform-gradle-plugin.html) variant
-
-* earlier IDE versions: [Gradle IntelliJ Plugin (1.x)](tools-gradle-intellij-plugin.html) variant (deprecated)
-
-IntelliJ Platform Gradle Plugin (2.x):
-
-```KOTLIN
-plugins {
-  id("java")
-  id("org.jetbrains.kotlin.jvm") version "1.9.25"
-  id("org.jetbrains.intellij.platform") version "2.11.0"
-}
-
-group = "org.example"
-version = "1.0-SNAPSHOT"
-
-repositories {
-  mavenCentral()
-  intellijPlatform {
-    defaultRepositories()
-  }
-}
-
-// Configure Gradle IntelliJ Plugin
-// Read more: https://plugins.jetbrains.com/docs/intellij/tools-intellij-platform-gradle-plugin.html
-dependencies {
-  intellijPlatform {
-    intellijIdea("2025.2.6.1")
-    testFramework(org.jetbrains.intellij.platform.gradle.TestFrameworkType.Platform)
-
-    // Add necessary plugin dependencies for compilation here, example:
-    // bundledPlugin("com.intellij.java")
-  }
-}
-
-intellijPlatform {
-  pluginConfiguration {
-    ideaVersion {
-      sinceBuild = "252"
-    }
-
-    changeNotes = """
-      Initial version
-    """.trimIndent()
-  }
-}
-
-tasks {
-  // Set the JVM compatibility versions
-  withType<JavaCompile> {
-    sourceCompatibility = "21"
-    targetCompatibility = "21"
-  }
-  withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-    kotlinOptions.jvmTarget = "21"
-  }
-}
-```
-
-* Three Gradle plugins are explicitly declared: * [Gradle Java](https://docs.gradle.org/current/userguide/java_plugin.html) plugin (`java`) * [Kotlin Gradle](https://kotlinlang.org/docs/gradle-configure-project.html#apply-the-plugin) plugin (`org.jetbrains.kotlin.jvm`) * [IntelliJ Platform Gradle Plugin (2.x)](tools-intellij-platform-gradle-plugin.html) (`org.jetbrains.intellij.platform`)
-
-* The Group from the [New Project](#create-ide-plugin) wizard is the `project.group` value
-
-* `repositories`: setup required repositories ([Repositories Extension](tools-intellij-platform-gradle-plugin-repositories-extension.html))
-
-* `dependencies`: * define target IDE `intellijIdea("2025.2.6.1")` ([Target Versions](tools-intellij-platform-gradle-plugin-dependencies-extension.html#target-versions)) * add dependency on the platform testing framework ([Testing](tools-intellij-platform-gradle-plugin-dependencies-extension.html#testing))
-
-* `pluginConfiguration`: [since-build](tools-intellij-platform-gradle-plugin-extension.html#intellijPlatform-pluginConfiguration-ideaVersion) and initial [change notes](tools-intellij-platform-gradle-plugin-extension.html#intellijPlatform-pluginConfiguration-changeNotes)
-
-* `sourceCompatibility` enforces using a 21 JDK
-
-Gradle IntelliJ Plugin (1.x):
-
-```KOTLIN
-plugins {
-  id("java")
-  id("org.jetbrains.kotlin.jvm") version "1.9.21"
-  id("org.jetbrains.intellij") version "1.17.4"
-}
-
-group = "com.example"
-version = "1.0-SNAPSHOT"
-
-repositories {
-  mavenCentral()
-}
-
-// Configure Gradle IntelliJ Plugin
-// Read more: https://plugins.jetbrains.com/docs/intellij/tools-gradle-intellij-plugin.html
-intellij {
-  version.set("2022.2.5")
-  type.set("IC") // Target IDE Platform
-
-  plugins.set(listOf(/* Plugin Dependencies */))
-}
-
-tasks {
-  // Set the JVM compatibility versions
-  withType<JavaCompile> {
-    sourceCompatibility = "17"
-    targetCompatibility = "17"
-  }
-  withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-    kotlinOptions.jvmTarget = "17"
-  }
-
-  patchPluginXml {
-    sinceBuild.set("222")
-    untilBuild.set("232.*")
-  }
-
-  signPlugin {
-    certificateChain.set(System.getenv("CERTIFICATE_CHAIN"))
-    privateKey.set(System.getenv("PRIVATE_KEY"))
-    password.set(System.getenv("PRIVATE_KEY_PASSWORD"))
-  }
-
-  publishPlugin {
-    token.set(System.getenv("PUBLISH_TOKEN"))
-  }
-}
-```
-
-* Three Gradle plugins are explicitly declared: * The [Gradle Java](https://docs.gradle.org/current/userguide/java_plugin.html) plugin (`java`). * The [Kotlin Gradle](https://kotlinlang.org/docs/gradle-configure-project.html#apply-the-plugin) plugin (`org.jetbrains.kotlin.jvm`). * The [Gradle IntelliJ Plugin (1.x)](tools-gradle-intellij-plugin.html) (`org.jetbrains.intellij`).
-
-* The Group from the [New Project](#create-ide-plugin) wizard is the `project.group` value.
-
-* The `sourceCompatibility` line is injected to enforce using Java 17 JDK to compile Java sources.
-
-* The values of the [intellij.version](tools-gradle-intellij-plugin.html#intellij-extension-version) and [intellij.type](tools-gradle-intellij-plugin.html#intellij-extension-type) properties specify the version and type of the IntelliJ Platform to be used to build the plugin.
-
-* The empty placeholder list for [plugin dependencies](tools-gradle-intellij-plugin.html#intellij-extension-plugins).
-
-* The values of the [patchPluginXml.sinceBuild](tools-gradle-intellij-plugin.html#tasks-patchpluginxml-sincebuild) and [patchPluginXml.untilBuild](tools-gradle-intellij-plugin.html#tasks-patchpluginxml-untilbuild) properties specifying the minimum and maximum versions of the IDE build the plugin is compatible with.
-
-* The initial [signPlugin](tools-gradle-intellij-plugin.html#tasks-signplugin) and [publishPlugin](tools-gradle-intellij-plugin.html#tasks-publishplugin) tasks configuration. See the [Publishing Plugin With Gradle](publishing-plugin.html#publishing-plugin-with-gradle) section for more information.
-
-#### Plugin Gradle Properties and Plugin Configuration File Elements
-
-The Gradle properties `rootProject.name` and `project.group` will not, in general, match the respective [plugin configuration file](plugin-configuration-file.html) `plugin.xml` elements [&lt;name&gt;](plugin-configuration-file.html#idea-plugin__name) and [&lt;id&gt;](plugin-configuration-file.html#idea-plugin__id).
-There is no IntelliJ Platform-related reason they should as they serve different functions.
-
-The `<name>` element (used as the plugin's display name) is often the same as `rootProject.name`, but it can be more explanatory.
-
-The `<id>` value must be a unique identifier over all plugins, typically a concatenation of the specified Group and Artifact.
-Please note that it is impossible to change the `<id>` of a published plugin without losing automatic updates for existing installations.
-
-## 
-
-Running a Plugin With the `runIde` Gradle task
-
-Gradle projects are run from the IDE's Gradle tool window.
-
-### Adding Code to the Project
-
-Before running [my_plugin](#components-of-a-wizard-generated-gradle-intellij-platform-plugin), some code can be added to provide basic functionality.
-See the [Creating Actions](creating-actions-tutorial.html) tutorial for step-by-step instructions for adding a menu action.
-
-### Executing the Plugin
-
-The generated project contains the Run IDE with Plugin run configuration that can be executed via the `Run | Run...` action or can be found in the Gradle tool window under the Run Configurations node.
+The generated project contains the Run IDE with Plugin [run configuration](https://www.jetbrains.com/help/idea/run-debug-configuration.html) that can be executed via the `Run | Run...` action or can be found in the Gradle tool window under the Run Configurations node.
 
 To execute the Gradle `runIde` task directly, open the Gradle tool window and search for the runIde task under the Tasks node.
 If it's not on the list, click the Sync All Gradle Projects button on the [toolbar](https://www.jetbrains.com/help/idea/jetgradle-tool-window.html#gradle_toolbar) at the top of the Gradle tool window.
 Then double-click it to execute.
+
+Split Mode (Remote Dev) Plugin:
+
+The generated project contains the Run IDE with Plugin (Split Mode) [run configuration](https://www.jetbrains.com/help/idea/run-debug-configuration.html) that can be executed via the `Run | Run...` action.
+
+Alternatively, run Run IDE with Plugin (Backend) and Run IDE with Plugin (Frontend) separately.
+
+To execute the Gradle tasks directly, open the Gradle tool window and search for the runIdeBackend and runIdeFrontend tasks under the Tasks node.
+If they are not on the list, click the Sync All Gradle Projects button on the [toolbar](https://www.jetbrains.com/help/idea/jetgradle-tool-window.html#gradle_toolbar) at the top of the Gradle tool window.
+Then double-click tasks to execute.
 
 To debug your plugin in a standalone IDE instance, please see [How to Debug Your Own IntelliJ IDEA Instance](https://medium.com/agorapulse-stories/how-to-debug-your-own-intellij-idea-instance-7d7df185a48d) blog post.
 
 Tip:
 
 For more information about how to work with Gradle-based projects see the [Working with Gradle in IntelliJ IDEA](https://www.youtube.com/watch?v=6V6G3RyxEMk) screencast and working with [Gradle tasks](https://www.jetbrains.com/help/idea/work-with-gradle-tasks.html) in the IntelliJ IDEA help.
-
-
-
-# IntelliJ Platform Plugin Template
-
-The IntelliJ Platform Plugin Template is the alternative solution for creating a new Gradle-based IntelliJ Platform plugin with the [New Project Wizard](creating-plugin-project.html).
-
-## Modular Plugin Template
-
-Note: Experimental
-
-The modular template is intended for plugins that are designed for [Split Mode](split-mode-and-remote-development.html) and modular plugin packaging from the start.
-
-With increasing demand for the remote development support, JetBrains advices plugin developers to design their plugins modularly where UI and business logic are detached from each other.
-
-Use the modular template when a plugin is expected to provide optimal low-latency UX and correct project interaction in [Split Mode](split-mode-and-remote-development.html) as well as in a monolithic IDE. To start developing a [split plugin](split-mode-and-remote-development.html), use the [IntelliJ Platform Modular Plugin Template](https://github.com/JetBrains/intellij-platform-modular-plugin-template).
-
-The modular template provides:
-
-* frontend, backend, and shared module layout
-
-* split-mode-oriented Gradle configuration
-
-* ready-to-use examples of RPC-based communication
-
-## Classic Plugin Template
-
-[IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template) is a GitHub repository that provides a pure boilerplate template to make it easier to create a new Gradle-based plugin project.
-
-The main goal of this template is to speed up the setup phase of plugin development for both new and experienced developers by preconfiguring the project scaffold and CI, linking to the proper documentation pages, and keeping everything organized.
-
-Tip:
-
-Note: This template uses [IntelliJ Platform Gradle Plugin (2.x)](tools-intellij-platform-gradle-plugin.html).
-
-GitHub Template allows you to create a new repository from the scaffold without having to copy and paste content, clone repositories, or clear the history manually.
-All you have to do is click the Use this template button on the GitHub project page (you must be logged in with your GitHub account).
-After that, the GitHub Actions workflow will be triggered to override or remove any template-specific configurations, such as the plugin name, current changelog, etc.
-
-Once this is complete, the project is ready to be cloned to your local environment and opened with [IntelliJ IDEA](https://www.jetbrains.com/idea/download).
-
-For more details, refer to the [IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template) project documentation.
-
-Note:
-
-The recording of the Busy Plugin Developer. Episode 0 webinar describes and shows [how to use the IntelliJ Platform Plugin Template](https://youtu.be/-6D5-xEaYig?t=230) in detail.
 
 
 
@@ -2273,7 +1998,7 @@ Converting a plugin created with the old DevKit approach (which can be used for 
 
 
 
-# Configuring IntelliJ Platform Gradle Plugin (2.x)
+# Configuring IntelliJ Platform Gradle Plugin
 
 This section presents a short overview of the most important Gradle plugin configuration elements to achieve commonly desired functionality.
 
@@ -2487,7 +2212,7 @@ Tip:
 
 To maintain and generate an up-to-date changelog, try using [Gradle Changelog Plugin](https://github.com/JetBrains/gradle-changelog-plugin).
 
-As discussed in [Components of a Wizard-Generated Gradle IntelliJ Platform Plugin](creating-plugin-project.html#components-of-a-wizard-generated-gradle-intellij-platform-plugin), the Gradle properties `project.version`, `project.group`, and `rootProject.name` are all generated based on the input to the Wizard.
+The Gradle properties `project.version`, `project.group`, and `rootProject.name` are all generated based on the input to the Wizard.
 However, the [Gradle IntelliJ Plugin (1.x)](tools-gradle-intellij-plugin.html) does not combine and substitute those Gradle properties for the default [&lt;id&gt;](plugin-configuration-file.html#idea-plugin__id) and [&lt;name&gt;](plugin-configuration-file.html#idea-plugin__name) elements in the `plugin.xml` file.
 
 The best practice is to keep `project.version` current.
@@ -2515,6 +2240,10 @@ That documentation explains different ways to use Gradle for plugin uploads with
 
 
 # Configuring a Plugin for Split Mode
+
+Tip:
+
+Plugins created using the [IDE Plugin generator](creating-plugin-project.html#create-ide-plugin) with the Split Mode (Remote Dev) feature enabled are configured for split mode by default.
 
 Split Mode configuration in the Gradle build script allows for running development sandbox IDEs in mode emulating the [remote development](split-mode-and-remote-development.html) scenario, with both frontend and backend processes running locally.
 To make a plugin work natively in split mode, see [plugin modularization](modular-plugins.html).
@@ -2624,12 +2353,6 @@ The following tables list recommended versions of Gradle plugins and libraries f
 
 # Configuring Kotlin Support
 
-<tldr>
-Homepage: [Kotlin](https://kotlinlang.org)
-
-Project Template: [IntelliJ Platform Plugin Template](plugin-github-template.html)
-</tldr>
-
 This page describes developing plugins using the [Kotlin](https://kotlinlang.org) programming language.
 
 Tip: Operating on Kotlin code
@@ -2696,7 +2419,7 @@ Using UI Designer plugin with Kotlin is [not supported](https://youtrack.jetbrai
 
 Tip:
 
-The [IntelliJ Platform Plugin Template](plugin-github-template.html) provides a preconfigured project using Kotlin.
+[IDE Plugin generator](creating-plugin-project.html#create-ide-plugin) adds the Kotlin support by default, and no additional configuration is required in most cases.
 
 IntelliJ IDEA bundles the necessary Kotlin IDE plugin, requiring no further configuration.
 For detailed instructions, refer to the [Kotlin documentation](https://kotlinlang.org/docs/getting-started.html).
@@ -15261,7 +14984,7 @@ Use inspection `Settings | Editor | Inspections | Plugin DevKit | Code | Compone
 
 ## Testing the Minimal Custom Action Implementation
 
-After performing the steps described above, [compile and run](creating-plugin-project.html#executing-the-plugin) the plugin to see the newly created action available as a `Tools` menu item, which is within the context of the main menu:
+After performing the steps described above, [compile and run](creating-plugin-project.html#running-the-plugin) the plugin to see the newly created action available as a `Tools` menu item, which is within the context of the main menu:
 
 ![Register action](images/tools_menu_item_action.png)
 To see the alternate, more verbose text declared by the `override-text` element, use `Help | Find Action...` and search for "Pop Dialog Action".
@@ -18473,7 +18196,7 @@ The full implementation is available in the [code samples](https://github.com/Je
 ## Pre-Requirements
 
 Create an empty plugin project.
-See the [Creating a Plugin Gradle Project](creating-plugin-project.html) section for details.
+See the [Creating a Plugin Project](creating-plugin-project.html) section for details.
 
 ## 
 
@@ -18900,7 +18623,7 @@ At best, this will add unnecessary work for translators, but it is also quite po
 
 All NLS strings from a module should be added to a `*.properties` file.
 A standard location of message files in JAR is `/messages/*.properties`.
-In [Gradle-based plugin](developing-plugins.html#gradle-plugin) project sources, message files are located in `$MODULE_ROOT$/src/main/resources/messages/*.properties`.
+In [Gradle-based plugin](creating-plugin-project.html) project sources, message files are located in `$MODULE_ROOT$/src/main/resources/messages/*.properties`.
 
 Warning:
 
@@ -20642,7 +20365,7 @@ This tutorial shows how to add an extra step to the Project Wizard to provide ad
 ## Pre-Requirements
 
 Create an empty plugin project.
-See the [Creating a Plugin Gradle Project](creating-plugin-project.html) section for details.
+See the [Creating a Plugin Project](creating-plugin-project.html) section for details.
 
 ## Register Module Builder
 
@@ -20748,7 +20471,7 @@ The source code for the [module](https://github.com/JetBrains/intellij-sdk-code-
 ## Pre-Requirements
 
 Create an empty plugin project.
-See the [Creating a Plugin Gradle Project](creating-plugin-project.html) section for details.
+See the [Creating a Plugin Project](creating-plugin-project.html) section for details.
 
 Note:
 
@@ -33278,7 +33001,7 @@ Install and enable [Grammar-Kit](https://plugins.jetbrains.com/plugin/6606-gramm
 
 ## Create a Project
 
-Create an empty [IntelliJ Platform Plugin project](creating-plugin-project.html) or start using [IntelliJ Platform Plugin Template](plugin-github-template.html) when creating a plugin hosted on GitHub.
+Create an empty [IntelliJ Platform Plugin project](creating-plugin-project.html).
 
 
 
@@ -33389,7 +33112,7 @@ in `[plugin.xml](plugin-configuration-file.html)` and registered with `*.simple`
 
 ## Run the Project
 
-Run the plugin by using the Gradle [runIde](creating-plugin-project.html#running-a-plugin-with-the-runide-gradle-task) task.
+[Run](creating-plugin-project.html#running-the-plugin) the plugin.
 
 Create an empty file with the extension `.simple`, and IntelliJ IDEA automatically associates it with our language.
 Note the appearance of the Simple Language file icon next to the `test.simple` file in the Project Tool Window, and the editor tab for the file.
@@ -33733,7 +33456,7 @@ For example, see `simple_language_plugin/src/main/resources/META-INF/plugin.xml`
 
 ## Run the Project
 
-Run the plugin by using the Gradle [runIde](creating-plugin-project.html#running-a-plugin-with-the-runide-gradle-task) task.
+[Run](creating-plugin-project.html#running-the-plugin) the plugin.
 
 Create a `test.simple`  file with the following content:
 
@@ -33968,7 +33691,7 @@ Register the Simple Language color settings page with the IntelliJ Platform in t
 
 ### Run the Project
 
-Run the project by using the Gradle [runIde](creating-plugin-project.html#running-a-plugin-with-the-runide-gradle-task) task.
+[Run](creating-plugin-project.html#running-the-plugin) the plugin.
 
 In the IDE Development Instance, open the Simple Language highlight settings page: `Settings | Editor | Color Scheme | Simple`.
 Each color initially inherits from a Language Defaults value.
@@ -34264,7 +33987,7 @@ in the plugin configuration file, register the Simple Language annotator class f
 
 ## Run the Project
 
-Run the plugin by using the Gradle [runIde](creating-plugin-project.html#running-a-plugin-with-the-runide-gradle-task) task.
+[Run](creating-plugin-project.html#running-the-plugin) the plugin.
 
 As a test, define the following Java file containing a Simple Language `prefix:value` pair:
 
@@ -34417,7 +34140,7 @@ the [com.intellij.codeInsight.lineMarkerProvider](https://jb.gg/ipe?extensions=c
 
 ## Run the Project
 
-Run the plugin by using the Gradle [runIde](creating-plugin-project.html#running-a-plugin-with-the-runide-gradle-task) task.
+[Run](creating-plugin-project.html#running-the-plugin) the plugin.
 
 Open the Java [Test file](annotator.html#run-the-project).
 Now the icon appears next to line 3 on the gutter.
@@ -34482,7 +34205,7 @@ and specifying `language="Simple"`.
 
 ## Run the Project
 
-Run the plugin by using the Gradle [runIde](creating-plugin-project.html#running-a-plugin-with-the-runide-gradle-task) task.
+[Run](creating-plugin-project.html#running-the-plugin) the plugin.
 
 Open the [test.simple](lexer-and-parser-definition.html#run-the-project) file.
 Erase the property "English" and invoke [Basic Code Completion](https://www.jetbrains.com/help/idea/auto-completing-code.html#invoke-basic-completion).
@@ -34712,7 +34435,7 @@ and specifying `language="JAVA"`.
 
 ## Run the Project with the Reference Contributor
 
-Run the project by using the Gradle [runIde](creating-plugin-project.html#running-a-plugin-with-the-runide-gradle-task) task.
+[Run](creating-plugin-project.html#running-the-plugin) the plugin.
 
 The IDE now resolves the property and provides [completion](https://www.jetbrains.com/help/idea/auto-completing-code.html#basic_completion) suggestions:
 
@@ -34754,7 +34477,7 @@ using the [com.intellij.lang.refactoringSupport](https://jb.gg/ipe?extensions=co
 
 ## Run the Project
 
-Run the project by using the Gradle [runIde](creating-plugin-project.html#running-a-plugin-with-the-runide-gradle-task) task.
+[Run](creating-plugin-project.html#running-the-plugin) the plugin.
 
 The IDE now supports [refactoring](https://www.jetbrains.com/help/idea/rename-refactorings.html) suggestions:
 
@@ -34856,7 +34579,7 @@ the [com.intellij.lang.findUsagesProvider](https://jb.gg/ipe?extensions=com.inte
 
 ## Run the Project
 
-Run the plugin by using the Gradle [runIde](creating-plugin-project.html#running-a-plugin-with-the-runide-gradle-task) task.
+[Run](creating-plugin-project.html#running-the-plugin) the plugin.
 
 The IDE now supports [Find Usages](https://www.jetbrains.com/help/idea/find-highlight-usages.html) for any property with a reference:
 
@@ -35006,7 +34729,7 @@ the [com.intellij.lang.foldingBuilder](https://jb.gg/ipe?extensions=com.intellij
 
 ## Run the Project
 
-Run the plugin by using the Gradle [runIde](creating-plugin-project.html#running-a-plugin-with-the-runide-gradle-task) task.
+[Run](creating-plugin-project.html#running-the-plugin) the plugin.
 
 Now when a Java file is opened in the editor, it shows the property's value instead of the key.
 This is because `SimpleFoldingBuilder.isCollapsedByDefault()` always returns `true`.
@@ -35138,7 +34861,7 @@ using the [com.intellij.gotoSymbolContributor](https://jb.gg/ipe?extensions=com.
 
 ## Run the Project
 
-Run the plugin by using the Gradle [runIde](creating-plugin-project.html#running-a-plugin-with-the-runide-gradle-task) task.
+[Run](creating-plugin-project.html#running-the-plugin) the plugin.
 
 The IDE now supports navigating to a property definition by name pattern via `Navigate | Symbol` action.
 
@@ -35307,7 +35030,7 @@ the [com.intellij.lang.structureViewExtension](https://jb.gg/ipe?extensions=com.
 
 ## Run the Project
 
-Run the project by using the Gradle [runIde](creating-plugin-project.html#running-a-plugin-with-the-runide-gradle-task) task.
+[Run](creating-plugin-project.html#running-the-plugin) the plugin.
 
 Open the `test.simple` file and open `View | Tool Windows | Structure`.
 The IDE now supports a structure view of the Simple Language:
@@ -35387,7 +35110,7 @@ configuration file using the [com.intellij.navbar](https://jb.gg/ipe?extensions=
 
 ## Run the Project
 
-Run the project by using the Gradle [runIde](creating-plugin-project.html#running-a-plugin-with-the-runide-gradle-task) task.
+[Run](creating-plugin-project.html#running-the-plugin) the plugin.
 
 Open the `test.simple` file and position the caret on any property.
 The navigation bar displays the name and icon of this property.
@@ -35527,7 +35250,7 @@ The ``SimpleFormattingModelBuilder` implementation is registered with the Intell
 
 ## Run the Project
 
-Run the plugin by using the Gradle [runIde](creating-plugin-project.html#running-a-plugin-with-the-runide-gradle-task) task.
+[Run](creating-plugin-project.html#running-the-plugin) the plugin.
 
 Open the example Simple Language [properties file](lexer-and-parser-definition.html#run-the-project) in the IDE Development Instance.
 Add some extra spaces around the `=` separator between `language` and `English`.
@@ -35685,7 +35408,7 @@ using the [com.intellij.langCodeStyleSettingsProvider](https://jb.gg/ipe?extensi
 
 ## Run the Project
 
-Run the plugin by using the Gradle [runIde](creating-plugin-project.html#running-a-plugin-with-the-runide-gradle-task) task.
+[Run](creating-plugin-project.html#running-the-plugin) the plugin.
 
 In the IDE Development Instance, open the Simple Language code formatting page: `Settings | Editor | Code Style | Simple`.
 
@@ -35764,7 +35487,7 @@ The `SimpleCommenter` implementation is registered in the plugin configuration f
 
 ## Run the Project
 
-Run the plugin by using the Gradle [runIde](creating-plugin-project.html#running-a-plugin-with-the-runide-gradle-task) task.
+[Run](creating-plugin-project.html#running-the-plugin) the plugin.
 
 Open the example Simple Language [properties file](lexer-and-parser-definition.html#run-the-project) in the IDE Development Instance.
 Place the cursor at the `website` line.
@@ -35962,7 +35685,7 @@ final class SimpleAnnotator implements Annotator {
 
 ## Run the Project
 
-Run the project by using the Gradle [runIde](creating-plugin-project.html#running-a-plugin-with-the-runide-gradle-task) task.
+[Run](creating-plugin-project.html#running-the-plugin) the plugin.
 Open the test [Java file](annotator.html#run-the-project).
 
 To test `SimpleCreatePropertyQuickFix`, change `simple:website` to `simple:website.url`.
@@ -36353,7 +36076,7 @@ configuration file using the [com.intellij.spellchecker.support](https://jb.gg/i
 
 ## Run the Project
 
-Run the project by using the Gradle [runIde](creating-plugin-project.html#running-a-plugin-with-the-runide-gradle-task) task.
+[Run](creating-plugin-project.html#running-the-plugin) the plugin.
 
 Open the `test.simple` file and make an intentional spelling mistake.
 The IDE will highlight the error and suggest a quick fix.
@@ -37573,7 +37296,7 @@ intellij {
 }
 ```
 
-For projects based on the [IntelliJ Platform Plugin Template](plugin-github-template.html), update the Gradle IntelliJ Plugin to the latest version,
+For projects based on the [IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template), update the Gradle IntelliJ Plugin to the latest version,
 and amend the values in `gradle.properties` accordingly.
 
 ### plugin.xml
@@ -37907,7 +37630,7 @@ Gradle IntelliJ Plugin (1.x) is no longer under active development.
 
 Whenever possible, use [IntelliJ Platform Gradle Plugin (2.x)](tools-intellij-platform-gradle-plugin.html) instead.
 
-To create a new Gradle plugin project, follow the tutorial on the [Creating a Plugin Gradle Project](creating-plugin-project.html) page.
+To create a new Gradle plugin project, follow the tutorial on the [Creating a Plugin Project](creating-plugin-project.html) page.
 The tutorial produces a skeleton Gradle project suitable to use as a starting point.
 
 The best practice is to use the [intellij.type](tools-gradle-intellij-plugin.html#intellij-extension-type) property to specify the target product.
@@ -50155,8 +49878,6 @@ Use [Writerside](https://plugins.jetbrains.com/plugin/20158-writerside) to creat
 
 * [IntelliJ Platform SDK Documentation](https://github.com/JetBrains/intellij-sdk-docs) & [IntelliJ Platform SDK Code Samples](https://github.com/JetBrains/intellij-sdk-code-samples)
 
-* [IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template)
-
 * [IntelliJ Platform](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/README.md)
 
 * [IntelliJ Plugins](https://github.com/JetBrains/intellij-plugins)
@@ -54498,10 +54219,6 @@ IntelliJ Platform Gradle Plugin 2.x requires the following minimal versions:
 * Gradle: 9.0.0 See [the Gradle Installation guide](https://gradle.org/install/) on how to upgrade.
 
 * Java Runtime: 17 See Gradle JVM in `Settings | Build, Execution, Deployment | Build Tools | Gradle`.
-
-Tip:
-
-Consider using the [IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template) which additionally provides CI setup covered with GitHub Actions.
 
 ## Setup
 
@@ -62305,10 +62022,6 @@ However, this setting is ignored when running a project directly from the comman
 
 
 # Migrating from Gradle IntelliJ Plugin (1.x)
-
-Tip:
-
-Consider using the [IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template) which additionally provides CI setup covered with GitHub Actions.
 
 ## Plugin Name Change
 

@@ -9,7 +9,7 @@ Links to the corresponding tutorial or reference page in this tutorial, as well 
 
 ## Using Gradle
 
-All sample plugins are based on Gradle, see [Creating a Plugin Gradle Project](creating-plugin-project.html) to get started.
+All sample plugins are based on Gradle, see [Creating a Plugin Project](creating-plugin-project.html) to get started.
 
 Additionally, the [Working with Gradle in IntelliJ IDEA](https://youtu.be/6V6G3RyxEMk) screencast offers a thorough introduction to Gradle functionality inside IntelliJ IDEA.
 
@@ -38,5 +38,5 @@ Invoke Reload All Gradle Projects from the Gradle tool window toolbar if necessa
 
 ## Running Code Samples
 
-Run the plugin by using the Gradle [runIde](creating-plugin-project.html#executing-the-plugin) task shown under the corresponding project's Tasks node in the Gradle tool window.
+See [Running the Plugin](creating-plugin-project.html#running-the-plugin).
 

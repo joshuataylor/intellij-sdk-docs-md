@@ -146,7 +146,7 @@ using the [com.intellij.langCodeStyleSettingsProvider](https://jb.gg/ipe?extensi
 
 ## Run the Project
 
-Run the plugin by using the Gradle [runIde](creating-plugin-project.html#running-a-plugin-with-the-runide-gradle-task) task.
+[Run](creating-plugin-project.html#running-the-plugin) the plugin.
 
 In the IDE Development Instance, open the Simple Language code formatting page: `Settings | Editor | Code Style | Simple`.
 

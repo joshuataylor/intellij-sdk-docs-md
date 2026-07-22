@@ -12,7 +12,7 @@ The full implementation is available in the [code samples](https://github.com/Je
 ## Pre-Requirements
 
 Create an empty plugin project.
-See the [Creating a Plugin Gradle Project](creating-plugin-project.html) section for details.
+See the [Creating a Plugin Project](creating-plugin-project.html) section for details.
 
 ## 
 

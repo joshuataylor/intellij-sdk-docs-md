@@ -109,7 +109,7 @@ Tip:
 
 To maintain and generate an up-to-date changelog, try using [Gradle Changelog Plugin](https://github.com/JetBrains/gradle-changelog-plugin).
 
-As discussed in [Components of a Wizard-Generated Gradle IntelliJ Platform Plugin](creating-plugin-project.html#components-of-a-wizard-generated-gradle-intellij-platform-plugin), the Gradle properties `project.version`, `project.group`, and `rootProject.name` are all generated based on the input to the Wizard.
+The Gradle properties `project.version`, `project.group`, and `rootProject.name` are all generated based on the input to the Wizard.
 However, the [Gradle IntelliJ Plugin (1.x)](tools-gradle-intellij-plugin.html) does not combine and substitute those Gradle properties for the default [&lt;id&gt;](plugin-configuration-file.html#idea-plugin__id) and [&lt;name&gt;](plugin-configuration-file.html#idea-plugin__name) elements in the `plugin.xml` file.
 
 The best practice is to keep `project.version` current.

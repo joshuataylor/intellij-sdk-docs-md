@@ -154,7 +154,7 @@ Use inspection `Settings | Editor | Inspections | Plugin DevKit | Code | Compone
 
 ## Testing the Minimal Custom Action Implementation
 
-After performing the steps described above, [compile and run](creating-plugin-project.html#executing-the-plugin) the plugin to see the newly created action available as a `Tools` menu item, which is within the context of the main menu:
+After performing the steps described above, [compile and run](creating-plugin-project.html#running-the-plugin) the plugin to see the newly created action available as a `Tools` menu item, which is within the context of the main menu:
 
 ![Register action](images/tools_menu_item_action.png)
 To see the alternate, more verbose text declared by the `override-text` element, use `Help | Find Action...` and search for "Pop Dialog Action".

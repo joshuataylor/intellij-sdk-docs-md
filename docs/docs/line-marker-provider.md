@@ -129,7 +129,7 @@ the [com.intellij.codeInsight.lineMarkerProvider](https://jb.gg/ipe?extensions=c
 
 ## Run the Project
 
-Run the plugin by using the Gradle [runIde](creating-plugin-project.html#running-a-plugin-with-the-runide-gradle-task) task.
+[Run](creating-plugin-project.html#running-the-plugin) the plugin.
 
 Open the Java [Test file](annotator.html#run-the-project).
 Now the icon appears next to line 3 on the gutter.

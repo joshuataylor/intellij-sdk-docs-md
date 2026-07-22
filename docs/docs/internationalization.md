@@ -74,7 +74,7 @@ At best, this will add unnecessary work for translators, but it is also quite po
 
 All NLS strings from a module should be added to a `*.properties` file.
 A standard location of message files in JAR is `/messages/*.properties`.
-In [Gradle-based plugin](developing-plugins.html#gradle-plugin) project sources, message files are located in `$MODULE_ROOT$/src/main/resources/messages/*.properties`.
+In [Gradle-based plugin](creating-plugin-project.html) project sources, message files are located in `$MODULE_ROOT$/src/main/resources/messages/*.properties`.
 
 Warning:
 

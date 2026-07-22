@@ -184,7 +184,7 @@ final class SimpleAnnotator implements Annotator {
 
 ## Run the Project
 
-Run the project by using the Gradle [runIde](creating-plugin-project.html#running-a-plugin-with-the-runide-gradle-task) task.
+[Run](creating-plugin-project.html#running-the-plugin) the plugin.
 Open the test [Java file](annotator.html#run-the-project).
 
 To test `SimpleCreatePropertyQuickFix`, change `simple:website` to `simple:website.url`.

@@ -1,11 +1,5 @@
 # Configuring Kotlin Support
 
-<tldr>
-Homepage: [Kotlin](https://kotlinlang.org)
-
-Project Template: [IntelliJ Platform Plugin Template](plugin-github-template.html)
-</tldr>
-
 This page describes developing plugins using the [Kotlin](https://kotlinlang.org) programming language.
 
 Tip: Operating on Kotlin code
@@ -72,7 +66,7 @@ Using UI Designer plugin with Kotlin is [not supported](https://youtrack.jetbrai
 
 Tip:
 
-The [IntelliJ Platform Plugin Template](plugin-github-template.html) provides a preconfigured project using Kotlin.
+[IDE Plugin generator](creating-plugin-project.html#create-ide-plugin) adds the Kotlin support by default, and no additional configuration is required in most cases.
 
 IntelliJ IDEA bundles the necessary Kotlin IDE plugin, requiring no further configuration.
 For detailed instructions, refer to the [Kotlin documentation](https://kotlinlang.org/docs/getting-started.html).

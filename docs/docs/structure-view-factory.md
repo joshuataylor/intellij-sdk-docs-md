@@ -159,7 +159,7 @@ the [com.intellij.lang.structureViewExtension](https://jb.gg/ipe?extensions=com.
 
 ## Run the Project
 
-Run the project by using the Gradle [runIde](creating-plugin-project.html#running-a-plugin-with-the-runide-gradle-task) task.
+[Run](creating-plugin-project.html#running-the-plugin) the plugin.
 
 Open the `test.simple` file and open `View | Tool Windows | Structure`.
 The IDE now supports a structure view of the Simple Language:

@@ -19,6 +19,9 @@ and visit
 
 ### July
 
+Creating a Plugin Project
+: [Creating a Plugin Project](creating-plugin-project.html) section has been revamped to describe the newest plugin creation workflow using the IDE Plugin generator.
+
 Error Reporting
 : Add a new page with details about [Error Reporting](error-reporting.html).
 
@@ -498,7 +501,7 @@ Dynamic Plugins update
 : Added new sections Code and Troubleshooting to [Dynamic Plugins](dynamic-plugins.html).
 
 GitHub IntelliJ Platform Plugin Template
-: Create new plugins with a preconfigured project scaffold and CI in [one click](plugin-github-template.html).
+: Create new plugins with a preconfigured project scaffold and CI in [one click](https://github.com/JetBrains/intellij-platform-plugin-template).
 
 Disposer & Disposable
 : Added [reference](disposers.html) discussing resource cleanup/management.

@@ -33,7 +33,7 @@ Each roadmap should contain:
 Use the standard intellij-community copyright notice in all sample plugins authored by JetBrains:
 
 ```TEXT
-Copyright 2000-2023 JetBrains s.r.o. and contributors. Use of this source code is governed by the Apache 2.0 license.
+Copyright 2000-2026 JetBrains s.r.o. and contributors. Use of this source code is governed by the Apache 2.0 license.
 ```
 
 Note:
@@ -124,18 +124,18 @@ code_samples/
 ## Gradle Build Script Conventions
 
 SDK code samples must be developed [using Gradle](creating-plugin-project.html).
-As of this writing, the use of Gradle in SDK code samples still relies heavily on the `plugin.xml` for specifying the plugin configuration.
-At a later, second phase, the SDK code samples will transition to rely more on the Gradle configuration.
 
 The default contents of a Gradle build script file are produced by the [New Project Wizard](creating-plugin-project.html#create-ide-plugin).
 A consistent structure for an SDK code sample's Gradle build script file is essential for clarity and is based on the default produced by the project wizard.
 Comments in SDK code sample Gradle build scripts should only draw attention to the parts of the Gradle configuration that are unique for a plugin.
 
-For SDK code samples, a few alterations are needed to the default `build.gradle.kts` file produced by the plugin wizard:
+For SDK code samples, a few alterations are needed to the default Gradle build script configuration files produced by the plugin wizard:
 
-* Maintain the Gradle properties `version` (`project.version`) and `group` (`project.group`). See the [Plugin Gradle Properties](creating-plugin-project.html#plugin-gradle-properties-and-plugin-configuration-file-elements) section for how these Gradle properties relate to the elements in `plugin.xml`.
+* `rootProject.name` in `setting.gradle.kts`
 
-* Add the following statement to the [Patching DSL](tools-gradle-intellij-plugin.html#tasks-patchpluginxml) (`patchPluginXml {...}`) section: ```KOTLIN // Patches <version> value in plugin.xml version.set(project.version) sinceBuild.set("221") untilBuild.set("223.*") ```
+* `version` and `group` in `gradle.properties`
+
+* [&lt;id&gt;](plugin-configuration-file.html#idea-plugin__id) and [&lt;name&gt;](plugin-configuration-file.html#idea-plugin__name) elements in `plugin.xml`
 
 ## plugin.xml Conventions
 

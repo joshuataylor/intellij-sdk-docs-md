@@ -15,7 +15,7 @@ It will familiarize you with the working environment, project structure, and fre
 
 * [Plugin Types](plugin-types.html)
 
-* [Developing a Plugin](developing-plugins.html)
+* [Introduction to Plugin Development](developing-plugins.html)
 
 * [Split Mode (Remote Development)](split-mode-and-remote-development.html)
 

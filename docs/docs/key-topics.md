@@ -5,7 +5,7 @@ This page is intended to list the key topics that a plugin author would be inter
 
 ## Essential Concepts
 
-* [Developing a Plugin](developing-plugins.html).
+* [Introduction to Plugin Development](developing-plugins.html).
 
 * [Testing Overview](testing-plugins.html).
 

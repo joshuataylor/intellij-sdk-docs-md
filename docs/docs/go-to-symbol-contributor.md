@@ -120,7 +120,7 @@ using the [com.intellij.gotoSymbolContributor](https://jb.gg/ipe?extensions=com.
 
 ## Run the Project
 
-Run the plugin by using the Gradle [runIde](creating-plugin-project.html#running-a-plugin-with-the-runide-gradle-task) task.
+[Run](creating-plugin-project.html#running-the-plugin) the plugin.
 
 The IDE now supports navigating to a property definition by name pattern via `Navigate | Symbol` action.
 

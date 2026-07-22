@@ -28,10 +28,6 @@ IntelliJ Platform Gradle Plugin 2.x requires the following minimal versions:
 
 * Java Runtime: 17 See Gradle JVM in `Settings | Build, Execution, Deployment | Build Tools | Gradle`.
 
-Tip:
-
-Consider using the [IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template) which additionally provides CI setup covered with GitHub Actions.
-
 ## Setup
 
 Note:

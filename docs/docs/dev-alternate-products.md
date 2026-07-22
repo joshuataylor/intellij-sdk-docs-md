@@ -24,7 +24,7 @@ Gradle IntelliJ Plugin (1.x) is no longer under active development.
 
 Whenever possible, use [IntelliJ Platform Gradle Plugin (2.x)](tools-intellij-platform-gradle-plugin.html) instead.
 
-To create a new Gradle plugin project, follow the tutorial on the [Creating a Plugin Gradle Project](creating-plugin-project.html) page.
+To create a new Gradle plugin project, follow the tutorial on the [Creating a Plugin Project](creating-plugin-project.html) page.
 The tutorial produces a skeleton Gradle project suitable to use as a starting point.
 
 The best practice is to use the [intellij.type](tools-gradle-intellij-plugin.html#intellij-extension-type) property to specify the target product.

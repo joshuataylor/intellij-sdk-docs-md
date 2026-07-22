@@ -1,5 +1,9 @@
 # Configuring a Plugin for Split Mode
 
+Tip:
+
+Plugins created using the [IDE Plugin generator](creating-plugin-project.html#create-ide-plugin) with the Split Mode (Remote Dev) feature enabled are configured for split mode by default.
+
 Split Mode configuration in the Gradle build script allows for running development sandbox IDEs in mode emulating the [remote development](split-mode-and-remote-development.html) scenario, with both frontend and backend processes running locally.
 To make a plugin work natively in split mode, see [plugin modularization](modular-plugins.html).
 

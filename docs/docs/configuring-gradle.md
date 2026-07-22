@@ -1,4 +1,4 @@
-# Configuring IntelliJ Platform Gradle Plugin (2.x)
+# Configuring IntelliJ Platform Gradle Plugin
 
 This section presents a short overview of the most important Gradle plugin configuration elements to achieve commonly desired functionality.
 
