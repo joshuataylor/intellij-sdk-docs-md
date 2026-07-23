@@ -25,6 +25,9 @@ Creating a Plugin Project
 Error Reporting
 : Add a new page with details about [Error Reporting](error-reporting.html).
 
+Debouncing and Batching Updates
+: Add a new page describing [how to debounce and batch events](debounced-updates.html) with [DebouncedUpdates](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/ide-core/src/com/intellij/util/ui/update/DebouncedUpdates) - a builder API for debounced/throttled update queues.
+
 ### March
 
 Split Mode (Remote Development)
