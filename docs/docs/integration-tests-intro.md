@@ -129,7 +129,7 @@ class PluginTest {
 }
 ```
 
-Let's break down each part of the test:
+Each part of the test is described below:
 
 ### 1. Context Creation
 
@@ -233,10 +233,47 @@ This dual-process architecture explains several key aspects of integration testi
 
 * The origin of certain test-specific exceptions.
 
+## Debugging the Test
+
+Tip:
+
+To attach the debugger from the console to the test IDE instance automatically, enable the `debugger.auto.attach.from.console` registry key (open `Help | Find Action` and search for Registry).
+
+Since the IDE runs as a separate process from the test, the test cannot be debugged directly.
+To debug a test, it is required to attach the debugger to the running IDE process.
+
+General debugging workflow:
+
+1. Run the test in debug mode.
+
+2. In the Console tab of the Debug tool window, click the Attach debugger link that appears once the IDE starts listening for a debugger connection.
+
+## Modifying VM Options
+
+The VM options of the IDE under test (such as heap size or system properties) can be adjusted from the test at two levels:
+
+* `IDETestContext.applyVMOptionsPatch()` applies them to the whole context, so they are reused across every run of that context.
+
+* `IDERunContext.addVMOptionsPatch()` applies them to the current run only.
+
+The patch block exposes a `VMOptions` receiver with helpers such as `withXmx()` and `addSystemProperty()`:
+
+```KOTLIN
+context.applyVMOptionsPatch {
+  withXmx(2048)
+  addSystemProperty("idea.trust.all.projects", true)
+  addSystemProperty("ide.show.tips.on.startup.default.value", false)
+}
+```
+
+* `idea.trust.all.projects` trusts opened projects automatically, so the trust confirmation dialog does not block the test.
+
+* `ide.show.tips.on.startup.default.value` disables the Tips of the Day dialog on startup, so it does not interfere with UI interactions.
+
 ## Opening Projects in Tests
 
 While starting the IDE with an empty project is useful, often it is required to use actual projects to verify real-world scenarios.
-Let's modify the test to open a project.
+The test can be modified to open a project.
 
 The framework supports several ways to specify test projects:
 
@@ -278,7 +315,7 @@ Note:
 ## Catching Exceptions from IDE
 
 The test has one critical limitation: it won't detect exceptions or freezes occurring within the IDE process.
-Let's understand why and how to fix this.
+The reason and the fix are explained below.
 
 Due to the two-process architecture:
 
@@ -391,4 +428,6 @@ This test provides a robust foundation for more elaborate tests by:
 * Monitoring for exceptions and freezes.
 
 * Performing a shutdown.
+
+Example integration tests are available in the [ide-starter-examples](https://github.com/JetBrains/ide-starter-examples/tree/main) repository.
 

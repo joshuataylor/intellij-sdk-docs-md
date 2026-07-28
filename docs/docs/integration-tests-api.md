@@ -10,7 +10,7 @@ For introduction and setting up dependencies, refer to [Introduction to Integrat
 
 The IDE and tests are running in different processes, which means some way to communicate between them is required.
 
-Driver framework uses Java Management Extensions (or JMX for short).
+Driver framework uses [Java Management Extensions](https://en.wikipedia.org/wiki/Java_Management_Extensions) (or JMX for short).
 JMX supports different connectors to manage the state of the JVM.
 Driver framework uses a standard Java Remote Method Invocation (RMI) protocol.
 This protocol allows tests to access objects and invoke methods in the JVM running the IDE.
@@ -197,6 +197,45 @@ service<ProjectManager>().getOpenProjects().singleOrNull()
 Note:
 
 Service and utility proxies can be acquired on each call, there is no need to cache them in clients.
+
+## Contexts and Remote References
+
+To prevent memory leaks, Driver uses `java.lang.ref.WeakReference` for call results.
+
+Consider the following example:
+
+```KOTLIN
+val roots = driver.service(ProjectRootManager::class, driver.singleProject()).getContentRoots()
+val name = roots[0].getName() // may throw an error
+```
+
+In many cases, it throws an exception:
+
+```TEXT
+Weak reference to variable x expired. Please use `Driver.withContext { }` for hard variable references.
+```
+
+To keep results alive across calls, wrap them in a context:
+
+```KOTLIN
+driver.withContext {
+  val roots = service<ProjectRootManager>(singleProject()).getContentRoots()
+  val name = roots[0].getName()
+
+  // results computed inside are guaranteed to be alive until the end of the block
+}
+```
+
+Contexts can be nested, and they can be used independently in helper methods, e.g.:
+
+```KOTLIN
+fun Driver.importGradleProject(project: Project? = null) {
+  withContext {
+    val forProject = project ?: singleProject()
+    utility(ImportGradleProjectUtil::class).importProject(forProject)
+  }
+}
+```
 
 ## JMX/RMI Limitations
 

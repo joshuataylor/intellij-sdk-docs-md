@@ -28461,7 +28461,7 @@ class PluginTest {
 }
 ```
 
-Let's break down each part of the test:
+Each part of the test is described below:
 
 ### 1. Context Creation
 
@@ -28565,10 +28565,47 @@ This dual-process architecture explains several key aspects of integration testi
 
 * The origin of certain test-specific exceptions.
 
+## Debugging the Test
+
+Tip:
+
+To attach the debugger from the console to the test IDE instance automatically, enable the `debugger.auto.attach.from.console` registry key (open `Help | Find Action` and search for Registry).
+
+Since the IDE runs as a separate process from the test, the test cannot be debugged directly.
+To debug a test, it is required to attach the debugger to the running IDE process.
+
+General debugging workflow:
+
+1. Run the test in debug mode.
+
+2. In the Console tab of the Debug tool window, click the Attach debugger link that appears once the IDE starts listening for a debugger connection.
+
+## Modifying VM Options
+
+The VM options of the IDE under test (such as heap size or system properties) can be adjusted from the test at two levels:
+
+* `IDETestContext.applyVMOptionsPatch()` applies them to the whole context, so they are reused across every run of that context.
+
+* `IDERunContext.addVMOptionsPatch()` applies them to the current run only.
+
+The patch block exposes a `VMOptions` receiver with helpers such as `withXmx()` and `addSystemProperty()`:
+
+```KOTLIN
+context.applyVMOptionsPatch {
+  withXmx(2048)
+  addSystemProperty("idea.trust.all.projects", true)
+  addSystemProperty("ide.show.tips.on.startup.default.value", false)
+}
+```
+
+* `idea.trust.all.projects` trusts opened projects automatically, so the trust confirmation dialog does not block the test.
+
+* `ide.show.tips.on.startup.default.value` disables the Tips of the Day dialog on startup, so it does not interfere with UI interactions.
+
 ## Opening Projects in Tests
 
 While starting the IDE with an empty project is useful, often it is required to use actual projects to verify real-world scenarios.
-Let's modify the test to open a project.
+The test can be modified to open a project.
 
 The framework supports several ways to specify test projects:
 
@@ -28610,7 +28647,7 @@ Note:
 ## Catching Exceptions from IDE
 
 The test has one critical limitation: it won't detect exceptions or freezes occurring within the IDE process.
-Let's understand why and how to fix this.
+The reason and the fix are explained below.
 
 Due to the two-process architecture:
 
@@ -28724,6 +28761,8 @@ This test provides a robust foundation for more elaborate tests by:
 
 * Performing a shutdown.
 
+Example integration tests are available in the [ide-starter-examples](https://github.com/JetBrains/ide-starter-examples/tree/main) repository.
+
 
 
 # Integration Tests: UI Testing
@@ -28770,6 +28809,9 @@ This code demonstrates hierarchical navigation:
 3. Locate the Search Everywhere popup.
 
 4. Find and click the Preview button within the popup.
+
+`invokeAction()` triggers a registered [action](action-system.html) directly by its action ID, without simulating a click or keyboard shortcut.
+In the example above, `SearchEverywhere` is the ID under which the Search Everywhere action is registered.
 
 The code could be more concise:
 
@@ -28894,7 +28936,7 @@ keyboard {
 }
 ```
 
-Keyboard methods perform presses using `java.awt.Robot` so to type to some particular component or invoke a shortcut in the appropriate place, you first need to make the component focused.
+Keyboard methods perform presses using `java.awt.Robot`, so to type into a particular component or invoke a shortcut in the appropriate place, the component must first be focused.
 The most reliable way to do this is to perform `click` on the component first.
 
 Note:
@@ -28949,11 +28991,86 @@ XQuery searches for the list component that contains the visible text `Edit Conf
 4. Using `shouldBe(<message>, present)` to ensure the list exists.
 This is important because `popup().jBlist` creates a lazy reference without actually checking the results.
 The actual check happens when `shouldBe` calls the `present` method.
-The `shouldBe` method waits 15 seconds until the condition is met and can be used to assert various properties.
+See [should() Methods](#should-methods) for details on how `shouldBe()` waits for and asserts conditions.
 
 5. Checking list contents by accessing the `rawItems` property to get all list items and asserting `backup-data` exists in the list.
 
 6. Including the full list content in the error message for debugging.
+
+## Waiting
+
+Integration tests often need to wait until the IDE reaches a certain state.
+The Test SDK provides its own waiting API with two families of methods:
+
+* `should()` methods on UI components, for asserting and waiting on a component state.
+
+* `waitFor()` methods, for waiting on arbitrary conditions and common IDE states.
+
+### 
+
+`should()` Methods
+
+The Test SDK adds extension methods on UI components that poll a condition until it holds or the timeout elapses (15 seconds by default).
+Each method returns the same component, so calls can be chained, and a [WaitForException](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/remote-driver/test-sdk/src/com/intellij/driver/sdk/waits.kt) is thrown when the condition is not met in time.
+
+```KOTLIN
+// waits until the condition returns true
+component.should { isEnabled() }
+
+// same as should(); reads as a state assertion, often with a predefined condition
+component.shouldBe(enabled)
+
+// waits until the condition returns false
+component.shouldNot(present)
+
+// waits until the block runs without throwing; rethrows the last error on timeout
+component.shouldBeNoExceptions { /* assertions */ }
+```
+
+The condition can use one of the predefined checks: `enabled`, `notEnabled`, `present`, `notPresent`, or `focusOwner`.
+
+Specific component types add their own assertions, for example `JListUiComponent.shouldBeEqualTo()`, `JEditorUiComponent.shouldContainText()`, or `UiComponent.shouldHaveFocus()`.
+The full set of conditions and assertions is available in
+[conditions.kt](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/remote-driver/test-sdk/src/com/intellij/driver/sdk/ui/conditions.kt).
+
+### 
+
+`waitFor()` Methods
+
+The general-purpose `waitFor()` polls an arbitrary condition until it returns `true` or the timeout elapses (5 seconds by default, checked once per second), throwing `WaitForException` on timeout:
+
+```KOTLIN
+waitFor("the expected state description", timeout = 30.seconds) {
+  // return true once the expected state is reached
+}
+```
+
+For common IDE and UI states, the Test SDK provides ready-made helpers built on top of `waitFor()`:
+
+```KOTLIN
+// waits only until the Project reference becomes available (see the note below)
+waitForProjectOpen(timeout)
+
+// waits until the project is opened and no progress indicators remain for 10 seconds
+waitForIndicators(project, timeout)
+
+// waits until the code analysis daemon has finished analyzing the file
+waitForCodeAnalysis(file = file)
+
+// waits until no dialogs are open
+waitForNoOpenedDialogs()
+```
+
+`waitForCodeAnalysis()` requires the `file` argument to be named, because the first parameter is an optional `Project`.
+
+Warning:
+
+`waitForProjectOpen()` only guarantees that the `Project` reference is not `null`.
+The UI, Project View, and services may still be uninitialized, which can lead to flaky tests.
+To wait until the IDE is fully ready, prefer `waitForIndicators()`, which also waits for the project to open.
+
+The generic `waitFor()` and the IDE-state helpers are defined in the
+[com.intellij.driver.sdk](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/remote-driver/test-sdk/src/com/intellij/driver/sdk) package and its subpackages.
 
 
 
@@ -28969,7 +29086,7 @@ For introduction and setting up dependencies, refer to [Introduction to Integrat
 
 The IDE and tests are running in different processes, which means some way to communicate between them is required.
 
-Driver framework uses Java Management Extensions (or JMX for short).
+Driver framework uses [Java Management Extensions](https://en.wikipedia.org/wiki/Java_Management_Extensions) (or JMX for short).
 JMX supports different connectors to manage the state of the JVM.
 Driver framework uses a standard Java Remote Method Invocation (RMI) protocol.
 This protocol allows tests to access objects and invoke methods in the JVM running the IDE.
@@ -29156,6 +29273,45 @@ service<ProjectManager>().getOpenProjects().singleOrNull()
 Note:
 
 Service and utility proxies can be acquired on each call, there is no need to cache them in clients.
+
+## Contexts and Remote References
+
+To prevent memory leaks, Driver uses `java.lang.ref.WeakReference` for call results.
+
+Consider the following example:
+
+```KOTLIN
+val roots = driver.service(ProjectRootManager::class, driver.singleProject()).getContentRoots()
+val name = roots[0].getName() // may throw an error
+```
+
+In many cases, it throws an exception:
+
+```TEXT
+Weak reference to variable x expired. Please use `Driver.withContext { }` for hard variable references.
+```
+
+To keep results alive across calls, wrap them in a context:
+
+```KOTLIN
+driver.withContext {
+  val roots = service<ProjectRootManager>(singleProject()).getContentRoots()
+  val name = roots[0].getName()
+
+  // results computed inside are guaranteed to be alive until the end of the block
+}
+```
+
+Contexts can be nested, and they can be used independently in helper methods, e.g.:
+
+```KOTLIN
+fun Driver.importGradleProject(project: Project? = null) {
+  withContext {
+    val forProject = project ?: singleProject()
+    utility(ImportGradleProjectUtil::class).importProject(forProject)
+  }
+}
+```
 
 ## JMX/RMI Limitations
 
