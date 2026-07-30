@@ -2,14 +2,14 @@
 
 ## Entities Querying
 
-[EntityStorage](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/workspace/storage/src/com/intellij/platform/workspace/storage/EntityStorage.kt)
+[EntityStorage](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/workspace/storage/src/com/intellij/platform/workspace/storage/EntityStorage.kt)
 provides the ability to query data from
-[WorkspaceModel](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/backend/workspace/src/WorkspaceModel.kt).
+[WorkspaceModel](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/backend/workspace/src/WorkspaceModel.kt).
 
 ### Basic request
 
 To request all entities of the concrete type use
-[EntityStorage.entities()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/workspace/storage/src/com/intellij/platform/workspace/storage/EntityStorage.kt).
+[EntityStorage.entities()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/workspace/storage/src/com/intellij/platform/workspace/storage/EntityStorage.kt).
 
 ```KOTLIN
 // Take a copy of the current storage
@@ -38,7 +38,7 @@ Reference: [EntitySource](workspace-model-entity-properties.html#entitysource)
 </tldr>
 
 This index stores information about entities'
-[EntitySource](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/workspace/storage/src/com/intellij/platform/workspace/storage/EntitySource.kt)
+[EntitySource](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/workspace/storage/src/com/intellij/platform/workspace/storage/EntitySource.kt)
 and allows obtaining all entities matching the given predicate.
 
 ```KOTLIN
@@ -59,9 +59,9 @@ currentSnapshot.entitiesBySource { it is GradleEntitySource }.forEach {
 Reference: [VirtualFileUrl](workspace-model-entity-properties.html#virtualfileurl)
 </tldr>
 
-[EntityStorage.getVirtualFileUrlIndex()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/workspace/storage/src/com/intellij/platform/workspace/storage/EntityStorage.kt)
+[EntityStorage.getVirtualFileUrlIndex()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/workspace/storage/src/com/intellij/platform/workspace/storage/EntityStorage.kt)
 provides a way to quickly find entities referring to a particular
-[VirtualFileUrl](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/workspace/storage/src/com/intellij/platform/workspace/storage/url/VirtualFileUrl.java).
+[VirtualFileUrl](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/workspace/storage/src/com/intellij/platform/workspace/storage/url/VirtualFileUrl.java).
 
 ```KOTLIN
 val currentSnapshot: ImmutableEntityStorage =
@@ -80,7 +80,7 @@ Reference: [SymbolicEntityId](workspace-model-entity-properties.html#symbolicent
 </tldr>
 
 Allows searching for an entity by its
-[SymbolicEntityId](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/workspace/storage/src/com/intellij/platform/workspace/storage/SymbolicEntityId.kt).
+[SymbolicEntityId](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/workspace/storage/src/com/intellij/platform/workspace/storage/SymbolicEntityId.kt).
 
 ```KOTLIN
 val moduleId = ModuleId("moduleName")
@@ -92,13 +92,13 @@ entityStorage.resolve(moduleId)
 ### Arbitrary Data
 
 Provides a way to associate
-[WorkspaceEntity](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/workspace/storage/src/com/intellij/platform/workspace/storage/WorkspaceEntity.kt)
+[WorkspaceEntity](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/workspace/storage/src/com/intellij/platform/workspace/storage/WorkspaceEntity.kt)
 with an external data type.
 The association survives modifications of an entity, and is automatically removed when the entity is deleted.
 Use
-[MutableEntityStorage.getMutableExternalMapping()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/workspace/storage/src/com/intellij/platform/workspace/storage/MutableEntityStorage.kt)
+[MutableEntityStorage.getMutableExternalMapping()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/workspace/storage/src/com/intellij/platform/workspace/storage/MutableEntityStorage.kt)
 to fill the index and
-[EntityStorage.getExternalMapping()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/workspace/storage/src/com/intellij/platform/workspace/storage/EntityStorage.kt)
+[EntityStorage.getExternalMapping()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/workspace/storage/src/com/intellij/platform/workspace/storage/EntityStorage.kt)
 to access it.
 
 #### Example

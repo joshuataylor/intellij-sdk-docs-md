@@ -7,7 +7,7 @@ Plugins can subscribe to the [flow](#subscription-via-kotlin-flow) of events fro
 `EntityChange` Events
 
 The order of
-[EntityChange](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/workspace/storage/src/com/intellij/platform/workspace/storage/MutableEntityStorage.kt)
+[EntityChange](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/workspace/storage/src/com/intellij/platform/workspace/storage/MutableEntityStorage.kt)
 events is predefined:
 
 1. `EntityChange.Removed`
@@ -56,7 +56,7 @@ Move child `B` from `A` to `C`: [Replaced(A), Replaced(B), Replaced(C)]
 
 Using [Kotlin Coroutines](kotlin-coroutines.html), it is possible to subscribe to the
 events via [Kotlin Flows](https://kotlinlang.org/docs/flow.html) exposed via the
-[WorkspaceModel.eventLog](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/backend/workspace/src/WorkspaceModel.kt)
+[WorkspaceModel.eventLog](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/backend/workspace/src/WorkspaceModel.kt)
 property.
 
 Flows allow performing incremental computation:
@@ -68,7 +68,7 @@ If the subscription should be set up after a project is opened, use
 Keep in mind that it might miss the few first updates of the model, which is expected because the initial version of the storage will be provided.
 
 Since this listener is asynchronous, there is no guarantee that indexes built on top of
-[WorkspaceFileIndex](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/projectModel-impl/src/com/intellij/workspaceModel/core/fileIndex/WorkspaceFileIndex.kt)
+[WorkspaceFileIndex](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/projectModel-impl/src/com/intellij/workspaceModel/core/fileIndex/WorkspaceFileIndex.kt)
 or the project model will be updated.
 
 ### Incremental Computation

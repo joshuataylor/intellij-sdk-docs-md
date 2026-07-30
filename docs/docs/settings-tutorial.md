@@ -20,9 +20,9 @@ The structure of the implementation is the same for Project Settings, but there 
 Note:
 
 See
-[MarkdownSettings](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/plugins/markdown/core/src/org/intellij/plugins/markdown/settings/MarkdownSettings.kt)
+[MarkdownSettings](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/plugins/markdown/core/src/org/intellij/plugins/markdown/settings/MarkdownSettings.kt)
 and
-[MarkdownSettingsConfigurable](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/plugins/markdown/core/src/org/intellij/plugins/markdown/settings/MarkdownSettingsConfigurable.kt)
+[MarkdownSettingsConfigurable](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/plugins/markdown/core/src/org/intellij/plugins/markdown/settings/MarkdownSettingsConfigurable.kt)
 classes for the settings example implemented in Kotlin with usage of [Kotlin UI DSL](kotlin-ui-dsl-version-2.html).
 
 ## 
@@ -53,7 +53,7 @@ is used with the fully qualified name (FQN) of the implementation class:
 
 Creating the `AppSettings` Implementation
 
-As discussed in [Implementing the PersistentStateComponent Interface](persisting-state-of-components.html#implementing-the-persistentstatecomponent-interface), `AppSettings` uses the pattern of implementing [PersistentStateComponent](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/projectModel-api/src/com/intellij/openapi/components/PersistentStateComponent.java) parameterized by a separate state class:
+As discussed in [Implementing the PersistentStateComponent Interface](persisting-state-of-components.html#implementing-the-persistentstatecomponent-interface), `AppSettings` uses the pattern of implementing [PersistentStateComponent](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/projectModel-api/src/com/intellij/openapi/components/PersistentStateComponent.java) parameterized by a separate state class:
 
 ```JAVA
 @State(
@@ -93,11 +93,11 @@ final class AppSettings
 
 `@Storage` Annotation
 
-The [@State](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/projectModel-api/src/com/intellij/openapi/components/State.java) annotation, located above the class declaration, [defines the data storage location](persisting-state-of-components.html#defining-the-storage-location).
+The [@State](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/projectModel-api/src/com/intellij/openapi/components/State.java) annotation, located above the class declaration, [defines the data storage location](persisting-state-of-components.html#defining-the-storage-location).
 For `AppSettings`, the data `name` parameter is the FQN of the class.
 Using FQN is the best practice to follow and is required if custom data gets stored in the standard project or workspace files.
 
-The `storages` parameter uses the [@Storage](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/projectModel-api/src/com/intellij/openapi/components/Storage.java) annotation to define a custom filename for the `AppSettings` data.
+The `storages` parameter uses the [@Storage](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/projectModel-api/src/com/intellij/openapi/components/Storage.java) annotation to define a custom filename for the `AppSettings` data.
 In this case, the file is located in the `options` directory of the [configuration directory](https://www.jetbrains.com/help/idea/tuning-the-ide.html#config-directory) for the IDE.
 
 #### Persistent State Class
@@ -112,7 +112,7 @@ See [Implementing the State Class](persisting-state-of-components.html#implement
 
 The fields are so limited and straightforward for this class that encapsulation is not used for simplicity.
 All that is needed for functionality is to override the two methods called by the IntelliJ Platform when a new component state is loaded (`PersistentStateComponent.loadState()`), and when a state is saved (`PersistentStateComponent.getState()`).
-See [PersistentStateComponent](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/projectModel-api/src/com/intellij/openapi/components/PersistentStateComponent.java) for more information about these methods.
+See [PersistentStateComponent](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/projectModel-api/src/com/intellij/openapi/components/PersistentStateComponent.java) for more information about these methods.
 
 One static convenience method has been added – `AppSettings.getInstance()` – which allows `AppSettingsConfigurable` to easily acquire a reference to `AppSetting`.
 
@@ -128,7 +128,7 @@ The `AppSettingsComponent` is instantiated by `AppSettingsConfigurable`.
 
 Creating the `AppSettingsComponent` Implementation
 
-The `AppSettingsComponent` defines a `JPanel` containing a [JBTextField](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-api/src/com/intellij/ui/components/JBTextField.java) and a [JBCheckBox](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-api/src/com/intellij/ui/components/JBCheckBox.java) to hold and display the data that maps to the [data fields of AppSettings.State](#persistent-state-class):
+The `AppSettingsComponent` defines a `JPanel` containing a [JBTextField](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-api/src/com/intellij/ui/components/JBTextField.java) and a [JBCheckBox](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-api/src/com/intellij/ui/components/JBCheckBox.java) to hold and display the data that maps to the [data fields of AppSettings.State](#persistent-state-class):
 
 ```JAVA
 /**
@@ -180,7 +180,7 @@ public class AppSettingsComponent {
 
 `AppSettingsComponent` Methods
 
-The constructor builds the `JPanel` using the convenient [FormBuilder](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-api/src/com/intellij/util/ui/FormBuilder.java) and saves a reference to the `JPanel`.
+The constructor builds the `JPanel` using the convenient [FormBuilder](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-api/src/com/intellij/util/ui/FormBuilder.java) and saves a reference to the `JPanel`.
 The rest of the class are simple accessors and mutators to encapsulate the UI components used on the `JPanel`.
 
 ## 
@@ -210,7 +210,7 @@ An explanation of this declaration can be found in [Declaring Application Settin
 
 Creating the `AppSettingsConfigurable` Implementation
 
-The `AppSettingsConfigurable` class implements [Configurable](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/ide-core/src/com/intellij/openapi/options/Configurable.java).
+The `AppSettingsConfigurable` class implements [Configurable](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/ide-core/src/com/intellij/openapi/options/Configurable.java).
 The class has one field to hold a reference to the `AppSettingsComponent`.
 
 ```JAVA

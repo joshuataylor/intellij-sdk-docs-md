@@ -1,7 +1,7 @@
 # Working with Icons
 
 <tldr>
-Code: [AllIcons](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/util/ui/src/com/intellij/icons/AllIcons.java)
+Code: [AllIcons](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/util/ui/src/com/intellij/icons/AllIcons.java)
 
 UI Guidelines: [Icons list](https://intellij-icons.jetbrains.design), [Icons](icons-style.html)
 
@@ -20,8 +20,8 @@ A [Plugin Logo](plugin-icon-file.html), which represents the plugin itself, has 
 Plugins should reuse existing platform icons whenever possible.
 
 Use the [Icons list](https://intellij-icons.jetbrains.design) to browse existing icons.
-Platform icons are located in [AllIcons](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/util/ui/src/com/intellij/icons/AllIcons.java).
-Icons from plugins are located in the corresponding `<PLUGIN_NAME>Icons` class (e.g., [GithubIcons](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/plugins/github/github-core/gen/org/jetbrains/plugins/github/GithubIcons.java)).
+Platform icons are located in [AllIcons](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/util/ui/src/com/intellij/icons/AllIcons.java).
+Icons from plugins are located in the corresponding `<PLUGIN_NAME>Icons` class (e.g., [GithubIcons](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/plugins/github/github-core/gen/org/jetbrains/plugins/github/GithubIcons.java)).
 
 If custom icons are required, refer to detailed [design guide](icons-style.html).
 
@@ -34,7 +34,7 @@ See [Action Basics](https://github.com/JetBrains/intellij-sdk-code-samples/tree/
 In the case of a Gradle-based project, icons should be placed in the `resources` directory.
 If the project is DevKit-based, the recommended approach is to put icons to a dedicated [source root](https://www.jetbrains.com/help/idea/content-roots.html) marked as Resources Root, e.g., `icons` or `resources`.
 
-If the icons are referenced only in `[plugin.xml](plugin-configuration-file.html)` or via [@Presentation](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/analysis-api/src/com/intellij/ide/presentation/Presentation.java) `icon` attribute, then they can be [referenced by paths](#by-path).
+If the icons are referenced only in `[plugin.xml](plugin-configuration-file.html)` or via [@Presentation](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/analysis-api/src/com/intellij/ide/presentation/Presentation.java) `icon` attribute, then they can be [referenced by paths](#by-path).
 In case the icons are referenced from the code and/or XML many times, it's convenient to organize them in an [icon holder class](#icons-class).
 
 ### Icons Class
@@ -73,13 +73,13 @@ object MyIcons {
 }
 ```
 
-The `getIcon()` method of [IconLoader](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/util/ui/src/com/intellij/openapi/util/IconLoader.kt) can be used to access the icons.
+The `getIcon()` method of [IconLoader](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/util/ui/src/com/intellij/openapi/util/IconLoader.kt) can be used to access the icons.
 The path to the icon passed in as argument to `IconLoader.getIcon()` must start with leading `/`.
 
 ## Using Icons
 
 Icons defined inside `plugin.xml` with `icon` attribute for [&lt;action&gt;](plugin-configuration-file.html#idea-plugin__actions__action) or [extension point](plugin-extension-points.html),
-as well as in [@Presentation](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/analysis-api/src/com/intellij/ide/presentation/Presentation.java) `icon` attribute, can be referenced in two ways.
+as well as in [@Presentation](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/analysis-api/src/com/intellij/ide/presentation/Presentation.java) `icon` attribute, can be referenced in two ways.
 
 ### By Path
 
@@ -181,11 +181,11 @@ Tip:
 
 Sample setup from the Python plugin:
 
-* Icon resources root directory: [icons](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/python/pluginResources/icons)
+* Icon resources root directory: [icons](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/python/pluginResources/icons)
 
-* Mapping file: [PythonIconMappings.json](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/python/pluginResources/PythonIconMappings.json)
+* Mapping file: [PythonIconMappings.json](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/python/pluginResources/PythonIconMappings.json)
 
-* Extension point registration (`<iconMapper mappingFile="MavenIconMappings.json"/>`): [intellij.python.community.impl.xml](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/python/pluginResources/intellij.python.community.impl.xml)
+* Extension point registration (`<iconMapper mappingFile="MavenIconMappings.json"/>`): [intellij.python.community.impl.xml](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/python/pluginResources/intellij.python.community.impl.xml)
 
 ### Mapping Entries
 
@@ -213,7 +213,7 @@ In this example, the icon root directory is named `icons`:
 ```
 
 If one new icon replaces several old icons, use a JSON list.
-Example from [PlatformIconMappings.json](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/icons/src/PlatformIconMappings.json):
+Example from [PlatformIconMappings.json](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/icons/src/PlatformIconMappings.json):
 
 ```JSON
 "vcs.svg": [
@@ -267,7 +267,7 @@ Animated icons are a way to show that a plugin is now performing some long-time 
 Any animated icon is a set of frames that loop with a delay.
 
 To create a new animated icon, use the
-[AnimatedIcon](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/ide-core/src/com/intellij/ui/AnimatedIcon.java).
+[AnimatedIcon](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/ide-core/src/com/intellij/ui/AnimatedIcon.java).
 To create an icon where frames follow each other with the same delay, use a constructor that accepts a delay and icons:
 
 ```JAVA
@@ -282,7 +282,7 @@ Each frame represents an icon, and a delay until the next frame.
 
 Tip:
 
-Set [AnimatedIcon.ANIMATION_IN_RENDERER_ALLOWED](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/ide-core/src/com/intellij/ui/AnimatedIcon.java) client property to `true` for list, table,
+Set [AnimatedIcon.ANIMATION_IN_RENDERER_ALLOWED](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/ide-core/src/com/intellij/ui/AnimatedIcon.java) client property to `true` for list, table,
 and tree components to repaint animated icons automatically.
 See its Javadoc for details.
 
@@ -291,12 +291,12 @@ See its Javadoc for details.
 Use the predefined `AnimatedIcon.Default` loader icon to indicate a long process.
 This icon has a larger `AnimatedIcon.Big` version.
 
-Alternatively, use [AsyncProcessIcon](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-api/src/com/intellij/util/ui/AsyncProcessIcon.java).
+Alternatively, use [AsyncProcessIcon](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-api/src/com/intellij/util/ui/AsyncProcessIcon.java).
 
 ## Icon Tooltips
 
 Register a resource bundle via [com.intellij.iconDescriptionBundle](https://jb.gg/ipe?extensions=com.intellij.iconDescriptionBundle) extension point
-to provide tooltips automatically for all [SimpleColoredComponent](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-api/src/com/intellij/ui/SimpleColoredComponent.java) renderers.
+to provide tooltips automatically for all [SimpleColoredComponent](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-api/src/com/intellij/ui/SimpleColoredComponent.java) renderers.
 
 Create `icon.<icon-path>.tooltip` key in the resource bundle, where `<icon-path>` is the icon path with leading slash and `.svg` removed and slashes replaced with dots:
 

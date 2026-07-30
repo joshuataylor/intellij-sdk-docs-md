@@ -50,7 +50,7 @@ repositories {
 
 dependencies {
   intellijPlatform {
-    intellijIdea("2026.2")
+    intellijIdea("2026.2.0.1")
   }
 }
 ```
@@ -69,7 +69,7 @@ plugins {
 }
 
 intellij {
-  version = "2026.2"
+  version = "2026.2.0.1"
   type = "IU"
 }
 ```
@@ -138,7 +138,7 @@ The LSP support provided by the IntelliJ Platform covers the following features 
 
 Note:
 
-All the above features are enabled by default and can be controlled via [LspClientDescriptor.lspCustomization](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/lsp/src/api/LspClientDescriptor.kt) (since 2026.1.4), or [LspServerDescriptor.lspCustomization](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/lsp/src/api/LspServerDescriptor.kt)` (before 2026.1.4).
+All the above features are enabled by default and can be controlled via [LspClientDescriptor.lspCustomization](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/lsp/src/api/LspClientDescriptor.kt) (since 2026.1.4), or [LspServerDescriptor.lspCustomization](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/lsp/src/api/LspServerDescriptor.kt)` (before 2026.1.4).
 See the [Customization](#customization) section for details.
 
 ### 2025.3
@@ -229,7 +229,7 @@ See the [Customization](#customization) section for details.
 
 ## Basic Implementation
 
-As a reference, check out the [Prisma ORM](https://plugins.jetbrains.com/plugin/20686-prisma-orm) open-source plugin implementation: [Prisma ORM LSP](https://github.com/JetBrains/intellij-plugins/tree/idea/262.8665.258/prisma/src/org/intellij/prisma/ide/lsp)
+As a reference, check out the [Prisma ORM](https://plugins.jetbrains.com/plugin/20686-prisma-orm) open-source plugin implementation: [Prisma ORM LSP](https://github.com/JetBrains/intellij-plugins/tree/idea/262.8665.337/prisma/src/org/intellij/prisma/ide/lsp)
 
 Tip:
 
@@ -243,7 +243,7 @@ A dedicated Language Services status bar widget is available to monitor the stat
 
 2026.1.4+:
 
-Override [LspIntegrationProvider.createWidgetItem()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/lsp/src/api/LspIntegrationProvider.kt) to provide a custom icon and link to [the settings page](settings.html) (if available).
+Override [LspIntegrationProvider.createWidgetItem()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/lsp/src/api/LspIntegrationProvider.kt) to provide a custom icon and link to [the settings page](settings.html) (if available).
 
 ```KOTLIN
 override fun createWidgetItem(
@@ -258,7 +258,7 @@ override fun createWidgetItem(
 
 Pre-2026.1.4:
 
-Override [LspServerSupportProvider.createLspServerWidgetItem()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/lsp/src/api/LspServerSupportProvider.kt) to provide a custom icon and link to [the settings page](settings.html) (if available).
+Override [LspServerSupportProvider.createLspServerWidgetItem()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/lsp/src/api/LspServerSupportProvider.kt) to provide a custom icon and link to [the settings page](settings.html) (if available).
 
 ```KOTLIN
 override fun createLspServerWidgetItem(
@@ -295,17 +295,17 @@ To access LSP API source code and documentation see [IDE Setup](#ide-setup).
 
 2025.2+:
 
-To fine-tune or disable the implementation of LSP-based features, plugins may return a customized [LspCustomization](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/lsp/src/api/customization/LspCustomization.kt) object from the `LspClientDescriptor.lspCustomization` (`LspServerDescriptor.lspCustomization` before 2026.1.4) property.
+To fine-tune or disable the implementation of LSP-based features, plugins may return a customized [LspCustomization](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/lsp/src/api/customization/LspCustomization.kt) object from the `LspClientDescriptor.lspCustomization` (`LspServerDescriptor.lspCustomization` before 2026.1.4) property.
 Available customization options are described by `LspCustomization`'s properties.
 
-For example, see [PrismaLspClientDescriptor](https://github.com/JetBrains/intellij-plugins/tree/idea/262.8665.258/prisma/src/org/intellij/prisma/ide/lsp/PrismaLspClientDescriptor.kt).
+For example, see [PrismaLspClientDescriptor](https://github.com/JetBrains/intellij-plugins/tree/idea/262.8665.337/prisma/src/org/intellij/prisma/ide/lsp/PrismaLspClientDescriptor.kt).
 
 The new API is backward-compatible.
 Plugin LSP customizations implemented via deprecated `LspServerDescriptor`'s properties will work in 2025.2.
 New LSP features will be customizable only via the new API.
 
 Starting with 2026.1.2, on-type formatting ([textDocument/onTypeFormatting](https://microsoft.github.io/language-server-protocol/specification/#textDocument_onTypeFormatting)) is the first LSP feature disabled by default.
-Review your servers and enable [LspOnTypeFormattingCustomizer](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/lsp/src/api/customization/LspOnTypeFormattingCustomizer.kt) via `LspClientDescriptor.lspCustomization` where formatting while typing is appropriate.
+Review your servers and enable [LspOnTypeFormattingCustomizer](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/lsp/src/api/customization/LspOnTypeFormattingCustomizer.kt) via `LspClientDescriptor.lspCustomization` where formatting while typing is appropriate.
 
 Pre-2025.2:
 
@@ -363,13 +363,13 @@ The following table lists the key classes renaming:
 
 | Old |New |
 ------------
-| [LspServerSupportProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/lsp/src/api/LspServerSupportProvider.kt) EP: `com.intellij.platform.lsp.serverSupportProvider` |[LspIntegrationProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/lsp/src/api/LspIntegrationProvider.kt) EP: `com.intellij.platform.lsp.integrationProvider` |
+| [LspServerSupportProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/lsp/src/api/LspServerSupportProvider.kt) EP: `com.intellij.platform.lsp.serverSupportProvider` |[LspIntegrationProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/lsp/src/api/LspIntegrationProvider.kt) EP: `com.intellij.platform.lsp.integrationProvider` |
 | `LspServerSupportProvider.LspServerStarter` |`LspIntegrationProvider.LspClientStarter` |
-| [LspServerDescriptor](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/lsp/src/api/LspServerDescriptor.kt) |[LspClientDescriptor](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/lsp/src/api/LspClientDescriptor.kt) |
-| [ProjectWideLspServerDescriptor](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/lsp/src/api/ProjectWideLspServerDescriptor.kt) |[ProjectWideLspClientDescriptor](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/lsp/src/api/ProjectWideLspClientDescriptor.kt) |
-| [LspServer](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/lsp/src/api/LspServer.kt) |[LspClient](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/lsp/src/api/LspClient.kt) |
-| [LspServerManager](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/lsp/src/api/LspServerManager.kt) |[LspClientManager](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/lsp/src/api/LspClientManager.kt) Service is registered for the `LspClientManager` interface only; `project.service<LspServerManager>()` returns null. Use `LspClientManager.getInstance()` (or `LspServerManager.getInstance(project)` to support versions before 2026.1.4). |
-| [LspServerWidgetItem](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/lsp/src/api/lsWidget/LspServerWidgetItem.kt) |[LspClientWidgetItem](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/lsp/src/api/lsWidget/LspClientWidgetItem.kt) |
+| [LspServerDescriptor](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/lsp/src/api/LspServerDescriptor.kt) |[LspClientDescriptor](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/lsp/src/api/LspClientDescriptor.kt) |
+| [ProjectWideLspServerDescriptor](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/lsp/src/api/ProjectWideLspServerDescriptor.kt) |[ProjectWideLspClientDescriptor](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/lsp/src/api/ProjectWideLspClientDescriptor.kt) |
+| [LspServer](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/lsp/src/api/LspServer.kt) |[LspClient](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/lsp/src/api/LspClient.kt) |
+| [LspServerManager](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/lsp/src/api/LspServerManager.kt) |[LspClientManager](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/lsp/src/api/LspClientManager.kt) Service is registered for the `LspClientManager` interface only; `project.service<LspServerManager>()` returns null. Use `LspClientManager.getInstance()` (or `LspServerManager.getInstance(project)` to support versions before 2026.1.4). |
+| [LspServerWidgetItem](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/lsp/src/api/lsWidget/LspServerWidgetItem.kt) |[LspClientWidgetItem](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/lsp/src/api/lsWidget/LspClientWidgetItem.kt) |
 
 Note: Something missing?
 

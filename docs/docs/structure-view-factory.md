@@ -19,8 +19,8 @@ Creating a structure view factory allows showing the structure of any file in th
 ## Define a Structure View Factory
 
 The [SimpleStructureViewFactory](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleStructureViewFactory.java)
-implements [PsiStructureViewFactory](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/editor-ui-api/src/com/intellij/lang/PsiStructureViewFactory.java).
-The `getStructureViewBuilder()` implementation reuses the IntelliJ Platform class [TreeBasedStructureViewBuilder](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/editor-ui-api/src/com/intellij/ide/structureView/TreeBasedStructureViewBuilder.java).
+implements [PsiStructureViewFactory](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/editor-ui-api/src/com/intellij/lang/PsiStructureViewFactory.java).
+The `getStructureViewBuilder()` implementation reuses the IntelliJ Platform class [TreeBasedStructureViewBuilder](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/editor-ui-api/src/com/intellij/ide/structureView/TreeBasedStructureViewBuilder.java).
 At this point the project will not compile until `SimpleStructureViewModel` is [implemented below](#define-a-structure-view-model).
 
 ```JAVA
@@ -42,8 +42,8 @@ final class SimpleStructureViewFactory implements PsiStructureViewFactory {
 
 ## Define a Structure View Model
 
-The [SimpleStructureViewModel](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleStructureViewModel.java) is created by implementing [StructureViewModel](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/editor-ui-api/src/com/intellij/ide/structureView/StructureViewModel.java), which defines the model for data displayed in the standard structure view.
-It also extends [StructureViewModelBase](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/editor-ui-api/src/com/intellij/ide/structureView/StructureViewModelBase.java), an implementation that links the model to a text editor.
+The [SimpleStructureViewModel](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleStructureViewModel.java) is created by implementing [StructureViewModel](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/editor-ui-api/src/com/intellij/ide/structureView/StructureViewModel.java), which defines the model for data displayed in the standard structure view.
+It also extends [StructureViewModelBase](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/editor-ui-api/src/com/intellij/ide/structureView/StructureViewModelBase.java), an implementation that links the model to a text editor.
 
 ```JAVA
 public class SimpleStructureViewModel extends StructureViewModelBase implements
@@ -80,7 +80,7 @@ public class SimpleStructureViewModel extends StructureViewModelBase implements
 ## Define a Structure View Element
 
 The [SimpleStructureViewElement](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleStructureViewElement.java)
-implements [StructureViewTreeElement](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/editor-ui-api/src/com/intellij/ide/structureView/StructureViewTreeElement.java) and [SortableTreeElement](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/editor-ui-api/src/com/intellij/ide/util/treeView/smartTree/SortableTreeElement.java).
+implements [StructureViewTreeElement](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/editor-ui-api/src/com/intellij/ide/structureView/StructureViewTreeElement.java) and [SortableTreeElement](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/editor-ui-api/src/com/intellij/ide/util/treeView/smartTree/SortableTreeElement.java).
 The `StructureViewTreeElement` represents an element in the Structure View tree model.
 The `SortableTreeElement` represents an item in a smart tree that allows using text other than the presentable text as a key for alphabetic sorting.
 

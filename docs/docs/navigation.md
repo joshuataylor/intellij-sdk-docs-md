@@ -12,7 +12,7 @@ Direct navigation is the navigation from `PsiElement` to another `PsiElement`,
 such as navigation from `break` keyword to the end of a loop in Java, without showing any popups.
 
 To provide `PsiElement` for direct navigation, implement and register
-[DirectNavigationProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/navigation/DirectNavigationProvider.java)
+[DirectNavigationProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/navigation/DirectNavigationProvider.java)
 in [com.intellij.lang.directNavigationProvider](https://jb.gg/ipe?extensions=com.intellij.lang.directNavigationProvider) extension point
 .
 
@@ -24,16 +24,16 @@ which it obtains by resolving a [reference](declarations-and-references.html#ref
 If there are several target symbols or several navigation targets defined for a symbol,
 then the IDE shows the navigation popup to ask the user to choose where to go.
 
-The [NavigationTarget](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/platform/backend/navigation/NavigationTarget.java)
+The [NavigationTarget](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/platform/backend/navigation/NavigationTarget.java)
 is essentially a pair of a `Navigatable` and
-a [TargetPresentation](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/platform/backend/presentation/TargetPresentation.kt)
+a [TargetPresentation](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/platform/backend/presentation/TargetPresentation.kt)
 instances (where to go and what to show in the popup).
 
 To provide navigation targets by a `Symbol`, either:
 
-* implement and register [SymbolNavigationProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/navigation/SymbolNavigationProvider.java) in [com.intellij.symbolNavigation](https://jb.gg/ipe?extensions=com.intellij.symbolNavigation) extension point ;
+* implement and register [SymbolNavigationProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/navigation/SymbolNavigationProvider.java) in [com.intellij.symbolNavigation](https://jb.gg/ipe?extensions=com.intellij.symbolNavigation) extension point ;
 
-* or implement [NavigatableSymbol](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/navigation/NavigatableSymbol.java) in the `Symbol`.
+* or implement [NavigatableSymbol](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/navigation/NavigatableSymbol.java) in the `Symbol`.
 
 ## Showing Usages
 

@@ -123,7 +123,7 @@ See also:
 Represents information about the IntelliJ Platform product.
 
 The information is retrieved from the `product-info.json` file in the IntelliJ Platform directory.
-See also the corresponding [product-info.schema.json](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/buildData/resources/product-info.schema.json).
+See also the corresponding [product-info.schema.json](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/buildData/resources/product-info.schema.json).
 
 | Name |Description |
 ---------------------

@@ -33,11 +33,11 @@ writeAction {
 `ModuleEntity` Creation
 
 Creating a new
-[ModuleEntity](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/workspace/jps/src/com/intellij/platform/workspace/jps/entities/module.kt),
+[ModuleEntity](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/workspace/jps/src/com/intellij/platform/workspace/jps/entities/module.kt),
 the legacy bridge will be created by the platform.
 An important part here is the entity source.
 To serialize an entity in project configuration files under the `.idea` folder, use
-[JpsProjectFileEntitySource](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/workspace/jps/src/com/intellij/platform/workspace/jps/jpsEntitySources.kt).
+[JpsProjectFileEntitySource](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/workspace/jps/src/com/intellij/platform/workspace/jps/jpsEntitySources.kt).
 
 2024.3+:
 
@@ -91,7 +91,7 @@ WorkspaceModel.getInstance(project).update("Add new module") { builder ->
 
 Tip:
 
-Note that [LegacyBridgeJpsEntitySourceFactory](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/projectModel-impl/src/com/intellij/workspaceModel/ide/impl/LegacyBridgeJpsEntitySourceFactory.kt) is an internal API.
+Note that [LegacyBridgeJpsEntitySourceFactory](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/projectModel-impl/src/com/intellij/workspaceModel/ide/impl/LegacyBridgeJpsEntitySourceFactory.kt) is an internal API.
 It is exceptionally allowed to use it in plugins.
 
 ### Add Library Dependency to Module
@@ -144,7 +144,7 @@ workspaceModel.currentSnapshot.getVirtualFileUrlIndex()
 `LibraryEntity` Creation
 
 Creating a new
-[LibraryEntity](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/workspace/jps/src/com/intellij/platform/workspace/jps/entities/dependencies.kt),
+[LibraryEntity](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/workspace/jps/src/com/intellij/platform/workspace/jps/entities/dependencies.kt),
 the legacy bridge will be created by the platform.
 
 2024.3+:
@@ -205,7 +205,7 @@ WorkspaceModel.getInstance(project).update("Add new library") { builder ->
 
 Tip:
 
-Note that [LegacyBridgeJpsEntitySourceFactory](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/projectModel-impl/src/com/intellij/workspaceModel/ide/impl/LegacyBridgeJpsEntitySourceFactory.kt) is an internal API.
+Note that [LegacyBridgeJpsEntitySourceFactory](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/projectModel-impl/src/com/intellij/workspaceModel/ide/impl/LegacyBridgeJpsEntitySourceFactory.kt) is an internal API.
 It is exceptionally allowed to use it in plugins.
 
 ### Searching for Library by Root Type and URL
@@ -303,16 +303,16 @@ Using `Library` or `Module` as a key on maps has a number of disadvantages:
 * The fact that they extend `Disposable` (see [Disposer and Disposable](disposers.html)) imposes additional difficulties.
 
 To eliminate these shortcomings, use
-[EntityPointer](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/workspace/storage/src/com/intellij/platform/workspace/storage/EntityPointer.kt).
+[EntityPointer](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/workspace/storage/src/com/intellij/platform/workspace/storage/EntityPointer.kt).
 It represents a pointer to an entity which can be stored anywhere.
 The pointer can be obtained via
-[WorkspaceEntity.createPointer()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/workspace/storage/src/com/intellij/platform/workspace/storage/WorkspaceEntity.kt).
+[WorkspaceEntity.createPointer()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/workspace/storage/src/com/intellij/platform/workspace/storage/WorkspaceEntity.kt).
 An instance of this class stores an internal ID of the entity and doesn't contain the pointer to the original storage, so it's ok to
 store them in long-living data structures as it won't create a memory leak.
 
 The pointer will resolve to the same entity for the same storage and will survive modifications.
 If the entity is removed or replaced by a different one via
-[MutableEntityStorage.replaceBySource()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/workspace/storage/src/com/intellij/platform/workspace/storage/MutableEntityStorage.kt),
+[MutableEntityStorage.replaceBySource()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/workspace/storage/src/com/intellij/platform/workspace/storage/MutableEntityStorage.kt),
 the pointer may either resolve to `null` or to a completely different entity which reused the same internal ID.
 To be sure that the pointer resolves to the original entity, also [subscribe to changes](workspace-model-event-listening.html) in the storage.
 

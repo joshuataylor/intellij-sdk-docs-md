@@ -112,7 +112,7 @@ interface ChatRepositoryRpcApi : RemoteApi<Unit> {
 
 RPC interface must follow the rules:
 
-1. The interface must be annotated with [@Rpc](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/fleet/rpc/srcCommonMain/fleet/rpc/FleetApi.kt).
+1. The interface must be annotated with [@Rpc](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/fleet/rpc/srcCommonMain/fleet/rpc/FleetApi.kt).
 
 2. All functions must be [suspend](https://kotlinlang.org/docs/coroutines-basics.html#suspending-functions).
 
@@ -153,7 +153,7 @@ class BackendChatRepositoryRpcApi : ChatRepositoryRpcApi {
 }
 ```
 
-Implement [RemoteApiProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/kernel/rpc.backend/src/RemoteApiProvider.kt), which registers the RPC implementation with the platform.
+Implement [RemoteApiProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/kernel/rpc.backend/src/RemoteApiProvider.kt), which registers the RPC implementation with the platform.
 
 [BackendRpcApiProvider](https://github.com/JetBrains/intellij-platform-modular-plugin-template/blob/main/backend/src/main/kotlin/org/jetbrains/plugins/template/BackendRpcApiProvider.kt):
 
@@ -200,7 +200,7 @@ They must be called in some [coroutine](kotlin-coroutines.html) context.
 Calling an RPC API may fail with an `RpcClientException`, for example, if there are communication problems, service is not ready, etc.
 For instance, this may happen if the client tries to execute the call while the backend is not fully initialized, if a network problem occurs, or if the backend is restarted while a call is being executed.
 
-Such errors can be mitigated by using the [durable](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/fleet/rpc/srcCommonMain/fleet/rpc/client/Durable.kt) wrapper function.
+Such errors can be mitigated by using the [durable](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/fleet/rpc/srcCommonMain/fleet/rpc/client/Durable.kt) wrapper function.
 
 ```KOTLIN
 durable {
@@ -289,10 +289,10 @@ To pass classes commonly used in IntelliJ Platform through RPC, use ID types and
 
 | Full Type |ID Type |Serialization |Deserialization |
 ------------------------------------------------------
-| [Project](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/project/Project.java) |[ProjectId](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/project/shared/src/ProjectId.kt) |`Project.projectId()` `Project.projectIdOrNull()` |`ProjectId.findProject()` `ProjectId.findProjectOrNull()` |
-| [VirtualFile](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/vfs/VirtualFile.java) |[VirtualFileId](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-impl/rpc/src/com/intellij/ide/vfs/VirtualFileId.kt) |`VirtualFile.rpcId()` |`VirtualFileId.virtualFile()` |
-| [Editor](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/editor-ui-api/src/com/intellij/openapi/editor/Editor.java) |[EditorId](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-impl/src/com/intellij/openapi/editor/impl/EditorId.kt) |`Editor.editorId()` `Editor.editorIdOrNull()` |`EditorId.findEditor()` `EditorId.findEditorOrNull()` |
-| [Icon](https://docs.oracle.com/en/java/javase/21/docs/api/java.desktop/javax/swing/Icon.html) |[IconId](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-impl/rpc/src/com/intellij/ide/ui/icons/IconId.kt) |`Icon.rpcId()` `Icon.rpcIdOrNull()` |`IconId.icon()` |
+| [Project](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/openapi/project/Project.java) |[ProjectId](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/project/shared/src/ProjectId.kt) |`Project.projectId()` `Project.projectIdOrNull()` |`ProjectId.findProject()` `ProjectId.findProjectOrNull()` |
+| [VirtualFile](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/openapi/vfs/VirtualFile.java) |[VirtualFileId](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-impl/rpc/src/com/intellij/ide/vfs/VirtualFileId.kt) |`VirtualFile.rpcId()` |`VirtualFileId.virtualFile()` |
+| [Editor](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/editor-ui-api/src/com/intellij/openapi/editor/Editor.java) |[EditorId](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-impl/src/com/intellij/openapi/editor/impl/EditorId.kt) |`Editor.editorId()` `Editor.editorIdOrNull()` |`EditorId.findEditor()` `EditorId.findEditorOrNull()` |
+| [Icon](https://docs.oracle.com/en/java/javase/21/docs/api/java.desktop/javax/swing/Icon.html) |[IconId](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-impl/rpc/src/com/intellij/ide/ui/icons/IconId.kt) |`Icon.rpcId()` `Icon.rpcIdOrNull()` |`IconId.icon()` |
 
 Note that these objects are not fully serializable, so the frontend only receives parts of the backend object.
 If possible, use only IDs on the frontend and work with the full objects on the backend side.
@@ -365,11 +365,11 @@ class FrontendChatRepositoryModel(
 In the code above, `messagesFlow` is initialized with an empty list.
 Since services are initialized lazily, the first subscriber will trigger the RPC connection, but the state will be `emptyList()` until the first backend emission arrives.
 
-If this matters for an implemented feature, make sure the service is initialized before its first use — for example, via subscribing to updates from the backend inside a dedicated [ProjectActivity](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/startup/StartupActivity.kt).
+If this matters for an implemented feature, make sure the service is initialized before its first use — for example, via subscribing to updates from the backend inside a dedicated [ProjectActivity](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/openapi/startup/StartupActivity.kt).
 
 ### Pushing Events from Backend to Frontend
 
-To push events from the backend to the frontend without an explicit request, use [ApplicationRemoteTopic](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/remote-topics/shared/src/com/intellij/platform/rpc/topics/ApplicationRemoteTopic.kt) or [ProjectRemoteTopic](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/remote-topics/shared/src/com/intellij/platform/rpc/topics/ProjectRemoteTopic.kt) instead of a regular RPC call.
+To push events from the backend to the frontend without an explicit request, use [ApplicationRemoteTopic](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/remote-topics/shared/src/com/intellij/platform/rpc/topics/ApplicationRemoteTopic.kt) or [ProjectRemoteTopic](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/remote-topics/shared/src/com/intellij/platform/rpc/topics/ProjectRemoteTopic.kt) instead of a regular RPC call.
 
 Example:
 
@@ -449,7 +449,7 @@ Make sure that all the functions in the interface are `suspend`.
 
 How to efficiently transfer `byte[]`?
 
-Wrap the data into a [fleet.rpc.core.Blob](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/fleet/rpc/srcCommonMain/fleet/rpc/core/Serialization.kt) for the sake of reducing the serialization overhead.
+Wrap the data into a [fleet.rpc.core.Blob](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/fleet/rpc/srcCommonMain/fleet/rpc/core/Serialization.kt) for the sake of reducing the serialization overhead.
 
 Note: Something missing?
 

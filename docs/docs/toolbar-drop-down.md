@@ -1,7 +1,7 @@
 # Toolbar Drop-Down List
 
 <tldr>
-Implementation: [ComboBoxButton](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-api/src/com/intellij/openapi/actionSystem/ex/ComboBoxAction.java)
+Implementation: [ComboBoxButton](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-api/src/com/intellij/openapi/actionSystem/ex/ComboBoxAction.java)
 </tldr>
 
 A toolbar drop-down list is a type of button that appears on a horizontal toolbar and shows a list of choices on clicking it.

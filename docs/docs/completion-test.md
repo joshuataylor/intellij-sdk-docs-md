@@ -43,7 +43,7 @@ public class Test {
 
 ## Define a Test
 
-Subclass [LightJavaCodeInsightFixtureTestCase](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/java/testFramework/src/com/intellij/testFramework/fixtures/LightJavaCodeInsightFixtureTestCase.java) to create `SimpleCodeInsightTest`.
+Subclass [LightJavaCodeInsightFixtureTestCase](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/java/testFramework/src/com/intellij/testFramework/fixtures/LightJavaCodeInsightFixtureTestCase.java) to create `SimpleCodeInsightTest`.
 Override `getTestDataPath()`, and return the path from the root of this plugin module to the `testData` directory.
 
 ```JAVA
@@ -75,7 +75,7 @@ public void testCompletion() {
 }
 ```
 
-A number of related methods exist in [CodeInsightTestFixture](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/testFramework/src/com/intellij/testFramework/fixtures/CodeInsightTestFixture.java) for testing completion and lookup elements, e.g., when testing completion variants and requiring only one testdata file `CodeInsightTestFixture.testCompletionVariants()`.
+A number of related methods exist in [CodeInsightTestFixture](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/testFramework/src/com/intellij/testFramework/fixtures/CodeInsightTestFixture.java) for testing completion and lookup elements, e.g., when testing completion variants and requiring only one testdata file `CodeInsightTestFixture.testCompletionVariants()`.
 
 ## Run the Test
 

@@ -33,7 +33,7 @@ The extension point attributes specify all the data which is necessary to displa
 
 * The `secondary` attribute, specifying whether the tool window is displayed in the primary or the secondary group
 
-* The `factoryClass` attribute (required), a class implementing [ToolWindowFactory](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-api/src/com/intellij/openapi/wm/ToolWindowFactory.kt).
+* The `factoryClass` attribute (required), a class implementing [ToolWindowFactory](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-api/src/com/intellij/openapi/wm/ToolWindowFactory.kt).
 
 When the user clicks on the tool window button, the `createToolWindowContent()` method of the factory class is called and initializes the UI of the tool window.
 This procedure ensures that unused tool windows don't cause any overhead in startup time or memory usage: if a user does not interact with the tool window, no plugin code will be loaded or executed.
@@ -58,9 +58,9 @@ To show and hide a tool window dynamically while the user is working with the pr
 
 ## Programmatic Setup
 
-For tool windows shown only after invoking specific actions, use [ToolWindowManager.registerToolWindow(String, RegisterToolWindowTaskBuilder)](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-api/src/com/intellij/openapi/wm/ToolWindowManager.kt).
+For tool windows shown only after invoking specific actions, use [ToolWindowManager.registerToolWindow(String, RegisterToolWindowTaskBuilder)](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-api/src/com/intellij/openapi/wm/ToolWindowManager.kt).
 
-Always use [ToolWindowManager.invokeLater()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-api/src/com/intellij/openapi/wm/ToolWindowManager.kt) instead of "plain" `Application.invokeLater()` when scheduling EDT tasks related to tool windows (see [Threading Model](threading-model.html)).
+Always use [ToolWindowManager.invokeLater()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-api/src/com/intellij/openapi/wm/ToolWindowManager.kt) instead of "plain" `Application.invokeLater()` when scheduling EDT tasks related to tool windows (see [Threading Model](threading-model.html)).
 
 ## Contents (Tabs)
 
@@ -68,13 +68,13 @@ Displaying the contents of many tool windows requires access to [indexes](indexi
 Because of that, tool windows are disabled by default while building indexes unless the `ToolWindowFactory` is marked as [dumb aware](indexing-and-psi-stubs.html#DumbAwareAPI).
 
 As mentioned previously, tool windows can contain multiple contents (tabs).
-To manage the contents of a tool window, call [ToolWindow.getContentManager()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/ide-core/src/com/intellij/openapi/wm/ToolWindow.java).
-To add a [Content](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/ide-core/src/com/intellij/ui/content/Content.java) (tab), first create it by calling `ContentManager.getFactory().createContent()`,
+To manage the contents of a tool window, call [ToolWindow.getContentManager()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/ide-core/src/com/intellij/openapi/wm/ToolWindow.java).
+To add a [Content](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/ide-core/src/com/intellij/ui/content/Content.java) (tab), first create it by calling `ContentManager.getFactory().createContent()`,
 and then to add it to the tool window using `ContentManager.addContent()`.
 Set the preferred focus component via `Content.setPreferredFocusableComponent()`.
 Use `Content.setDisposer()` to register an associated `Disposable` (see [Disposer and Disposable](disposers.html)).
 
-See [SimpleToolWindowPanel](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-api/src/com/intellij/openapi/ui/SimpleToolWindowPanel.java) as a convenient base class,
+See [SimpleToolWindowPanel](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-api/src/com/intellij/openapi/ui/SimpleToolWindowPanel.java) as a convenient base class,
 supporting [Toolbars](action-system.html#buildingToolbarPopupMenu) and a vertical or horizontal layout.
 
 ### Closing Tabs
@@ -83,13 +83,13 @@ A plugin can control whether the user is allowed to close tabs either globally o
 The former is done by passing the `canCloseContents` parameter to the `registerToolWindow()` function, or by specifying `canCloseContents="true"` in `plugin.xml`.
 The default value is `false`; calling `setClosable(true)` on `ContentManager` content will be ignored unless `canCloseContents` is explicitly set.
 
-If closing tabs is enabled in general, a plugin can disable closing of specific tabs by calling [Content.setCloseable(false)](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/ide-core/src/com/intellij/ui/content/Content.java).
+If closing tabs is enabled in general, a plugin can disable closing of specific tabs by calling [Content.setCloseable(false)](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/ide-core/src/com/intellij/ui/content/Content.java).
 
 ## Tool Window FAQ
 
 ### Accessing Tool Window
 
-Use [ToolWindowManager.getToolWindow()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-api/src/com/intellij/openapi/wm/ToolWindowManager.kt) specifying the `id` used for [registration](#declarative-setup).
+Use [ToolWindowManager.getToolWindow()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-api/src/com/intellij/openapi/wm/ToolWindowManager.kt) specifying the `id` used for [registration](#declarative-setup).
 
 ### Tool Window Notification
 
@@ -97,11 +97,11 @@ Showing a balloon notification for a tool window can be done:
 
 * [registering notification](notification-balloons.html#tool-window-notifications) for a specific tool window
 
-* by calling [ToolWindowManager.notifyByBalloon()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-api/src/com/intellij/openapi/wm/ToolWindowManager.kt)
+* by calling [ToolWindowManager.notifyByBalloon()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-api/src/com/intellij/openapi/wm/ToolWindowManager.kt)
 
 ### Events
 
-Project-level topic [ToolWindowManagerListener](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-api/src/com/intellij/openapi/wm/ex/ToolWindowManagerListener.java) allows listening to tool window registration/show events (see [Listeners](plugin-listeners.html)).
+Project-level topic [ToolWindowManagerListener](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-api/src/com/intellij/openapi/wm/ex/ToolWindowManagerListener.java) allows listening to tool window registration/show events (see [Listeners](plugin-listeners.html)).
 
 ## Sample Plugin
 
@@ -118,5 +118,5 @@ When opened, this tool window is similar to the following screen:
 
 One of the testing approaches for tool windows is implementing [UI integration tests](integration-tests-ui.html).
 
-To get a tool window in UI tests, use [IdeaFrameUI.toolWindow()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/remote-driver/test-sdk/src/com/intellij/driver/sdk/ui/components/common/IdeaFrameUiExt.kt).
+To get a tool window in UI tests, use [IdeaFrameUI.toolWindow()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/remote-driver/test-sdk/src/com/intellij/driver/sdk/ui/components/common/IdeaFrameUiExt.kt).
 

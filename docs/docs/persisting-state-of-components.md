@@ -16,7 +16,7 @@ For persisting sensitive data like passwords, see [Persisting Sensitive Data](pe
 
 Using `PersistentStateComponent`
 
-The [PersistentStateComponent](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/projectModel-api/src/com/intellij/openapi/components/PersistentStateComponent.java) interface allows for persisting state classes and gives the most flexibility for defining the values to be persisted, their format, and storage location.
+The [PersistentStateComponent](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/projectModel-api/src/com/intellij/openapi/components/PersistentStateComponent.java) interface allows for persisting state classes and gives the most flexibility for defining the values to be persisted, their format, and storage location.
 
 To use it:
 
@@ -24,7 +24,7 @@ To use it:
 
 * define the state class
 
-* specify the [storage location](#defining-the-storage-location) using [@State](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/projectModel-api/src/com/intellij/openapi/components/State.java)
+* specify the [storage location](#defining-the-storage-location) using [@State](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/projectModel-api/src/com/intellij/openapi/components/State.java)
 
 Note that instances of extensions can't persist their state by implementing `PersistentStateComponent`.
 If an extension needs to have a persistent state, define a separate service responsible for managing that state.
@@ -41,12 +41,12 @@ The recommended approach to implementing a persistent state component in Kotlin 
 
 2. [SerializablePersistentStateComponent](#SerializablePersistentStateComponent) (available and recommended since 2022.2)
 
-Both classes implement [PersistentStateComponentWithModificationTracker](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/projectModel-api/src/com/intellij/openapi/components/PersistentStateComponentWithModificationTracker.java) and track modifications count internally (in most cases; see details below).
+Both classes implement [PersistentStateComponentWithModificationTracker](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/projectModel-api/src/com/intellij/openapi/components/PersistentStateComponentWithModificationTracker.java) and track modifications count internally (in most cases; see details below).
 The `getStateModificationCount()` method helps avoid calling `PersistentStateComponent.getState()` to check whether the state is changed and must be saved.
 
 #### SimplePersistentStateComponent
 
-[SimplePersistentStateComponent](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/projectModel-api/src/com/intellij/openapi/components/SimplePersistentStateComponent.kt) is parameterized by a subclass of [BaseState](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/projectModel-api/src/com/intellij/openapi/components/BaseState.kt).
+[SimplePersistentStateComponent](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/projectModel-api/src/com/intellij/openapi/components/SimplePersistentStateComponent.kt) is parameterized by a subclass of [BaseState](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/projectModel-api/src/com/intellij/openapi/components/BaseState.kt).
 `BaseState` provides a set of handy [property delegates](https://kotlinlang.org/docs/delegated-properties.html), which make it easy to create properties with default values.
 
 Delegates track simple property modifications internally.
@@ -66,7 +66,7 @@ class MySettings : SimplePersistentStateComponent<MySettings.State>(State()) {
 
 #### SerializablePersistentStateComponent
 
-[SerializablePersistentStateComponent](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/projectModel-api/src/com/intellij/openapi/components/SerializablePersistentStateComponent.kt) is parameterized with an immutable state data class.
+[SerializablePersistentStateComponent](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/projectModel-api/src/com/intellij/openapi/components/SerializablePersistentStateComponent.kt) is parameterized with an immutable state data class.
 
 State properties are exposed for reading and modification via persistent state component class' properties.
 The state properties are modified by copying the state and overwriting a modified value within `SerializablePersistentStateComponent.updateState()`, which ensures atomic modification and thread safety.
@@ -154,9 +154,9 @@ class MySettings implements PersistentStateComponent<MySettings> {
 
 ### Implementing the State Class
 
-The implementation of `PersistentStateComponent` works by serializing public fields, [annotated](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/util/src/com/intellij/util/xmlb/annotations) private fields (see also [Customizing the XML format of persisted values](#customizing-the-xml-format-of-persisted-values)), and bean properties into an XML format.
+The implementation of `PersistentStateComponent` works by serializing public fields, [annotated](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/util/src/com/intellij/util/xmlb/annotations) private fields (see also [Customizing the XML format of persisted values](#customizing-the-xml-format-of-persisted-values)), and bean properties into an XML format.
 
-To exclude a public field or bean property from serialization, annotate the field or getter with [@Transient](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/util/src/com/intellij/util/xmlb/annotations/Transient.java).
+To exclude a public field or bean property from serialization, annotate the field or getter with [@Transient](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/util/src/com/intellij/util/xmlb/annotations/Transient.java).
 
 Note that the state class must have a default constructor.
 It should return the component's default state: the one used if there is nothing persisted in the XML files yet.
@@ -177,7 +177,7 @@ The following types of values can be persisted:
 
 * enums
 
-For other types, extend [Converter](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/util/src/com/intellij/util/xmlb/api.kt).
+For other types, extend [Converter](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/util/src/com/intellij/util/xmlb/api.kt).
 See the example below.
 
 #### Converter Example
@@ -202,7 +202,7 @@ class LocalDateTimeConverter extends Converter<LocalDateTime> {
 }
 ```
 
-Define the converter above in [@OptionTag](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/util/src/com/intellij/util/xmlb/annotations/OptionTag.java) or [@Attribute](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/util/src/com/intellij/util/xmlb/annotations/Attribute.java):
+Define the converter above in [@OptionTag](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/util/src/com/intellij/util/xmlb/annotations/OptionTag.java) or [@Attribute](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/util/src/com/intellij/util/xmlb/annotations/Attribute.java):
 
 ```JAVA
 class State {
@@ -219,7 +219,7 @@ It has the following fields:
 
 * `name` (required) – specifies the name of the state (name of the root tag in XML).
 
-* `storages` – one or more of [@Storage](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/projectModel-api/src/com/intellij/openapi/components/Storage.java) annotations to specify the storage locations. Optional for project-level values – a standard project file is used in this case.
+* `storages` – one or more of [@Storage](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/projectModel-api/src/com/intellij/openapi/components/Storage.java) annotations to specify the storage locations. Optional for project-level values – a standard project file is used in this case.
 
 * `reloadable` (optional) – if set to false, a full project (or application) reload is required when the XML file is changed externally, and the state has changed.
 
@@ -239,7 +239,7 @@ Using of `other.xml` is deprecated.
 When planning your storage location, consider its intended purpose.
 A project-level custom file should be preferred for storing plugin settings.
 To store cached values, use `@Storage(StoragePathMacros.CACHE_FILE)`.
-Refer to [StoragePathMacros](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/projectModel-api/src/com/intellij/openapi/components/StoragePathMacros.java) for commonly used macros.
+Refer to [StoragePathMacros](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/projectModel-api/src/com/intellij/openapi/components/StoragePathMacros.java) for commonly used macros.
 
 The `roamingType` parameter of the `@Storage` annotation specifies the roaming type when the [settings are shared](#sharing-settings-between-ide-installations):
 
@@ -316,12 +316,12 @@ Consider using annotation parameters only to achieve backward compatibility.
 Otherwise, feel free to file issues about specific serialization cosmetics.
 
 If you want to use the default bean serialization but need to customize the storage format in XML (for example, for compatibility with previous versions of a plugin or externally defined XML formats), use the
-[@Tag](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/util/src/com/intellij/util/xmlb/annotations/Tag.java),
-[@Attribute](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/util/src/com/intellij/util/xmlb/annotations/Attribute.java),
-[@Property](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/util/src/com/intellij/util/xmlb/annotations/Property.java),
-[@MapAnnotation](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/util/src/com/intellij/util/xmlb/annotations/MapAnnotation.java),
-[@XMap](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/util/src/com/intellij/util/xmlb/annotations/XMap.java),
-and [@XCollection](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/util/src/com/intellij/util/xmlb/annotations/XCollection.java)
+[@Tag](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/util/src/com/intellij/util/xmlb/annotations/Tag.java),
+[@Attribute](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/util/src/com/intellij/util/xmlb/annotations/Attribute.java),
+[@Property](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/util/src/com/intellij/util/xmlb/annotations/Property.java),
+[@MapAnnotation](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/util/src/com/intellij/util/xmlb/annotations/MapAnnotation.java),
+[@XMap](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/util/src/com/intellij/util/xmlb/annotations/XMap.java),
+and [@XCollection](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/util/src/com/intellij/util/xmlb/annotations/XCollection.java)
 annotations.
 
 If the state to serialize doesn't map cleanly to a JavaBean, then `org.jdom.Element` can be used as the state class.
@@ -329,14 +329,14 @@ In that case, use the `getState()` method to build an XML element with an arbitr
 In the `loadState()` method, deserialize the JDOM element tree using any custom logic.
 This is not recommended and should be avoided whenever possible.
 
-To disable the expansion of path macros ([PathMacro](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/macro/src/com/intellij/ide/macro/PathMacro.java))
-in stored values, implement [PathMacroFilter](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/jps/model-serialization/src/com/intellij/openapi/application/PathMacroFilter.java)
+To disable the expansion of path macros ([PathMacro](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/macro/src/com/intellij/ide/macro/PathMacro.java))
+in stored values, implement [PathMacroFilter](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/jps/model-serialization/src/com/intellij/openapi/application/PathMacroFilter.java)
 and register in [com.intellij.pathMacroFilter](https://jb.gg/ipe?extensions=com.intellij.pathMacroFilter) extension point
 .
 
 ### Migrating Persisted Values
 
-If the underlying persistence model or storage format has changed, a [ConverterProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/lang-impl/src/com/intellij/conversion/ConverterProvider.java) can provide [ProjectConverter](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/lang-impl/src/com/intellij/conversion/ProjectConverter.java), whose `getAdditionalAffectedFiles()` method returns affected files to migrate and performs programmatic migration of stored values.
+If the underlying persistence model or storage format has changed, a [ConverterProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/lang-impl/src/com/intellij/conversion/ConverterProvider.java) can provide [ProjectConverter](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/lang-impl/src/com/intellij/conversion/ProjectConverter.java), whose `getAdditionalAffectedFiles()` method returns affected files to migrate and performs programmatic migration of stored values.
 
 ### Persistent Component Lifecycle
 
@@ -356,7 +356,7 @@ Otherwise, the returned state is serialized in XML and stored.
 
 Using `PropertiesComponent` for Simple Non-Roamable Persistence
 
-If the plugin needs to persist a few simple values, the easiest way to do so is to use the [PropertiesComponent](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/ide/util/PropertiesComponent.java) service.
+If the plugin needs to persist a few simple values, the easiest way to do so is to use the [PropertiesComponent](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/ide/util/PropertiesComponent.java) service.
 It can save both application-level values and project-level values in the workspace file.
 Roaming is disabled for `PropertiesComponent`, so use it only for temporary, non-roamable properties.
 
@@ -368,10 +368,10 @@ Since all plugins share the same namespace, it is highly recommended to prefix k
 
 Legacy API (`JDOMExternalizable`)
 
-Older components use the [JDOMExternalizable](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/util/src/com/intellij/openapi/util/JDOMExternalizable.java) interface for persisting state.
+Older components use the [JDOMExternalizable](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/util/src/com/intellij/openapi/util/JDOMExternalizable.java) interface for persisting state.
 It uses the `readExternal()` method for reading the state from a JDOM element, and `writeExternal()` to write the state.
 
-Implementations can manually store the state in attributes and sub-elements or use the [DefaultJDOMExternalizer](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/util/src/com/intellij/openapi/util/DefaultJDOMExternalizer.java) class to store the values of all public fields automatically.
+Implementations can manually store the state in attributes and sub-elements or use the [DefaultJDOMExternalizer](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/util/src/com/intellij/openapi/util/DefaultJDOMExternalizer.java) class to store the values of all public fields automatically.
 
 Components save their state in the following files:
 

@@ -152,9 +152,9 @@ JsonPath library unbundled
 ### Java Plugin 2023.3
 
 `com.siyeh.ipp.base.Intention` class removed
-: As a part of migration to the [ModCommand](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/analysis-api/src/com/intellij/modcommand/ModCommand.java) API, the class was removed completely.
+: As a part of migration to the [ModCommand](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/analysis-api/src/com/intellij/modcommand/ModCommand.java) API, the class was removed completely.
 It's a part of the implementation module and was never intended to be inherited by external plugins.
-Consider implementing [LocalInspectionTool](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/analysis-api/src/com/intellij/codeInspection/LocalInspectionTool.java) directly.
+Consider implementing [LocalInspectionTool](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/analysis-api/src/com/intellij/codeInspection/LocalInspectionTool.java) directly.
 
 `com.intellij.codeInsight.TailTypes` class renamed to `com.intellij.codeInsight.JavaTailTypes`
 : Update code usages.

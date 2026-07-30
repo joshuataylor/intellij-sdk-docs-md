@@ -42,7 +42,7 @@ Then, declare the dependency in `[plugin.xml](plugin-configuration-file.html)` (
 
 ## Define an Annotator
 
-The [SimpleAnnotator](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleAnnotator.java) subclasses [Annotator](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/analysis-api/src/com/intellij/lang/annotation/Annotator.java).
+The [SimpleAnnotator](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleAnnotator.java) subclasses [Annotator](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/analysis-api/src/com/intellij/lang/annotation/Annotator.java).
 Consider a literal string that starts with "simple:" as a prefix of a Simple Language key.
 It isn't part of the Simple Language, but it is a useful convention for detecting Simple Language keys embedded as string literals in other languages, like Java.
 Annotate the `simple:key` literal expression and differentiate between a well-formed vs. an unresolved property.

@@ -1,6 +1,6 @@
 # Documents
 
-A [Document](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/editor/Document.java) is an editable sequence of Unicode characters, typically corresponding to the text contents of a [virtual file](virtual-file.html).
+A [Document](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/openapi/editor/Document.java) is an editable sequence of Unicode characters, typically corresponding to the text contents of a [virtual file](virtual-file.html).
 
 Line breaks in a document are always normalized to `\n`.
 The IntelliJ Platform handles encoding and line break conversions when loading and saving documents transparently.
@@ -11,9 +11,9 @@ How do I get a `Document`?
 
 | Context |API |
 ----------------
-| [Action](action-system.html) |[AnActionEvent.getData(CommonDataKeys.EDITOR).getDocument()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnActionEvent.java) |
-| [PSI File](psi-files.html) |[PsiDocumentManager.getDocument()/getCachedDocument()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/psi/PsiDocumentManager.java) |
-| [Virtual File](virtual-file.html) |[FileDocumentManager.getDocument()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/fileEditor/FileDocumentManager.java) (forces the document content to be loaded from a disk if it wasn't loaded previously)  [FileDocumentManager.getCachedDocument()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/fileEditor/FileDocumentManager.java) (use if only open or possibly modified documents are relevant)   |
+| [Action](action-system.html) |[AnActionEvent.getData(CommonDataKeys.EDITOR).getDocument()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnActionEvent.java) |
+| [PSI File](psi-files.html) |[PsiDocumentManager.getDocument()/getCachedDocument()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/psi/PsiDocumentManager.java) |
+| [Virtual File](virtual-file.html) |[FileDocumentManager.getDocument()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/openapi/fileEditor/FileDocumentManager.java) (forces the document content to be loaded from a disk if it wasn't loaded previously)  [FileDocumentManager.getCachedDocument()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/openapi/fileEditor/FileDocumentManager.java) (use if only open or possibly modified documents are relevant)   |
 
 ## 
 
@@ -44,7 +44,7 @@ Storing `Document` references in long-term data structures of a plugin will caus
 How do I create a `Document`?
 
 For creating a new file on disk, please do not create a `Document` but a PSI file and get its `Document` (see [How do I create a PSI file?](psi-files.html#how-do-i-create-a-psi-file)).
-To create a `Document` instance not bound to anything, use [EditorFactory.createDocument()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/editor-ui-api/src/com/intellij/openapi/editor/EditorFactory.java).
+To create a `Document` instance not bound to anything, use [EditorFactory.createDocument()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/editor-ui-api/src/com/intellij/openapi/editor/EditorFactory.java).
 
 ## How do I get notified when documents change?
 
@@ -52,17 +52,17 @@ To create a `Document` instance not bound to anything, use [EditorFactory.create
 
 * `EditorFactory.getEventMulticaster().addDocumentListener()` allows receiving notifications about changes in all open documents.
 
-* Register a [FileDocumentManagerListener](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/fileEditor/FileDocumentManagerListener.java) [listener](plugin-listeners.html) or subscribe to `AppTopics.FILE_DOCUMENT_SYNC` on any level bus to receive notifications when a `Document` is saved or reloaded from disk.
+* Register a [FileDocumentManagerListener](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/openapi/fileEditor/FileDocumentManagerListener.java) [listener](plugin-listeners.html) or subscribe to `AppTopics.FILE_DOCUMENT_SYNC` on any level bus to receive notifications when a `Document` is saved or reloaded from disk.
 
 ## What are the rules of working with documents?
 
 The general [read/write action rules](threading-model.html#read-write-lock) are in effect.
-Besides, any operations that modify the contents of the document must be wrapped in a command ([CommandProcessor.executeCommand()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/command/CommandProcessor.java)).
+Besides, any operations that modify the contents of the document must be wrapped in a command ([CommandProcessor.executeCommand()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/openapi/command/CommandProcessor.java)).
 `executeCommand()` calls can be nested, and the outermost `executeCommand()` call is added to the undo stack.
 If multiple documents are modified within a command, undoing this command will, by default, show a confirmation dialog to the user.
 
 If the file corresponding to a `Document` is read-only (for example, not checked out from the version control system), document modifications will fail.
-Thus, before modifying the `Document`, it is necessary to call [ReadonlyStatusHandler.ensureFilesWritable()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/vfs/ReadonlyStatusHandler.java) to check out the file.
+Thus, before modifying the `Document`, it is necessary to call [ReadonlyStatusHandler.ensureFilesWritable()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/openapi/vfs/ReadonlyStatusHandler.java) to check out the file.
 
 All text strings passed to `Document` modification methods (`setText()`, `insertString()`, `replaceString()`) must use only `\n` as line separators.
 
@@ -70,7 +70,7 @@ See also [Working with Text](working-with-text.html#safely-replacing-selected-te
 
 ## Are there any utilities available for working with documents?
 
-[DocumentUtil](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-impl/src/com/intellij/util/DocumentUtil.java) contains utility methods for `Document` processing.
+[DocumentUtil](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-impl/src/com/intellij/util/DocumentUtil.java) contains utility methods for `Document` processing.
 This allows you to get information like the text offsets of particular lines.
 This is particularly useful when you need text location/offset information about a given `PsiElement`.
 
@@ -78,6 +78,6 @@ This is particularly useful when you need text location/offset information about
 
 Use `Document.createGuardedBlock()`.
 
-[EditorActionManager.setReadonlyFragmentModificationHandler()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-api/src/com/intellij/openapi/editor/actionSystem/EditorActionManager.java) can
+[EditorActionManager.setReadonlyFragmentModificationHandler()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-api/src/com/intellij/openapi/editor/actionSystem/EditorActionManager.java) can
 be used to customize the behavior when the user attempts to modify a read-only region.
 

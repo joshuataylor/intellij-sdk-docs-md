@@ -8,7 +8,7 @@ UI Guidelines: [Layout](layout.html), [Validation Errors](validation-errors.html
 
 `DialogWrapper`
 
-The [DialogWrapper](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-api/src/com/intellij/openapi/ui/DialogWrapper.java) is the base class for all modal dialogs (and some non-modal dialogs) shown in IntelliJ Platform.
+The [DialogWrapper](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-api/src/com/intellij/openapi/ui/DialogWrapper.java) is the base class for all modal dialogs (and some non-modal dialogs) shown in IntelliJ Platform.
 
 It provides the following features:
 
@@ -26,11 +26,11 @@ It provides the following features:
 
 Tip:
 
-There's also a DSL-like API via [DialogBuilder](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-api/src/com/intellij/openapi/ui/DialogBuilder.java).
+There's also a DSL-like API via [DialogBuilder](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-api/src/com/intellij/openapi/ui/DialogBuilder.java).
 
 ### Usage
 
-When using the [DialogWrapper](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-api/src/com/intellij/openapi/ui/DialogWrapper.java) class for a dialog, follow these required steps:
+When using the [DialogWrapper](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-api/src/com/intellij/openapi/ui/DialogWrapper.java) class for a dialog, follow these required steps:
 
 * Call the base class constructor and provide either a `Project` in the frame of which the dialog will be displayed, or a parent component for the dialog.
 
@@ -77,7 +77,7 @@ Disposer.register(dialog.getDisposable(), () -> action());
 
 To customize the buttons displayed in the dialog (replacing the standard OK/Cancel/Help set of buttons), override either the `createActions()` or `createLeftActions()` methods.
 Both of these methods return an array of Swing Action objects.
-If a button closes the dialog, use [DialogWrapperExitAction](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-api/src/com/intellij/openapi/ui/DialogWrapper.java) as the base class for the action.
+If a button closes the dialog, use [DialogWrapperExitAction](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-api/src/com/intellij/openapi/ui/DialogWrapper.java) as the base class for the action.
 
 Use `action.putValue(DialogWrapper.DEFAULT_ACTION, true)` to set the default button and
 `action.putValue(DialogWrapper.FOCUSED_ACTION, true)` to set the focused button.
@@ -91,12 +91,12 @@ override the `doValidate()` method to perform the actual validation.
 The method will be called automatically via a timer.
 
 If the currently entered data is valid, return `null`.
-Otherwise, return a [ValidationInfo](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/ide-core/src/com/intellij/openapi/ui/ValidationInfo.java) object which encapsulates an error message and an optional component associated with the invalid data.
+Otherwise, return a [ValidationInfo](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/ide-core/src/com/intellij/openapi/ui/ValidationInfo.java) object which encapsulates an error message and an optional component associated with the invalid data.
 When specifying a component, an error icon will be displayed next to it, and it will be focused when the user tries to invoke the OK action.
 
 ## Examples
 
-Minimum sample of a [DialogWrapper](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-api/src/com/intellij/openapi/ui/DialogWrapper.java):
+Minimum sample of a [DialogWrapper](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-api/src/com/intellij/openapi/ui/DialogWrapper.java):
 
 ```JAVA
 public class SampleDialogWrapper extends DialogWrapper {
@@ -136,7 +136,7 @@ testButton.addActionListener(actionEvent -> {
 
 Dialogs using [Kotlin UI DSL](kotlin-ui-dsl-version-2.html):
 
-* [AddActionDialog](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-impl/src/com/intellij/ide/ui/customization/AddActionDialog.kt)
+* [AddActionDialog](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-impl/src/com/intellij/ide/ui/customization/AddActionDialog.kt)
 
-* [InvalidateCachesDialog](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-impl/src/com/intellij/ide/actions/InvalidateCachesDialog.kt)
+* [InvalidateCachesDialog](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-impl/src/com/intellij/ide/actions/InvalidateCachesDialog.kt)
 

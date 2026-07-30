@@ -1,7 +1,7 @@
 # Link
 
 <tldr>
-Implementation: [ActionLink](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-api/src/com/intellij/ui/components/ActionLink.kt), [DropDownLink](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-api/src/com/intellij/ui/components/DropDownLink.kt)
+Implementation: [ActionLink](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-api/src/com/intellij/ui/components/ActionLink.kt), [DropDownLink](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-api/src/com/intellij/ui/components/DropDownLink.kt)
 </tldr>
 
 ![A preview of link types: default, drop-down, and external.](images/link.png)
@@ -146,7 +146,7 @@ Use the help icon in links in [empty states](empty-state.html) to indicate that 
 
 ### Drop-down link
 
-Drop-down links show a context menu or a popup. To implement, use [DropDownLink](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-api/src/com/intellij/ui/components/DropDownLink.kt).
+Drop-down links show a context menu or a popup. To implement, use [DropDownLink](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-api/src/com/intellij/ui/components/DropDownLink.kt).
 
 ![Control 'Changes from 2 commits' where '2 commits' is a drop-down link opening a list of all commits](images/link_dropdown.png)
 

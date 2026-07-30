@@ -338,7 +338,7 @@ Add implementation for `com.intellij.openapi.fileEditor.FileEditor.getFile()`
 
 JSON Widget suppressor [com.intellij.json.jsonWidgetSuppressor](https://jb.gg/ipe?extensions=com.intellij.json.jsonWidgetSuppressor) extension point
 
-: Override new method [JsonWidgetSuppressor.isCandidateForSuppress(VirtualFile, Project)](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/json/backend/src/com/jetbrains/jsonSchema/extension/JsonWidgetSuppressor.java) for quick check in [EDT](threading-model.html) before `suppressSwitcherWidget()` is called on a background thread.
+: Override new method [JsonWidgetSuppressor.isCandidateForSuppress(VirtualFile, Project)](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/json/backend/src/com/jetbrains/jsonSchema/extension/JsonWidgetSuppressor.java) for quick check in [EDT](threading-model.html) before `suppressSwitcherWidget()` is called on a background thread.
 
 ### HTTP Client Plugin 2021.1
 

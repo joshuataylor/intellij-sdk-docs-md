@@ -39,7 +39,7 @@ repositories {
 
 dependencies {
   intellijPlatform {
-    intellijIdea("2026.2")
+    intellijIdea("2026.2.0.1")
 
     jetbrainsRuntime()
 
@@ -62,7 +62,7 @@ repositories {
 
 dependencies {
   intellijPlatform {
-    intellijIdea '2026.2'
+    intellijIdea '2026.2.0.1'
 
     jetbrainsRuntime()
 
@@ -91,7 +91,7 @@ repositories {
 
 dependencies {
   intellijPlatform {
-    intellijIdea("2026.2")
+    intellijIdea("2026.2.0.1")
 
     jetbrainsRuntime(version, variant, architecture)
     // or
@@ -116,7 +116,7 @@ repositories {
 
 dependencies {
   intellijPlatform {
-    intellijIdea '2026.2'
+    intellijIdea '2026.2.0.1'
 
     jetbrainsRuntime(version, variant, architecture)
     // or

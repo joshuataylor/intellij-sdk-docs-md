@@ -2,7 +2,7 @@
 
 ## Extending/Shrinking Text Selection
 
-Implementing [ExtendWordSelectionHandler](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/lang-api/src/com/intellij/codeInsight/editorActions/ExtendWordSelectionHandler.java) and registering
+Implementing [ExtendWordSelectionHandler](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/lang-api/src/com/intellij/codeInsight/editorActions/ExtendWordSelectionHandler.java) and registering
 it in [com.intellij.extendWordSelectionHandler](https://jb.gg/ipe?extensions=com.intellij.extendWordSelectionHandler) extension point
 in your `[plugin.xml](plugin-configuration-file.html)` allows you to provide additional text ranges to be used when extending or shrinking a selection.
 Return `true` from `canSelect(PsiElement)` for the PSI elements that you want to provide additional text-ranges for.
@@ -48,14 +48,14 @@ That indicates that `select(PsiElement, CharSequence, int, Editor)` will be call
 ### Further Insight and Debugging
 
 Looking at other implementations can be an effective way to get a better understanding of how this EP works.
-To get further insight into this EP, you may want to take a look at [DocTagSelectioner](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/java/java-frontback-impl/src/com/intellij/codeInsight/editorActions/wordSelection/DocTagSelectioner.java).
+To get further insight into this EP, you may want to take a look at [DocTagSelectioner](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/java/java-frontback-impl/src/com/intellij/codeInsight/editorActions/wordSelection/DocTagSelectioner.java).
 It provides the ability to select tag names like `@param` in Javadoc comments.
 Browse the list of open-source plugins with implementations of the [com.intellij.extendWordSelectionHandler](https://jb.gg/ipe?extensions=com.intellij.extendWordSelectionHandler) extension point
 .
 
 There are also some important places in the IntelliJ Platform to add breakpoints during debugging.
-When Extend Selection is called by the user, it is handled by [SelectWordHandler](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/lang-impl/src/com/intellij/codeInsight/editorActions/SelectWordHandler.java).
-The majority of the work, however, is then done inside [SelectWordUtil](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/lang-impl/src/com/intellij/codeInsight/editorActions/SelectWordUtil.java), where `processElement()` checks which implementations of this EP apply for the current PSI element.
+When Extend Selection is called by the user, it is handled by [SelectWordHandler](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/lang-impl/src/com/intellij/codeInsight/editorActions/SelectWordHandler.java).
+The majority of the work, however, is then done inside [SelectWordUtil](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/lang-impl/src/com/intellij/codeInsight/editorActions/SelectWordUtil.java), where `processElement()` checks which implementations of this EP apply for the current PSI element.
 If one of them returns `true` from its `canSelect()` method, the additional text ranges are extracted in the `askSelectioner()` function.
 These places are good candidates to set breakpoints and investigate during debugging.
 

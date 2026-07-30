@@ -4,7 +4,7 @@ This guide is split into several parts, similar to a textbook.
 Each one builds on the content of the previous section, but it is not necessary to read the guide in order.
 The [Key Topics](key-topics.html) page aims to link to the pages that are necessary to be able to understand the architecture and get started building plugins.
 
-All source links and reference lists target IntelliJ Platform 2026.2.
+All source links and reference lists target IntelliJ Platform 2026.2.0.1.
 
 Note:
 

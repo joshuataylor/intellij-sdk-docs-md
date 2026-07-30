@@ -11,20 +11,20 @@ Modules include such things as source code, build scripts, unit tests, deploymen
 
 ### Content Roots
 
-A content root ([ContentEntry](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/projectModel-api/src/com/intellij/openapi/roots/ContentEntry.java)) is a directory whose files belong to the module (source code, resources, etc.).
+A content root ([ContentEntry](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/projectModel-api/src/com/intellij/openapi/roots/ContentEntry.java)) is a directory whose files belong to the module (source code, resources, etc.).
 A content root defines the filesystem boundary for the module — only files under a content root are considered part of the module.
 Each directory can belong to one and only one module; it is not possible to share a content root between multiple modules.
 A module may have multiple content roots.
 
 Within each content root, specific subdirectories can be designated as [source roots](#source-roots) or [exclude roots](#exclude-roots).
-Both are represented as subinterfaces of [ContentFolder](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/projectModel-api/src/com/intellij/openapi/roots/ContentFolder.java).
+Both are represented as subinterfaces of [ContentFolder](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/projectModel-api/src/com/intellij/openapi/roots/ContentFolder.java).
 
 ### Source Roots
 
-A source root ([SourceFolder](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/projectModel-api/src/com/intellij/openapi/roots/SourceFolder.java)) marks a directory within a content root that contains source or resource files.
+A source root ([SourceFolder](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/projectModel-api/src/com/intellij/openapi/roots/SourceFolder.java)) marks a directory within a content root that contains source or resource files.
 A content root can have multiple source roots underneath it.
 Source roots can have different types: regular source roots, test source roots, resource roots, test resource roots, etc.
-There is a single `SourceFolder` interface for all root types — they are distinguished by their [JpsModuleSourceRootType](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/jps/model-api/src/org/jetbrains/jps/model/module/JpsModuleSourceRootType.java), not by separate classes.
+There is a single `SourceFolder` interface for all root types — they are distinguished by their [JpsModuleSourceRootType](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/jps/model-api/src/org/jetbrains/jps/model/module/JpsModuleSourceRootType.java), not by separate classes.
 
 In IntelliJ IDEA, source roots are used as roots of the package hierarchy structure.
 Java classes directly under a source root will be in the root package.
@@ -37,7 +37,7 @@ Not all other IntelliJ Platform-based IDEs use source roots.
 
 ### Exclude Roots
 
-An exclude root ([ExcludeFolder](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/projectModel-api/src/com/intellij/openapi/roots/ExcludeFolder.java)) marks a directory within a content root whose contents are excluded from indexing, code completion, search, navigation, and compilation.
+An exclude root ([ExcludeFolder](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/projectModel-api/src/com/intellij/openapi/roots/ExcludeFolder.java)) marks a directory within a content root whose contents are excluded from indexing, code completion, search, navigation, and compilation.
 Typical uses include build output directories, generated files, or large data directories that should not be processed by the IDE.
 
 ### Order Entries
@@ -64,27 +64,27 @@ See [Interoperability with Project Model API](workspace-model.html#interoperabil
 
 The IntelliJ Platform provides a number of classes and interfaces you can use to work with modules:
 
-* [Module](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/module/Module.java)
+* [Module](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/openapi/module/Module.java)
 
-* [ModuleUtil](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/lang-api/src/com/intellij/openapi/module/ModuleUtil.java) and [ModuleUtilCore](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/projectModel-api/src/com/intellij/openapi/module/ModuleUtilCore.java)
+* [ModuleUtil](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/lang-api/src/com/intellij/openapi/module/ModuleUtil.java) and [ModuleUtilCore](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/projectModel-api/src/com/intellij/openapi/module/ModuleUtilCore.java)
 
-* [ModuleManager](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/projectModel-api/src/com/intellij/openapi/module/ModuleManager.kt)
+* [ModuleManager](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/projectModel-api/src/com/intellij/openapi/module/ModuleManager.kt)
 
-* [ModuleRootManager](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/projectModel-api/src/com/intellij/openapi/roots/ModuleRootManager.java)
+* [ModuleRootManager](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/projectModel-api/src/com/intellij/openapi/roots/ModuleRootManager.java)
 
-* [ModuleRootModel](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/projectModel-api/src/com/intellij/openapi/roots/ModuleRootModel.java)
+* [ModuleRootModel](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/projectModel-api/src/com/intellij/openapi/roots/ModuleRootModel.java)
 
-* [ModifiableModuleModel](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/projectModel-api/src/com/intellij/openapi/module/ModifiableModuleModel.java)
+* [ModifiableModuleModel](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/projectModel-api/src/com/intellij/openapi/module/ModifiableModuleModel.java)
 
-* [ModifiableRootModel](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/projectModel-api/src/com/intellij/openapi/roots/ModifiableRootModel.java)
+* [ModifiableRootModel](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/projectModel-api/src/com/intellij/openapi/roots/ModifiableRootModel.java)
 
-* [ContentEntry](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/projectModel-api/src/com/intellij/openapi/roots/ContentEntry.java)
+* [ContentEntry](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/projectModel-api/src/com/intellij/openapi/roots/ContentEntry.java)
 
-* [ContentFolder](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/projectModel-api/src/com/intellij/openapi/roots/ContentFolder.java)
+* [ContentFolder](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/projectModel-api/src/com/intellij/openapi/roots/ContentFolder.java)
 
-* [SourceFolder](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/projectModel-api/src/com/intellij/openapi/roots/SourceFolder.java)
+* [SourceFolder](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/projectModel-api/src/com/intellij/openapi/roots/SourceFolder.java)
 
-* [ExcludeFolder](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/projectModel-api/src/com/intellij/openapi/roots/ExcludeFolder.java)
+* [ExcludeFolder](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/projectModel-api/src/com/intellij/openapi/roots/ExcludeFolder.java)
 
 This section discusses how to complete some common tasks related to management of modules.
 
@@ -99,7 +99,7 @@ Use the `ModuleManager.getModules()` method.
 Order entries include SDK, libraries and other modules the module uses.
 With the IntelliJ IDEA UI, you can view order entries for a module on the Dependencies tab of the Project Structure dialog box.
 
-To explore the module dependencies, use the [OrderEnumerator](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/projectModel-api/src/com/intellij/openapi/roots/OrderEnumerator.java) class.
+To explore the module dependencies, use the [OrderEnumerator](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/projectModel-api/src/com/intellij/openapi/roots/OrderEnumerator.java) class.
 
 The following code snippet illustrates how you can get classpath (classes root of all dependencies) for a module:
 
@@ -110,7 +110,7 @@ VirtualFile[] roots = ModuleRootManager.getInstance(module).orderEntries().class
 ### How do I get the SDK the module uses?
 
 Use the `ModuleRootManager.getSdk()` method.
-This method returns a value of the [Sdk](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/projectModel-api/src/com/intellij/openapi/projectRoots/Sdk.java) type.
+This method returns a value of the [Sdk](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/projectModel-api/src/com/intellij/openapi/projectRoots/Sdk.java) type.
 
 The following code snippet illustrates how you can get detailed information on SDK the specified module uses:
 
@@ -159,12 +159,12 @@ String moduleName = module == null ? "Module not found" : module.getName();
 
 ### Storing a Reference to a Module
 
-Use [ModulePointer](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/projectModel-api/src/com/intellij/openapi/module/ModulePointer.java) to store a reference to a `Module` by its instance or name.
+Use [ModulePointer](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/projectModel-api/src/com/intellij/openapi/module/ModulePointer.java) to store a reference to a `Module` by its instance or name.
 A removal or rename of the `Module` will be tracked automatically.
 
 ### Accessing Module Roots
 
-Information about module roots can be accessed via [ModuleRootManager](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/projectModel-api/src/com/intellij/openapi/roots/ModuleRootManager.java).
+Information about module roots can be accessed via [ModuleRootManager](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/projectModel-api/src/com/intellij/openapi/roots/ModuleRootManager.java).
 For example, the following snippet shows how to access the content roots of a module:
 
 ```JAVA
@@ -182,7 +182,7 @@ VirtualFile moduleSourceRoot = ProjectRootManager.getInstance(project).getFileIn
 
 ### Java: Compiler Output Properties
 
-Obtain [CompilerModuleExtension](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/projectModel-api/src/com/intellij/openapi/roots/CompilerModuleExtension.java) for given `Module` instance to access Compiler Output path related properties.
+Obtain [CompilerModuleExtension](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/projectModel-api/src/com/intellij/openapi/roots/CompilerModuleExtension.java) for given `Module` instance to access Compiler Output path related properties.
 
 ## Receiving Notifications About Module Changes
 

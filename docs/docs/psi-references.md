@@ -19,7 +19,7 @@ Note that `String message` is not a reference and cannot be resolved.
 Instead, it's a declaration.
 It does not refer to any name defined elsewhere; instead, it defines a name by itself.
 
-A reference is an instance of a class implementing the [PsiReference](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/psi/PsiReference.java) interface.
+A reference is an instance of a class implementing the [PsiReference](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/psi/PsiReference.java) interface.
 Note that references are distinct from PSI elements.
 References created by a PSI element are returned from `PsiElement.getReferences()`, the underlying PSI element of a reference can be obtained from `PsiReference.getElement()`.
 
@@ -55,7 +55,7 @@ References are also often contributed to non-code files, such as XML or JSON.
 Contributing references is one of the most common ways to extend an existing language.
 For example, your plugin can contribute references to Java code, even though the Java PSI is part of the platform and not defined in your plugin.
 
-Implement [PsiReferenceContributor](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/psi/PsiReferenceContributor.java) registered in [com.intellij.psi.referenceContributor](https://jb.gg/ipe?extensions=com.intellij.psi.referenceContributor) extension point
+Implement [PsiReferenceContributor](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/psi/PsiReferenceContributor.java) registered in [com.intellij.psi.referenceContributor](https://jb.gg/ipe?extensions=com.intellij.psi.referenceContributor) extension point
 .
 
 Attribute `language` should be set to the Language ID where this contributor applies to.
@@ -77,10 +77,10 @@ The second case is polyvariant references.
 Consider the case of a JavaScript program.
 JavaScript is a dynamically typed language, so the IDE cannot always precisely determine which method is being called at a particular location.
 To handle this, it provides a reference that can be resolved to multiple possible elements.
-Such references implement the [PsiPolyVariantReference](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/psi/PsiPolyVariantReference.java) interface.
+Such references implement the [PsiPolyVariantReference](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/psi/PsiPolyVariantReference.java) interface.
 
 For resolving a `PsiPolyVariantReference`, you call its `multiResolve()` method.
-The call returns an array of [ResolveResult](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/psi/ResolveResult.java) objects.
+The call returns an array of [ResolveResult](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/psi/ResolveResult.java) objects.
 Each of the objects identifies a PSI element and also specifies whether the result is valid.
 For example, suppose you have multiple Java method overloads and a call with arguments not matching any of the overloads.
 In that case, you will get back `ResolveResult` objects for all the overloads, and `isValidResult()` returns `false` for all of them.
@@ -90,8 +90,8 @@ In that case, you will get back `ResolveResult` objects for all the overloads, a
 Resolving a reference means going from usage to the corresponding declaration.
 To perform the navigation in the opposite direction - from a declaration to its usages - perform a references search.
 
-To perform a search using [ReferencesSearch](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/indexing-api/src/com/intellij/psi/search/searches/ReferencesSearch.java), specify the element to search for, and optionally other parameters such as the scope in which the reference needs to be searched.
-The created [Query](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/util/Query.kt) allows obtaining all results at once or iterating over the results one by one.
+To perform a search using [ReferencesSearch](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/indexing-api/src/com/intellij/psi/search/searches/ReferencesSearch.java), specify the element to search for, and optionally other parameters such as the scope in which the reference needs to be searched.
+The created [Query](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/util/Query.kt) allows obtaining all results at once or iterating over the results one by one.
 The latter allows stopping processing as soon as the first (matching) result has been found.
 
 ## Implementing References

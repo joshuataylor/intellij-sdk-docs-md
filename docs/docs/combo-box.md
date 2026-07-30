@@ -1,14 +1,14 @@
 # Combo Box
 
 <tldr>
-Implementation: [ComboBox](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-api/src/com/intellij/openapi/ui/ComboBox.java)
+Implementation: [ComboBox](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-api/src/com/intellij/openapi/ui/ComboBox.java)
 </tldr>
 
 A combo box combines a [drop down list](drop-down.html) and an [input field](input-field.html), allowing the user to select a value from the list or enter a custom value.
 
 ![A preview of a combo box](images/combobox.png)
 
-Use [ComboBox](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-api/src/com/intellij/openapi/ui/ComboBox.java) instead of `javax.swing.JComboBox`.
+Use [ComboBox](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-api/src/com/intellij/openapi/ui/ComboBox.java) instead of `javax.swing.JComboBox`.
 To make combo box editable invoke:
 
 ```JAVA

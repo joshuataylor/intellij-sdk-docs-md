@@ -93,7 +93,7 @@ Tip:
 ## Define a Lexer Adapter
 
 The JFlex lexer needs to be adapted to the IntelliJ Platform Lexer API.
-Implement [SimpleLexerAdapter](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleLexerAdapter.java) by subclassing [FlexAdapter](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-impl/src/com/intellij/lexer/FlexAdapter.java).
+Implement [SimpleLexerAdapter](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleLexerAdapter.java) by subclassing [FlexAdapter](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-impl/src/com/intellij/lexer/FlexAdapter.java).
 
 ```JAVA
 public class SimpleLexerAdapter extends FlexAdapter {
@@ -146,7 +146,7 @@ public interface SimpleTokenSets {
 
 ## Define a Parser
 
-The Simple Language parser is defined in [SimpleParserDefinition](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleParserDefinition.java) by subclassing [ParserDefinition](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/lang/ParserDefinition.java).
+The Simple Language parser is defined in [SimpleParserDefinition](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleParserDefinition.java) by subclassing [ParserDefinition](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/lang/ParserDefinition.java).
 To avoid unnecessary classloading when initializing the extension point implementation, all `TokenSet` return values should use constants from dedicated `$Language$TokenSets` class.
 
 ```JAVA

@@ -1,6 +1,6 @@
 # Disposer and Disposable
 
-The IntelliJ Platform's [Disposer](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/util/src/com/intellij/openapi/util/Disposer.java) facilitates resource cleanup.
+The IntelliJ Platform's [Disposer](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/util/src/com/intellij/openapi/util/Disposer.java) facilitates resource cleanup.
 If a subsystem keeps a set of resources alive coincidently with a parent object's lifetime, the subsystem's resources should be registered with the `Disposer` to be released before or at the same time as the parent object.
 
 Listeners are the most common resource type managed by `Disposer`, but there are other possible types:
@@ -9,7 +9,7 @@ Listeners are the most common resource type managed by `Disposer`, but there are
 
 * Caches and other significant data structures.
 
-The `Disposer` is a singleton that manages a tree of [Disposable](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/util/src/com/intellij/openapi/Disposable.java) instances.
+The `Disposer` is a singleton that manages a tree of [Disposable](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/util/src/com/intellij/openapi/Disposable.java) instances.
 A `Disposable` is an interface for any object providing a `Disposable.dispose()` method to release heavyweight resources after a specific lifetime.
 
 The `Disposer` supports chaining `Disposable` objects in parent-child relationships.
@@ -28,7 +28,7 @@ If an extension requires executing some code to dispose it, you need to define a
 
 The `Disposer` Singleton
 
-The primary purpose of the [Disposer](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/util/src/com/intellij/openapi/util/Disposer.java) singleton is to enforce the rule that a child `Disposable` never outlives its parent.
+The primary purpose of the [Disposer](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/util/src/com/intellij/openapi/util/Disposer.java) singleton is to enforce the rule that a child `Disposable` never outlives its parent.
 
 The `Disposer` organizes `Disposable` objects in a tree of parent-child relationships.
 The tree of `Disposable` objects ensures the `Disposer` releases children of a parent first.
@@ -102,7 +102,7 @@ One of the parent `Disposables` provided by the IntelliJ Platform can be chosen,
 
 Use the following guidelines to choose the correct parent:
 
-* For resources required for a plugin's entire lifetime, use an existing or a dedicated application or project-level [service](plugin-services.html). Example: [PythonPluginDisposable](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/python/openapi/src/com/jetbrains/python/PythonPluginDisposable.java).
+* For resources required for a plugin's entire lifetime, use an existing or a dedicated application or project-level [service](plugin-services.html). Example: [PythonPluginDisposable](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/python/openapi/src/com/jetbrains/python/PythonPluginDisposable.java).
 
 * For resources required while a [dialog](dialog-wrapper.html) is displayed, use `DialogWrapper.getDisposable()`.
 
@@ -279,7 +279,7 @@ Tip:
 The first part of the callstack is unrelated to diagnosing the memory leak.
 Instead, pay attention to the second part of the call stack, after `Caused by: java.lang.Throwable`.
 
-In this specific case, the IntelliJ Platform ([CoreProgressManager](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-impl/src/com/intellij/openapi/progress/impl/CoreProgressManager.java)) started a task that contained the `DynamicWizard` code.
+In this specific case, the IntelliJ Platform ([CoreProgressManager](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-impl/src/com/intellij/openapi/progress/impl/CoreProgressManager.java)) started a task that contained the `DynamicWizard` code.
 In turn, that code allocated a `Project` that was never disposed by the time the application exited.
 That is a promising place to start digging.
 

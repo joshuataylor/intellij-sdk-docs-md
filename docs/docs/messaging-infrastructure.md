@@ -18,7 +18,7 @@ The following sections describe the main components of the messaging API:
 
 ### Topic
 
-The [Topic](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/extensions/src/com/intellij/util/messages/Topic.java) class serves as an endpoint at the messaging infrastructure.
+The [Topic](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/extensions/src/com/intellij/util/messages/Topic.java) class serves as an endpoint at the messaging infrastructure.
 Clients are allowed to subscribe to a specific topic within a bus and send messages to that topic within that particular bus.
 To clarify the corresponding message bus, a `Topic` field declaration should be annotated with `@Topic.AppLevel` and/or `@Topic.ProjectLevel`.
 
@@ -66,7 +66,7 @@ The messaging infrastructure takes care of dispatching the message to all subscr
 
 ### Message Bus
 
-[MessageBus](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/extensions/src/com/intellij/util/messages/MessageBus.kt) is the core of the messaging system.
+[MessageBus](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/extensions/src/com/intellij/util/messages/MessageBus.kt) is the core of the messaging system.
 It is used in the following scenarios:
 
 ```PLANTUML
@@ -90,7 +90,7 @@ Publisher --> Publish
 
 ### Connection
 
-Connection is represented by [MessageBusConnection](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/extensions/src/com/intellij/util/messages/MessageBusConnection.kt) class and manages all subscriptions for a particular client within a particular bus.
+Connection is represented by [MessageBusConnection](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/extensions/src/com/intellij/util/messages/MessageBusConnection.kt) class and manages all subscriptions for a particular client within a particular bus.
 
 ```PLANTUML
 @startuml
@@ -119,7 +119,7 @@ It's possible to specify default handler and subscribe to the target topic witho
 Connection will use that default handler when storing a topic-handler mapping.
 
 It's possible to explicitly release acquired resources (see `disconnect()`).
-Also, it can be plugged to standard semi-automatic disposing ([Disposable](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/util/src/com/intellij/openapi/Disposable.java)).
+Also, it can be plugged to standard semi-automatic disposing ([Disposable](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/util/src/com/intellij/openapi/Disposable.java)).
 
 ## Messaging API Usage
 
@@ -185,8 +185,8 @@ project.getMessageBus().connect().subscribe(
 });
 ```
 
-`MessageBus` instances are available via [ComponentManager.getMessageBus()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/extensions/src/com/intellij/openapi/components/ComponentManager.java).
-Many standard interfaces implement returning a message bus, e.g., [Application.getMessageBus()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/application/Application.java) and [Project.getMessageBus()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/openapi/project/Project.java).
+`MessageBus` instances are available via [ComponentManager.getMessageBus()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/extensions/src/com/intellij/openapi/components/ComponentManager.java).
+Many standard interfaces implement returning a message bus, e.g., [Application.getMessageBus()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/openapi/application/Application.java) and [Project.getMessageBus()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/openapi/project/Project.java).
 
 ### Publishing Messages
 
@@ -314,7 +314,7 @@ The following options are available:
 
 * `TO_PARENT`
 
-See [Topic.BroadcastDirection](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/extensions/src/com/intellij/util/messages/Topic.java) for detailed description of each option.
+See [Topic.BroadcastDirection](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/extensions/src/com/intellij/util/messages/Topic.java) for detailed description of each option.
 
 ## Nested Messages
 

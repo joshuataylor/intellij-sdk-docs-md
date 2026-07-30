@@ -14,7 +14,7 @@ This page is part of multi-step [Custom Language Support Tutorial](custom-langua
 All previous steps must be executed in sequence for the code to work.
 
 A commenter enables the user to comment-out a line of code at the cursor or selected code automatically.
-The [Commenter](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/lang/Commenter.java) defines support for `Code | Comment with Line Comment` and `Code | Comment with Block Comment` actions.
+The [Commenter](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/lang/Commenter.java) defines support for `Code | Comment with Line Comment` and `Code | Comment with Block Comment` actions.
 
 ## Define a Commenter
 

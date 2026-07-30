@@ -18,8 +18,8 @@ A scanner breaks the text into words and defines the context for each word.
 
 ## Define a Find Usages Provider
 
-The [SimpleFindUsagesProvider](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleFindUsagesProvider.java) implements [FindUsagesProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/indexing-api/src/com/intellij/lang/findUsages/FindUsagesProvider.java).
-Using the [DefaultWordsScanner](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/indexing-impl/src/com/intellij/lang/cacheBuilder/DefaultWordsScanner.java) ensures the scanner implementation is thread-safe.
+The [SimpleFindUsagesProvider](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleFindUsagesProvider.java) implements [FindUsagesProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/indexing-api/src/com/intellij/lang/findUsages/FindUsagesProvider.java).
+Using the [DefaultWordsScanner](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/indexing-impl/src/com/intellij/lang/cacheBuilder/DefaultWordsScanner.java) ensures the scanner implementation is thread-safe.
 See the comments in `FindUsagesProvider` for more information.
 
 ```JAVA

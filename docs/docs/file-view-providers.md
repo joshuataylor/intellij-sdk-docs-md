@@ -1,8 +1,8 @@
 # File View Providers
 
-A file view provider ([FileViewProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/psi/FileViewProvider.java)) manages access to multiple PSI trees within a single file.
+A file view provider ([FileViewProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/psi/FileViewProvider.java)) manages access to multiple PSI trees within a single file.
 
-For example, a JSPX page has a separate PSI tree for the Java code in it (`PsiJavaFile`), a separate tree for the XML code (`XmlFile`), and a separate tree for JSP as a whole ([JspFile](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/java/jsp-openapi/src/com/intellij/psi/jsp/JspFile.java)).
+For example, a JSPX page has a separate PSI tree for the Java code in it (`PsiJavaFile`), a separate tree for the XML code (`XmlFile`), and a separate tree for JSP as a whole ([JspFile](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/java/jsp-openapi/src/com/intellij/psi/jsp/JspFile.java)).
 
 Each of the PSI trees covers the entire contents of the file and contains special "outer language elements" in the places where contents in a different language can be found.
 
@@ -14,8 +14,8 @@ How do I get a `FileViewProvider`?
 
 | Context |API |
 ----------------
-| [PSI File](psi-files.html) |[PsiFile.getViewProvider()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/psi/PsiFile.java) |
-| [Virtual File](virtual-file.html) |[PsiManager.getInstance(project).findViewProvider()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/psi/PsiManager.java) |
+| [PSI File](psi-files.html) |[PsiFile.getViewProvider()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/psi/PsiFile.java) |
+| [Virtual File](virtual-file.html) |[PsiManager.getInstance(project).findViewProvider()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/psi/PsiManager.java) |
 
 ## 
 
@@ -35,7 +35,7 @@ To create a file type that has multiple interspersing trees for different langua
 the [com.intellij.fileType.fileViewProviderFactory](https://jb.gg/ipe?extensions=com.intellij.fileType.fileViewProviderFactory) extension point
 .
 
-Implement [FileViewProviderFactory](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/psi/FileViewProviderFactory.java) and return your `FileViewProvider` implementation from `createFileViewProvider()` method.
+Implement [FileViewProviderFactory](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/psi/FileViewProviderFactory.java) and return your `FileViewProvider` implementation from `createFileViewProvider()` method.
 
 Register as follows in `[plugin.xml](plugin-configuration-file.html)`:
 

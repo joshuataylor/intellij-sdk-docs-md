@@ -21,7 +21,7 @@ For more information about creating action classes, see the [Action System](acti
 
 Caret Positions from the `CaretModel` and `Caret` Objects
 
-The properties of a caret can be accessed by obtaining an instance of the [CaretModel](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/editor-ui-api/src/com/intellij/openapi/editor/CaretModel.java) object.
+The properties of a caret can be accessed by obtaining an instance of the [CaretModel](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/editor-ui-api/src/com/intellij/openapi/editor/CaretModel.java) object.
 As in the [Working with Text](working-with-text.html) tutorial, the `AnActionEvent` is used to get the `Editor` object.
 The `Editor` object provides access to the `CaretModel` object, as shown below:
 
@@ -46,8 +46,8 @@ These [LogicalPosition](#caret-logical-position) coordinates are used to describ
 Note that the Logical Position coordinate system is different from the editor UI, which is one-based rather than zero-based.
 
 Logical Position coordinates and other coordinate systems discussed in this tutorial can be used to characterize any location in an `Editor`, not just carets.
-Hints used for code insights are characterized in terms of these coordinates, for example [HintManager.getHintPosition()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-impl/src/com/intellij/codeInsight/hint/HintManagerImpl.java).
-Custom visual elements displayed in an `Editor`, called [Inlay](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/editor-ui-api/src/com/intellij/openapi/editor/Inlay.java) objects, are also expressed in terms of these coordinate systems.
+Hints used for code insights are characterized in terms of these coordinates, for example [HintManager.getHintPosition()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-impl/src/com/intellij/codeInsight/hint/HintManagerImpl.java).
+Custom visual elements displayed in an `Editor`, called [Inlay](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/editor-ui-api/src/com/intellij/openapi/editor/Inlay.java) objects, are also expressed in terms of these coordinate systems.
 
 The diagram below shows the Logical Position coordinate system applied to some example content.
 The character "s" in the red box represents placing the cursor on that character.
@@ -64,7 +64,7 @@ For the case of multiple carets in an `Editor`, the Primary Caret is the one on 
 ### Caret Logical Position
 
 The caret Logical Position is a zero-based, (line and column) position of the caret in the Editor.
-Logical Position information is obtained from the [LogicalPosition](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/editor-ui-api/src/com/intellij/openapi/editor/LogicalPosition.java) object for that caret.
+Logical Position information is obtained from the [LogicalPosition](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/editor-ui-api/src/com/intellij/openapi/editor/LogicalPosition.java) object for that caret.
 
 The Logical Position line number of a caret ignores the effects of settings that change the presentation of a `Document` within the Editor.
 Examples of these settings are [Code (Line) Folding](https://www.jetbrains.com/help/idea/working-with-source-code.html#code_folding) and [Soft Line Wrap](https://www.jetbrains.com/help/idea/using-code-editor.html#f804afd8).
@@ -84,7 +84,7 @@ The `Editor` interface provides methods to work with a caret Logical and Visual 
 ### Caret Visual Position
 
 A caret's Visual Position differs from Logical Position in that it takes into account editor presentation settings such as Code Folding and Soft Line Wrap.
-In doing so, [VisualPosition](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/editor-ui-api/src/com/intellij/openapi/editor/VisualPosition.java) counts - zero-based - the lines of a `Document` that can be displayed in an Editor.
+In doing so, [VisualPosition](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/editor-ui-api/src/com/intellij/openapi/editor/VisualPosition.java) counts - zero-based - the lines of a `Document` that can be displayed in an Editor.
 Consequently, Visual Positions can't be uniquely mapped to Logical Positions or corresponding lines in the underlying `Document`.
 
 For example, Soft Line Wrap affects the Visual Position of succeeding lines.
@@ -94,7 +94,7 @@ However, the Visual Position line number has increased by one!
 The comments on each line illustrate how the Soft Wrap portion of Logical line three is evaluated as Visual Position line four, as though it was a separate line.
 
 ![Caret Visual Position with Soft-Wrap](images/vis_pos_soft_wrap.png)
-The Logical and Visual Position objects for a caret are obtained from the [Caret](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/editor-ui-api/src/com/intellij/openapi/editor/Caret.java) object, as shown in the code snippet below.
+The Logical and Visual Position objects for a caret are obtained from the [Caret](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/editor-ui-api/src/com/intellij/openapi/editor/Caret.java) object, as shown in the code snippet below.
 
 ```JAVA
 public class EditorAreaIllustration extends AnAction {
@@ -129,10 +129,10 @@ The Column Position of a caret is the boundary between two characters.
 A caret can be associated with either a preceding or succeeding character.
 The association is important in bidirectional text, where mapping from Logical Column Position to Visual Column Position is not continuous.
 
-As defined in the [LogicalPosition](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/editor-ui-api/src/com/intellij/openapi/editor/LogicalPosition.java) class, if a caret position is associated with a succeeding character it Leans Forward.
+As defined in the [LogicalPosition](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/editor-ui-api/src/com/intellij/openapi/editor/LogicalPosition.java) class, if a caret position is associated with a succeeding character it Leans Forward.
 Otherwise, it is associated with the preceding character.
 
-As defined in the [VisualPosition](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/editor-ui-api/src/com/intellij/openapi/editor/VisualPosition.java) class, if a caret position is associated with a succeeding character it Leans Right.
+As defined in the [VisualPosition](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/editor-ui-api/src/com/intellij/openapi/editor/VisualPosition.java) class, if a caret position is associated with a succeeding character it Leans Right.
 Otherwise, it is associated with the preceding character.
 
 #### Examples of Caret Lean

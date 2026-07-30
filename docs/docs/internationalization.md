@@ -34,28 +34,28 @@ Consider using the following annotations:
 
 * [@NonNls](https://github.com/JetBrains/java-annotations/tree/24.0.0/common/src/main/java/org/jetbrains/annotations/NonNls.java) - for non-NLS strings
 
-* [NlsSafe](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/util/base/multiplatform/src/com/intellij/openapi/util/NlsSafe.kt) - for NLS-safe strings
+* [NlsSafe](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/util/base/multiplatform/src/com/intellij/openapi/util/NlsSafe.kt) - for NLS-safe strings
 
 ### NLS Context Annotations
 
 NLS context annotations are semantic annotations describing the context where the annotated strings are intended to be used.
-For example, [@InspectionMessage](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/analysis-api/src/com/intellij/codeInspection/util/InspectionMessage.java) should be used for strings displayed as messages reported by inspections.
+For example, [@InspectionMessage](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/analysis-api/src/com/intellij/codeInspection/util/InspectionMessage.java) should be used for strings displayed as messages reported by inspections.
 
 NLS context annotations must be annotated with `@Nls` and they can define:
 
 * capitalization requirement - via `@Nls.capitalization` attribute
 
-* [NlsContext](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/util/multiplatform/src/com/intellij/openapi/util/NlsContext.kt) - specifies default prefix and suffix for property keys, which will be suggested by the I18nize hardcoded string literal quick fix provided by `Java | Internationalization | Hardcoded strings` inspection
+* [NlsContext](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/util/multiplatform/src/com/intellij/openapi/util/NlsContext.kt) - specifies default prefix and suffix for property keys, which will be suggested by the I18nize hardcoded string literal quick fix provided by `Java | Internationalization | Hardcoded strings` inspection
 
 The IntelliJ Platform provides NLS context annotations, including:
 
-* general contexts: [NlsContexts](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/util/multiplatform/src/com/intellij/openapi/util/NlsContexts.kt) nested annotations
+* general contexts: [NlsContexts](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/util/multiplatform/src/com/intellij/openapi/util/NlsContexts.kt) nested annotations
 
-* action contexts: [NlsActions](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/editor-ui-api/src/com/intellij/openapi/util/NlsActions.java) nested annotations
+* action contexts: [NlsActions](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/editor-ui-api/src/com/intellij/openapi/util/NlsActions.java) nested annotations
 
-* miscellaneous contexts: [@InspectionMessage](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/analysis-api/src/com/intellij/codeInspection/util/InspectionMessage.java), [@IntentionFamilyName](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/analysis-api/src/com/intellij/codeInspection/util/IntentionFamilyName.java), [@IntentionName](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/analysis-api/src/com/intellij/codeInspection/util/IntentionName.java), [@GutterName](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/lang-api/src/com/intellij/codeInsight/daemon/GutterName.java), [@TooltipTitle](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-api/src/com/intellij/ide/TooltipTitle.java)
+* miscellaneous contexts: [@InspectionMessage](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/analysis-api/src/com/intellij/codeInspection/util/InspectionMessage.java), [@IntentionFamilyName](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/analysis-api/src/com/intellij/codeInspection/util/IntentionFamilyName.java), [@IntentionName](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/analysis-api/src/com/intellij/codeInspection/util/IntentionName.java), [@GutterName](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/lang-api/src/com/intellij/codeInsight/daemon/GutterName.java), [@TooltipTitle](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-api/src/com/intellij/ide/TooltipTitle.java)
 
-To find all available annotations, search for `@NlsContext` usages in the [intellij-community](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/README.md) source code.
+To find all available annotations, search for `@NlsContext` usages in the [intellij-community](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/README.md) source code.
 
 If the provided set of NLS context annotations are not sufficient, create custom annotations.
 
@@ -91,7 +91,7 @@ Enable Plugin DevKit | Plugin descriptor | Plugin.xml i18n verification inspecti
 
 ### Message Bundle Class
 
-The recommended approach to create a bundle class is to delegate getting messages to [DynamicBundle](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/DynamicBundle.java), e.g.:
+The recommended approach to create a bundle class is to delegate getting messages to [DynamicBundle](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/DynamicBundle.java), e.g.:
 
 Kotlin:
 
@@ -388,17 +388,17 @@ The IntelliJ Platform provides some utils to display them properly.
 
 #### Date and Time
 
-* [DateFormatUtil](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-api/src/com/intellij/util/text/DateFormatUtil.java) ([IDE's locale](providing-translations.html#getting-the-current-locale-programmatically) is supported since 2024.1)
+* [DateFormatUtil](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-api/src/com/intellij/util/text/DateFormatUtil.java) ([IDE's locale](providing-translations.html#getting-the-current-locale-programmatically) is supported since 2024.1)
 
-* [NlsMessages.formatDateLong()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/ide-core-impl/src/com/intellij/ide/nls/NlsMessages.java)
+* [NlsMessages.formatDateLong()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/ide-core-impl/src/com/intellij/ide/nls/NlsMessages.java)
 
 #### Durations
 
-* [NlsMessages.formatDuration()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/ide-core-impl/src/com/intellij/ide/nls/NlsMessages.java)
+* [NlsMessages.formatDuration()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/ide-core-impl/src/com/intellij/ide/nls/NlsMessages.java)
 
 #### File Sizes
 
-* [Formats.formatFileSize()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/util/base/src/com/intellij/openapi/util/text/Formats.java) (the units are not localized and the default JVM locale is used instead of the [IDE's locale](providing-translations.html#getting-the-current-locale-programmatically))
+* [Formats.formatFileSize()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/util/base/src/com/intellij/openapi/util/text/Formats.java) (the units are not localized and the default JVM locale is used instead of the [IDE's locale](providing-translations.html#getting-the-current-locale-programmatically))
 
 Note: Something missing?
 

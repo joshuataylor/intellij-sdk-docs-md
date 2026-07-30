@@ -20,7 +20,7 @@ This example creates a Settings page that uses the default language code style s
 ## Define Code Style Settings
 
 Define [SimpleCodeStyleSettings](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleCodeStyleSettings.java)
-for Simple Language by subclassing [CustomCodeStyleSettings](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/code-style-api/src/com/intellij/psi/codeStyle/CustomCodeStyleSettings.java).
+for Simple Language by subclassing [CustomCodeStyleSettings](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/code-style-api/src/com/intellij/psi/codeStyle/CustomCodeStyleSettings.java).
 
 ```JAVA
 public class SimpleCodeStyleSettings extends CustomCodeStyleSettings {
@@ -37,7 +37,7 @@ public class SimpleCodeStyleSettings extends CustomCodeStyleSettings {
 The code style settings provider gives the IntelliJ Platform a standard way to instantiate `CustomCodeStyleSettings` for the Simple Language.
 
 Define [SimpleCodeStyleSettingsProvider](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleCodeStyleSettingsProvider.java)
-for Simple Language by subclassing [CodeStyleSettingsProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/lang-api/src/com/intellij/psi/codeStyle/CodeStyleSettingsProvider.java).
+for Simple Language by subclassing [CodeStyleSettingsProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/lang-api/src/com/intellij/psi/codeStyle/CodeStyleSettingsProvider.java).
 
 ```JAVA
 final class SimpleCodeStyleSettingsProvider extends CodeStyleSettingsProvider {
@@ -89,7 +89,7 @@ using the [com.intellij.codeStyleSettingsProvider](https://jb.gg/ipe?extensions=
 
 ## Define the Language Code Style Settings Provider
 
-Define [SimpleLanguageCodeStyleSettingsProvider](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleLanguageCodeStyleSettingsProvider.java) for Simple Language by subclassing [LanguageCodeStyleSettingsProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/lang-api/src/com/intellij/psi/codeStyle/LanguageCodeStyleSettingsProvider.java), which provides common code style settings for a specific language.
+Define [SimpleLanguageCodeStyleSettingsProvider](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleLanguageCodeStyleSettingsProvider.java) for Simple Language by subclassing [LanguageCodeStyleSettingsProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/lang-api/src/com/intellij/psi/codeStyle/LanguageCodeStyleSettingsProvider.java), which provides common code style settings for a specific language.
 
 ```JAVA
 final class SimpleLanguageCodeStyleSettingsProvider extends LanguageCodeStyleSettingsProvider {

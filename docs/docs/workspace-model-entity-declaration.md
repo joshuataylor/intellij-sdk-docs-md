@@ -7,13 +7,13 @@ Warning: Custom Entities
 Defining custom entities is not yet available to third-party plugins, see also [Generating Entity Implementations](#generating-entity-implementations).
 
 To declare an entity type, a Kotlin interface has to be created, which directly or indirectly extends
-[WorkspaceEntity](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/workspace/storage/src/com/intellij/platform/workspace/storage/WorkspaceEntity.kt).
+[WorkspaceEntity](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/workspace/storage/src/com/intellij/platform/workspace/storage/WorkspaceEntity.kt).
 The entity interface must contain read-only properties only.
 
 A nested `Builder` interface with setters for these properties, and a `companion` object which allows creating instances of the entity
 are generated automatically along with the implementations (see [Generating Entity Implementations](#generating-entity-implementations)).
 The platform currently provides some predefined types of entities
-(see [entities](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/workspace/jps/src/com/intellij/platform/workspace/jps/entities) package),
+(see [entities](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/workspace/jps/src/com/intellij/platform/workspace/jps/entities) package),
 but they're supposed to be used only for interoperability with code which uses the project model API.
 
 Plugins should define and use their own types of entities if they need to store framework-specific data.
@@ -95,7 +95,7 @@ data class MavenId(
 
 Due to the limitation that a reference must be declared on both entities, there needs to be an option to declare a reference to an entity from another module.
 This can be done by declaring an extension property for the entity located outside the module.
-This property must use the [WorkspaceEntity.extension()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/workspace/storage/src/com/intellij/platform/workspace/storage/WorkspaceEntity.kt) delegate to work correctly.
+This property must use the [WorkspaceEntity.extension()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/workspace/storage/src/com/intellij/platform/workspace/storage/WorkspaceEntity.kt) delegate to work correctly.
 
 Example: a `KotlinEntity` declaring a reference to the `MavenEntity` located in a different module:
 
@@ -122,11 +122,11 @@ val MavenEntity.kotlinEntity: @Child KotlinEntity
 ### Inheritance
 
 For inheritance, the supertype entity must be marked using
-[Abstract](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/workspace/storage/src/com/intellij/platform/workspace/storage/annotations/Abstract.kt) annotation.
+[Abstract](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/workspace/storage/src/com/intellij/platform/workspace/storage/annotations/Abstract.kt) annotation.
 
-See [PackagingElementEntity](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/workspace/jps/src/com/intellij/java/workspace/entities/artifact.kt),
+See [PackagingElementEntity](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/workspace/jps/src/com/intellij/java/workspace/entities/artifact.kt),
 more samples can be found in the
-[com.intellij.platform.workspace.jps.entities](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/workspace/jps/src/com/intellij/platform/workspace/jps/entities)
+[com.intellij.platform.workspace.jps.entities](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/workspace/jps/src/com/intellij/platform/workspace/jps/entities)
 package.
 
 ## Generating Entity Implementations

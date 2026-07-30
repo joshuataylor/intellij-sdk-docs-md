@@ -144,7 +144,7 @@ When the focus is returned to the field with an error, use validation on input. 
 
 #### Implementation
 
-In [Configurable](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/ide-core/src/com/intellij/openapi/options/Configurable.java) panels, throw [ConfigurationException](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/ide-core/src/com/intellij/openapi/options/ConfigurationException.java) from `apply()` in case of errors.
+In [Configurable](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/ide-core/src/com/intellij/openapi/options/Configurable.java) panels, throw [ConfigurationException](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/ide-core/src/com/intellij/openapi/options/ConfigurationException.java) from `apply()` in case of errors.
 
 Non-configurable panels:
 
@@ -157,7 +157,7 @@ textField()
 
 Java:
 
-Add `andStartOnFocusLost()` call on [ComponentValidator](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-api/src/com/intellij/openapi/ui/ComponentValidator.java) before installing it on a component:
+Add `andStartOnFocusLost()` call on [ComponentValidator](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-api/src/com/intellij/openapi/ui/ComponentValidator.java) before installing it on a component:
 
 ```JAVA
 new ComponentValidator(parentDisposable)
@@ -199,7 +199,7 @@ Show the error tooltip for the next field when it gets the focus, hover, or the 
 
 #### Implementation
 
-By default, [DialogWrapper](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-api/src/com/intellij/openapi/ui/DialogWrapper.java) disables OK button until
+By default, [DialogWrapper](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-api/src/com/intellij/openapi/ui/DialogWrapper.java) disables OK button until
 all fields that participate in validation become valid.
 
 Explicitly enable OK button for each input field:
@@ -244,7 +244,7 @@ Hide the error messages once any field related to the error is edited. Set the d
 
 #### Implementation
 
-[ValidationInfo](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/ide-core/src/com/intellij/openapi/ui/ValidationInfo.java) for messages in inline area is created with `null` component:
+[ValidationInfo](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/ide-core/src/com/intellij/openapi/ui/ValidationInfo.java) for messages in inline area is created with `null` component:
 
 ```JAVA
 new ValidationInfo(

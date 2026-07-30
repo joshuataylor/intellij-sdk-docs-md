@@ -33,17 +33,17 @@ The standard way of writing a light test is to extend one of the following class
 
 Default:
 
-Use [LightPlatformTestCase](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/testFramework/src/com/intellij/testFramework/LightPlatformTestCase.java)
-or [BasePlatformTestCase](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/testFramework/src/com/intellij/testFramework/fixtures/BasePlatformTestCase.java)
+Use [LightPlatformTestCase](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/testFramework/src/com/intellij/testFramework/LightPlatformTestCase.java)
+or [BasePlatformTestCase](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/testFramework/src/com/intellij/testFramework/fixtures/BasePlatformTestCase.java)
 for tests that don't have any dependency on Java functionality.
 
 Examples:
 
-* [JavaCopyrightTest](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/java/java-tests/testSrc/com/intellij/copyright/JavaCopyrightTest.kt)
+* [JavaCopyrightTest](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/java/java-tests/testSrc/com/intellij/copyright/JavaCopyrightTest.kt)
 
-* [HtmlDocumentationTest](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/xml/tests/src/com/intellij/html/HtmlDocumentationTest.kt)
+* [HtmlDocumentationTest](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/xml/tests/src/com/intellij/html/HtmlDocumentationTest.kt)
 
-* [AcceptWordAsCorrectTest](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/plugins/grazie/src/test/kotlin/com/intellij/grazie/spellchecker/inspector/AcceptWordAsCorrectTest.java)
+* [AcceptWordAsCorrectTest](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/plugins/grazie/src/test/kotlin/com/intellij/grazie/spellchecker/inspector/AcceptWordAsCorrectTest.java)
 
 Plugins using Java PSI:
 
@@ -53,19 +53,19 @@ An explicit dependency on `TestFramework.Plugin.Java` is required, see [test-fra
 
 For tests that require the [Java PSI](idea.html#java-plugin) or related functionality:
 
-* [LightJavaCodeInsightFixtureTestCase](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/java/testFramework/src/com/intellij/testFramework/fixtures/LightJavaCodeInsightFixtureTestCase.java) for JUnit 3
+* [LightJavaCodeInsightFixtureTestCase](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/java/testFramework/src/com/intellij/testFramework/fixtures/LightJavaCodeInsightFixtureTestCase.java) for JUnit 3
 
-* [LightJavaCodeInsightFixtureTestCase4](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/java/testFramework/src/com/intellij/testFramework/fixtures/LightJavaCodeInsightFixtureTestCase4.kt) for JUnit 4 (2021.1 and later)
+* [LightJavaCodeInsightFixtureTestCase4](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/java/testFramework/src/com/intellij/testFramework/fixtures/LightJavaCodeInsightFixtureTestCase4.kt) for JUnit 4 (2021.1 and later)
 
-* [LightJavaCodeInsightFixtureTestCase5](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/java/testFramework/src/com/intellij/testFramework/fixtures/LightJavaCodeInsightFixtureTestCase5.kt) for JUnit 5 (2021.1 and later)
+* [LightJavaCodeInsightFixtureTestCase5](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/java/testFramework/src/com/intellij/testFramework/fixtures/LightJavaCodeInsightFixtureTestCase5.kt) for JUnit 5 (2021.1 and later)
 
 Examples:
 
-* [PatternValidatorTest](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/plugins/IntelliLang/tests/test/org/intellij/plugins/intelliLang/pattern/PatternValidatorTest.java) (JUnit 3)
+* [PatternValidatorTest](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/plugins/IntelliLang/tests/test/org/intellij/plugins/intelliLang/pattern/PatternValidatorTest.java) (JUnit 3)
 
-* [JavaCtrlMouseTest](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/java/java-tests/testSrc/com/intellij/java/codeInsight/javadoc/JavaCtrlMouseTest.kt) (JUnit 4)
+* [JavaCtrlMouseTest](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/java/java-tests/testSrc/com/intellij/java/codeInsight/javadoc/JavaCtrlMouseTest.kt) (JUnit 4)
 
-* [MissingJavadocHighlightingTest](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/java/java-tests/testSrc/com/intellij/java/codeInsight/daemon/MissingJavadocHighlightingTest.java) (JUnit 5)
+* [MissingJavadocHighlightingTest](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/java/java-tests/testSrc/com/intellij/java/codeInsight/daemon/MissingJavadocHighlightingTest.java) (JUnit 5)
 
 Tip:
 
@@ -74,23 +74,23 @@ See [How to test a JVM language?](testing-faq.html#how-to-test-a-jvm-language) o
 ### LightProjectDescriptor
 
 When writing a light test, it is possible to specify the requirements of the project used in test, such as the module type, the configured [SDK](sdk.html), [facets](facet.html), [libraries](library.html), etc.
-It is done by extending the [LightProjectDescriptor](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/testFramework/src/com/intellij/testFramework/LightProjectDescriptor.java) class and returning the project descriptor (usually stored in `static final` field) from `getProjectDescriptor()`.
+It is done by extending the [LightProjectDescriptor](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/testFramework/src/com/intellij/testFramework/LightProjectDescriptor.java) class and returning the project descriptor (usually stored in `static final` field) from `getProjectDescriptor()`.
 
 Before executing each test, the project instance will be reused if the test case returns the same project descriptor as the previous one or recreated if the descriptor is different (`equals() = false`).
 
-When [testing JVM languages](testing-faq.html#how-to-test-a-jvm-language), see also [DefaultLightProjectDescriptor](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/java/testFramework/src/com/intellij/testFramework/fixtures/DefaultLightProjectDescriptor.java).
+When [testing JVM languages](testing-faq.html#how-to-test-a-jvm-language), see also [DefaultLightProjectDescriptor](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/java/testFramework/src/com/intellij/testFramework/fixtures/DefaultLightProjectDescriptor.java).
 
 ## Heavy Tests
 
-The standard way of writing a heavy test is to extend [HeavyPlatformTestCase](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/testFramework/src/com/intellij/testFramework/HeavyPlatformTestCase.java).
+The standard way of writing a heavy test is to extend [HeavyPlatformTestCase](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/testFramework/src/com/intellij/testFramework/HeavyPlatformTestCase.java).
 
 Examples:
 
-* [ModuleDeleteProviderTest](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/java/java-tests/testSrc/com/intellij/openapi/roots/ui/configuration/actions/ModuleDeleteProviderTest.java)
+* [ModuleDeleteProviderTest](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/java/java-tests/testSrc/com/intellij/openapi/roots/ui/configuration/actions/ModuleDeleteProviderTest.java)
 
-* [FacetTypeUnloadingTest](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/java/idea-ui/testSrc/com/intellij/facet/FacetTypeUnloadingTest.kt)
+* [FacetTypeUnloadingTest](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/java/idea-ui/testSrc/com/intellij/facet/FacetTypeUnloadingTest.kt)
 
-* [SourceFolderManagerTest](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/external-system-impl/testSrc/com/intellij/openapi/externalSystem/service/project/manage/SourceFolderManagerTest.kt)
+* [SourceFolderManagerTest](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/external-system-impl/testSrc/com/intellij/openapi/externalSystem/service/project/manage/SourceFolderManagerTest.kt)
 
 ### Setting Up a Multi-Module Project
 

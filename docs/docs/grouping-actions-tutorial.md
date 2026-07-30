@@ -101,7 +101,7 @@ This condition is needed because the custom action group is added to an IntelliJ
 
 Extending `DefaultActionGroup`
 
-The [DefaultActionGroup](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-api/src/com/intellij/openapi/actionSystem/DefaultActionGroup.java) is an implementation of [ActionGroup](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/ActionGroup.java).
+The [DefaultActionGroup](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-api/src/com/intellij/openapi/actionSystem/DefaultActionGroup.java) is an implementation of [ActionGroup](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/ActionGroup.java).
 The `DefaultActionGroup` class is used to add child actions and separators between them to a group.
 This class is used if a set of actions belonging to the group does not change at runtime.
 
@@ -212,7 +212,7 @@ The new group will also have an icon:
 
 ## Action Groups with Dynamic Actions Sets
 
-If a set of actions belonging to a custom group varies depending on the context, the group must extend [ActionGroup](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/ActionGroup.java).
+If a set of actions belonging to a custom group varies depending on the context, the group must extend [ActionGroup](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/ActionGroup.java).
 The set of actions in the `ActionGroup` is dynamically defined.
 
 ### Creating Variable Action Group

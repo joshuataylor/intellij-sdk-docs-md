@@ -1,6 +1,6 @@
 # Debouncing and Batching Updates
 
-[DebouncedUpdates](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/ide-core/src/com/intellij/util/ui/update/DebouncedUpdates) is a utility for batching events over a time window and processing them after a delay.
+[DebouncedUpdates](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/ide-core/src/com/intellij/util/ui/update/DebouncedUpdates.kt) is a utility for batching events over a time window and processing them after a delay.
 It is a thin wrapper around a Kotlin channel that provides debouncing, optional deduplication, and testing utilities.
 It is the recommended replacement for the obsolete `MergingUpdateQueue`.
 
@@ -92,7 +92,7 @@ public final class MyPanel extends JPanel {
 
 `cancelOnDispose`
 
-Optionally, a queue created with `forScope` or `forComponent` can also be cancelled when a [Disposable](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/util/src/com/intellij/openapi/Disposable) is disposed:
+Optionally, a queue created with `forScope` or `forComponent` can also be cancelled when a [Disposable](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/util/src/com/intellij/openapi/Disposable.java) is disposed:
 
 Kotlin:
 
@@ -250,5 +250,5 @@ The only cases where `MergingUpdateQueue` should be kept are those requiring man
 | `queue.queue(Update.create(item) { doWork(item) })` |`queue.queue(item)` with `runBatched` |
 | `queue.flush()` in tests |`queue.waitForAllExecuted(5.seconds)` |
 
-See [DebouncedUpdates](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/ide-core/src/com/intellij/util/ui/update/DebouncedUpdates) KDoc for the full API reference.
+See [DebouncedUpdates](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/ide-core/src/com/intellij/util/ui/update/DebouncedUpdates.kt) KDoc for the full API reference.
 

@@ -157,7 +157,7 @@ See [Android Plugin Extension Point and Listener List](android-plugin-extension-
 
 * Marcos Holgado's article series [Write an Android Studio Plugin (Part 1)](https://proandroiddev.com/write-an-android-studio-plugin-part-1-creating-a-basic-plugin-af956c4f8b50)
 
-* [Android Plugin README](https://github.com/JetBrains/android/tree/idea/262.8665.258/README.md)
+* [Android Plugin README](https://github.com/JetBrains/android/tree/idea/262.8665.337/README.md)
 
 ## Open Source Plugins for Android Studio
 
@@ -175,5 +175,5 @@ When learning new development configurations, it is helpful to have some represe
 
 ### How To Sync Gradle Project
 
-Use [GradleSyncInvoker.requestProjectSync()](https://github.com/JetBrains/android/tree/idea/262.8665.258/project-system-gradle/src/com/android/tools/idea/gradle/project/sync/GradleSyncInvoker.kt) for programmatic synchronization.
+Use [GradleSyncInvoker.requestProjectSync()](https://github.com/JetBrains/android/tree/idea/262.8665.337/project-system-gradle/src/com/android/tools/idea/gradle/project/sync/GradleSyncInvoker.kt) for programmatic synchronization.
 

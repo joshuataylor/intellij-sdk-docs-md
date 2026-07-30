@@ -1,7 +1,7 @@
 # Typography
 
 <tldr>
-Implementation: [JBFont](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/util/ui/src/com/intellij/util/ui/JBFont.java)
+Implementation: [JBFont](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/util/ui/src/com/intellij/util/ui/JBFont.java)
 </tldr>
 
 ## UI font
@@ -14,7 +14,7 @@ Use the built-in text styles from the table below whenever possible.
 
 Note:
 
-Implementation example for font styles: [LabelSizeDemoAction](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-impl/internal/src/com/intellij/internal/LabelSizeDemoAction.kt)
+Implementation example for font styles: [LabelSizeDemoAction](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-impl/internal/src/com/intellij/internal/LabelSizeDemoAction.kt)
 
 |  Font  | Font size  | Usage Examples  |
 -----------------------------------------

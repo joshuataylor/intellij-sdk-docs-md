@@ -14,12 +14,12 @@ and can be used, for example, to implement keyword completion.
 
 ## Reference Completion
 
-To fill the completion list, the IDE calls [PsiReference.getVariants()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/psi/PsiReference.java) either on the reference at the caret location or on a dummy reference that would be placed at the caret.
-This method needs to return an array of objects containing either strings, [PsiElement](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/psi/PsiElement.java) instances or instances of the [LookupElement](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/analysis-api/src/com/intellij/codeInsight/lookup/LookupElement.java) class (see [Lookup Items](#lookup-items) below).
+To fill the completion list, the IDE calls [PsiReference.getVariants()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/psi/PsiReference.java) either on the reference at the caret location or on a dummy reference that would be placed at the caret.
+This method needs to return an array of objects containing either strings, [PsiElement](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/psi/PsiElement.java) instances or instances of the [LookupElement](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/analysis-api/src/com/intellij/codeInsight/lookup/LookupElement.java) class (see [Lookup Items](#lookup-items) below).
 If a `PsiElement` instance is returned in the array, the completion list shows the icon for the element.
 
-A common way to implement `getVariants()` is to use the same function for walking up the tree as in [PsiReference.resolve()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/psi/PsiReference.java)
-using a [PsiScopeProcessor](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/core-api/src/com/intellij/psi/scope/PsiScopeProcessor.java) which collects all declarations passed to its `execute()` method and returns
+A common way to implement `getVariants()` is to use the same function for walking up the tree as in [PsiReference.resolve()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/psi/PsiReference.java)
+using a [PsiScopeProcessor](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/psi/scope/PsiScopeProcessor.java) which collects all declarations passed to its `execute()` method and returns
 them as an array for filling the completion list.
 
 ### Symbol Reference Completion
@@ -30,11 +30,11 @@ This API is currently in development and thus in experimental state.
 See also [References](declarations-and-references.html#references).
 
 To provide completion variants by a `PsiSymbolReference` implement
-[PsiCompletableReference](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/analysis-api/src/com/intellij/model/psi/PsiCompletableReference.java).
+[PsiCompletableReference](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/analysis-api/src/com/intellij/model/psi/PsiCompletableReference.java).
 
 ## Contributor-Based Completion
 
-Implementing [CompletionContributor](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/analysis-api/src/com/intellij/codeInsight/completion/CompletionContributor.java) gives the greatest control over the operation of code completion.
+Implementing [CompletionContributor](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/analysis-api/src/com/intellij/codeInsight/completion/CompletionContributor.java) gives the greatest control over the operation of code completion.
 Register in [com.intellij.completion.contributor](https://jb.gg/ipe?extensions=com.intellij.completion.contributor) extension point
 and specify the `language` attribute (unless it works on any supported language).
 
@@ -42,9 +42,9 @@ Note:
 
 Note that the Javadoc of that class contains a detailed FAQ for implementing code completion.
 
-The core scenario of using [CompletionContributor](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/analysis-api/src/com/intellij/codeInsight/completion/CompletionContributor.java) consists of calling the `extend()` method and passing in the [Element Pattern](element-patterns.html)
+The core scenario of using [CompletionContributor](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/analysis-api/src/com/intellij/codeInsight/completion/CompletionContributor.java) consists of calling the `extend()` method and passing in the [Element Pattern](element-patterns.html)
 specifying the context in which this completion variant is applicable.
-The [CompletionProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/analysis-api/src/com/intellij/codeInsight/completion/CompletionProvider.java) then adds the items to show in the completion list.
+The [CompletionProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/analysis-api/src/com/intellij/codeInsight/completion/CompletionProvider.java) then adds the items to show in the completion list.
 
 Keep in mind that the pattern is checked against the leaf PSI element.
 If you want to match a composite element, use `withParent()` or `withSuperParent()` methods.
@@ -53,16 +53,16 @@ If completion items do not depend on indexes (e.g., keywords), it can be marked 
 
 Examples:
 
-* [JUnitPropertiesCompletionContributor](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/plugins/junit/src/com/intellij/execution/junit2/properties/JUnitPropertiesCompletionContributor.kt) for completing properties in `junit-platform.properties` files.
+* [JUnitPropertiesCompletionContributor](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/plugins/junit/src/com/intellij/execution/junit2/properties/JUnitPropertiesCompletionContributor.kt) for completing properties in `junit-platform.properties` files.
 
 * [Custom Language Support Tutorial: Completion Contributor](completion-contributor.html)
 
 ## Lookup Items
 
-Items shown in the completion list are represented by instances of the [LookupElement](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/analysis-api/src/com/intellij/codeInsight/lookup/LookupElement.java) interface.
-These instances are typically created through the [LookupElementBuilder](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/analysis-api/src/com/intellij/codeInsight/lookup/LookupElementBuilder.java) class.
+Items shown in the completion list are represented by instances of the [LookupElement](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/analysis-api/src/com/intellij/codeInsight/lookup/LookupElement.java) interface.
+These instances are typically created through the [LookupElementBuilder](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/analysis-api/src/com/intellij/codeInsight/lookup/LookupElementBuilder.java) class.
 
-If there's only one lookup item to be shown, the behavior can be customized via [AutoCompletionPolicy](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/analysis-api/src/com/intellij/codeInsight/lookup/AutoCompletionPolicy.java).
+If there's only one lookup item to be shown, the behavior can be customized via [AutoCompletionPolicy](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/analysis-api/src/com/intellij/codeInsight/lookup/AutoCompletionPolicy.java).
 
 ### Lookup Item Attributes
 
@@ -86,27 +86,27 @@ Icon/Type icon
 : See [Working with Icons](icons.html).
 
 Insert handler
-: The [InsertHandler](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/analysis-api/src/com/intellij/codeInsight/completion/InsertHandler.java) is called when the item is selected and performs additional modifications of the inserted text.
+: The [InsertHandler](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/analysis-api/src/com/intellij/codeInsight/completion/InsertHandler.java) is called when the item is selected and performs additional modifications of the inserted text.
 It can also [show the completion popup](#showing-completion-popup-programmatically) after insertion.
-Example: add parentheses for a method call ([ParenthesesInsertHandler](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/analysis-api/src/com/intellij/codeInsight/completion/util/ParenthesesInsertHandler.java))
+Example: add parentheses for a method call ([ParenthesesInsertHandler](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/analysis-api/src/com/intellij/codeInsight/completion/util/ParenthesesInsertHandler.java))
 
 ### Runtime Presentation
 
-The item presentation can also be performed via (re-usable) [LookupElementRenderer](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/analysis-api/src/com/intellij/codeInsight/lookup/LookupElementRenderer.java).
+The item presentation can also be performed via (re-usable) [LookupElementRenderer](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/analysis-api/src/com/intellij/codeInsight/lookup/LookupElementRenderer.java).
 
 For expensive calculations (for example, the presentation of an item to be shown depends on other items), use `LookupElementBuilder.withExpensiveRenderer()` to invoke the renderer in the background
 while the completion list is already populating.
 
 ### Sorting
 
-Use [PrioritizedLookupElement](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/analysis-api/src/com/intellij/codeInsight/completion/PrioritizedLookupElement.java) to control item sorting
+Use [PrioritizedLookupElement](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/analysis-api/src/com/intellij/codeInsight/completion/PrioritizedLookupElement.java) to control item sorting
 if all lookup items are guaranteed to be provided by this `CompletionContributor`.
 
 ## Code Completion FAQ
 
 ### Skipping Completion Popup
 
-To skip the completion popup in the current context (for example, inside comments), implement [CompletionConfidence](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/analysis-api/src/com/intellij/codeInsight/completion/CompletionConfidence.java)
+To skip the completion popup in the current context (for example, inside comments), implement [CompletionConfidence](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/analysis-api/src/com/intellij/codeInsight/completion/CompletionConfidence.java)
 registered in [com.intellij.completion.confidence](https://jb.gg/ipe?extensions=com.intellij.completion.confidence) extension point
 .
 
@@ -115,13 +115,13 @@ This can also be used to prevent skipping provided by other plugins by returning
 ### Showing Completion Popup Programmatically
 
 To trigger completion upon typing a specific character in the editor, override
-[TypedHandlerDelegate.checkAutoPopup()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/lang-api/src/com/intellij/codeInsight/editorActions/TypedHandlerDelegate.java)
+[TypedHandlerDelegate.checkAutoPopup()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/lang-api/src/com/intellij/codeInsight/editorActions/TypedHandlerDelegate.java)
 registered in [com.intellij.typedHandler](https://jb.gg/ipe?extensions=com.intellij.typedHandler) extension point
 .
 
-If all conditions match, invoke [AutoPopupController.scheduleAutoPopup()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/analysis-impl/src/com/intellij/codeInsight/AutoPopupController.java) and return `Result.STOP`.
+If all conditions match, invoke [AutoPopupController.scheduleAutoPopup()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/analysis-impl/src/com/intellij/codeInsight/AutoPopupController.java) and return `Result.STOP`.
 
 ### Completion Popup Events
 
-Use [LookupListener](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/analysis-api/src/com/intellij/codeInsight/lookup/LookupListener.java) to receive notifications about completion popup lifecycle events.
+Use [LookupListener](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/analysis-api/src/com/intellij/codeInsight/lookup/LookupListener.java) to receive notifications about completion popup lifecycle events.
 

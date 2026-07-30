@@ -22,7 +22,7 @@ For this purpose, use [custom Swing components](user-interface-components.html) 
 This document covers the Kotlin UI DSL in IntelliJ Platform 2019.2.
 A lot of the features described in this document are not available for plugins targeting earlier versions.
 
-The Kotlin UI DSL Version 1 functions are located in the [com.intellij.ui.layout](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-impl/src/com/intellij/ui/layout) package.
+The Kotlin UI DSL Version 1 functions are located in the [com.intellij.ui.layout](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-impl/src/com/intellij/ui/layout) package.
 
 ## Layout Structure
 
@@ -30,7 +30,7 @@ Tip:
 
 See [Layout](layout.html) topic in UI Guidelines for recommendations on arranging UI controls in dialogs.
 
-Use [panel](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-impl/src/com/intellij/ui/layout/layout.kt) to create UI:
+Use [panel](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-impl/src/com/intellij/ui/layout/layout.kt) to create UI:
 
 ```KOTLIN
 panel {
@@ -257,14 +257,14 @@ checkBox(message("checkbox.smart.tab.reuse"),
 
 ## Integrating Panels with Property Bindings
 
-A panel returned by the `panel` method is an instance of [DialogPanel](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-api/src/com/intellij/openapi/ui/DialogPanel.kt).
+A panel returned by the `panel` method is an instance of [DialogPanel](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-api/src/com/intellij/openapi/ui/DialogPanel.kt).
 This base class supports the standard `apply()`, `reset()`, and `isModified()` methods.
 
 ### Dialogs
 
 Reference: [DialogWrapper](dialog-wrapper.html)
 
-If you're using a [DialogPanel](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-api/src/com/intellij/openapi/ui/DialogPanel.kt) as the main panel of a `DialogWrapper`, the `apply()` method will be automatically called when the dialog is closed using OK action.
+If you're using a [DialogPanel](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-api/src/com/intellij/openapi/ui/DialogPanel.kt) as the main panel of a `DialogWrapper`, the `apply()` method will be automatically called when the dialog is closed using OK action.
 The other methods are unused in this case.
 
 Use the `focused()` method to specify which control should be focused when the dialog is initialized:
@@ -281,7 +281,7 @@ return panel {
 
 Reference: [Settings Guide](settings-guide.html)
 
-If you're using the UI DSL to implement a [Configurable](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/ide-core/src/com/intellij/openapi/options/Configurable.java), use [BoundConfigurable](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-api/src/com/intellij/openapi/options/BoundConfigurable.kt) as the base class.
+If you're using the UI DSL to implement a [Configurable](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/ide-core/src/com/intellij/openapi/options/Configurable.java), use [BoundConfigurable](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-api/src/com/intellij/openapi/options/BoundConfigurable.kt) as the base class.
 In this case, the `Configurable` methods will be automatically delegated to the panel.
 
 ## Enabling and Disabling Controls
@@ -314,10 +314,10 @@ Sample usages in IntelliJ Platform IDEs:
 
 | User Interface |Implementation |
 ----------------------------------
-| `Settings \| Editor \| Reader Mode` |[ReaderModeConfigurable](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/lang-impl/src/com/intellij/codeInsight/actions/ReaderModeConfigurable.kt) |
-| New Branch dialog in Git ([Manage Git branches](https://www.jetbrains.com/help/idea/manage-branches.html)) |[GitNewBranchDialog](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/plugins/git4idea/backend/src/branch/GitNewBranchDialog.kt) |
-| `Settings \| Tools \| Diff & Merge` |[DiffSettingsConfigurable](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/diff-impl/src/com/intellij/diff/settings/DiffSettingsConfigurable.kt) |
-| `Settings \| Editor \| General \| Editor Tabs` |[EditorTabsConfigurable](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/platform-impl/src/com/intellij/application/options/editor/EditorTabsConfigurable.kt) |
+| `Settings \| Editor \| Reader Mode` |[ReaderModeConfigurable](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/lang-impl/src/com/intellij/codeInsight/actions/ReaderModeConfigurable.kt) |
+| New Branch dialog in Git ([Manage Git branches](https://www.jetbrains.com/help/idea/manage-branches.html)) |[GitNewBranchDialog](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/plugins/git4idea/backend/src/branch/GitNewBranchDialog.kt) |
+| `Settings \| Tools \| Diff & Merge` |[DiffSettingsConfigurable](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/diff-impl/src/com/intellij/diff/settings/DiffSettingsConfigurable.kt) |
+| `Settings \| Editor \| General \| Editor Tabs` |[EditorTabsConfigurable](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-impl/src/com/intellij/application/options/editor/EditorTabsConfigurable.kt) |
 
 Tip:
 

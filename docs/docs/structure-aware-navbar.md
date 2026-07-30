@@ -19,7 +19,7 @@ For example, in Java this is used to display the class and method in which the c
 ## Define a Structure-Aware Navbar
 
 The [SimpleStructureAwareNavbar](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleStructureAwareNavbar.java) implements
-[StructureAwareNavBarModelExtension](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.258/platform/structure-view-impl/src/com/intellij/ide/navigationToolbar/StructureAwareNavBarModelExtension.kt).
+[StructureAwareNavBarModelExtension](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/structure-view-impl/src/com/intellij/ide/navigationToolbar/StructureAwareNavBarModelExtension.kt).
 
 ```JAVA
 final class SimpleStructureAwareNavbar extends StructureAwareNavBarModelExtension {
