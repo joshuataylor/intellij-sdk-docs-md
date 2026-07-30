@@ -1,12 +1,12 @@
 <!DOCTYPE html SYSTEM "about:legacy-compat">
-<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF" data-resizable-sidebar="true"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="built-on" content="2026-07-30T07:51:49.387629371"><!-- Google Tag Manager -->
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF" data-resizable-sidebar="true"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="built-on" content="2026-07-30T10:47:35.013796844"><!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-5P98');</script>
 <!-- End Google Tag Manager -->
-<title>Persisting Sensitive Data | IntelliJ Platform Plugin SDK</title><script type="application/json" id="virtual-toc-data">[{"id":"how-to-use","level":0,"title":"How to Use","anchor":"#how-to-use"},{"id":"retrieve-stored-credentials","level":1,"title":"Retrieve Stored Credentials","anchor":"#retrieve-stored-credentials"},{"id":"store-credentials","level":1,"title":"Store Credentials","anchor":"#store-credentials"},{"id":"storage","level":0,"title":"Storage","anchor":"#storage"},{"id":"storage-in-remote-development-context","level":1,"title":"Storage in Remote Development Context","anchor":"#storage-in-remote-development-context"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.css" rel="stylesheet"><link rel="manifest" href="https://www.jetbrains.com/site.webmanifest"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content="https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png"><!-- Open Graph --><meta property="og:title" content="Persisting Sensitive Data | IntelliJ Platform Plugin SDK"><meta property="og:description" content=""><meta property="og:image" content="https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png"><meta property="og:site_name" content="IntelliJ Platform Plugin SDK Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="https://plugins.jetbrains.com/docs/intellij/persisting-sensitive-data.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@JBPlatform"><meta name="twitter:title" content="Persisting Sensitive Data | IntelliJ Platform Plugin SDK"><meta name="twitter:description" content=""><meta name="twitter:creator" content="@JBPlatform"><meta name="twitter:image:src" content="https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png"><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+<title>Persisting Sensitive Data | IntelliJ Platform Plugin SDK</title><script type="application/json" id="virtual-toc-data">[{"id":"human-readable-description-of-credentials-with-service-names","level":0,"title":"Human-Readable Description of Credentials with Service Names","anchor":"#human-readable-description-of-credentials-with-service-names"},{"id":"attaching-identity-to-credentials-with-credentials-attributes","level":0,"title":"Attaching Identity to Credentials with Credentials Attributes","anchor":"#attaching-identity-to-credentials-with-credentials-attributes"},{"id":"password-management","level":0,"title":"Password Management","anchor":"#password-management"},{"id":"storing-passwords","level":1,"title":"Storing Passwords","anchor":"#storing-passwords"},{"id":"retrieving-passwords","level":1,"title":"Retrieving Passwords","anchor":"#retrieving-passwords"},{"id":"api-key-management","level":0,"title":"API Key Management","anchor":"#api-key-management"},{"id":"private-keys-and-other-non-string-credentials","level":0,"title":"Private Keys and Other Non-String Credentials","anchor":"#private-keys-and-other-non-string-credentials"},{"id":"removing-credentials","level":0,"title":"Removing Credentials","anchor":"#removing-credentials"},{"id":"retrieving-credentials-in-remote-development-context","level":0,"title":"Retrieving Credentials in Remote Development Context","anchor":"#retrieving-credentials-in-remote-development-context"},{"id":"storage","level":0,"title":"Storage","anchor":"#storage"},{"id":"storage-in-remote-development-context","level":1,"title":"Storage in Remote Development Context","anchor":"#storage-in-remote-development-context"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.css" rel="stylesheet"><link rel="manifest" href="https://www.jetbrains.com/site.webmanifest"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content="https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png"><!-- Open Graph --><meta property="og:title" content="Persisting Sensitive Data | IntelliJ Platform Plugin SDK"><meta property="og:description" content=""><meta property="og:image" content="https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png"><meta property="og:site_name" content="IntelliJ Platform Plugin SDK Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="https://plugins.jetbrains.com/docs/intellij/persisting-sensitive-data.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@JBPlatform"><meta name="twitter:title" content="Persisting Sensitive Data | IntelliJ Platform Plugin SDK"><meta name="twitter:description" content=""><meta name="twitter:creator" content="@JBPlatform"><meta name="twitter:image:src" content="https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png"><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
     "@context": "http://schema.org",
     "@type": "WebPage",
     "@id": "https://plugins.jetbrains.com/docs/intellij/persisting-sensitive-data.html#webpage",
@@ -24,46 +24,188 @@
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5P98"
                   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-<div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>IntelliJ Platform Plugin SDK  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="persisting_sensitive_data" id="persisting_sensitive_data.md">Persisting Sensitive Data</h1><p id="-lhe91c_4">The Credentials Store API allows you to store sensitive user data securely, like passwords, server URLs, etc.</p><section class="chapter"><h2 id="how-to-use" data-toc="how-to-use">How to Use</h2><p id="-lhe91c_7">Use <a href="https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/credential-store/src/ide/passwordSafe/PasswordSafe.kt" id="-lhe91c_14" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="-lhe91c_15">PasswordSafe</code></a> to work with credentials.</p><p id="-lhe91c_8"><span class="emphasis" id="-lhe91c_16">Common Utility Method:</span></p><div class="tabs" id="-lhe91c_9" data-group="languages" data-anchors="[-lhe91c_17,-lhe91c_18]"><div class="tabs__content" data-gtm="tab" id="-lhe91c_17" data-sync-tabs="kotlin" data-title="Kotlin"><div class="code-block" data-lang="kotlin" data-title="Kotlin">
-private fun createCredentialAttributes(key: String): CredentialAttributes {
-  return CredentialAttributes(generateServiceName(&quot;MySystem&quot;, key))
+<div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>IntelliJ Platform Plugin SDK  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="persisting_sensitive_data" id="persisting_sensitive_data.md">Persisting Sensitive Data</h1><p id="zex2al_4">The Credentials Store API stores sensitive user data securely, including passwords, API keys, private keys, and server URLs.</p><p id="zex2al_5">Use <a href="https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/credential-store/src/ide/passwordSafe/PasswordSafe.kt" id="zex2al_16" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="zex2al_17">PasswordSafe</code></a> to manage credentials. The required elements are:</p><ul class="list _bullet" id="zex2al_6"><li class="list__item" id="zex2al_18"><p id="zex2al_21">a human-readable description of the credentials in the form of a <span class="emphasis" id="zex2al_22">service name</span>,</p></li><li class="list__item" id="zex2al_19"><p id="zex2al_23"><span class="emphasis" id="zex2al_24">credential attributes</span> (metadata) that include a service name and an optional username or other identity,</p></li><li class="list__item" id="zex2al_20"><p id="zex2al_25">the actual credential value, such as a password or API key, usually as a <code class="code" id="zex2al_26">String</code>.</p></li></ul><p id="zex2al_7">This is a service-like class, and the <a href="plugin-services.html#retrieving-a-service" id="zex2al_27">service retrieval rules apply</a>.</p><section class="chapter"><h2 id="human-readable-description-of-credentials-with-service-names" data-toc="human-readable-description-of-credentials-with-service-names">Human-Readable Description of Credentials with Service Names</h2><p id="zex2al_28">The <a href="https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/credential-store/src/credentialStore/CredentialAttributes.kt" id="zex2al_33" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="zex2al_34">generateServiceName()</code></a> function available in the IntelliJ SDK API helps name credentials in a consistent way so that they can be easily recognized in password managers and when users are asked to allow the IDE to access a secret. Pass a subsystem name that identifies the plugin or its area of functionality, and a key that identifies the specific secret, such as an account name for a password or server name for an access token.</p><div class="tabs" id="zex2al_29" data-group="languages" data-anchors="[zex2al_35,zex2al_36]"><div class="tabs__content" data-gtm="tab" id="zex2al_35" data-sync-tabs="kotlin" data-title="Kotlin"><div class="code-block" data-lang="kotlin" data-title="Kotlin">
+import com.intellij.credentialStore.generateServiceName
+
+val serviceName =
+    generateServiceName(&quot;My Service&quot;, &quot;john.doe&quot;)
+</div></div><div class="tabs__content" data-gtm="tab" id="zex2al_36" data-sync-tabs="java" data-title="Java"><div class="code-block" data-lang="java" data-title="Java">
+import com.intellij.credentialStore.CredentialAttributesKt;
+
+String serviceName = CredentialAttributesKt
+    .generateServiceName(&quot;My Service&quot;, &quot;john.doe&quot;);
+</div></div></div><p id="zex2al_30">This will generate the following service name:</p><div class="code-block" data-lang="none">
+IntelliJ Platform My Service - john.doe
+</div><p id="zex2al_32">For example, such a service name appears in the macOS Keychain Access application as a keychain entry name.</p></section><section class="chapter"><h2 id="attaching-identity-to-credentials-with-credentials-attributes" data-toc="attaching-identity-to-credentials-with-credentials-attributes">Attaching Identity to Credentials with Credentials Attributes</h2><p id="zex2al_39">A <a href="https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/credential-store/src/credentialStore/CredentialAttributes.kt" id="zex2al_41" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="zex2al_42">CredentialAttributes</code></a> instance wraps credential metadata. To store a username, account name or other identity, set it along with the service name.</p><div class="tabs" id="zex2al_40" data-group="languages" data-anchors="[zex2al_43,zex2al_44]"><div class="tabs__content" data-gtm="tab" id="zex2al_43" data-sync-tabs="kotlin" data-title="Kotlin"><div class="code-block" data-lang="kotlin" data-title="Kotlin">
+import com.intellij.credentialStore.generateServiceName
+
+//...
+
+private fun credentialAttributesOf(username: String): CredentialAttributes {
+  val serviceName = generateServiceName(&quot;My Service&quot;, username)
+  return CredentialAttributes(serviceName, username)
 }
-</div></div><div class="tabs__content" data-gtm="tab" id="-lhe91c_18" data-sync-tabs="java" data-title="Java"><div class="code-block" data-lang="java" data-title="Java">
-private CredentialAttributes createCredentialAttributes(String key) {
-  return new CredentialAttributes(
-    CredentialAttributesKt.generateServiceName(&quot;MySystem&quot;, key)
-  );
+</div></div><div class="tabs__content" data-gtm="tab" id="zex2al_44" data-sync-tabs="java" data-title="Java"><div class="code-block" data-lang="java" data-title="Java">
+import com.intellij.credentialStore.CredentialAttributesKt;
+
+// ...
+
+private static CredentialAttributes credentialAttributesOf(String username) {
+  String serviceName = CredentialAttributesKt
+      .generateServiceName(&quot;My Service&quot;, username);
+  return new CredentialAttributes(serviceName, username);
 }
-</div></div></div><p id="-lhe91c_10">The <a href="https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/credential-store/src/credentialStore/CredentialAttributes.kt" id="-lhe91c_21" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="-lhe91c_22">generateServiceName()</code></a> function helps name credentials in a consistent way so that they can be easily recognized in password managers and when users are asked to allow the IDE to access a secret. Consider passing a subsystem name that identifies the plugin or its area of functionality, and a key that identifies the specific secret (for example, account name for password, server name for access token, etc.). Examples:</p><div class="table-wrapper"><table class="wide" id="-lhe91c_11"><thead><tr class="ijRowHead" id="-lhe91c_23"><th id="-lhe91c_26"><p>Subsystem</p></th><th id="-lhe91c_27"><p>Key</p></th><th id="-lhe91c_28"><p>Generated Service Name</p></th></tr></thead><tbody><tr id="-lhe91c_24"><td id="-lhe91c_29"><p>MyService API</p></td><td id="-lhe91c_30"><p>joe.doe</p></td><td id="-lhe91c_31"><p>IntelliJ Platform MyService API &mdash; joe.doe</p></td></tr><tr id="-lhe91c_25"><td id="-lhe91c_32"><p>Acme Repository</p></td><td id="-lhe91c_33"><p>example.com/repo</p></td><td id="-lhe91c_34"><p>IntelliJ Platform Acme Repository &mdash; example.com/repo</p></td></tr></tbody></table></div><section class="chapter"><h3 id="retrieve-stored-credentials" data-toc="retrieve-stored-credentials">Retrieve Stored Credentials</h3><div class="tabs" id="-lhe91c_35" data-group="languages" data-anchors="[-lhe91c_38,-lhe91c_39]"><div class="tabs__content" data-gtm="tab" id="-lhe91c_38" data-sync-tabs="kotlin" data-title="Kotlin"><div class="code-block" data-lang="kotlin" data-title="Kotlin">
-val key = &quot;serverURL&quot; // e.g. serverURL, accountID
-val attributes = createCredentialAttributes(key)
-val passwordSafe = PasswordSafe.instance
+</div></div></div></section><section class="chapter"><h2 id="password-management" data-toc="password-management">Password Management</h2><section class="chapter"><h3 id="storing-passwords" data-toc="storing-passwords">Storing Passwords</h3><p id="zex2al_49">To store a <code class="code" id="zex2al_54">String</code>-based password, use the <code class="code" id="zex2al_55">PasswordSafe</code> instance:</p><ol class="list _decimal" id="zex2al_50" type="1"><li class="list__item" id="zex2al_56"><p id="zex2al_59">Generate <a href="#human-readable-description-of-credentials-with-service-names" id="zex2al_60">a service name</a>.</p></li><li class="list__item" id="zex2al_57"><p id="zex2al_61">Create <a href="#attaching-identity-to-credentials-with-credentials-attributes" id="zex2al_62">credential attributes</a>.</p></li><li class="list__item" id="zex2al_58"><p id="zex2al_63">Use the <code class="code" id="zex2al_64">setPassword()</code> method with <a href="#attaching-identity-to-credentials-with-credentials-attributes" id="zex2al_65">credential attributes</a> and the password value.</p></li></ol><div class="tabs" id="zex2al_51" data-group="languages" data-anchors="[zex2al_66,zex2al_67]"><div class="tabs__content" data-gtm="tab" id="zex2al_66" data-sync-tabs="kotlin" data-title="Kotlin"><div class="code-block" data-lang="kotlin" data-title="Kotlin">
+@Service
+class PasswordService {
+  suspend fun save(username: String, password: String) {
+    withContext(Dispatchers.IO) {
+      PasswordSafe.instance
+          .setPassword(credentialAttributesOf(username), password)
+    }
+  }
 
-val credentials = passwordSafe.get(attributes)
-val password = credentials?.getPasswordAsString()
-
-// or get password only
-val passwordOnly = passwordSafe.getPassword(attributes)
-</div></div><div class="tabs__content" data-gtm="tab" id="-lhe91c_39" data-sync-tabs="java" data-title="Java"><div class="code-block" data-lang="java" data-title="Java">
-String key = null; // e.g. serverURL, accountID
-CredentialAttributes attributes = createCredentialAttributes(key);
-PasswordSafe passwordSafe = PasswordSafe.getInstance();
-
-Credentials credentials = passwordSafe.get(attributes);
-if (credentials != null) {
-  String password = credentials.getPasswordAsString();
+  private fun credentialAttributesOf(username: String): CredentialAttributes {
+    // see above for definition
+  }
 }
+</div></div><div class="tabs__content" data-gtm="tab" id="zex2al_67" data-sync-tabs="java" data-title="Java"><div class="code-block" data-lang="java" data-title="Java">
+@Service
+public final class PasswordService {
+  @RequiresBackgroundThread
+  public void save(String username, String password) {
+    PasswordSafe.getInstance()
+        .setPassword(credentialAttributesOf(username), password);
+  }
 
-// or get password only
-String password = passwordSafe.getPassword(attributes);
-</div></div></div><aside class="prompt" data-type="warning" data-title="" id="-lhe91c_36"><p id="-lhe91c_42"><code class="code" id="-lhe91c_43">PasswordSafe.get()</code> is blocking and shouldn't be called on EDT.</p></aside><section class="chapter"><h4 id="retrieving-credentials-in-remote-development-context" data-toc="retrieving-credentials-in-remote-development-context">Retrieving Credentials in Remote Development Context</h4><p id="-lhe91c_44">Since 2025.3, a new method was introduced in <code class="code" id="-lhe91c_47">PasswordSafe</code>:</p><div class="code-block" data-lang="kotlin">
+  private CredentialAttributes credentialAttributesOf(String username) {
+    // see above for definition
+  }
+}
+</div></div></div><aside class="prompt" data-type="warning" data-title="Do not use `PasswordSafe` on EDT" id="zex2al_52"><p id="zex2al_70">The <code class="code" id="zex2al_71">setPassword()</code> method of <code class="code" id="zex2al_72">PasswordSafe</code> is blocking and must not be invoked on EDT. In Kotlin, it is recommended to declare a <a href="plugin-services.html#light-services" id="zex2al_73">Light Service</a> with a suspending function that calls <code class="code" id="zex2al_74">PasswordSafe</code> methods on the I/O dispatcher.</p></aside><p id="zex2al_53">The password is persisted in <a href="#storage" id="zex2al_75">OS-specific storage</a>.</p></section><section class="chapter"><h3 id="retrieving-passwords" data-toc="retrieving-passwords">Retrieving Passwords</h3><p id="zex2al_76">To retrieve a stored password:</p><ol class="list _decimal" id="zex2al_77" type="1"><li class="list__item" id="zex2al_81"><p id="zex2al_84">Generate <a href="#human-readable-description-of-credentials-with-service-names" id="zex2al_85">a service name</a>.</p></li><li class="list__item" id="zex2al_82"><p id="zex2al_86">Create <a href="#attaching-identity-to-credentials-with-credentials-attributes" id="zex2al_87">credential attributes</a>.</p></li><li class="list__item" id="zex2al_83"><p id="zex2al_88">Use the <code class="code" id="zex2al_89">getPassword()</code> method with these credential attributes to query for the password.</p></li></ol><div class="tabs" id="zex2al_78" data-group="languages" data-anchors="[zex2al_90,zex2al_91]"><div class="tabs__content" data-gtm="tab" id="zex2al_90" data-sync-tabs="kotlin" data-title="Kotlin"><div class="code-block" data-lang="kotlin" data-title="Kotlin">
+suspend fun find(username: String): String? = withContext(Dispatchers.IO) {
+  PasswordSafe.instance.getPassword(credentialAttributesOf(username))
+}
+</div></div><div class="tabs__content" data-gtm="tab" id="zex2al_91" data-sync-tabs="java" data-title="Java"><div class="code-block" data-lang="java" data-title="Java">
+@RequiresBackgroundThread
+public String find(String username) {
+  return PasswordSafe.getInstance()
+      .getPassword(credentialAttributesOf(username));
+}
+</div></div></div><aside class="prompt" data-type="warning" data-title="Do not use `PasswordSafe` on EDT" id="zex2al_79"><p id="zex2al_94">The <code class="code" id="zex2al_95">getPassword()</code> method of <code class="code" id="zex2al_96">PasswordSafe</code> is blocking and must not be invoked on EDT.</p></aside><aside class="prompt" data-type="note" data-title="" id="zex2al_80"><p id="zex2al_97"><code class="code" id="zex2al_98">PasswordSafe</code> does not provide an API to retrieve all stored credentials, nor does it allow retrieving all stored usernames or similar identites. If the current user identity must be persisted, for example, authenticated user, store it separately using <a href="persisting-state-of-components.html" id="zex2al_99" data-tooltip="Persisting data that is available after the IDE restarts and can be shared between different IDE installations.">Persisting State of Components</a>.</p></aside></section></section><section class="chapter"><h2 id="api-key-management" data-toc="api-key-management">API Key Management</h2><p id="zex2al_100">API key management is broadly similar to <a href="#password-management" id="zex2al_104">password management</a>, with two distinct changes.</p><ol class="list _decimal" id="zex2al_101" type="1"><li class="list__item" id="zex2al_105"><p id="zex2al_107">The service name can be a constant string.</p></li><li class="list__item" id="zex2al_106"><p id="zex2al_108">The <code class="code" id="zex2al_109">userName</code> property in <code class="code" id="zex2al_110">CredentialAttributes</code> is not set.</p></li></ol><div class="tabs" id="zex2al_102" data-group="languages" data-anchors="[zex2al_111,zex2al_112]"><div class="tabs__content" data-gtm="tab" id="zex2al_111" data-sync-tabs="kotlin" data-title="Kotlin"><div class="code-block" data-lang="kotlin" data-title="Kotlin">
+@Service
+class ApiKeyService {
+  private val serviceName =
+      generateServiceName(&quot;My Credentials Storage&quot;, &quot;API Key&quot;)
+
+  suspend fun save(apiKey: String) = withContext(Dispatchers.IO) {
+    PasswordSafe.instance
+        .setPassword(CredentialAttributes(serviceName), apiKey)
+  }
+
+  suspend fun load(): String? = withContext(Dispatchers.IO) {
+    PasswordSafe.instance
+        .getPassword(CredentialAttributes(serviceName))
+  }
+}
+</div></div><div class="tabs__content" data-gtm="tab" id="zex2al_112" data-sync-tabs="java" data-title="Java"><div class="code-block" data-lang="java" data-title="Java">
+@Service
+public final class ApiKeyService {
+  private static final String SERVICE_NAME = CredentialAttributesKt
+      .generateServiceName(&quot;My Credentials Storage&quot;, &quot;API Key&quot;);
+
+  @RequiresBackgroundThread
+  public void save(String apiKey) {
+    PasswordSafe.getInstance()
+        .setPassword(new CredentialAttributes(SERVICE_NAME), apiKey);
+  }
+
+  @RequiresBackgroundThread
+  public String load() {
+    return PasswordSafe.getInstance()
+        .getPassword(new CredentialAttributes(SERVICE_NAME));
+  }
+}
+</div></div></div><aside class="prompt" data-type="warning" data-title="Do not use `PasswordSafe` on EDT" id="zex2al_103"><p id="zex2al_115">The same rules for thread-safety apply: both methods must not be invoked on EDT. Running these suspending functions on the correct dispatcher ensures correctness.</p></aside></section><section class="chapter"><h2 id="private-keys-and-other-non-string-credentials" data-toc="private-keys-and-other-non-string-credentials">Private Keys and Other Non-String Credentials</h2><p id="zex2al_116">When storing complex credentials that are not easily representable by strings, such as private keys, use map-like behavior of <code class="code" id="zex2al_122">PasswordSafe</code>. Use <code class="code" id="zex2al_123">CredentialAttributes</code> as keys, while <code class="code" id="zex2al_124">Credential</code> instances represent values.</p><p id="zex2al_117">Use the following <code class="code" id="zex2al_125">PasswordSafe</code> methods:</p><div class="tabs" id="zex2al_118" data-group="languages" data-anchors="[zex2al_126,zex2al_127]"><div class="tabs__content" data-gtm="tab" id="zex2al_126" data-sync-tabs="kotlin" data-title="Kotlin"><div class="code-block" data-lang="kotlin" data-title="Kotlin">
+operator fun set(attributes: CredentialAttributes, credentials: Credentials?)
+operator fun get(attributes: CredentialAttributes): Credentials?
+</div><p id="zex2al_129">Both functions <a href="https://kotlinlang.org/docs/map-operations.html#retrieve-keys-and-values" id="zex2al_130" data-external="true" rel="noopener noreferrer" target="_blank">allow <code class="code" id="zex2al_131">[key]</code> shorthand syntax</a>.</p></div><div class="tabs__content" data-gtm="tab" id="zex2al_127" data-sync-tabs="java" data-title="Java"><div class="code-block" data-lang="java" data-title="Java">
+public void set(CredentialAttributes attributes, @Nullable Credentials credentials);
+public @Nullable Credentials get(CredentialAttributes attributes);
+</div></div></div><p id="zex2al_119">Construct a <code class="code" id="zex2al_133">Credential</code> instance that allows setting both the username and credential value from <code class="code" id="zex2al_134">String</code> instances, byte arrays, and char arrays.</p><p id="zex2al_120">When retrieving <code class="code" id="zex2al_135">Credential</code> values, their credentials are represented by <code class="code" id="zex2al_136">OneTimeString</code>, a wrapper of sensitive data that can be used and cleared. Such string can be serialized to standard <code class="code" id="zex2al_137">String</code> instances, arrays of characters, or arrays of bytes.</p><div class="tabs" id="zex2al_121" data-group="languages" data-anchors="[zex2al_138,zex2al_139]"><div class="tabs__content" data-gtm="tab" id="zex2al_138" data-sync-tabs="kotlin" data-title="Kotlin"><div class="code-block" data-lang="kotlin" data-title="Kotlin">
+@Service
+class PrivateKeyService {
+
+  suspend fun save(identity: String, privateKey: PrivateKey) = withContext(Dispatchers.IO) {
+    val credentialAttributes = credentialAttributesOf(identity)
+    privateKey.encoded?.let { keyBytes: ByteArray -&gt;
+      PasswordSafe.instance[credentialAttributes] = Credentials(identity, keyBytes)
+    }
+  }
+
+  suspend fun find(identity: String): PrivateKey? = withContext(Dispatchers.IO) {
+    val credentialAttributes = credentialAttributesOf(identity)
+    val credentials: Credentials? = PasswordSafe.instance[credentialAttributes]
+    val keyBytes: ByteArray? = credentials?.password?.toByteArray()
+    keyBytes?.let {
+      loadPrivateKey(keyBytes)
+    }
+  }
+
+  private fun credentialAttributesOf(identity: String): CredentialAttributes
+    // see password management example
+
+  private fun loadPrivateKey(keyBytes: ByteArray): PrivateKey {
+    // implement as necessary
+  }
+}
+</div></div><div class="tabs__content" data-gtm="tab" id="zex2al_139" data-sync-tabs="java" data-title="Java"><div class="code-block" data-lang="java" data-title="Java">
+@Service
+public final class PrivateKeyService {
+
+  @RequiresBackgroundThread
+  public void save(String identity, PrivateKey key) {
+    byte[] keyBytes = key.getEncoded();
+    if (keyBytes == null) {
+      return;
+    }
+
+    CredentialAttributes attributes = createCredentialAttributes(identity);
+    PasswordSafe.getInstance().set(attributes, new Credentials(identity, keyBytes));
+  }
+
+  @RequiresBackgroundThread
+  public PrivateKey find(String identity) {
+    CredentialAttributes credentialAttributes = createCredentialAttributes(identity);
+    Credentials credentials = PasswordSafe.getInstance().get(credentialAttributes);
+    if (credentials == null) {
+      return null;
+    }
+
+    OneTimeString password = credentials.getPassword();
+    if (password == null) {
+      return null;
+    }
+
+    byte[] keyBytes = password.toByteArray();
+    if (keyBytes == null) {
+      return null;
+    }
+    return loadPrivateKey(keyBytes);
+  }
+
+  private CredentialAttributes credentialAttributesOf(String identity) {
+    // see password management example
+  }
+
+  private PrivateKey loadPrivateKey(byte[] keyBytes) {
+    // implement as necessary
+  }
+}
+</div></div></div></section><section class="chapter"><h2 id="removing-credentials" data-toc="removing-credentials">Removing Credentials</h2><p id="zex2al_142">To remove stored credentials, pass <code class="code" id="zex2al_144">null</code> for the <code class="code" id="zex2al_145">credentials</code> parameter.</p><div class="tabs" id="zex2al_143" data-group="languages" data-anchors="[zex2al_146,zex2al_147]"><div class="tabs__content" data-gtm="tab" id="zex2al_146" data-sync-tabs="kotlin" data-title="Kotlin"><div class="code-block" data-lang="kotlin" data-title="Kotlin">
+PasswordSafe.instance[credentialAttributesOf(identity)] = null
+</div></div><div class="tabs__content" data-gtm="tab" id="zex2al_147" data-sync-tabs="java" data-title="Java"><div class="code-block" data-lang="java" data-title="Java">
+PasswordSafe.getInstance().set(credentialAttributesOf(identity), null);
+</div></div></div></section><section class="chapter"><h2 id="retrieving-credentials-in-remote-development-context" data-toc="retrieving-credentials-in-remote-development-context" data-label-id="2025.3">Retrieving Credentials in Remote Development Context</h2><p id="zex2al_151">For <a href="https://www.jetbrains.com/help/idea/remote-development-overview.html" id="zex2al_155" data-external="true" rel="noopener noreferrer" target="_blank">Remote Development</a>, <code class="code" id="zex2al_156">PasswordSafe</code> provides an alternative way to retrieve credentials in Kotlin code.</p><div class="code-block" data-lang="kotlin">
 suspend fun getAsync(attributes: CredentialAttributes): Ephemeral&lt;Credentials&gt;
-</div><p id="-lhe91c_46">Besides being coroutine-friendly, it returns &quot;ephemeral&quot; credentials that are valid only while the client is connected to the backend in the <a href="https://www.jetbrains.com/help/idea/remote-development-overview.html" id="-lhe91c_48" data-external="true" rel="noopener noreferrer" target="_blank">Remote Development</a> context. When the client disconnects, the credentials are erased so that nothing can be done on the user's behalf without the user.</p></section></section><section class="chapter"><h3 id="store-credentials" data-toc="store-credentials">Store Credentials</h3><div class="tabs" id="-lhe91c_49" data-group="languages" data-anchors="[-lhe91c_52,-lhe91c_53]"><div class="tabs__content" data-gtm="tab" id="-lhe91c_52" data-sync-tabs="kotlin" data-title="Kotlin"><div class="code-block" data-lang="kotlin" data-title="Kotlin">
-val attributes = createCredentialAttributes(key)
-val credentials = Credentials(username, password)
-PasswordSafe.instance.set(attributes, credentials)
-</div></div><div class="tabs__content" data-gtm="tab" id="-lhe91c_53" data-sync-tabs="java" data-title="Java"><div class="code-block" data-lang="java" data-title="Java">
-CredentialAttributes attributes = createCredentialAttributes(key);
-Credentials credentials = new Credentials(username, password);
-PasswordSafe.getInstance().set(attributes, credentials);
-</div></div></div><p id="-lhe91c_50">To remove stored credentials, pass <code class="code" id="-lhe91c_56">null</code> for the <code class="code" id="-lhe91c_57">credentials</code> parameter.</p><aside class="prompt" data-type="warning" data-title="" id="-lhe91c_51"><p id="-lhe91c_58"><code class="code" id="-lhe91c_59">PasswordSafe.set()</code> is blocking and shouldn't be called on EDT.</p></aside></section></section><section class="chapter"><h2 id="storage" data-toc="storage">Storage</h2><p id="-lhe91c_60">The default storage format depends on the OS.</p><div class="table-wrapper"><table class="wide" id="-lhe91c_61"><thead><tr class="ijRowHead" id="-lhe91c_64"><th id="-lhe91c_68"><p>OS</p></th><th id="-lhe91c_69"><p>Storage</p></th></tr></thead><tbody><tr id="-lhe91c_65"><td id="-lhe91c_70"><p>Windows</p></td><td id="-lhe91c_71"><p>File in <a href="https://keepass.info" id="-lhe91c_72" data-external="true" rel="noopener noreferrer" target="_blank">KeePass</a> format</p></td></tr><tr id="-lhe91c_66"><td id="-lhe91c_73"><p>macOS</p></td><td id="-lhe91c_74"><p>Keychain using <a href="https://developer.apple.com/documentation/security/keychain_services" id="-lhe91c_75" data-external="true" rel="noopener noreferrer" target="_blank">Security Framework</a></p></td></tr><tr id="-lhe91c_67"><td id="-lhe91c_76"><p>Linux</p></td><td id="-lhe91c_77"><p><a href="https://specifications.freedesktop.org/secret-service-spec/latest/" id="-lhe91c_78" data-external="true" rel="noopener noreferrer" target="_blank">Secret Service API</a> using <a href="https://wiki.gnome.org/Projects/Libsecret" id="-lhe91c_79" data-external="true" rel="noopener noreferrer" target="_blank">libsecret</a></p></td></tr></tbody></table></div><p id="-lhe91c_62">Users can override the default behavior in <span class="menupath" id="-lhe91c_80">Settings | Appearance &amp; Behavior | System Settings | Passwords</span>.</p><section class="chapter"><h3 id="storage-in-remote-development-context" data-toc="storage-in-remote-development-context">Storage in Remote Development Context</h3><p id="-lhe91c_81">Before 2025.3, passwords were stored on the backend side in plain text.</p><p id="-lhe91c_82">Since 2025.3, they are being transparently redirected to the frontend and are stored according to the local environment and settings (KeePass, keychain, etc.).</p></section></section><div class="last-modified">09 January 2026</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="persisting-state-of-components.html" class="navigation-links__prev">Persisting State of Components</a><a href="settings.html" class="navigation-links__next">Settings</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.js"></script></body></html>
+</div><p id="zex2al_153">Besides being coroutine-friendly, it returns &quot;ephemeral&quot; credentials that are valid only while the client is connected to the backend in the <a href="https://www.jetbrains.com/help/idea/remote-development-overview.html" id="zex2al_157" data-external="true" rel="noopener noreferrer" target="_blank">Remote Development</a> context. When the client disconnects, the credentials are erased, preventing further actions on the user's behalf.</p><aside class="prompt" data-type="warning" data-title="Experimental" id="zex2al_154"><p id="zex2al_158">The <code class="code" id="zex2al_160">getAsync()</code> and <code class="code" id="zex2al_161">Ephemeral</code> APIs are under development and experimental. Additionally, there are available in Kotlin only.</p><p id="zex2al_159">Some aspects of it may change in future releases.</p></aside></section><section class="chapter"><h2 id="storage" data-toc="storage">Storage</h2><p id="zex2al_162">The default storage format depends on the OS.</p><div class="table-wrapper"><table class="wide" id="zex2al_163"><thead><tr class="ijRowHead" id="zex2al_166"><th id="zex2al_170"><p>OS</p></th><th id="zex2al_171"><p>Storage</p></th></tr></thead><tbody><tr id="zex2al_167"><td id="zex2al_172"><p>Windows</p></td><td id="zex2al_173"><p>File in <a href="https://keepass.info" id="zex2al_174" data-external="true" rel="noopener noreferrer" target="_blank">KeePass</a> format</p></td></tr><tr id="zex2al_168"><td id="zex2al_175"><p>macOS</p></td><td id="zex2al_176"><p>Keychain using <a href="https://developer.apple.com/documentation/security/keychain_services" id="zex2al_177" data-external="true" rel="noopener noreferrer" target="_blank">Security Framework</a></p></td></tr><tr id="zex2al_169"><td id="zex2al_178"><p>Linux</p></td><td id="zex2al_179"><p><a href="https://specifications.freedesktop.org/secret-service-spec/latest/" id="zex2al_180" data-external="true" rel="noopener noreferrer" target="_blank">Secret Service API</a> using <a href="https://wiki.gnome.org/Projects/Libsecret" id="zex2al_181" data-external="true" rel="noopener noreferrer" target="_blank">libsecret</a></p></td></tr></tbody></table></div><p id="zex2al_164">Users can override the default behavior <span class="menupath" id="zex2al_182">Settings | Appearance &amp; Behavior | System Settings | Passwords</span>.</p><section class="chapter"><h3 id="storage-in-remote-development-context" data-toc="storage-in-remote-development-context">Storage in Remote Development Context</h3><p id="zex2al_183">Since 2025.3, credentials are transparently redirected to the frontend and stored according to the local environment and settings, such as KeePass or macOS Keychain.</p><p id="zex2al_184">Before 2025.3, credentials are stored on the backend side in plain text.</p></section></section><div class="last-modified">30 July 2026</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="persisting-state-of-components.html" class="navigation-links__prev">Persisting State of Components</a><a href="settings.html" class="navigation-links__next">Settings</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.js"></script></body></html>
