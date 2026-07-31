@@ -28,6 +28,17 @@ Error Reporting
 Debouncing and Batching Updates
 : Add a new page describing [how to debounce and batch events](debounced-updates.html) with [DebouncedUpdates](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/ide-core/src/com/intellij/util/ui/update/DebouncedUpdates.kt) - a builder API for debounced/throttled update queues.
 
+Persisting Sensitive Data
+: Add more information about [persisting sensitive data](persisting-sensitive-data.html).
+
+Integration Tests
+: Update [Integration Tests](integration-tests.html) guide with information about new APIs, debugging, and more.
+
+Minor Changes and Additions
+: * Document [CLion Classic engine deprecation and migration hints](clion.html#language-engine).
+
+* Add a notice about sunsetting [Kotlin Notebooks](tools-kotlin-notebook.html) from IntelliJ IDEA 2026.2.
+
 ### March
 
 Split Mode (Remote Development)
