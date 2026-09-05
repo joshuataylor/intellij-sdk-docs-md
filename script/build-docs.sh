@@ -137,6 +137,18 @@ echo "==> Unpacking $(basename "$SITE_ZIP")"
 unzip -q "$SITE_ZIP" -d "$SITE_DIR"
 echo "    site: $(find "$SITE_DIR" -type f | wc -l) files"
 
+# Writerside emits client-side redirect stubs (a tiny page that meta-refreshes
+# to the canonical URL) for renamed/re-cased topics. They are useless in this
+# static mirror, and one of them (...-CONTRIBUTING.html) differs only in case
+# from its target (...-contributing.html), so a clone on a case-insensitive
+# filesystem (macOS, Windows) collides and lands dirty. Drop them all before
+# publishing -- they are identified by the stub page title.
+pruned=0
+while IFS= read -r -d '' f; do
+  rm -f "$f"; pruned=$((pruned + 1))
+done < <(grep -rlZ --include='*.html' 'You will be redirected shortly' "$SITE_DIR" || true)
+echo "    pruned $pruned redirect stubs"
+
 if [[ -n "${NO_PUBLISH:-}" ]]; then
   echo "==> NO_PUBLISH set, leaving output in $SITE_DIR"
   exit 0
