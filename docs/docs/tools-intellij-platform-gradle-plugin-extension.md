@@ -179,7 +179,7 @@ See also:
 
 Warning:
 
-[Split Mode](split-mode-and-remote-development.html) requires the IntelliJ Platform in version `2025.3` or later.
+[Split Mode](split-mode-and-remote-development.html) requires the IntelliJ Platform in version `241.14473` or later.
 
 Allows for checking how a plugin works in remote development mode, when one machine is running the backend part and another is running a frontend part (JetBrains Client) which connects to the backend.
 
@@ -216,6 +216,120 @@ Default value
 See also:
 
 * [Task Awares: SplitModeAware](tools-intellij-platform-gradle-plugin-task-awares.html#SplitModeAware)
+
+## Native Variants
+
+The `nativeVariants` extension configures OS- and architecture-specific files that are added to plugin distributions.
+It is useful when a plugin ships native executables or libraries that differ between target platforms.
+Building the variant archives requires the [Platform](tools-intellij-platform-gradle-plugin-plugins.html#platform) plugin.
+
+Enabling native variants activates all six combinations of Linux, macOS, and Windows with the `x86_64` and `arm64` architectures.
+Each file collection can be empty, but an empty collection does not disable its corresponding target.
+
+Warning:
+
+Native variants require plugin compatibility to start at IntelliJ Platform 2026.1 ([sinceBuild](#intellijPlatform-pluginConfiguration-ideaVersion-sinceBuild) `261`) or later.
+Variant preparation fails if the effective `sinceBuild` value is absent or lower than `261`.
+
+Example:
+
+Kotlin:
+
+```KOTLIN
+intellijPlatform {
+  pluginConfiguration.ideaVersion.sinceBuild = "261"
+
+  nativeVariants {
+    enabled = true
+
+    linux {
+      x86_64.from(layout.projectDirectory.dir("native/linux-x86_64"))
+      arm64.from(layout.projectDirectory.dir("native/linux-arm64"))
+    }
+    mac {
+      x86_64.from(layout.projectDirectory.dir("native/mac-x86_64"))
+      arm64.from(layout.projectDirectory.dir("native/mac-arm64"))
+    }
+    windows {
+      x86_64.from(layout.projectDirectory.dir("native/windows-x86_64"))
+      arm64.from(layout.projectDirectory.dir("native/windows-arm64"))
+    }
+  }
+}
+```
+
+Groovy:
+
+```GROOVY
+intellijPlatform {
+  pluginConfiguration.ideaVersion.sinceBuild = '261'
+
+  nativeVariants {
+    enabled = true
+
+    linux {
+      x86_64.from(layout.projectDirectory.dir('native/linux-x86_64'))
+      arm64.from(layout.projectDirectory.dir('native/linux-arm64'))
+    }
+    mac {
+      x86_64.from(layout.projectDirectory.dir('native/mac-x86_64'))
+      arm64.from(layout.projectDirectory.dir('native/mac-arm64'))
+    }
+    windows {
+      x86_64.from(layout.projectDirectory.dir('native/windows-x86_64'))
+      arm64.from(layout.projectDirectory.dir('native/windows-arm64'))
+    }
+  }
+}
+```
+
+The architecture-specific file collections can also be configured through direct property access, for example, with `windows.x86_64.from(...)`.
+
+The contents of each file collection are copied to the plugin directory in the corresponding distribution while preserving their relative paths.
+The patched variant JAR and variant-specific files take precedence over duplicate paths from the shared plugin sandbox.
+
+Each variant also receives a copy of the composed plugin JAR with its `META-INF/plugin.xml` descriptor adjusted for the target:
+
+* The plugin version is suffixed with `-<os>-<arch>`.
+
+* Dependencies on `com.intellij.modules.os.<os>` and `com.intellij.modules.arch.<arch>` are added if they are not already present.
+
+The [buildPluginVariants](tools-intellij-platform-gradle-plugin-tasks.html#buildPluginVariants) task builds all six distributions.
+Individual [buildPluginVariants_&lt;os&gt;_&lt;arch&gt;](tools-intellij-platform-gradle-plugin-tasks.html#buildPluginVariants-variant-tasks) tasks produce archives with an `-<os>-<arch>` classifier, for example, `myPlugin-1.0.0-linux-x86_64.zip`.
+The corresponding [preparePluginVariant_&lt;os&gt;_&lt;arch&gt;](tools-intellij-platform-gradle-plugin-tasks.html#preparePluginVariant) tasks prepare the patched plugin JARs.
+
+The standard `runIde` and split-mode sandboxes, the ordinary Gradle `test` sandbox, the standard `testIdePerformance` sandbox, and custom `intellijPlatformTesting.runIde` sandboxes use the variant matching the operating system and architecture of the Gradle host.
+In these native-aware sandboxes, the matching files are overlaid onto the shared sandbox and the patched variant JAR replaces the base plugin JAR.
+The base [prepareSandbox](tools-intellij-platform-gradle-plugin-tasks.html#prepareSandbox) and [buildPlugin](tools-intellij-platform-gradle-plugin-tasks.html#buildPlugin) outputs remain platform-independent.
+Custom `testIde`, `testIdeUi`, and `testIdePerformance` sandboxes do not apply a native variant automatically.
+
+### 
+
+`enabled`
+
+Enables creation and use of native plugin variants.
+
+Type
+: `Property<Boolean>`
+
+Default value
+: `false`
+
+### Variant File Collections
+
+Each supported OS and architecture pair exposes a `ConfigurableFileCollection`:
+
+| Operating system |`x86_64` |`arm64` |
+---------------------------------------
+| Linux |`linux.x86_64` |`linux.arm64` |
+| macOS |`mac.x86_64` |`mac.arm64` |
+| Windows |`windows.x86_64` |`windows.arm64` |
+
+Type
+: `ConfigurableFileCollection`
+
+Default value
+: Empty file collection
 
 ## Plugin Configuration
 
@@ -580,6 +694,8 @@ See also:
 The earliest IDE version that is compatible with the plugin.
 
 The provided value is used for the `<idea-version since-build=""/>` element attribute.
+
+When [nativeVariants](#intellijPlatform-nativeVariants) are enabled, the effective value must resolve to `261` (IntelliJ Platform 2026.1) or later.
 
 The default value is set to the `MAJOR` build number based on the currently selected IntelliJ Platform, like `233`.
 

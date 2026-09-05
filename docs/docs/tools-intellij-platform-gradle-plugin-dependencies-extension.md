@@ -285,11 +285,12 @@ The list of bundled plugin IDs is available via [printBundledPlugins](tools-inte
 
 Use `bundledModule(id)` or `bundledModules(ids)` to add a dependency on an IntelliJ Platform bundled module.
 This is useful when a specific platform module is required on the classpath.
+The `id` value can be either a bundled module ID or a module alias exported by the target IDE, for example `com.intellij.modules.vcs`.
 
 | Function |Description |
 -------------------------
-| `bundledModule(id)` |Adds a dependency on a bundled module. |
-| `bundledModules(ids)` |Adds a dependency on multiple bundled modules. |
+| `bundledModule(id)` |Adds a dependency on a bundled module or module alias. |
+| `bundledModules(ids)` |Adds dependencies on multiple bundled modules or aliases. |
 
 ### Non-Bundled Plugin
 
@@ -317,6 +318,43 @@ If defined explicitly, can be used along with any custom plugin repository, like
 | `plugin(id, version, group)` |Adds a dependency on a plugin. |
 | `plugin(notation)` |Adds a dependency on a plugin. |
 | `plugins(notations)` |Adds a dependency on multiple plugins. |
+
+The `plugin(id, version, group)` and `plugin(notation)` functions accept an optional trailing configuration block for [excluding bundled libraries](#excluding-plugin-bundled-libraries) shipped with the plugin.
+
+#### Excluding Plugin Bundled Libraries
+
+A non-bundled plugin may ship libraries in its `lib/` and `lib/modules/` directories that conflict with the ones already provided by the target IntelliJ Platform or by the developed plugin.
+To exclude such files, pass a configuration block to `plugin(...)` and declare patterns with `excludeBundledLibrary(pattern)` or `excludeBundledLibraries(vararg patterns)`:
+
+Kotlin:
+
+```KOTLIN
+dependencies {
+  intellijPlatform {
+    plugin("pluginId", "1.0.0") {
+      excludeBundledLibrary("jena-*.jar")
+    }
+  }
+}
+```
+
+Groovy:
+
+```GROOVY
+dependencies {
+  intellijPlatform {
+    plugin('pluginId', '1.0.0') {
+      excludeBundledLibrary 'jena-*.jar'
+    }
+  }
+}
+```
+
+The patterns use Gradle's Ant-style matching, relative to the plugin's `lib/` and `lib/modules/` directories, for example `jena-*.jar`.
+Exclusions apply consistently to both the project classpaths and the sandbox installations.
+Patterns declared for the same plugin ID are combined build-wide.
+
+The same configuration block is available for the test-scope [testPlugin(...)](#test-scope-plugin-and-module-helpers) helpers.
 
 ### Compatible Plugins
 
@@ -387,16 +425,63 @@ dependencies {
 See [TestFrameworkType](tools-intellij-platform-gradle-plugin-types.html#TestFrameworkType) reference for other test-frameworks,
 for example, `Plugin.Java` when testing Java-based functionality.
 
-The provided `testFramework(type, version)` helper method makes it possible to add the base artifact to the test classpath or its variants, such as Java, Go, ReSharper, etc.
+The provided helpers make it possible to add the base artifact to the test classpath or its variants, such as Java, Go, ReSharper, etc.
 
 | Function |Description |
 -------------------------
 | `testFramework(type, version)` |Adds a dependency on Test Framework or its variant using [TestFrameworkType](tools-intellij-platform-gradle-plugin-types.html#TestFrameworkType) type. |
+| `testFrameworks(vararg types)` |Adds dependencies on all provided Test Framework variants. Each version is selected to match the configured IntelliJ Platform build. |
+| `testFrameworks(types: List<TestFrameworkType>)` |Adds dependencies on all Test Framework variants in the provided list. Each version is selected to match the configured IntelliJ Platform build. |
+
+Use either plural overload to add multiple Test Framework variants at once:
+
+Kotlin:
+
+```KOTLIN
+import org.jetbrains.intellij.platform.gradle.TestFrameworkType
+
+dependencies {
+  intellijPlatform {
+    testFrameworks(
+      TestFrameworkType.Platform,
+      TestFrameworkType.Plugin.Java,
+    )
+    testFrameworks(
+      listOf(
+        TestFrameworkType.JUnit5,
+        TestFrameworkType.Plugin.Maven,
+      )
+    )
+  }
+}
+```
+
+Groovy:
+
+```GROOVY
+import org.jetbrains.intellij.platform.gradle.TestFrameworkType
+
+dependencies {
+  intellijPlatform {
+    testFrameworks(
+      TestFrameworkType.Platform.INSTANCE,
+      TestFrameworkType.Plugin.Java.INSTANCE
+    )
+    testFrameworks([
+      TestFrameworkType.JUnit5.INSTANCE,
+      TestFrameworkType.Plugin.Maven.INSTANCE
+    ])
+  }
+}
+```
+
+The plural overloads do not accept an explicit version.
+To pin a specific version, call `testFramework(type, version)` separately.
 
 Warning:
 
-In rare cases, when the presence of a bundled `$PLATFORM_PATH$/lib/testFramework.jar` library is necessary (like in the case of [Rider](rider.html), as its `test-framework` is not published as an artifact),
-it is possible to attach it by using the [TestFrameworkType.Platform.Bundled](tools-intellij-platform-gradle-plugin-types.html#TestFrameworkType) type.
+In rare cases when the bundled `$PLATFORM_PATH$/lib/testFramework.jar` library is required,
+attach it with [TestFrameworkType.Bundled](tools-intellij-platform-gradle-plugin-types.html#TestFrameworkType).
 
 There are two known issues related to `Platform` and `JUnit5` Test Frameworks:
 
@@ -419,10 +504,55 @@ The extension also provides helpers to add dependencies needed only for tests:
 | `testBundledPlugin(id)` |Adds a test dependency on a bundled plugin by ID. |
 | `testBundledPlugins(vararg ids)` |Adds test dependencies on multiple bundled plugins by IDs. |
 | `testLocalPlugin(localPath)` |Adds a test dependency on a local plugin; accepts a path or a project dependency. |
-| `testBundledModule(id)` |Adds a test dependency on a specific bundled platform module. |
-| `testBundledModules(vararg ids)` |Adds test dependencies on multiple bundled platform modules. |
+| `testBundledModule(id)` |Adds a test dependency on a specific bundled platform module or module alias. |
+| `testBundledModules(vararg ids)` |Adds test dependencies on multiple bundled platform modules or aliases. |
 
 Provider and list-based overloads are available for the above helpers, mirroring their production-scope counterparts.
+The `testPlugin(...)` helpers also accept the same configuration block as [plugin(...)](#excluding-plugin-bundled-libraries) for excluding libraries bundled with the plugin.
+
+## Sandbox Runtime Classpaths
+
+The plugin uses dedicated resolvable configurations for dependencies copied to the developed plugin's `lib/` directory in a sandbox:
+
+| Configuration |Description |
+------------------------------
+| `intellijPlatformSandboxRuntimeClasspath` |Extends the project's `runtimeClasspath` and supplies runtime dependencies for regular sandboxes, such as the one created by [prepareSandbox](tools-intellij-platform-gradle-plugin-tasks.html#prepareSandbox). |
+| `intellijPlatformTestSandboxRuntimeClasspath` |Extends `intellijPlatformSandboxRuntimeClasspath` and `intellijPlatformTestRuntimeClasspath`, and supplies runtime dependencies for test sandboxes created by [prepareTestSandbox](tools-intellij-platform-gradle-plugin-tasks.html#prepareTestSandbox). |
+
+Excluding a dependency from either configuration changes only the contents of the corresponding sandbox.
+It does not remove the dependency from the project's compile, runtime, or test classpaths.
+Because the test sandbox configuration extends the regular sandbox configuration, exclusions added to `intellijPlatformSandboxRuntimeClasspath` apply to both regular and test sandboxes.
+Configure `intellijPlatformTestSandboxRuntimeClasspath` instead when an exclusion should apply only to test sandboxes.
+
+For example, the following keeps Joda-Time available to compile the plugin but prevents its JAR from being copied into either sandbox:
+
+Kotlin:
+
+```KOTLIN
+dependencies {
+  implementation("joda-time:joda-time:2.8.1")
+}
+
+configurations.named("intellijPlatformSandboxRuntimeClasspath") {
+  exclude(group = "joda-time", module = "joda-time")
+}
+```
+
+Groovy:
+
+```GROOVY
+dependencies {
+  implementation 'joda-time:joda-time:2.8.1'
+}
+
+configurations.named('intellijPlatformSandboxRuntimeClasspath') {
+  exclude group: 'joda-time', module: 'joda-time'
+}
+```
+
+By default, both sandbox configurations exclude `org.jetbrains.kotlin:kotlin-stdlib`, `org.jetbrains.kotlin:kotlin-stdlib-jdk8`, and the known Kotlin Coroutines modules supplied by the IntelliJ Platform.
+The Coroutines exclusions cover the `org.jetbrains.kotlinx`, `com.intellij.platform`, and `org.jetbrains.intellij.deps.kotlinx` groups.
+Set [org.jetbrains.intellij.platform.useDefaultSandboxExclusions=false](tools-intellij-platform-gradle-plugin-gradle-properties.html#useDefaultSandboxExclusions) to opt out.
 
 ## Tools
 

@@ -293,6 +293,51 @@ org.jetbrains.intellij.platform.selfUpdateCheck=false
 
 
 ## 
+`testIdeBundledPluginsClasspathEnabled`
+
+
+
+
+
+
+
+Controls whether bundled plugins declared in the IntelliJ Platform's `product-info.json` file are added to the classpaths used by the [testIde](tools-intellij-platform-gradle-plugin-tasks.html#testIde) and ordinary Gradle [test](tools-intellij-platform-gradle-plugin-tasks.html#test) tasks.
+Set it to `false` to opt out.
+
+
+
+Default value
+: `true`
+
+
+Example
+: ```TEXT
+org.jetbrains.intellij.platform.testIdeBundledPluginsClasspathEnabled=false
+```
+
+## 
+
+`testIdeBundledPluginsClasspathExcludes`
+
+Specifies a comma-separated list of bundled plugin IDs or module IDs excluded from the classpaths used by the [testIde](tools-intellij-platform-gradle-plugin-tasks.html#testIde) and ordinary Gradle [test](tools-intellij-platform-gradle-plugin-tasks.html#test) tasks.
+This property applies only when [testIdeBundledPluginsClasspathEnabled](#testIdeBundledPluginsClasspathEnabled) is enabled.
+Set it to an empty value to include all bundled plugins.
+
+Default value
+: `com.intellij.openRewrite,com.intellij.ja,com.intellij.ko,com.intellij.zh,org.jetbrains.plugins.vue`
+
+Example
+: ```TEXT
+org.jetbrains.intellij.platform.testIdeBundledPluginsClasspathExcludes=
+```
+
+
+
+
+
+
+
+## 
 `verifyPluginDefaultRecommendedIdes`
 
 
@@ -363,65 +408,87 @@ org.jetbrains.intellij.platform.useCacheRedirector=false
 
 ## 
 
-`addDefaultIntelliJPlatformDependencies`
+`useDefaultSandboxExclusions`
 
-Controls whether default IntelliJ Platform dependencies (like `com.intellij` and `intellij.rider`) should be added automatically when creating a dependency on the IntelliJ Platform.
+Controls whether Kotlin standard library and Kotlin Coroutines dependencies provided by the IntelliJ Platform are excluded from sandbox runtime classpaths by default.
+The exclusions apply to sandboxes prepared for running the IDE and tests, including the [prepareSandbox](tools-intellij-platform-gradle-plugin-tasks.html#prepareSandbox) and [prepareTestSandbox](tools-intellij-platform-gradle-plugin-tasks.html#prepareTestSandbox) tasks.
+Set this property to `false` to opt out of the default exclusions.
 
 Default value
 : `true`
+
+Example
+: ```TEXT
+org.jetbrains.intellij.platform.useDefaultSandboxExclusions=false
+```
+
+
+
+
+
+
+
+## 
+`addDefaultIntelliJPlatformDependencies`
+
+
+
+
+
+
+
+Controls whether default IntelliJ Platform dependencies (like `com.intellij` and `intellij.rider`) should be added automatically when creating a dependency on the IntelliJ Platform.
+
+
+
+Default value
+: `true`
+
 
 Example
 : ```
 org.jetbrains.intellij.platform.addDefaultIntelliJPlatformDependencies=false
 ```
 
-
-
-
-
-
-
 ## 
+
 `productsReleasesCdnBuildsUrl`
-
-
-
-
-
-
 
 Specifies the URL from which the list of JetBrains IDE CDN release builds is fetched. This listing is used for mapping IDE releases to build numbers (for example, to download the corresponding JetBrains Client archive).
 
-
-
 Default value
 : `https://data.services.jetbrains.com/products?code={type}&fields=code,releases.type,releases.version,releases.build`
-
 
 Example
 : ```
 org.jetbrains.intellij.platform.productsReleasesCdnBuildsUrl=https://...
 ```
 
-## 
 
+
+
+
+
+
+## 
 `verifyPluginProjectConfigurationMutedMessages`
+
+
+
+
+
+
 
 Allows muting specific messages reported by the [verifyPluginProjectConfiguration](tools-intellij-platform-gradle-plugin-tasks.html#verifyPluginProjectConfiguration) task. The property accepts a comma-separated list of message patterns. Each pattern is matched against the message text using a case-sensitive substring search.
 
+
+
 Default value
 : empty (no messages are muted)
+
 
 Example
 : ```
 org.jetbrains.intellij.platform.verifyPluginProjectConfigurationMutedMessages=Kotlin Standard Library,Java Runtime is not JetBrains Runtime
 ```
-
-
-
-
-
-
-
-
 

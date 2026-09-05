@@ -144,6 +144,61 @@ See also:
 
 ### 
 
+`testFrameworks(...)`
+
+Adds dependencies on multiple `test-framework` library variants for the created testing entry.
+It accepts either vararg `TestFrameworkType` arguments or a `List<TestFrameworkType>`.
+The closest version matching the configured IntelliJ Platform build is selected for every variant.
+
+Kotlin:
+
+```KOTLIN
+import org.jetbrains.intellij.platform.gradle.TestFrameworkType
+
+val platformTests by intellijPlatformTesting.testIde.registering {
+  testFrameworks(
+    TestFrameworkType.Platform,
+    TestFrameworkType.Plugin.Java,
+  )
+  testFrameworks(
+    listOf(
+      TestFrameworkType.JUnit5,
+      TestFrameworkType.Plugin.Maven,
+    )
+  )
+}
+```
+
+Groovy:
+
+```GROOVY
+import org.jetbrains.intellij.platform.gradle.TestFrameworkType
+
+intellijPlatformTesting.testIde {
+  platformTests {
+    testFrameworks(
+      TestFrameworkType.Platform.INSTANCE,
+      TestFrameworkType.Plugin.Java.INSTANCE
+    )
+    testFrameworks([
+      TestFrameworkType.JUnit5.INSTANCE,
+      TestFrameworkType.Plugin.Maven.INSTANCE
+    ])
+  }
+}
+```
+
+The plural overloads do not accept an explicit version.
+To pin a specific version, call `testFramework(type, version)` separately.
+
+See also:
+
+* [Types: TestFrameworkType](tools-intellij-platform-gradle-plugin-types.html#TestFrameworkType)
+
+* [Dependencies Extension: Testing](tools-intellij-platform-gradle-plugin-dependencies-extension.html#testing)
+
+### 
+
 `plugins {}`
 
 An extension to provide custom plugins to be added when running the task runtime, or disabling bundled ones.
@@ -187,8 +242,8 @@ intellijPlatformTesting.runIde {
 | `compatiblePlugins(ids)` |Adds dependencies on plugins in versions compatible with the custom IntelliJ Platform. |
 | `bundledPlugin(id)` |Adds a dependency on a bundled IntelliJ Platform plugin from the custom target IDE. |
 | `bundledPlugins(ids)` |Adds dependencies on bundled IntelliJ Platform plugins from the custom target IDE. |
-| `bundledModule(id)` |Adds a dependency on a bundled IntelliJ Platform module from the custom target IDE. |
-| `bundledModules(ids)` |Adds dependencies on bundled IntelliJ Platform modules from the custom target IDE. |
+| `bundledModule(id)` |Adds a dependency on a bundled IntelliJ Platform module or module alias from the custom target IDE. |
+| `bundledModules(ids)` |Adds dependencies on bundled IntelliJ Platform modules or module aliases from the custom target IDE. |
 | `disablePlugin(id)` |Disables the specific plugin with its ID. |
 | `disablePlugins(ids)` |Disables specific plugins with the list of their IDs. |
 | `localPlugin(path)` |Adds a dependency on a local IntelliJ Platform plugin. Accepts path or a dependency on another module. |

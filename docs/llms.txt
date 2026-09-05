@@ -4298,7 +4298,7 @@ class BackendChatRepositoryModel {
     val userMessage = chatMessageFactory.createUserMessage(messageContent)
     _messages.value += userMessage
 
-    NEW_MESSAGE_TOPIC.send(
+    NEW_MESSAGE_TOPIC.broadcast(
        NewMessageEvent(project.projectId(), userMessage.id)
     )
   }
@@ -32323,7 +32323,7 @@ by calling the `getSpacing()` method of the `SpacingBuilder`.
 
 Much of the work when implementing `AbstractBlock` goes into implementing `buildChildren()` that calculates blocks for the children of the current block's AST node.
 Use `getNode().getChildren()` to retrieve the AST node's children of the current block,
-and or each child that is not whitespace, build a subblock which is then added to the list of subblocks.
+and for each child that is not whitespace, build a subblock which is then added to the list of subblocks.
 While the exact method of building a subblock highly depends on the specific language,
 in general, the code for determining the correct `Alignment`, `Indent` and `Wrap` of a block inspects `IElementType`,
 checks if the node is in a specific `TokenSet` or asserts other properties.
@@ -38856,9 +38856,18 @@ This data is updated daily and also available in [JSON](https://jb.gg/android-st
 
 | Release Name |Channel |Version |IntelliJ IDEA Version |Release Date |
 -----------------------------------------------------------------------
+| Rabbit 1    2026.2.1 Canary 4   |![Canary](https://img.shields.io/badge/-Canary-lightgrey?style=flat-square) |2026.2.1.4AI‑262.9437.185.2621.16253642   |2026.2.1262.9437.185   |Sep 3, 2026 |
+| Rabbit 1    2026.2.1 Canary 3   |![Canary](https://img.shields.io/badge/-Canary-lightgrey?style=flat-square) |2026.2.1.3AI‑262.9437.185.2621.16190720   |2026.2.1262.9437.185   |Aug 27, 2026 |
+| Rabbit 1    2026.2.1 Canary 2   |![Canary](https://img.shields.io/badge/-Canary-lightgrey?style=flat-square) |2026.2.1.2AI‑262.9437.185.2621.16128175   |2026.2.1262.9437.185   |Aug 20, 2026 |
+| Rabbit 1    2026.2.1 Canary 1   |![Canary](https://img.shields.io/badge/-Canary-lightgrey?style=flat-square) |2026.2.1.1AI‑262.9437.185.2621.16076543   |2026.2.1262.9437.185   |Aug 17, 2026 |
+| Quail 4    2026.1.4   |![Release](https://img.shields.io/badge/-Release-blue?style=flat-square) |2026.1.4.7AI‑261.26222.65.2614.16204760   |2026.1.4261.26222.65   |Sep 1, 2026 |
+| Quail 4    2026.1.4 RC 2   |![RC](https://img.shields.io/badge/-RC-red?style=flat-square) |2026.1.4.6AI‑261.26222.65.2614.16166871   |2026.1.4261.26222.65   |Aug 25, 2026 |
+| Quail 4    2026.1.4 RC 1   |![RC](https://img.shields.io/badge/-RC-red?style=flat-square) |2026.1.4.5AI‑261.26222.65.2614.16087418   |2026.1.4261.26222.65   |Aug 17, 2026 |
+| Quail 4    2026.1.4 Canary 4   |![Canary](https://img.shields.io/badge/-Canary-lightgrey?style=flat-square) |2026.1.4.4AI‑261.26222.65.2614.16027044   |2026.1.4261.26222.65   |Aug 6, 2026 |
 | Quail 4    2026.1.4 Canary 3   |![Canary](https://img.shields.io/badge/-Canary-lightgrey?style=flat-square) |2026.1.4.3AI‑261.26222.65.2614.15978069   |2026.1.4261.26222.65   |Jul 30, 2026 |
 | Quail 4    2026.1.4 Canary 2   |![Canary](https://img.shields.io/badge/-Canary-lightgrey?style=flat-square) |2026.1.4.2AI‑261.26222.65.2614.15924839   |2026.1.4261.26222.65   |Jul 23, 2026 |
 | Quail 4    2026.1.4 Canary 1   |![Canary](https://img.shields.io/badge/-Canary-lightgrey?style=flat-square) |2026.1.4.1AI‑261.26222.65.2614.15872890   |2026.1.4261.26222.65   |Jul 16, 2026 |
+| Quail 3    2026.1.3 Patch 1   |![Patch](https://img.shields.io/badge/-Patch-orange?style=flat-square) |2026.1.3.8AI‑261.26222.65.2613.16025427   |2026.1.4261.26222.65   |Aug 10, 2026 |
 | Quail 3    2026.1.3   |![Release](https://img.shields.io/badge/-Release-blue?style=flat-square) |2026.1.3.7AI‑261.26222.65.2613.15948027   |2026.1.4261.26222.65   |Jul 30, 2026 |
 | Quail 3    2026.1.3 RC 2   |![RC](https://img.shields.io/badge/-RC-red?style=flat-square) |2026.1.3.6AI‑261.26222.65.2613.15882241   |2026.1.4261.26222.65   |Jul 20, 2026 |
 | Quail 3    2026.1.3 RC 1   |![RC](https://img.shields.io/badge/-RC-red?style=flat-square) |2026.1.3.5AI‑261.26222.65.2613.15847520   |2026.1.4261.26222.65   |Jul 14, 2026 |
@@ -51077,7 +51086,7 @@ See also [Targeting Multiple IDE Versions](build-number-ranges.html#multipleIDEV
 ## Plugin Verifier
 
 <tldr>
-Current Release: 1.409
+Current Release: 1.410
 
 GitHub: [Releases &amp; Changelog](https://github.com/JetBrains/intellij-plugin-verifier/releases), [Issue Tracker](https://youtrack.jetbrains.com/issues/MP?q=%23%7BPlugin%20Verifier%7D%20)
 
@@ -51257,6 +51266,9 @@ The Gradle plugin must be chosen depending on the target
 ## 2026.3
 
 ### IntelliJ Platform 2026.3
+
+The debugger functionality of the platform has been extracted into separate modules with their own classloaders.
+This shouldn't affect binary compatibility, but an explicit dependency should be added in `build.gradle.kts` using `bundledModule("intellij.platform.debugger")` if a plugin uses the API from that module.
 
 `com.intellij.openapi.projectRoots.Sdk` interface now extends `com.intellij.openapi.util.UserDataHolderEx` and inherits its abstract method `putUserDataIfAbsent(@NotNull Key<T> key, @NotNull T value)`
 : Do not implement `Sdk`: it is a non-extendable interface.
@@ -55491,6 +55503,8 @@ plugins {
 ### Available tasks
 
 [buildPlugin](tools-intellij-platform-gradle-plugin-tasks.html#buildPlugin),
+[buildPluginVariants](tools-intellij-platform-gradle-plugin-tasks.html#buildPluginVariants),
+[buildPluginVariants_&lt;os&gt;_&lt;arch&gt;](tools-intellij-platform-gradle-plugin-tasks.html#buildPluginVariants-variant-tasks),
 [buildSearchableOptions](tools-intellij-platform-gradle-plugin-tasks.html#buildSearchableOptions),
 [cleanSandbox](tools-intellij-platform-gradle-plugin-tasks.html#cleanSandbox),
 [composedJar](tools-intellij-platform-gradle-plugin-tasks.html#composedJar),
@@ -55501,7 +55515,11 @@ plugins {
 [instrumentedJar](tools-intellij-platform-gradle-plugin-tasks.html#instrumentedJar),
 [jarSearchableOptions](tools-intellij-platform-gradle-plugin-tasks.html#jarSearchableOptions),
 [patchPluginXml](tools-intellij-platform-gradle-plugin-tasks.html#patchPluginXml),
+[preparePluginVariant_&lt;os&gt;_&lt;arch&gt;](tools-intellij-platform-gradle-plugin-tasks.html#preparePluginVariant),
 [prepareSandbox](tools-intellij-platform-gradle-plugin-tasks.html#prepareSandbox),
+[prepareSandbox_runIde](tools-intellij-platform-gradle-plugin-tasks.html#prepareSandbox-runIde),
+[prepareSandbox_runIdeBackend](tools-intellij-platform-gradle-plugin-tasks.html#prepareSandbox-runIde),
+[prepareSandbox_runIdeFrontend](tools-intellij-platform-gradle-plugin-tasks.html#prepareSandbox-runIde),
 [prepareTest](tools-intellij-platform-gradle-plugin-tasks.html#prepareTest),
 [prepareTestIdePerformanceSandbox](tools-intellij-platform-gradle-plugin-tasks.html#prepareTestIdePerformanceSandbox),
 [prepareTestSandbox](tools-intellij-platform-gradle-plugin-tasks.html#prepareTestSandbox),
@@ -55664,6 +55682,11 @@ Plugin ID: `org.jetbrains.intellij.platform.settings`
 If you define project repositories within the `settings.gradle.kts` using the `dependencyResolutionManagement`, make sure to include the Settings plugin in `settings.gradle.kts`.
 
 This approach allows for omitting the `repositories {}` definition in the `build.gradle.kts` files. See [Dependency Resolution Management](tools-intellij-platform-gradle-plugin.html#configuration.dependencyResolutionManagement) for more details.
+
+The Settings plugin also defaults the `kotlin.stdlib.default.dependency` property to `false` for every project before project plugins are applied.
+This prevents the Kotlin Gradle plugin from adding the Kotlin Standard Library dependency automatically, which could conflict with the version bundled in the IntelliJ Platform.
+An explicitly configured Gradle property or an existing project extra property with the same name takes precedence and is left unchanged.
+See [Kotlin Standard Library (stdlib)](using-kotlin.html#kotlin-standard-library) for more information about the Kotlin Standard Library dependency.
 
 Kotlin:
 
@@ -56063,7 +56086,7 @@ See also:
 
 Warning:
 
-[Split Mode](split-mode-and-remote-development.html) requires the IntelliJ Platform in version `2025.3` or later.
+[Split Mode](split-mode-and-remote-development.html) requires the IntelliJ Platform in version `241.14473` or later.
 
 Allows for checking how a plugin works in remote development mode, when one machine is running the backend part and another is running a frontend part (JetBrains Client) which connects to the backend.
 
@@ -56100,6 +56123,120 @@ Default value
 See also:
 
 * [Task Awares: SplitModeAware](tools-intellij-platform-gradle-plugin-task-awares.html#SplitModeAware)
+
+## Native Variants
+
+The `nativeVariants` extension configures OS- and architecture-specific files that are added to plugin distributions.
+It is useful when a plugin ships native executables or libraries that differ between target platforms.
+Building the variant archives requires the [Platform](tools-intellij-platform-gradle-plugin-plugins.html#platform) plugin.
+
+Enabling native variants activates all six combinations of Linux, macOS, and Windows with the `x86_64` and `arm64` architectures.
+Each file collection can be empty, but an empty collection does not disable its corresponding target.
+
+Warning:
+
+Native variants require plugin compatibility to start at IntelliJ Platform 2026.1 ([sinceBuild](#intellijPlatform-pluginConfiguration-ideaVersion-sinceBuild) `261`) or later.
+Variant preparation fails if the effective `sinceBuild` value is absent or lower than `261`.
+
+Example:
+
+Kotlin:
+
+```KOTLIN
+intellijPlatform {
+  pluginConfiguration.ideaVersion.sinceBuild = "261"
+
+  nativeVariants {
+    enabled = true
+
+    linux {
+      x86_64.from(layout.projectDirectory.dir("native/linux-x86_64"))
+      arm64.from(layout.projectDirectory.dir("native/linux-arm64"))
+    }
+    mac {
+      x86_64.from(layout.projectDirectory.dir("native/mac-x86_64"))
+      arm64.from(layout.projectDirectory.dir("native/mac-arm64"))
+    }
+    windows {
+      x86_64.from(layout.projectDirectory.dir("native/windows-x86_64"))
+      arm64.from(layout.projectDirectory.dir("native/windows-arm64"))
+    }
+  }
+}
+```
+
+Groovy:
+
+```GROOVY
+intellijPlatform {
+  pluginConfiguration.ideaVersion.sinceBuild = '261'
+
+  nativeVariants {
+    enabled = true
+
+    linux {
+      x86_64.from(layout.projectDirectory.dir('native/linux-x86_64'))
+      arm64.from(layout.projectDirectory.dir('native/linux-arm64'))
+    }
+    mac {
+      x86_64.from(layout.projectDirectory.dir('native/mac-x86_64'))
+      arm64.from(layout.projectDirectory.dir('native/mac-arm64'))
+    }
+    windows {
+      x86_64.from(layout.projectDirectory.dir('native/windows-x86_64'))
+      arm64.from(layout.projectDirectory.dir('native/windows-arm64'))
+    }
+  }
+}
+```
+
+The architecture-specific file collections can also be configured through direct property access, for example, with `windows.x86_64.from(...)`.
+
+The contents of each file collection are copied to the plugin directory in the corresponding distribution while preserving their relative paths.
+The patched variant JAR and variant-specific files take precedence over duplicate paths from the shared plugin sandbox.
+
+Each variant also receives a copy of the composed plugin JAR with its `META-INF/plugin.xml` descriptor adjusted for the target:
+
+* The plugin version is suffixed with `-<os>-<arch>`.
+
+* Dependencies on `com.intellij.modules.os.<os>` and `com.intellij.modules.arch.<arch>` are added if they are not already present.
+
+The [buildPluginVariants](tools-intellij-platform-gradle-plugin-tasks.html#buildPluginVariants) task builds all six distributions.
+Individual [buildPluginVariants_&lt;os&gt;_&lt;arch&gt;](tools-intellij-platform-gradle-plugin-tasks.html#buildPluginVariants-variant-tasks) tasks produce archives with an `-<os>-<arch>` classifier, for example, `myPlugin-1.0.0-linux-x86_64.zip`.
+The corresponding [preparePluginVariant_&lt;os&gt;_&lt;arch&gt;](tools-intellij-platform-gradle-plugin-tasks.html#preparePluginVariant) tasks prepare the patched plugin JARs.
+
+The standard `runIde` and split-mode sandboxes, the ordinary Gradle `test` sandbox, the standard `testIdePerformance` sandbox, and custom `intellijPlatformTesting.runIde` sandboxes use the variant matching the operating system and architecture of the Gradle host.
+In these native-aware sandboxes, the matching files are overlaid onto the shared sandbox and the patched variant JAR replaces the base plugin JAR.
+The base [prepareSandbox](tools-intellij-platform-gradle-plugin-tasks.html#prepareSandbox) and [buildPlugin](tools-intellij-platform-gradle-plugin-tasks.html#buildPlugin) outputs remain platform-independent.
+Custom `testIde`, `testIdeUi`, and `testIdePerformance` sandboxes do not apply a native variant automatically.
+
+### 
+
+`enabled`
+
+Enables creation and use of native plugin variants.
+
+Type
+: `Property<Boolean>`
+
+Default value
+: `false`
+
+### Variant File Collections
+
+Each supported OS and architecture pair exposes a `ConfigurableFileCollection`:
+
+| Operating system |`x86_64` |`arm64` |
+---------------------------------------
+| Linux |`linux.x86_64` |`linux.arm64` |
+| macOS |`mac.x86_64` |`mac.arm64` |
+| Windows |`windows.x86_64` |`windows.arm64` |
+
+Type
+: `ConfigurableFileCollection`
+
+Default value
+: Empty file collection
 
 ## Plugin Configuration
 
@@ -56464,6 +56601,8 @@ See also:
 The earliest IDE version that is compatible with the plugin.
 
 The provided value is used for the `<idea-version since-build=""/>` element attribute.
+
+When [nativeVariants](#intellijPlatform-nativeVariants) are enabled, the effective value must resolve to `261` (IntelliJ Platform 2026.1) or later.
 
 The default value is set to the `MAJOR` build number based on the currently selected IntelliJ Platform, like `233`.
 
@@ -57569,6 +57708,61 @@ See also:
 
 ### 
 
+`testFrameworks(...)`
+
+Adds dependencies on multiple `test-framework` library variants for the created testing entry.
+It accepts either vararg `TestFrameworkType` arguments or a `List<TestFrameworkType>`.
+The closest version matching the configured IntelliJ Platform build is selected for every variant.
+
+Kotlin:
+
+```KOTLIN
+import org.jetbrains.intellij.platform.gradle.TestFrameworkType
+
+val platformTests by intellijPlatformTesting.testIde.registering {
+  testFrameworks(
+    TestFrameworkType.Platform,
+    TestFrameworkType.Plugin.Java,
+  )
+  testFrameworks(
+    listOf(
+      TestFrameworkType.JUnit5,
+      TestFrameworkType.Plugin.Maven,
+    )
+  )
+}
+```
+
+Groovy:
+
+```GROOVY
+import org.jetbrains.intellij.platform.gradle.TestFrameworkType
+
+intellijPlatformTesting.testIde {
+  platformTests {
+    testFrameworks(
+      TestFrameworkType.Platform.INSTANCE,
+      TestFrameworkType.Plugin.Java.INSTANCE
+    )
+    testFrameworks([
+      TestFrameworkType.JUnit5.INSTANCE,
+      TestFrameworkType.Plugin.Maven.INSTANCE
+    ])
+  }
+}
+```
+
+The plural overloads do not accept an explicit version.
+To pin a specific version, call `testFramework(type, version)` separately.
+
+See also:
+
+* [Types: TestFrameworkType](tools-intellij-platform-gradle-plugin-types.html#TestFrameworkType)
+
+* [Dependencies Extension: Testing](tools-intellij-platform-gradle-plugin-dependencies-extension.html#testing)
+
+### 
+
 `plugins {}`
 
 An extension to provide custom plugins to be added when running the task runtime, or disabling bundled ones.
@@ -57612,8 +57806,8 @@ intellijPlatformTesting.runIde {
 | `compatiblePlugins(ids)` |Adds dependencies on plugins in versions compatible with the custom IntelliJ Platform. |
 | `bundledPlugin(id)` |Adds a dependency on a bundled IntelliJ Platform plugin from the custom target IDE. |
 | `bundledPlugins(ids)` |Adds dependencies on bundled IntelliJ Platform plugins from the custom target IDE. |
-| `bundledModule(id)` |Adds a dependency on a bundled IntelliJ Platform module from the custom target IDE. |
-| `bundledModules(ids)` |Adds dependencies on bundled IntelliJ Platform modules from the custom target IDE. |
+| `bundledModule(id)` |Adds a dependency on a bundled IntelliJ Platform module or module alias from the custom target IDE. |
+| `bundledModules(ids)` |Adds dependencies on bundled IntelliJ Platform modules or module aliases from the custom target IDE. |
 | `disablePlugin(id)` |Disables the specific plugin with its ID. |
 | `disablePlugins(ids)` |Disables specific plugins with the list of their IDs. |
 | `localPlugin(path)` |Adds a dependency on a local IntelliJ Platform plugin. Accepts path or a dependency on another module. |
@@ -58164,11 +58358,12 @@ The list of bundled plugin IDs is available via [printBundledPlugins](tools-inte
 
 Use `bundledModule(id)` or `bundledModules(ids)` to add a dependency on an IntelliJ Platform bundled module.
 This is useful when a specific platform module is required on the classpath.
+The `id` value can be either a bundled module ID or a module alias exported by the target IDE, for example `com.intellij.modules.vcs`.
 
 | Function |Description |
 -------------------------
-| `bundledModule(id)` |Adds a dependency on a bundled module. |
-| `bundledModules(ids)` |Adds a dependency on multiple bundled modules. |
+| `bundledModule(id)` |Adds a dependency on a bundled module or module alias. |
+| `bundledModules(ids)` |Adds dependencies on multiple bundled modules or aliases. |
 
 ### Non-Bundled Plugin
 
@@ -58196,6 +58391,43 @@ If defined explicitly, can be used along with any custom plugin repository, like
 | `plugin(id, version, group)` |Adds a dependency on a plugin. |
 | `plugin(notation)` |Adds a dependency on a plugin. |
 | `plugins(notations)` |Adds a dependency on multiple plugins. |
+
+The `plugin(id, version, group)` and `plugin(notation)` functions accept an optional trailing configuration block for [excluding bundled libraries](#excluding-plugin-bundled-libraries) shipped with the plugin.
+
+#### Excluding Plugin Bundled Libraries
+
+A non-bundled plugin may ship libraries in its `lib/` and `lib/modules/` directories that conflict with the ones already provided by the target IntelliJ Platform or by the developed plugin.
+To exclude such files, pass a configuration block to `plugin(...)` and declare patterns with `excludeBundledLibrary(pattern)` or `excludeBundledLibraries(vararg patterns)`:
+
+Kotlin:
+
+```KOTLIN
+dependencies {
+  intellijPlatform {
+    plugin("pluginId", "1.0.0") {
+      excludeBundledLibrary("jena-*.jar")
+    }
+  }
+}
+```
+
+Groovy:
+
+```GROOVY
+dependencies {
+  intellijPlatform {
+    plugin('pluginId', '1.0.0') {
+      excludeBundledLibrary 'jena-*.jar'
+    }
+  }
+}
+```
+
+The patterns use Gradle's Ant-style matching, relative to the plugin's `lib/` and `lib/modules/` directories, for example `jena-*.jar`.
+Exclusions apply consistently to both the project classpaths and the sandbox installations.
+Patterns declared for the same plugin ID are combined build-wide.
+
+The same configuration block is available for the test-scope [testPlugin(...)](#test-scope-plugin-and-module-helpers) helpers.
 
 ### Compatible Plugins
 
@@ -58266,16 +58498,63 @@ dependencies {
 See [TestFrameworkType](tools-intellij-platform-gradle-plugin-types.html#TestFrameworkType) reference for other test-frameworks,
 for example, `Plugin.Java` when testing Java-based functionality.
 
-The provided `testFramework(type, version)` helper method makes it possible to add the base artifact to the test classpath or its variants, such as Java, Go, ReSharper, etc.
+The provided helpers make it possible to add the base artifact to the test classpath or its variants, such as Java, Go, ReSharper, etc.
 
 | Function |Description |
 -------------------------
 | `testFramework(type, version)` |Adds a dependency on Test Framework or its variant using [TestFrameworkType](tools-intellij-platform-gradle-plugin-types.html#TestFrameworkType) type. |
+| `testFrameworks(vararg types)` |Adds dependencies on all provided Test Framework variants. Each version is selected to match the configured IntelliJ Platform build. |
+| `testFrameworks(types: List<TestFrameworkType>)` |Adds dependencies on all Test Framework variants in the provided list. Each version is selected to match the configured IntelliJ Platform build. |
+
+Use either plural overload to add multiple Test Framework variants at once:
+
+Kotlin:
+
+```KOTLIN
+import org.jetbrains.intellij.platform.gradle.TestFrameworkType
+
+dependencies {
+  intellijPlatform {
+    testFrameworks(
+      TestFrameworkType.Platform,
+      TestFrameworkType.Plugin.Java,
+    )
+    testFrameworks(
+      listOf(
+        TestFrameworkType.JUnit5,
+        TestFrameworkType.Plugin.Maven,
+      )
+    )
+  }
+}
+```
+
+Groovy:
+
+```GROOVY
+import org.jetbrains.intellij.platform.gradle.TestFrameworkType
+
+dependencies {
+  intellijPlatform {
+    testFrameworks(
+      TestFrameworkType.Platform.INSTANCE,
+      TestFrameworkType.Plugin.Java.INSTANCE
+    )
+    testFrameworks([
+      TestFrameworkType.JUnit5.INSTANCE,
+      TestFrameworkType.Plugin.Maven.INSTANCE
+    ])
+  }
+}
+```
+
+The plural overloads do not accept an explicit version.
+To pin a specific version, call `testFramework(type, version)` separately.
 
 Warning:
 
-In rare cases, when the presence of a bundled `$PLATFORM_PATH$/lib/testFramework.jar` library is necessary (like in the case of [Rider](rider.html), as its `test-framework` is not published as an artifact),
-it is possible to attach it by using the [TestFrameworkType.Platform.Bundled](tools-intellij-platform-gradle-plugin-types.html#TestFrameworkType) type.
+In rare cases when the bundled `$PLATFORM_PATH$/lib/testFramework.jar` library is required,
+attach it with [TestFrameworkType.Bundled](tools-intellij-platform-gradle-plugin-types.html#TestFrameworkType).
 
 There are two known issues related to `Platform` and `JUnit5` Test Frameworks:
 
@@ -58298,10 +58577,55 @@ The extension also provides helpers to add dependencies needed only for tests:
 | `testBundledPlugin(id)` |Adds a test dependency on a bundled plugin by ID. |
 | `testBundledPlugins(vararg ids)` |Adds test dependencies on multiple bundled plugins by IDs. |
 | `testLocalPlugin(localPath)` |Adds a test dependency on a local plugin; accepts a path or a project dependency. |
-| `testBundledModule(id)` |Adds a test dependency on a specific bundled platform module. |
-| `testBundledModules(vararg ids)` |Adds test dependencies on multiple bundled platform modules. |
+| `testBundledModule(id)` |Adds a test dependency on a specific bundled platform module or module alias. |
+| `testBundledModules(vararg ids)` |Adds test dependencies on multiple bundled platform modules or aliases. |
 
 Provider and list-based overloads are available for the above helpers, mirroring their production-scope counterparts.
+The `testPlugin(...)` helpers also accept the same configuration block as [plugin(...)](#excluding-plugin-bundled-libraries) for excluding libraries bundled with the plugin.
+
+## Sandbox Runtime Classpaths
+
+The plugin uses dedicated resolvable configurations for dependencies copied to the developed plugin's `lib/` directory in a sandbox:
+
+| Configuration |Description |
+------------------------------
+| `intellijPlatformSandboxRuntimeClasspath` |Extends the project's `runtimeClasspath` and supplies runtime dependencies for regular sandboxes, such as the one created by [prepareSandbox](tools-intellij-platform-gradle-plugin-tasks.html#prepareSandbox). |
+| `intellijPlatformTestSandboxRuntimeClasspath` |Extends `intellijPlatformSandboxRuntimeClasspath` and `intellijPlatformTestRuntimeClasspath`, and supplies runtime dependencies for test sandboxes created by [prepareTestSandbox](tools-intellij-platform-gradle-plugin-tasks.html#prepareTestSandbox). |
+
+Excluding a dependency from either configuration changes only the contents of the corresponding sandbox.
+It does not remove the dependency from the project's compile, runtime, or test classpaths.
+Because the test sandbox configuration extends the regular sandbox configuration, exclusions added to `intellijPlatformSandboxRuntimeClasspath` apply to both regular and test sandboxes.
+Configure `intellijPlatformTestSandboxRuntimeClasspath` instead when an exclusion should apply only to test sandboxes.
+
+For example, the following keeps Joda-Time available to compile the plugin but prevents its JAR from being copied into either sandbox:
+
+Kotlin:
+
+```KOTLIN
+dependencies {
+  implementation("joda-time:joda-time:2.8.1")
+}
+
+configurations.named("intellijPlatformSandboxRuntimeClasspath") {
+  exclude(group = "joda-time", module = "joda-time")
+}
+```
+
+Groovy:
+
+```GROOVY
+dependencies {
+  implementation 'joda-time:joda-time:2.8.1'
+}
+
+configurations.named('intellijPlatformSandboxRuntimeClasspath') {
+  exclude group: 'joda-time', module: 'joda-time'
+}
+```
+
+By default, both sandbox configurations exclude `org.jetbrains.kotlin:kotlin-stdlib`, `org.jetbrains.kotlin:kotlin-stdlib-jdk8`, and the known Kotlin Coroutines modules supplied by the IntelliJ Platform.
+The Coroutines exclusions cover the `org.jetbrains.kotlinx`, `com.intellij.platform`, and `org.jetbrains.intellij.deps.kotlinx` groups.
+Set [org.jetbrains.intellij.platform.useDefaultSandboxExclusions=false](tools-intellij-platform-gradle-plugin-gradle-properties.html#useDefaultSandboxExclusions) to opt out.
 
 ## Tools
 
@@ -58452,6 +58776,55 @@ Specifies the archive file representing the output file produced by the task.
 
 Type
 : `RegularFileProperty`
+
+## 
+
+`buildPluginVariants`
+
+<tldr>
+Available in: [Platform](tools-intellij-platform-gradle-plugin-plugins.html#platform)
+
+Depends on: The six [buildPluginVariants_&lt;os&gt;_&lt;arch&gt;](#buildPluginVariants-variant-tasks) tasks when native variants are enabled
+
+Extends: [DefaultTask](https://docs.gradle.org/current/dsl/org.gradle.api.DefaultTask.html)
+
+Sources: [BuildPluginVariantsTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.18.1/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/BuildPluginVariantsTask.kt)
+</tldr>
+
+Builds the fixed matrix of Linux, macOS, and Windows plugin distributions for `x86_64` and `arm64` architectures.
+The task runs its variant tasks only when [intellijPlatform.nativeVariants.enabled](tools-intellij-platform-gradle-plugin-extension.html#intellijPlatform-nativeVariants-enabled) is `true`.
+It does not change the base archive produced by [buildPlugin](#buildPlugin).
+
+Each variant archive is written to `[buildDirectory]/distributions` with the `-<os>-<arch>` classifier, for example, `myPlugin-1.0.0-linux-arm64.zip`.
+Its plugin descriptor version receives the same suffix and declares the corresponding `com.intellij.modules.os.<os>` and `com.intellij.modules.arch.<arch>` dependencies.
+Files configured for that target in [intellijPlatform.nativeVariants](tools-intellij-platform-gradle-plugin-extension.html#intellijPlatform-nativeVariants) are copied into the plugin distribution.
+The prepared variant JAR and target-specific files take precedence over duplicate paths from the base sandbox.
+
+### 
+
+`buildPluginVariants_<os>_<arch>`
+
+The following [BuildPluginTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.18.1/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/BuildPluginTask.kt) instances produce the individual archives:
+
+| Target |Task |Archive classifier |
+------------------------------------
+| Linux x86_64 |`buildPluginVariants_linux_x86_64` |`linux-x86_64` |
+| Linux arm64 |`buildPluginVariants_linux_arm64` |`linux-arm64` |
+| macOS x86_64 |`buildPluginVariants_mac_x86_64` |`mac-x86_64` |
+| macOS arm64 |`buildPluginVariants_mac_arm64` |`mac-arm64` |
+| Windows x86_64 |`buildPluginVariants_windows_x86_64` |`windows-x86_64` |
+| Windows arm64 |`buildPluginVariants_windows_arm64` |`windows-arm64` |
+
+All six tasks are registered, even when no native files are configured for a target, and are skipped while native variants are disabled.
+
+### 
+
+`archiveFiles`
+
+The variant ZIP archives produced by the six target tasks.
+
+Type
+: `ConfigurableFileCollection`
 
 ## 
 
@@ -58654,12 +59027,29 @@ Type
 
 The root output directory for the generated lexer.
 The lexer file is created under a subdirectory matching [packageName](#generateLexer-packageName), unless `packageName` is empty.
+When the legacy [targetOutputDir](#generateLexer-targetOutputDir-deprecated) is not used and [pathToClass](#generateLexer-pathToClass) is not set, the task exclusively owns this directory, declares the entire directory as its output, and can be passed directly to `sourceSets.main.java.srcDir(tasks.generateLexer)` so Gradle infers the task dependency.
+Set `pathToClass` when this directory is shared with other generators.
 
 Type
 : `DirectoryProperty`
 
 Default value
 : `[buildDirectory]/generated/sources/grammarkit-lexer/java/main`
+
+### 
+
+`pathToClass`
+
+The generated lexer class location relative to [targetRootOutputDir](#generateLexer-targetRootOutputDir), or relative to the legacy [targetOutputDir](#generateLexer-targetOutputDir-deprecated) when that property is used.
+Setting this property switches the task to shared-root mode: only this file is declared as an output and removed during cleanup, leaving other files under the root untouched.
+
+The value must include the generated filename and any package directories, for example, `com/example/MyLexer.java`.
+
+Type
+: `Property<String>`
+
+Required
+: no
 
 ### 
 
@@ -58703,9 +59093,11 @@ Default value
 
 `purgeOldFiles`
 
-Purges old files from the target directory before generating the lexer.
-By default, old files are purged when [targetRootOutputDir](#generateLexer-targetRootOutputDir) is used.
+Purges previously generated lexer output before generating the lexer.
+When cleanup is enabled and [pathToClass](#generateLexer-pathToClass) is not set, the task removes the entire active output directory: [targetOutputDir](#generateLexer-targetOutputDir-deprecated) when present, otherwise [targetRootOutputDir](#generateLexer-targetRootOutputDir).
+When `pathToClass` is set, only that generated file in the active output directory is removed so the root can be shared safely.
 When the deprecated [targetOutputDir](#generateLexer-targetOutputDir-deprecated) is used, old files are not purged unless this property is explicitly set to `true`.
+Set this property to `false` to disable cleanup.
 
 Type
 : `Property<Boolean>`
@@ -58715,7 +59107,9 @@ Type
 `targetFile(...)`
 
 Legacy helper methods returning the expected lexer file below [targetOutputDir](#generateLexer-targetOutputDir-deprecated).
-Use [targetRootOutputDir](#generateLexer-targetRootOutputDir) and include the package subdirectory in the requested file path instead.
+Use [pathToClass](#generateLexer-pathToClass) instead.
+With [targetRootOutputDir](#generateLexer-targetRootOutputDir), include the package directories in `pathToClass`.
+With the legacy [targetOutputDir](#generateLexer-targetOutputDir-deprecated), `pathToClass` is relative to that directory and [packageName](#generateLexer-packageName) is ignored.
 
 ## 
 
@@ -58745,6 +59139,8 @@ Type
 `targetRootOutputDir`
 
 The root output directory for generated parser and PSI files.
+When [pathToParser](#generateParser-pathToParser) and [pathToPsiRoot](#generateParser-pathToPsiRoot) are not set, the task exclusively owns this directory, declares the entire directory as its output, and can be passed directly to `sourceSets.main.java.srcDir(tasks.generateParser)` so Gradle infers the task dependency.
+Set both path properties when this directory is shared with other generators.
 
 Type
 : `DirectoryProperty`
@@ -58757,7 +59153,7 @@ Default value
 `pathToParser`
 
 The generated parser class location relative to [targetRootOutputDir](#generateParser-targetRootOutputDir).
-This legacy property is only used when [purgeOldFiles](#generateParser-purgeOldFiles) is enabled and the task needs to delete only the old parser file.
+Setting this property with [pathToPsiRoot](#generateParser-pathToPsiRoot) switches the task to shared-root mode, in which only the configured parser file and PSI directory are declared as outputs and removed during cleanup.
 If this property is set, [pathToPsiRoot](#generateParser-pathToPsiRoot) must also be set.
 
 Type
@@ -58768,7 +59164,7 @@ Type
 `pathToPsiRoot`
 
 The generated PSI root location relative to [targetRootOutputDir](#generateParser-targetRootOutputDir).
-This legacy property is only used when [purgeOldFiles](#generateParser-purgeOldFiles) is enabled and the task needs to delete only the old PSI directory.
+Setting this property with [pathToParser](#generateParser-pathToParser) switches the task to shared-root mode, in which only the configured parser file and PSI directory are declared as outputs and removed during cleanup.
 If this property is set, [pathToParser](#generateParser-pathToParser) must also be set.
 
 Type
@@ -58778,23 +59174,22 @@ Type
 
 `parserFile()`
 
-Legacy helper method returning the file below [targetRootOutputDir](#generateParser-targetRootOutputDir) computed from [pathToParser](#generateParser-pathToParser).
-Use `targetRootOutputDir.file(pathToParser)` if you still need that path.
+Returns the parser file below [targetRootOutputDir](#generateParser-targetRootOutputDir) computed from [pathToParser](#generateParser-pathToParser).
 
 ### 
 
 `psiDir()`
 
-Legacy helper method returning the directory below [targetRootOutputDir](#generateParser-targetRootOutputDir) computed from [pathToPsiRoot](#generateParser-pathToPsiRoot).
-Use `targetRootOutputDir.dir(pathToPsiRoot)` if you still need that path.
+Returns the PSI directory below [targetRootOutputDir](#generateParser-targetRootOutputDir) computed from [pathToPsiRoot](#generateParser-pathToPsiRoot).
 
 ### 
 
 `purgeOldFiles`
 
 Purges previously generated parser and PSI files before generation.
-By default, old files are purged unless both deprecated path properties, [pathToParser](#generateParser-pathToParser) and [pathToPsiRoot](#generateParser-pathToPsiRoot), are set.
-When these path properties are set and this property is `true`, only the configured parser file and PSI directory are deleted.
+With no explicit paths, the task owns and removes the entire [targetRootOutputDir](#generateParser-targetRootOutputDir).
+When both [pathToParser](#generateParser-pathToParser) and [pathToPsiRoot](#generateParser-pathToPsiRoot) are set, only the configured parser file and PSI directory are removed so the root can be shared safely.
+Set this property to `false` to disable cleanup.
 
 Type
 : `Property<Boolean>`
@@ -59352,14 +59747,16 @@ Default value
 <tldr>
 Available in: [Platform](tools-intellij-platform-gradle-plugin-plugins.html#platform)
 
-Depends on: [buildSearchableOptions](#buildSearchableOptions), [composedJar](#composedJar), [prepareSandbox](#prepareSandbox)
+Depends on: [buildSearchableOptions](#buildSearchableOptions), [prepareSandbox](#prepareSandbox)
 
-Extends: [DefaultTask](https://docs.gradle.org/current/dsl/org.gradle.api.DefaultTask.html)
+Extends: [DefaultTask](https://docs.gradle.org/current/dsl/org.gradle.api.DefaultTask.html), [PluginAware](tools-intellij-platform-gradle-plugin-task-awares.html#PluginAware)
 
 Sources: [PrepareJarSearchableOptionsTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.18.1/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/PrepareJarSearchableOptionsTask.kt)
 </tldr>
 
 Collects the content produced with `buildSearchableOptions` for the `jarSearchableOptions`.
+The task filters searchable option files using the main plugin descriptor when it exists and any searchable option descriptors found in plugin module projects.
+This also supports composed multi-module builds where the root project doesn't define its own `plugin.xml`.
 
 ### 
 
@@ -59399,15 +59796,98 @@ Default value
 
 ### 
 
-`composedJarFile`
+`searchableOptionsDescriptors`
 
-Specifies the final composed Jar archive with the plugin content.
+Plugin descriptor files used to match generated searchable options to plugin IDs and module names.
+The default value includes descriptors from the main source set and from module projects attached through plugin module dependencies.
+
+Type
+: `ConfigurableFileCollection`
+
+## 
+
+`preparePluginVariant_<os>_<arch>`
+
+<tldr>
+Available in: [Platform](tools-intellij-platform-gradle-plugin-plugins.html#platform)
+
+Depends on: [composedJar](#composedJar)
+
+Extends: [DefaultTask](https://docs.gradle.org/current/dsl/org.gradle.api.DefaultTask.html)
+
+Sources: [PreparePluginVariantTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.18.1/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/PreparePluginVariantTask.kt)
+</tldr>
+
+The six `preparePluginVariant_<os>_<arch>` tasks create the plugin JARs consumed by the corresponding [buildPluginVariants_&lt;os&gt;_&lt;arch&gt;](#buildPluginVariants-variant-tasks) tasks.
+They are registered for the same Linux, macOS, and Windows `x86_64`/`arm64` matrix and run only when [intellijPlatform.nativeVariants.enabled](tools-intellij-platform-gradle-plugin-extension.html#intellijPlatform-nativeVariants-enabled) is `true`.
+
+Before creating a variant JAR, each task validates the effective [patchPluginXml.sinceBuild](#patchPluginXml-sinceBuild) value.
+The value must resolve to `261` (IntelliJ Platform 2026.1) or later because the injected operating-system and architecture module dependencies are unavailable in earlier platform versions.
+
+Each task copies the shared [composedJar](#composedJar), appends `-<os>-<arch>` to the version in `META-INF/plugin.xml`, and adds the matching operating-system and architecture module dependencies.
+The resulting JAR is stored under `[buildDirectory]/intermediates/pluginVariants/[os]-[arch]`.
+
+### 
+
+`inputJar`
+
+The shared composed plugin JAR used as the source of the variant.
 
 Type
 : `RegularFileProperty`
 
 Default value
 : [composedJar.archiveFile](#composedJar-archiveFile)
+
+### 
+
+`pluginVersion`
+
+The plugin version written to the variant's `META-INF/plugin.xml` file.
+
+Type
+: `Property<String>`
+
+Default value
+: [intellijPlatform.pluginConfiguration.version](tools-intellij-platform-gradle-plugin-extension.html#intellijPlatform-pluginConfiguration-version) with the `-<os>-<arch>` suffix
+
+### 
+
+`operatingSystem`
+
+The target operating-system identifier used for the `com.intellij.modules.os.<os>` dependency.
+The version written to the descriptor is controlled independently by [pluginVersion](#preparePluginVariant-pluginVersion).
+
+Type
+: `Property<String>`
+
+Default value
+: `linux`, `mac`, or `windows`, configured from the fixed variant for each task registered by the plugin
+
+### 
+
+`architecture`
+
+The target architecture identifier used for the `com.intellij.modules.arch.<arch>` dependency.
+The version written to the descriptor is controlled independently by [pluginVersion](#preparePluginVariant-pluginVersion).
+
+Type
+: `Property<String>`
+
+Default value
+: `x86_64` or `arm64`, configured from the fixed variant for each task registered by the plugin
+
+### 
+
+`outputDirectory`
+
+The directory containing the prepared variant JAR.
+
+Type
+: `DirectoryProperty`
+
+Default value
+: `[buildDirectory]/intermediates/pluginVariants/[os]-[arch]`
 
 ## 
 
@@ -59429,6 +59909,23 @@ The sandbox directory is created within the container configurable with [intelli
 
 Tasks based on the [PrepareSandboxTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.18.1/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/PrepareSandboxTask.kt) are sandbox producers and can be associated with sandbox consumers.
 To define the consumer task, make it extend from [SandboxAware](tools-intellij-platform-gradle-plugin-task-awares.html#SandboxAware) and apply the `consumer.applySandboxFrom(producer)` function.
+
+When native variants are enabled, native-aware sandbox producers use the variant matching the current operating system and architecture.
+For those sandboxes, the matching [preparePluginVariant_&lt;os&gt;_&lt;arch&gt;](#preparePluginVariant) output replaces the base plugin JAR, and files configured for that target in [intellijPlatform.nativeVariants](tools-intellij-platform-gradle-plugin-extension.html#intellijPlatform-nativeVariants) are overlaid onto the sandbox plugin directory.
+The base `prepareSandbox` task remains platform-independent and supplies the base [buildPlugin](#buildPlugin) archive; custom testing sandboxes other than `intellijPlatformTesting.runIde` also remain platform-independent.
+
+### Native-Aware Sandbox Tasks
+
+The plugin enables the current host variant for these sandbox producers:
+
+| Sandbox task |Consumer |
+--------------------------
+| `prepareSandbox_runIde` |[runIde](#runIde) |
+| `prepareSandbox_runIdeBackend` |[runIdeBackend](#runIdeBackend) and the split-mode aggregate task |
+| `prepareSandbox_runIdeFrontend` |[runIdeFrontend](#runIdeFrontend) and the split-mode aggregate task |
+| [prepareTestSandbox](#prepareTestSandbox) |Ordinary Gradle [test](#test) |
+| [prepareTestIdePerformanceSandbox](#prepareTestIdePerformanceSandbox) |Standard [testIdePerformance](#testIdePerformance) |
+| `prepareSandbox_<customRunIdeTask>` |Entries registered with `intellijPlatformTesting.runIde` |
 
 ### 
 
@@ -59515,7 +60012,9 @@ Type
 
 `runtimeClasspath`
 
-Dependencies defined with the `runtimeClasspath` configuration.
+Dependencies copied into the sandbox plugin's `lib` directory.
+Regular sandboxes use `intellijPlatformSandboxRuntimeClasspath`, while test sandboxes use `intellijPlatformTestSandboxRuntimeClasspath`.
+These dedicated configurations allow [sandbox-only dependency exclusions](tools-intellij-platform-gradle-plugin-dependencies-extension.html#sandbox-runtime-classpaths) without changing the project's compile or test classpaths.
 
 Type
 : `ConfigurableFileCollection`
@@ -59581,15 +60080,25 @@ Sources: [PrintBundledModulesTask](https://github.com/JetBrains/intellij-platfor
 </tldr>
 
 Prints the list of bundled modules available within the currently targeted IntelliJ Platform.
+The task uses the same cached IDE layout index as bundled module dependency resolution, so module IDs and aliases are resolved consistently.
 
 ### 
 
-`idesManager`
+`ideLayoutIndexService`
 
-Build service used to resolve the currently targeted IDE and inspect its bundled modules.
+Shared service used to resolve the cached IDE layout index for the currently targeted IDE.
 
 Type
-: `Property<IdesManagerService>`
+: `Property<IdeLayoutIndexService>`
+
+### 
+
+`ideLayoutIndexCacheDirectory`
+
+On-disk cache location for layout-index snapshots derived from extracted IDE distributions.
+
+Type
+: `DirectoryProperty`
 
 ## 
 
@@ -59604,6 +60113,25 @@ Sources: [PrintBundledPluginsTask](https://github.com/JetBrains/intellij-platfor
 </tldr>
 
 Prints the list of bundled plugins available within the currently targeted IntelliJ Platform.
+The task uses the same cached IDE layout index as bundled plugin dependency resolution.
+
+### 
+
+`ideLayoutIndexService`
+
+Shared service used to resolve the cached IDE layout index for the currently targeted IDE.
+
+Type
+: `Property<IdeLayoutIndexService>`
+
+### 
+
+`ideLayoutIndexCacheDirectory`
+
+On-disk cache location for layout-index snapshots derived from extracted IDE distributions.
+
+Type
+: `DirectoryProperty`
 
 ## 
 
@@ -59647,14 +60175,15 @@ See also:
 <tldr>
 Available in: [Platform](tools-intellij-platform-gradle-plugin-plugins.html#platform)
 
-Depends on: [buildPlugin](#buildPlugin), [signPlugin](#signPlugin)
+Depends on: [buildPluginVariants](#buildPluginVariants) when native variants are enabled; otherwise [buildPlugin](#buildPlugin) and [signPlugin](#signPlugin)
 
 Extends: [DefaultTask](https://docs.gradle.org/current/dsl/org.gradle.api.DefaultTask.html)
 
 Sources: [PublishPluginTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.18.1/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/PublishPluginTask.kt)
 </tldr>
 
-Publishes the plugin to the remote plugins repository, such as [JetBrains Marketplace](https://plugins.jetbrains.com).
+Publishes one or more plugin archives to the remote plugins repository, such as [JetBrains Marketplace](https://plugins.jetbrains.com).
+When [intellijPlatform.nativeVariants.enabled](tools-intellij-platform-gradle-plugin-extension.html#intellijPlatform-nativeVariants-enabled) is `true`, all six archives produced by [buildPluginVariants](#buildPluginVariants) are uploaded.
 
 See also:
 
@@ -59666,20 +60195,23 @@ See also:
 
 ### 
 
-`archiveFile`
+`archiveFiles`
 
-Specifies the ZIP archive file to be published to the remote repository.
-By default, it uses the output [signPlugin.archiveFile](#signPlugin-archiveFile) if plugin signing is configured, otherwise the [buildPlugin.archiveFile](#buildPlugin-archiveFile).
+Specifies the ZIP archive files to publish to the remote repository.
+With native variants enabled, the collection contains all [buildPluginVariants.archiveFiles](#buildPluginVariants-archiveFiles).
+Otherwise, it contains [signPlugin.signedArchiveFile](#signPlugin-signedArchiveFile) when the signing task produces an archive or [buildPlugin.archiveFile](#buildPlugin-archiveFile).
 
 Type
-: `RegularFileProperty`
+: `ConfigurableFileCollection`
 
 Default value
-: [signPlugin.archiveFile](#signPlugin-archiveFile) or [buildPlugin.archiveFile](#buildPlugin-archiveFile)
+: [buildPluginVariants.archiveFiles](#buildPluginVariants-archiveFiles) when native variants are enabled; otherwise [signPlugin.signedArchiveFile](#signPlugin-signedArchiveFile) or [buildPlugin.archiveFile](#buildPlugin-archiveFile)
 
 See also:
 
 * [Extension: intellijPlatform.signing](tools-intellij-platform-gradle-plugin-extension.html#intellijPlatform-signing)
+
+* [Extension: intellijPlatform.nativeVariants](tools-intellij-platform-gradle-plugin-extension.html#intellijPlatform-nativeVariants)
 
 ### 
 
@@ -59751,7 +60283,7 @@ Default value
 <tldr>
 Available in: [Platform](tools-intellij-platform-gradle-plugin-plugins.html#platform)
 
-Depends on: [patchPluginXml](#patchPluginXml), [prepareSandbox](#prepareSandbox)
+Depends on: [patchPluginXml](#patchPluginXml), [prepareSandbox_runIde](#prepareSandbox-runIde)
 
 Extends: [JavaExec](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.JavaExec.html), [RunnableIdeAware](tools-intellij-platform-gradle-plugin-task-awares.html#RunnableIdeAware), [SplitModeAware](tools-intellij-platform-gradle-plugin-task-awares.html#SplitModeAware), [PluginInstallationTargetAware](tools-intellij-platform-gradle-plugin-task-awares.html#PluginInstallationTargetAware), [ComposeHotReloadAware](tools-intellij-platform-gradle-plugin-task-awares.html#ComposeHotReloadAware), [IntelliJPlatformVersionAware](tools-intellij-platform-gradle-plugin-task-awares.html#IntelliJPlatformVersionAware)
 
@@ -59827,7 +60359,7 @@ Command-line option
 <tldr>
 Available in: [Platform](tools-intellij-platform-gradle-plugin-plugins.html#platform)
 
-Depends on: [patchPluginXml](#patchPluginXml), a dedicated [prepareSandbox](#prepareSandbox) task
+Depends on: [patchPluginXml](#patchPluginXml), [prepareSandbox_runIdeBackend](#prepareSandbox-runIde)
 
 Extends: [JavaExec](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.JavaExec.html), [RunnableIdeAware](tools-intellij-platform-gradle-plugin-task-awares.html#RunnableIdeAware), [SplitModeAware](tools-intellij-platform-gradle-plugin-task-awares.html#SplitModeAware), [PluginInstallationTargetAware](tools-intellij-platform-gradle-plugin-task-awares.html#PluginInstallationTargetAware), [ComposeHotReloadAware](tools-intellij-platform-gradle-plugin-task-awares.html#ComposeHotReloadAware), [IntelliJPlatformVersionAware](tools-intellij-platform-gradle-plugin-task-awares.html#IntelliJPlatformVersionAware)
 
@@ -59847,7 +60379,7 @@ Use `argumentProviders` instead.
 <tldr>
 Available in: [Platform](tools-intellij-platform-gradle-plugin-plugins.html#platform)
 
-Depends on: [patchPluginXml](#patchPluginXml), a dedicated [prepareSandbox](#prepareSandbox) task
+Depends on: [patchPluginXml](#patchPluginXml), [prepareSandbox_runIdeFrontend](#prepareSandbox-runIde)
 
 Extends: [JavaExec](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.JavaExec.html), [RunnableIdeAware](tools-intellij-platform-gradle-plugin-task-awares.html#RunnableIdeAware), [SplitModeAware](tools-intellij-platform-gradle-plugin-task-awares.html#SplitModeAware), [PluginInstallationTargetAware](tools-intellij-platform-gradle-plugin-task-awares.html#PluginInstallationTargetAware), [ComposeHotReloadAware](tools-intellij-platform-gradle-plugin-task-awares.html#ComposeHotReloadAware), [IntelliJPlatformVersionAware](tools-intellij-platform-gradle-plugin-task-awares.html#IntelliJPlatformVersionAware)
 
@@ -59950,9 +60482,9 @@ To sign the plugin before publishing to [JetBrains Marketplace](https://plugins.
 it is required to provide a certificate chain and a private key with its password using the
 [intellijPlatform.signing](tools-intellij-platform-gradle-plugin-extension.html#intellijPlatform-signing) extension.
 
-As soon as [privateKey](#signPlugin-privateKey) (or [privateKeyFile](#signPlugin-privateKeyFile)) and [certificateChain](#signPlugin-certificateChain)
-(or [certificateChainFile](#signPlugin-certificateChainFile) properties are specified,
-this task will be executed automatically right before the [publishPlugin](#publishPlugin) task.
+For the standard archive produced by [buildPlugin](#buildPlugin), as soon as [privateKey](#signPlugin-privateKey) (or [privateKeyFile](#signPlugin-privateKeyFile)) and [certificateChain](#signPlugin-certificateChain)
+(or [certificateChainFile](#signPlugin-certificateChainFile)) are specified,
+this task is executed automatically before [publishPlugin](#publishPlugin).
 
 For more details, see [Plugin Signing](plugin-signing.html).
 
@@ -60139,6 +60671,10 @@ The base Gradle `test` task is preconfigured using the [TestCompanion](https://g
 
 The task itself isn't mutated and a dedicated [prepareTest](#prepareTest) task is involved to request for required IntelliJ Platform and sandbox configuration.
 
+Bundled plugins declared in the target IDE's `product-info.json` are added to the test classpath by default.
+Set [testIdeBundledPluginsClasspathEnabled](tools-intellij-platform-gradle-plugin-gradle-properties.html#testIdeBundledPluginsClasspathEnabled) to `false` to opt out and use [testIdeBundledPluginsClasspathExcludes](tools-intellij-platform-gradle-plugin-gradle-properties.html#testIdeBundledPluginsClasspathExcludes) to control exclusions.
+These properties configure both this task and custom [testIde](#testIde) tasks.
+
 ## 
 
 `testIde`
@@ -60157,6 +60693,8 @@ It directly extends the [Test](https://docs.gradle.org/current/dsl/org.gradle.ap
 The [TestIdeTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.18.1/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/TestIdeTask.kt) is a class used only for handling custom `testIde` tasks.
 
 To register an additional customized test task, use [intellijPlatformTesting.testIde](tools-intellij-platform-gradle-plugin-testing-extension.html).
+
+Bundled plugins declared in `product-info.json` are added to its classpath by default, controlled with [testIdeBundledPluginsClasspathEnabled](tools-intellij-platform-gradle-plugin-gradle-properties.html#testIdeBundledPluginsClasspathEnabled) and filtered with [testIdeBundledPluginsClasspathExcludes](tools-intellij-platform-gradle-plugin-gradle-properties.html#testIdeBundledPluginsClasspathExcludes).
 
 ## 
 
@@ -60249,7 +60787,7 @@ Sources: [VerifyPluginTask](https://github.com/JetBrains/intellij-platform-gradl
 
 Runs the [IntelliJ Plugin Verifier](verifying-plugin-compatibility.html) CLI tool to check the binary compatibility with specified IDE builds.
 
-Due to caching, the latest Plugin Verifier release version (1.409) might not be picked up by Gradle immediately.
+Due to caching, the latest Plugin Verifier release version (1.410) might not be picked up by Gradle immediately.
 In such cases, [refresh dependencies](https://docs.gradle.org/current/userguide/dependency_caching.html#sec:refreshing-dependencies)
 manually.
 
@@ -61809,7 +62347,7 @@ See also:
 
 `PluginBean`
 
-[PluginBean](https://github.com/JetBrains/intellij-plugin-verifier/tree/1.409/intellij-plugin-structure/structure-intellij/src/main/java/com/jetbrains/plugin/structure/intellij/beans/PluginBean.java)
+[PluginBean](https://github.com/JetBrains/intellij-plugin-verifier/tree/1.410/intellij-plugin-structure/structure-intellij/src/main/java/com/jetbrains/plugin/structure/intellij/beans/PluginBean.java)
 
 Describes the content of the `plugin.xml` file.
 
@@ -61990,7 +62528,18 @@ Known issues related to `Platform` and `JUnit5` Test Frameworks:
 
 Warning: Using Bundled
 
-The `Bundled` type should not be used unless it is necessary, like in the case of [Rider](rider.html), as its `test-framework` is not published as an artifact.
+Use `Bundled` only when tests specifically require the `lib/testFramework.jar` shipped with the target IDE and no published `TestFrameworkType` variant is suitable.
+Prefer `Platform` or one of the published `Plugin.*` variants when available.
+
+### UI Utility Test Frameworks
+
+Utility modules for tests that use the UI Driver framework.
+These APIs may be unstable and can change without notice.
+
+| Name |Coordinates |
+---------------------
+| `UiUtil.Debugger` |`com.jetbrains.intellij.debugger:debugger-ui-test-util` |
+| `UiUtil.Jupyter` |`com.jetbrains.intellij.jupyter:jupyter-ui-test-util` |
 
 ### Plugin Test Frameworks
 
@@ -62003,16 +62552,26 @@ Some plugins offer dedicated test frameworks, for example, `Plugin.Java` when us
 | `Plugin.Debugger` |`com.jetbrains.intellij.platform:debugger-test-framework` |  |
 | `Plugin.ExternalSystem` |`com.jetbrains.intellij.platform:external-system-test-framework` |  |
 | `Plugin.Go` |`com.jetbrains.intellij.go:go-test-framework` |[GoLand Plugin Development](goland.html) |
+| `Plugin.IJent` |`com.jetbrains.intellij.platform:ijent-test-framework` |  |
 | `Plugin.Ruby` |`com.jetbrains.intellij.idea:ruby-test-framework` |[RubyMine Plugin Development](rubymine.html) |
 | `Plugin.Java` |`com.jetbrains.intellij.java:java-test-framework` |[IntelliJ IDEA Plugin Development](idea.html) |
 | `Plugin.JavaScript` |`com.jetbrains.intellij.javascript:javascript-test-framework` |[WebStorm Plugin Development](webstorm.html) |
 | `Plugin.Jupyter` |`com.jetbrains.intellij.jupyter:jupyter-test-framework` |  |
+| `Plugin.Kotlin` |`com.jetbrains.intellij.kotlin:kotlin-base-test-framework` |  |
 | `Plugin.LSP` |`com.jetbrains.intellij.platform:lsp-test-framework` |  |
 | `Plugin.Maven` |`com.jetbrains.intellij.maven:maven-test-framework` |  |
+| `Plugin.MLCompletion` |`com.jetbrains.intellij.ml:ml-llm-completion-test-framework` |  |
+| `Plugin.MLCompletionCloud` |`com.jetbrains.intellij.ml:ml-llm-completion-cloud-test-framework` |  |
+| `Plugin.MLNextEdits` |`com.jetbrains.intellij.ml:ml-llm-next-edits-test-framework` |  |
+| `Plugin.NavBar` |`com.jetbrains.intellij.platform:navbar-test-framework` |  |
 | `Plugin.Notebooks` |`com.jetbrains.intellij.notebooks:notebooks-visualization-test-framework` |  |
 | `Plugin.PolySymbols` |`com.jetbrains.intellij.platform:poly-symbols-test-framework` |  |
+| `Plugin.Python` |`com.jetbrains.intellij.python:python-community-test-framework` |[PyCharm Plugin Development](pycharm.html) |
 | `Plugin.Qodana` |`com.jetbrains.intellij.qodana:qodana-test-framework` |  |
+| `Plugin.RDClient` |`com.jetbrains.intellij.rd:rd-client-test-framework` |  |
 | `Plugin.ReSharper` |`com.jetbrains.intellij.resharper:resharper-test-framework` |[Rider Plugin Development](rider.html) |
+| `Plugin.Rider` |`com.jetbrains.intellij.rider:rider-test-framework` |[Rider Plugin Development](rider.html) |
+| `Plugin.Statistics` |`com.jetbrains.intellij.platform:statistics-test-framework` |  |
 | `Plugin.UAST` |`com.jetbrains.intellij.platform:uast-test-framework` |  |
 | `Plugin.VCS` |`com.jetbrains.intellij.platform:vcs-test-framework` |  |
 | `Plugin.XML` |`com.jetbrains.intellij.xml:xml-test-framework` |  |
@@ -62346,6 +62905,51 @@ org.jetbrains.intellij.platform.selfUpdateCheck=false
 
 
 ## 
+`testIdeBundledPluginsClasspathEnabled`
+
+
+
+
+
+
+
+Controls whether bundled plugins declared in the IntelliJ Platform's `product-info.json` file are added to the classpaths used by the [testIde](tools-intellij-platform-gradle-plugin-tasks.html#testIde) and ordinary Gradle [test](tools-intellij-platform-gradle-plugin-tasks.html#test) tasks.
+Set it to `false` to opt out.
+
+
+
+Default value
+: `true`
+
+
+Example
+: ```TEXT
+org.jetbrains.intellij.platform.testIdeBundledPluginsClasspathEnabled=false
+```
+
+## 
+
+`testIdeBundledPluginsClasspathExcludes`
+
+Specifies a comma-separated list of bundled plugin IDs or module IDs excluded from the classpaths used by the [testIde](tools-intellij-platform-gradle-plugin-tasks.html#testIde) and ordinary Gradle [test](tools-intellij-platform-gradle-plugin-tasks.html#test) tasks.
+This property applies only when [testIdeBundledPluginsClasspathEnabled](#testIdeBundledPluginsClasspathEnabled) is enabled.
+Set it to an empty value to include all bundled plugins.
+
+Default value
+: `com.intellij.openRewrite,com.intellij.ja,com.intellij.ko,com.intellij.zh,org.jetbrains.plugins.vue`
+
+Example
+: ```TEXT
+org.jetbrains.intellij.platform.testIdeBundledPluginsClasspathExcludes=
+```
+
+
+
+
+
+
+
+## 
 `verifyPluginDefaultRecommendedIdes`
 
 
@@ -62416,67 +63020,89 @@ org.jetbrains.intellij.platform.useCacheRedirector=false
 
 ## 
 
-`addDefaultIntelliJPlatformDependencies`
+`useDefaultSandboxExclusions`
 
-Controls whether default IntelliJ Platform dependencies (like `com.intellij` and `intellij.rider`) should be added automatically when creating a dependency on the IntelliJ Platform.
+Controls whether Kotlin standard library and Kotlin Coroutines dependencies provided by the IntelliJ Platform are excluded from sandbox runtime classpaths by default.
+The exclusions apply to sandboxes prepared for running the IDE and tests, including the [prepareSandbox](tools-intellij-platform-gradle-plugin-tasks.html#prepareSandbox) and [prepareTestSandbox](tools-intellij-platform-gradle-plugin-tasks.html#prepareTestSandbox) tasks.
+Set this property to `false` to opt out of the default exclusions.
 
 Default value
 : `true`
+
+Example
+: ```TEXT
+org.jetbrains.intellij.platform.useDefaultSandboxExclusions=false
+```
+
+
+
+
+
+
+
+## 
+`addDefaultIntelliJPlatformDependencies`
+
+
+
+
+
+
+
+Controls whether default IntelliJ Platform dependencies (like `com.intellij` and `intellij.rider`) should be added automatically when creating a dependency on the IntelliJ Platform.
+
+
+
+Default value
+: `true`
+
 
 Example
 : ```
 org.jetbrains.intellij.platform.addDefaultIntelliJPlatformDependencies=false
 ```
 
-
-
-
-
-
-
 ## 
+
 `productsReleasesCdnBuildsUrl`
-
-
-
-
-
-
 
 Specifies the URL from which the list of JetBrains IDE CDN release builds is fetched. This listing is used for mapping IDE releases to build numbers (for example, to download the corresponding JetBrains Client archive).
 
-
-
 Default value
 : `https://data.services.jetbrains.com/products?code={type}&fields=code,releases.type,releases.version,releases.build`
-
 
 Example
 : ```
 org.jetbrains.intellij.platform.productsReleasesCdnBuildsUrl=https://...
 ```
 
-## 
 
+
+
+
+
+
+## 
 `verifyPluginProjectConfigurationMutedMessages`
+
+
+
+
+
+
 
 Allows muting specific messages reported by the [verifyPluginProjectConfiguration](tools-intellij-platform-gradle-plugin-tasks.html#verifyPluginProjectConfiguration) task. The property accepts a comma-separated list of message patterns. Each pattern is matched against the message text using a case-sensitive substring search.
 
+
+
 Default value
 : empty (no messages are muted)
+
 
 Example
 : ```
 org.jetbrains.intellij.platform.verifyPluginProjectConfigurationMutedMessages=Kotlin Standard Library,Java Runtime is not JetBrains Runtime
 ```
-
-
-
-
-
-
-
-
 
 
 
@@ -66415,7 +67041,7 @@ more details. Thanks for your feedback!
 # Gradle Grammar-Kit Plugin
 
 <tldr>
-Current Release: 2023.3.0.3
+Current Release: 2023.3.0.4
 
 GitHub: [Releases &amp; Changelog](https://github.com/JetBrains/gradle-grammar-kit-plugin/releases), [Issue Tracker](https://github.com/JetBrains/gradle-grammar-kit-plugin/issues)
 </tldr>
@@ -66440,7 +67066,7 @@ Kotlin:
 
 ```KOTLIN
 plugins {
-  id("org.jetbrains.grammarkit") version "2023.3.0.3"
+  id("org.jetbrains.grammarkit") version "2023.3.0.4"
 }
 ```
 
@@ -66448,7 +67074,7 @@ Groovy:
 
 ```GROOVY
 plugins {
-  id "org.jetbrains.grammarkit" version "2023.3.0.3"
+  id "org.jetbrains.grammarkit" version "2023.3.0.4"
 }
 ```
 
@@ -66922,12 +67548,12 @@ These variables provide access to essential IDE components, configuration inform
 | Variable |Type |Description |
 -------------------------------
 | `idePath` |`Path` |Represents the resolved file system path to the IntelliJ Platform installation directory. |
-| `ide` |[ProductInfoBasedIde](https://github.com/JetBrains/intellij-plugin-verifier/tree/1.409/intellij-plugin-structure/structure-ide/src/main/java/com/jetbrains/plugin/structure/ide/ProductInfoBasedIde.kt) |Represents an IDE instance, which allows interacting with plugins and resolving their dependencies based on the IDE's configuration. |
+| `ide` |[ProductInfoBasedIde](https://github.com/JetBrains/intellij-plugin-verifier/tree/1.410/intellij-plugin-structure/structure-ide/src/main/java/com/jetbrains/plugin/structure/ide/ProductInfoBasedIde.kt) |Represents an IDE instance, which allows interacting with plugins and resolving their dependencies based on the IDE's configuration. |
 | `notebookDisposable` |[Disposable](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/util/src/com/intellij/openapi/Disposable.java) |Represents a disposable used for managing the IntelliJ Platform lifetime of the current notebook. |
 | `notebookPluginDescriptor` |[PluginMainDescriptor](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-impl/src/com/intellij/ide/plugins/IdeaPluginDescriptorImpl.kt) |Represents a plugin descriptor for the plugin created with Kotlin Notebook IntelliJ Platform integration. |
 | `pluginManager` |[PluginManager](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-impl/src/com/intellij/ide/plugins/PluginManager.java) |Instance of the `PluginManager`, which allows accessing information about plugins and their states in the current IDE environment. |
-| `pluginRepository` |[PluginRepository](https://github.com/JetBrains/intellij-plugin-verifier/tree/1.409/intellij-plugin-verifier/verifier-repository/src/main/java/com/jetbrains/pluginverifier/repository/PluginRepository.kt) |Instance of `PluginRepository`, responsible for managing plugins via the JetBrains Marketplace plugin repository. |
-| `productInfo` |[ProductInfo](https://github.com/JetBrains/intellij-plugin-verifier/tree/1.409/intellij-plugin-structure/structure-intellij/src/main/java/com/jetbrains/plugin/structure/intellij/platform/ProductInfo.kt) |Lazily initialized property containing current IntelliJ Platform product information. |
+| `pluginRepository` |[PluginRepository](https://github.com/JetBrains/intellij-plugin-verifier/tree/1.410/intellij-plugin-verifier/verifier-repository/src/main/java/com/jetbrains/pluginverifier/repository/PluginRepository.kt) |Instance of `PluginRepository`, responsible for managing plugins via the JetBrains Marketplace plugin repository. |
+| `productInfo` |[ProductInfo](https://github.com/JetBrains/intellij-plugin-verifier/tree/1.410/intellij-plugin-structure/structure-intellij/src/main/java/com/jetbrains/plugin/structure/intellij/platform/ProductInfo.kt) |Lazily initialized property containing current IntelliJ Platform product information. |
 
 ## Notebook Helpers
 

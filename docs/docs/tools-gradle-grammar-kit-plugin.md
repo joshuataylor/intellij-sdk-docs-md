@@ -1,7 +1,7 @@
 # Gradle Grammar-Kit Plugin
 
 <tldr>
-Current Release: 2023.3.0.3
+Current Release: 2023.3.0.4
 
 GitHub: [Releases &amp; Changelog](https://github.com/JetBrains/gradle-grammar-kit-plugin/releases), [Issue Tracker](https://github.com/JetBrains/gradle-grammar-kit-plugin/issues)
 </tldr>
@@ -26,7 +26,7 @@ Kotlin:
 
 ```KOTLIN
 plugins {
-  id("org.jetbrains.grammarkit") version "2023.3.0.3"
+  id("org.jetbrains.grammarkit") version "2023.3.0.4"
 }
 ```
 
@@ -34,7 +34,7 @@ Groovy:
 
 ```GROOVY
 plugins {
-  id "org.jetbrains.grammarkit" version "2023.3.0.3"
+  id "org.jetbrains.grammarkit" version "2023.3.0.4"
 }
 ```
 

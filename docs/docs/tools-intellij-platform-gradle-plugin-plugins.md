@@ -74,6 +74,8 @@ plugins {
 ### Available tasks
 
 [buildPlugin](tools-intellij-platform-gradle-plugin-tasks.html#buildPlugin),
+[buildPluginVariants](tools-intellij-platform-gradle-plugin-tasks.html#buildPluginVariants),
+[buildPluginVariants_&lt;os&gt;_&lt;arch&gt;](tools-intellij-platform-gradle-plugin-tasks.html#buildPluginVariants-variant-tasks),
 [buildSearchableOptions](tools-intellij-platform-gradle-plugin-tasks.html#buildSearchableOptions),
 [cleanSandbox](tools-intellij-platform-gradle-plugin-tasks.html#cleanSandbox),
 [composedJar](tools-intellij-platform-gradle-plugin-tasks.html#composedJar),
@@ -84,7 +86,11 @@ plugins {
 [instrumentedJar](tools-intellij-platform-gradle-plugin-tasks.html#instrumentedJar),
 [jarSearchableOptions](tools-intellij-platform-gradle-plugin-tasks.html#jarSearchableOptions),
 [patchPluginXml](tools-intellij-platform-gradle-plugin-tasks.html#patchPluginXml),
+[preparePluginVariant_&lt;os&gt;_&lt;arch&gt;](tools-intellij-platform-gradle-plugin-tasks.html#preparePluginVariant),
 [prepareSandbox](tools-intellij-platform-gradle-plugin-tasks.html#prepareSandbox),
+[prepareSandbox_runIde](tools-intellij-platform-gradle-plugin-tasks.html#prepareSandbox-runIde),
+[prepareSandbox_runIdeBackend](tools-intellij-platform-gradle-plugin-tasks.html#prepareSandbox-runIde),
+[prepareSandbox_runIdeFrontend](tools-intellij-platform-gradle-plugin-tasks.html#prepareSandbox-runIde),
 [prepareTest](tools-intellij-platform-gradle-plugin-tasks.html#prepareTest),
 [prepareTestIdePerformanceSandbox](tools-intellij-platform-gradle-plugin-tasks.html#prepareTestIdePerformanceSandbox),
 [prepareTestSandbox](tools-intellij-platform-gradle-plugin-tasks.html#prepareTestSandbox),
@@ -247,6 +253,11 @@ Plugin ID: `org.jetbrains.intellij.platform.settings`
 If you define project repositories within the `settings.gradle.kts` using the `dependencyResolutionManagement`, make sure to include the Settings plugin in `settings.gradle.kts`.
 
 This approach allows for omitting the `repositories {}` definition in the `build.gradle.kts` files. See [Dependency Resolution Management](tools-intellij-platform-gradle-plugin.html#configuration.dependencyResolutionManagement) for more details.
+
+The Settings plugin also defaults the `kotlin.stdlib.default.dependency` property to `false` for every project before project plugins are applied.
+This prevents the Kotlin Gradle plugin from adding the Kotlin Standard Library dependency automatically, which could conflict with the version bundled in the IntelliJ Platform.
+An explicitly configured Gradle property or an existing project extra property with the same name takes precedence and is left unchanged.
+See [Kotlin Standard Library (stdlib)](using-kotlin.html#kotlin-standard-library) for more information about the Kotlin Standard Library dependency.
 
 Kotlin:
 

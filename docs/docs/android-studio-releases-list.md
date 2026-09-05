@@ -11,9 +11,18 @@ This data is updated daily and also available in [JSON](https://jb.gg/android-st
 
 | Release Name |Channel |Version |IntelliJ IDEA Version |Release Date |
 -----------------------------------------------------------------------
+| Rabbit 1    2026.2.1 Canary 4   |![Canary](https://img.shields.io/badge/-Canary-lightgrey?style=flat-square) |2026.2.1.4AI‑262.9437.185.2621.16253642   |2026.2.1262.9437.185   |Sep 3, 2026 |
+| Rabbit 1    2026.2.1 Canary 3   |![Canary](https://img.shields.io/badge/-Canary-lightgrey?style=flat-square) |2026.2.1.3AI‑262.9437.185.2621.16190720   |2026.2.1262.9437.185   |Aug 27, 2026 |
+| Rabbit 1    2026.2.1 Canary 2   |![Canary](https://img.shields.io/badge/-Canary-lightgrey?style=flat-square) |2026.2.1.2AI‑262.9437.185.2621.16128175   |2026.2.1262.9437.185   |Aug 20, 2026 |
+| Rabbit 1    2026.2.1 Canary 1   |![Canary](https://img.shields.io/badge/-Canary-lightgrey?style=flat-square) |2026.2.1.1AI‑262.9437.185.2621.16076543   |2026.2.1262.9437.185   |Aug 17, 2026 |
+| Quail 4    2026.1.4   |![Release](https://img.shields.io/badge/-Release-blue?style=flat-square) |2026.1.4.7AI‑261.26222.65.2614.16204760   |2026.1.4261.26222.65   |Sep 1, 2026 |
+| Quail 4    2026.1.4 RC 2   |![RC](https://img.shields.io/badge/-RC-red?style=flat-square) |2026.1.4.6AI‑261.26222.65.2614.16166871   |2026.1.4261.26222.65   |Aug 25, 2026 |
+| Quail 4    2026.1.4 RC 1   |![RC](https://img.shields.io/badge/-RC-red?style=flat-square) |2026.1.4.5AI‑261.26222.65.2614.16087418   |2026.1.4261.26222.65   |Aug 17, 2026 |
+| Quail 4    2026.1.4 Canary 4   |![Canary](https://img.shields.io/badge/-Canary-lightgrey?style=flat-square) |2026.1.4.4AI‑261.26222.65.2614.16027044   |2026.1.4261.26222.65   |Aug 6, 2026 |
 | Quail 4    2026.1.4 Canary 3   |![Canary](https://img.shields.io/badge/-Canary-lightgrey?style=flat-square) |2026.1.4.3AI‑261.26222.65.2614.15978069   |2026.1.4261.26222.65   |Jul 30, 2026 |
 | Quail 4    2026.1.4 Canary 2   |![Canary](https://img.shields.io/badge/-Canary-lightgrey?style=flat-square) |2026.1.4.2AI‑261.26222.65.2614.15924839   |2026.1.4261.26222.65   |Jul 23, 2026 |
 | Quail 4    2026.1.4 Canary 1   |![Canary](https://img.shields.io/badge/-Canary-lightgrey?style=flat-square) |2026.1.4.1AI‑261.26222.65.2614.15872890   |2026.1.4261.26222.65   |Jul 16, 2026 |
+| Quail 3    2026.1.3 Patch 1   |![Patch](https://img.shields.io/badge/-Patch-orange?style=flat-square) |2026.1.3.8AI‑261.26222.65.2613.16025427   |2026.1.4261.26222.65   |Aug 10, 2026 |
 | Quail 3    2026.1.3   |![Release](https://img.shields.io/badge/-Release-blue?style=flat-square) |2026.1.3.7AI‑261.26222.65.2613.15948027   |2026.1.4261.26222.65   |Jul 30, 2026 |
 | Quail 3    2026.1.3 RC 2   |![RC](https://img.shields.io/badge/-RC-red?style=flat-square) |2026.1.3.6AI‑261.26222.65.2613.15882241   |2026.1.4261.26222.65   |Jul 20, 2026 |
 | Quail 3    2026.1.3 RC 1   |![RC](https://img.shields.io/badge/-RC-red?style=flat-square) |2026.1.3.5AI‑261.26222.65.2613.15847520   |2026.1.4261.26222.65   |Jul 14, 2026 |

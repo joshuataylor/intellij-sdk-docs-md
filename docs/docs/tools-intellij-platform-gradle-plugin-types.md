@@ -106,7 +106,7 @@ See also:
 
 `PluginBean`
 
-[PluginBean](https://github.com/JetBrains/intellij-plugin-verifier/tree/1.409/intellij-plugin-structure/structure-intellij/src/main/java/com/jetbrains/plugin/structure/intellij/beans/PluginBean.java)
+[PluginBean](https://github.com/JetBrains/intellij-plugin-verifier/tree/1.410/intellij-plugin-structure/structure-intellij/src/main/java/com/jetbrains/plugin/structure/intellij/beans/PluginBean.java)
 
 Describes the content of the `plugin.xml` file.
 
@@ -287,7 +287,18 @@ Known issues related to `Platform` and `JUnit5` Test Frameworks:
 
 Warning: Using Bundled
 
-The `Bundled` type should not be used unless it is necessary, like in the case of [Rider](rider.html), as its `test-framework` is not published as an artifact.
+Use `Bundled` only when tests specifically require the `lib/testFramework.jar` shipped with the target IDE and no published `TestFrameworkType` variant is suitable.
+Prefer `Platform` or one of the published `Plugin.*` variants when available.
+
+### UI Utility Test Frameworks
+
+Utility modules for tests that use the UI Driver framework.
+These APIs may be unstable and can change without notice.
+
+| Name |Coordinates |
+---------------------
+| `UiUtil.Debugger` |`com.jetbrains.intellij.debugger:debugger-ui-test-util` |
+| `UiUtil.Jupyter` |`com.jetbrains.intellij.jupyter:jupyter-ui-test-util` |
 
 ### Plugin Test Frameworks
 
@@ -300,16 +311,26 @@ Some plugins offer dedicated test frameworks, for example, `Plugin.Java` when us
 | `Plugin.Debugger` |`com.jetbrains.intellij.platform:debugger-test-framework` |  |
 | `Plugin.ExternalSystem` |`com.jetbrains.intellij.platform:external-system-test-framework` |  |
 | `Plugin.Go` |`com.jetbrains.intellij.go:go-test-framework` |[GoLand Plugin Development](goland.html) |
+| `Plugin.IJent` |`com.jetbrains.intellij.platform:ijent-test-framework` |  |
 | `Plugin.Ruby` |`com.jetbrains.intellij.idea:ruby-test-framework` |[RubyMine Plugin Development](rubymine.html) |
 | `Plugin.Java` |`com.jetbrains.intellij.java:java-test-framework` |[IntelliJ IDEA Plugin Development](idea.html) |
 | `Plugin.JavaScript` |`com.jetbrains.intellij.javascript:javascript-test-framework` |[WebStorm Plugin Development](webstorm.html) |
 | `Plugin.Jupyter` |`com.jetbrains.intellij.jupyter:jupyter-test-framework` |  |
+| `Plugin.Kotlin` |`com.jetbrains.intellij.kotlin:kotlin-base-test-framework` |  |
 | `Plugin.LSP` |`com.jetbrains.intellij.platform:lsp-test-framework` |  |
 | `Plugin.Maven` |`com.jetbrains.intellij.maven:maven-test-framework` |  |
+| `Plugin.MLCompletion` |`com.jetbrains.intellij.ml:ml-llm-completion-test-framework` |  |
+| `Plugin.MLCompletionCloud` |`com.jetbrains.intellij.ml:ml-llm-completion-cloud-test-framework` |  |
+| `Plugin.MLNextEdits` |`com.jetbrains.intellij.ml:ml-llm-next-edits-test-framework` |  |
+| `Plugin.NavBar` |`com.jetbrains.intellij.platform:navbar-test-framework` |  |
 | `Plugin.Notebooks` |`com.jetbrains.intellij.notebooks:notebooks-visualization-test-framework` |  |
 | `Plugin.PolySymbols` |`com.jetbrains.intellij.platform:poly-symbols-test-framework` |  |
+| `Plugin.Python` |`com.jetbrains.intellij.python:python-community-test-framework` |[PyCharm Plugin Development](pycharm.html) |
 | `Plugin.Qodana` |`com.jetbrains.intellij.qodana:qodana-test-framework` |  |
+| `Plugin.RDClient` |`com.jetbrains.intellij.rd:rd-client-test-framework` |  |
 | `Plugin.ReSharper` |`com.jetbrains.intellij.resharper:resharper-test-framework` |[Rider Plugin Development](rider.html) |
+| `Plugin.Rider` |`com.jetbrains.intellij.rider:rider-test-framework` |[Rider Plugin Development](rider.html) |
+| `Plugin.Statistics` |`com.jetbrains.intellij.platform:statistics-test-framework` |  |
 | `Plugin.UAST` |`com.jetbrains.intellij.platform:uast-test-framework` |  |
 | `Plugin.VCS` |`com.jetbrains.intellij.platform:vcs-test-framework` |  |
 | `Plugin.XML` |`com.jetbrains.intellij.xml:xml-test-framework` |  |
