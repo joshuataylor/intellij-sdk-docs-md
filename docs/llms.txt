@@ -50782,6 +50782,7 @@ JetBrains is not responsible for nor guarantees the performance of these indepen
 | Artsiom Chapialiou |[achapialiou@gmail.com](mailto:achapialiou@gmail.com) |Plugin's [author](https://plugins.jetbrains.com/vendor/achapialiou) and core developer ([Qodo](https://plugins.jetbrains.com/plugin/21206-qodo-gen-formerly-codiumate), [Snyk](https://plugins.jetbrains.com/plugin/10972-snyk-security), etc.) |
 | Trent Jones |[trent@revenate.io](mailto:trent@revenate.io) |Consulting and Custom Plugin Development, Developer of [Actionate](https://github.com/revenate/actionate) |
 | Libing Chen |[libing.chen@gmail.com](mailto:libing.chen@gmail.com) |Developer of [20+ plugins](https://plugins.jetbrains.com/vendor/5f47aa04-3398-4eea-98f1-d27c0a115f9b) (e.g. [Just](https://plugins.jetbrains.com/plugin/18658-just), [Qoder](https://plugins.jetbrains.com/plugin/28926-qoder--think-deeper-build-better-), etc.) |
+| Callstack |[hello@callstack.com](https://www.callstack.com) |Developers of the Storybook plugin. Custom web and mobile plugin development. React Foundation members. |
 
 Please [submit a PR or file a YouTrack issue](getting-help.html) for changes or additions to this list.
 
