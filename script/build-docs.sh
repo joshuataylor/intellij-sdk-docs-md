@@ -17,6 +17,10 @@
 # empty directory and the builder fails with: Open solution: "sources", 0 modules.
 set -euo pipefail
 
+for tool in docker git rsync unzip; do
+  command -v "$tool" >/dev/null || { echo "ERROR: required tool not found: $tool" >&2; exit 1; }
+done
+
 BUILDER_TAG="${BUILDER_TAG:-2026.06.8817}"
 IMAGE="jetbrains/writerside-builder:${BUILDER_TAG}"
 
@@ -154,6 +158,19 @@ if [[ -n "${NO_PUBLISH:-}" ]]; then
   exit 0
 fi
 
+# A degraded build can still emit a valid zip (e.g. zero topics), and the
+# --delete rsyncs below would then wipe docs/ and auto-commit an empty repo.
+# Refuse to publish anything implausibly small. MIN_HTML overrides the floor
+# (current output is ~476 pages); a legitimate large upstream removal that trips
+# this can be forced through with a higher MIN_HTML.
+html_count="$(find "$SITE_DIR" -maxdepth 1 -name '*.html' -type f | wc -l)"
+llms_count="$(find "$SITE_DIR/_llms" -name '*.txt' -type f 2>/dev/null | wc -l)"
+if (( html_count < ${MIN_HTML:-200} || llms_count < 1 )); then
+  echo "ERROR: site looks degraded (html=$html_count, llms=$llms_count) -- refusing" \
+       "to publish over docs/. Set MIN_HTML=<n> to override." >&2
+  exit 1
+fi
+
 # ------------------------------------------------------------------- publish
 # Repo layout, all under docs/:
 #   docs/html/     generated site
@@ -177,6 +194,10 @@ rsync -a --delete "$RENAMED/" "$PUB/docs/"
 
 cp "$SITE_DIR/llms.txt" "$PUB/llms.txt"
 
+# misc/ is a fixed cp list with no rsync --delete, so clear it first -- otherwise
+# a file upstream stopped emitting (e.g. a renamed starting-page-*.json) lingers
+# forever. It is repopulated immediately below.
+rm -f "$PUB"/misc/*
 for f in config.json HelpTOC.json Map.jhm sitemap.xml current.help.version \
          api-object-digest.json starting-page-*.json; do
   cp "$SITE_DIR"/$f "$PUB/misc/" 2>/dev/null || true
@@ -189,8 +210,11 @@ echo "    docs: $(ls "$PUB/docs" | wc -l)"
 echo "    misc: $(ls "$PUB/misc" | wc -l)"
 
 # -------------------------------------------------------------------- commit
+# Stage only generated output; the build writes nothing outside docs/, and
+# scoping here keeps an unrelated stray change in the checkout out of the
+# "Rebuild docs" commit. Scratch files (.upstream-changes.txt, ...) are gitignored.
 cd "$REPO"
-git add -A
+git add -A -- docs/
 if git diff --cached --quiet; then
   echo "==> No changes to commit"
   exit 0
