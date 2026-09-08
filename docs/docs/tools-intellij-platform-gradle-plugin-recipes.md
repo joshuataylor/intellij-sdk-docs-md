@@ -288,6 +288,38 @@ runIde {
 }
 ```
 
+## Run the IDE in LightEdit mode
+
+Pass the IntelliJ IDEA `-e` or `--edit` argument to [runIde](tools-intellij-platform-gradle-plugin-tasks.html#runIde) to open a file in LightEdit mode:
+
+```BASH
+./gradlew runIde --args='-e /absolute/path/to/file'
+```
+
+Omit the file path to open an empty LightEdit window. To keep this setup as a separate reusable task, register a custom `runIde` task:
+
+Kotlin:
+
+```KOTLIN
+val runIdeLightEdit by intellijPlatformTesting.runIde.registering {
+  task {
+    args("-e", project.layout.projectDirectory.file("README.md").asFile.absolutePath)
+  }
+}
+```
+
+Groovy:
+
+```GROOVY
+intellijPlatformTesting.runIde {
+  runIdeLightEdit {
+    task {
+      args '-e', project.layout.projectDirectory.file('README.md').asFile.absolutePath
+    }
+  }
+}
+```
+
 ## Resolve plugin from JetBrains Marketplace in the latest compatible version
 
 When setting a dependency on an external plugin from JetBrains Marketplace, it is necessary to provide its ID and version in `pluginId:version` notation.
