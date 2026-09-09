@@ -345,6 +345,19 @@ tasks {
 }
 ```
 
+To make the build always target the latest available release instead of only listing it, set the version of an installer-based IntelliJ Platform dependency to [&quot;latest&quot;](tools-intellij-platform-gradle-plugin-dependencies-extension.html#target-versions-latest).
+This resolves the newest release across all channels (including EAP) for the requested platform type using an installer distribution (the default `useInstaller = true`):
+
+```KOTLIN
+dependencies {
+  intellijPlatform {
+    intellijIdea("latest")
+  }
+}
+```
+
+When targeting Multi-OS ZIP archives instead (`useInstaller = false`), the 1.x `LATEST-EAP-SNAPSHOT` version keyword (and similar `*-EAP-SNAPSHOT` snapshot coordinates) is still supported, resolved from the [IntelliJ Maven Repositories](tools-intellij-platform-gradle-plugin-repositories-extension.html#intellij-maven-repositories) added with the [snapshots()](tools-intellij-platform-gradle-plugin-repositories-extension.html#intellij-maven-repositories) helper.
+
 ## The currently selected Java Runtime is not JetBrains Runtime (JBR)
 
 When running tests or IDE with your plugin loaded, it is necessary to use JetBrains Runtime (JBR).

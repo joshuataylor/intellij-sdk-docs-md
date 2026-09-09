@@ -258,6 +258,50 @@ It is advised to rely on installer releases, but targeting EAP multi-OS archives
 
 To apply required repositories, use [Default Repositories](tools-intellij-platform-gradle-plugin-repositories-extension.html#default-repositories) or explicit [IntelliJ Maven Repositories](tools-intellij-platform-gradle-plugin-repositories-extension.html#intellij-maven-repositories) helpers.
 
+### Latest Version
+
+Set the version of an installer-based IntelliJ Platform dependency to `"latest"` (or the `Constraints.LATEST_VERSION` constant) to resolve the newest available release for the requested platform type.
+The version is resolved from the product releases listing across all channels for the requested type, picking the newest matching release by build number:
+
+Kotlin:
+
+```KOTLIN
+import org.jetbrains.intellij.platform.gradle.Constants.Constraints
+
+dependencies {
+  intellijPlatform {
+    intellijIdea("latest")
+    // or:
+    intellijIdea(Constraints.LATEST_VERSION)
+  }
+}
+```
+
+Groovy:
+
+```GROOVY
+dependencies {
+  intellijPlatform {
+    intellijIdea 'latest'
+  }
+}
+```
+
+The `"latest"` version works only with the installer distribution (the default `useInstaller = true`); combining it with `useInstaller = false` fails the build.
+
+The same version value can be used for [custom testing configurations](tools-intellij-platform-gradle-plugin-testing-extension.html) registered with `intellijPlatformTesting`:
+
+```KOTLIN
+val runLatestIde = intellijPlatformTesting.runIde.register("runLatestIde") {
+  type = IntelliJPlatformType.IntellijIdea
+  version = "latest"
+}
+```
+
+Warning:
+
+Because the resolved version follows the latest release, the exact IntelliJ Platform used may change over time, which affects build reproducibility.
+
 ## Plugins
 
 Make sure that required [plugin repositories](tools-intellij-platform-gradle-plugin-repositories-extension.html#plugin-repositories) are defined to access non-bundled plugins.

@@ -57632,6 +57632,7 @@ By default, created tasks depend on the IntelliJ Platform defined with [Dependen
 However, it is possible to adjust it to any requirements with passing custom values directly to the created object, `task`, or `sandboxTask` task instances.
 
 Each registered entry extends the IntelliJ Platform dependency configuration model, so properties like `type`, `version`, `productMode`, `useInstaller`, `useCache`, and `localPath` can be configured directly on the created object.
+The `version` accepts `"latest"` (or `Constraints.LATEST_VERSION`) to resolve the [newest available installer release](tools-intellij-platform-gradle-plugin-dependencies-extension.html#target-versions-latest) for the configured `type`.
 
 In projects using the [Module](tools-intellij-platform-gradle-plugin-plugins.html#module) plugin, this extension can register custom `testIde` tasks only.
 Register custom `runIde`, `testIdeUi`, and `testIdePerformance` tasks in the root project using the [Platform](tools-intellij-platform-gradle-plugin-plugins.html#platform) plugin.
@@ -58354,6 +58355,50 @@ Therefore, it is required to explicitly add a dependency on JetBrains Runtime (J
 It is advised to rely on installer releases, but targeting EAP multi-OS archives helps when making sure your plugin will work in the upcoming IDE releases.
 
 To apply required repositories, use [Default Repositories](tools-intellij-platform-gradle-plugin-repositories-extension.html#default-repositories) or explicit [IntelliJ Maven Repositories](tools-intellij-platform-gradle-plugin-repositories-extension.html#intellij-maven-repositories) helpers.
+
+### Latest Version
+
+Set the version of an installer-based IntelliJ Platform dependency to `"latest"` (or the `Constraints.LATEST_VERSION` constant) to resolve the newest available release for the requested platform type.
+The version is resolved from the product releases listing across all channels for the requested type, picking the newest matching release by build number:
+
+Kotlin:
+
+```KOTLIN
+import org.jetbrains.intellij.platform.gradle.Constants.Constraints
+
+dependencies {
+  intellijPlatform {
+    intellijIdea("latest")
+    // or:
+    intellijIdea(Constraints.LATEST_VERSION)
+  }
+}
+```
+
+Groovy:
+
+```GROOVY
+dependencies {
+  intellijPlatform {
+    intellijIdea 'latest'
+  }
+}
+```
+
+The `"latest"` version works only with the installer distribution (the default `useInstaller = true`); combining it with `useInstaller = false` fails the build.
+
+The same version value can be used for [custom testing configurations](tools-intellij-platform-gradle-plugin-testing-extension.html) registered with `intellijPlatformTesting`:
+
+```KOTLIN
+val runLatestIde = intellijPlatformTesting.runIde.register("runLatestIde") {
+  type = IntelliJPlatformType.IntellijIdea
+  version = "latest"
+}
+```
+
+Warning:
+
+Because the resolved version follows the latest release, the exact IntelliJ Platform used may change over time, which affects build reproducibility.
 
 ## Plugins
 
@@ -64390,6 +64435,19 @@ tasks {
   }
 }
 ```
+
+To make the build always target the latest available release instead of only listing it, set the version of an installer-based IntelliJ Platform dependency to [&quot;latest&quot;](tools-intellij-platform-gradle-plugin-dependencies-extension.html#target-versions-latest).
+This resolves the newest release across all channels (including EAP) for the requested platform type using an installer distribution (the default `useInstaller = true`):
+
+```KOTLIN
+dependencies {
+  intellijPlatform {
+    intellijIdea("latest")
+  }
+}
+```
+
+When targeting Multi-OS ZIP archives instead (`useInstaller = false`), the 1.x `LATEST-EAP-SNAPSHOT` version keyword (and similar `*-EAP-SNAPSHOT` snapshot coordinates) is still supported, resolved from the [IntelliJ Maven Repositories](tools-intellij-platform-gradle-plugin-repositories-extension.html#intellij-maven-repositories) added with the [snapshots()](tools-intellij-platform-gradle-plugin-repositories-extension.html#intellij-maven-repositories) helper.
 
 ## The currently selected Java Runtime is not JetBrains Runtime (JBR)
 
