@@ -55930,6 +55930,7 @@ intellijPlatform {
   instrumentCode = true
   projectName = project.name
   sandboxContainer = "..."
+  subscriptionKey = layout.projectDirectory.file("idea.key")
 
   pluginConfiguration {
     // ...
@@ -55954,6 +55955,7 @@ intellijPlatform {
   instrumentCode = true
   projectName = project.name
   sandboxContainer = '...'
+  subscriptionKey = layout.projectDirectory.file('idea.key')
 
   pluginConfiguration {
     // ...
@@ -56081,6 +56083,20 @@ See also:
 * [Tasks: prepareSandbox](tools-intellij-platform-gradle-plugin-tasks.html#prepareSandbox)
 
 * [Task Awares: SandboxAware](tools-intellij-platform-gradle-plugin-task-awares.html#SandboxAware)
+
+### 
+
+`subscriptionKey`
+
+Specifies the IntelliJ IDEA subscription key file used by sandbox-producing tasks.
+The key file is copied to `config/idea.key`, and `com.intellij.modules.ultimate` is removed from `config/disabled_plugins.txt` in each prepared sandbox.
+An individual [PrepareSandboxTask](tools-intellij-platform-gradle-plugin-tasks.html#prepareSandbox-subscriptionKey) can override this project-level value.
+
+Type
+: `RegularFileProperty`
+
+Default value
+: [subscriptionKey](tools-intellij-platform-gradle-plugin-gradle-properties.html#subscriptionKey) Gradle property
 
 ### 
 
@@ -60059,6 +60075,19 @@ Type
 
 ### 
 
+`subscriptionKey`
+
+Specifies the IntelliJ IDEA subscription key file used in this sandbox.
+The key file is copied to `config/idea.key`, and `com.intellij.modules.ultimate` is removed from `config/disabled_plugins.txt`.
+
+Type
+: `RegularFileProperty`
+
+Default value
+: [intellijPlatform.subscriptionKey](tools-intellij-platform-gradle-plugin-extension.html#intellijPlatform-subscriptionKey)
+
+### 
+
 `pluginJar`
 
 Specifies the output archive copied into the sandbox as the main plugin artifact.
@@ -62992,7 +63021,7 @@ org.jetbrains.intellij.platform.selfUpdateCheck=false
 
 
 ## 
-`testIdeBundledPluginsClasspathEnabled`
+`subscriptionKey`
 
 
 
@@ -63000,196 +63029,229 @@ org.jetbrains.intellij.platform.selfUpdateCheck=false
 
 
 
-Controls whether bundled plugins declared in the IntelliJ Platform's `product-info.json` file are added to the classpaths used by the [testIde](tools-intellij-platform-gradle-plugin-tasks.html#testIde) and ordinary Gradle [test](tools-intellij-platform-gradle-plugin-tasks.html#test) tasks.
-Set it to `false` to opt out.
+Specifies the path to an IntelliJ IDEA subscription key file used as the default for [intellijPlatform.subscriptionKey](tools-intellij-platform-gradle-plugin-extension.html#intellijPlatform-subscriptionKey).
+The key file is copied to `config/idea.key`, and `com.intellij.modules.ultimate` is removed from `config/disabled_plugins.txt` in each prepared sandbox.
+Set [PrepareSandboxTask.subscriptionKey](tools-intellij-platform-gradle-plugin-tasks.html#prepareSandbox-subscriptionKey) to override this value for a specific sandbox task.
+
+
+Warning: 
+
+Keep the key file outside version control. The property contains its path, not the subscription key itself.
+
+
+
 
 
 
 Default value
-: `true`
+: empty (subscription activation is disabled)
 
+
+Example
+: ```TEXT
+org.jetbrains.intellij.platform.subscriptionKey=/path/to/idea.key
+```
+
+To configure the key-file path globally for all projects, set the corresponding Gradle project property through the `ORG_GRADLE_PROJECT_org.jetbrains.intellij.platform.subscriptionKey` environment variable.
+
+## 
+
+`testIdeBundledPluginsClasspathEnabled`
+
+Controls whether bundled plugins declared in the IntelliJ Platform's `product-info.json` file are added to the classpaths used by the [testIde](tools-intellij-platform-gradle-plugin-tasks.html#testIde) and ordinary Gradle [test](tools-intellij-platform-gradle-plugin-tasks.html#test) tasks.
+Set it to `false` to opt out.
+
+Default value
+: `true`
 
 Example
 : ```TEXT
 org.jetbrains.intellij.platform.testIdeBundledPluginsClasspathEnabled=false
 ```
 
-## 
 
+
+
+
+
+
+## 
 `testIdeBundledPluginsClasspathExcludes`
+
+
+
+
+
+
 
 Specifies a comma-separated list of bundled plugin IDs or module IDs excluded from the classpaths used by the [testIde](tools-intellij-platform-gradle-plugin-tasks.html#testIde) and ordinary Gradle [test](tools-intellij-platform-gradle-plugin-tasks.html#test) tasks.
 This property applies only when [testIdeBundledPluginsClasspathEnabled](#testIdeBundledPluginsClasspathEnabled) is enabled.
 Set it to an empty value to include all bundled plugins.
 
+
+
 Default value
 : `com.intellij.openRewrite,com.intellij.ja,com.intellij.ko,com.intellij.zh,org.jetbrains.plugins.vue`
+
 
 Example
 : ```TEXT
 org.jetbrains.intellij.platform.testIdeBundledPluginsClasspathExcludes=
 ```
 
-
-
-
-
-
-
 ## 
+
 `verifyPluginDefaultRecommendedIdes`
-
-
-
-
-
-
 
 Controls whether [intellijPlatform.pluginVerification.ides.recommended()](tools-intellij-platform-gradle-plugin-extension.html#intellijPlatform-pluginVerification-ides) is used automatically when no IntelliJ Plugin Verifier IDEs were configured explicitly.
 
-
-
 Default value
 : `true`
-
 
 Example
 : ```
 org.jetbrains.intellij.platform.verifyPluginDefaultRecommendedIdes=false
 ```
 
-## 
 
+
+
+
+
+
+## 
 `shimServerPort`
+
+
+
+
+
+
 
 Specifies the default Shim server port at which the local webserver is run.
 The Shim server is used to proxy requests to the authorized custom plugin repositories registered with [customPluginRepository()](tools-intellij-platform-gradle-plugin-repositories-extension.html#additional-repositories).
 
+
+
 Default value
 : `7348`
+
 
 Example
 : ```
 org.jetbrains.intellij.platform.shimServerPort=7348
 ```
 
-
-
-
-
-
-
 ## 
+
 `useCacheRedirector`
-
-
-
-
-
-
 
 By default, JetBrains Cache Redirector is used when resolving Maven repositories or any resources used by the IntelliJ Platform Gradle Plugin.
 Due to limitations, sometimes it is desired to limit the list of remote endpoints accessed by Gradle.
 
-
 It is possible to refer to the direct location (whenever it is possible) by switching off JetBrains Cache Redirector globally.
-
-
 
 Default value
 : `true`
-
 
 Example
 : ```
 org.jetbrains.intellij.platform.useCacheRedirector=false
 ```
 
-## 
 
+
+
+
+
+
+## 
 `useDefaultSandboxExclusions`
+
+
+
+
+
+
 
 Controls whether Kotlin standard library and Kotlin Coroutines dependencies provided by the IntelliJ Platform are excluded from sandbox runtime classpaths by default.
 The exclusions apply to sandboxes prepared for running the IDE and tests, including the [prepareSandbox](tools-intellij-platform-gradle-plugin-tasks.html#prepareSandbox) and [prepareTestSandbox](tools-intellij-platform-gradle-plugin-tasks.html#prepareTestSandbox) tasks.
 Set this property to `false` to opt out of the default exclusions.
 
+
+
 Default value
 : `true`
+
 
 Example
 : ```TEXT
 org.jetbrains.intellij.platform.useDefaultSandboxExclusions=false
 ```
 
-
-
-
-
-
-
 ## 
+
 `addDefaultIntelliJPlatformDependencies`
-
-
-
-
-
-
 
 Controls whether default IntelliJ Platform dependencies (like `com.intellij` and `intellij.rider`) should be added automatically when creating a dependency on the IntelliJ Platform.
 
-
-
 Default value
 : `true`
-
 
 Example
 : ```
 org.jetbrains.intellij.platform.addDefaultIntelliJPlatformDependencies=false
 ```
 
-## 
 
+
+
+
+
+
+## 
 `productsReleasesCdnBuildsUrl`
+
+
+
+
+
+
 
 Specifies the URL from which the list of JetBrains IDE CDN release builds is fetched. This listing is used for mapping IDE releases to build numbers (for example, to download the corresponding JetBrains Client archive).
 
+
+
 Default value
 : `https://data.services.jetbrains.com/products?code={type}&fields=code,releases.type,releases.version,releases.build`
+
 
 Example
 : ```
 org.jetbrains.intellij.platform.productsReleasesCdnBuildsUrl=https://...
 ```
 
-
-
-
-
-
-
 ## 
+
 `verifyPluginProjectConfigurationMutedMessages`
-
-
-
-
-
-
 
 Allows muting specific messages reported by the [verifyPluginProjectConfiguration](tools-intellij-platform-gradle-plugin-tasks.html#verifyPluginProjectConfiguration) task. The property accepts a comma-separated list of message patterns. Each pattern is matched against the message text using a case-sensitive substring search.
 
-
-
 Default value
 : empty (no messages are muted)
-
 
 Example
 : ```
 org.jetbrains.intellij.platform.verifyPluginProjectConfigurationMutedMessages=Kotlin Standard Library,Java Runtime is not JetBrains Runtime
 ```
+
+
+
+
+
+
+
+
 
 
 

@@ -1263,6 +1263,19 @@ Type
 
 ### 
 
+`subscriptionKey`
+
+Specifies the IntelliJ IDEA subscription key file used in this sandbox.
+The key file is copied to `config/idea.key`, and `com.intellij.modules.ultimate` is removed from `config/disabled_plugins.txt`.
+
+Type
+: `RegularFileProperty`
+
+Default value
+: [intellijPlatform.subscriptionKey](tools-intellij-platform-gradle-plugin-extension.html#intellijPlatform-subscriptionKey)
+
+### 
+
 `pluginJar`
 
 Specifies the output archive copied into the sandbox as the main plugin artifact.
