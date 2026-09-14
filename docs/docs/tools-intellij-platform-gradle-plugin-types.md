@@ -31,6 +31,8 @@ Enum class describing the failure level of the IntelliJ Plugin Verifier CLI tool
 | `ALL` |EnumSet constant containing all possible options. |
 | `NONE` |EnumSet constant containing no options. |
 
+`NOT_DYNAMIC` is detected only from the plain console output and can't be combined with [verifyPlugin.teamCityOutputFormat = true](tools-intellij-platform-gradle-plugin-tasks.html#verifyPlugin-teamCityOutputFormat) (also when selected via `ALL`); the [verifyPlugin](tools-intellij-platform-gradle-plugin-tasks.html#verifyPlugin) task fails fast if both are set.
+
 See also:
 
 * [Extension: intellijPlatform.pluginVerification.failureLevel](tools-intellij-platform-gradle-plugin-extension.html#intellijPlatform-pluginVerification-failureLevel)
@@ -273,6 +275,7 @@ Generic test frameworks for the IntelliJ Platform.
 ---------------------
 | `Platform` |`com.jetbrains.intellij.platform:test-framework`  See "Known Issues" below   |
 | `JUnit5` |`com.jetbrains.intellij.platform:test-framework-junit5`  See "Known Issues" below   |
+| `JUnit5CodeInsight` |`com.jetbrains.intellij.platform:test-framework-junit5-code-insight` |
 | `Bundled` |Adds `[platformPath]/lib/testFramework.jar` file  See "Using Bundled" below   |
 | `Metrics` |`com.jetbrains.intellij.tools:ide-metrics-benchmark`  `com.jetbrains.intellij.tools:ide-metrics-collector`   `com.jetbrains.intellij.tools:ide-util-common` |
 | `Starter` |`com.jetbrains.intellij.tools:ide-starter-squashed`   `com.jetbrains.intellij.tools:ide-starter-junit5`   `com.jetbrains.intellij.tools:ide-starter-driver`   `com.jetbrains.intellij.driver:driver-client`   `com.jetbrains.intellij.driver:driver-sdk`   `com.jetbrains.intellij.driver:driver-model` |

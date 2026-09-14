@@ -58826,6 +58826,16 @@ Tasks have dependencies on each other, they inherit from [Task Awares](tools-int
 and can be configured independently.
 However, most cases will be covered by the [IntelliJ Platform Extension](tools-intellij-platform-gradle-plugin-extension.html).
 
+The plugin organizes the tasks it registers into dedicated Gradle groups, visible in the Gradle tool window and in the `gradle tasks` output:
+
+* intellij platform – building and running tasks, such as [buildPlugin](#buildPlugin), [runIde](#runIde), [signPlugin](#signPlugin), and [publishPlugin](#publishPlugin).
+
+* intellij platform verification – verification tasks, such as [verifyPlugin](#verifyPlugin), [verifyPluginProjectConfiguration](#verifyPluginProjectConfiguration), [verifyPluginStructure](#verifyPluginStructure), and [verifyPluginSignature](#verifyPluginSignature).
+
+* intellij platform info – informational tasks that print resolved data, such as [printBundledPlugins](#printBundledPlugins), [printBundledModules](#printBundledModules), and [printProductsReleases](#printProductsReleases).
+
+Intermediate and internal tasks, such as [prepareSandbox](#prepareSandbox) or [instrumentCode](#instrumentCode), are not assigned to any group and appear under Gradle's other tasks.
+
 ## 
 
 `buildPlugin`
@@ -60398,6 +60408,9 @@ To register a customized task, use [intellijPlatformTesting.runIde](tools-intell
 When [splitMode](tools-intellij-platform-gradle-plugin-task-awares.html#SplitModeAware-splitMode) is enabled, the task starts the IDE in Split Mode.
 To run the backend and frontend as separate Gradle tasks, use [runIdeBackend](#runIdeBackend) and [runIdeFrontend](#runIdeFrontend), or generate IDE run configurations with [generateSplitModeRunConfigurations](#generateSplitModeRunConfigurations).
 
+On launch, the task logs the path to the sandbox log file (`idea.log` in the sandbox log directory) at the lifecycle level, prefixed with `IDE logs:`.
+In Split Mode, the backend and frontend processes report their paths separately, prefixed with `IDE logs (backend):` and `IDE logs (frontend):`.
+
 ### 
 
 `executionMode`
@@ -60890,6 +60903,9 @@ Due to caching, the latest Plugin Verifier release version (1.410) might not be 
 In such cases, [refresh dependencies](https://docs.gradle.org/current/userguide/dependency_caching.html#sec:refreshing-dependencies)
 manually.
 
+The task derives its pass/fail verdict from the Plugin Verifier report files rather than the console output, so the outcome no longer depends on [teamCityOutputFormat](#verifyPlugin-teamCityOutputFormat).
+If the Plugin Verifier finishes without writing a verdict for any of the target IDEs, the task fails instead of reporting a false-positive success.
+
 See also:
 
 * [Extension: intellijPlatform.pluginVerification](tools-intellij-platform-gradle-plugin-extension.html#intellijPlatform-pluginVerification)
@@ -61016,6 +61032,9 @@ Default value
 
 Specifies whether to use the TeamCity-compatible output format.
 If set to `true`, outputs in a format compatible with [TeamCity](https://www.jetbrains.com/teamcity/), directing the output to stdout.
+
+The [NOT_DYNAMIC](tools-intellij-platform-gradle-plugin-types.html#FailureLevel) failure level can't be combined with `teamCityOutputFormat = true` (also when selected via [FailureLevel.ALL](tools-intellij-platform-gradle-plugin-types.html#FailureLevel)), as the dynamic-plugin eligibility status is neither persisted in the report files nor emitted as a TeamCity service message.
+The [verifyPlugin](#verifyPlugin) task fails fast with a configuration error if both are set.
 
 Type
 : `Property<Boolean>`
@@ -62388,6 +62407,8 @@ Enum class describing the failure level of the IntelliJ Plugin Verifier CLI tool
 | `ALL` |EnumSet constant containing all possible options. |
 | `NONE` |EnumSet constant containing no options. |
 
+`NOT_DYNAMIC` is detected only from the plain console output and can't be combined with [verifyPlugin.teamCityOutputFormat = true](tools-intellij-platform-gradle-plugin-tasks.html#verifyPlugin-teamCityOutputFormat) (also when selected via `ALL`); the [verifyPlugin](tools-intellij-platform-gradle-plugin-tasks.html#verifyPlugin) task fails fast if both are set.
+
 See also:
 
 * [Extension: intellijPlatform.pluginVerification.failureLevel](tools-intellij-platform-gradle-plugin-extension.html#intellijPlatform-pluginVerification-failureLevel)
@@ -62630,6 +62651,7 @@ Generic test frameworks for the IntelliJ Platform.
 ---------------------
 | `Platform` |`com.jetbrains.intellij.platform:test-framework`  See "Known Issues" below   |
 | `JUnit5` |`com.jetbrains.intellij.platform:test-framework-junit5`  See "Known Issues" below   |
+| `JUnit5CodeInsight` |`com.jetbrains.intellij.platform:test-framework-junit5-code-insight` |
 | `Bundled` |Adds `[platformPath]/lib/testFramework.jar` file  See "Using Bundled" below   |
 | `Metrics` |`com.jetbrains.intellij.tools:ide-metrics-benchmark`  `com.jetbrains.intellij.tools:ide-metrics-collector`   `com.jetbrains.intellij.tools:ide-util-common` |
 | `Starter` |`com.jetbrains.intellij.tools:ide-starter-squashed`   `com.jetbrains.intellij.tools:ide-starter-junit5`   `com.jetbrains.intellij.tools:ide-starter-driver`   `com.jetbrains.intellij.driver:driver-client`   `com.jetbrains.intellij.driver:driver-sdk`   `com.jetbrains.intellij.driver:driver-model` |
@@ -64511,6 +64533,19 @@ dependencies {
 ```
 
 When targeting Multi-OS ZIP archives instead (`useInstaller = false`), the 1.x `LATEST-EAP-SNAPSHOT` version keyword (and similar `*-EAP-SNAPSHOT` snapshot coordinates) is still supported, resolved from the [IntelliJ Maven Repositories](tools-intellij-platform-gradle-plugin-repositories-extension.html#intellij-maven-repositories) added with the [snapshots()](tools-intellij-platform-gradle-plugin-repositories-extension.html#intellij-maven-repositories) helper.
+
+## How does the plugin behave in Gradle offline mode?
+
+The plugin fully honors Gradle's [--offline](https://docs.gradle.org/current/userguide/command_line_interface.html#sec:command_line_execution_options) flag across its custom, out-of-band network paths, including the product releases listing, installer and IDE download URLs, [&quot;latest&quot;](tools-intellij-platform-gradle-plugin-dependencies-extension.html#target-versions-latest)/`LATEST-EAP-SNAPSHOT` resolution, JetBrains Marketplace listings, and `maven-metadata.xml` lookups.
+
+When the build runs offline, the plugin reuses already-cached artifacts instead of reaching the network.
+If the required data isn't cached yet, it fails fast with a message naming the missing artifact instead of hanging or throwing an opaque network error:
+
+```
+No cached version of <artifact> available for offline mode. Run the build once without the `--offline` flag to populate the cache, then retry.
+```
+
+Run the build once without `--offline` to populate the caches, then subsequent offline builds reuse them.
 
 ## The currently selected Java Runtime is not JetBrains Runtime (JBR)
 
