@@ -21,7 +21,7 @@ import org.jetbrains.intellij.platform.gradle.*
 
 plugins {
   //...
-  id("org.jetbrains.intellij.platform") version "2.18.1"
+  id("org.jetbrains.intellij.platform") version "2.19.0"
 }
 
 sourceSets {

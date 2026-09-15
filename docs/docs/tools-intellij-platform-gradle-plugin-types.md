@@ -10,7 +10,7 @@ This page lists various types used to configure [Tasks](tools-intellij-platform-
 
 `FailureLevel`
 
-[VerifyPluginTask.FailureLevel](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.18.1/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/VerifyPluginTask.kt)
+[VerifyPluginTask.FailureLevel](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/VerifyPluginTask.kt)
 
 Enum class describing the failure level of the IntelliJ Plugin Verifier CLI tool run with the [verifyPlugin](tools-intellij-platform-gradle-plugin-tasks.html#verifyPlugin) task.
 
@@ -45,7 +45,7 @@ See also:
 
 `IntelliJPlatformType`
 
-[IntelliJPlatformType](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.18.1/src/main/kotlin/org/jetbrains/intellij/platform/gradle/IntelliJPlatformType.kt)
+[IntelliJPlatformType](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/IntelliJPlatformType.kt)
 
 Describes all IntelliJ Platform types available to be used for plugin development, dependency resolution, and plugin verification.
 
@@ -88,7 +88,7 @@ Notes:
 
 `ProductMode`
 
-[ProductMode](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.18.1/src/main/kotlin/org/jetbrains/intellij/platform/gradle/ProductMode.kt)
+[ProductMode](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/ProductMode.kt)
 
 Describes a mode in which a product may be started. This can be configured on the target platform dependency to influence how the IDE is started for development and testing.
 
@@ -120,7 +120,7 @@ See also:
 
 `ProductInfo`
 
-[ProductInfo](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.18.1/src/main/kotlin/org/jetbrains/intellij/platform/gradle/models/ProductInfo.kt)
+[ProductInfo](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/models/ProductInfo.kt)
 
 Represents information about the IntelliJ Platform product.
 
@@ -160,7 +160,7 @@ Throws
 
 `ProductRelease.Channel`
 
-[ProductRelease.Channel](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.18.1/src/main/kotlin/org/jetbrains/intellij/platform/gradle/models/ProductRelease.kt)
+[ProductRelease.Channel](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/models/ProductRelease.kt)
 
 List of available channels used by [JetBrains IDEs](intellij-platform.html#ides-based-on-the-intellij-platform)
 and [Android Studio](android-studio.html) for describing binary releases.
@@ -186,7 +186,7 @@ See also:
 
 `ProductReleasesFilterParameters`
 
-[ProductReleasesValueSource](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.18.1/src/main/kotlin/org/jetbrains/intellij/platform/gradle/providers/ProductReleasesFilterParameters.kt)
+[ProductReleasesValueSource](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/providers/ProductReleasesFilterParameters.kt)
 
 Interface that provides a clear way to filter binary product releases for IntelliJ Plugin Verifier.
 
@@ -211,7 +211,7 @@ See also:
 
 `RequestedIntelliJPlatform`
 
-[RequestedIntelliJPlatform](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.18.1/src/main/kotlin/org/jetbrains/intellij/platform/gradle/services/RequestedIntelliJPlatformsService.kt)
+[RequestedIntelliJPlatform](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/services/RequestedIntelliJPlatformsService.kt)
 
 Represents a requested IntelliJ Platform build with its type, version, and installation/cache preferences.
 Used internally by the Gradle plugin to propagate platform settings across configurations for development, dependency resolution, and plugin verification.
@@ -228,7 +228,7 @@ Used internally by the Gradle plugin to propagate platform settings across confi
 
 `SplitModeAware.PluginInstallationTarget` (formerly `SplitModeTarget`)
 
-[SplitModeAware.PluginInstallationTarget](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.18.1/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/aware/SplitModeAware.kt)
+[SplitModeAware.PluginInstallationTarget](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/aware/SplitModeAware.kt)
 
 Describes a part of the product where the developed plugin can be installed when running in splitMode handled by [SplitModeAware](tools-intellij-platform-gradle-plugin-task-awares.html#SplitModeAware).
 
@@ -242,7 +242,7 @@ Describes a part of the product where the developed plugin can be installed when
 
 `Subsystems`
 
-[VerifyPluginTask.Subsystems](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.18.1/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/VerifyPluginTask.kt)
+[VerifyPluginTask.Subsystems](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/VerifyPluginTask.kt)
 
 Specify which subsystems of the IDE should be checked by the IntelliJ Plugin Verifier CLI tool run with the [verifyPlugin](tools-intellij-platform-gradle-plugin-tasks.html#verifyPlugin) task.
 
@@ -262,7 +262,7 @@ See also:
 
 `TestFrameworkType`
 
-[TestFrameworkType](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.18.1/src/main/kotlin/org/jetbrains/intellij/platform/gradle/TestFrameworkType.kt)
+[TestFrameworkType](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/TestFrameworkType.kt)
 
 Allows for adding `test-framework` testing library variants.
 See [Dependencies Extension: Testing](tools-intellij-platform-gradle-plugin-dependencies-extension.html#testing).
@@ -343,7 +343,7 @@ Some plugins offer dedicated test frameworks, for example, `Plugin.Java` when us
 
 `VerificationReportsFormats`
 
-[VerifyPluginTask.VerificationReportsFormats](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.18.1/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/VerifyPluginTask.kt)
+[VerifyPluginTask.VerificationReportsFormats](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/VerifyPluginTask.kt)
 
 Enum class describing the type of the results produced by the IntelliJ Plugin Verifier CLI tool run with the [verifyPlugin](tools-intellij-platform-gradle-plugin-tasks.html#verifyPlugin) task.
 

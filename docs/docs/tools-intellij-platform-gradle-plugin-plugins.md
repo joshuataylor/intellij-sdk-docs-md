@@ -57,7 +57,7 @@ Kotlin:
 
 ```KOTLIN
 plugins {
-  id("org.jetbrains.intellij.platform") version "2.18.1"
+  id("org.jetbrains.intellij.platform") version "2.19.0"
 }
 ```
 
@@ -67,7 +67,7 @@ Groovy:
 
 ```GROOVY
 plugins {
-  id 'org.jetbrains.intellij.platform' version '2.18.1'
+  id 'org.jetbrains.intellij.platform' version '2.19.0'
 }
 ```
 
@@ -150,7 +150,7 @@ repositories {
 
 ```KOTLIN
 plugins {
-  id("org.jetbrains.intellij.platform") version "2.18.1"
+  id("org.jetbrains.intellij.platform") version "2.19.0"
 }
 
 repositories {
@@ -200,7 +200,7 @@ repositories {
 
 ```GROOVY
 plugins {
-  id 'org.jetbrains.intellij.platform' version '2.18.1'
+  id 'org.jetbrains.intellij.platform' version '2.19.0'
 }
 
 repositories {
@@ -267,7 +267,7 @@ Kotlin:
 import org.jetbrains.intellij.platform.gradle.extensions.intellijPlatform
 
 plugins {
-  id("org.jetbrains.intellij.platform.settings") version "2.18.1"
+  id("org.jetbrains.intellij.platform.settings") version "2.19.0"
 }
 
 rootProject.name = "..."
@@ -326,7 +326,7 @@ Groovy:
 import org.jetbrains.intellij.platform.gradle.extensions.intellijPlatform
 
 plugins {
-  id 'org.jetbrains.intellij.platform.settings' version '2.18.1'
+  id 'org.jetbrains.intellij.platform.settings' version '2.19.0'
 }
 
 rootProject.name = '...'
@@ -389,7 +389,7 @@ Kotlin:
 
 ```KOTLIN
 plugins {
-  id("org.jetbrains.intellij.platform.grammarkit") version "2.18.1"
+  id("org.jetbrains.intellij.platform.grammarkit") version "2.19.0"
 }
 ```
 
@@ -399,7 +399,7 @@ Groovy:
 
 ```GROOVY
 plugins {
-  id 'org.jetbrains.intellij.platform.grammarkit' version '2.18.1'
+  id 'org.jetbrains.intellij.platform.grammarkit' version '2.19.0'
 }
 ```
 
