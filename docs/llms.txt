@@ -38856,6 +38856,8 @@ This data is updated daily and also available in [JSON](https://jb.gg/android-st
 
 | Release Name |Channel |Version |IntelliJ IDEA Version |Release Date |
 -----------------------------------------------------------------------
+| Rabbit 1    2026.2.1 RC 1   |![RC](https://img.shields.io/badge/-RC-red?style=flat-square) |2026.2.1.6AI‑262.9437.185.2621.16355069   |2026.2.1262.9437.185   |Sep 16, 2026 |
+| Rabbit 1    2026.2.1 RC 1   |![RC](https://img.shields.io/badge/-RC-red?style=flat-square) |2026.2.1.6AI‑262.9437.185.2621.16355069   |2026.2.1262.9437.185   |Sep 16, 2026 |
 | Rabbit 1    2026.2.1 Canary 5   |![Canary](https://img.shields.io/badge/-Canary-lightgrey?style=flat-square) |2026.2.1.5AI‑262.9437.185.2621.16309011   |2026.2.1262.9437.185   |Sep 10, 2026 |
 | Rabbit 1    2026.2.1 Canary 4   |![Canary](https://img.shields.io/badge/-Canary-lightgrey?style=flat-square) |2026.2.1.4AI‑262.9437.185.2621.16253642   |2026.2.1262.9437.185   |Sep 3, 2026 |
 | Rabbit 1    2026.2.1 Canary 3   |![Canary](https://img.shields.io/badge/-Canary-lightgrey?style=flat-square) |2026.2.1.3AI‑262.9437.185.2621.16190720   |2026.2.1262.9437.185   |Aug 27, 2026 |
