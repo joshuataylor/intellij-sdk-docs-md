@@ -8,7 +8,7 @@ Tip:
 
 This page is part of multistep [Testing a Custom Language Plugin](writing-tests-for-plugins.html) tutorial.
 
-See also [FormatterTestCase](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/testFramework/src/com/intellij/psi/formatter/FormatterTestCase.java) as convenient base class.
+See also [FormatterTestCase](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/testFramework/src/com/intellij/psi/formatter/FormatterTestCase.java) as convenient base class.
 
 ## Define Test Data
 

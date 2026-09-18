@@ -103,7 +103,7 @@ All children have an `id` suffix that is unique among their siblings.
 
 ## Implementations for Parent-Child Settings
 
-Implementations can be based on [Configurable](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/ide-core/src/com/intellij/openapi/options/Configurable.java), [ConfigurableProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/ide-core/src/com/intellij/openapi/options/ConfigurableProvider.java) or one of their subtypes.
+Implementations can be based on [Configurable](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/ide-core/src/com/intellij/openapi/options/Configurable.java), [ConfigurableProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/ide-core/src/com/intellij/openapi/options/ConfigurableProvider.java) or one of their subtypes.
 For more information about creating Settings implementations, see [Implementations for Settings Extension Points](settings-guide.html#implementations-for-settings-extension-points).
 
 ### Configurable Marker Interfaces

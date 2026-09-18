@@ -1,6 +1,6 @@
 # Services
 
-A service is a plugin component loaded on demand when your plugin calls the `getService()` method of corresponding [ComponentManager](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/extensions/src/com/intellij/openapi/components/ComponentManager.java) instance (see [Types](#types)).
+A service is a plugin component loaded on demand when your plugin calls the `getService()` method of corresponding [ComponentManager](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/extensions/src/com/intellij/openapi/components/ComponentManager.java) instance (see [Types](#types)).
 The IntelliJ Platform ensures that only one instance of a service is loaded even though it is called several times.
 Services are used to encapsulate logic operating on a set of related classes or to provide some reusable functionality that can be used across the plugin project.
 Conceptually, they don't differ from the service classes in other languages or frameworks.
@@ -8,7 +8,7 @@ Conceptually, they don't differ from the service classes in other languages or f
 A service must have an implementation class used for service instantiation.
 A service may also have an interface class used to obtain the service instance and provide the service's API.
 
-A service needing a shutdown hook/cleanup routine can implement [Disposable](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/util/src/com/intellij/openapi/Disposable.java) and perform necessary work in `dispose()` (see [Automatically Disposed Objects](disposers.html#automatically-disposed-objects)).
+A service needing a shutdown hook/cleanup routine can implement [Disposable](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/util/src/com/intellij/openapi/Disposable.java) and perform necessary work in `dispose()` (see [Automatically Disposed Objects](disposers.html#automatically-disposed-objects)).
 
 Note: Services as API
 
@@ -27,7 +27,7 @@ Avoid using module-level services as it can increase memory usage for projects w
 
 To improve startup performance, avoid any heavy initializations in the constructor.
 
-Project/Module-level service constructors can have a [Project](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/openapi/project/Project.java)/[Module](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/openapi/module/Module.java) argument.
+Project/Module-level service constructors can have a [Project](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/openapi/project/Project.java)/[Module](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/openapi/module/Module.java) argument.
 
 Warning: Do not use Constructor Injection
 
@@ -60,7 +60,7 @@ See [Launching Coroutine From Service Scope](launching-coroutines.html#launching
 ## Light Services
 
 A service not going to be overridden or exposed as API to other plugins does not need to be registered in `[plugin.xml](plugin-configuration-file.html)` (see [Declaring a Service](#declaring-a-service)).
-Instead, annotate the service class with [@Service](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/openapi/components/Service.java) (see [Examples](#examples)).
+Instead, annotate the service class with [@Service](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/openapi/components/Service.java) (see [Examples](#examples)).
 The service instance will be created in the scope according to the caller (see [Retrieving a Service](#retrieving-a-service)).
 
 ### Light Service Restrictions

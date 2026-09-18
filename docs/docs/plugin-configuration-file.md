@@ -596,7 +596,7 @@ Attributes
 
   * `interface` (`interface` or `beanClass` is required) The fully qualified name of the interface to be implemented for extending the plugin's functionality. Only one of the `interface` and `beanClass` attributes can be specified.
 
-  * `beanClass` (`interface` or `beanClass` is required) The fully qualified name of the extension point bean class providing additional information to the plugin. The bean class specifies one or several properties annotated with the [@Attribute](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/util/src/com/intellij/util/xmlb/annotations/Attribute.java) annotation. Note that bean classes do not follow the JavaBean standard. Implement [PluginAware](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/extensions/src/com/intellij/openapi/extensions/PluginAware.java) to obtain information about the plugin providing the actual extension (see [Error Handling](plugin-extension-points.html#error-handling)). Only one of the `interface` and `beanClass` attributes can be specified.
+  * `beanClass` (`interface` or `beanClass` is required) The fully qualified name of the extension point bean class providing additional information to the plugin. The bean class specifies one or several properties annotated with the [@Attribute](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/util/src/com/intellij/util/xmlb/annotations/Attribute.java) annotation. Note that bean classes do not follow the JavaBean standard. Implement [PluginAware](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/extensions/src/com/intellij/openapi/extensions/PluginAware.java) to obtain information about the plugin providing the actual extension (see [Error Handling](plugin-extension-points.html#error-handling)). Only one of the `interface` and `beanClass` attributes can be specified.
 
   * `dynamic` (optional) Boolean value defining whether the extension point meets the requirements to be [dynamic](plugin-extension-points.html#dynamic-extension-points), which is a prerequisite for [dynamic plugins](dynamic-plugins.html). Default value: `false`.
 
@@ -807,7 +807,7 @@ Required
 
 
 Attributes
-: * `group-id` (required) Specifies the ID of the [&lt;group&gt;](#idea-plugin__actions__group) to which the action is added. The group must be an implementation of the [DefaultActionGroup](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-api/src/com/intellij/openapi/actionSystem/DefaultActionGroup.java) class.
+: * `group-id` (required) Specifies the ID of the [&lt;group&gt;](#idea-plugin__actions__group) to which the action is added. The group must be an implementation of the [DefaultActionGroup](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-api/src/com/intellij/openapi/actionSystem/DefaultActionGroup.java) class.
 
   * `anchor` (optional) Specifies the position of the action relative to other actions. Allowed values: * `first` - the action is placed as the first in the group * `last` (default) - the action is placed as the last in the group * `before` - the action is placed before the action specified by the `relative-to-action` attribute * `after` - the action is placed after the action specified by the `relative-to-action` attribute
 
@@ -833,7 +833,7 @@ Required
 : no
 
 Attributes
-: * `keymap` (required) Specifies the keymap for which the action shortcut is active. IDs of the standard keymaps are defined as constants in the [KeymapManager](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-api/src/com/intellij/openapi/keymap/KeymapManager.java) class.
+: * `keymap` (required) Specifies the keymap for which the action shortcut is active. IDs of the standard keymaps are defined as constants in the [KeymapManager](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-api/src/com/intellij/openapi/keymap/KeymapManager.java) class.
 
 * `first-keystroke` (required) Specifies the first keystroke of the action shortcut. The keystrokes are specified according to the regular Swing rules.
 
@@ -861,7 +861,7 @@ Required
 : no
 
 Attributes
-: * `keymap` (required) Specifies the keymap for which the action shortcut is active. IDs of the standard keymaps are defined as constants in the [KeymapManager](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-api/src/com/intellij/openapi/keymap/KeymapManager.java) class.
+: * `keymap` (required) Specifies the keymap for which the action shortcut is active. IDs of the standard keymaps are defined as constants in the [KeymapManager](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-api/src/com/intellij/openapi/keymap/KeymapManager.java) class.
 
 * `keystroke` (required) Specifies the clicks and modifiers for the action. It is defined as a sequence of words separated by spaces: * modifier keys: `shift`, `control`, `meta`, `alt`, `altGraph` * mouse buttons: `button1`, `button2`, `button3` * button double-click: `doubleClick`
 
@@ -976,7 +976,7 @@ Required
 Attributes
 : * `id` (required) A unique group identifier. The group identifier must be unique between different plugins. Thus, it is recommended to prepend it with the value of the plugin [&lt;id&gt;](#idea-plugin__id).
 
-* `class` (optional) The fully qualified name of the group implementation class. If not specified, [DefaultActionGroup](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-api/src/com/intellij/openapi/actionSystem/DefaultActionGroup.java) is used.
+* `class` (optional) The fully qualified name of the group implementation class. If not specified, [DefaultActionGroup](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-api/src/com/intellij/openapi/actionSystem/DefaultActionGroup.java) is used.
 
 * `text` (required if the `popup` is `true` and the group is not [localized](action-system.html#localizing-actions-and-groups)) The default long-version text to be displayed for the group (text for the menu item showing the submenu).
 

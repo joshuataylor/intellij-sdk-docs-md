@@ -9,15 +9,15 @@ The navigation bar implementation is used to customize and extend the
 structure.
 
 The starting point for the navigation bar extension is the
-[NavBarModelExtension](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-impl/src/com/intellij/ide/navigationToolbar/NavBarModelExtension.java)
+[NavBarModelExtension](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-impl/src/com/intellij/ide/navigationToolbar/NavBarModelExtension.java)
 interface, which is registered in the [com.intellij.navbar](https://jb.gg/ipe?extensions=com.intellij.navbar) extension point
 .
 
 To reuse the IntelliJ Platform implementation, you can extend one of two classes:
 
-* [DefaultNavBarExtension](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-impl/src/com/intellij/ide/navigationToolbar/DefaultNavBarExtension.java)
+* [DefaultNavBarExtension](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-impl/src/com/intellij/ide/navigationToolbar/DefaultNavBarExtension.java)
 
-* [StructureAwareNavBarModelExtension](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/structure-view-impl/src/com/intellij/ide/navigationToolbar/StructureAwareNavBarModelExtension.kt)
+* [StructureAwareNavBarModelExtension](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/structure-view-impl/src/com/intellij/ide/navigationToolbar/StructureAwareNavBarModelExtension.kt)
 
 ## Default Navigation Bar
 

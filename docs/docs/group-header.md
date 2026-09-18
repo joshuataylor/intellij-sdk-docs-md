@@ -1,7 +1,7 @@
 # Group Header
 
 <tldr>
-Implementation: [TitledSeparator](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-api/src/com/intellij/ui/TitledSeparator.java)
+Implementation: [TitledSeparator](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-api/src/com/intellij/ui/TitledSeparator.java)
 </tldr>
 
 A group header clearly labels a group of UI controls.

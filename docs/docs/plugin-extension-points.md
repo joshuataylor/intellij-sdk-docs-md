@@ -16,18 +16,18 @@ Procedure: Declaring Extension Point
 The plugin that contributes to the extension point will read the specified properties from the `plugin.xml` file.
 
 If extension implementations are filtered according to [dumb mode](indexing-and-psi-stubs.html#dumb-mode), the base class should be
-marked with [PossiblyDumbAware](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/openapi/project/PossiblyDumbAware.java) to highlight this.
-Use [DumbService.getDumbAwareExtensions()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/openapi/project/DumbService.kt) to retrieve dumb-aware implementations.
+marked with [PossiblyDumbAware](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/openapi/project/PossiblyDumbAware.java) to highlight this.
+Use [DumbService.getDumbAwareExtensions()](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/openapi/project/DumbService.kt) to retrieve dumb-aware implementations.
 
 Base classes for extensions requiring a key:
 
-* [LanguageExtension](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/lang/LanguageExtension.java)
+* [LanguageExtension](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/lang/LanguageExtension.java)
 
-* [FileTypeExtension](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/openapi/fileTypes/FileTypeExtension.java)
+* [FileTypeExtension](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/openapi/fileTypes/FileTypeExtension.java)
 
-* [ClassExtension](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/openapi/util/ClassExtension.java)
+* [ClassExtension](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/openapi/util/ClassExtension.java)
 
-* [KeyedExtensionCollector](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/openapi/util/KeyedExtensionCollector.java)
+* [KeyedExtensionCollector](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/openapi/util/KeyedExtensionCollector.java)
 
 Note:
 
@@ -110,8 +110,8 @@ For the above extension points, their usage in anotherPlugin would look like thi
 
 ## Using Extension Points
 
-To refer to all registered extension instances at runtime, declare an [ExtensionPointName](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/extensions/src/com/intellij/openapi/extensions/ExtensionPointName.kt) with private visibility passing in the fully qualified name matching its [declaration in plugin.xml](#declaring-extension-points).
-If needed, provide a public method to query registered extensions (Sample: [TestSourcesFilter.isTestSources()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/projectModel-api/src/com/intellij/openapi/roots/TestSourcesFilter.java)).
+To refer to all registered extension instances at runtime, declare an [ExtensionPointName](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/extensions/src/com/intellij/openapi/extensions/ExtensionPointName.kt) with private visibility passing in the fully qualified name matching its [declaration in plugin.xml](#declaring-extension-points).
+If needed, provide a public method to query registered extensions (Sample: [TestSourcesFilter.isTestSources()](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/projectModel-api/src/com/intellij/openapi/roots/TestSourcesFilter.java)).
 
 `myPlugin/src/com/myplugin/MyExtensionUsingService.java`
 
@@ -139,16 +139,16 @@ Code insight is available for the extension point name String literal (2022.3).
 ### Error Handling
 
 When processing extension implementations or registrations, there might be errors, compatibility and configuration issues.
-Use [PluginException](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/diagnostic/PluginException.java) to log and correctly attribute the causing plugin for
+Use [PluginException](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/diagnostic/PluginException.java) to log and correctly attribute the causing plugin for
 [builtin error reporting](ide-infrastructure.html#error-reporting).
 
 To report use of a deprecated API, use `PluginException.reportDeprecatedUsage()` methods.
 
 Examples:
 
-* [CompositeFoldingBuilder.assertSameFile()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/lang/folding/CompositeFoldingBuilder.java)
+* [CompositeFoldingBuilder.assertSameFile()](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/lang/folding/CompositeFoldingBuilder.java)
 
-* [InspectionProfileEntry.getDisplayName()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/analysis-api/src/com/intellij/codeInspection/InspectionProfileEntry.java)
+* [InspectionProfileEntry.getDisplayName()](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/analysis-api/src/com/intellij/codeInspection/InspectionProfileEntry.java)
 
 ## Dynamic Extension Points
 
@@ -156,7 +156,7 @@ To support [Dynamic Plugins](dynamic-plugins.html), an extension point must adhe
 
 * extensions are enumerated on every use, and extension instances are not stored anywhere
 
-* alternatively, an [ExtensionPointListener](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/extensions/src/com/intellij/openapi/extensions/ExtensionPointListener.kt) can perform any necessary updates of data structures (register via `ExtensionPointName.addExtensionPointListener()`)
+* alternatively, an [ExtensionPointListener](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/extensions/src/com/intellij/openapi/extensions/ExtensionPointListener.kt) can perform any necessary updates of data structures (register via `ExtensionPointName.addExtensionPointListener()`)
 
 Extension points matching these conditions can then be marked as dynamic by adding `dynamic="true"` in their declaration:
 

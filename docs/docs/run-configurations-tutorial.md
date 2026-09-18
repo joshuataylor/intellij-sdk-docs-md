@@ -18,7 +18,7 @@ See the [Creating a Plugin Project](creating-plugin-project.html) section for de
 
 Implement a `ConfigurationType`
 
-Implement [ConfigurationType](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/execution/src/com/intellij/execution/configurations/ConfigurationType.java):
+Implement [ConfigurationType](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/execution/src/com/intellij/execution/configurations/ConfigurationType.java):
 
 ```JAVA
 final class DemoRunConfigurationType extends ConfigurationTypeBase {
@@ -52,7 +52,7 @@ in the [plugin.xml](https://github.com/JetBrains/intellij-sdk-code-samples/tree/
 
 Implement a `ConfigurationFactory`
 
-Implement a new [ConfigurationFactory](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/execution/src/com/intellij/execution/configurations/ConfigurationFactory.java) through which custom run configurations will be created.
+Implement a new [ConfigurationFactory](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/execution/src/com/intellij/execution/configurations/ConfigurationFactory.java) through which custom run configurations will be created.
 
 ```JAVA
 public class DemoConfigurationFactory extends ConfigurationFactory {
@@ -82,7 +82,7 @@ public class DemoConfigurationFactory extends ConfigurationFactory {
 }
 ```
 
-Implement corresponding configuration options class extending [RunConfigurationOptions](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/execution/src/com/intellij/execution/configurations/RunConfigurationOptions.kt) to store settings.
+Implement corresponding configuration options class extending [RunConfigurationOptions](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/execution/src/com/intellij/execution/configurations/RunConfigurationOptions.kt) to store settings.
 
 ```JAVA
 public class DemoRunConfigurationOptions extends RunConfigurationOptions {
@@ -109,8 +109,8 @@ To make your changes visible from the UI, implement a new run configuration.
 
 Note:
 
-In most of the cases it is sufficient derive a custom run configuration class from the [RunConfigurationBase](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/execution/src/com/intellij/execution/configurations/RunConfigurationBase.java).
-If implementing specific settings externalization rules and I/O behaviour is required, use [RunConfiguration](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/execution/src/com/intellij/execution/configurations/RunConfiguration.java) interface.
+In most of the cases it is sufficient derive a custom run configuration class from the [RunConfigurationBase](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/execution/src/com/intellij/execution/configurations/RunConfigurationBase.java).
+If implementing specific settings externalization rules and I/O behaviour is required, use [RunConfiguration](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/execution/src/com/intellij/execution/configurations/RunConfiguration.java) interface.
 
 ```JAVA
 public class DemoRunConfiguration extends RunConfigurationBase<DemoRunConfigurationOptions> {

@@ -1,7 +1,7 @@
 # Text Area
 
 <tldr>
-Implementation: [JBTextArea](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-api/src/com/intellij/ui/components/JBTextArea.java)
+Implementation: [JBTextArea](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-api/src/com/intellij/ui/components/JBTextArea.java)
 </tldr>
 
 A text area allows users to enter or edit multi-line text.

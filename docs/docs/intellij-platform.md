@@ -35,10 +35,10 @@ In some cases, implementing an actual IntelliJ Platform plugin might not be nece
 
 ## Open Source
 
-The IntelliJ Platform is Open Source, under the [Apache License](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/LICENSE.txt), and [hosted on GitHub](https://github.com/JetBrains/intellij-community).
+The IntelliJ Platform is Open Source, under the [Apache License](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/LICENSE.txt), and [hosted on GitHub](https://github.com/JetBrains/intellij-community).
 
 While this guide refers to the IntelliJ Platform as a separate entity, there is no "IntelliJ Platform" GitHub repository.
-Instead, the platform is considered to be an almost complete overlap with the [IntelliJ Platform](idea.html) (the GitHub repository linked above is the [JetBrains/intellij-community](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/README.md) repository).
+Instead, the platform is considered to be an almost complete overlap with the [IntelliJ Platform](idea.html) (the GitHub repository linked above is the [JetBrains/intellij-community](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/README.md) repository).
 
 The version of the IntelliJ Platform is defined by the version of the corresponding IntelliJ IDEA release.
 For example, to build a plugin against IntelliJ IDEA (2019.1.1), build #191.6707.61 means specifying the same build number tag to get the correct IntelliJ Platform files from the `intellij-community` repository.

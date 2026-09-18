@@ -7,7 +7,7 @@ Procedure: Preliminary Steps
 Getting the IntelliJ IDEA CE source code is not a requirement for theme development as debugging the platform code while developing a theme is a rare situation.
 In case you are developing a plugin extending IDE behavior, or you need to understand how some components work internally, having sources makes debugging much more straightforward.
 
-For detailed instructions on how to check out the code efficiently, refer to the Getting IntelliJ Platform section of the [IntelliJ Platform README file](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/README.md).
+For detailed instructions on how to check out the code efficiently, refer to the Getting IntelliJ Platform section of the [IntelliJ Platform README file](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/README.md).
 Note that building the checked-out sources is not required in this case.
 
 ## Configuring IntelliJ Platform Plugin SDK

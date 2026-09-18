@@ -10,7 +10,7 @@ This page is part of multistep [Testing a Custom Language Plugin](writing-tests-
 
 Note:
 
-A folding builder must implement [DumbAware](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/openapi/project/DumbAware.java) to pass tests.
+A folding builder must implement [DumbAware](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/openapi/project/DumbAware.java) to pass tests.
 See [Define a Folding Builder](folding-builder.html#define-a-folding-builder) for more information.
 
 ## Define Test Data

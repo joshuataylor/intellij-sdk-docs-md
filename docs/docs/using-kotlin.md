@@ -228,7 +228,7 @@ For this reason, plugins must not use [Kotlin objects](https://kotlinlang.org/do
 to implement any `[plugin.xml](plugin-configuration-file.html)` declarations.
 Managing the lifecycle of extensions is the platform's responsibility, and instantiating these classes as Kotlin singletons may cause issues.
 
-A notable exception is [FileType](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/openapi/fileTypes/FileType.java)
+A notable exception is [FileType](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/openapi/fileTypes/FileType.java)
 ([com.intellij.fileType](https://jb.gg/ipe?extensions=com.intellij.fileType) extension point
 ), see also the inspection descriptions below.
 

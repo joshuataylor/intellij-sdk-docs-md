@@ -14,9 +14,9 @@ All required [test-framework dependencies](tools-intellij-platform-gradle-plugin
 
 The test fixture creates a test project environment.
 Unless you customize the project creation, the test project will have one module with one source root called `src`.
-The test project files exist either in a temporary directory or in an in-memory file system, depending on which implementation of [TempDirTestFixture](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/testFramework/src/com/intellij/testFramework/fixtures/TempDirTestFixture.java) is used.
+The test project files exist either in a temporary directory or in an in-memory file system, depending on which implementation of [TempDirTestFixture](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/testFramework/src/com/intellij/testFramework/fixtures/TempDirTestFixture.java) is used.
 
-[BasePlatformTestCase](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/testFramework/src/com/intellij/testFramework/fixtures/BasePlatformTestCase.java) uses an in-memory implementation; if you set up the test environment by calling `IdeaTestFixtureFactory.createCodeInsightFixture()`, you can specify the implementation to use.
+[BasePlatformTestCase](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/testFramework/src/com/intellij/testFramework/fixtures/BasePlatformTestCase.java) uses an in-memory implementation; if you set up the test environment by calling `IdeaTestFixtureFactory.createCodeInsightFixture()`, you can specify the implementation to use.
 
 Warning:
 
@@ -42,14 +42,14 @@ Note:
 
 If your plugin builds on top of Java support, please see [How to test a JVM language?](testing-faq.html#how-to-test-a-jvm-language) to set up your test environment to obtain the required Mock JDK automatically.
 
-To copy files or directories from your `testdata` directory to the test project directory, you can use the `copyFileToProject()` and `copyDirectoryToProject()` methods from [CodeInsightTestFixture](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/testFramework/src/com/intellij/testFramework/fixtures/CodeInsightTestFixture.java).
+To copy files or directories from your `testdata` directory to the test project directory, you can use the `copyFileToProject()` and `copyDirectoryToProject()` methods from [CodeInsightTestFixture](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/testFramework/src/com/intellij/testFramework/fixtures/CodeInsightTestFixture.java).
 
 Most operations in plugin tests require a file open in the in-memory editor, in which highlighting, completion, and other operations will be performed.
 The in-memory editor instance is returned by `CodeInsightTestFixture.getEditor()`.
 To copy a file from the `testdata` directory to the test project directory and immediately open it in the editor, you can use the `CodeInsightTestFixture.configureByFile()` or `configureByFiles()` methods.
 The latter copies multiple files to the test project directory and opens the first of them in the in-memory editor.
 
-Alternatively, you can use one of the other methods, which take parameters annotated with [@TestDataFile](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/testFramework/src/com/intellij/testFramework/TestDataFile.java).
+Alternatively, you can use one of the other methods, which take parameters annotated with [@TestDataFile](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/testFramework/src/com/intellij/testFramework/TestDataFile.java).
 These methods copy the specified files from the `testdata` directory to the test project directory, open the first of the specified files in the in-memory editor, and then perform the requested operation such as highlighting or code completion.
 
 Tip:

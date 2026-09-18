@@ -1,7 +1,7 @@
 # Split Button
 
 <tldr>
-Implementation: [JBOptionButton](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-api/src/com/intellij/ui/components/JBOptionButton.kt)
+Implementation: [JBOptionButton](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-api/src/com/intellij/ui/components/JBOptionButton.kt)
 </tldr>
 
 A split button is a combination of a regular [button](button.html) and a drop-down button.

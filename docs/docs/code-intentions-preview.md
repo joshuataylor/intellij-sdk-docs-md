@@ -7,9 +7,9 @@ This page gives guidance to plugin authors in situations where this is not the c
 encourage thorough [testing](writing-tests.html) of intention actions.
 
 The IntelliJ Platform can show a preview for
-[IntentionAction](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/analysis-api/src/com/intellij/codeInsight/intention/IntentionAction.java)
+[IntentionAction](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/analysis-api/src/com/intellij/codeInsight/intention/IntentionAction.java)
 and
-[LocalQuickFix](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/analysis-api/src/com/intellij/codeInspection/LocalQuickFix.java).
+[LocalQuickFix](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/analysis-api/src/com/intellij/codeInspection/LocalQuickFix.java).
 That means when the user shows [available context actions](https://www.jetbrains.com/help/idea/intention-actions.html#apply-intention-actions),
 an additional small popup highlights the differences between the current code and the code after executing the intention.
 
@@ -32,11 +32,11 @@ While this page focuses on the preview for `IntentionAction`, the `generatePrevi
 method exists also for `LocalQuickFix` and the documentation and all discussed points are valid for both use cases.
 
 The entry point for previews is `generatePreview()` available in
-[IntentionAction](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/analysis-api/src/com/intellij/codeInsight/intention/IntentionAction.java)
+[IntentionAction](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/analysis-api/src/com/intellij/codeInsight/intention/IntentionAction.java)
 and
-[LocalQuickFix](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/analysis-api/src/com/intellij/codeInspection/LocalQuickFix.java).
+[LocalQuickFix](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/analysis-api/src/com/intellij/codeInspection/LocalQuickFix.java).
 The default implementation will load the intention or quick fix and call its `invoke()` or `applyFix()` method on a copy of the original file.
-It returns an instance of [IntentionPreviewInfo](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/analysis-api/src/com/intellij/codeInsight/intention/preview/IntentionPreviewInfo.java).
+It returns an instance of [IntentionPreviewInfo](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/analysis-api/src/com/intellij/codeInsight/intention/preview/IntentionPreviewInfo.java).
 When the diff could be computed successfully it returns `IntentionPreviewInfo.DIFF` and when it was unsuccessful it returns
 `IntentionPreviewInfo.EMPTY`.
 
@@ -53,7 +53,7 @@ The following options are available and described in the paragraphs below:
 
 * Return `IntentionPreviewInfo.EMPTY` in cases where it is not possible to show any preview.
 
-See [IntentionPreviewUtils](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/analysis-api/src/com/intellij/codeInsight/intention/preview/IntentionPreviewUtils.java) for a number of useful helper methods.
+See [IntentionPreviewUtils](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/analysis-api/src/com/intellij/codeInsight/intention/preview/IntentionPreviewUtils.java) for a number of useful helper methods.
 
 ### HTML Preview
 
@@ -61,7 +61,7 @@ To show a dynamically generated HTML description as a preview, return an instanc
 `IntentionPreviewInfo.Html` from `generatePreview()`.
 Some important tips are:
 
-* You may use the [HtmlChunk](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/util/src/com/intellij/openapi/util/text/HtmlChunk.java) API with it. If you want to display an icon, use `HtmlChunk#icon` but be careful because converting it to text and back (via `HtmlChunk.raw`) would remove the icon. Consider using `HtmlChunk.template` if necessary.
+* You may use the [HtmlChunk](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/util/src/com/intellij/openapi/util/text/HtmlChunk.java) API with it. If you want to display an icon, use `HtmlChunk#icon` but be careful because converting it to text and back (via `HtmlChunk.raw`) would remove the icon. Consider using `HtmlChunk.template` if necessary.
 
 * Note that the description pane has a fixed width of 300px for the default font, and you should try to make the description as concise as possible.
 
@@ -85,7 +85,7 @@ Finally, when returning a custom diff, plugin authors should specify a file name
 
 ## Testing
 
-If you use [CodeInsightTestFixture](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/testFramework/src/com/intellij/testFramework/fixtures/CodeInsightTestFixture.java),
+If you use [CodeInsightTestFixture](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/testFramework/src/com/intellij/testFramework/fixtures/CodeInsightTestFixture.java),
 please note the following useful methods:
 
 * `checkPreviewAndLaunchAction()` is a replacement for `launchAction()`. If you call `launchAction()` directly and your action should generate diff-preview which equals to original file content, use `checkPreviewAndLaunchAction()` with this call, and preview will be checked as well.
@@ -98,9 +98,9 @@ If you are unsatisfied with these methods, or you have a custom framework and wa
 please look through the implementations of the aforementioned methods.
 
 If you use
-[LightQuickFixTestCase](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/java/testFramework/src/com/intellij/codeInsight/daemon/quickFix/LightQuickFixTestCase.java)
+[LightQuickFixTestCase](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/java/testFramework/src/com/intellij/codeInsight/daemon/quickFix/LightQuickFixTestCase.java)
 or
-[LightQuickFixParameterizedTestCase](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/java/testFramework/src/com/intellij/codeInsight/daemon/quickFix/LightQuickFixParameterizedTestCase.java)
+[LightQuickFixParameterizedTestCase](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/java/testFramework/src/com/intellij/codeInsight/daemon/quickFix/LightQuickFixParameterizedTestCase.java)
 with the usual setup of having your test-input as `beforeXyz` and `afterXyz`, you can test previews as well.
 A special suffix `-preview` should be added to the comment line in the test-data to test preview.
 For example:
@@ -124,7 +124,7 @@ If you have a customized preview text or HTML, you may create a `previewXyz` fil
 Now, the preview (no matter if it is a diff or HTML) will be compared to the content of that file.
 
 Finally,
-[IntentionPreviewPopupUpdateProcessor](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/lang-impl/src/com/intellij/codeInsight/intention/impl/preview/IntentionPreviewPopupUpdateProcessor.kt)
+[IntentionPreviewPopupUpdateProcessor](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/lang-impl/src/com/intellij/codeInsight/intention/impl/preview/IntentionPreviewPopupUpdateProcessor.kt)
 provides useful helper functions.
 
 ## Preparation for the Default Diff Preview
@@ -139,16 +139,16 @@ The diff between the original file content and the changed file content will be 
 The default implementation of `generatePreview()` employs further checks to ensure your action is safe.
 These checks consist of the following:
 
-1. Verify that [startsInWriteAction()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/analysis-api/src/com/intellij/codeInsight/intention/IntentionAction.java) returns `true`.
+1. Verify that [startsInWriteAction()](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/analysis-api/src/com/intellij/codeInsight/intention/IntentionAction.java) returns `true`.
 
-2. Verify that [getElementToMakeWritable()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/analysis-api/src/com/intellij/codeInsight/intention/FileModifier.java) returns its argument.
+2. Verify that [getElementToMakeWritable()](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/analysis-api/src/com/intellij/codeInsight/intention/FileModifier.java) returns its argument.
 
 3. Check if all instance fields in the class are either marked as `@SafeFieldForPreview` (defined in
-[FileModifier](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/analysis-api/src/com/intellij/codeInsight/intention/FileModifier.java)),
+[FileModifier](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/analysis-api/src/com/intellij/codeInsight/intention/FileModifier.java)),
 their types are marked as `@SafeTypeForPreview`, or used types are known to be safe (primitives, strings, enums, classes, arrays of these, etc.)
 If this is the case, then the original `invoke()` or `applyFix()` method is called in a background thread
 on a non-physical copy of the file and with a mock editor
-([IntentionPreviewEditor](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/lang-impl/src/com/intellij/codeInsight/intention/impl/preview/IntentionPreviewEditor.kt)).
+([IntentionPreviewEditor](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/lang-impl/src/com/intellij/codeInsight/intention/impl/preview/IntentionPreviewEditor.kt)).
 
 If the above does not show a preview, there could be further problems of the following kind:
 
@@ -157,11 +157,11 @@ Safe fields are ones which do [not hold references to real PSI elements](dynamic
 and if they do, these references are used for reading only.
 
 2. There are fields that actually hold references to a physical `PsiElement` and they are modified by the action/fix.
-You can try to get rid of them by extracting the necessary PSI from the [ProblemDescriptor](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/analysis-api/src/com/intellij/codeInspection/ProblemDescriptor.java)
+You can try to get rid of them by extracting the necessary PSI from the [ProblemDescriptor](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/analysis-api/src/com/intellij/codeInspection/ProblemDescriptor.java)
 or using `PsiFile.getElementAt()` with the editor caret position.
 Another option is to override `getFileModifierForPreview(target)`. In this method, remap all the PSI elements to the target file (which is the copy of the source file)
 using `PsiTreeUtil.findSameElementInCopy()` and create a new instance of your action/fix.
-Example: [DeleteMultiCatchFix.getFileModifierForPreview()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/java/java-impl/src/com/intellij/codeInsight/daemon/impl/quickfix/DeleteMultiCatchFix.java)
+Example: [DeleteMultiCatchFix.getFileModifierForPreview()](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/java/java-impl/src/com/intellij/codeInsight/daemon/impl/quickfix/DeleteMultiCatchFix.java)
 Be careful, as there could be subclasses. Better play safe and declare your action/fix class as final.
 
 3. `invoke()`/`applyFix()` starts a write action. If `startsInWriteAction()` returns `true`, then this is unnecessary, and you can remove the write action.

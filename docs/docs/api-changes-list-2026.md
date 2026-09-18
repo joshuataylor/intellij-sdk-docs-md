@@ -124,29 +124,29 @@ The migration should be done according to the [Kotlin UI DSL Version 2 migration
 #### PolySymbols 2026.2
 
 `com.intellij.polySymbols.search.PsiSourcedPolySymbol` class renamed to `com.intellij.polySymbols.search.PsiLinkedPolySymbol`
-: Use [PsiLinkedPolySymbol](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/polySymbols/src/com/intellij/polySymbols/search/PsiLinkedPolySymbol.kt) instead.
+: Use [PsiLinkedPolySymbol](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/polySymbols/src/com/intellij/polySymbols/search/PsiLinkedPolySymbol.kt) instead.
 Additionally, the `source` property was renamed to `linkedElement`.
 
 `com.intellij.polySymbols.utils.PsiSourcedPolySymbolDelegate` class renamed to `com.intellij.polySymbols.utils.PsiLinkedPolySymbolDelegate`
-: Use [PsiLinkedPolySymbolDelegate](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/polySymbols/src/com/intellij/polySymbols/utils/PsiLinkedPolySymbolDelegate.kt) instead.
+: Use [PsiLinkedPolySymbolDelegate](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/polySymbols/src/com/intellij/polySymbols/utils/PsiLinkedPolySymbolDelegate.kt) instead.
 
 `com.intellij.polySymbols.refactoring.PsiSourcedPolySymbolRefactoringHelper` class renamed to `com.intellij.polySymbols.refactoring.PsiLinkedPolySymbolRefactoringHelper`
-: Use [PsiLinkedPolySymbolRefactoringHelper](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/polySymbols/backend/src/com/intellij/polySymbols/refactoring/PsiLinkedPolySymbolRefactoringHelper.kt) instead.
+: Use [PsiLinkedPolySymbolRefactoringHelper](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/polySymbols/backend/src/com/intellij/polySymbols/refactoring/PsiLinkedPolySymbolRefactoringHelper.kt) instead.
 
 `com.intellij.polySymbols.refactoring.PsiSourcedPolySymbolRenameHandler` class renamed to `com.intellij.polySymbols.refactoring.PsiLinkedPolySymbolRenameHandler`
-: Use [PsiLinkedPolySymbolRenameHandler](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/polySymbols/backend/src/com/intellij/polySymbols/refactoring/PsiLinkedPolySymbolRenameHandler.kt) instead.
+: Use [PsiLinkedPolySymbolRenameHandler](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/polySymbols/backend/src/com/intellij/polySymbols/refactoring/PsiLinkedPolySymbolRenameHandler.kt) instead.
 
 `com.intellij.polySymbols.search.PsiSourcedPolySymbolProvider` class renamed to `com.intellij.polySymbols.search.PsiLinkedPolySymbolProvider`
-: Use [PsiLinkedPolySymbolProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/polySymbols/backend/src/com/intellij/polySymbols/search/PsiLinkedPolySymbolProvider.kt) instead.
+: Use [PsiLinkedPolySymbolProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/polySymbols/backend/src/com/intellij/polySymbols/search/PsiLinkedPolySymbolProvider.kt) instead.
 
 `com.intellij.polySymbols.search.PsiSourcedPolySymbolReference` class renamed to `com.intellij.polySymbols.search.PsiLinkedPolySymbolReference`
-: Use [PsiLinkedPolySymbolReference](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/polySymbols/backend/src/com/intellij/polySymbols/search/PsiLinkedPolySymbolReference.kt) instead.
+: Use [PsiLinkedPolySymbolReference](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/polySymbols/backend/src/com/intellij/polySymbols/search/PsiLinkedPolySymbolReference.kt) instead.
 
 `com.intellij.polySymbols.search.PsiSourcedPolySymbolReferenceSearcher` class renamed to `com.intellij.polySymbols.search.PsiLinkedPolySymbolReferenceSearcher`
-: Use [PsiLinkedPolySymbolReferenceSearcher](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/polySymbols/backend/src/com/intellij/polySymbols/search/PsiLinkedPolySymbolReferenceSearcher.kt) instead.
+: Use [PsiLinkedPolySymbolReferenceSearcher](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/polySymbols/backend/src/com/intellij/polySymbols/search/PsiLinkedPolySymbolReferenceSearcher.kt) instead.
 
 `com.intellij.polySymbols.search.PsiSourcedPolySymbolRequestResultProcessor` class renamed to `com.intellij.polySymbols.search.PsiLinkedPolySymbolRequestResultProcessor`
-: Use [PsiLinkedPolySymbolRequestResultProcessor](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/polySymbols/backend/src/com/intellij/polySymbols/search/PsiLinkedPolySymbolRequestResultProcessor.kt) instead.
+: Use [PsiLinkedPolySymbolRequestResultProcessor](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/polySymbols/backend/src/com/intellij/polySymbols/search/PsiLinkedPolySymbolRequestResultProcessor.kt) instead.
 
 ### Kotlin Plugin 2026.2
 
@@ -364,7 +364,7 @@ CLion Nova has no frontend PSI, so the remaining `com.jetbrains.cidr.lang` class
 
 AWT input event handlers no longer run under write-intent lock
 : Custom input handlers (`KeyListener`, `MouseAdapter`, etc.) no longer execute under the [write-intent lock](threading-model.html#read-write-lock).
-If PSI or other write-intent-protected data needs to be accessed in these handlers, explicitly acquire a read action using [ReadAction.nonBlocking().submit()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/openapi/application/ReadAction.java) or coroutine-based equivalents such as [readAction {}](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/openapi/application/coroutines.kt).
+If PSI or other write-intent-protected data needs to be accessed in these handlers, explicitly acquire a read action using [ReadAction.nonBlocking().submit()](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/openapi/application/ReadAction.java) or coroutine-based equivalents such as [readAction {}](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/openapi/application/coroutines.kt).
 
 #### Language Server Protocol (LSP) 2026.1.4
 
@@ -385,21 +385,21 @@ Use `LspClientManager.getInstance(project)` instead, or `LspServerManager.getIns
 : additionally `name` property was renamed to `kindName` and `qualifiedKind` properties and parameters across the package
 were renamed to `kind`
 
-The following classes no longer implement [PsiModificationTracker](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/psi/util/PsiModificationTracker.java) (this requirement was confusing):
+The following classes no longer implement [PsiModificationTracker](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/psi/util/PsiModificationTracker.java) (this requirement was confusing):
 
-* [PolySymbolScope](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolScope.kt)
+* [PolySymbolScope](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolScope.kt)
 
-* [PolySymbolQueryExecutor](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolQueryExecutor.kt)
+* [PolySymbolQueryExecutor](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolQueryExecutor.kt)
 
-* [PolySymbolQueryResultsCustomizer](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolQueryResultsCustomizer.kt)
+* [PolySymbolQueryResultsCustomizer](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolQueryResultsCustomizer.kt)
 
 Implementing `PsiModificationTracker` was replaced by `modificationTracker` property for the following classes:
 
-* [PolyContextRulesProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/polySymbols/src/com/intellij/polySymbols/context/PolyContextRulesProvider.kt)
+* [PolyContextRulesProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/polySymbols/src/com/intellij/polySymbols/context/PolyContextRulesProvider.kt)
 
-* [PolySymbolNamesProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolNamesProvider.kt)
+* [PolySymbolNamesProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolNamesProvider.kt)
 
-* [PolySymbolNameConversionRulesProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolNameConversionRulesProvider.kt)
+* [PolySymbolNameConversionRulesProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolNameConversionRulesProvider.kt)
 
 ### Java Plugin 2026.1
 

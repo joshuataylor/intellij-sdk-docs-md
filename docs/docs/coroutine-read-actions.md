@@ -18,7 +18,7 @@ This section explains running read actions (RA) in coroutines specifically.
 ## Coroutine Read Actions API
 
 Running RA from coroutines is executed with `*ReadAction*` functions from
-[coroutines.kt](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/openapi/application/coroutines.kt)
+[coroutines.kt](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/openapi/application/coroutines.kt)
 (see their KDocs for the details).
 Functions can be divided into two groups, which differ in reacting to an incoming write action (WA):
 
@@ -39,7 +39,7 @@ It is important to note that in the coroutines context, default functions
 (without the `Blocking` suffix) behavior prioritizes WA.
 
 In contrast, in the non-coroutine context,
-[Application.runReadAction](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/openapi/application/Application.java)
+[Application.runReadAction](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/openapi/application/Application.java)
 and similar methods (without any prefix/suffix) perform RA blocking WA, whereas RA allowing WA are invoked via
 the [NonBlockingReadAction API](threading-model.html#non-blocking-read-actions).
 
@@ -47,7 +47,7 @@ Be careful when migrating the code running read actions to coroutines.
 
 ### Write Allowing Read Action vs. NonBlockingReadAction
 
-WARA API is simpler than [NonBlockingReadAction](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/openapi/application/NonBlockingReadAction.java) (NBRA).
+WARA API is simpler than [NonBlockingReadAction](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/openapi/application/NonBlockingReadAction.java) (NBRA).
 WARA doesn't need the following API methods:
 
 * `submit(Executor backgroundThreadExecutor)` because this is a responsibility of the coroutine dispatcher
@@ -74,8 +74,8 @@ for each attempt, and this job becomes canceled when a write action arrives.
 `CancellationException` if the calling coroutine was canceled, causing the cancellation
 of the child `Job`.
 
-To check whether the current action was canceled, clients must call [ProgressManager.checkCanceled()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/openapi/progress/ProgressManager.java), which was adjusted to work in coroutines.
-Clients mustn't throw [ProcessCanceledException](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/util/base/multiplatform/src/com/intellij/openapi/progress/ProcessCanceledException.kt) manually.
+To check whether the current action was canceled, clients must call [ProgressManager.checkCanceled()](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/openapi/progress/ProgressManager.java), which was adjusted to work in coroutines.
+Clients mustn't throw [ProcessCanceledException](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/util/base/multiplatform/src/com/intellij/openapi/progress/ProcessCanceledException.kt) manually.
 
 ## FAQ
 

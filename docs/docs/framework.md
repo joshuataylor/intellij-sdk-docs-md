@@ -9,7 +9,7 @@ Note that this feature requires a [dependency](plugin-dependencies.html) on the 
 
 ## Creating a New Framework
 
-In order to make a custom framework available and configurable for a project, the [FrameworkTypeEx](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/java/idea-ui/src/com/intellij/framework/FrameworkTypeEx.java) class needs to be extended, in this example to make the [DemoFramework](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/framework_basics/src/main/java/org/intellij/sdk/framework/DemoFramework.java) class.
+In order to make a custom framework available and configurable for a project, the [FrameworkTypeEx](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/java/idea-ui/src/com/intellij/framework/FrameworkTypeEx.java) class needs to be extended, in this example to make the [DemoFramework](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/framework_basics/src/main/java/org/intellij/sdk/framework/DemoFramework.java) class.
 
 ```JAVA
 final class DemoFramework extends FrameworkTypeEx {
@@ -66,8 +66,8 @@ final class DemoFramework extends FrameworkTypeEx {
 ## Creating Provider for Enabling Framework Support
 
 To make the framework set up available while executing the steps to create a project, the
-`DemoFramework.createProvider()` method must be implemented to return an object of type [FrameworkSupportInModuleConfigurable](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/java/idea-ui/src/com/intellij/framework/addSupport/FrameworkSupportInModuleConfigurable.java), which adds the framework to a module.
-In this example the framework is added to any [ModuleType](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/lang-core/src/com/intellij/openapi/module/ModuleType.java) without checking, which is usually not the case.
+`DemoFramework.createProvider()` method must be implemented to return an object of type [FrameworkSupportInModuleConfigurable](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/java/idea-ui/src/com/intellij/framework/addSupport/FrameworkSupportInModuleConfigurable.java), which adds the framework to a module.
+In this example the framework is added to any [ModuleType](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/lang-core/src/com/intellij/openapi/module/ModuleType.java) without checking, which is usually not the case.
 
 ```JAVA
 @NotNull

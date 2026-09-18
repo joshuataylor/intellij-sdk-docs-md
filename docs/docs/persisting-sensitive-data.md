@@ -2,7 +2,7 @@
 
 The Credentials Store API stores sensitive user data securely, including passwords, API keys, private keys, and server URLs.
 
-Use [PasswordSafe](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/credential-store/src/ide/passwordSafe/PasswordSafe.kt) to manage credentials.
+Use [PasswordSafe](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/credential-store/src/ide/passwordSafe/PasswordSafe.kt) to manage credentials.
 The required elements are:
 
 * a human-readable description of the credentials in the form of a service name,
@@ -15,7 +15,7 @@ This is a service-like class, and the [service retrieval rules apply](plugin-ser
 
 ## Human-Readable Description of Credentials with Service Names
 
-The [generateServiceName()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/credential-store/src/credentialStore/CredentialAttributes.kt) function available in the IntelliJ SDK API helps name credentials in a consistent way so that they can be easily recognized in password managers and when users are asked to allow the IDE to access a secret.
+The [generateServiceName()](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/credential-store/src/credentialStore/CredentialAttributes.kt) function available in the IntelliJ SDK API helps name credentials in a consistent way so that they can be easily recognized in password managers and when users are asked to allow the IDE to access a secret.
 Pass a subsystem name that identifies the plugin or its area of functionality, and a key that identifies the specific secret, such as an account name for a password or server name for an access token.
 
 Kotlin:
@@ -46,7 +46,7 @@ For example, such a service name appears in the macOS Keychain Access applicatio
 
 ## Attaching Identity to Credentials with Credentials Attributes
 
-A [CredentialAttributes](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/credential-store/src/credentialStore/CredentialAttributes.kt) instance wraps credential metadata.
+A [CredentialAttributes](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/credential-store/src/credentialStore/CredentialAttributes.kt) instance wraps credential metadata.
 To store a username, account name or other identity, set it along with the service name.
 
 Kotlin:

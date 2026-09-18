@@ -10,10 +10,10 @@ External code formatter tools API
 : Allows integration of standalone tools like `shfmt`: [External Code Formatter](code-formatting.html#external-code-formatter).
 
 Simplified API for `CustomComponentAction`
-: Use new method [CustomComponentAction.updateCustomComponent(Component, Presentation)](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/ex/CustomComponentAction.java) to synchronize given Presentation and component state.
+: Use new method [CustomComponentAction.updateCustomComponent(Component, Presentation)](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/ex/CustomComponentAction.java) to synchronize given Presentation and component state.
 
 Highlighting API exposes priority range
-: Use `getPriorityRange()` in [AnnotationSession](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/analysis-api/src/com/intellij/lang/annotation/AnnotationSession.java)/[LocalInspectionToolSession](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/analysis-api/src/com/intellij/codeInspection/LocalInspectionToolSession.java) to optimize highlighting for coarse-grained files (e.g., `PsiPlainTextFile` files with single node).
+: Use `getPriorityRange()` in [AnnotationSession](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/analysis-api/src/com/intellij/lang/annotation/AnnotationSession.java)/[LocalInspectionToolSession](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/analysis-api/src/com/intellij/codeInspection/LocalInspectionToolSession.java) to optimize highlighting for coarse-grained files (e.g., `PsiPlainTextFile` files with single node).
 
 ## 2021.2
 
@@ -26,9 +26,9 @@ Constructor Injection disabled for Extensions
 : Please obtain necessary components only when needed (logged as ERROR now).
 
 Language Injection
-: Use [LanguageInjectionContributor](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/lang/injection/general/LanguageInjectionContributor.java) ([com.intellij.languageInjectionContributor](https://jb.gg/ipe?extensions=com.intellij.languageInjectionContributor) extension point
+: Use [LanguageInjectionContributor](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/lang/injection/general/LanguageInjectionContributor.java) ([com.intellij.languageInjectionContributor](https://jb.gg/ipe?extensions=com.intellij.languageInjectionContributor) extension point
 )
-and [LanguageInjectionPerformer](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/lang/injection/general/LanguageInjectionPerformer.java) ([com.intellij.languageInjectionPerformer](https://jb.gg/ipe?extensions=com.intellij.languageInjectionPerformer) extension point
+and [LanguageInjectionPerformer](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/lang/injection/general/LanguageInjectionPerformer.java) ([com.intellij.languageInjectionPerformer](https://jb.gg/ipe?extensions=com.intellij.languageInjectionPerformer) extension point
 )
 to customize [language injection](language-injection.html#languageinjectioncontributor-and-languageinjectionperformer).
 
@@ -42,17 +42,17 @@ Unbundled plugins
 ### IntelliJ Platform 2021.1
 
 Add unambiguous imports on the fly for custom languages
-: Override [ReferenceImporter#isAddUnambiguousImportsOnTheFlyEnabled()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/analysis-impl/src/com/intellij/codeInsight/daemon/ReferenceImporter.java) and provide corresponding user setting. Implement `HintAction` with `fixSilently()` and hook it up to highlighting as a quick fix for unresolved reference.
+: Override [ReferenceImporter#isAddUnambiguousImportsOnTheFlyEnabled()](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/analysis-impl/src/com/intellij/codeInsight/daemon/ReferenceImporter.java) and provide corresponding user setting. Implement `HintAction` with `fixSilently()` and hook it up to highlighting as a quick fix for unresolved reference.
 
 Ability to override encoding per `VirtualFile`
-: Implement [FileEncodingProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/openapi/vfs/encoding/FileEncodingProvider.java) and register in [com.intellij.fileEncodingProvider](https://jb.gg/ipe?extensions=com.intellij.fileEncodingProvider) extension point
+: Implement [FileEncodingProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/openapi/vfs/encoding/FileEncodingProvider.java) and register in [com.intellij.fileEncodingProvider](https://jb.gg/ipe?extensions=com.intellij.fileEncodingProvider) extension point
 .
 
 [JCEF](embedded-browser-jcef.html): wrapper for `CefBrowser`
-: [JBCefOsrHandlerBrowser](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/ui.jcef/jcef/JBCefOsrHandlerBrowser.java) forwards to custom `CefRenderHandler`, e.g., for off-screen rendering.
+: [JBCefOsrHandlerBrowser](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/ui.jcef/jcef/JBCefOsrHandlerBrowser.java) forwards to custom `CefRenderHandler`, e.g., for off-screen rendering.
 
 ### Java Plugin 2021.1
 
 Testframework: JUnit4 variant for `LightJavaCodeInsightFixtureTestCase`
-: Use [LightJavaCodeInsightFixtureTestCase4](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/java/testFramework/src/com/intellij/testFramework/fixtures/LightJavaCodeInsightFixtureTestCase4.kt).
+: Use [LightJavaCodeInsightFixtureTestCase4](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/java/testFramework/src/com/intellij/testFramework/fixtures/LightJavaCodeInsightFixtureTestCase4.kt).
 

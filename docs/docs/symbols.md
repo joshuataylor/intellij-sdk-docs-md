@@ -6,10 +6,10 @@ This API is currently in development and thus in an experimental state.
 
 A symbol is a semantic element in some model, e.g., language or framework model.
 
-The IntelliJ Platform uses [Symbol](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/model/Symbol.java) to represent symbols, and `Symbol` serves as a link between Platform APIs, such as navigation, finding usages, or renaming.
+The IntelliJ Platform uses [Symbol](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/model/Symbol.java) to represent symbols, and `Symbol` serves as a link between Platform APIs, such as navigation, finding usages, or renaming.
 This API allows implementing the same functionalities as in the [References and Resolve](references-and-resolve.html) mechanism, but it is a more abstract concept not limited to connecting only PSI elements.
 The platform obtains the target symbol from a [declaration](declarations-and-references.html#declarations) or by resolving a [reference](declarations-and-references.html#references) and then uses it to perform an action.
-The [PsiElement](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/psi/PsiElement.java) is considered as an element in the source tree (enhanced `ASTNode`).
+The [PsiElement](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/psi/PsiElement.java) is considered as an element in the source tree (enhanced `ASTNode`).
 `Symbol` decouples semantic actions from [PSI](psi.html).
 
 A `Symbol` is not required to be backed by a `PsiElement`, and it is incorrect to try to obtain the `PsiElement` from a `Symbol`.
@@ -35,9 +35,9 @@ One should create a pointer via `Symbol.createPointer()` in the current read act
 
 ## Sample plugins
 
-* Java: [StringFormatSymbolReferenceProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/java/java-impl/src/com/siyeh/ig/format/StringFormatSymbolReferenceProvider.java)
+* Java: [StringFormatSymbolReferenceProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/java/java-impl/src/com/siyeh/ig/format/StringFormatSymbolReferenceProvider.java)
 
-* JVM languages: [LoggingArgumentSymbolReferenceProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/jvm/jvm-analysis-impl/src/com/intellij/analysis/logging/resolve/LoggingArgumentSymbolReferenceProvider.kt)
+* JVM languages: [LoggingArgumentSymbolReferenceProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/jvm/jvm-analysis-impl/src/com/intellij/analysis/logging/resolve/LoggingArgumentSymbolReferenceProvider.kt)
 
-* Markdown: [link labels](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/plugins/markdown/model/src/main/kotlin/org/intellij/plugins/markdown/model/psi/labels)
+* Markdown: [link labels](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/plugins/markdown/model/src/main/kotlin/org/intellij/plugins/markdown/model/psi/labels)
 

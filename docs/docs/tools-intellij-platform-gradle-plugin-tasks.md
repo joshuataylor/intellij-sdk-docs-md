@@ -1744,27 +1744,6 @@ intellijPlatformTesting.runIde {
 
 ## 
 
-`setupDependencies`
-
-<tldr>
-Available in: [Platform](tools-intellij-platform-gradle-plugin-plugins.html#platform), [Module](tools-intellij-platform-gradle-plugin-plugins.html#module), [Base](tools-intellij-platform-gradle-plugin-plugins.html#base), [GrammarKit](tools-intellij-platform-gradle-plugin-plugins.html#grammarkit)
-
-Extends: [DefaultTask](https://docs.gradle.org/current/dsl/org.gradle.api.DefaultTask.html)
-
-Sources: [SetupDependenciesTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/SetupDependenciesTask.kt)
-</tldr>
-
-A deprecated method for setting up IntelliJ Platform dependencies.
-
-The `setupDependencies` task was automatically added to the [&quot;After Sync&quot; Gradle trigger](https://www.jetbrains.com/help/idea/work-with-gradle-tasks.html#config_triggers_gradle) to make the IntelliJ Platform dependency available for IntelliJ IDEA right after the Gradle synchronization.
-This method is no longer needed as the dependency on IntelliJ Platform is declared directly in Gradle dependencies.
-
-Warning:
-
-It's recommended to remove any references to `setupDependencies` task. See the [Migration](tools-intellij-platform-gradle-plugin-migration.html#setupdependencies) page for more details.
-
-## 
-
 `signPlugin`
 
 <tldr>

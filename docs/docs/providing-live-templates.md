@@ -74,7 +74,7 @@ Copy this file into the [plugin's resources folder](https://github.com/JetBrains
 
 Implement `TemplateContextType`
 
-A [TemplateContextType](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/analysis-api/src/com/intellij/codeInsight/template/TemplateContextType.java) tells the IntelliJ Platform where the Live Template is applicable: Markdown files.
+A [TemplateContextType](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/analysis-api/src/com/intellij/codeInsight/template/TemplateContextType.java) tells the IntelliJ Platform where the Live Template is applicable: Markdown files.
 Every context must have a unique `TemplateContextType` defined for it, and the Platform defines many context types out of the box.
 The `MarkdownContext` class defines it for Markdown files.
 Ultimately, a file's extension determines the applicable Markdown context.
@@ -125,7 +125,7 @@ The `file` attribute in [com.intellij.defaultLiveTemplates](https://jb.gg/ipe?ex
 specifies `path/filename` under the `src/main/resources` folder.
 
 Specify required `contextId` attribute in [com.intellij.liveTemplateContext](https://jb.gg/ipe?extensions=com.intellij.liveTemplateContext) extension point
-instead of [TemplateContextType](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/analysis-api/src/com/intellij/codeInsight/template/TemplateContextType.java) constructor (existing declarations will continue working).
+instead of [TemplateContextType](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/analysis-api/src/com/intellij/codeInsight/template/TemplateContextType.java) constructor (existing declarations will continue working).
 
 ```XML
 <extensions defaultExtensionNs="com.intellij">

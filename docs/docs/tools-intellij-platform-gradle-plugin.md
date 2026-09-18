@@ -446,7 +446,7 @@ repositories {
 
 dependencies {
   intellijPlatform {
-    intellijIdea("2026.2.0.1")
+    intellijIdea("2026.2.3")
 
     bundledPlugin("com.intellij.java")
     plugin("org.intellij.scala", "2024.1.4")
@@ -465,7 +465,7 @@ repositories {
 
 dependencies {
   intellijPlatform {
-    intellijIdea '2026.2.0.1'
+    intellijIdea '2026.2.3'
 
     bundledPlugin 'com.intellij.java'
     plugin 'org.intellij.scala', '2024.1.4'

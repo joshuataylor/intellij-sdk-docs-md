@@ -1,7 +1,7 @@
 # Got It Tooltip
 
 <tldr>
-Implementation: [GotItTooltip](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-impl/src/com/intellij/ui/GotItTooltip.kt)
+Implementation: [GotItTooltip](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-impl/src/com/intellij/ui/GotItTooltip.kt)
 
 Related: ["Got It" Notification](informing-users.html#gotIt)
 </tldr>
@@ -202,7 +202,7 @@ Don't cover the information the user is currently working with.
 
 #### Implementation
 
-See four predefined point providers in the [GotItTooltip](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-impl/src/com/intellij/ui/GotItTooltip.kt) class.
+See four predefined point providers in the [GotItTooltip](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-impl/src/com/intellij/ui/GotItTooltip.kt) class.
 
 Kotlin:
 

@@ -27,12 +27,12 @@ Dumb-aware "Highlight Usages"
 : [Semantic Highlight Usages](additional-minor-features.html#semantic-highlight-usages) can be marked as [DumbAware API](indexing-and-psi-stubs.html#DumbAwareAPI).
 
 `ParsingTestCase`: stable PSI check
-: [ParsingTestCase](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/testFramework/src/com/intellij/testFramework/ParsingTestCase.java) verifies that reparsing causes no changes (Parser bug).
+: [ParsingTestCase](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/testFramework/src/com/intellij/testFramework/ParsingTestCase.java) verifies that reparsing causes no changes (Parser bug).
 
 Performance test classes and methods renamed to Benchmark
-: * [PerformanceTestInfo](https://github.com/JetBrains/intellij-community/tree/242/platform/testFramework/src/com/intellij/testFramework/PerformanceTestInfo.java) has been renamed to [BenchmarkTestInfo](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/testFramework/src/com/intellij/testFramework/BenchmarkTestInfo.java)
+: * [PerformanceTestInfo](https://github.com/JetBrains/intellij-community/tree/242/platform/testFramework/src/com/intellij/testFramework/PerformanceTestInfo.java) has been renamed to [BenchmarkTestInfo](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/testFramework/src/com/intellij/testFramework/BenchmarkTestInfo.java)
 
-* [PlatformTestUtil.newPerformanceTest*()](https://github.com/JetBrains/intellij-community/tree/242/platform/testFramework/src/com/intellij/testFramework/PlatformTestUtil.java) methods have been renamed to [PlatformTestUtil.newBenchmark*()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/testFramework/src/com/intellij/testFramework/PlatformTestUtil.java)
+* [PlatformTestUtil.newPerformanceTest*()](https://github.com/JetBrains/intellij-community/tree/242/platform/testFramework/src/com/intellij/testFramework/PlatformTestUtil.java) methods have been renamed to [PlatformTestUtil.newBenchmark*()](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/testFramework/src/com/intellij/testFramework/PlatformTestUtil.java)
 
 Testing: `Logger.error()` behaviour
 : Does not throw during tests anymore, see [issue](https://youtrack.jetbrains.com/issue/IJPL-453) for details.

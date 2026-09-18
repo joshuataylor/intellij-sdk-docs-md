@@ -136,7 +136,7 @@ interface Storage {
 As seen above, a stub is an interface for the class with methods that will be used in the test.
 Stubs shouldn't be created for methods not used in tests.
 
-The first parameter is the fully qualified name of the class that will correspond to the stub using the [Remote](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/remote-driver/client/src/com/intellij/driver/client/Remote.kt) annotation.
+The first parameter is the fully qualified name of the class that will correspond to the stub using the [Remote](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/remote-driver/client/src/com/intellij/driver/client/Remote.kt) annotation.
 Strings are used to avoid introducing dependency between production and test code.
 
 The `plugin` parameter specifies the ID of a plugin, where classes are located.
@@ -184,7 +184,7 @@ fun testStubs() {
 }
 ```
 
-There are two [Driver](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/remote-driver/client/src/com/intellij/driver/client/Driver.kt) extension methods that allow invoking methods: `service()` and `utility()`.
+There are two [Driver](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/remote-driver/client/src/com/intellij/driver/client/Driver.kt) extension methods that allow invoking methods: `service()` and `utility()`.
 The first one will return an instance of a service, and the second will return an instance of any class.
 
 Project-level services require a `Project` stub.

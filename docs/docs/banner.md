@@ -1,7 +1,7 @@
 # Banner
 
 <tldr>
-Implementation: [EditorNotificationProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-api/src/com/intellij/ui/EditorNotificationProvider.java)
+Implementation: [EditorNotificationProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-api/src/com/intellij/ui/EditorNotificationProvider.java)
 
 Related: [Editor Banner](informing-users.html#editor-banner)
 </tldr>

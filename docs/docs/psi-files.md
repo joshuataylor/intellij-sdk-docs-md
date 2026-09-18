@@ -2,21 +2,21 @@
 
 A PSI (Program Structure Interface) file is the root of a structure representing a file's contents as a hierarchy of elements in a particular programming language.
 
-The [PsiFile](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/psi/PsiFile.java) class is the common base class for all PSI files, while files in a specific language are usually represented by its subclasses.  For example, the [PsiJavaFile](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/java/java-psi-api/src/com/intellij/psi/PsiJavaFile.java) class represents a Java file, and the [XmlFile](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/xml/xml-psi-api/src/com/intellij/psi/xml/XmlFile.java) class represents an XML file.
+The [PsiFile](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/psi/PsiFile.java) class is the common base class for all PSI files, while files in a specific language are usually represented by its subclasses.  For example, the [PsiJavaFile](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/java/java-psi-api/src/com/intellij/psi/PsiJavaFile.java) class represents a Java file, and the [XmlFile](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/xml/xml-psi-api/src/com/intellij/psi/xml/XmlFile.java) class represents an XML file.
 
 Unlike [Virtual Files](virtual-file.html) and [Documents](documents.html), which have application scope (even if multiple projects are open, each file is represented by the same
-[VirtualFile](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/openapi/vfs/VirtualFile.java) instance), PSI has [Project](project.html) scope:
+[VirtualFile](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/openapi/vfs/VirtualFile.java) instance), PSI has [Project](project.html) scope:
 the same file is represented by multiple `PsiFile` instances if the file belongs to multiple projects open at the same time.
 
 ## How do I get a PSI file?
 
 | Context |API |
 ----------------
-| [Action](action-system.html) |[AnActionEvent.getData(CommonDataKeys.PSI_FILE)](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnActionEvent.java) |
-| [Document](documents.html) |[PsiDocumentManager.getPsiFile()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/psi/PsiDocumentManager.java) |
-| [PSI Element](psi-elements.html) |[PsiElement.getContainingFile()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/psi/PsiElement.java) (may return `null` if the PSI element is not contained in a file) |
-| [Virtual File](virtual-file.html) |[PsiManager.findFile()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/psi/PsiManager.java), [PsiUtilCore.toPsiFiles()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/psi/util/PsiUtilCore.java) |
-| File Name |[FilenameIndex.getVirtualFilesByName()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/indexing-api/src/com/intellij/psi/search/FilenameIndex.java) and locate via [PsiManager.findFile()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/psi/PsiManager.java) or [PsiUtilCore.toPsiFiles()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/psi/util/PsiUtilCore.java) |
+| [Action](action-system.html) |[AnActionEvent.getData(CommonDataKeys.PSI_FILE)](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnActionEvent.java) |
+| [Document](documents.html) |[PsiDocumentManager.getPsiFile()](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/psi/PsiDocumentManager.java) |
+| [PSI Element](psi-elements.html) |[PsiElement.getContainingFile()](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/psi/PsiElement.java) (may return `null` if the PSI element is not contained in a file) |
+| [Virtual File](virtual-file.html) |[PsiManager.findFile()](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/psi/PsiManager.java), [PsiUtilCore.toPsiFiles()](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/psi/util/PsiUtilCore.java) |
+| File Name |[FilenameIndex.getVirtualFilesByName()](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/indexing-api/src/com/intellij/psi/search/FilenameIndex.java) and locate via [PsiManager.findFile()](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/psi/PsiManager.java) or [PsiUtilCore.toPsiFiles()](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/psi/util/PsiUtilCore.java) |
 
 ## What can I do with a PSI file?
 
@@ -34,7 +34,7 @@ See also [Navigating the PSI](navigating-psi.html).
 
 ## Where does a PSI file come from?
 
-As PSI is language-dependent, PSI files are created using the [Language](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/lang/Language.java) instance:
+As PSI is language-dependent, PSI files are created using the [Language](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/lang/Language.java) instance:
 
 ```JAVA
 LanguageParserDefinitions.INSTANCE
@@ -50,20 +50,20 @@ Like [Documents](documents.html), PSI files are weakly referenced from the corre
 
 ## How do I create a PSI file?
 
-[PsiFileFactory.createFileFromText()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/psi/PsiFileFactory.java) creates an in-memory PSI file with the specified contents.
+[PsiFileFactory.createFileFromText()](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/psi/PsiFileFactory.java) creates an in-memory PSI file with the specified contents.
 
-To save the PSI file to disk, use its parent directory's [PsiDirectory.add()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/psi/PsiDirectory.java).
+To save the PSI file to disk, use its parent directory's [PsiDirectory.add()](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/psi/PsiDirectory.java).
 
 ## How do I get notified when PSI files change?
 
 `PsiManager.addPsiTreeChangeListener()` allows you to receive notifications about all changes to the PSI tree of a project.
-Alternatively, register [PsiTreeChangeListener](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/psi/PsiTreeChangeListener.java)
+Alternatively, register [PsiTreeChangeListener](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/psi/PsiTreeChangeListener.java)
 in [com.intellij.psi.treeChangeListener](https://jb.gg/ipe?extensions=com.intellij.psi.treeChangeListener) extension point
 .
 
 Note:
 
-Please see [PsiTreeChangeEvent](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/psi/PsiTreeChangeEvent.java) Javadoc for common problems when dealing with PSI events.
+Please see [PsiTreeChangeEvent](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/psi/PsiTreeChangeEvent.java) Javadoc for common problems when dealing with PSI events.
 
 ## How do I extend PSI?
 

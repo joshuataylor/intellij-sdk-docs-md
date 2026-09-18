@@ -10,7 +10,7 @@ Refer to the SDK code sample [live_templates](https://github.com/JetBrains/intel
 ## Implementing a New Function
 
 Under the hood, the predefined functions for Live Templates are called macros.
-A new custom function for Live Templates is implemented in `TitleCaseMacro`, which extends [MacroBase](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/lang-impl/src/com/intellij/codeInsight/template/macro/MacroBase.java).
+A new custom function for Live Templates is implemented in `TitleCaseMacro`, which extends [MacroBase](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/lang-impl/src/com/intellij/codeInsight/template/macro/MacroBase.java).
 Three `TitleCaseMacro` methods are of particular interest:
 
 * The `TitleCaseMacro()` constructor passes the name and description of the macro to the parent constructor.

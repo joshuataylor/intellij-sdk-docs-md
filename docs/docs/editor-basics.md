@@ -17,9 +17,9 @@ The following are referenced in the tutorial:
 
 * The [editor_basics](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/editor_basics/) plugin code sample,
 
-* [editor-ui-api package](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/editor-ui-api),
+* [editor-ui-api package](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/editor-ui-api),
 
-* Those not found in `editor-ui-api` package: * [EditorActionManager](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-api/src/com/intellij/openapi/editor/actionSystem/EditorActionManager.java), * [EditorActionHandler](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-api/src/com/intellij/openapi/editor/actionSystem/EditorActionHandler.java), * [TypedActionHandler](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-api/src/com/intellij/openapi/editor/actionSystem/TypedActionHandler.java), * [TypedAction](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-api/src/com/intellij/openapi/editor/actionSystem/TypedAction.java).
+* Those not found in `editor-ui-api` package: * [EditorActionManager](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-api/src/com/intellij/openapi/editor/actionSystem/EditorActionManager.java), * [EditorActionHandler](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-api/src/com/intellij/openapi/editor/actionSystem/EditorActionHandler.java), * [TypedActionHandler](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-api/src/com/intellij/openapi/editor/actionSystem/TypedActionHandler.java), * [TypedAction](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-api/src/com/intellij/openapi/editor/actionSystem/TypedAction.java).
 
 Related topics:
 

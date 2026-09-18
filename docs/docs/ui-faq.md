@@ -6,13 +6,13 @@ Use [UI Inspector](internal-ui-inspector.html) to locate the underlying Swing co
 
 ## Useful Classes
 
-* Package [com.intellij.ui](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/util/ui/src/com/intellij/ui/)
+* Package [com.intellij.ui](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/util/ui/src/com/intellij/ui/)
 
-* Package [com.intellij.util.ui](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/util/ui/src/com/intellij/util/ui/)
+* Package [com.intellij.util.ui](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/util/ui/src/com/intellij/util/ui/)
 
 ## Colors
 
-Always use [JBColor](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/util/ui/src/com/intellij/ui/JBColor.java) instead of plain `java.awt.Color`
+Always use [JBColor](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/util/ui/src/com/intellij/ui/JBColor.java) instead of plain `java.awt.Color`
 (highlighted via inspection Plugin DevKit | Code | Use Darcula aware JBColor).
 Custom colors must be retrieved via `JBColor.namedColor()` set by the current [Theme](themes-getting-started.html).
 See [Exposing Theme Metadata](themes-metadata.html) on how to expose corresponding metadata.
@@ -22,11 +22,11 @@ Instead, use `JBColor.lazy()` and pass in a lambda expression to retrieve the co
 This lambda expression needs to be fast and safe enough, as it will be called every time the color is retrieved, for example, for painting.
 Following this approach ensures that the color will be properly updated if it's changed at the source, for example, due to a theme or scheme change.
 
-Generic UI colors (e.g., for drawing borders) can be accessed via [UIUtil](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/util/ui/src/com/intellij/util/ui/UIUtil.java)
-and [JBUI](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/util/ui/src/com/intellij/util/ui/JBUI.java).
-A number of hardcoded colors is defined in `JBColor`, [Gray](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/util/ui/src/com/intellij/ui/Gray.java), and [LightColors](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/util/ui/src/com/intellij/ui/LightColors.java)
+Generic UI colors (e.g., for drawing borders) can be accessed via [UIUtil](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/util/ui/src/com/intellij/util/ui/UIUtil.java)
+and [JBUI](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/util/ui/src/com/intellij/util/ui/JBUI.java).
+A number of hardcoded colors is defined in `JBColor`, [Gray](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/util/ui/src/com/intellij/ui/Gray.java), and [LightColors](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/util/ui/src/com/intellij/ui/LightColors.java)
 
-[ColorUtil](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/util/ui/src/com/intellij/ui/ColorUtil.java) allows tuning existing colors.
+[ColorUtil](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/util/ui/src/com/intellij/ui/ColorUtil.java) allows tuning existing colors.
 
 ## Text
 
@@ -34,9 +34,9 @@ A number of hardcoded colors is defined in `JBColor`, [Gray](https://github.com/
 UI Guidelines: [Data Formats](data-formats.html)
 </tldr>
 
-Use [NaturalComparator](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/util/base/src/com/intellij/openapi/util/text/NaturalComparator.java) for "natural" sorting of items.
+Use [NaturalComparator](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/util/base/src/com/intellij/openapi/util/text/NaturalComparator.java) for "natural" sorting of items.
 
-[StringUtil](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/util/src/com/intellij/openapi/util/text/StringUtil.java) contains a number of useful methods for manipulating text for UI usage:
+[StringUtil](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/util/src/com/intellij/openapi/util/text/StringUtil.java) contains a number of useful methods for manipulating text for UI usage:
 
 * `unpluralize()/pluralize()` using English rules
 
@@ -52,16 +52,16 @@ Use [NaturalComparator](https://github.com/JetBrains/intellij-community/tree/ide
 
 See [Internationalization](internationalization.html) for information about internationalizing plugins.
 
-See [NlsMessages](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/ide-core-impl/src/com/intellij/ide/nls/NlsMessages.java) to produce localized messages.
+See [NlsMessages](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/ide-core-impl/src/com/intellij/ide/nls/NlsMessages.java) to produce localized messages.
 
 ## "Recently Used" Entries
 
 To store and retrieve values for Recently Used entries (e.g., filter values), use
-[RecentsManager](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-impl/src/com/intellij/ui/RecentsManager.java).
+[RecentsManager](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-impl/src/com/intellij/ui/RecentsManager.java).
 
 ## Current Theme: Dark or Bright?
 
-To determine the current [Theme](themes-getting-started.html)'s style, use [JBColor.isBright()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/util/ui/src/com/intellij/ui/JBColor.java).
+To determine the current [Theme](themes-getting-started.html)'s style, use [JBColor.isBright()](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/util/ui/src/com/intellij/ui/JBColor.java).
 
 ## Borders and Insets
 
@@ -69,7 +69,7 @@ To determine the current [Theme](themes-getting-started.html)'s style, use [JBCo
 UI Guidelines: [Layout](layout.html)
 </tldr>
 
-Always create borders and insets via factory methods from [JBUI.Borders](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/util/ui/src/com/intellij/util/ui/JBUI.java) and [JBUI.Insets](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/util/ui/src/com/intellij/util/ui/JBUI.java), which create DPI-aware instances.
+Always create borders and insets via factory methods from [JBUI.Borders](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/util/ui/src/com/intellij/util/ui/JBUI.java) and [JBUI.Insets](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/util/ui/src/com/intellij/util/ui/JBUI.java), which create DPI-aware instances.
 Using standard DPI-agnostic instances (reported by inspection `Plugin DevKit | Code | Use DPI-aware borders` and `Plugin DevKit | Code | Use DPI-aware insets`)
 can result in UI layout problems.
 
@@ -82,29 +82,29 @@ If you use the insets elsewhere, you need to manually call `JBInsets.update()` i
 
 Plugins may need to override icons for existing elements, for example, for XML/JSON configuration files related its functionality.
 
-Use [FileIconProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/ide/FileIconProvider.java)
+Use [FileIconProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/ide/FileIconProvider.java)
 registered in [com.intellij.fileIconProvider](https://jb.gg/ipe?extensions=com.intellij.fileIconProvider) extension point
 
 to provide custom icons for [Virtual Files](virtual-file.html).
 
-For [PSI elements](psi.html), implement [IconProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/ide/IconProvider.java)
+For [PSI elements](psi.html), implement [IconProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/ide/IconProvider.java)
 and register in [com.intellij.iconProvider](https://jb.gg/ipe?extensions=com.intellij.iconProvider) extension point
 .
 
 ### Progress Placeholder
 
-[LoadingDecorator](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-api/src/com/intellij/openapi/ui/LoadingDecorator.kt) provides "loading" placeholder panel.
+[LoadingDecorator](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-api/src/com/intellij/openapi/ui/LoadingDecorator.kt) provides "loading" placeholder panel.
 
 ### Manipulating Icons
 
-Use [IconUtil](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-ui/src/util/IconUtil.kt) to scale/colorize/darken/desaturate existing [icons](icons.html) as needed.
+Use [IconUtil](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-ui/src/util/IconUtil.kt) to scale/colorize/darken/desaturate existing [icons](icons.html) as needed.
 
 ### Combining Icons
 
-Use [RowIcon](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-ui/src/ui/RowIcon.kt) to combine icons horizontally ($modifier$ $element$).
+Use [RowIcon](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-ui/src/ui/RowIcon.kt) to combine icons horizontally ($modifier$ $element$).
 
-To stack icons, use [LayeredIcon](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-ui/src/ui/LayeredIcon.kt).
-[IconWithOverlay](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-ui/src/ui/icons/IconWithOverlay.java) additionally allows controlling the shape of the overlay icon.
+To stack icons, use [LayeredIcon](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-ui/src/ui/LayeredIcon.kt).
+[IconWithOverlay](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-ui/src/ui/icons/IconWithOverlay.java) additionally allows controlling the shape of the overlay icon.
 
 Note: Something missing?
 

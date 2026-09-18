@@ -40,19 +40,19 @@ Inlay parameter hints are simple string inline inlays placed before parameter na
 It is not possible to provide advanced presentation and behavior of inlay parameter hints.
 
 To provide inlay parameter hints, implement
-[InlayParameterHintsProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/lang-api/src/com/intellij/codeInsight/hints/InlayParameterHintsProvider.java)
+[InlayParameterHintsProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/lang-api/src/com/intellij/codeInsight/hints/InlayParameterHintsProvider.java)
 and register it in [com.intellij.codeInsight.parameterNameHints](https://jb.gg/ipe?extensions=com.intellij.codeInsight.parameterNameHints) extension point
 (EP).
 The API documentation of `InlayParameterHintsProvider` explains in detail the rationale behind all methods.
 
 Examples:
 
-* [GroovyInlayParameterHintsProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/plugins/groovy/src/org/jetbrains/plugins/groovy/codeInsight/hint/GroovyInlayParameterHintsProvider.kt) - shows parameter hints in Groovy code
+* [GroovyInlayParameterHintsProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/plugins/groovy/src/org/jetbrains/plugins/groovy/codeInsight/hint/GroovyInlayParameterHintsProvider.kt) - shows parameter hints in Groovy code
 
-* [JavaInlayParameterHintsProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/java/java-impl/src/com/intellij/codeInsight/hints/JavaInlayParameterHintsProvider.kt) - shows parameter hints in Java code
+* [JavaInlayParameterHintsProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/java/java-impl/src/com/intellij/codeInsight/hints/JavaInlayParameterHintsProvider.kt) - shows parameter hints in Java code
 
 To suppress inlay parameter hints in specific places, implement
-[ParameterNameHintsSuppressor](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/lang-api/src/com/intellij/codeInsight/hints/ParameterNameHintsSuppressor.kt)
+[ParameterNameHintsSuppressor](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/lang-api/src/com/intellij/codeInsight/hints/ParameterNameHintsSuppressor.kt)
 and register it in [com.intellij.codeInsight.parameterNameHintsSuppressor](https://jb.gg/ipe?extensions=com.intellij.codeInsight.parameterNameHintsSuppressor) extension point
 .
 
@@ -62,19 +62,19 @@ Declarative inlay hints are inline textual inlays that can hold expandable list 
 Please note this API has limited presentation customization possibilities due to its UI-independent design, which allows utilizing it by different frontend technologies (not only in Swing).
 
 To provide declarative inlay hints implement declarative
-[InlayHintsProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/lang-api/src/com/intellij/codeInsight/hints/declarative/InlayHintsProvider.kt)
+[InlayHintsProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/lang-api/src/com/intellij/codeInsight/hints/declarative/InlayHintsProvider.kt)
 and register it in [com.intellij.codeInsight.declarativeInlayProvider](https://jb.gg/ipe?extensions=com.intellij.codeInsight.declarativeInlayProvider) extension point
 .
 See the API documentation for the details.
 
 Examples:
 
-* [JavaImplicitTypeDeclarativeInlayHintsProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/java/java-impl/src/com/intellij/codeInsight/hints/JavaImplicitTypeDeclarativeInlayHintsProvider.kt) - shows inferred type for variables declared with the `var` keyword in Java code when the inferred type may not be clear
+* [JavaImplicitTypeDeclarativeInlayHintsProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/java/java-impl/src/com/intellij/codeInsight/hints/JavaImplicitTypeDeclarativeInlayHintsProvider.kt) - shows inferred type for variables declared with the `var` keyword in Java code when the inferred type may not be clear
 
-* [JavaMethodChainsDeclarativeInlayProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/java/java-impl/src/com/intellij/codeInsight/hints/JavaMethodChainsDeclarativeInlayProvider.kt) - shows method return types in call chains in Java code
+* [JavaMethodChainsDeclarativeInlayProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/java/java-impl/src/com/intellij/codeInsight/hints/JavaMethodChainsDeclarativeInlayProvider.kt) - shows method return types in call chains in Java code
 
 To provide a custom configuration UI, implement
-[InlayHintsCustomSettingsProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/lang-api/src/com/intellij/codeInsight/hints/declarative/InlayHintsCustomSettingsProvider.kt)
+[InlayHintsCustomSettingsProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/lang-api/src/com/intellij/codeInsight/hints/declarative/InlayHintsCustomSettingsProvider.kt)
 registered in [com.intellij.codeInsight.declarativeInlayProviderCustomSettingsProvider](https://jb.gg/ipe?extensions=com.intellij.codeInsight.declarativeInlayProviderCustomSettingsProvider) extension point
 .
 
@@ -98,9 +98,9 @@ Pre-2023.2:
 
 Examples:
 
-* [inlayProviders/java.implicit.types/preview.java](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/java/java-impl/resources/inlayProviders/java.implicit.types/preview.java)
+* [inlayProviders/java.implicit.types/preview.java](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/java/java-impl/resources/inlayProviders/java.implicit.types/preview.java)
 
-* [inlayProviders/groovy.lambda.parameter.inlay.provider/preview.groovy](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/plugins/groovy/resources/inlayProviders/groovy.lambda.parameter.inlay.provider/preview.groovy)
+* [inlayProviders/groovy.lambda.parameter.inlay.provider/preview.groovy](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/plugins/groovy/resources/inlayProviders/groovy.lambda.parameter.inlay.provider/preview.groovy)
 
 ### Code Vision Provider
 
@@ -116,11 +116,11 @@ It is configurable by users in `Settings | Editor | Inlay Hints | Code vision` b
 
 There are three extension points for implementing a code vision provider:
 
-* [DaemonBoundCodeVisionProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/lang-impl/src/com/intellij/codeInsight/hints/codeVision/DaemonBoundCodeVisionProvider.kt) registered in [com.intellij.codeInsight.daemonBoundCodeVisionProvider](https://jb.gg/ipe?extensions=com.intellij.codeInsight.daemonBoundCodeVisionProvider) extension point
+* [DaemonBoundCodeVisionProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/lang-impl/src/com/intellij/codeInsight/hints/codeVision/DaemonBoundCodeVisionProvider.kt) registered in [com.intellij.codeInsight.daemonBoundCodeVisionProvider](https://jb.gg/ipe?extensions=com.intellij.codeInsight.daemonBoundCodeVisionProvider) extension point
 
-* [CodeVisionProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/lang-impl/src/com/intellij/codeInsight/codeVision/CodeVisionProvider.kt) registered in [com.intellij.codeInsight.codeVisionProvider](https://jb.gg/ipe?extensions=com.intellij.codeInsight.codeVisionProvider) extension point
+* [CodeVisionProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/lang-impl/src/com/intellij/codeInsight/codeVision/CodeVisionProvider.kt) registered in [com.intellij.codeInsight.codeVisionProvider](https://jb.gg/ipe?extensions=com.intellij.codeInsight.codeVisionProvider) extension point
 
-* [CodeVisionGroupSettingProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/lang-impl/src/com/intellij/codeInsight/codeVision/settings/CodeVisionGroupSettingProvider.kt) registered in [com.intellij.config.codeVisionGroupSettingProvider](https://jb.gg/ipe?extensions=com.intellij.config.codeVisionGroupSettingProvider) extension point
+* [CodeVisionGroupSettingProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/lang-impl/src/com/intellij/codeInsight/codeVision/settings/CodeVisionGroupSettingProvider.kt) registered in [com.intellij.config.codeVisionGroupSettingProvider](https://jb.gg/ipe?extensions=com.intellij.config.codeVisionGroupSettingProvider) extension point
 
 `DaemonBoundCodeVisionProvider` API should be used in cases when code vision entries are related to PSI, so that calculated values are invalidated and recalculated on PSI changes.
 
@@ -143,11 +143,11 @@ The `$modelId$` must match the `groupId` of `CodeVisionGroupSettingProvider` and
 
 Examples:
 
-* [JavaInheritorsCodeVisionProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/java/java-impl/src/com/intellij/codeInsight/daemon/impl/JavaInheritorsCodeVisionProvider.kt) - shows number of Java class or method inheritors. Clicking the inlay hint opens the list of inheritors. This provider is `DaemonBoundCodeVisionProvider`.
+* [JavaInheritorsCodeVisionProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/java/java-impl/src/com/intellij/codeInsight/daemon/impl/JavaInheritorsCodeVisionProvider.kt) - shows number of Java class or method inheritors. Clicking the inlay hint opens the list of inheritors. This provider is `DaemonBoundCodeVisionProvider`.
 
-* [JavaReferencesCodeVisionProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/java/java-impl/src/com/intellij/codeInsight/daemon/impl/JavaReferencesCodeVisionProvider.kt) - shows number of usages of Java class or member. Clicking the inlay opens the list of usages or navigates to the usage if only one exists. This provider is `DaemonBoundCodeVisionProvider`.
+* [JavaReferencesCodeVisionProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/java/java-impl/src/com/intellij/codeInsight/daemon/impl/JavaReferencesCodeVisionProvider.kt) - shows number of usages of Java class or member. Clicking the inlay opens the list of usages or navigates to the usage if only one exists. This provider is `DaemonBoundCodeVisionProvider`.
 
-* [VcsCodeVisionProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/vcs-impl/lang/src/com/intellij/codeInsight/hints/VcsCodeVisionProvider.kt) - shows the author of a given element, e.g., class or method, based on VCS information. This provider is `CodeVisionProvider`.
+* [VcsCodeVisionProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/vcs-impl/lang/src/com/intellij/codeInsight/hints/VcsCodeVisionProvider.kt) - shows the author of a given element, e.g., class or method, based on VCS information. This provider is `CodeVisionProvider`.
 
 ### Inlay Hints Provider
 
@@ -161,16 +161,16 @@ For implementing inline inlay hints in versions 2023.1 and newer, [Declarative I
 For implementing block inlay hints in versions 2022.1 and newer, [Code Vision Provider](#code-vision-provider) is recommended.
 
 To provide inlay hints, implement
-[InlayHintsProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/lang-api/src/com/intellij/codeInsight/hints/InlayHintsProvider.kt)
+[InlayHintsProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/lang-api/src/com/intellij/codeInsight/hints/InlayHintsProvider.kt)
 and register it in [com.intellij.codeInsight.inlayProvider](https://jb.gg/ipe?extensions=com.intellij.codeInsight.inlayProvider) extension point
 .
 See the API documentation for the details.
 
 Examples:
 
-* [GroovyLocalVariableTypeHintsInlayProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/plugins/groovy/src/org/jetbrains/plugins/groovy/codeInsight/hint/types/GroovyLocalVariableTypeHintsInlayProvider.kt) - shows local variable types in Groovy code
+* [GroovyLocalVariableTypeHintsInlayProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/plugins/groovy/src/org/jetbrains/plugins/groovy/codeInsight/hint/types/GroovyLocalVariableTypeHintsInlayProvider.kt) - shows local variable types in Groovy code
 
-* [MarkdownTableInlayProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/plugins/markdown/core/src/org/intellij/plugins/markdown/editor/tables/ui/MarkdownTableInlayProvider.kt) - decorates tables in Markdown files.
+* [MarkdownTableInlayProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/plugins/markdown/core/src/org/intellij/plugins/markdown/editor/tables/ui/MarkdownTableInlayProvider.kt) - decorates tables in Markdown files.
 
 ### Further Tips
 
@@ -178,11 +178,11 @@ Examples:
 `Settings | Editor | Inlay Hints` ([Product Help](https://www.jetbrains.com/help/idea/inlay-hints.html)) and check out inlays that have already been implemented.
 
 2. To support multiple languages with a single type of inlay hints, see declarative
-[InlayHintsProviderFactory](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/lang-api/src/com/intellij/codeInsight/hints/declarative/InlayHintsProviderFactory.kt) (2023.1+)
+[InlayHintsProviderFactory](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/lang-api/src/com/intellij/codeInsight/hints/declarative/InlayHintsProviderFactory.kt) (2023.1+)
 or
-[InlayHintsProviderFactory](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/lang-api/src/com/intellij/codeInsight/hints/InlayHintsProviderFactory.kt) (pre-2023.1).
+[InlayHintsProviderFactory](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/lang-api/src/com/intellij/codeInsight/hints/InlayHintsProviderFactory.kt) (pre-2023.1).
 
 3. For testing inlay hints, see
-[InlayHintsProviderTestCase](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/testFramework/src/com/intellij/testFramework/utils/inlays/InlayHintsProviderTestCase.kt)
-and [InlayParameterHintsTest](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/testFramework/src/com/intellij/testFramework/utils/inlays/InlayParameterHintsTest.kt).
+[InlayHintsProviderTestCase](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/testFramework/src/com/intellij/testFramework/utils/inlays/InlayHintsProviderTestCase.kt)
+and [InlayParameterHintsTest](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/testFramework/src/com/intellij/testFramework/utils/inlays/InlayParameterHintsTest.kt).
 

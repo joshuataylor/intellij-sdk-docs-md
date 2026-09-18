@@ -278,6 +278,10 @@ Procedure: Removing 'setupDependencies' Task
 
 Alternatively, edit the `.idea/workspace.xml` file and remove the `setupDependencies` entry.
 
+Warning:
+
+The `setupDependencies` task has been removed in IntelliJ Platform Gradle Plugin 2.19.0.
+
 ## Other
 
 ### Unresolved 'idea-ext' Plugin

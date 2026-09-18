@@ -19,7 +19,7 @@ The [Grouping Actions](grouping-actions-tutorial.html) tutorial demonstrates thr
 
 ## Action Implementation
 
-An action is a class derived from the abstract class [AnAction](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnAction.java) (see also [Useful Action Base Classes](#useful-action-base-classes) below).
+An action is a class derived from the abstract class [AnAction](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnAction.java) (see also [Useful Action Base Classes](#useful-action-base-classes) below).
 The IntelliJ Platform calls methods of actions when a user interacts with a menu item or toolbar button.
 
 Warning: No fields allowed
@@ -32,7 +32,7 @@ For example, any `AnAction` data that exists only within the context of a `Proje
 Tip: Actions available during indexing
 
 For actions available during [dumb mode](indexing-and-psi-stubs.html#dumb-mode), extend from
-[DumbAwareAction](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/ide-core/src/com/intellij/openapi/project/DumbAwareAction.java) instead of `AnAction`.
+[DumbAwareAction](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/ide-core/src/com/intellij/openapi/project/DumbAwareAction.java) instead of `AnAction`.
 
 Do not override `AnAction.isDumbAware()` instead.
 
@@ -46,16 +46,16 @@ Every IntelliJ Platform action should override `AnAction.update()` and must over
 
 An action's method `AnAction.update()` is called by the IntelliJ Platform framework to update an action state.
 The state (enabled, visible) of an action determines whether the action is available in the UI.
-An object of the [AnActionEvent](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnActionEvent.java) type is passed to this method and contains information about the current context for the action.
+An object of the [AnActionEvent](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnActionEvent.java) type is passed to this method and contains information about the current context for the action.
 
-Actions are made available by changing the state in the [Presentation](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/Presentation.java) object associated with the event context.
+Actions are made available by changing the state in the [Presentation](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/Presentation.java) object associated with the event context.
 As explained in [Overriding the AnAction.update() Method](#overriding-the-anactionupdate-method), it is vital `update()` methods execute quickly and return execution to platform.
 
 #### 
 
 `AnAction.getActionUpdateThread()`
 
-`AnAction.getActionUpdateThread()` returns an [ActionUpdateThread](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/ActionUpdateThread.java),
+`AnAction.getActionUpdateThread()` returns an [ActionUpdateThread](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/ActionUpdateThread.java),
 which specifies if the `update()` method is called on a [background thread (BGT) or the event-dispatching thread (EDT)](threading-model.html).
 The preferred method is to run the update on the BGT, which has the advantage of guaranteeing application-wide read access to
 [PSI](psi.html), [the virtual file system](virtual-file-system.html) (VFS), or [project models](project-model.html).
@@ -64,7 +64,7 @@ Conversely, actions that specify to run their update on EDT must not access PSI,
 
 All accessible data is provided by the `DataContext` as explained in [Determining the Action Context](#determining-the-action-context).
 When switching from BGT to EDT is necessary, actions can use `AnActionEvent.getUpdateSession()` to
-access the [UpdateSession](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/UpdateSession.java) and
+access the [UpdateSession](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/UpdateSession.java) and
 then call `UpdateSession.compute()` to run a function on EDT.
 
 Inspection `Plugin DevKit | Code | ActionUpdateThread is missing` highlights missing implementation of
@@ -106,7 +106,7 @@ and the user [notified](informing-users.html) accordingly if the context isn't s
 The `AnActionEvent` object passed to `update()` carries information about the current context for the action.
 Context information is available from the methods of `AnActionEvent`, providing information such as the Presentation and whether the action is triggered by a Toolbar.
 Additional context information is available using the method `AnActionEvent.getData()`.
-Keys defined, for example, in [CommonDataKeys](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/CommonDataKeys.java) are passed to the `getData()` method to retrieve objects such as `Project`, `Editor`, `PsiFile`, and other information.
+Keys defined, for example, in [CommonDataKeys](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/CommonDataKeys.java) are passed to the `getData()` method to retrieve objects such as `Project`, `Editor`, `PsiFile`, and other information.
 Accessing this information is relatively light-weight and is suited for `AnAction.update()`.
 
 #### Enabling and Setting Visibility for an Action
@@ -134,7 +134,7 @@ See [Grouping Actions](#grouping-actions) for more information about the `compac
 Note:
 
 If an action is added to a toolbar, its `update()` can be called if there was any user activity or focus transfer.
-If the action's availability changes in the absence of these events, then call [ActivityTracker.getInstance().inc()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-api/src/com/intellij/ide/ActivityTracker.java) to notify the action subsystem to update all toolbar actions.
+If the action's availability changes in the absence of these events, then call [ActivityTracker.getInstance().inc()](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-api/src/com/intellij/ide/ActivityTracker.java) to notify the action subsystem to update all toolbar actions.
 
 An example of enabling a menu action based on whether a project is open is demonstrated in [PopupDialogAction.update()](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/action_basics/src/main/java/org/intellij/sdk/action/PopupDialogAction.java).
 
@@ -163,7 +163,7 @@ An example of inspecting PSI elements is demonstrated in the `action_basics` SDK
 Each action and action group must have a unique identifier (see the `id` attribute specification for [action](plugin-configuration-file.html#idea-plugin__actions__action) and [group](plugin-configuration-file.html#idea-plugin__actions__group)).
 
 An action requires a unique identifier for every context where it appears in the IDE UI, even if the implementation FQN is shared.
-Standard IntelliJ Platform action IDs are defined in [IdeActions](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/ide-core/src/com/intellij/openapi/actionSystem/IdeActions.java).
+Standard IntelliJ Platform action IDs are defined in [IdeActions](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/ide-core/src/com/intellij/openapi/actionSystem/IdeActions.java).
 
 ### Grouping Actions
 
@@ -177,7 +177,7 @@ See the [Action Declaration Reference](#action-declaration-reference) section fo
 
 #### Presentation
 
-A new [Presentation](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/Presentation.java) gets created for every place where the action appears.
+A new [Presentation](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/Presentation.java) gets created for every place where the action appears.
 Therefore, the same action can have a different text or icon when it appears in different places of the user interface.
 Different presentations for the action are created by copying the Presentation returned by the `AnAction.getTemplatePresentation()` method.
 
@@ -212,8 +212,8 @@ Registering actions in `[plugin.xml](plugin-configuration-file.html)` is demonst
 
 #### Action Declaration Reference
 
-The places where actions can appear are defined by constants in [ActionPlaces](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/ide-core/src/com/intellij/openapi/actionSystem/ActionPlaces.java).
-Group IDs for the IntelliJ Platform are defined in [PlatformActions.xml](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-resources/src/idea/PlatformActions.xml).
+The places where actions can appear are defined by constants in [ActionPlaces](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/ide-core/src/com/intellij/openapi/actionSystem/ActionPlaces.java).
+Group IDs for the IntelliJ Platform are defined in [PlatformActions.xml](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-resources/src/idea/PlatformActions.xml).
 
 This and additional information can also be found by using the [Code Completion](https://www.jetbrains.com/help/idea/auto-completing-code.html#invoke-basic-completion), [Quick Definition](https://www.jetbrains.com/help/idea/viewing-reference-information.html#view-definition-symbols), and [Quick Documentation](https://www.jetbrains.com/help/idea/viewing-reference-information.html#inline-quick-documentation) features.
 
@@ -389,13 +389,13 @@ If `<override-text>` is used for a group ID, the key includes the `place` attrib
 
 Two steps are required to register an action from code:
 
-* First, an instance of the class derived from `AnAction` must be passed to the `registerAction()` method of [ActionManager](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/ActionManager.java), to associate the action with an ID.
+* First, an instance of the class derived from `AnAction` must be passed to the `registerAction()` method of [ActionManager](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/ActionManager.java), to associate the action with an ID.
 
-* Second, the action needs to be added to one or more groups. To get an instance of an action group by ID, it is necessary to call `ActionManager.getAction()` and cast the returned value to [DefaultActionGroup](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-api/src/com/intellij/openapi/actionSystem/DefaultActionGroup.java).
+* Second, the action needs to be added to one or more groups. To get an instance of an action group by ID, it is necessary to call `ActionManager.getAction()` and cast the returned value to [DefaultActionGroup](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-api/src/com/intellij/openapi/actionSystem/DefaultActionGroup.java).
 
 ## Building a Toolbar/Popup Menu from Actions
 
-If a plugin needs to include a toolbar or popup menu built from a group of actions in its user interface, that is achieved through [ActionPopupMenu](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/ActionPopupMenu.java) and [ActionToolbar](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/ActionToolbar.java).
+If a plugin needs to include a toolbar or popup menu built from a group of actions in its user interface, that is achieved through [ActionPopupMenu](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/ActionPopupMenu.java) and [ActionToolbar](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/ActionToolbar.java).
 These objects can be created through calls to the `ActionManager.createActionPopupMenu()` and `createActionToolbar()` methods.
 To get a Swing component from such an object, call the respective `getComponent()` method.
 See also [Action Groups](popups.html#action-groups) for more advanced popups.
@@ -404,7 +404,7 @@ If an action toolbar is attached to a specific component (for example, a panel i
 Setting the target ensures that the toolbar buttons' state depends on the state of the related component, not on the current focus location within the IDE frame.
 
 To add an action group to the list of customizable actions in `Settings | Appearance & Behavior | Menus and Toolbars`, implement
-[CustomizableActionGroupProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-impl/src/com/intellij/ide/ui/customization/CustomizableActionGroupProvider.java)
+[CustomizableActionGroupProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-impl/src/com/intellij/ide/ui/customization/CustomizableActionGroupProvider.java)
 and register in [com.intellij.customizableActionGroupProvider](https://jb.gg/ipe?extensions=com.intellij.customizableActionGroupProvider) extension point
 ,
 and ensure that the [action group](plugin-configuration-file.html#idea-plugin__actions__group) defines the `text` attribute or is [localized](#localizing-actions-and-groups).
@@ -415,34 +415,34 @@ See [Toolbar](toolbar.html) in UI Guidelines for an overview.
 
 ### Toggle/Selection
 
-Use [ToggleAction](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-api/src/com/intellij/openapi/actionSystem/ToggleAction.java)
-or [DumbAwareToggleAction](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-api/src/com/intellij/openapi/project/DumbAwareToggleAction.java)
+Use [ToggleAction](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-api/src/com/intellij/openapi/actionSystem/ToggleAction.java)
+or [DumbAwareToggleAction](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-api/src/com/intellij/openapi/project/DumbAwareToggleAction.java)
 for actions with the "selected"/"pressed" state (for example, menu item with checkbox, toolbar action button).
-See also [ToggleOptionAction](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-api/src/com/intellij/openapi/actionSystem/ToggleOptionAction.java).
+See also [ToggleOptionAction](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-api/src/com/intellij/openapi/actionSystem/ToggleOptionAction.java).
 
 #### Popup Menus
 
 In popup menus, `ToggleAction` no longer closes the popup by default.
-Use [Presentation.setKeepPopupOnPerform()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/Presentation.java)
-with [KeepPopupOnPerform.IfRequested](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/KeepPopupOnPerform.java)
+Use [Presentation.setKeepPopupOnPerform()](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/Presentation.java)
+with [KeepPopupOnPerform.IfRequested](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/KeepPopupOnPerform.java)
 in the action constructor or its `update()` method.
 
 ### Back/Forward Navigation
 
-Use [BackAction](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-api/src/com/intellij/ui/navigation/BackAction.java) and
-[ForwardAction](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-api/src/com/intellij/ui/navigation/ForwardAction.java) to provide a navigation trail taken from
-[History](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-api/src/com/intellij/ui/navigation/History.java) provided by `History.KEY`.
+Use [BackAction](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-api/src/com/intellij/ui/navigation/BackAction.java) and
+[ForwardAction](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-api/src/com/intellij/ui/navigation/ForwardAction.java) to provide a navigation trail taken from
+[History](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-api/src/com/intellij/ui/navigation/History.java) provided by `History.KEY`.
 
 ### Runtime Placeholder Action
 
 For actions registered at runtime (for example, in a tool window toolbar), add an [&lt;action&gt;](plugin-configuration-file.html#idea-plugin__actions__action) entry with
-[EmptyAction](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-api/src/com/intellij/openapi/actionSystem/EmptyAction.java)
+[EmptyAction](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-api/src/com/intellij/openapi/actionSystem/EmptyAction.java)
 to "reserve" Action ID, so they become visible in `Settings | Keymap`.
 
 ## Executing Actions Programmatically
 
 Sometimes, it is required to execute actions programmatically, for example, executing an action implementing logic needed in another place, and the implementation is out of our control.
-Executing actions can be achieved with [ActionUtils.invokeAction()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-api/src/com/intellij/openapi/actionSystem/ex/ActionUtil.kt).
+Executing actions can be achieved with [ActionUtils.invokeAction()](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-api/src/com/intellij/openapi/actionSystem/ex/ActionUtil.kt).
 
 Warning:
 
@@ -457,13 +457,13 @@ Code insight to defined Actions and Groups is provided by the Plugin DevKit plug
 
 ### Builtin Places
 
-* IntelliJ Platform API, for example [ActionManager.getAction()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/ActionManager.java)
+* IntelliJ Platform API, for example [ActionManager.getAction()](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/ActionManager.java)
 
-* Test Framework API, for example [CodeInsightTestFixture.performEditorAction()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/testFramework/src/com/intellij/testFramework/fixtures/CodeInsightTestFixture.java)
+* Test Framework API, for example [CodeInsightTestFixture.performEditorAction()](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/testFramework/src/com/intellij/testFramework/fixtures/CodeInsightTestFixture.java)
 
 * String literal fields with the name `ACTION_ID`
 
-* Constants defined in [IdeActions](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/ide-core/src/com/intellij/openapi/actionSystem/IdeActions.java)
+* Constants defined in [IdeActions](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/ide-core/src/com/intellij/openapi/actionSystem/IdeActions.java)
 
 ### Custom Places
 

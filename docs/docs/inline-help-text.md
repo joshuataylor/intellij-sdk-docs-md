@@ -189,7 +189,7 @@ If the help text applies to several UI controls, place it at the bottom of the g
 ![Inline text for a group of controls](images/inline_text_group.png)
 #### Implementation
 
-Use [Panel.group()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-impl/src/com/intellij/ui/dsl/builder/Panel.kt) as the border for panels that need title and possibly the gray line on the right of the title:
+Use [Panel.group()](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-impl/src/com/intellij/ui/dsl/builder/Panel.kt) as the border for panels that need title and possibly the gray line on the right of the title:
 
 ```KOTLIN
 panel {

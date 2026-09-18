@@ -121,7 +121,7 @@ Non-Blocking Read Action (NBRA)
 ## P
 
 `ProcessCanceledException` (PCE)
-: [ProcessCanceledException](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/util/base/multiplatform/src/com/intellij/openapi/progress/ProcessCanceledException.kt) An exception indicating that the currently running operation was terminated and should finish as soon as possible.
+: [ProcessCanceledException](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/util/base/multiplatform/src/com/intellij/openapi/progress/ProcessCanceledException.kt) An exception indicating that the currently running operation was terminated and should finish as soon as possible.
 
 → [CancellationException](#cancellationexception)
 

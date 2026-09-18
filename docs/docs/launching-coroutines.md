@@ -60,7 +60,7 @@ The injected scope is canceled when the container (application/project) is shut 
 
 Using `currentThreadCoroutineScope`
 
-Action behavior performed in [AnAction.actionPerformed()](action-system.html#overriding-the-anactionactionperformed-method) can be executed in a coroutine via [currentThreadCoroutineScope](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/openapi/progress/coroutines.kt):
+Action behavior performed in [AnAction.actionPerformed()](action-system.html#overriding-the-anactionactionperformed-method) can be executed in a coroutine via [currentThreadCoroutineScope](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/openapi/progress/coroutines.kt):
 
 ```KOTLIN
 internal class MyAction : AnAction() {
@@ -94,7 +94,7 @@ Use [service scopes](#launching-coroutine-from-service-scope) whenever possible.
 
 In a standard coroutine-based application, the bridge between the regular blocking code and the suspending code is the [runBlocking](https://kotlinlang.org/api/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/run-blocking.html) function.
 
-In the IntelliJ Platform, a similar purpose is achieved by the [runBlockingCancellable](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/openapi/progress/coroutines.kt) function.
+In the IntelliJ Platform, a similar purpose is achieved by the [runBlockingCancellable](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/openapi/progress/coroutines.kt) function.
 In addition to the same semantics as `runBlocking`, the action gets canceled when the current progress indicator or the current job is canceled.
 
 Note: Something missing?

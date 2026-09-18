@@ -101,7 +101,6 @@ plugins {
 [runIde](tools-intellij-platform-gradle-plugin-tasks.html#runIde),
 [runIdeBackend](tools-intellij-platform-gradle-plugin-tasks.html#runIdeBackend),
 [runIdeFrontend](tools-intellij-platform-gradle-plugin-tasks.html#runIdeFrontend),
-[setupDependencies](tools-intellij-platform-gradle-plugin-tasks.html#setupDependencies),
 [signPlugin](tools-intellij-platform-gradle-plugin-tasks.html#signPlugin),
 [test](tools-intellij-platform-gradle-plugin-tasks.html#test),
 [testIdePerformance](tools-intellij-platform-gradle-plugin-tasks.html#testIdePerformance),
@@ -165,7 +164,7 @@ dependencies {
   implementation(project(":submodule"))
 
   intellijPlatform {
-    intellijIdea("2026.2.0.1")
+    intellijIdea("2026.2.3")
   }
 }
 ```
@@ -215,7 +214,7 @@ dependencies {
   implementation project(':submodule')
 
   intellijPlatform {
-    intellijIdea '2026.2.0.1'
+    intellijIdea '2026.2.3'
   }
 }
 ```
@@ -240,7 +239,6 @@ To merge submodule content into the main plugin JAR file, use `pluginComposedMod
 [printBundledModules](tools-intellij-platform-gradle-plugin-tasks.html#printBundledModules),
 [printBundledPlugins](tools-intellij-platform-gradle-plugin-tasks.html#printBundledPlugins),
 [printProductsReleases](tools-intellij-platform-gradle-plugin-tasks.html#printProductsReleases),
-[setupDependencies](tools-intellij-platform-gradle-plugin-tasks.html#setupDependencies),
 [test](tools-intellij-platform-gradle-plugin-tasks.html#test),
 [testIde](tools-intellij-platform-gradle-plugin-tasks.html#testIde),
 [testIdeUi](tools-intellij-platform-gradle-plugin-tasks.html#testIdeUi),
@@ -298,7 +296,7 @@ dependencies {
   implementation(project(":submodule"))
 
   intellijPlatform {
-    intellijIdea("2026.2.0.1")
+    intellijIdea("2026.2.3")
   }
 }
 ```
@@ -357,7 +355,7 @@ dependencies {
   implementation project(':submodule')
 
   intellijPlatform {
-    intellijIdea '2026.2.0.1'
+    intellijIdea '2026.2.3'
   }
 }
 ```
@@ -411,7 +409,6 @@ plugins {
 [printBundledModules](tools-intellij-platform-gradle-plugin-tasks.html#printBundledModules),
 [printBundledPlugins](tools-intellij-platform-gradle-plugin-tasks.html#printBundledPlugins),
 [printProductsReleases](tools-intellij-platform-gradle-plugin-tasks.html#printProductsReleases),
-[setupDependencies](tools-intellij-platform-gradle-plugin-tasks.html#setupDependencies)
 
 ## Base
 
@@ -472,5 +469,4 @@ See [Recipes](tools-intellij-platform-gradle-plugin-recipes.html) for more detai
 [printBundledModules](tools-intellij-platform-gradle-plugin-tasks.html#printBundledModules),
 [printBundledPlugins](tools-intellij-platform-gradle-plugin-tasks.html#printBundledPlugins),
 [printProductsReleases](tools-intellij-platform-gradle-plugin-tasks.html#printProductsReleases),
-[setupDependencies](tools-intellij-platform-gradle-plugin-tasks.html#setupDependencies),
 

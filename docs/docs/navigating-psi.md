@@ -12,7 +12,7 @@ The most common way to perform top-down navigation is to use a [Visitor](https:/
 To use a visitor, you create a class (usually an anonymous inner class) that extends the base visitor class, overrides the methods that handle the elements you're interested in, and passes the visitor instance to `PsiElement.accept()`.
 
 The base classes for visitors are language-specific.
-For example, if you need to process elements in a Java file, you extend [JavaRecursiveElementVisitor](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/java/java-psi-api/src/com/intellij/psi/JavaRecursiveElementVisitor.java) and override the methods corresponding to the Java element types you're interested in.
+For example, if you need to process elements in a Java file, you extend [JavaRecursiveElementVisitor](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/java/java-psi-api/src/com/intellij/psi/JavaRecursiveElementVisitor.java) and override the methods corresponding to the Java element types you're interested in.
 
 The following snippet shows the use of a visitor to find all Java local variable declarations:
 
@@ -30,7 +30,7 @@ file.accept(new JavaRecursiveElementVisitor() {
 In many cases, you can also use more specific APIs for top-down navigation.
 For example, if you need to get a list of all methods in a Java class, you can use a visitor, but a much easier way to do that is calling `PsiClass.getMethods()`.
 
-[PsiTreeUtil](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/core-api/src/com/intellij/psi/util/PsiTreeUtil.java) contains a number of general-purpose, language-independent functions for PSI tree navigation, some of which (for example, `findChildrenOfType()`) perform top-down navigation.
+[PsiTreeUtil](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/psi/util/PsiTreeUtil.java) contains a number of general-purpose, language-independent functions for PSI tree navigation, some of which (for example, `findChildrenOfType()`) perform top-down navigation.
 
 ## Bottom-Up Navigation
 

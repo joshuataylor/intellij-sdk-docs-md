@@ -28,7 +28,7 @@ Colors are defined by six-digit RGB or eight-digit RGBA hexadecimal notation.
 ### Theme Reference Implementations
 
 When learning a new syntax, it is often useful to have some existing implementations for reference.
-For example, refer to the [Theme description file](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-resources/src/themes/HighContrast.theme.json) for the IntelliJ IDEA High Contrast Theme.
+For example, refer to the [Theme description file](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-resources/src/themes/HighContrast.theme.json) for the IntelliJ IDEA High Contrast Theme.
 It may also help to review [themes available](https://plugins.jetbrains.com/search?headline=164-theme&tags=Theme) at the JetBrains Marketplace.
 
 ## Defining Named Colors
@@ -235,7 +235,7 @@ The 2019.1 release control keys are compatible with release 2019.2 and later ver
 
 Methods for identifying UI control keys are in the [Finding Attribute Keys for UI Controls](#finding-attribute-keys-for-ui-controls) section.
 
-For example, here is an excerpt from the IntelliJ Platform [High Contrast Theme](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-resources/src/themes/HighContrast.theme.json):
+For example, here is an excerpt from the IntelliJ Platform [High Contrast Theme](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-resources/src/themes/HighContrast.theme.json):
 Note that a Theme file can mix versions of `property` identifiers:
 
 * The first three `property` entries are recognized by release 2019.1 and ignored by newer releases because they are defined by new `property` identifiers.
@@ -342,6 +342,6 @@ The parent theme's ID is the `id` attribute of the `themeProvider` element regis
 
 Tip:
 
-See `themeProvider` elements in [PlatformExtensions.xml](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-resources/src/META-INF/PlatformExtensions.xml)
+See `themeProvider` elements in [PlatformExtensions.xml](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-resources/src/META-INF/PlatformExtensions.xml)
 for the IDs of built-in themes.
 

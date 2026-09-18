@@ -1,7 +1,7 @@
 # Input Field
 
 <tldr>
-Implementation: [JBTextField](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-api/src/com/intellij/ui/components/JBTextField.java)
+Implementation: [JBTextField](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-api/src/com/intellij/ui/components/JBTextField.java)
 </tldr>
 
 An input field allows users to enter or edit a text line using the keyboard.
@@ -31,14 +31,14 @@ Use a [text area](text-area.html) for long or multi-line input.
 
 ### Space is limited
 
-If the place is constrained, use an expandable input field [ExpandableTextField](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-api/src/com/intellij/ui/components/fields/ExpandableTextField.java).
+If the place is constrained, use an expandable input field [ExpandableTextField](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-api/src/com/intellij/ui/components/fields/ExpandableTextField.java).
 For more details, see [Expand button](built-in-button.html#expand-a-field).
 
 ![Input text input expand](images/input_text_input_expand.png)
 
 ### Many predefined values
 
-If there are many predefined values (for example, code snippets, commit author), add completion to the input field [TextFieldWithCompletion](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-impl/src/com/intellij/util/textCompletion/TextFieldWithCompletion.java). Show the completion popup when the user starts typing.
+If there are many predefined values (for example, code snippets, commit author), add completion to the input field [TextFieldWithCompletion](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-impl/src/com/intellij/util/textCompletion/TextFieldWithCompletion.java). Show the completion popup when the user starts typing.
 
 ![Input completion](images/input_completion.png)
 
@@ -54,7 +54,7 @@ Use a [search field](search-field.html) to input a search query.
 
 ### Password
 
-If input data is secured, replace it with dots via [JBPasswordField](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-api/src/com/intellij/ui/components/JBPasswordField.java).
+If input data is secured, replace it with dots via [JBPasswordField](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-api/src/com/intellij/ui/components/JBPasswordField.java).
 
 ![Input password](images/input_password.png)
 

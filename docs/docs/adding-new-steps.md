@@ -24,7 +24,7 @@ in the `[plugin.xml](plugin-configuration-file.html)` configuration file.
 
 ## Create a Custom Module Builder
 
-Extend [ModuleBuilder](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/lang-core/src/com/intellij/ide/util/projectWizard/ModuleBuilder.java) class to provide custom configuration.
+Extend [ModuleBuilder](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/lang-core/src/com/intellij/ide/util/projectWizard/ModuleBuilder.java) class to provide custom configuration.
 
 ```JAVA
 public class DemoModuleWizardStep extends ModuleBuilder {

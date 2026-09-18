@@ -1,7 +1,7 @@
 # Tooltip
 
 <tldr>
-Implementation: [HelpTooltip](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-api/src/com/intellij/ide/HelpTooltip.java)
+Implementation: [HelpTooltip](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-api/src/com/intellij/ide/HelpTooltip.java)
 </tldr>
 
 A tooltip appears on hovering over a UI element and shows an action name or provides useful information about an action or a setting.

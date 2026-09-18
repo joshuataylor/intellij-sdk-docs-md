@@ -35,11 +35,11 @@ for programmatic registration.
 
 ### How can I receive notifications about refactoring events?
 
-[RefactoringEventListener](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/refactoring/src/com/intellij/refactoring/listeners/RefactoringEventListener.java)
+[RefactoringEventListener](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/refactoring/src/com/intellij/refactoring/listeners/RefactoringEventListener.java)
 
 ### How do I show a refactoring dialog programmatically?
 
-[RefactoringActionHandlerFactory](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/lang-api/src/com/intellij/refactoring/RefactoringActionHandlerFactory.java)
+[RefactoringActionHandlerFactory](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/lang-api/src/com/intellij/refactoring/RefactoringActionHandlerFactory.java)
 
 ## Editors, Documents and Files
 

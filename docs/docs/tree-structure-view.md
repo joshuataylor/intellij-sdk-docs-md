@@ -8,7 +8,7 @@ The steps below show how to filter out and keep visible only text files and dire
 
 Other use cases include:
 
-* grouping/nesting related entries, e.g., [GUI Designer](https://www.jetbrains.com/help/idea/gui-designer-basics.html) `.form` file and related bound class ([FormMergerTreeStructureProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/plugins/ui-designer/src/com/intellij/uiDesigner/projectView/FormMergerTreeStructureProvider.java)).
+* grouping/nesting related entries, e.g., [GUI Designer](https://www.jetbrains.com/help/idea/gui-designer-basics.html) `.form` file and related bound class ([FormMergerTreeStructureProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/plugins/ui-designer/src/com/intellij/uiDesigner/projectView/FormMergerTreeStructureProvider.java)).
 
 * provide additional "nested" nodes, e.g., contents of custom archive file
 
@@ -16,7 +16,7 @@ Other use cases include:
 
 Implement Custom `TreeStructureProvider`
 
-To provide custom Structure View behaviour, implement [TreeStructureProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/editor-ui-api/src/com/intellij/ide/projectView/TreeStructureProvider.java) with the nodes filtering logic in `modify()` method.
+To provide custom Structure View behaviour, implement [TreeStructureProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/editor-ui-api/src/com/intellij/ide/projectView/TreeStructureProvider.java) with the nodes filtering logic in `modify()` method.
 If access to indexes is not required, it can be marked [dumb aware](indexing-and-psi-stubs.html#DumbAwareAPI).
 
 The example below shows how to filter out all the Project View nodes except those which correspond to text files and directories.

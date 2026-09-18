@@ -28,7 +28,7 @@ This plugin is no longer available starting with 2025.1, see this [announcement]
 
 ## Using JCEF In a Plugin
 
-The core JCEF class exposed by IntelliJ Platform API is [JBCefApp](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/ui.jcef/jcef/JBCefApp.java).
+The core JCEF class exposed by IntelliJ Platform API is [JBCefApp](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/ui.jcef/jcef/JBCefApp.java).
 It is responsible for initializing JCEF context and managing its lifecycle.
 
 There is no need to initialize `JBCefApp` explicitly.
@@ -53,16 +53,16 @@ JCEF can be unsupported when:
 
 ### Browser
 
-JCEF browser is represented by the [JBCefBrowser](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/ui.jcef/jcef/JBCefBrowser.java) class.
+JCEF browser is represented by the [JBCefBrowser](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/ui.jcef/jcef/JBCefBrowser.java) class.
 It is responsible for loading and rendering requested documents in the actual Chromium-based browser.
 
-JCEF browsers can be created either by using the `JBCefBrowser` class' constructors or via [JBCefBrowserBuilder](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/ui.jcef/jcef/JBCefBrowserBuilder.java).
+JCEF browsers can be created either by using the `JBCefBrowser` class' constructors or via [JBCefBrowserBuilder](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/ui.jcef/jcef/JBCefBrowserBuilder.java).
 Use constructors in the cases when a browser with the default [client](#browser-client) and default options is enough.
 The builder approach allows using custom clients and configuring other options.
 
 #### Adding Browser to UI
 
-[JBCefBrowser.getComponent()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/ui.jcef/jcef/JBCefBrowser.java) exposes the UI component embedding the actual browser.
+[JBCefBrowser.getComponent()](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/ui.jcef/jcef/JBCefBrowser.java) exposes the UI component embedding the actual browser.
 The component is an instance of Swing `JComponent`, which can be added to the plugin UI:
 
 ```JAVA
@@ -73,7 +73,7 @@ myPanel.add(browser.getComponent());
 
 #### Loading Documents
 
-To load a document in the browser, use one of [JBCefBrowserBase.load*()](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/ui.jcef/jcef/JBCefBrowserBase.java) methods.
+To load a document in the browser, use one of [JBCefBrowserBase.load*()](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/ui.jcef/jcef/JBCefBrowserBase.java) methods.
 Methods loading documents can be called from both [EDT and background threads](threading-model.html).
 It is possible to set an initial URL (passed to constructor or builder) that will be loaded when the browser is created and initialized.
 
@@ -90,7 +90,7 @@ Browser client provides an interface for setting up [handlers](#event-handlers) 
 Handlers allow reacting to these events in plugin code and changing the browser's behavior.
 Each browser is tied to a single client, and a single client can be shared with multiple browser instances.
 
-Browser client is represented by [JBCefClient](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/ui.jcef/jcef/JBCefClient.java), which is a wrapper for the JCEF [CefClient](https://github.com/JetBrains/jcef/tree/master/java/org/cef/CefClient.java).
+Browser client is represented by [JBCefClient](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/ui.jcef/jcef/JBCefClient.java), which is a wrapper for the JCEF [CefClient](https://github.com/JetBrains/jcef/tree/master/java/org/cef/CefClient.java).
 `JBCefClient` allows registering multiple handlers of the same type, which is not possible with `CefClient`.
 To access the underlying `CefClient` and its API, call `JBCefClient.getCefClient()`.
 
@@ -153,7 +153,7 @@ It is common to pass `browser.getCefBrowser().getUrl()` or null/empty string, an
 JCEF doesn't provide direct access to DOM from the plugin code (it may [change](https://youtrack.jetbrains.com/issue/JBR-2046) in the future), and asynchronous communication with JavaScript is achieved with the callback mechanism.
 It allows executing plugin code from the embedded browser via JavaScript, e.g., when a button or link is clicked, a shortcut is pressed, a JavaScript function is called, etc.
 
-JavaScript query callback is represented by [JBCefJSQuery](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/ui.jcef/jcef/JBCefJSQuery.java).
+JavaScript query callback is represented by [JBCefJSQuery](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/ui.jcef/jcef/JBCefJSQuery.java).
 It is an object bound to a specific browser, and it holds a set of handlers that implement the required plugin behavior.
 
 Consider a case which requires opening local files links in the editor and external links in an external browser.
@@ -235,14 +235,14 @@ They can be made accessible by implementing proper request [handlers](#event-han
 This approach requires implementing [CefRequestHandler](https://github.com/JetBrains/jcef/tree/master/java/org/cef/handler/CefRequestHandler.java), and [CefResourceRequestHandler](https://github.com/JetBrains/jcef/tree/master/java/org/cef/handler/CefResourceRequestHandler.java), which map resource paths to resource providers.
 
 Serving such resources is implemented by the Image Viewer component responsible for displaying SVG files in IntelliJ Platform-based IDEs.
-See [JCefImageViewer](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/images/jcef/src/com/intellij/platform/images/jcef/JCefImageViewer.kt) and related classes for the implementation details.
+See [JCefImageViewer](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/images/jcef/src/com/intellij/platform/images/jcef/JCefImageViewer.kt) and related classes for the implementation details.
 
 ### Scrollbars Look and Feel
 
 Default browser scrollbars may be not enough, for example, when they stand out of the IDE scrollbars look, or specific look and behavior is required.
 
 In JCEF browsers, scrollbars look and feel can be customized by CSS and JavaScript.
-IntelliJ Platform provides [JBCefScrollbarsHelper](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/ui.jcef/jcef/JBCefScrollbarsHelper.java) that allows customizing scrollbars in two ways:
+IntelliJ Platform provides [JBCefScrollbarsHelper](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/ui.jcef/jcef/JBCefScrollbarsHelper.java) that allows customizing scrollbars in two ways:
 
 1. Using `JBCefScrollbarsHelper.buildScrollbarsStyle()`, which provides the styles adapted to the IDE scrollbars (recommended).
 
@@ -252,14 +252,14 @@ It should be used when transparent scrollbars or other advanced options are requ
 
 ### Disposing Resources
 
-`JBCefBrowser`, `JBCefClient`, and `JBCefJSQuery` classes implement [JBCefDisposable](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/ui.jcef/jcef/JBCefDisposable.java), which extends [Disposable](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/util/src/com/intellij/openapi/Disposable.java).
+`JBCefBrowser`, `JBCefClient`, and `JBCefJSQuery` classes implement [JBCefDisposable](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/ui.jcef/jcef/JBCefDisposable.java), which extends [Disposable](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/util/src/com/intellij/openapi/Disposable.java).
 It means that these classes should clean up their resources according to the rules described on the [Disposer and Disposable](disposers.html) page.
 
 For example, a custom `JBCefClient` with registered handlers should remove them in the `dispose()` method implementation.
 
 ## Testing
 
-See [JBCefTestHelper](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/platform/platform-tests/testSrc/com/intellij/ui/jcef/JBCefTestHelper.java) and tests in that package.
+See [JBCefTestHelper](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-tests/testSrc/com/intellij/ui/jcef/JBCefTestHelper.java) and tests in that package.
 
 ## Debugging
 
@@ -289,9 +289,9 @@ To open DevTools in a separate window, call `JBCefBrowser.openDevtools()`.
 
 ## JCEF Usage Examples
 
-* [Markdown preview panel](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/plugins/markdown/jcef/src/com/intellij/markdown/jcef/preview/MarkdownJCEFHtmlPanel.kt)
+* [Markdown preview panel](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/plugins/markdown/jcef/src/com/intellij/markdown/jcef/preview/MarkdownJCEFHtmlPanel.kt)
 
-* [SVG Image Viewer](https://github.com/JetBrains/intellij-community/tree/idea/262.8665.337/images/jcef/src/com/intellij/platform/images/jcef/JCefImageViewer.kt)
+* [SVG Image Viewer](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/images/jcef/src/com/intellij/platform/images/jcef/JCefImageViewer.kt)
 
 * [PDF Viewer](https://github.com/FirstTimeInForever/intellij-pdf-viewer) plugin
 
