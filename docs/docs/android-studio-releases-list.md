@@ -19,6 +19,7 @@ This data is updated daily and also available in [JSON](https://jb.gg/android-st
 | Rabbit 1    2026.2.1 Canary 3   |![Canary](https://img.shields.io/badge/-Canary-lightgrey?style=flat-square) |2026.2.1.3AI‑262.9437.185.2621.16190720   |2026.2.1262.9437.185   |Aug 27, 2026 |
 | Rabbit 1    2026.2.1 Canary 2   |![Canary](https://img.shields.io/badge/-Canary-lightgrey?style=flat-square) |2026.2.1.2AI‑262.9437.185.2621.16128175   |2026.2.1262.9437.185   |Aug 20, 2026 |
 | Rabbit 1    2026.2.1 Canary 1   |![Canary](https://img.shields.io/badge/-Canary-lightgrey?style=flat-square) |2026.2.1.1AI‑262.9437.185.2621.16076543   |2026.2.1262.9437.185   |Aug 17, 2026 |
+| Quail 4    2026.1.4 Patch 1   |![Patch](https://img.shields.io/badge/-Patch-orange?style=flat-square) |2026.1.4.8AI‑261.26222.65.2614.16379836   |2026.1.4261.26222.65   |Sep 18, 2026 |
 | Quail 4    2026.1.4   |![Release](https://img.shields.io/badge/-Release-blue?style=flat-square) |2026.1.4.7AI‑261.26222.65.2614.16204760   |2026.1.4261.26222.65   |Sep 1, 2026 |
 | Quail 4    2026.1.4 RC 2   |![RC](https://img.shields.io/badge/-RC-red?style=flat-square) |2026.1.4.6AI‑261.26222.65.2614.16166871   |2026.1.4261.26222.65   |Aug 25, 2026 |
 | Quail 4    2026.1.4 RC 1   |![RC](https://img.shields.io/badge/-RC-red?style=flat-square) |2026.1.4.5AI‑261.26222.65.2614.16087418   |2026.1.4261.26222.65   |Aug 17, 2026 |
