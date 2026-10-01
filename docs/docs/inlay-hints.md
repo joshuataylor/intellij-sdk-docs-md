@@ -143,9 +143,7 @@ The `$modelId$` must match the `groupId` of `CodeVisionGroupSettingProvider` and
 
 Examples:
 
-* [JavaInheritorsCodeVisionProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/java/java-impl/src/com/intellij/codeInsight/daemon/impl/JavaInheritorsCodeVisionProvider.kt) - shows number of Java class or method inheritors. Clicking the inlay hint opens the list of inheritors. This provider is `DaemonBoundCodeVisionProvider`.
-
-* [JavaReferencesCodeVisionProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/java/java-impl/src/com/intellij/codeInsight/daemon/impl/JavaReferencesCodeVisionProvider.kt) - shows number of usages of Java class or member. Clicking the inlay opens the list of usages or navigates to the usage if only one exists. This provider is `DaemonBoundCodeVisionProvider`.
+* [KotlinScriptDefinitionCodeVisionProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/plugins/kotlin/base/scripting/scripting/src/org/jetbrains/kotlin/idea/core/script/definitions/KotlinScriptDefinitionCodeVisionProvider.kt) - shows the script definition hint. Clicking the inlay opens the script definition settings. This provider is `DaemonBoundCodeVisionProvider`.
 
 * [VcsCodeVisionProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/vcs-impl/lang/src/com/intellij/codeInsight/hints/VcsCodeVisionProvider.kt) - shows the author of a given element, e.g., class or method, based on VCS information. This provider is `CodeVisionProvider`.
 
