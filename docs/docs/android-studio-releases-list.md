@@ -11,8 +11,10 @@ This data is updated daily and also available in [JSON](https://jb.gg/android-st
 
 | Release Name |Channel |Version |IntelliJ IDEA Version |Release Date |
 -----------------------------------------------------------------------
+| Rabbit 2    2026.2.2 Canary 3   |![Canary](https://img.shields.io/badge/-Canary-lightgrey?style=flat-square) |2026.2.2.3AI‑262.10968.63.2622.16488178   |2026.2.3262.10968.63   |Oct 1, 2026 |
 | Rabbit 2    2026.2.2 Canary 2   |![Canary](https://img.shields.io/badge/-Canary-lightgrey?style=flat-square) |2026.2.2.2AI‑262.10315.125.2622.16434108   |2026.2.2262.10315.125   |Sep 24, 2026 |
 | Rabbit 2    2026.2.2 Canary 1   |![Canary](https://img.shields.io/badge/-Canary-lightgrey?style=flat-square) |2026.2.2.1AI‑262.10315.125.2622.16370930   |2026.2.2262.10315.125   |Sep 17, 2026 |
+| Rabbit 1    2026.2.1   |![Release](https://img.shields.io/badge/-Release-blue?style=flat-square) |2026.2.1.8AI‑262.9437.185.2621.16467767   |2026.2.1262.9437.185   |Oct 1, 2026 |
 | Rabbit 1    2026.2.1 RC 2   |![RC](https://img.shields.io/badge/-RC-red?style=flat-square) |2026.2.1.7AI‑262.9437.185.2621.16444166   |2026.2.1262.9437.185   |Sep 28, 2026 |
 | Rabbit 1    2026.2.1 RC 1   |![RC](https://img.shields.io/badge/-RC-red?style=flat-square) |2026.2.1.6AI‑262.9437.185.2621.16355069   |2026.2.1262.9437.185   |Sep 16, 2026 |
 | Rabbit 1    2026.2.1 RC 1   |![RC](https://img.shields.io/badge/-RC-red?style=flat-square) |2026.2.1.6AI‑262.9437.185.2621.16355069   |2026.2.1262.9437.185   |Sep 16, 2026 |
