@@ -86,6 +86,11 @@ This shouldn't affect binary compatibility, but an explicit dependency should be
 `com.intellij.openapi.actionSystem.LangDataKeys.RUN_CONTENT_DESCRIPTOR` field type changed from `DataKey<RunContentDescriptor>` to `DataKey<?>`
 : Use `com.intellij.openapi.actionSystem.ExecutionDataKeys.RUN_CONTENT_DESCRIPTOR` or add an explicit cast.
 
+`com.intellij.ide.ApplicationLoadListener` class removed
+: The interface and its `com.intellij.ApplicationLoadListener` extension point were internal API and are not available to plugins anymore, even if a plugin used them before.
+Plugins may not run code at early application startup.
+Use [ProjectActivity](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/openapi/startup/StartupActivity.kt) instead, see [Project Open](plugin-components.html#project-open).
+
 #### JNA Library 2026.3
 
 The [JNA](https://github.com/java-native-access/jna) library is no longer loaded by the core classloader.
@@ -207,6 +212,25 @@ This shouldn't affect binary compatibility, but an explicit dependency should be
 
 In 2026.2, these plugins were shipped with IDs following the `intellij.<name>.plugin` scheme (for example, `intellij.bookmarks.plugin`).
 Starting from 2026.3, the plugins use the IDs listed above, and the old IDs are kept as plugin aliases for backward compatibility.
+
+#### JCEF 2026.2
+
+A plugin that uses the [embedded browser (JCEF)](embedded-browser-jcef.html) API must now declare an explicit dependency on the bundled Web Browser (JCEF) plugin.
+See [Plugin Dependency](embedded-browser-jcef.html#plugin-dependency) for the required `plugin.xml` and `build.gradle.kts` changes and the compatibility notes for older IDE versions.
+
+#### Error Reporting 2026.2
+
+[MessagePool](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-impl/src/com/intellij/diagnostic/MessagePool.kt) and [MessagePoolListener](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-impl/src/com/intellij/diagnostic/MessagePoolListener.java) are now internal API and are not available to plugins.
+Plugins must not observe all IDE exceptions and diagnostics.
+
+To observe plugin's own exceptions and freezes, use [error report sink](error-reporting.html#automatic-reporting-with-errorreportsink).
+
+#### Plugin Management 2026.2
+
+`PluginManagerCore.enablePlugin()`, `PluginManagerCore.disablePlugin()`, and `PluginManagerCore.getPlugins()` are now internal API and are not available to plugins.
+Plugins must not manage other plugins.
+
+A plugin that only needs information about other plugins, such as IDs, versions, vendors, license, modules, or dependencies, should use [PluginDetailsService](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-impl/src/com/intellij/ide/plugins/PluginDetails.kt).
 
 #### PolySymbols 2026.2
 

@@ -19,7 +19,38 @@ The Gradle plugin must be chosen depending on the target
 (Obsolete)
 1.10.1+
 
-## IntelliJ Platform 2026.2
+## 2026.3
+
+### IntelliJ Platform 2026.3
+
+Plugin management with user consent
+: The experimental [PluginPermissionService](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-impl/src/com/intellij/ide/plugins/PluginPermissionService.kt) lets a plugin ask the user to allow an operation on other plugins.
+The plugin passes a request and an action to `withPermission()`.
+The IDE shows the request message in a permission dialog, and runs the action only if the user allows the request.
+If the user denies the request, `withPermission()` returns a failure with `PluginPermissionNotGrantedException`.
+[PluginManagementPermissions.kt](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-impl/src/com/intellij/openapi/updateSettings/PluginManagementPermissions.kt) defines these requests:
+: * `EnablePluginRequest`, `DisablePluginRequest`, and `InstallPluginRequest` give the action a `PluginManagementAction`, and its `apply()` starts the operation.
+
+* `AccessPluginClassLoadersRequest` gives the action a `ReadPluginDescriptorsAction`, which returns the descriptors of all installed plugins and their class loaders.
+
+Each permission works for one call only, so the plugin must send a new request to repeat the operation.
+Call `withPermission()` directly from the plugin code, because the service identifies the requesting plugin by the calling class.
+Java code can use `PluginPermissionJavaShim.withPermission()`, which returns a `CompletableFuture`.
+
+```KOTLIN
+val result = PluginPermissionService.getInstance().withPermission(
+  DisablePluginRequest(pluginId, MyBundle.message("disable.conflicting.plugin.reason"))
+) { action ->
+  action.apply()
+}
+```
+
+This API replaces the `PluginManagerCore` methods that enable and disable plugins, which are now internal.
+See [Plugin Management 2026.2](api-changes-list-2026.html#plugin-management-20262).
+
+## 2026.2
+
+### IntelliJ Platform 2026.2
 
 Asynchronous `VirtualFile` content saving
 : [VirtualFile](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/openapi/vfs/VirtualFile.java) content updates via `getOutputStream()` or `setBinaryContent()` can now be postponed – the actual file on disk may be modified with some delay.
