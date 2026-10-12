@@ -361,3 +361,113 @@ dependencies {
 }
 ```
 
+## Generate a lexer and parser with Grammar-Kit
+
+The [GrammarKit](tools-intellij-platform-gradle-plugin-plugins.html#grammarkit) sub-plugin adds the [generateLexer](tools-intellij-platform-gradle-plugin-tasks.html#generateLexer) and [generateParser](tools-intellij-platform-gradle-plugin-tasks.html#generateParser) tasks for generating a [custom language](custom-language-support.html) lexer and parser from [Grammar-Kit](https://github.com/JetBrains/Grammar-Kit) sources.
+It is not applied by the main plugin, so apply it explicitly next to `org.jetbrains.intellij.platform`:
+
+Kotlin:
+
+`build.gradle.kts`
+
+```KOTLIN
+plugins {
+  id("org.jetbrains.intellij.platform") version "2.19.0"
+  id("org.jetbrains.intellij.platform.grammarkit") version "2.19.0"
+}
+```
+
+Groovy:
+
+`build.gradle`
+
+```GROOVY
+plugins {
+  id 'org.jetbrains.intellij.platform' version '2.19.0'
+  id 'org.jetbrains.intellij.platform.grammarkit' version '2.19.0'
+}
+```
+
+Point the tasks at the grammar sources and add their output to the `main` source set so compilation triggers generation:
+
+Kotlin:
+
+```KOTLIN
+tasks {
+  generateLexer {
+    sourceFile = file("src/main/grammar/Simple.flex")
+  }
+
+  generateParser {
+    sourceFile = file("src/main/grammar/Simple.bnf")
+  }
+}
+
+sourceSets {
+  main {
+    java {
+      srcDir(tasks.generateLexer)
+      srcDir(tasks.generateParser)
+    }
+  }
+}
+```
+
+Groovy:
+
+```GROOVY
+import org.jetbrains.intellij.platform.gradle.tasks.GenerateLexerTask
+import org.jetbrains.intellij.platform.gradle.tasks.GenerateParserTask
+
+tasks.named('generateLexer', GenerateLexerTask) {
+  sourceFile = file('src/main/grammar/Simple.flex')
+}
+
+tasks.named('generateParser', GenerateParserTask) {
+  sourceFile = file('src/main/grammar/Simple.bnf')
+}
+
+sourceSets {
+  main {
+    java {
+      srcDir(tasks.named('generateLexer'))
+      srcDir(tasks.named('generateParser'))
+    }
+  }
+}
+```
+
+By default each task writes to its own directory below `[buildDirectory]/generated/sources/`, owns that directory, and declares it as a task output.
+Passing the task to `srcDir()` registers the generated sources and makes the compilation task depend on generation, so no explicit `dependsOn` is needed.
+
+The Grammar-Kit and JFlex versions are provided automatically.
+Override them with the [grammarKit()](tools-intellij-platform-gradle-plugin-dependencies-extension.html#grammar-and-parser-generation) and [jflex()](tools-intellij-platform-gradle-plugin-dependencies-extension.html#grammar-and-parser-generation) dependency helpers:
+
+```KOTLIN
+dependencies {
+  intellijPlatform {
+    grammarKit("2023.3.4")
+    jflex("1.10.17")
+  }
+}
+```
+
+To generate into a directory shared with handwritten code (for example `src/main/gen`), set [targetRootOutputDir](tools-intellij-platform-gradle-plugin-tasks.html#generateParser-targetRootOutputDir) together with the explicit output paths so that only the generated files are purged:
+
+```KOTLIN
+tasks {
+  generateParser {
+    sourceFile = file("src/main/grammar/Simple.bnf")
+    targetRootOutputDir = file("src/main/gen")
+    pathToParser = "org/intellij/sdk/language/parser/SimpleParser.java"
+    pathToPsiRoot = "org/intellij/sdk/language/psi"
+    purgeOldFiles = true
+  }
+}
+```
+
+Note:
+
+For projects built with the IntelliJ Platform Gradle Plugin, this replaces the standalone [Gradle Grammar-Kit Plugin](tools-gradle-grammar-kit-plugin.html) (`org.jetbrains.grammarkit`).
+Do not apply both plugins in the same project.
+

@@ -91,7 +91,8 @@ This step generates a parser and PSI elements in the `/src/main/gen` folder of t
 
 Tip:
 
-[Gradle Grammar-Kit Plugin](tools-gradle-grammar-kit-plugin.html) can be used alternatively.
+The parser and PSI classes can also be generated during the Gradle build.
+See [Generate a lexer and parser with Grammar-Kit](tools-intellij-platform-gradle-plugin-recipes.html#generate-a-lexer-and-parser-with-grammar-kit) when using the IntelliJ Platform Gradle Plugin, or [Gradle Grammar-Kit Plugin](tools-gradle-grammar-kit-plugin.html) for the standalone plugin.
 
 ![Parser](images/generated_parser.png)
 

@@ -381,6 +381,8 @@ Plugin ID: `org.jetbrains.intellij.platform.grammarkit`
 
 This plugin applies the [Base](#base) plugin and adds task support for generating lexers with JFlex and parsers with GrammarKit.
 
+See [Generate a lexer and parser with Grammar-Kit](tools-intellij-platform-gradle-plugin-recipes.html#generate-a-lexer-and-parser-with-grammar-kit) for a complete setup that registers the generator tasks and wires their output into the source set.
+
 Kotlin:
 
 `build.gradle.kts`
