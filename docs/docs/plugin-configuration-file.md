@@ -37,7 +37,7 @@ documentation](https://www.jetbrains.com/help/idea/viewing-reference-information
 The [Plugin DevKit](https://plugins.jetbrains.com/plugin/22851-plugin-devkit) plugin must be
 installed and enabled.
 
-* [&lt;idea-plugin&gt;](#idea-plugin) * [&lt;id&gt;](#idea-plugin__id) * [&lt;name&gt;](#idea-plugin__name) * [&lt;version&gt;](#idea-plugin__version) * [&lt;product-descriptor&gt;](#idea-plugin__product-descriptor) * [&lt;idea-version&gt;](#idea-plugin__idea-version) * [&lt;vendor&gt;](#idea-plugin__vendor) * [&lt;description&gt;](#idea-plugin__description) * [&lt;change-notes&gt;](#idea-plugin__change-notes) * [&lt;depends&gt;](#idea-plugin__depends) * [&lt;incompatible-with&gt;](#idea-plugin__incompatible-with) * [&lt;extensions&gt;](#idea-plugin__extensions) * [An Extension](#idea-plugin__extensions__-) * [&lt;extensionPoints&gt;](#idea-plugin__extensionPoints) * [&lt;extensionPoint&gt;](#idea-plugin__extensionPoints__extensionPoint) * [&lt;with&gt;](#idea-plugin__extensionPoints__extensionPoint__with) * [&lt;resource-bundle&gt;](#idea-plugin__resource-bundle) * [&lt;actions&gt;](#idea-plugin__actions) * [&lt;action&gt;](#idea-plugin__actions__action) * [&lt;add-to-group&gt;](#idea-plugin__actions__action__add-to-group) * [&lt;keyboard-shortcut&gt;](#idea-plugin__actions__action__keyboard-shortcut) * [&lt;mouse-shortcut&gt;](#idea-plugin__actions__action__mouse-shortcut) * [&lt;override-text&gt;](#idea-plugin__actions__action__override-text) * [&lt;synonym&gt;](#idea-plugin__actions__action__synonym) * [&lt;abbreviation&gt;](#idea-plugin__actions__action__abbreviation) * [&lt;group&gt;](#idea-plugin__actions__group) * [&lt;action&gt;](#idea-plugin__actions__action) * [&lt;add-to-group&gt;](#idea-plugin__actions__action__add-to-group) * [&lt;keyboard-shortcut&gt;](#idea-plugin__actions__action__keyboard-shortcut) * [&lt;mouse-shortcut&gt;](#idea-plugin__actions__action__mouse-shortcut) * [&lt;override-text&gt;](#idea-plugin__actions__action__override-text) * [&lt;synonym&gt;](#idea-plugin__actions__action__synonym) * [&lt;abbreviation&gt;](#idea-plugin__actions__action__abbreviation) * [&lt;add-to-group&gt;](#idea-plugin__actions__action__add-to-group) * [&lt;override-text&gt;](#idea-plugin__actions__action__override-text) * [&lt;reference&gt;](#idea-plugin__actions__group__reference) * [&lt;add-to-group&gt;](#idea-plugin__actions__action__add-to-group) * [&lt;separator&gt;](#idea-plugin__actions__group__separator) * [&lt;add-to-group&gt;](#idea-plugin__actions__action__add-to-group) * [&lt;reference&gt;](#idea-plugin__actions__group__reference) * [&lt;add-to-group&gt;](#idea-plugin__actions__action__add-to-group) * [&lt;applicationListeners&gt;](#idea-plugin__applicationListeners) * [&lt;listener&gt;](#idea-plugin__applicationListeners__listener) * [&lt;projectListeners&gt;](#idea-plugin__projectListeners) * [&lt;listener&gt;](#idea-plugin__applicationListeners__listener) * [&lt;xi:include&gt;](#idea-plugin__xi:include) * [&lt;xi:fallback&gt;](#idea-plugin__xi:include__xi:fallback)
+* [&lt;idea-plugin&gt;](#idea-plugin) * [&lt;id&gt;](#idea-plugin__id) * [&lt;name&gt;](#idea-plugin__name) * [&lt;version&gt;](#idea-plugin__version) * [&lt;product-descriptor&gt;](#idea-plugin__product-descriptor) * [&lt;idea-version&gt;](#idea-plugin__idea-version) * [&lt;vendor&gt;](#idea-plugin__vendor) * [&lt;description&gt;](#idea-plugin__description) * [&lt;change-notes&gt;](#idea-plugin__change-notes) * [&lt;depends&gt;](#idea-plugin__depends) * [&lt;incompatible-with&gt;](#idea-plugin__incompatible-with) * [&lt;extensions&gt;](#idea-plugin__extensions) * [An Extension](#idea-plugin__extensions__-) * [&lt;extensionPoints&gt;](#idea-plugin__extensionPoints) * [&lt;extensionPoint&gt;](#idea-plugin__extensionPoints__extensionPoint) * [&lt;with&gt;](#idea-plugin__extensionPoints__extensionPoint__with) * [&lt;resource-bundle&gt;](#idea-plugin__resource-bundle) * [&lt;actions&gt;](#idea-plugin__actions) * [&lt;action&gt;](#idea-plugin__actions__action) * [&lt;add-to-group&gt;](#idea-plugin__actions__action__add-to-group) * [&lt;keyboard-shortcut&gt;](#idea-plugin__actions__action__keyboard-shortcut) * [&lt;mouse-shortcut&gt;](#idea-plugin__actions__action__mouse-shortcut) * [&lt;override-text&gt;](#idea-plugin__actions__action__override-text) * [&lt;synonym&gt;](#idea-plugin__actions__action__synonym) * [&lt;abbreviation&gt;](#idea-plugin__actions__action__abbreviation) * [&lt;group&gt;](#idea-plugin__actions__group) * [&lt;action&gt;](#idea-plugin__actions__action) * [&lt;add-to-group&gt;](#idea-plugin__actions__action__add-to-group) * [&lt;keyboard-shortcut&gt;](#idea-plugin__actions__action__keyboard-shortcut) * [&lt;mouse-shortcut&gt;](#idea-plugin__actions__action__mouse-shortcut) * [&lt;override-text&gt;](#idea-plugin__actions__action__override-text) * [&lt;synonym&gt;](#idea-plugin__actions__action__synonym) * [&lt;abbreviation&gt;](#idea-plugin__actions__action__abbreviation) * [&lt;add-to-group&gt;](#idea-plugin__actions__action__add-to-group) * [&lt;override-text&gt;](#idea-plugin__actions__action__override-text) * [&lt;reference&gt;](#idea-plugin__actions__group__reference) * [&lt;add-to-group&gt;](#idea-plugin__actions__action__add-to-group) * [&lt;synonym&gt;](#idea-plugin__actions__action__synonym) * [&lt;separator&gt;](#idea-plugin__actions__group__separator) * [&lt;add-to-group&gt;](#idea-plugin__actions__action__add-to-group) * [&lt;reference&gt;](#idea-plugin__actions__group__reference) * [&lt;add-to-group&gt;](#idea-plugin__actions__action__add-to-group) * [&lt;synonym&gt;](#idea-plugin__actions__action__synonym) * [&lt;applicationListeners&gt;](#idea-plugin__applicationListeners) * [&lt;listener&gt;](#idea-plugin__applicationListeners__listener) * [&lt;projectListeners&gt;](#idea-plugin__projectListeners) * [&lt;listener&gt;](#idea-plugin__applicationListeners__listener) * [&lt;xi:include&gt;](#idea-plugin__xi:include) * [&lt;xi:fallback&gt;](#idea-plugin__xi:include__xi:fallback)
 
 ## 
 
@@ -1016,9 +1016,12 @@ Examples
 
 `reference`
 
-Allows adding an existing action to the group.
-The element can be used directly under the [&lt;actions&gt;](#idea-plugin__actions) element, or in
-the [&lt;group&gt;](#idea-plugin__actions__group) element.
+Refers to an existing action.
+The element can be used in:
+
+* the [&lt;actions&gt;](#idea-plugin__actions) element - must contain the [&lt;add-to-group&gt;](#idea-plugin__actions__action__add-to-group) element adding the referenced action to a group, the [&lt;synonym&gt;](#idea-plugin__actions__action__synonym) element adding a synonym to the referenced action, or both.
+
+* the [&lt;group&gt;](#idea-plugin__actions__group) element - adds the referenced action to the group.
 
 Required
 : no
@@ -1031,10 +1034,14 @@ Attributes
 Children
 : * [&lt;add-to-group&gt;](#idea-plugin__actions__action__add-to-group)
 
+* [&lt;synonym&gt;](#idea-plugin__actions__action__synonym)
+
 Examples
 : * An action reference in a group: ```XML <group ...> <reference ref="EditorCopy"/> </group> ```
 
-* An action reference registered directly in the [&lt;actions&gt;](#idea-plugin__actions) element: ```XML <actions> <reference ref="com.example.MyAction"> <add-to-group group-id="ToolsMenu"/> </reference> </group> ```
+* An action reference registered directly in the [&lt;actions&gt;](#idea-plugin__actions) element: ```XML <actions> <reference ref="com.example.MyAction"> <add-to-group group-id="ToolsMenu"/> </reference> </actions> ```
+
+* A synonym added to an existing action: ```XML <actions> <reference ref="EditorCopy"> <synonym text="Copy to Clipboard"/> </reference> </actions> ```
 
 ##### 
 
