@@ -19,6 +19,8 @@ and visit
 
 The following pages list the breaking changes in IDE and plugin releases with required/recommended steps to take by plugin authors.
 
+* [Changes in 2027.*](api-changes-list-2027.html)
+
 * [Changes in 2026.*](api-changes-list-2026.html)
 
 * [Changes in 2025.*](api-changes-list-2025.html)
