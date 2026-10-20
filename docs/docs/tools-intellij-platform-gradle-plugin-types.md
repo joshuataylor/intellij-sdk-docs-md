@@ -108,7 +108,7 @@ See also:
 
 `PluginBean`
 
-[PluginBean](https://github.com/JetBrains/intellij-plugin-verifier/tree/1.410/intellij-plugin-structure/structure-intellij/src/main/java/com/jetbrains/plugin/structure/intellij/beans/PluginBean.java)
+[PluginBean](https://github.com/JetBrains/intellij-plugin-verifier/tree/1.411/intellij-plugin-structure/structure-intellij/src/main/java/com/jetbrains/plugin/structure/intellij/beans/PluginBean.java)
 
 Describes the content of the `plugin.xml` file.
 

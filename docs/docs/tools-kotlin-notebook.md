@@ -88,12 +88,12 @@ These variables provide access to essential IDE components, configuration inform
 | Variable |Type |Description |
 -------------------------------
 | `idePath` |`Path` |Represents the resolved file system path to the IntelliJ Platform installation directory. |
-| `ide` |[ProductInfoBasedIde](https://github.com/JetBrains/intellij-plugin-verifier/tree/1.410/intellij-plugin-structure/structure-ide/src/main/java/com/jetbrains/plugin/structure/ide/ProductInfoBasedIde.kt) |Represents an IDE instance, which allows interacting with plugins and resolving their dependencies based on the IDE's configuration. |
+| `ide` |[ProductInfoBasedIde](https://github.com/JetBrains/intellij-plugin-verifier/tree/1.411/intellij-plugin-structure/structure-ide/src/main/java/com/jetbrains/plugin/structure/ide/ProductInfoBasedIde.kt) |Represents an IDE instance, which allows interacting with plugins and resolving their dependencies based on the IDE's configuration. |
 | `notebookDisposable` |[Disposable](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/util/src/com/intellij/openapi/Disposable.java) |Represents a disposable used for managing the IntelliJ Platform lifetime of the current notebook. |
 | `notebookPluginDescriptor` |[PluginMainDescriptor](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-impl/src/com/intellij/ide/plugins/IdeaPluginDescriptorImpl.kt) |Represents a plugin descriptor for the plugin created with Kotlin Notebook IntelliJ Platform integration. |
 | `pluginManager` |[PluginManager](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-impl/src/com/intellij/ide/plugins/PluginManager.java) |Instance of the `PluginManager`, which allows accessing information about plugins and their states in the current IDE environment. |
-| `pluginRepository` |[PluginRepository](https://github.com/JetBrains/intellij-plugin-verifier/tree/1.410/intellij-plugin-verifier/verifier-repository/src/main/java/com/jetbrains/pluginverifier/repository/PluginRepository.kt) |Instance of `PluginRepository`, responsible for managing plugins via the JetBrains Marketplace plugin repository. |
-| `productInfo` |[ProductInfo](https://github.com/JetBrains/intellij-plugin-verifier/tree/1.410/intellij-plugin-structure/structure-intellij/src/main/java/com/jetbrains/plugin/structure/intellij/platform/ProductInfo.kt) |Lazily initialized property containing current IntelliJ Platform product information. |
+| `pluginRepository` |[PluginRepository](https://github.com/JetBrains/intellij-plugin-verifier/tree/1.411/intellij-plugin-verifier/verifier-repository/src/main/java/com/jetbrains/pluginverifier/repository/PluginRepository.kt) |Instance of `PluginRepository`, responsible for managing plugins via the JetBrains Marketplace plugin repository. |
+| `productInfo` |[ProductInfo](https://github.com/JetBrains/intellij-plugin-verifier/tree/1.411/intellij-plugin-structure/structure-intellij/src/main/java/com/jetbrains/plugin/structure/intellij/platform/ProductInfo.kt) |Lazily initialized property containing current IntelliJ Platform product information. |
 
 ## Notebook Helpers
 
