@@ -42945,7 +42945,7 @@ Language Server Protocol (LSP)
 Local History (LVCS)
 : A builtin [→ Version Control System](#version-control-system) tracking all changes in the project [locally](https://www.jetbrains.com/help/idea/local-history.html).
 
-Look and Feel (LaF) {#}
+Look and Feel (LaF)
 : Defines the visual appearance and behavior of the user interface; see [Swing Tutorial](https://docs.oracle.com/javase/tutorial/uiswing/lookandfeel/index.html).
 
 ## J
