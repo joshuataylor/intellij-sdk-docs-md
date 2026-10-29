@@ -1,5 +1,5 @@
 <!DOCTYPE html SYSTEM "about:legacy-compat">
-<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF" data-resizable-sidebar="true"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="built-on" content="2026-10-28T14:09:29.412714065"><!-- Google Tag Manager -->
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF" data-resizable-sidebar="true"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="built-on" content="2026-10-29T02:11:12.241115813"><!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -24,7 +24,7 @@
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5P98"
                   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-<div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>IntelliJ Platform Plugin SDK  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="tools_intellij_platform_gradle_plugin_recipes" id="tools_intellij_platform_gradle_plugin_recipes.md">Recipes</h1><section class="chapter"><h2 id="run-a-custom-task-with-a-customized-sandbox-location" data-toc="run-a-custom-task-with-a-customized-sandbox-location">Run a custom task with a customized sandbox location</h2><p id="z1slbx7_13">To create a custom task with the sandbox directory specified outside the default <span class="filepath" id="z1slbx7_17">build/idea-sandbox/[TYPE]-[VERSION]/</span> location, pass the new location to its <code class="code" id="z1slbx7_18">prepareSandboxTask</code> sandbox producer configuration:</p><div class="tabs" id="z1slbx7_14" data-group="languages" data-anchors="[z1slbx7_19,z1slbx7_20]"><div class="tabs__content" data-gtm="tab" id="z1slbx7_19" data-sync-tabs="kotlin" data-title="Kotlin"><div class="code-block" data-lang="kotlin" data-title="Kotlin">
+<div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>IntelliJ Platform Plugin SDK  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="tools_intellij_platform_gradle_plugin_recipes" id="tools_intellij_platform_gradle_plugin_recipes.md">Recipes</h1><section class="chapter"><h2 id="run-a-custom-task-with-a-customized-sandbox-location" data-toc="run-a-custom-task-with-a-customized-sandbox-location">Run a custom task with a customized sandbox location</h2><p id="gqiwh7_13">To create a custom task with the sandbox directory specified outside the default <span class="filepath" id="gqiwh7_17">build/idea-sandbox/[TYPE]-[VERSION]/</span> location, pass the new location to its <code class="code" id="gqiwh7_18">prepareSandboxTask</code> sandbox producer configuration:</p><div class="tabs" id="gqiwh7_14" data-group="languages" data-anchors="[gqiwh7_19,gqiwh7_20]"><div class="tabs__content" data-gtm="tab" id="gqiwh7_19" data-sync-tabs="kotlin" data-title="Kotlin"><div class="code-block" data-lang="kotlin" data-title="Kotlin">
 val runWithCustomSandbox by intellijPlatformTesting.runIde.registering {
   // ...
 
@@ -33,7 +33,7 @@ val runWithCustomSandbox by intellijPlatformTesting.runIde.registering {
     sandboxSuffix = &quot;&quot;
   }
 }
-</div></div><div class="tabs__content" data-gtm="tab" id="z1slbx7_20" data-sync-tabs="groovy" data-title="Groovy"><div class="code-block" data-lang="groovy" data-title="Groovy">
+</div></div><div class="tabs__content" data-gtm="tab" id="gqiwh7_20" data-sync-tabs="groovy" data-title="Groovy"><div class="code-block" data-lang="groovy" data-title="Groovy">
 intellijPlatformTesting.runIde {
   runWithCustomSandbox {
     // ...
@@ -44,7 +44,7 @@ intellijPlatformTesting.runIde {
     }
   }
 }
-</div></div></div><p id="z1slbx7_15">This will result in the following sandbox structure:</p><div class="code-block" data-lang="none">
+</div></div></div><p id="gqiwh7_15">This will result in the following sandbox structure:</p><div class="code-block" data-lang="none">
 build/
 ├── custom-sandbox
 │   ├── config
@@ -52,7 +52,7 @@ build/
 │   ├── plugins
 │   └── system
 ...
-</div></section><section class="chapter"><h2 id="access-intellij-platform-from-any-gradle-task" data-toc="access-intellij-platform-from-any-gradle-task">Access IntelliJ Platform from any Gradle task</h2><p id="z1slbx7_23">With <a href="tools-intellij-platform-gradle-plugin-task-awares.html" id="z1slbx7_26" data-tooltip="IntelliJ Platform Gradle Plugin task `*Aware` interfaces.">Task Awares</a> it is possible to enhance any Gradle task with features provided with the IntelliJ Platform Gradle Plugin.</p><div class="tabs" id="z1slbx7_24" data-group="languages" data-anchors="[z1slbx7_27,z1slbx7_28]"><div class="tabs__content" data-gtm="tab" id="z1slbx7_27" data-sync-tabs="kotlin" data-title="Kotlin"><div class="code-block" data-lang="kotlin" data-title="Kotlin">
+</div></section><section class="chapter"><h2 id="access-intellij-platform-from-any-gradle-task" data-toc="access-intellij-platform-from-any-gradle-task">Access IntelliJ Platform from any Gradle task</h2><p id="gqiwh7_23">With <a href="tools-intellij-platform-gradle-plugin-task-awares.html" id="gqiwh7_26" data-tooltip="IntelliJ Platform Gradle Plugin task `*Aware` interfaces.">Task Awares</a> it is possible to enhance any Gradle task with features provided with the IntelliJ Platform Gradle Plugin.</p><div class="tabs" id="gqiwh7_24" data-group="languages" data-anchors="[gqiwh7_27,gqiwh7_28]"><div class="tabs__content" data-gtm="tab" id="gqiwh7_27" data-sync-tabs="kotlin" data-title="Kotlin"><div class="code-block" data-lang="kotlin" data-title="Kotlin">
 import org.jetbrains.intellij.platform.gradle.tasks.aware.IntelliJPlatformVersionAware
 
 abstract class MyTask : DefaultTask(), IntelliJPlatformVersionAware
@@ -63,7 +63,7 @@ val myTask by tasks.registering(MyTask::class) {
     println(&quot;productInfo.buildNumber = ${productInfo.buildNumber}&quot;)
   }
 }
-</div></div><div class="tabs__content" data-gtm="tab" id="z1slbx7_28" data-sync-tabs="groovy" data-title="Groovy"><div class="code-block" data-lang="groovy" data-title="Groovy">
+</div></div><div class="tabs__content" data-gtm="tab" id="gqiwh7_28" data-sync-tabs="groovy" data-title="Groovy"><div class="code-block" data-lang="groovy" data-title="Groovy">
 import org.jetbrains.intellij.platform.gradle.tasks.aware.IntelliJPlatformVersionAware
 
 abstract class MyTask extends DefaultTask implements IntelliJPlatformVersionAware {}
@@ -74,7 +74,7 @@ tasks.register('myTask', MyTask) {
     println(&quot;productInfo.buildNumber = ${productInfo.buildNumber}&quot;)
   }
 }
-</div></div></div><p id="z1slbx7_25">As soon as the registered task inherits from the <code class="code" id="z1slbx7_31">*Aware</code> interface, such as <a href="tools-intellij-platform-gradle-plugin-task-awares.html#IntelliJPlatformVersionAware" id="z1slbx7_32"><code class="code" id="z1slbx7_33">IntelliJPlatformVersionAware</code></a>, all the related information will be injected during the configuration phase.</p></section><section class="chapter"><h2 id="bundle-additional-files-with-the-plugin" data-toc="bundle-additional-files-with-the-plugin">Bundle additional files with the plugin</h2><p id="z1slbx7_34">Additional files can be bundled by adding them to the plugin directory when preparing the sandbox:</p><div class="tabs" id="z1slbx7_35" data-group="languages" data-anchors="[z1slbx7_40,z1slbx7_41]"><div class="tabs__content" data-gtm="tab" id="z1slbx7_40" data-sync-tabs="kotlin" data-title="Kotlin"><div class="code-block" data-lang="kotlin" data-title="Kotlin">
+</div></div></div><p id="gqiwh7_25">As soon as the registered task inherits from the <code class="code" id="gqiwh7_31">*Aware</code> interface, such as <a href="tools-intellij-platform-gradle-plugin-task-awares.html#IntelliJPlatformVersionAware" id="gqiwh7_32"><code class="code" id="gqiwh7_33">IntelliJPlatformVersionAware</code></a>, all the related information will be injected during the configuration phase.</p></section><section class="chapter"><h2 id="bundle-additional-files-with-the-plugin" data-toc="bundle-additional-files-with-the-plugin">Bundle additional files with the plugin</h2><p id="gqiwh7_34">Additional files can be bundled by adding them to the plugin directory when preparing the sandbox:</p><div class="tabs" id="gqiwh7_35" data-group="languages" data-anchors="[gqiwh7_40,gqiwh7_41]"><div class="tabs__content" data-gtm="tab" id="gqiwh7_40" data-sync-tabs="kotlin" data-title="Kotlin"><div class="code-block" data-lang="kotlin" data-title="Kotlin">
 tasks {
   prepareSandbox {
     from(layout.projectDirectory.dir(&quot;extraFiles&quot;)) {
@@ -82,12 +82,12 @@ tasks {
     }
   }
 }
-</div></div><div class="tabs__content" data-gtm="tab" id="z1slbx7_41" data-sync-tabs="groovy" data-title="Groovy"><div class="code-block" data-lang="groovy" data-title="Groovy">
+</div></div><div class="tabs__content" data-gtm="tab" id="gqiwh7_41" data-sync-tabs="groovy" data-title="Groovy"><div class="code-block" data-lang="groovy" data-title="Groovy">
 tasks.named('prepareSandbox', PrepareSandboxTask) {
   from layout.projectDirectory.dir('extraFiles')
   into it.pluginName.map { &quot;$it/extra&quot; }
 }
-</div></div></div><p id="z1slbx7_36">To apply that to the custom task, use the <a href="tools-intellij-platform-gradle-plugin-testing-extension.html#preparesandboxtask" id="z1slbx7_44"><code class="code" id="z1slbx7_45">prepareSandboxTask</code></a> reference:</p><div class="tabs" id="z1slbx7_37" data-group="languages" data-anchors="[z1slbx7_46,z1slbx7_47]"><div class="tabs__content" data-gtm="tab" id="z1slbx7_46" data-sync-tabs="kotlin" data-title="Kotlin"><div class="code-block" data-lang="kotlin" data-title="Kotlin">
+</div></div></div><p id="gqiwh7_36">To apply that to the custom task, use the <a href="tools-intellij-platform-gradle-plugin-testing-extension.html#preparesandboxtask" id="gqiwh7_44"><code class="code" id="gqiwh7_45">prepareSandboxTask</code></a> reference:</p><div class="tabs" id="gqiwh7_37" data-group="languages" data-anchors="[gqiwh7_46,gqiwh7_47]"><div class="tabs__content" data-gtm="tab" id="gqiwh7_46" data-sync-tabs="kotlin" data-title="Kotlin"><div class="code-block" data-lang="kotlin" data-title="Kotlin">
 val runWithCustomSandbox by intellijPlatformTesting.runIde.registering {
   // ...
 
@@ -97,7 +97,7 @@ val runWithCustomSandbox by intellijPlatformTesting.runIde.registering {
     }
   }
 }
-</div></div><div class="tabs__content" data-gtm="tab" id="z1slbx7_47" data-sync-tabs="groovy" data-title="Groovy"><div class="code-block" data-lang="groovy" data-title="Groovy">
+</div></div><div class="tabs__content" data-gtm="tab" id="gqiwh7_47" data-sync-tabs="groovy" data-title="Groovy"><div class="code-block" data-lang="groovy" data-title="Groovy">
 intellijPlatformTesting.runIde {
   runWithCustomSandbox {
     // ...
@@ -108,7 +108,7 @@ intellijPlatformTesting.runIde {
     }
   }
 }
-</div></div></div><p id="z1slbx7_38">It is possible to apply that to all <a href="tools-intellij-platform-gradle-plugin-tasks.html#prepareSandbox" id="z1slbx7_50" data-tooltip="Prepares a sandbox environment with the plugin and its dependencies installed."><code class="code" id="z1slbx7_51">PrepareSandboxTask</code></a> with:</p><div class="tabs" id="z1slbx7_39" data-group="languages" data-anchors="[z1slbx7_52,z1slbx7_53]"><div class="tabs__content" data-gtm="tab" id="z1slbx7_52" data-sync-tabs="kotlin" data-title="Kotlin"><div class="code-block" data-lang="kotlin" data-title="Kotlin">
+</div></div></div><p id="gqiwh7_38">It is possible to apply that to all <a href="tools-intellij-platform-gradle-plugin-tasks.html#prepareSandbox" id="gqiwh7_50" data-tooltip="Prepares a sandbox environment with the plugin and its dependencies installed."><code class="code" id="gqiwh7_51">PrepareSandboxTask</code></a> with:</p><div class="tabs" id="gqiwh7_39" data-group="languages" data-anchors="[gqiwh7_52,gqiwh7_53]"><div class="tabs__content" data-gtm="tab" id="gqiwh7_52" data-sync-tabs="kotlin" data-title="Kotlin"><div class="code-block" data-lang="kotlin" data-title="Kotlin">
 tasks {
   withType&lt;PrepareSandboxTask&gt; {
     from(...) {
@@ -116,14 +116,14 @@ tasks {
     }
   }
 }
-</div></div><div class="tabs__content" data-gtm="tab" id="z1slbx7_53" data-sync-tabs="groovy" data-title="Groovy"><div class="code-block" data-lang="groovy" data-title="Groovy">
+</div></div><div class="tabs__content" data-gtm="tab" id="gqiwh7_53" data-sync-tabs="groovy" data-title="Groovy"><div class="code-block" data-lang="groovy" data-title="Groovy">
 tasks {
   withType(PrepareSandboxTask) {
     from(...)
     into(...)
   }
 }
-</div></div></div></section><section class="chapter"><h2 id="adjust-ide-configuration-by-altering-sandbox-files" data-toc="adjust-ide-configuration-by-altering-sandbox-files">Adjust IDE configuration by altering sandbox files</h2><p id="z1slbx7_56">When starting the IDE locally with <a href="tools-intellij-platform-gradle-plugin-tasks.html#runIde" id="z1slbx7_59" data-tooltip="Runs the IDE instance using the currently selected IntelliJ Platform with the built plugin loaded."><code class="code" id="z1slbx7_61">runIde</code></a> task or running tests, the IDE creates and updates configuration files within the sandbox directory. Those files may be related to trusted paths, macros, recent projects, custom plugins, color schemes, etc. However, when running the <code class="code" id="z1slbx7_60">clean</code> task, all configuration files are wiped and do not persist between sessions.</p><p id="z1slbx7_57">Sometimes, it may be worth recreating such configuration, yet with the <a href="tools-intellij-platform-gradle-plugin-tasks.html#prepareSandbox" id="z1slbx7_62" data-tooltip="Prepares a sandbox environment with the plugin and its dependencies installed."><code class="code" id="z1slbx7_65">prepareSandbox</code></a> task for those configurations to persist. The following example marks the project located in the <span class="filepath" id="z1slbx7_63">$USER_HOME$/IdeaProjects/GradleProject</span> directory as trusted, like when the user clicks on the <span class="emphasis" id="z1slbx7_64">Trust Project</span> dialog when opening it for the first time.</p><div class="code-block" data-lang="kotlin">
+</div></div></div></section><section class="chapter"><h2 id="adjust-ide-configuration-by-altering-sandbox-files" data-toc="adjust-ide-configuration-by-altering-sandbox-files">Adjust IDE configuration by altering sandbox files</h2><p id="gqiwh7_56">When starting the IDE locally with <a href="tools-intellij-platform-gradle-plugin-tasks.html#runIde" id="gqiwh7_59" data-tooltip="Runs the IDE instance using the currently selected IntelliJ Platform with the built plugin loaded."><code class="code" id="gqiwh7_61">runIde</code></a> task or running tests, the IDE creates and updates configuration files within the sandbox directory. Those files may be related to trusted paths, macros, recent projects, custom plugins, color schemes, etc. However, when running the <code class="code" id="gqiwh7_60">clean</code> task, all configuration files are wiped and do not persist between sessions.</p><p id="gqiwh7_57">Sometimes, it may be worth recreating such configuration, yet with the <a href="tools-intellij-platform-gradle-plugin-tasks.html#prepareSandbox" id="gqiwh7_62" data-tooltip="Prepares a sandbox environment with the plugin and its dependencies installed."><code class="code" id="gqiwh7_65">prepareSandbox</code></a> task for those configurations to persist. The following example marks the project located in the <span class="filepath" id="gqiwh7_63">$USER_HOME$/IdeaProjects/GradleProject</span> directory as trusted, like when the user clicks on the <span class="emphasis" id="gqiwh7_64">Trust Project</span> dialog when opening it for the first time.</p><div class="code-block" data-lang="kotlin">
 tasks.withType&lt;PrepareSandboxTask&gt; {
   doLast {
     val trustedPathsFile = sandboxConfigDirectory.file(&quot;options/trusted-paths.xml&quot;).get().asFile
@@ -143,7 +143,7 @@ tasks.withType&lt;PrepareSandboxTask&gt; {
     )
   }
 }
-</div></section><section class="chapter"><h2 id="proguard-configuration" data-toc="proguard-configuration">ProGuard configuration</h2><p id="z1slbx7_66">To configure <a href="https://github.com/Guardsquare/proguard" id="z1slbx7_70" data-external="true" rel="noopener noreferrer" target="_blank">ProGuard</a>, intercept the <a href="tools-intellij-platform-gradle-plugin-tasks.html#prepareSandbox" id="z1slbx7_71" data-tooltip="Prepares a sandbox environment with the plugin and its dependencies installed."><code class="code" id="z1slbx7_73">prepareSandbox</code></a> task and replace the plugin Jar archive produced by the <a href="tools-intellij-platform-gradle-plugin-tasks.html#composedJar" id="z1slbx7_72" data-tooltip="Composes a final JAR by combining the base JAR, and instrumented classes, and declared submodules."><code class="code" id="z1slbx7_74">composedJar</code></a> task with the obfuscated/minified file.</p><p id="z1slbx7_67">First, define the ProGuard Jar archive location and store it inside the <span class="filepath" id="z1slbx7_75">build/libs/</span> directory. Pass the output ProGuard location to the <code class="code" id="z1slbx7_76">outjars()</code> helper and use it as a new sandbox input for <a href="tools-intellij-platform-gradle-plugin-tasks.html#prepareSandbox-pluginJar" id="z1slbx7_77"><code class="code" id="z1slbx7_78">prepareSandbox.pluginJar</code></a>.</p><p id="z1slbx7_68">Finally, pass the <a href="tools-intellij-platform-gradle-plugin-tasks.html#composedJar-archiveFile" id="z1slbx7_79"><code class="code" id="z1slbx7_81">composedJar.archiveFile</code></a> to the <code class="code" id="z1slbx7_80">injars()</code> helper.</p><div class="tabs" id="z1slbx7_69" data-group="languages" data-anchors="[z1slbx7_82,z1slbx7_83]"><div class="tabs__content" data-gtm="tab" id="z1slbx7_82" data-sync-tabs="kotlin" data-title="Kotlin"><div class="code-block" data-lang="kotlin" data-title="Kotlin">
+</div></section><section class="chapter"><h2 id="proguard-configuration" data-toc="proguard-configuration">ProGuard configuration</h2><p id="gqiwh7_66">To configure <a href="https://github.com/Guardsquare/proguard" id="gqiwh7_70" data-external="true" rel="noopener noreferrer" target="_blank">ProGuard</a>, intercept the <a href="tools-intellij-platform-gradle-plugin-tasks.html#prepareSandbox" id="gqiwh7_71" data-tooltip="Prepares a sandbox environment with the plugin and its dependencies installed."><code class="code" id="gqiwh7_73">prepareSandbox</code></a> task and replace the plugin Jar archive produced by the <a href="tools-intellij-platform-gradle-plugin-tasks.html#composedJar" id="gqiwh7_72" data-tooltip="Composes a final JAR by combining the base JAR, and instrumented classes, and declared submodules."><code class="code" id="gqiwh7_74">composedJar</code></a> task with the obfuscated/minified file.</p><p id="gqiwh7_67">First, define the ProGuard Jar archive location and store it inside the <span class="filepath" id="gqiwh7_75">build/libs/</span> directory. Pass the output ProGuard location to the <code class="code" id="gqiwh7_76">outjars()</code> helper and use it as a new sandbox input for <a href="tools-intellij-platform-gradle-plugin-tasks.html#prepareSandbox-pluginJar" id="gqiwh7_77"><code class="code" id="gqiwh7_78">prepareSandbox.pluginJar</code></a>.</p><p id="gqiwh7_68">Finally, pass the <a href="tools-intellij-platform-gradle-plugin-tasks.html#composedJar-archiveFile" id="gqiwh7_79"><code class="code" id="gqiwh7_81">composedJar.archiveFile</code></a> to the <code class="code" id="gqiwh7_80">injars()</code> helper.</p><div class="tabs" id="gqiwh7_69" data-group="languages" data-anchors="[gqiwh7_82,gqiwh7_83]"><div class="tabs__content" data-gtm="tab" id="gqiwh7_82" data-sync-tabs="kotlin" data-title="Kotlin"><div class="code-block" data-lang="kotlin" data-title="Kotlin">
 import proguard.gradle.ProGuardTask
 
 buildscript {
@@ -170,7 +170,7 @@ tasks {
     dependsOn(proguard)
   }
 }
-</div></div><div class="tabs__content" data-gtm="tab" id="z1slbx7_83" data-sync-tabs="groovy" data-title="Groovy"><div class="code-block" data-lang="groovy" data-title="Groovy">
+</div></div><div class="tabs__content" data-gtm="tab" id="gqiwh7_83" data-sync-tabs="groovy" data-title="Groovy"><div class="code-block" data-lang="groovy" data-title="Groovy">
 import proguard.gradle.ProGuardTask
 
 buildscript {
@@ -195,7 +195,7 @@ prepareSandbox {
   pluginJar = proguardJar
   dependsOn(proguard)
 }
-</div></div></div></section><section class="chapter"><h2 id="run-the-ide-with-a-default-argument-provided" data-toc="run-the-ide-with-a-default-argument-provided">Run the IDE with a default argument provided</h2><p id="z1slbx7_86">When running the IDE from the command line, you can pass an argument, like a path to the project or file, to open it automatically. This is also possible when using the <a href="tools-intellij-platform-gradle-plugin-tasks.html#runIde" id="z1slbx7_88" data-tooltip="Runs the IDE instance using the currently selected IntelliJ Platform with the built plugin loaded."><code class="code" id="z1slbx7_89">runIde</code></a> task:</p><div class="tabs" id="z1slbx7_87" data-group="languages" data-anchors="[z1slbx7_90,z1slbx7_91]"><div class="tabs__content" data-gtm="tab" id="z1slbx7_90" data-sync-tabs="kotlin" data-title="Kotlin"><div class="code-block" data-lang="kotlin" data-title="Kotlin">
+</div></div></div></section><section class="chapter"><h2 id="run-the-ide-with-a-default-argument-provided" data-toc="run-the-ide-with-a-default-argument-provided">Run the IDE with a default argument provided</h2><p id="gqiwh7_86">When running the IDE from the command line, you can pass an argument, like a path to the project or file, to open it automatically. This is also possible when using the <a href="tools-intellij-platform-gradle-plugin-tasks.html#runIde" id="gqiwh7_88" data-tooltip="Runs the IDE instance using the currently selected IntelliJ Platform with the built plugin loaded."><code class="code" id="gqiwh7_89">runIde</code></a> task:</p><div class="tabs" id="gqiwh7_87" data-group="languages" data-anchors="[gqiwh7_90,gqiwh7_91]"><div class="tabs__content" data-gtm="tab" id="gqiwh7_90" data-sync-tabs="kotlin" data-title="Kotlin"><div class="code-block" data-lang="kotlin" data-title="Kotlin">
 tasks {
   runIde {
     argumentProviders += CommandLineArgumentProvider {
@@ -203,21 +203,21 @@ tasks {
     }
   }
 }
-</div></div><div class="tabs__content" data-gtm="tab" id="z1slbx7_91" data-sync-tabs="groovy" data-title="Groovy"><div class="code-block" data-lang="groovy" data-title="Groovy">
+</div></div><div class="tabs__content" data-gtm="tab" id="gqiwh7_91" data-sync-tabs="groovy" data-title="Groovy"><div class="code-block" data-lang="groovy" data-title="Groovy">
 runIde {
   argumentProviders.add({
     ['/path/to/the/project']
   } as CommandLineArgumentProvider)
 }
-</div></div></div></section><section class="chapter"><h2 id="run-the-ide-in-lightedit-mode" data-toc="run-the-ide-in-lightedit-mode">Run the IDE in LightEdit mode</h2><p id="z1slbx7_94">Pass the IntelliJ IDEA <code class="code" id="z1slbx7_98">-e</code> or <code class="code" id="z1slbx7_99">--edit</code> argument to <a href="tools-intellij-platform-gradle-plugin-tasks.html#runIde" id="z1slbx7_100" data-tooltip="Runs the IDE instance using the currently selected IntelliJ Platform with the built plugin loaded."><code class="code" id="z1slbx7_101">runIde</code></a> to open a file in LightEdit mode:</p><div class="code-block" data-lang="bash">
+</div></div></div></section><section class="chapter"><h2 id="run-the-ide-in-lightedit-mode" data-toc="run-the-ide-in-lightedit-mode">Run the IDE in LightEdit mode</h2><p id="gqiwh7_94">Pass the IntelliJ IDEA <code class="code" id="gqiwh7_98">-e</code> or <code class="code" id="gqiwh7_99">--edit</code> argument to <a href="tools-intellij-platform-gradle-plugin-tasks.html#runIde" id="gqiwh7_100" data-tooltip="Runs the IDE instance using the currently selected IntelliJ Platform with the built plugin loaded."><code class="code" id="gqiwh7_101">runIde</code></a> to open a file in LightEdit mode:</p><div class="code-block" data-lang="bash">
 ./gradlew runIde --args='-e /absolute/path/to/file'
-</div><p id="z1slbx7_96">Omit the file path to open an empty LightEdit window. To keep this setup as a separate reusable task, register a custom <code class="code" id="z1slbx7_102">runIde</code> task:</p><div class="tabs" id="z1slbx7_97" data-group="languages" data-anchors="[z1slbx7_103,z1slbx7_104]"><div class="tabs__content" data-gtm="tab" id="z1slbx7_103" data-sync-tabs="kotlin" data-title="Kotlin"><div class="code-block" data-lang="kotlin" data-title="Kotlin">
+</div><p id="gqiwh7_96">Omit the file path to open an empty LightEdit window. To keep this setup as a separate reusable task, register a custom <code class="code" id="gqiwh7_102">runIde</code> task:</p><div class="tabs" id="gqiwh7_97" data-group="languages" data-anchors="[gqiwh7_103,gqiwh7_104]"><div class="tabs__content" data-gtm="tab" id="gqiwh7_103" data-sync-tabs="kotlin" data-title="Kotlin"><div class="code-block" data-lang="kotlin" data-title="Kotlin">
 val runIdeLightEdit by intellijPlatformTesting.runIde.registering {
   task {
     args(&quot;-e&quot;, project.layout.projectDirectory.file(&quot;README.md&quot;).asFile.absolutePath)
   }
 }
-</div></div><div class="tabs__content" data-gtm="tab" id="z1slbx7_104" data-sync-tabs="groovy" data-title="Groovy"><div class="code-block" data-lang="groovy" data-title="Groovy">
+</div></div><div class="tabs__content" data-gtm="tab" id="gqiwh7_104" data-sync-tabs="groovy" data-title="Groovy"><div class="code-block" data-lang="groovy" data-title="Groovy">
 intellijPlatformTesting.runIde {
   runIdeLightEdit {
     task {
@@ -225,7 +225,7 @@ intellijPlatformTesting.runIde {
     }
   }
 }
-</div></div></div></section><section class="chapter"><h2 id="resolve-plugin-from-jetbrains-marketplace-in-the-latest-compatible-version" data-toc="resolve-plugin-from-jetbrains-marketplace-in-the-latest-compatible-version">Resolve plugin from JetBrains Marketplace in the latest compatible version</h2><p id="z1slbx7_107">When setting a dependency on an external plugin from JetBrains Marketplace, it is necessary to provide its ID and version in <code class="code" id="z1slbx7_110">pluginId:version</code> notation. However, it is possible to request JetBrains Marketplace API for the compatible plugin updates with the given IntelliJ Platform build version.</p><p id="z1slbx7_108">The following snippet requests the API using the current IntelliJ Platform type and build version, and picks the first available version, which is later passed to the common <a href="tools-intellij-platform-gradle-plugin-dependencies-extension.html#plugins" id="z1slbx7_111"><code class="code" id="z1slbx7_112">plugin()</code></a> dependency helper.</p><div class="code-block" data-lang="kotlin">
+</div></div></div></section><section class="chapter"><h2 id="resolve-plugin-from-jetbrains-marketplace-in-the-latest-compatible-version" data-toc="resolve-plugin-from-jetbrains-marketplace-in-the-latest-compatible-version">Resolve plugin from JetBrains Marketplace in the latest compatible version</h2><p id="gqiwh7_107">When setting a dependency on an external plugin from JetBrains Marketplace, it is necessary to provide its ID and version in <code class="code" id="gqiwh7_110">pluginId:version</code> notation. However, it is possible to request JetBrains Marketplace API for the compatible plugin updates with the given IntelliJ Platform build version.</p><p id="gqiwh7_108">The following snippet requests the API using the current IntelliJ Platform type and build version, and picks the first available version, which is later passed to the common <a href="tools-intellij-platform-gradle-plugin-dependencies-extension.html#plugins" id="gqiwh7_111"><code class="code" id="gqiwh7_112">plugin()</code></a> dependency helper.</p><div class="code-block" data-lang="kotlin">
 import org.jetbrains.intellij.platform.gradle.extensions.IntelliJPlatformDependenciesExtension
 import org.jetbrains.intellij.pluginRepository.PluginRepositoryFactory
 
@@ -257,17 +257,17 @@ dependencies {
         pluginsInLatestCompatibleVersion(&quot;org.coffeescript&quot;, ...)
     }
 }
-</div></section><section class="chapter"><h2 id="generate-a-lexer-and-parser-with-grammar-kit" data-toc="generate-a-lexer-and-parser-with-grammar-kit">Generate a lexer and parser with Grammar-Kit</h2><p id="z1slbx7_113">The <a href="tools-intellij-platform-gradle-plugin-plugins.html#grammarkit" id="z1slbx7_123" data-tooltip="Adds GrammarKit and JFlex tasks for generating parsers and lexers.">GrammarKit</a> sub-plugin adds the <a href="tools-intellij-platform-gradle-plugin-tasks.html#generateLexer" id="z1slbx7_124" data-tooltip="Generates a lexer with JFlex for IntelliJ Platform GrammarKit projects."><code class="code" id="z1slbx7_129">generateLexer</code></a> and <a href="tools-intellij-platform-gradle-plugin-tasks.html#generateParser" id="z1slbx7_125" data-tooltip="Generates a parser with GrammarKit for IntelliJ Platform projects."><code class="code" id="z1slbx7_130">generateParser</code></a> tasks for generating a <a href="custom-language-support.html" id="z1slbx7_126" data-tooltip="Supporting custom languages overview.">custom language</a> lexer and parser from <a href="https://github.com/JetBrains/Grammar-Kit" id="z1slbx7_127" data-external="true" rel="noopener noreferrer" target="_blank">Grammar-Kit</a> sources. It is not applied by the main plugin, so apply it explicitly next to <code class="code" id="z1slbx7_128">org.jetbrains.intellij.platform</code>:</p><div class="tabs" id="z1slbx7_114" data-group="languages" data-anchors="[z1slbx7_131,z1slbx7_132]"><div class="tabs__content" data-gtm="tab" id="z1slbx7_131" data-sync-tabs="kotlin" data-title="Kotlin"><p id="z1slbx7_133"><span class="filepath" id="z1slbx7_135">build.gradle.kts</span></p><div class="code-block" data-lang="kotlin" data-title="Kotlin">
+</div></section><section class="chapter"><h2 id="generate-a-lexer-and-parser-with-grammar-kit" data-toc="generate-a-lexer-and-parser-with-grammar-kit">Generate a lexer and parser with Grammar-Kit</h2><p id="gqiwh7_113">The <a href="tools-intellij-platform-gradle-plugin-plugins.html#grammarkit" id="gqiwh7_123" data-tooltip="Adds GrammarKit and JFlex tasks for generating parsers and lexers.">GrammarKit</a> sub-plugin adds the <a href="tools-intellij-platform-gradle-plugin-tasks.html#generateLexer" id="gqiwh7_124" data-tooltip="Generates a lexer with JFlex for IntelliJ Platform GrammarKit projects."><code class="code" id="gqiwh7_129">generateLexer</code></a> and <a href="tools-intellij-platform-gradle-plugin-tasks.html#generateParser" id="gqiwh7_125" data-tooltip="Generates a parser with GrammarKit for IntelliJ Platform projects."><code class="code" id="gqiwh7_130">generateParser</code></a> tasks for generating a <a href="custom-language-support.html" id="gqiwh7_126" data-tooltip="Supporting custom languages overview.">custom language</a> lexer and parser from <a href="https://github.com/JetBrains/Grammar-Kit" id="gqiwh7_127" data-external="true" rel="noopener noreferrer" target="_blank">Grammar-Kit</a> sources. It is not applied by the main plugin, so apply it explicitly next to <code class="code" id="gqiwh7_128">org.jetbrains.intellij.platform</code>:</p><div class="tabs" id="gqiwh7_114" data-group="languages" data-anchors="[gqiwh7_131,gqiwh7_132]"><div class="tabs__content" data-gtm="tab" id="gqiwh7_131" data-sync-tabs="kotlin" data-title="Kotlin"><p id="gqiwh7_133"><span class="filepath" id="gqiwh7_135">build.gradle.kts</span></p><div class="code-block" data-lang="kotlin" data-title="Kotlin">
 plugins {
   id(&quot;org.jetbrains.intellij.platform&quot;) version &quot;2.19.0&quot;
   id(&quot;org.jetbrains.intellij.platform.grammarkit&quot;) version &quot;2.19.0&quot;
 }
-</div></div><div class="tabs__content" data-gtm="tab" id="z1slbx7_132" data-sync-tabs="groovy" data-title="Groovy"><p id="z1slbx7_136"><span class="filepath" id="z1slbx7_138">build.gradle</span></p><div class="code-block" data-lang="groovy" data-title="Groovy">
+</div></div><div class="tabs__content" data-gtm="tab" id="gqiwh7_132" data-sync-tabs="groovy" data-title="Groovy"><p id="gqiwh7_136"><span class="filepath" id="gqiwh7_138">build.gradle</span></p><div class="code-block" data-lang="groovy" data-title="Groovy">
 plugins {
   id 'org.jetbrains.intellij.platform' version '2.19.0'
   id 'org.jetbrains.intellij.platform.grammarkit' version '2.19.0'
 }
-</div></div></div><p id="z1slbx7_115">Point the tasks at the grammar sources and add their output to the <code class="code" id="z1slbx7_139">main</code> source set so compilation triggers generation:</p><div class="tabs" id="z1slbx7_116" data-group="languages" data-anchors="[z1slbx7_140,z1slbx7_141]"><div class="tabs__content" data-gtm="tab" id="z1slbx7_140" data-sync-tabs="kotlin" data-title="Kotlin"><div class="code-block" data-lang="kotlin" data-title="Kotlin">
+</div></div></div><p id="gqiwh7_115">Point the tasks at the grammar sources and add their output to the <code class="code" id="gqiwh7_139">main</code> source set so compilation triggers generation:</p><div class="tabs" id="gqiwh7_116" data-group="languages" data-anchors="[gqiwh7_140,gqiwh7_141]"><div class="tabs__content" data-gtm="tab" id="gqiwh7_140" data-sync-tabs="kotlin" data-title="Kotlin"><div class="code-block" data-lang="kotlin" data-title="Kotlin">
 tasks {
   generateLexer {
     sourceFile = file(&quot;src/main/grammar/Simple.flex&quot;)
@@ -286,7 +286,7 @@ sourceSets {
     }
   }
 }
-</div></div><div class="tabs__content" data-gtm="tab" id="z1slbx7_141" data-sync-tabs="groovy" data-title="Groovy"><div class="code-block" data-lang="groovy" data-title="Groovy">
+</div></div><div class="tabs__content" data-gtm="tab" id="gqiwh7_141" data-sync-tabs="groovy" data-title="Groovy"><div class="code-block" data-lang="groovy" data-title="Groovy">
 import org.jetbrains.intellij.platform.gradle.tasks.GenerateLexerTask
 import org.jetbrains.intellij.platform.gradle.tasks.GenerateParserTask
 
@@ -306,14 +306,14 @@ sourceSets {
     }
   }
 }
-</div></div></div><p id="z1slbx7_117">By default each task writes to its own directory below <span class="filepath" id="z1slbx7_144">[buildDirectory]/generated/sources/</span>, owns that directory, and declares it as a task output. Passing the task to <code class="code" id="z1slbx7_145">srcDir()</code> registers the generated sources and makes the compilation task depend on generation, so no explicit <code class="code" id="z1slbx7_146">dependsOn</code> is needed.</p><p id="z1slbx7_118">The Grammar-Kit and JFlex versions are provided automatically. Override them with the <a href="tools-intellij-platform-gradle-plugin-dependencies-extension.html#grammar-and-parser-generation" id="z1slbx7_147"><code class="code" id="z1slbx7_149">grammarKit()</code></a> and <a href="tools-intellij-platform-gradle-plugin-dependencies-extension.html#grammar-and-parser-generation" id="z1slbx7_148"><code class="code" id="z1slbx7_150">jflex()</code></a> dependency helpers:</p><div class="code-block" data-lang="kotlin">
+</div></div></div><p id="gqiwh7_117">By default each task writes to its own directory below <span class="filepath" id="gqiwh7_144">[buildDirectory]/generated/sources/</span>, owns that directory, and declares it as a task output. Passing the task to <code class="code" id="gqiwh7_145">srcDir()</code> registers the generated sources and makes the compilation task depend on generation, so no explicit <code class="code" id="gqiwh7_146">dependsOn</code> is needed.</p><p id="gqiwh7_118">The Grammar-Kit and JFlex versions are provided automatically. Override them with the <a href="tools-intellij-platform-gradle-plugin-dependencies-extension.html#grammar-and-parser-generation" id="gqiwh7_147"><code class="code" id="gqiwh7_149">grammarKit()</code></a> and <a href="tools-intellij-platform-gradle-plugin-dependencies-extension.html#grammar-and-parser-generation" id="gqiwh7_148"><code class="code" id="gqiwh7_150">jflex()</code></a> dependency helpers:</p><div class="code-block" data-lang="kotlin">
 dependencies {
   intellijPlatform {
     grammarKit(&quot;2023.3.4&quot;)
     jflex(&quot;1.10.17&quot;)
   }
 }
-</div><p id="z1slbx7_120">To generate into a directory shared with handwritten code (for example <span class="filepath" id="z1slbx7_151">src/main/gen</span>), set <a href="tools-intellij-platform-gradle-plugin-tasks.html#generateParser-targetRootOutputDir" id="z1slbx7_152"><code class="code" id="z1slbx7_153">targetRootOutputDir</code></a> together with the explicit output paths so that only the generated files are purged:</p><div class="code-block" data-lang="kotlin">
+</div><p id="gqiwh7_120">To generate into a directory shared with handwritten code (for example <span class="filepath" id="gqiwh7_151">src/main/gen</span>), set <a href="tools-intellij-platform-gradle-plugin-tasks.html#generateParser-targetRootOutputDir" id="gqiwh7_152"><code class="code" id="gqiwh7_153">targetRootOutputDir</code></a> together with the explicit output paths so that only the generated files are purged:</p><div class="code-block" data-lang="kotlin">
 tasks {
   generateParser {
     sourceFile = file(&quot;src/main/grammar/Simple.bnf&quot;)
@@ -323,4 +323,4 @@ tasks {
     purgeOldFiles = true
   }
 }
-</div><aside class="prompt" data-type="note" data-title="" id="z1slbx7_122"><p id="z1slbx7_154">For projects built with the IntelliJ Platform Gradle Plugin, this replaces the standalone <a href="tools-gradle-grammar-kit-plugin.html" id="z1slbx7_155" data-tooltip="Gradle Grammar-Kit Plugin automates generating custom language lexers and parsers when using Grammar-Kit.">Gradle Grammar-Kit Plugin</a> (<code class="code" id="z1slbx7_156">org.jetbrains.grammarkit</code>). Do not apply both plugins in the same project.</p></aside></section><div class="last-modified">12 October 2026</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="tools-intellij-platform-gradle-plugin-migration.html" class="navigation-links__prev">Migrating from Gradle IntelliJ Plugin (1.x)</a><a href="tools-intellij-platform-gradle-plugin-faq.html" class="navigation-links__next">IntelliJ Platform Gradle Plugin &ndash; FAQ</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.js"></script></body></html>
+</div><aside class="prompt" data-type="note" data-title="" id="gqiwh7_122"><p id="gqiwh7_154">For projects built with the IntelliJ Platform Gradle Plugin, this replaces the standalone <a href="tools-gradle-grammar-kit-plugin.html" id="gqiwh7_155" data-tooltip="Gradle Grammar-Kit Plugin automates generating custom language lexers and parsers when using Grammar-Kit.">Gradle Grammar-Kit Plugin</a> (<code class="code" id="gqiwh7_156">org.jetbrains.grammarkit</code>). Do not apply both plugins in the same project.</p></aside></section><div class="last-modified">12 October 2026</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="tools-intellij-platform-gradle-plugin-migration.html" class="navigation-links__prev">Migrating from Gradle IntelliJ Plugin (1.x)</a><a href="tools-intellij-platform-gradle-plugin-faq.html" class="navigation-links__next">IntelliJ Platform Gradle Plugin &ndash; FAQ</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.js"></script></body></html>
