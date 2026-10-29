@@ -73,7 +73,7 @@ The service instance will be created in the scope according to the caller (see [
 
 * [Constructor injection](#ctor) of dependency services is not supported.
 
-* If an application-level service is a [PersistentStateComponent](persisting-state-of-components.html), roaming must be disabled (`roamingType = RoamingType.DISABLED`).
+* If an application-level light service is a [PersistentStateComponent](persisting-state-of-components.html), [roaming](roaming-settings.html#requirements-for-roamable-components) must be disabled (`roamingType = RoamingType.DISABLED`).
 
 Use these inspections to verify above restrictions and highlight non-light services that can be converted (2023.3):
 

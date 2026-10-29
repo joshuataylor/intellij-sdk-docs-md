@@ -17,6 +17,11 @@ and visit
 
 ## 2026
 
+### October
+
+Roaming Settings
+: Add a new page about [Roaming Settings](roaming-settings.html) describing how to share the state of application-level components via Export Settings and the Backup and Sync plugin.
+
 ### July
 
 Creating a Plugin Project
@@ -275,7 +280,7 @@ Minor Changes and Additions
 
 * Clarify referencing icons by paths and icon holder class constants in [Working with Icons](icons.html).
 
-* Add information about requirements for persistent state components to be included in [the Settings Sync plugin synchronization mechanism](persisting-state-of-components.html#backup-and-sync-plugin).
+* Add information about requirements for persistent state components to be included in [the Settings Sync plugin synchronization mechanism](roaming-settings.html#backup-and-sync-plugin).
 
 ### April
 
@@ -329,7 +334,7 @@ Minor Changes and Additions
 ### October
 
 Minor Changes and Additions
-: * Add information about [sharing settings](persisting-state-of-components.html#sharing-settings-between-ide-installations) between different IDEs installations.
+: * Add information about [sharing settings](roaming-settings.html) between different IDEs installations.
 
 ### September
 

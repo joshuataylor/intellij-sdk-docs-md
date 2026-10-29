@@ -9,6 +9,8 @@ There are two distinct approaches, depending on the type of data being persisted
 
 * [Persisting Sensitive Data](persisting-sensitive-data.html)
 
+To share application-level settings between different IDE installations, see [Roaming Settings](roaming-settings.html).
+
 [Split plugins](split-mode-and-remote-development.html) may also need explicit synchronization metadata for persisted settings.
 See [Persistent State Component in Split Mode](persistent-state-in-split-mode.html).
 
