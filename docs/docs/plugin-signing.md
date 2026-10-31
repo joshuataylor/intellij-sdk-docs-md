@@ -252,7 +252,7 @@ The corresponding Gradle task properties will automatically detect and decode th
 ### CLI Tool
 
 <tldr>
-Current Release: 0.1.43
+Current Release: 0.1.45
 
 GitHub: [Releases &amp; Changelog](https://github.com/JetBrains/marketplace-zip-signer/releases), [Issue Tracker](https://github.com/JetBrains/marketplace-zip-signer/issues)
 
