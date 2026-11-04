@@ -73,6 +73,22 @@ In 2027.1, the deprecated API will be disabled by default via a registry key. In
 Report missing functionality on the [JetBrains Platform Forum](https://platform.jetbrains.com).
 
 
+Declarative color settings pages
+: The new [com.intellij.colorSettings](https://jb.gg/ipe?extensions=com.intellij.colorSettings) extension point
+     registers a [ColorSettingsPage](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-api/src/com/intellij/openapi/options/colors/ColorSettingsPage.java) together with its name, ID, and order.
+The IDE builds the `Settings | Editor | Color Scheme` tree from the declaration without loading the page class, and creates the `ColorSettingsPage` instance only when the user opens the page.
+The [com.intellij.colorSettingsPage](https://jb.gg/ipe?extensions=com.intellij.colorSettingsPage) extension point
+     is deprecated.
+See [Registering a Color Settings Page](syntax-highlighting-and-error-highlighting.html#registering-a-color-settings-page) for the supported attributes and for plugins that also support earlier versions.
+
+
+Settings Beta label is declared in XML
+: The Settings tree no longer reads the [Configurable.Beta](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/ide-core/src/com/intellij/openapi/options/Configurable.java) marker interface, which is now deprecated and scheduled for removal.
+To keep the Beta label, add the `beta="true"` attribute to the `com.intellij.applicationConfigurable` or `com.intellij.projectConfigurable` declaration.
+A color settings page declared in `com.intellij.colorSettings` supports the same attribute.
+See [Table of Attributes](settings-guide.html#table-of-attributes).
+
+
 
 
 

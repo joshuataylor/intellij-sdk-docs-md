@@ -99,6 +99,7 @@ are in the table below:
 | `groupWeight` |no |Specifies the weight (stacking order) of this component within the group of a parent configurable component. The default weight is 0, meaning lowest in the order.  If one child in a group or a parent component has non-zero weight, all children will be sorted descending by their weight. If the weights are equal, the components will be sorted ascending by their display name.   |`Configurable`  `ConfigurableProvider`   |
 | `dynamic` |no |This component's children are dynamically calculated by calling the `getConfigurables()` method.  Not recommended because it requires loading additional classes while building a Settings tree. If possible, use XML attributes instead.   |`Configurable.Composite` |
 | `childrenEPName` |no |Specifies the FQN name of the Extension Point that will be used to calculate the children of this component. |`Configurable` |
+| `beta` |no |(2026.3) `true` adds a Beta label next to the Settings name in the Settings tree.  It replaces the deprecated [Configurable.Beta](#configurable-marker-interfaces) marker interface.   |`Configurable`  `ConfigurableProvider`   |
 
 ##### Attribute Notes
 
@@ -192,6 +193,7 @@ So the `NoScroll` interface should be used to remove the outer `JScrollPane`.
 
 `Configurable.Beta`
 : (2022.3) Adds Beta label next to settings page title in Settings tree.
+Deprecated since 2026.3 and scheduled for removal: The Settings tree no longer reads this interface. Use the [beta=&quot;true&quot;](#table-of-attributes) attribute instead.
 
 #### 
 

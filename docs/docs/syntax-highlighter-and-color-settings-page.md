@@ -205,6 +205,12 @@ Register the Simple Language color settings page with the IntelliJ Platform in t
 </extensions>
 ```
 
+Note:
+
+The Simple Language sample plugin targets a version earlier than 2026.3.
+Plugins targeting 2026.3 or later should register the page in the `com.intellij.colorSettings` extension point instead.
+See [Registering a Color Settings Page](syntax-highlighting-and-error-highlighting.html#registering-a-color-settings-page) for details.
+
 ### Run the Project
 
 [Run](creating-plugin-project.html#running-the-plugin) the plugin.
