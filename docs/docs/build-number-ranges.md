@@ -86,9 +86,20 @@ See also [&quot;What versions of IntelliJ-based IDEs are supported?&quot;](https
 
 ## Targeting Multiple IDE Versions
 
-Tip:
+Tip: Which versions should your plugin support?
 
-Which versions should your plugin support? We've collected some insights based on download statistics in [Statistics: Product Versions in Use](https://plugins.jetbrains.com/docs/marketplace/product-versions-in-use-statistics.html).
+For new plugins, it is recommended to support current and previous stable versions.
+For example, if the current platform version is 2026.3.*, start developing your plugin by targeting 2026.2.*.
+This will support:
+
+* 2026.3.* - current major version
+
+* 2026.2.* - previous major version
+
+With this approach, plugins can use modern APIs, which makes them more performant.
+
+After the plugin is released, it is not strictly required to update plugin to support only two latest major versions.
+Consider supporting some older versions based on download statistics in [Statistics: Product Versions in Use](https://plugins.jetbrains.com/docs/marketplace/product-versions-in-use-statistics.html).
 
 When supporting multiple major versions, it is strongly recommended to build against the lowest supported version to guarantee backwards-compatibility.
 In the case of supporting a range of platform versions with different underlying Java level ([see below](#platformVersions)), it is required.

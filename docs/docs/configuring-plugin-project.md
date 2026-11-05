@@ -38,9 +38,20 @@ Current Gradle IntelliJ Plugin version is 1.17.4
 
 ## Target Platform and Dependencies
 
-Tip:
+Tip: Which versions should your plugin support?
 
-Which versions should your plugin support? We've collected some insights based on download statistics in [Statistics: Product Versions in Use](https://plugins.jetbrains.com/docs/marketplace/product-versions-in-use-statistics.html).
+For new plugins, it is recommended to support current and previous stable versions.
+For example, if the current platform version is 2026.3.*, start developing your plugin by targeting 2026.2.*.
+This will support:
+
+* 2026.3.* - current major version
+
+* 2026.2.* - previous major version
+
+With this approach, plugins can use modern APIs, which makes them more performant.
+
+After the plugin is released, it is not strictly required to update plugin to support only two latest major versions.
+Consider supporting some older versions based on download statistics in [Statistics: Product Versions in Use](https://plugins.jetbrains.com/docs/marketplace/product-versions-in-use-statistics.html).
 
 By default, the Gradle plugin will build a plugin project against the IntelliJ Platform defined by the latest EAP snapshot of the IntelliJ IDEA.
 
