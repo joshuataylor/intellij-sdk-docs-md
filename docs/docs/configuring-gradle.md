@@ -39,7 +39,7 @@ Newer IDE releases might not be supported fully in older releases of the Intelli
 
 Note:
 
-The current IntelliJ Platform Gradle Plugin (2.x) version is 2.19.0
+The current IntelliJ Platform Gradle Plugin (2.x) version is 2.20.0
 
 ## Setup
 

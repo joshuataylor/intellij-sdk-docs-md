@@ -2065,7 +2065,7 @@ Newer IDE releases might not be supported fully in older releases of the Intelli
 
 Note:
 
-The current IntelliJ Platform Gradle Plugin (2.x) version is 2.19.0
+The current IntelliJ Platform Gradle Plugin (2.x) version is 2.20.0
 
 ## Setup
 
@@ -29205,7 +29205,7 @@ import org.jetbrains.intellij.platform.gradle.*
 
 plugins {
   //...
-  id("org.jetbrains.intellij.platform") version "2.19.0"
+  id("org.jetbrains.intellij.platform") version "2.20.0"
 }
 
 sourceSets {
@@ -38601,7 +38601,7 @@ Relevant `build.gradle.kts` configuration:
 
 ```KOTLIN
 plugins {
-  id("org.jetbrains.intellij.platform") version "2.19.0"
+  id("org.jetbrains.intellij.platform") version "2.20.0"
 }
 
 repositories {
@@ -55862,7 +55862,7 @@ Use the Feedback widget displayed on the right if you encounter missing or uncle
 # IntelliJ Platform Gradle Plugin (2.x)
 
 <tldr>
-Current Release: 2.19.0
+Current Release: 2.20.0
 
 GitHub: [Releases &amp; Changelog](https://github.com/JetBrains/intellij-platform-gradle-plugin/releases), [Issue Tracker](https://github.com/JetBrains/intellij-platform-gradle-plugin/issues)
 
@@ -55902,7 +55902,7 @@ Kotlin:
 
 ```KOTLIN
 plugins {
-  id("org.jetbrains.intellij.platform") version "2.19.0"
+  id("org.jetbrains.intellij.platform") version "2.20.0"
 }
 ```
 
@@ -55910,7 +55910,7 @@ Groovy:
 
 ```GROOVY
 plugins {
-  id 'org.jetbrains.intellij.platform' version '2.19.0'
+  id 'org.jetbrains.intellij.platform' version '2.20.0'
 }
 ```
 
@@ -56078,7 +56078,7 @@ Kotlin:
 import org.jetbrains.intellij.platform.gradle.extensions.intellijPlatform
 
 plugins {
-  id("org.jetbrains.intellij.platform.settings") version "2.19.0"
+  id("org.jetbrains.intellij.platform.settings") version "2.20.0"
 }
 
 dependencyResolutionManagement {
@@ -56102,7 +56102,7 @@ Groovy:
 import org.jetbrains.intellij.platform.gradle.extensions.intellijPlatform
 
 plugins {
-  id 'org.jetbrains.intellij.platform.settings' version '2.19.0'
+  id 'org.jetbrains.intellij.platform.settings' version '2.20.0'
 }
 
 dependencyResolutionManagement {
@@ -56352,7 +56352,7 @@ Kotlin:
 
 ```KOTLIN
 plugins {
-  id("org.jetbrains.intellij.platform") version "2.19.0"
+  id("org.jetbrains.intellij.platform") version "2.20.0"
 }
 ```
 
@@ -56360,7 +56360,7 @@ Groovy:
 
 ```GROOVY
 plugins {
-  id 'org.jetbrains.intellij.platform' version '2.19.0'
+  id 'org.jetbrains.intellij.platform' version '2.20.0'
 }
 ```
 
@@ -56456,7 +56456,7 @@ Kotlin:
 
 ```KOTLIN
 plugins {
-  id("org.jetbrains.intellij.platform") version "2.19.0"
+  id("org.jetbrains.intellij.platform") version "2.20.0"
 }
 ```
 
@@ -56466,7 +56466,7 @@ Groovy:
 
 ```GROOVY
 plugins {
-  id 'org.jetbrains.intellij.platform' version '2.19.0'
+  id 'org.jetbrains.intellij.platform' version '2.20.0'
 }
 ```
 
@@ -56548,7 +56548,7 @@ repositories {
 
 ```KOTLIN
 plugins {
-  id("org.jetbrains.intellij.platform") version "2.19.0"
+  id("org.jetbrains.intellij.platform") version "2.20.0"
 }
 
 repositories {
@@ -56598,7 +56598,7 @@ repositories {
 
 ```GROOVY
 plugins {
-  id 'org.jetbrains.intellij.platform' version '2.19.0'
+  id 'org.jetbrains.intellij.platform' version '2.20.0'
 }
 
 repositories {
@@ -56664,7 +56664,7 @@ Kotlin:
 import org.jetbrains.intellij.platform.gradle.extensions.intellijPlatform
 
 plugins {
-  id("org.jetbrains.intellij.platform.settings") version "2.19.0"
+  id("org.jetbrains.intellij.platform.settings") version "2.20.0"
 }
 
 rootProject.name = "..."
@@ -56723,7 +56723,7 @@ Groovy:
 import org.jetbrains.intellij.platform.gradle.extensions.intellijPlatform
 
 plugins {
-  id 'org.jetbrains.intellij.platform.settings' version '2.19.0'
+  id 'org.jetbrains.intellij.platform.settings' version '2.20.0'
 }
 
 rootProject.name = '...'
@@ -56788,7 +56788,7 @@ Kotlin:
 
 ```KOTLIN
 plugins {
-  id("org.jetbrains.intellij.platform.grammarkit") version "2.19.0"
+  id("org.jetbrains.intellij.platform.grammarkit") version "2.20.0"
 }
 ```
 
@@ -56798,7 +56798,7 @@ Groovy:
 
 ```GROOVY
 plugins {
-  id 'org.jetbrains.intellij.platform.grammarkit' version '2.19.0'
+  id 'org.jetbrains.intellij.platform.grammarkit' version '2.20.0'
 }
 ```
 
@@ -59813,7 +59813,7 @@ Depends on: [jarSearchableOptions](#jarSearchableOptions), [prepareSandbox](#pre
 
 Extends: [Zip](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.bundling.Zip.html)
 
-Sources: [BuildPluginTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/BuildPluginTask.kt)
+Sources: [BuildPluginTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/BuildPluginTask.kt)
 </tldr>
 
 Builds the plugin and prepares the ZIP archive for testing and deployment.
@@ -59850,7 +59850,7 @@ Depends on: The six [buildPluginVariants_&lt;os&gt;_&lt;arch&gt;](#buildPluginVa
 
 Extends: [DefaultTask](https://docs.gradle.org/current/dsl/org.gradle.api.DefaultTask.html)
 
-Sources: [BuildPluginVariantsTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/BuildPluginVariantsTask.kt)
+Sources: [BuildPluginVariantsTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/BuildPluginVariantsTask.kt)
 </tldr>
 
 Builds the fixed matrix of Linux, macOS, and Windows plugin distributions for `x86_64` and `arm64` architectures.
@@ -59866,7 +59866,7 @@ The prepared variant JAR and target-specific files take precedence over duplicat
 
 `buildPluginVariants_<os>_<arch>`
 
-The following [BuildPluginTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/BuildPluginTask.kt) instances produce the individual archives:
+The following [BuildPluginTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/BuildPluginTask.kt) instances produce the individual archives:
 
 | Target |Task |Archive classifier |
 ------------------------------------
@@ -59899,7 +59899,7 @@ Depends on: [prepareSandbox](#prepareSandbox)
 
 Extends: [JavaExec](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.JavaExec.html), [RunnableIdeAware](tools-intellij-platform-gradle-plugin-task-awares.html#RunnableIdeAware)
 
-Sources: [BuildSearchableOptionsTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/BuildSearchableOptionsTask.kt)
+Sources: [BuildSearchableOptionsTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/BuildSearchableOptionsTask.kt)
 </tldr>
 
 Builds the index of UI components (searchable options) for the plugin.
@@ -59946,7 +59946,7 @@ Available in: [Platform](tools-intellij-platform-gradle-plugin-plugins.html#plat
 
 Extends: [Delete](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.Delete.html)
 
-Sources: [CleanSandboxTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/CleanSandboxTask.kt)
+Sources: [CleanSandboxTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/CleanSandboxTask.kt)
 </tldr>
 
 Cleans the sandbox directory created by [prepareSandbox](#prepareSandbox) for the current project.
@@ -59962,7 +59962,7 @@ Depends on: [jar](https://docs.gradle.org/current/dsl/org.gradle.jvm.tasks.Jar.h
 
 Extends: [Jar](https://docs.gradle.org/current/dsl/org.gradle.jvm.tasks.Jar.html)
 
-Sources: [ComposedJarTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/ComposedJarTask.kt)
+Sources: [ComposedJarTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/ComposedJarTask.kt)
 </tldr>
 
 Composes a final JAR by combining the output of base `jar` or [instrumentedJar](#instrumentedJar) tasks,
@@ -59988,7 +59988,7 @@ Available in: [Platform](tools-intellij-platform-gradle-plugin-plugins.html#plat
 
 Extends: [DefaultTask](https://docs.gradle.org/current/dsl/org.gradle.api.DefaultTask.html), [KotlinMetadataAware](tools-intellij-platform-gradle-plugin-task-awares.html#KotlinMetadataAware)
 
-Sources: [GenerateManifestTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/GenerateManifestTask.kt)
+Sources: [GenerateManifestTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/GenerateManifestTask.kt)
 </tldr>
 
 Generates the `MANIFEST.MF` file with all relevant information about the project configuration.
@@ -60069,7 +60069,7 @@ Available in: [GrammarKit](tools-intellij-platform-gradle-plugin-plugins.html#gr
 
 Extends: [JavaExec](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.JavaExec.html)
 
-Sources: [GenerateLexerTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/GenerateLexerTask.kt)
+Sources: [GenerateLexerTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/GenerateLexerTask.kt)
 </tldr>
 
 Generates a lexer from a `.flex` definition file using JFlex.
@@ -60182,7 +60182,7 @@ Available in: [GrammarKit](tools-intellij-platform-gradle-plugin-plugins.html#gr
 
 Extends: [JavaExec](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.JavaExec.html)
 
-Sources: [GenerateParserTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/GenerateParserTask.kt)
+Sources: [GenerateParserTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/GenerateParserTask.kt)
 </tldr>
 
 Generates parser and PSI files from a `.bnf` definition file using GrammarKit.
@@ -60265,7 +60265,7 @@ Available in: [Platform](tools-intellij-platform-gradle-plugin-plugins.html#plat
 
 Extends: [DefaultTask](https://docs.gradle.org/current/dsl/org.gradle.api.DefaultTask.html)
 
-Sources: [GenerateSplitModeRunConfigurationsTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/GenerateSplitModeRunConfigurationsTask.kt)
+Sources: [GenerateSplitModeRunConfigurationsTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/GenerateSplitModeRunConfigurationsTask.kt)
 </tldr>
 
 Generates shared IntelliJ IDEA run configurations for split-mode frontend and backend runs, plus a compound run configuration that starts both.
@@ -60330,7 +60330,7 @@ Available in: [Platform](tools-intellij-platform-gradle-plugin-plugins.html#plat
 
 Extends: [DefaultTask](https://docs.gradle.org/current/dsl/org.gradle.api.DefaultTask.html), [IntelliJPlatformVersionAware](tools-intellij-platform-gradle-plugin-task-awares.html#IntelliJPlatformVersionAware), [ModuleAware](tools-intellij-platform-gradle-plugin-task-awares.html#ModuleAware)
 
-Sources: [InitializeIntelliJPlatformPluginTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/InitializeIntelliJPlatformPluginTask.kt)
+Sources: [InitializeIntelliJPlatformPluginTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/InitializeIntelliJPlatformPluginTask.kt)
 </tldr>
 
 Executes before every other task introduced by IntelliJ Platform Gradle Plugin to prepare it to run.
@@ -60418,7 +60418,7 @@ Depends on: [jar](https://docs.gradle.org/current/dsl/org.gradle.jvm.tasks.Jar.h
 
 Extends: [DefaultTask](https://docs.gradle.org/current/dsl/org.gradle.api.DefaultTask.html), [JavaCompilerAware](tools-intellij-platform-gradle-plugin-task-awares.html#JavaCompilerAware)
 
-Sources: [InstrumentCodeTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/InstrumentCodeTask.kt)
+Sources: [InstrumentCodeTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/InstrumentCodeTask.kt)
 </tldr>
 
 Executes the code instrumentation using the Ant tasks provided by the used IntelliJ Platform dependency.
@@ -60520,7 +60520,7 @@ Depends on: [buildSearchableOptions](#buildSearchableOptions), [prepareSandbox](
 
 Extends: [Jar](https://docs.gradle.org/current/dsl/org.gradle.jvm.tasks.Jar.html)
 
-Sources: [JarSearchableOptionsTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/JarSearchableOptionsTask.kt)
+Sources: [JarSearchableOptionsTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/JarSearchableOptionsTask.kt)
 </tldr>
 
 Creates a JAR file with searchable options to be distributed with the plugin.
@@ -60559,7 +60559,7 @@ Available in: [Platform](tools-intellij-platform-gradle-plugin-plugins.html#plat
 
 Extends: [DefaultTask](https://docs.gradle.org/current/dsl/org.gradle.api.DefaultTask.html), [IntelliJPlatformVersionAware](tools-intellij-platform-gradle-plugin-task-awares.html#IntelliJPlatformVersionAware)
 
-Sources: [PatchPluginXmlTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/PatchPluginXmlTask.kt)
+Sources: [PatchPluginXmlTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/PatchPluginXmlTask.kt)
 </tldr>
 
 Patches `plugin.xml` file with values provided with the [intelliJPlatform.pluginConfiguration](tools-intellij-platform-gradle-plugin-extension.html#intellijPlatform-pluginConfiguration) extension.
@@ -60813,7 +60813,7 @@ Depends on: [buildSearchableOptions](#buildSearchableOptions), [prepareSandbox](
 
 Extends: [DefaultTask](https://docs.gradle.org/current/dsl/org.gradle.api.DefaultTask.html), [PluginAware](tools-intellij-platform-gradle-plugin-task-awares.html#PluginAware)
 
-Sources: [PrepareJarSearchableOptionsTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/PrepareJarSearchableOptionsTask.kt)
+Sources: [PrepareJarSearchableOptionsTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/PrepareJarSearchableOptionsTask.kt)
 </tldr>
 
 Collects the content produced with `buildSearchableOptions` for the `jarSearchableOptions`.
@@ -60877,7 +60877,7 @@ Depends on: [composedJar](#composedJar)
 
 Extends: [DefaultTask](https://docs.gradle.org/current/dsl/org.gradle.api.DefaultTask.html)
 
-Sources: [PreparePluginVariantTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/PreparePluginVariantTask.kt)
+Sources: [PreparePluginVariantTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/PreparePluginVariantTask.kt)
 </tldr>
 
 The six `preparePluginVariant_<os>_<arch>` tasks create the plugin JARs consumed by the corresponding [buildPluginVariants_&lt;os&gt;_&lt;arch&gt;](#buildPluginVariants-variant-tasks) tasks.
@@ -60962,14 +60962,14 @@ Depends on: `jar`, [instrumentedJar](#instrumentedJar)
 
 Extends: [Sync](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.Sync.html), [IntelliJPlatformVersionAware](tools-intellij-platform-gradle-plugin-task-awares.html#IntelliJPlatformVersionAware), [SplitModeAware](tools-intellij-platform-gradle-plugin-task-awares.html#SplitModeAware), [PluginInstallationTargetAware](tools-intellij-platform-gradle-plugin-task-awares.html#PluginInstallationTargetAware)
 
-Sources: [PrepareSandboxTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/PrepareSandboxTask.kt)
+Sources: [PrepareSandboxTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/PrepareSandboxTask.kt)
 </tldr>
 
 Prepares a sandbox environment with the plugin and its dependencies installed.
 The sandbox directory is required by tasks that run IDE and tests in isolation from other instances, like when multiple IntelliJ Platforms are used for testing with [runIde](#runIde), [prepareTest](#prepareTest), [testIdeUi](#testIdeUi), or [testIdePerformance](#testIdePerformance) tasks.
 The sandbox directory is created within the container configurable with [intellijPlatform.sandboxContainer](tools-intellij-platform-gradle-plugin-extension.html#intellijPlatform-sandboxContainer).
 
-Tasks based on the [PrepareSandboxTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/PrepareSandboxTask.kt) are sandbox producers and can be associated with sandbox consumers.
+Tasks based on the [PrepareSandboxTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/PrepareSandboxTask.kt) are sandbox producers and can be associated with sandbox consumers.
 To define the consumer task, make it extend from [SandboxAware](tools-intellij-platform-gradle-plugin-task-awares.html#SandboxAware) and apply the `consumer.applySandboxFrom(producer)` function.
 
 When native variants are enabled, native-aware sandbox producers use the variant matching the current operating system and architecture.
@@ -61105,7 +61105,7 @@ Depends on: [prepareTestSandbox](#prepareTestSandbox)
 
 Extends: [DefaultTask](https://docs.gradle.org/current/dsl/org.gradle.api.DefaultTask.html), [TestableAware](tools-intellij-platform-gradle-plugin-task-awares.html#TestableAware)
 
-Sources: [PrepareTestTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/PrepareTestTask.kt)
+Sources: [PrepareTestTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/PrepareTestTask.kt)
 </tldr>
 
 Prepares an immutable [test](#test) task and provides all necessary dependencies and configurations for a proper testing configuration.
@@ -61121,7 +61121,7 @@ Depends on: `jar`, [instrumentedJar](#instrumentedJar)
 
 Extends: [Sync](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.Sync.html), [IntelliJPlatformVersionAware](tools-intellij-platform-gradle-plugin-task-awares.html#IntelliJPlatformVersionAware), [SplitModeAware](tools-intellij-platform-gradle-plugin-task-awares.html#SplitModeAware), [PluginInstallationTargetAware](tools-intellij-platform-gradle-plugin-task-awares.html#PluginInstallationTargetAware)
 
-Sources: [PrepareSandboxTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/PrepareSandboxTask.kt)
+Sources: [PrepareSandboxTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/PrepareSandboxTask.kt)
 </tldr>
 
 The [prepareSandbox](#prepareSandbox) task instance configured to work with the [test](#test) task.
@@ -61137,7 +61137,7 @@ Depends on: `jar`, [instrumentedJar](#instrumentedJar)
 
 Extends: [Sync](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.Sync.html), [IntelliJPlatformVersionAware](tools-intellij-platform-gradle-plugin-task-awares.html#IntelliJPlatformVersionAware), [SplitModeAware](tools-intellij-platform-gradle-plugin-task-awares.html#SplitModeAware), [PluginInstallationTargetAware](tools-intellij-platform-gradle-plugin-task-awares.html#PluginInstallationTargetAware)
 
-Sources: [PrepareSandboxTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/PrepareSandboxTask.kt)
+Sources: [PrepareSandboxTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/PrepareSandboxTask.kt)
 </tldr>
 
 The [prepareSandbox](#prepareSandbox) task instance configured to work with the [testIdePerformance](#testIdePerformance) task.
@@ -61151,7 +61151,7 @@ Available in: [Platform](tools-intellij-platform-gradle-plugin-plugins.html#plat
 
 Extends: [DefaultTask](https://docs.gradle.org/current/dsl/org.gradle.api.DefaultTask.html), [IntelliJPlatformVersionAware](tools-intellij-platform-gradle-plugin-task-awares.html#IntelliJPlatformVersionAware)
 
-Sources: [PrintBundledModulesTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/PrintBundledModulesTask.kt)
+Sources: [PrintBundledModulesTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/PrintBundledModulesTask.kt)
 </tldr>
 
 Prints the list of bundled modules available within the currently targeted IntelliJ Platform.
@@ -61184,7 +61184,7 @@ Available in: [Platform](tools-intellij-platform-gradle-plugin-plugins.html#plat
 
 Extends: [DefaultTask](https://docs.gradle.org/current/dsl/org.gradle.api.DefaultTask.html), [IntelliJPlatformVersionAware](tools-intellij-platform-gradle-plugin-task-awares.html#IntelliJPlatformVersionAware)
 
-Sources: [PrintBundledPluginsTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/PrintBundledPluginsTask.kt)
+Sources: [PrintBundledPluginsTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/PrintBundledPluginsTask.kt)
 </tldr>
 
 Prints the list of bundled plugins available within the currently targeted IntelliJ Platform.
@@ -61217,7 +61217,7 @@ Available in: [Platform](tools-intellij-platform-gradle-plugin-plugins.html#plat
 
 Extends: [DefaultTask](https://docs.gradle.org/current/dsl/org.gradle.api.DefaultTask.html), [ProductReleasesValueSource.FilterParameters](tools-intellij-platform-gradle-plugin-types.html#ProductReleasesFilterParameters)
 
-Sources: [PrintProductsReleasesTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/PrintProductsReleasesTask.kt)
+Sources: [PrintProductsReleasesTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/PrintProductsReleasesTask.kt)
 </tldr>
 
 Prints the list of binary product releases that, by default, match the currently selected IntelliJ Platform along with
@@ -61254,7 +61254,7 @@ Depends on: [buildPluginVariants](#buildPluginVariants) when native variants are
 
 Extends: [DefaultTask](https://docs.gradle.org/current/dsl/org.gradle.api.DefaultTask.html)
 
-Sources: [PublishPluginTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/PublishPluginTask.kt)
+Sources: [PublishPluginTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/PublishPluginTask.kt)
 </tldr>
 
 Publishes one or more plugin archives to the remote plugins repository, such as [JetBrains Marketplace](https://plugins.jetbrains.com).
@@ -61362,7 +61362,7 @@ Depends on: [patchPluginXml](#patchPluginXml), [prepareSandbox_runIde](#prepareS
 
 Extends: [JavaExec](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.JavaExec.html), [RunnableIdeAware](tools-intellij-platform-gradle-plugin-task-awares.html#RunnableIdeAware), [SplitModeAware](tools-intellij-platform-gradle-plugin-task-awares.html#SplitModeAware), [PluginInstallationTargetAware](tools-intellij-platform-gradle-plugin-task-awares.html#PluginInstallationTargetAware), [ComposeHotReloadAware](tools-intellij-platform-gradle-plugin-task-awares.html#ComposeHotReloadAware), [IntelliJPlatformVersionAware](tools-intellij-platform-gradle-plugin-task-awares.html#IntelliJPlatformVersionAware)
 
-Sources: [RunIdeTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/RunIdeTask.kt)
+Sources: [RunIdeTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/RunIdeTask.kt)
 </tldr>
 
 Runs the IDE instance using the currently selected IntelliJ Platform with the built plugin loaded.
@@ -61441,7 +61441,7 @@ Depends on: [patchPluginXml](#patchPluginXml), [prepareSandbox_runIdeBackend](#p
 
 Extends: [JavaExec](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.JavaExec.html), [RunnableIdeAware](tools-intellij-platform-gradle-plugin-task-awares.html#RunnableIdeAware), [SplitModeAware](tools-intellij-platform-gradle-plugin-task-awares.html#SplitModeAware), [PluginInstallationTargetAware](tools-intellij-platform-gradle-plugin-task-awares.html#PluginInstallationTargetAware), [ComposeHotReloadAware](tools-intellij-platform-gradle-plugin-task-awares.html#ComposeHotReloadAware), [IntelliJPlatformVersionAware](tools-intellij-platform-gradle-plugin-task-awares.html#IntelliJPlatformVersionAware)
 
-Sources: [RunIdeTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/RunIdeTask.kt)
+Sources: [RunIdeTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/RunIdeTask.kt)
 </tldr>
 
 Runs the IDE backend process in Split Mode.
@@ -61461,7 +61461,7 @@ Depends on: [patchPluginXml](#patchPluginXml), [prepareSandbox_runIdeFrontend](#
 
 Extends: [JavaExec](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.JavaExec.html), [RunnableIdeAware](tools-intellij-platform-gradle-plugin-task-awares.html#RunnableIdeAware), [SplitModeAware](tools-intellij-platform-gradle-plugin-task-awares.html#SplitModeAware), [PluginInstallationTargetAware](tools-intellij-platform-gradle-plugin-task-awares.html#PluginInstallationTargetAware), [ComposeHotReloadAware](tools-intellij-platform-gradle-plugin-task-awares.html#ComposeHotReloadAware), [IntelliJPlatformVersionAware](tools-intellij-platform-gradle-plugin-task-awares.html#IntelliJPlatformVersionAware)
 
-Sources: [RunIdeTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/RunIdeTask.kt)
+Sources: [RunIdeTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/RunIdeTask.kt)
 </tldr>
 
 Runs the JetBrains Client frontend process in Split Mode.
@@ -61531,7 +61531,7 @@ Depends on: [buildPlugin](#buildPlugin)
 
 Extends: [JavaExec](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.JavaExec.html), [SigningAware](tools-intellij-platform-gradle-plugin-task-awares.html#SigningAware)
 
-Sources: [SignPluginTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/SignPluginTask.kt)
+Sources: [SignPluginTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/SignPluginTask.kt)
 </tldr>
 
 Signs the plugin distribution ZIP archive with the provided key using the [Marketplace ZIP Signer](https://github.com/JetBrains/marketplace-zip-signer) library.
@@ -61721,10 +61721,10 @@ Depends on: [prepareTest](#prepareTest)
 
 Extends: [Test](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.testing.Test.html)
 
-Sources: [TestCompanion](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/companion/TestCompanion.kt)
+Sources: [TestCompanion](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/companion/TestCompanion.kt)
 </tldr>
 
-The base Gradle `test` task is preconfigured using the [TestCompanion](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/companion/TestCompanion.kt) class to run tests with IntelliJ Platform, sandbox, and all system properties set.
+The base Gradle `test` task is preconfigured using the [TestCompanion](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/companion/TestCompanion.kt) class to run tests with IntelliJ Platform, sandbox, and all system properties set.
 
 The task itself isn't mutated and a dedicated [prepareTest](#prepareTest) task is involved to request for required IntelliJ Platform and sandbox configuration.
 
@@ -61741,13 +61741,13 @@ Available in: [Platform](tools-intellij-platform-gradle-plugin-plugins.html#plat
 
 Extends: [Test](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.testing.Test.html), [TestableAware](tools-intellij-platform-gradle-plugin-task-awares.html#TestableAware), [IntelliJPlatformVersionAware](tools-intellij-platform-gradle-plugin-task-awares.html#IntelliJPlatformVersionAware)
 
-Sources: [TestIdeTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/TestIdeTask.kt)
+Sources: [TestIdeTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/TestIdeTask.kt)
 </tldr>
 
 Runs tests using a custom IntelliJ Platform with the developed plugin installed.
 It directly extends the [Test](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.testing.Test.html) Gradle task, which allows for an extensive configuration (system properties, memory management, etc.).
 
-The [TestIdeTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/TestIdeTask.kt) is a class used only for handling custom `testIde` tasks.
+The [TestIdeTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/TestIdeTask.kt) is a class used only for handling custom `testIde` tasks.
 
 To register an additional customized test task, use [intellijPlatformTesting.testIde](tools-intellij-platform-gradle-plugin-testing-extension.html).
 
@@ -61764,7 +61764,7 @@ Depends on: [prepareTestIdePerformanceSandbox](#prepareTestIdePerformanceSandbox
 
 Extends: [JavaExec](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.JavaExec.html), [RunnableIdeAware](tools-intellij-platform-gradle-plugin-task-awares.html#RunnableIdeAware), [TestableAware](tools-intellij-platform-gradle-plugin-task-awares.html#TestableAware), [IntelliJPlatformVersionAware](tools-intellij-platform-gradle-plugin-task-awares.html#IntelliJPlatformVersionAware)
 
-Sources: [TestIdePerformanceTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/TestIdePerformanceTask.kt)
+Sources: [TestIdePerformanceTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/TestIdePerformanceTask.kt)
 </tldr>
 
 Runs performance tests on the IDE with the developed plugin installed.
@@ -61811,7 +61811,7 @@ Available in: [Platform](tools-intellij-platform-gradle-plugin-plugins.html#plat
 
 Extends: [Test](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.testing.Test.html), [TestableAware](tools-intellij-platform-gradle-plugin-task-awares.html#TestableAware)
 
-Sources: [TestIdeUiTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/TestIdeUiTask.kt)
+Sources: [TestIdeUiTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/TestIdeUiTask.kt)
 </tldr>
 
 Runs the IDE instance with the developed plugin and Starter framework for UI testing.
@@ -61839,7 +61839,7 @@ Depends on: [buildPlugin](#buildPlugin)
 
 Extends: [JavaExec](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.JavaExec.html), [RuntimeAware](tools-intellij-platform-gradle-plugin-task-awares.html#RuntimeAware), [PluginVerifierAware](tools-intellij-platform-gradle-plugin-task-awares.html#PluginVerifierAware), [ProblemsAware](tools-intellij-platform-gradle-plugin-task-awares.html#ProblemsAware)
 
-Sources: [VerifyPluginTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/VerifyPluginTask.kt)
+Sources: [VerifyPluginTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/VerifyPluginTask.kt)
 </tldr>
 
 Runs the [IntelliJ Plugin Verifier](verifying-plugin-compatibility.html) CLI tool to check the binary compatibility with specified IDE builds.
@@ -62063,7 +62063,7 @@ Depends on: [patchPluginXml](#patchPluginXml)
 
 Extends: [DefaultTask](https://docs.gradle.org/current/dsl/org.gradle.api.DefaultTask.html), [IntelliJPlatformVersionAware](tools-intellij-platform-gradle-plugin-task-awares.html#IntelliJPlatformVersionAware), [KotlinMetadataAware](tools-intellij-platform-gradle-plugin-task-awares.html#KotlinMetadataAware), [RuntimeAware](tools-intellij-platform-gradle-plugin-task-awares.html#RuntimeAware), [PluginAware](tools-intellij-platform-gradle-plugin-task-awares.html#PluginAware), [ModuleAware](tools-intellij-platform-gradle-plugin-task-awares.html#ModuleAware), [ProblemsAware](tools-intellij-platform-gradle-plugin-task-awares.html#ProblemsAware)
 
-Sources: [VerifyPluginProjectConfigurationTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/VerifyPluginProjectConfigurationTask.kt)
+Sources: [VerifyPluginProjectConfigurationTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/VerifyPluginProjectConfigurationTask.kt)
 </tldr>
 
 Validates the plugin project configuration:
@@ -62262,7 +62262,7 @@ Available in: [Platform](tools-intellij-platform-gradle-plugin-plugins.html#plat
 
 Extends: [JavaExec](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.JavaExec.html), [SigningAware](tools-intellij-platform-gradle-plugin-task-awares.html#SigningAware)
 
-Sources: [VerifyPluginSignatureTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/VerifyPluginSignatureTask.kt)
+Sources: [VerifyPluginSignatureTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/VerifyPluginSignatureTask.kt)
 </tldr>
 
 Validates the signature of the plugin archive file using the [Marketplace ZIP Signer](https://github.com/JetBrains/marketplace-zip-signer) library.
@@ -62324,7 +62324,7 @@ Depends on: [prepareSandbox](#prepareSandbox)
 
 Extends: [DefaultTask](https://docs.gradle.org/current/dsl/org.gradle.api.DefaultTask.html), [SandboxAware](tools-intellij-platform-gradle-plugin-task-awares.html#SandboxAware)
 
-Sources: [VerifyPluginStructureTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/VerifyPluginStructureTask.kt)
+Sources: [VerifyPluginStructureTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/VerifyPluginStructureTask.kt)
 </tldr>
 
 Validates completeness and contents of `plugin.xml` descriptors as well as plugin archive structure.
@@ -62442,7 +62442,7 @@ tasks.register('retrievePluginName', RetrievePluginNameTask) {
 <tldr>
 Inherited by: [RunnableIdeAware](#RunnableIdeAware)
 
-Sources: [AutoReloadAware](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/aware/AutoReloadAware.kt)
+Sources: [AutoReloadAware](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/aware/AutoReloadAware.kt)
 </tldr>
 
 Provides the possibility to auto-reload plugin when run in the IDE.
@@ -62471,7 +62471,7 @@ Depends on: [initializeIntelliJPlatformPlugin](tools-intellij-platform-gradle-pl
 
 Inherited by: [runIde](tools-intellij-platform-gradle-plugin-tasks.html#runIde), [runIdeBackend](tools-intellij-platform-gradle-plugin-tasks.html#runIdeBackend), [runIdeFrontend](tools-intellij-platform-gradle-plugin-tasks.html#runIdeFrontend)
 
-Sources: [ComposeHotReloadAware](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/aware/ComposeHotReloadAware.kt)
+Sources: [ComposeHotReloadAware](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/aware/ComposeHotReloadAware.kt)
 </tldr>
 
 Provides the path to the Java Agent file for the Compose Hot Reload agent required to enable hot reloading of Compose UIs.
@@ -62506,7 +62506,7 @@ Depends on: [initializeIntelliJPlatformPlugin](tools-intellij-platform-gradle-pl
 
 Inherited by: [RunnableIdeAware](#RunnableIdeAware), [TestableAware](#TestableAware)
 
-Sources: [CoroutinesJavaAgentAware](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/aware/CoroutinesJavaAgentAware.kt)
+Sources: [CoroutinesJavaAgentAware](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/aware/CoroutinesJavaAgentAware.kt)
 </tldr>
 
 Provides the path to the Java Agent file for the Coroutines library required to enable coroutines debugging.
@@ -62530,7 +62530,7 @@ Default value
 <tldr>
 Inherited by: [RuntimeAware](#RuntimeAware), [SandboxAware](#SandboxAware), [SplitModeAware](#SplitModeAware), [initializeIntelliJPlatformPlugin](tools-intellij-platform-gradle-plugin-tasks.html#initializeIntelliJPlatformPlugin), [patchPluginXml](tools-intellij-platform-gradle-plugin-tasks.html#patchPluginXml), [printBundledPlugins](tools-intellij-platform-gradle-plugin-tasks.html#printBundledPlugins), [runIde](tools-intellij-platform-gradle-plugin-tasks.html#runIde), [runIdeBackend](tools-intellij-platform-gradle-plugin-tasks.html#runIdeBackend), [runIdeFrontend](tools-intellij-platform-gradle-plugin-tasks.html#runIdeFrontend), [testIdePerformance](tools-intellij-platform-gradle-plugin-tasks.html#testIdePerformance), [testIdeUi](tools-intellij-platform-gradle-plugin-tasks.html#testIdeUi), [verifyPluginProjectConfiguration](tools-intellij-platform-gradle-plugin-tasks.html#verifyPluginProjectConfiguration)
 
-Sources: [IntelliJPlatformVersionAware](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/aware/IntelliJPlatformVersionAware.kt)
+Sources: [IntelliJPlatformVersionAware](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/aware/IntelliJPlatformVersionAware.kt)
 </tldr>
 
 Provides a task with the possibility of accessing information about the IntelliJ Platform currently used in the project.
@@ -62614,7 +62614,7 @@ Throws
 <tldr>
 Inherited by: [instrumentCode](tools-intellij-platform-gradle-plugin-tasks.html#instrumentCode)
 
-Sources: [JavaCompilerAware](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/aware/JavaCompilerAware.kt)
+Sources: [JavaCompilerAware](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/aware/JavaCompilerAware.kt)
 </tldr>
 
 Provides the dependency on Java Compiler required for the [code instrumentation](tools-intellij-platform-gradle-plugin-tasks.html#instrumentCode) to properly configure Ant tasks provided by the IntelliJ Platform.
@@ -62635,7 +62635,7 @@ Type
 <tldr>
 Inherited by: [generateManifest](tools-intellij-platform-gradle-plugin-tasks.html#generateManifest), [verifyPluginProjectConfiguration](tools-intellij-platform-gradle-plugin-tasks.html#verifyPluginProjectConfiguration)
 
-Sources: [KotlinMetadataAware](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/aware/KotlinMetadataAware.kt)
+Sources: [KotlinMetadataAware](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/aware/KotlinMetadataAware.kt)
 </tldr>
 
 An interface that provides access to Kotlin-specific metadata for a Gradle project.
@@ -62732,7 +62732,7 @@ Default value
 <tldr>
 Inherited by: [PluginAware](#PluginAware)
 
-Sources: [ModuleAware](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/aware/ModuleAware.kt)
+Sources: [ModuleAware](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/aware/ModuleAware.kt)
 </tldr>
 
 Provides information about whether the current task is executed in an IntelliJ Platform plugin module context.
@@ -62764,7 +62764,7 @@ Depends on: [patchPluginXml](tools-intellij-platform-gradle-plugin-tasks.html#pa
 
 Inherited by: [TestableAware](#TestableAware), [RunnableIdeAware](#RunnableIdeAware), [jarSearchableOptions](tools-intellij-platform-gradle-plugin-tasks.html#jarSearchableOptions), [verifyPluginProjectConfiguration](tools-intellij-platform-gradle-plugin-tasks.html#verifyPluginProjectConfiguration)
 
-Sources: [PluginAware](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/aware/PluginAware.kt)
+Sources: [PluginAware](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/aware/PluginAware.kt)
 </tldr>
 
 Provides information about the currently built plugin.
@@ -62824,7 +62824,7 @@ tasks.register('retrievePluginName', RetrievePluginNameTask) {
 <tldr>
 Inherited by: [prepareSandbox](tools-intellij-platform-gradle-plugin-tasks.html#prepareSandbox), [prepareTestSandbox](tools-intellij-platform-gradle-plugin-tasks.html#prepareTestSandbox), [prepareTestIdePerformanceSandbox](tools-intellij-platform-gradle-plugin-tasks.html#prepareTestIdePerformanceSandbox), [runIde](tools-intellij-platform-gradle-plugin-tasks.html#runIde), [runIdeBackend](tools-intellij-platform-gradle-plugin-tasks.html#runIdeBackend), [runIdeFrontend](tools-intellij-platform-gradle-plugin-tasks.html#runIdeFrontend)
 
-Sources: [PluginInstallationTargetAware](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/aware/PluginInstallationTargetAware.kt)
+Sources: [PluginInstallationTargetAware](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/aware/PluginInstallationTargetAware.kt)
 </tldr>
 
 Provides the property that selects where the developed plugin is installed when running in Split Mode.
@@ -62848,7 +62848,7 @@ Default value
 <tldr>
 Inherited by: [verifyPlugin](tools-intellij-platform-gradle-plugin-tasks.html#verifyPlugin)
 
-Sources: [PluginVerifierAware](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/aware/PluginVerifierAware.kt)
+Sources: [PluginVerifierAware](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/aware/PluginVerifierAware.kt)
 </tldr>
 
 Provides the path to the IntelliJ Plugin Verifier executable.
@@ -62871,7 +62871,7 @@ Type
 <tldr>
 Inherited by: [verifyPlugin](tools-intellij-platform-gradle-plugin-tasks.html#verifyPlugin), [verifyPluginProjectConfiguration](tools-intellij-platform-gradle-plugin-tasks.html#verifyPluginProjectConfiguration)
 
-Sources: [ProblemsAware](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/aware/ProblemsAware.kt)
+Sources: [ProblemsAware](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/aware/ProblemsAware.kt)
 </tldr>
 
 Provides access to Gradle's Problems API for structured issue reporting.
@@ -62894,7 +62894,7 @@ Depends on: [AutoReloadAware](#AutoReloadAware), [CoroutinesJavaAgentAware](#Cor
 
 Inherited by: [buildSearchableOptions](tools-intellij-platform-gradle-plugin-tasks.html#buildSearchableOptions), [runIde](tools-intellij-platform-gradle-plugin-tasks.html#runIde), [runIdeBackend](tools-intellij-platform-gradle-plugin-tasks.html#runIdeBackend), [runIdeFrontend](tools-intellij-platform-gradle-plugin-tasks.html#runIdeFrontend), [testIdePerformance](tools-intellij-platform-gradle-plugin-tasks.html#testIdePerformance), [testIdeUi](tools-intellij-platform-gradle-plugin-tasks.html#testIdeUi)
 
-Sources: [RunnableIdeAware](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/aware/RunnableIdeAware.kt)
+Sources: [RunnableIdeAware](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/aware/RunnableIdeAware.kt)
 </tldr>
 
 The interface which uses a set of various interfaces required for running a guest IDE.
@@ -62917,7 +62917,7 @@ Inherits from:
 <tldr>
 Inherited by: [RunnableIdeAware](#RunnableIdeAware), [TestableAware](#TestableAware), [verifyPlugin](tools-intellij-platform-gradle-plugin-tasks.html#verifyPlugin), [verifyPluginProjectConfiguration](tools-intellij-platform-gradle-plugin-tasks.html#verifyPluginProjectConfiguration)
 
-Sources: [RuntimeAware](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/aware/RuntimeAware.kt)
+Sources: [RuntimeAware](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/aware/RuntimeAware.kt)
 </tldr>
 
 Provides access to the Java Runtime (i.e., JetBrains Runtime) resolved with `JavaRuntimePathResolver`.
@@ -62975,7 +62975,7 @@ Type
 <tldr>
 Inherited by: [SandboxAware](#SandboxAware), [SplitModeAware](#SplitModeAware)
 
-Sources: [SandboxStructure](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/aware/SandboxStructure.kt)
+Sources: [SandboxStructure](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/aware/SandboxStructure.kt)
 </tldr>
 
 Defines common sandbox directories and flags used by tasks interacting with IDE sandboxes.
@@ -63043,7 +63043,7 @@ Depends on: [prepareSandbox](tools-intellij-platform-gradle-plugin-tasks.html#pr
 
 Inherited by: [RunnableIdeAware](#RunnableIdeAware), [TestableAware](#TestableAware)
 
-Sources: [SandboxAware](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/aware/SandboxAware.kt)
+Sources: [SandboxAware](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/aware/SandboxAware.kt)
 </tldr>
 
 Provides quick access to the sandbox container and specific directories located within it.
@@ -63126,7 +63126,7 @@ This is used by split-mode frontend consumers such as [runIdeFrontend](tools-int
 <tldr>
 Inherited by: [signPlugin](tools-intellij-platform-gradle-plugin-tasks.html#signPlugin), [verifyPluginSignature](tools-intellij-platform-gradle-plugin-tasks.html#verifyPluginSignature)
 
-Sources: [SigningAware](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/aware/SigningAware.kt)
+Sources: [SigningAware](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/aware/SigningAware.kt)
 </tldr>
 
 Provides the path to the Marketplace ZIP Signer executable.
@@ -63147,7 +63147,7 @@ Type
 <tldr>
 Inherited by: [prepareSandbox](tools-intellij-platform-gradle-plugin-tasks.html#prepareSandbox), [prepareTestSandbox](tools-intellij-platform-gradle-plugin-tasks.html#prepareTestSandbox), [prepareTestIdePerformanceSandbox](tools-intellij-platform-gradle-plugin-tasks.html#prepareTestIdePerformanceSandbox), [runIde](tools-intellij-platform-gradle-plugin-tasks.html#runIde), [runIdeBackend](tools-intellij-platform-gradle-plugin-tasks.html#runIdeBackend), [runIdeFrontend](tools-intellij-platform-gradle-plugin-tasks.html#runIdeFrontend)
 
-Sources: [SplitModeAware](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/aware/SplitModeAware.kt)
+Sources: [SplitModeAware](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/aware/SplitModeAware.kt)
 </tldr>
 
 When you develop a plugin, you may want to check how it works in [split mode](split-mode-and-remote-development.html), when one machine is running the backend part and another is running a frontend part (JetBrains Client) which connects to the backend.
@@ -63267,7 +63267,7 @@ Throws
 <tldr>
 Inherited by: [prepareTest](tools-intellij-platform-gradle-plugin-tasks.html#prepareTest), [testIde](tools-intellij-platform-gradle-plugin-tasks.html#testIde), [testIdeUi](tools-intellij-platform-gradle-plugin-tasks.html#testIdeUi), [testIdePerformance](tools-intellij-platform-gradle-plugin-tasks.html#testIdePerformance)
 
-Sources: [TestableAware](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/aware/TestableAware.kt)
+Sources: [TestableAware](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/aware/TestableAware.kt)
 </tldr>
 
 Interface used to describe tasks used for running tests, such as [testIdeUi](tools-intellij-platform-gradle-plugin-tasks.html#testIdeUi), [testIdePerformance](tools-intellij-platform-gradle-plugin-tasks.html#testIdePerformance), or [prepareTest](tools-intellij-platform-gradle-plugin-tasks.html#prepareTest) used for configuring `test` and keeping it immutable.
@@ -63331,7 +63331,7 @@ This page lists various types used to configure [Tasks](tools-intellij-platform-
 
 `FailureLevel`
 
-[VerifyPluginTask.FailureLevel](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/VerifyPluginTask.kt)
+[VerifyPluginTask.FailureLevel](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/VerifyPluginTask.kt)
 
 Enum class describing the failure level of the IntelliJ Plugin Verifier CLI tool run with the [verifyPlugin](tools-intellij-platform-gradle-plugin-tasks.html#verifyPlugin) task.
 
@@ -63366,7 +63366,7 @@ See also:
 
 `IntelliJPlatformType`
 
-[IntelliJPlatformType](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/IntelliJPlatformType.kt)
+[IntelliJPlatformType](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/IntelliJPlatformType.kt)
 
 Describes all IntelliJ Platform types available to be used for plugin development, dependency resolution, and plugin verification.
 
@@ -63409,7 +63409,7 @@ Notes:
 
 `ProductMode`
 
-[ProductMode](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/ProductMode.kt)
+[ProductMode](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/ProductMode.kt)
 
 Describes a mode in which a product may be started. This can be configured on the target platform dependency to influence how the IDE is started for development and testing.
 
@@ -63441,7 +63441,7 @@ See also:
 
 `ProductInfo`
 
-[ProductInfo](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/models/ProductInfo.kt)
+[ProductInfo](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/models/ProductInfo.kt)
 
 Represents information about the IntelliJ Platform product.
 
@@ -63481,7 +63481,7 @@ Throws
 
 `ProductRelease.Channel`
 
-[ProductRelease.Channel](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/models/ProductRelease.kt)
+[ProductRelease.Channel](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/models/ProductRelease.kt)
 
 List of available channels used by [JetBrains IDEs](intellij-platform.html#ides-based-on-the-intellij-platform)
 and [Android Studio](android-studio.html) for describing binary releases.
@@ -63507,7 +63507,7 @@ See also:
 
 `ProductReleasesFilterParameters`
 
-[ProductReleasesValueSource](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/providers/ProductReleasesFilterParameters.kt)
+[ProductReleasesValueSource](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/providers/ProductReleasesFilterParameters.kt)
 
 Interface that provides a clear way to filter binary product releases for IntelliJ Plugin Verifier.
 
@@ -63532,7 +63532,7 @@ See also:
 
 `RequestedIntelliJPlatform`
 
-[RequestedIntelliJPlatform](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/services/RequestedIntelliJPlatformsService.kt)
+[RequestedIntelliJPlatform](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/services/RequestedIntelliJPlatformsService.kt)
 
 Represents a requested IntelliJ Platform build with its type, version, and installation/cache preferences.
 Used internally by the Gradle plugin to propagate platform settings across configurations for development, dependency resolution, and plugin verification.
@@ -63549,7 +63549,7 @@ Used internally by the Gradle plugin to propagate platform settings across confi
 
 `SplitModeAware.PluginInstallationTarget` (formerly `SplitModeTarget`)
 
-[SplitModeAware.PluginInstallationTarget](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/aware/SplitModeAware.kt)
+[SplitModeAware.PluginInstallationTarget](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/aware/SplitModeAware.kt)
 
 Describes a part of the product where the developed plugin can be installed when running in splitMode handled by [SplitModeAware](tools-intellij-platform-gradle-plugin-task-awares.html#SplitModeAware).
 
@@ -63563,7 +63563,7 @@ Describes a part of the product where the developed plugin can be installed when
 
 `Subsystems`
 
-[VerifyPluginTask.Subsystems](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/VerifyPluginTask.kt)
+[VerifyPluginTask.Subsystems](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/VerifyPluginTask.kt)
 
 Specify which subsystems of the IDE should be checked by the IntelliJ Plugin Verifier CLI tool run with the [verifyPlugin](tools-intellij-platform-gradle-plugin-tasks.html#verifyPlugin) task.
 
@@ -63583,7 +63583,7 @@ See also:
 
 `TestFrameworkType`
 
-[TestFrameworkType](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/TestFrameworkType.kt)
+[TestFrameworkType](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/TestFrameworkType.kt)
 
 Allows for adding `test-framework` testing library variants.
 See [Dependencies Extension: Testing](tools-intellij-platform-gradle-plugin-dependencies-extension.html#testing).
@@ -63664,7 +63664,7 @@ Some plugins offer dedicated test frameworks, for example, `Plugin.Java` when us
 
 `VerificationReportsFormats`
 
-[VerifyPluginTask.VerificationReportsFormats](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.19.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/VerifyPluginTask.kt)
+[VerifyPluginTask.VerificationReportsFormats](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.0/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/VerifyPluginTask.kt)
 
 Enum class describing the type of the results produced by the IntelliJ Plugin Verifier CLI tool run with the [verifyPlugin](tools-intellij-platform-gradle-plugin-tasks.html#verifyPlugin) task.
 
@@ -64471,7 +64471,7 @@ To apply it, use:
 
 ```KOTLIN
 plugins {
-  id("org.jetbrains.intellij.platform") version "2.19.0"
+  id("org.jetbrains.intellij.platform") version "2.20.0"
 }
 ```
 
@@ -65132,8 +65132,8 @@ Kotlin:
 
 ```KOTLIN
 plugins {
-  id("org.jetbrains.intellij.platform") version "2.19.0"
-  id("org.jetbrains.intellij.platform.grammarkit") version "2.19.0"
+  id("org.jetbrains.intellij.platform") version "2.20.0"
+  id("org.jetbrains.intellij.platform.grammarkit") version "2.20.0"
 }
 ```
 
@@ -65143,8 +65143,8 @@ Groovy:
 
 ```GROOVY
 plugins {
-  id 'org.jetbrains.intellij.platform' version '2.19.0'
-  id 'org.jetbrains.intellij.platform.grammarkit' version '2.19.0'
+  id 'org.jetbrains.intellij.platform' version '2.20.0'
+  id 'org.jetbrains.intellij.platform.grammarkit' version '2.20.0'
 }
 ```
 

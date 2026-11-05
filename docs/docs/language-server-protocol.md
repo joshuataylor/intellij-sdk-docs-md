@@ -37,7 +37,7 @@ Relevant `build.gradle.kts` configuration:
 
 ```KOTLIN
 plugins {
-  id("org.jetbrains.intellij.platform") version "2.19.0"
+  id("org.jetbrains.intellij.platform") version "2.20.0"
 }
 
 repositories {

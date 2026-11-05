@@ -372,8 +372,8 @@ Kotlin:
 
 ```KOTLIN
 plugins {
-  id("org.jetbrains.intellij.platform") version "2.19.0"
-  id("org.jetbrains.intellij.platform.grammarkit") version "2.19.0"
+  id("org.jetbrains.intellij.platform") version "2.20.0"
+  id("org.jetbrains.intellij.platform.grammarkit") version "2.20.0"
 }
 ```
 
@@ -383,8 +383,8 @@ Groovy:
 
 ```GROOVY
 plugins {
-  id 'org.jetbrains.intellij.platform' version '2.19.0'
-  id 'org.jetbrains.intellij.platform.grammarkit' version '2.19.0'
+  id 'org.jetbrains.intellij.platform' version '2.20.0'
+  id 'org.jetbrains.intellij.platform.grammarkit' version '2.20.0'
 }
 ```
 
