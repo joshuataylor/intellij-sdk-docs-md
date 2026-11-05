@@ -15,7 +15,7 @@ Note:
 Spring API Extension Points and Listeners are available in the Spring-related plugins,
 which are available in [IntelliJ IDEA Plugin Development](idea.html).
 
-67 Extension Points and 6 Listeners
+73 Extension Points and 6 Listeners
 
 ## Legend
 
@@ -54,8 +54,8 @@ See [Verifying Plugin Compatibility](verifying-plugin-compatibility.html) for ov
 | ![Obsolete](https://img.shields.io/badge/-Obsolete-grey?style=flat-square)                          |Obsolete API |Annotated with [@ApiStatus.Obsolete](https://github.com/JetBrains/java-annotations/tree/24.0.0/common/src/main/java/org/jetbrains/annotations/ApiStatus.java).                             Do not use in new code, see code documentation for replacement.   |
 | ![Experimental API](https://img.shields.io/badge/-Experimental-violet?style=flat-square)                               |Experimental API |Annotated with [@ApiStatus.Experimental](https://github.com/JetBrains/java-annotations/tree/24.0.0/common/src/main/java/org/jetbrains/annotations/ApiStatus.java).                             API might be altered or removed without prior notice.   |
 | ![Internal API](https://img.shields.io/badge/-Internal-darkred?style=flat-square) |Internal API |Annotated with [@ApiStatus.Internal](https://github.com/JetBrains/java-annotations/tree/24.0.0/common/src/main/java/org/jetbrains/annotations/ApiStatus.java).                             Must not be used by third party plugins, see [Internal API Migration](api-internal.html).   |
-| ![Project-Level](https://img.shields.io/badge/-Project--Level-blue?style=flat-square) |Project-LevelExtension Point/Topic   |Can have [Project](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/openapi/project/Project.java)                             as constructor parameter.                               - Extension Point: declared with `area="IDEA_PROJECT"`                               - Listener: registered in [&lt;projectListeners&gt;](plugin-configuration-file.html#idea-plugin__projectListeners)                                |
-| ![DumbAware](https://img.shields.io/badge/-DumbAware-darkgreen?style=flat-square) |`DumbAware`                             Extension Point   |Implementations marked with [DumbAware](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/openapi/project/DumbAware.java)                             will be processed during [dumb                                 mode](indexing-and-psi-stubs.html#dumb-mode).                          |
+| ![Project-Level](https://img.shields.io/badge/-Project--Level-blue?style=flat-square) |Project-LevelExtension Point/Topic   |Can have [Project](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/openapi/project/Project.java)                             as constructor parameter.                               - Extension Point: declared with `area="IDEA_PROJECT"`                               - Listener: registered in [&lt;projectListeners&gt;](plugin-configuration-file.html#idea-plugin__projectListeners)                                |
+| ![DumbAware](https://img.shields.io/badge/-DumbAware-darkgreen?style=flat-square) |`DumbAware`                             Extension Point   |Implementations marked with [DumbAware](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/openapi/project/DumbAware.java)                             will be processed during [dumb                                 mode](indexing-and-psi-stubs.html#dumb-mode).                          |
 | ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |Non-DynamicExtension Point   |Installation/update of plugin requires restarting the IDE, see [Dynamic Plugins](dynamic-plugins.html).                          |
 
 ## Spring
@@ -67,6 +67,12 @@ See [Verifying Plugin Compatibility](verifying-plugin-compatibility.html) for ov
 | [SpringFileSetService#TOPIC](https://jb.gg/ipe/listeners?topics=com.intellij.spring.facet.SpringFileSetService.SpringFileSetListener) |`SpringFileSetListener` |
 | [SpringBeansViewSettings#TOPIC](https://jb.gg/ipe/listeners?topics=com.intellij.spring.ide.ux.toolWindow.SpringBeansViewSettings.Listener) |`Listener` |
 
+### com.intellij.spring.modulith
+
+| Extension Point |Implementation |
+-----------------------------------
+| [com.intellij.spring.modulith.packageMetadataWriter](https://jb.gg/ipe?extensions=com.intellij.spring.modulith.packageMetadataWriter)      ![Internal](https://img.shields.io/badge/-Internal-darkred?style=flat-square) |`SpringModulithPackageMetadataWriter` |
+
 ### intellij.spring.core.analysis.services.xml
 
 | Extension Point |Implementation |
@@ -74,7 +80,6 @@ See [Verifying Plugin Compatibility](verifying-plugin-compatibility.html) for ov
 | [com.intellij.spring.additionalBeanGutterDeclarationsContributor](https://jb.gg/ipe?extensions=com.intellij.spring.additionalBeanGutterDeclarationsContributor)      |`AdditionalSpringBeanGutterDeclarationsContributor` |
 | [com.intellij.spring.autodetected.models](https://jb.gg/ipe?extensions=com.intellij.spring.autodetected.models)      |`SpringAutodetectedModelsSearcher` |
 | [com.intellij.spring.beanClassLineMarker](https://jb.gg/ipe?extensions=com.intellij.spring.beanClassLineMarker)      |`BeanClassLineMarker` |
-| [com.intellij.spring.beans.stereotype](https://jb.gg/ipe?extensions=com.intellij.spring.beans.stereotype)      |`SpringBeanStereotype` |
 | [com.intellij.spring.classAccessInfoProvider](https://jb.gg/ipe?extensions=com.intellij.spring.classAccessInfoProvider)      ![Internal](https://img.shields.io/badge/-Internal-darkred?style=flat-square) |`SpringClassAccessInfoProvider` |
 | [com.intellij.spring.componentScanExtender](https://jb.gg/ipe?extensions=com.intellij.spring.componentScanExtender)      |`ComponentScanExtender` |
 | [com.intellij.spring.conditionalEvaluatorProvider](https://jb.gg/ipe?extensions=com.intellij.spring.conditionalEvaluatorProvider)      |`ConditionalEvaluatorProvider` |
@@ -88,12 +93,15 @@ See [Verifying Plugin Compatibility](verifying-plugin-compatibility.html) for ov
 | [com.intellij.spring.effective.types.provider](https://jb.gg/ipe?extensions=com.intellij.spring.effective.types.provider)      |`SpringBeanEffectiveTypeProvider` |
 | [com.intellij.spring.factoryMethodTypeHandler](https://jb.gg/ipe?extensions=com.intellij.spring.factoryMethodTypeHandler)      |`CustomFactoryMethodTypeHandler` |
 | [com.intellij.spring.fileSetEditorCustomization](https://jb.gg/ipe?extensions=com.intellij.spring.fileSetEditorCustomization)      |`SpringFileSetEditorCustomization` |
+| [com.intellij.spring.implicitClassUsageProvider](https://jb.gg/ipe?extensions=com.intellij.spring.implicitClassUsageProvider)      ![Internal](https://img.shields.io/badge/-Internal-darkred?style=flat-square) |`SpringImplicitClassUsageProvider` |
 | [com.intellij.spring.inspectionsRegistryAdditionalFilesContributor](https://jb.gg/ipe?extensions=com.intellij.spring.inspectionsRegistryAdditionalFilesContributor)      |`AdditionalFilesContributor` |
 | [com.intellij.spring.inspectionsRegistryContributor](https://jb.gg/ipe?extensions=com.intellij.spring.inspectionsRegistryContributor)      |`Contributor` |
 | [com.intellij.spring.jam.customMetaImplementation](https://jb.gg/ipe?extensions=com.intellij.spring.jam.customMetaImplementation)      |`n/a` |
 | [com.intellij.spring.localAnnotationModelDependentModelsProvider](https://jb.gg/ipe?extensions=com.intellij.spring.localAnnotationModelDependentModelsProvider)      |`LocalAnnotationModelDependentModelsProvider` |
 | [com.intellij.spring.localModelProducer](https://jb.gg/ipe?extensions=com.intellij.spring.localModelProducer)      |`SpringLocalModelProducer` |
 | [com.intellij.spring.placeholderReferenceResolver](https://jb.gg/ipe?extensions=com.intellij.spring.placeholderReferenceResolver)      |`SpringPlaceholderReferenceResolver` |
+| [com.intellij.spring.profilesProvider](https://jb.gg/ipe?extensions=com.intellij.spring.profilesProvider)      |`Provider` |
+| [com.intellij.spring.quickFixService](https://jb.gg/ipe?extensions=com.intellij.spring.quickFixService)      ![Internal](https://img.shields.io/badge/-Internal-darkred?style=flat-square) |`SpringQuickFixProvider` |
 | [com.intellij.spring.resourceTypeProvider](https://jb.gg/ipe?extensions=com.intellij.spring.resourceTypeProvider)      |`SpringResourceTypeProvider` |
 | [com.intellij.spring.scriptBeanPsiClassDiscoverer](https://jb.gg/ipe?extensions=com.intellij.spring.scriptBeanPsiClassDiscoverer)      |`ScriptBeanPsiClassDiscoverer` |
 | [com.intellij.spring.settingsProvider](https://jb.gg/ipe?extensions=com.intellij.spring.settingsProvider)      |`SpringSettingsProvider` |
@@ -109,6 +117,7 @@ See [Verifying Plugin Compatibility](verifying-plugin-compatibility.html) for ov
 | Extension Point |Implementation |
 -----------------------------------
 | [com.intellij.spring.autodetected.filesets](https://jb.gg/ipe?extensions=com.intellij.spring.autodetected.filesets)      |`SpringAutodetectedFilesetsSearcher` |
+| [com.intellij.spring.beans.stereotype](https://jb.gg/ipe?extensions=com.intellij.spring.beans.stereotype)      ![Experimental](https://img.shields.io/badge/-Experimental-violet?style=flat-square) |`SpringBeanStereotype` |
 
 ### intellij.spring.el.xml
 
@@ -136,6 +145,7 @@ See [Verifying Plugin Compatibility](verifying-plugin-compatibility.html) for ov
 | Extension Point |Implementation |
 -----------------------------------
 | [com.intellij.spring.boot.configFileDetector](https://jb.gg/ipe?extensions=com.intellij.spring.boot.configFileDetector)      |`SpringBootConfigFileDetector` |
+| [com.intellij.spring.boot.configKeyCustomTargetPresentationProvider](https://jb.gg/ipe?extensions=com.intellij.spring.boot.configKeyCustomTargetPresentationProvider)      |`SpringBootConfigKeyCustomTargetPresentationProvider` |
 | [com.intellij.spring.boot.configKeyDescriptionExtractor](https://jb.gg/ipe?extensions=com.intellij.spring.boot.configKeyDescriptionExtractor)      |`SpringBootConfigKeyDescriptionExtractor` |
 | [com.intellij.spring.boot.configUnresolvedClassReferenceFixesProvider](https://jb.gg/ipe?extensions=com.intellij.spring.boot.configUnresolvedClassReferenceFixesProvider)      |`SpringBootConfigUnresolvedClassReferenceFixesProvider` |
 | [com.intellij.spring.boot.customHintReferenceProvider](https://jb.gg/ipe?extensions=com.intellij.spring.boot.customHintReferenceProvider)      |`SpringBootCustomHintReferenceProvider` |
@@ -177,6 +187,12 @@ See [Verifying Plugin Compatibility](verifying-plugin-compatibility.html) for ov
 | Topic |Listener |
 -------------------
 | [SpringRepositoriesViewSettings#TOPIC](https://jb.gg/ipe/listeners?topics=com.intellij.spring.data.commons.view.SpringRepositoriesViewSettings.Listener) |`Listener` |
+
+### intellij.spring.data.jpa.analysis.xml
+
+| Extension Point |Implementation |
+-----------------------------------
+| [com.intellij.spring.data.jpa.analysis.pathTreePersistenceAwareUpdater](https://jb.gg/ipe?extensions=com.intellij.spring.data.jpa.analysis.pathTreePersistenceAwareUpdater)      ![Internal](https://img.shields.io/badge/-Internal-darkred?style=flat-square) |`PathTreePersistenceAwareUpdater` |
 
 ## Spring Debugger Plugin
 
@@ -226,7 +242,7 @@ See [Verifying Plugin Compatibility](verifying-plugin-compatibility.html) for ov
 -------------------
 | [SpringMvcViewSettings#TOPIC](https://jb.gg/ipe/listeners?topics=com.intellij.spring.mvc.toolwindow.SpringMvcViewSettings.Listener) |`Listener` |
 
-### com.intellij.spring.mvc
+### intellij.spring.mvc.impl.xml
 
 | Extension Point |Implementation |
 -----------------------------------

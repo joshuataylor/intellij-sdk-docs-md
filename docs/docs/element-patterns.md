@@ -10,26 +10,26 @@ Their two main applications inside the IntelliJ Platform are:
 
 2. Specifying PSI elements that provide further references via [a PSI reference contributor](psi-references.html#contributed-references).
 
-However, plugin authors rarely implement the [ElementPattern](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/patterns/ElementPattern.java) interface directly.
+However, plugin authors rarely implement the [ElementPattern](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/patterns/ElementPattern.java) interface directly.
 Instead, we recommend using the high-level pattern classes provided by the IntelliJ Platform:
 
 | Class |Main Contents |Notable Examples |
 ------------------------------------------
-| [StandardPatterns](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/patterns/StandardPatterns.java) |Factory for string and char pattern (see below); Logical operations like and, or, not |[LogbackReferenceContributor](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/plugins/groovy/src/org/jetbrains/plugins/groovy/ext/logback/LogbackReferenceContributor.kt), [RegExpCompletionContributor](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/RegExpSupport/src/org/intellij/lang/regexp/RegExpCompletionContributor.java) |
-| [PlatformPatterns](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/patterns/PlatformPatterns.java) |Factory for PSI-, IElement-, and VirtualFile-patterns |[FxmlReferencesContributor](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/plugins/javaFX/src/org/jetbrains/plugins/javaFX/fxml/refs/FxmlReferencesContributor.java), [PyDataclassCompletionContributor](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/python/python-psi-impl/src/com/jetbrains/python/codeInsight/completion/PyDataclassCompletionContributor.kt) |
-| [PsiElementPattern](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/patterns/PsiElementPattern.java) |Patterns for PSI; Checks for children, parents, or neighboring leaves |[XmlCompletionContributor](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/xml/impl/src/com/intellij/codeInsight/completion/XmlCompletionContributor.java) |
-| [CollectionPattern](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/patterns/CollectionPattern.java) |Filter and check pattern collections; Mainly used to provide functionality for other high-level pattern classes |[PsiElementPattern](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/patterns/PsiElementPattern.java) |
-| [TreeElementPattern](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/patterns/TreeElementPattern.java) |Patterns specifically for checking (PSI) tree structure |[PyMetaClassCompletionContributor](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/python/python-psi-impl/src/com/jetbrains/python/codeInsight/completion/PyMetaClassCompletionContributor.java) |
-| [StringPattern](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/patterns/StringPattern.java) |Check if strings match, have a certain length, have a specific beginning or ending, or are one of a collection of strings |[AbstractGradleCompletionContributor](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/plugins/gradle/java/src/codeInsight/AbstractGradleCompletionContributor.kt) |
-| [CharPattern](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/patterns/CharPattern.java) |Check if characters are whitespace, digits, or Java identifier parts |[CompletionUtil](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/analysis-impl/src/com/intellij/codeInsight/completion/CompletionUtil.java) |
+| [StandardPatterns](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/patterns/StandardPatterns.java) |Factory for string and char pattern (see below); Logical operations like and, or, not |[LogbackReferenceContributor](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/plugins/groovy/src/org/jetbrains/plugins/groovy/ext/logback/LogbackReferenceContributor.kt), [RegExpCompletionContributor](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/RegExpSupport/src/org/intellij/lang/regexp/RegExpCompletionContributor.java) |
+| [PlatformPatterns](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/patterns/PlatformPatterns.java) |Factory for PSI-, IElement-, and VirtualFile-patterns |[FxmlReferencesContributor](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/plugins/javaFX/src/org/jetbrains/plugins/javaFX/fxml/refs/FxmlReferencesContributor.java), [PyDataclassCompletionContributor](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/python/python-psi-impl/src/com/jetbrains/python/codeInsight/completion/PyDataclassCompletionContributor.kt) |
+| [PsiElementPattern](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/patterns/PsiElementPattern.java) |Patterns for PSI; Checks for children, parents, or neighboring leaves |[XmlCompletionContributor](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/xml/impl/src/com/intellij/codeInsight/completion/XmlCompletionContributor.java) |
+| [CollectionPattern](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/patterns/CollectionPattern.java) |Filter and check pattern collections; Mainly used to provide functionality for other high-level pattern classes |[PsiElementPattern](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/patterns/PsiElementPattern.java) |
+| [TreeElementPattern](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/patterns/TreeElementPattern.java) |Patterns specifically for checking (PSI) tree structure |[PyMetaClassCompletionContributor](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/python/python-psi-impl/src/com/jetbrains/python/codeInsight/completion/PyMetaClassCompletionContributor.java) |
+| [StringPattern](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/patterns/StringPattern.java) |Check if strings match, have a certain length, have a specific beginning or ending, or are one of a collection of strings |[AbstractGradleCompletionContributor](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/plugins/gradle/java/src/codeInsight/AbstractGradleCompletionContributor.kt) |
+| [CharPattern](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/patterns/CharPattern.java) |Check if characters are whitespace, digits, or Java identifier parts |[CompletionUtil](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-impl/src/com/intellij/codeInsight/completion/CompletionUtil.java) |
 
 Some built-in languages in the IntelliJ Platform implement their own pattern classes and can provide additional examples:
 
-* [XmlPatterns](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/xml/xml-psi-api/src/com/intellij/patterns/XmlPatterns.java) provides patterns for XML attributes, values, entities, and texts.
+* [XmlPatterns](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/xml/xml-psi-api/src/com/intellij/patterns/XmlPatterns.java) provides patterns for XML attributes, values, entities, and texts.
 
-* [PsiJavaPatterns](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/java/java-psi-api/src/com/intellij/patterns/PsiJavaPatterns.java) provides patterns for literals, strings, arguments, and function/method arguments for Java.
+* [PsiJavaPatterns](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/java/java-psi-api/src/com/intellij/patterns/PsiJavaPatterns.java) provides patterns for literals, strings, arguments, and function/method arguments for Java.
 
-* [DomPatterns](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/xml/dom-openapi/src/com/intellij/patterns/DomPatterns.java) builds upon `XmlPatterns` and acts as a wrapper to provide further patterns for [DOM-API](xml-dom-api.html).
+* [DomPatterns](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/xml/dom-openapi/src/com/intellij/patterns/DomPatterns.java) builds upon `XmlPatterns` and acts as a wrapper to provide further patterns for [DOM-API](xml-dom-api.html).
 
 ## Examples
 
@@ -38,7 +38,7 @@ They are used in the [completion](completion-contributor.html#define-a-completio
 However, the IntelliJ Platform source code provides many more examples of element patterns for built-in languages like JSON, XML, Groovy, Markdown, and so on.
 Checking the references in the table above or searching for usages of the high-level pattern classes will provide a comprehensive list that shows how element patterns are used in production code.
 
-For instance, an example can be found in the JavaFX plugin [FxmlReferencesContributor](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/plugins/javaFX/src/org/jetbrains/plugins/javaFX/fxml/refs/FxmlReferencesContributor.java) that tests if the given PSI element is an XML attribute value inside a `*.fxml` file.
+For instance, an example can be found in the JavaFX plugin [FxmlReferencesContributor](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/plugins/javaFX/src/org/jetbrains/plugins/javaFX/fxml/refs/FxmlReferencesContributor.java) that tests if the given PSI element is an XML attribute value inside a `*.fxml` file.
 
 ```JAVA
 XmlAttributeValuePattern attributeValueInFxml =
@@ -48,7 +48,7 @@ XmlAttributeValuePattern attributeValueInFxml =
 ```
 
 As shown in the code above, element patterns can be stacked and combined to create more complex conditions.
-[JsonCompletionContributor](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/json/backend/src/com/intellij/json/codeinsight/JsonCompletionContributor.java) contains another example with more requirements on the PSI element.
+[JsonCompletionContributor](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/json/backend/src/com/intellij/json/codeinsight/JsonCompletionContributor.java) contains another example with more requirements on the PSI element.
 
 ```JAVA
 PsiElementPattern.Capture<PsiElement> AFTER_COMMA_OR_BRACKET_IN_ARRAY =
@@ -116,6 +116,6 @@ toString().contains("MarkdownLinkDestinationImpl")
 ```
 
 Now start a debug session and open a Markdown file.
-When the breakpoint hits, the call stack in the [debug tool window](https://www.jetbrains.com/help/idea/debug-tool-window.html) shows that reference-providers are checked in the method `doGetReferencesFromProviders` within [ReferenceProvidersRegistryImpl](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-impl/src/com/intellij/psi/impl/source/resolve/reference/ReferenceProvidersRegistryImpl.java).
+When the breakpoint hits, the call stack in the [debug tool window](https://www.jetbrains.com/help/idea/debug-tool-window.html) shows that reference-providers are checked in the method `doGetReferencesFromProviders` within [ReferenceProvidersRegistryImpl](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-impl/src/com/intellij/psi/impl/source/resolve/reference/ReferenceProvidersRegistryImpl.java).
 This provides a good starting point for further investigation.
 

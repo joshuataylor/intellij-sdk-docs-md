@@ -12,7 +12,7 @@ Changes from API marked with `@Deprecated(forRemoval=true)` or any of [ApiStatus
 `@Experimental`, `@ScheduledForRemoval`, or `@Internal` are not listed
 here, as incompatible changes are to be expected.
 
-For API annotated with `@ApiStatus.Internal`/`@IntellijInternalApi`, see [Internal API Migration](api-internal.html) for more details and replacements.
+For API annotated with `@ApiStatus.Internal`, see [Internal API Migration](api-internal.html) for more details and replacements.
 
 Note: IDE and Java Versions
 

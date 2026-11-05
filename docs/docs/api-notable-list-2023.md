@@ -65,7 +65,7 @@ Unbundled plugins
 
 API for quick documentation
 : [Documentation](documentation.html) for custom languages is provided through the
-[DocumentationTarget](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/lang-impl/src/com/intellij/platform/backend/documentation/DocumentationTarget.kt)
+[DocumentationTarget](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-impl/src/com/intellij/platform/backend/documentation/DocumentationTarget.kt)
 API for versions 2023.1 or later.
 
 ### IntelliJ Platform 2023.1
@@ -78,7 +78,7 @@ Nested Index Access
 NOTE: Please do not use yet This is known to cause problems under certain conditions, please watch this [issue](https://youtrack.jetbrains.com/issue/IJPL-265/Nested-index-lookups-still-leads-to-deadlocks).
 
 File Type Index Topic
-: [FileTypeIndex.IndexChangeListener](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/indexing-api/src/com/intellij/psi/search/FileTypeIndex.java) allows monitoring the addition/removal of files by `FileType`.
+: [FileTypeIndex.IndexChangeListener](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/indexing-api/src/com/intellij/psi/search/FileTypeIndex.java) allows monitoring the addition/removal of files by `FileType`.
 
 Run Annotator During Indexing
 : [Annotators](syntax-highlighting-and-error-highlighting.html#annotator) can implement `DumbAware` to run during indexing (e.g., providing additional syntax highlighting).

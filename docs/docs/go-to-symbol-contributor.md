@@ -45,7 +45,7 @@ public static ItemPresentation getPresentation(final SimpleProperty element) {
 }
 ```
 
-In addition, to provide an icon for the displayed items, extend [IconProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/ide/IconProvider.java) and register
+In addition, to provide an icon for the displayed items, extend [IconProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/ide/IconProvider.java) and register
 it in [com.intellij.iconProvider](https://jb.gg/ipe?extensions=com.intellij.iconProvider) extension point
 . See [SimplePropertyIconProvider](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimplePropertyIconProvider.java):
 
@@ -76,7 +76,7 @@ property ::= (KEY? SEPARATOR VALUE?) | KEY {
 
 ## Define a Go To Symbol Contributor
 
-To contribute items to `Navigate | Symbol` results, subclass [ChooseByNameContributorEx](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/lang-impl/src/com/intellij/navigation/ChooseByNameContributorEx.java)
+To contribute items to `Navigate | Symbol` results, subclass [ChooseByNameContributorEx](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-impl/src/com/intellij/navigation/ChooseByNameContributorEx.java)
 to create [SimpleChooseByNameContributor](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleChooseByNameContributor.java):
 
 ```JAVA

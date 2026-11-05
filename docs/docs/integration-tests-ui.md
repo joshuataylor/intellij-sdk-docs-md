@@ -19,7 +19,7 @@ These UI frameworks organize elements in a parent-child hierarchy, similar to HT
 
 Every UI element (except top-level containers) must have a parent container, creating a clear hierarchical structure.
 
-The Driver framework provides a Kotlin DSL that mirrors this hierarchy (see [com.intellij.driver.sdk.ui.components](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/remote-driver/test-sdk/src/com/intellij/driver/sdk/ui/components/)).
+The Driver framework provides a Kotlin DSL that mirrors this hierarchy (see [com.intellij.driver.sdk.ui.components](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/remote-driver/test-sdk/src/com/intellij/driver/sdk/ui/components/)).
 
 Here's an example:
 
@@ -100,7 +100,7 @@ The element corresponds to the following button:
 
 ![Integration tests ui sample](images/integration_tests_ui_sample.png)
 Similar to web testing frameworks like Selenium, XPath is used to locate components.
-The Driver framework provides a simple XPath builder [QueryBuilder](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/remote-driver/test-sdk/src/com/intellij/driver/sdk/ui/QueryBuilder.kt).
+The Driver framework provides a simple XPath builder [QueryBuilder](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/remote-driver/test-sdk/src/com/intellij/driver/sdk/ui/QueryBuilder.kt).
 
 For reliable component identification, prioritize these attributes, which can be found with predefined methods in `QueryBuilder`:
 
@@ -144,7 +144,7 @@ To click the Current File button:
 x(xQuery { byVisibleText("Current File") }).click()
 ```
 
-The [x()](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/remote-driver/test-sdk/src/com/intellij/driver/sdk/ui/Finder.kt) call creates a lazy reference to the component.
+The [x()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/remote-driver/test-sdk/src/com/intellij/driver/sdk/ui/Finder.kt) call creates a lazy reference to the component.
 It means that the XPath query isn't executed immediately and component lookup happens only when an action (like `click()`) is invoked.
 
 Here's a part of a test that incorporates UI interaction:
@@ -244,7 +244,7 @@ The Test SDK provides its own waiting API with two families of methods:
 `should()` Methods
 
 The Test SDK adds extension methods on UI components that poll a condition until it holds or the timeout elapses (15 seconds by default).
-Each method returns the same component, so calls can be chained, and a [WaitForException](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/remote-driver/test-sdk/src/com/intellij/driver/sdk/waits.kt) is thrown when the condition is not met in time.
+Each method returns the same component, so calls can be chained, and a [WaitForException](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/remote-driver/test-sdk/src/com/intellij/driver/sdk/waits.kt) is thrown when the condition is not met in time.
 
 ```KOTLIN
 // waits until the condition returns true
@@ -264,7 +264,7 @@ The condition can use one of the predefined checks: `enabled`, `notEnabled`, `pr
 
 Specific component types add their own assertions, for example `JListUiComponent.shouldBeEqualTo()`, `JEditorUiComponent.shouldContainText()`, or `UiComponent.shouldHaveFocus()`.
 The full set of conditions and assertions is available in
-[conditions.kt](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/remote-driver/test-sdk/src/com/intellij/driver/sdk/ui/conditions.kt).
+[conditions.kt](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/remote-driver/test-sdk/src/com/intellij/driver/sdk/ui/conditions.kt).
 
 ### 
 
@@ -303,5 +303,5 @@ The UI, Project View, and services may still be uninitialized, which can lead to
 To wait until the IDE is fully ready, prefer `waitForIndicators()`, which also waits for the project to open.
 
 The generic `waitFor()` and the IDE-state helpers are defined in the
-[com.intellij.driver.sdk](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/remote-driver/test-sdk/src/com/intellij/driver/sdk) package and its subpackages.
+[com.intellij.driver.sdk](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/remote-driver/test-sdk/src/com/intellij/driver/sdk) package and its subpackages.
 

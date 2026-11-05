@@ -191,7 +191,7 @@ This step configures the installation of the plugin being developed, using the p
 
 Note:
 
-[PluginConfigurator](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/tools/intellij.tools.ide.starter/src/com/intellij/ide/starter/plugins/PluginConfigurator.kt) can install plugins from local paths or Marketplace.
+[PluginConfigurator](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/tools/intellij.tools.ide.starter/src/com/intellij/ide/starter/plugins/PluginConfigurator.kt) can install plugins from local paths or Marketplace.
 
 ### 3. IDE Life Cycle Management
 
@@ -277,11 +277,11 @@ The test can be modified to open a project.
 
 The framework supports several ways to specify test projects:
 
-* [GitHub projects](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/tools/intellij.tools.ide.starter/src/com/intellij/ide/starter/project/GitHubProject.kt): ```KOTLIN GitHubProject.fromGithub( branchName = "master", "JetBrains/ij-perf-report-aggregator" ) ```
+* [GitHub projects](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/tools/intellij.tools.ide.starter/src/com/intellij/ide/starter/project/GitHubProject.kt): ```KOTLIN GitHubProject.fromGithub( branchName = "master", "JetBrains/ij-perf-report-aggregator" ) ```
 
-* [Remote archives](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/tools/intellij.tools.ide.starter/src/com/intellij/ide/starter/project/RemoteArchiveProjectInfo.kt): ```KOTLIN RemoteArchiveProjectInfo( "https://github.com/example/repo/archive/master.zip" ) ```
+* [Remote archives](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/tools/intellij.tools.ide.starter/src/com/intellij/ide/starter/project/RemoteArchiveProjectInfo.kt): ```KOTLIN RemoteArchiveProjectInfo( "https://github.com/example/repo/archive/master.zip" ) ```
 
-* [Local projects](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/tools/intellij.tools.ide.starter/src/com/intellij/ide/starter/project/LocalProjectInfo.kt): ```KOTLIN LocalProjectInfo( Path("src/test/resources/test-projects/simple-project") ) ```
+* [Local projects](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/tools/intellij.tools.ide.starter/src/com/intellij/ide/starter/project/LocalProjectInfo.kt): ```KOTLIN LocalProjectInfo( Path("src/test/resources/test-projects/simple-project") ) ```
 
 The following example shows how to open a GitHub project:
 
@@ -321,13 +321,13 @@ Due to the two-process architecture:
 
 * Exceptions in the IDE process aren't automatically propagated to the test process.
 
-* A bundled plugin collects exceptions from the IDE's [MessageBus](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/extensions/src/com/intellij/util/messages/MessageBus.kt).
+* A bundled plugin collects exceptions from the IDE's [MessageBus](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/extensions/src/com/intellij/util/messages/MessageBus.kt).
 
 * These exceptions are stored in the error folder within the logs.
 
-* The Starter framework collects exceptions from the IDE and pass them to the method `reportTestFailure` in object registered as [CIServer](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/tools/intellij.tools.ide.starter/src/com/intellij/ide/starter/ci/CIServer.kt) in DI.
+* The Starter framework collects exceptions from the IDE and pass them to the method `reportTestFailure` in object registered as [CIServer](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/tools/intellij.tools.ide.starter/src/com/intellij/ide/starter/ci/CIServer.kt) in DI.
 
-TeamCity reporting is used by default, falling back to [NoCIServer](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/tools/intellij.tools.ide.starter/src/com/intellij/ide/starter/ci/NoCIServer.kt) for other environments.
+TeamCity reporting is used by default, falling back to [NoCIServer](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/tools/intellij.tools.ide.starter/src/com/intellij/ide/starter/ci/NoCIServer.kt) for other environments.
 However, this can be customized by using Kodein Dependency Injection.
 
 The following example shows how to make tests fail when IDE exceptions occur:

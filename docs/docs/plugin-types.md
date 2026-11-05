@@ -50,7 +50,7 @@ Sometimes it also includes language support elements for a custom syntax or DSL.
 
 * Direct access to framework-specific functionality
 
-Refer to the [IntelliJ-HCL](https://github.com/JetBrains/intellij-plugins/tree/idea/262.10968.63/terraform) as an example of framework integration.
+Refer to the [IntelliJ-HCL](https://github.com/JetBrains/intellij-plugins/tree/idea/263.7307.200/terraform) as an example of framework integration.
 More reference plugins can be found on [JetBrains Marketplace](https://plugins.jetbrains.com/search?orderBy=update%20date&shouldHaveSource=true&tags=Framework).
 
 ## Tool Integration

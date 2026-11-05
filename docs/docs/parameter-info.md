@@ -5,7 +5,7 @@ Product Help: [Parameter info](https://www.jetbrains.com/help/idea/viewing-refer
 </tldr>
 
 Custom languages can use
-[ParameterInfoHandler](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/lang-api/src/com/intellij/lang/parameterInfo/ParameterInfoHandler.java)
+[ParameterInfoHandler](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-api/src/com/intellij/lang/parameterInfo/ParameterInfoHandler.java)
 registered in [com.intellij.codeInsight.parameterInfo](https://jb.gg/ipe?extensions=com.intellij.codeInsight.parameterInfo) extension point
 to show information about parameters in method and function calls.
 This is a convenient way to display type signatures directly as a popup in the editor without having to consult the documentation.
@@ -15,26 +15,26 @@ If it is available, the IDE can show this popup automatically after a short dela
 Parameter info is dynamic and can update the displayed information when the caret is moved or additional code is typed.
 This allows for highlighting entries or marking the current parameter at the caret position.
 Therefore, the interface of the
-[ParameterInfoHandler](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/lang-api/src/com/intellij/lang/parameterInfo/ParameterInfoHandler.java)
+[ParameterInfoHandler](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-api/src/com/intellij/lang/parameterInfo/ParameterInfoHandler.java)
 EP consists of methods for initially collecting the required information
 to display parameter information at the caret position as well as methods to update what should be displayed during edits.
 
 ## Implementation
 
 Language authors implement
-[ParameterInfoHandler](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/lang-api/src/com/intellij/lang/parameterInfo/ParameterInfoHandler.java)
+[ParameterInfoHandler](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-api/src/com/intellij/lang/parameterInfo/ParameterInfoHandler.java)
 which takes two type parameters: `ParameterOwner` and `ParameterType`.
 For the explanations that follow, we assume that `ParameterOwner` is a PSI element that represents a function call in a language,
 and `ParameterType` represents (possibly several) function definitions.
 
 Additionally, `ParameterInfoHandler` uses several context types that are mutable and used to adjust what and how parameter information is displayed.
 These contexts are, e.g.,
-[CreateParameterInfoContext](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/lang-api/src/com/intellij/lang/parameterInfo/CreateParameterInfoContext.java),
-[UpdateParameterInfoContext](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/lang-api/src/com/intellij/lang/parameterInfo/UpdateParameterInfoContext.java)
+[CreateParameterInfoContext](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-api/src/com/intellij/lang/parameterInfo/CreateParameterInfoContext.java),
+[UpdateParameterInfoContext](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-api/src/com/intellij/lang/parameterInfo/UpdateParameterInfoContext.java)
 and
-[ParameterInfoUIContext](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/lang-api/src/com/intellij/lang/parameterInfo/ParameterInfoUIContext.java)
+[ParameterInfoUIContext](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-api/src/com/intellij/lang/parameterInfo/ParameterInfoUIContext.java)
 and they all derive from
-[ParameterInfoContext](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/lang-api/src/com/intellij/lang/parameterInfo/ParameterInfoContext.java).
+[ParameterInfoContext](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-api/src/com/intellij/lang/parameterInfo/ParameterInfoContext.java).
 
 ### Initial Phase
 
@@ -78,10 +78,10 @@ By default, this method does nothing and it's usually not necessary to implement
 ## Further Tips
 
 Language authors can implement
-[ParameterInfoHandlerWithTabActionSupport](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/lang-api/src/com/intellij/lang/parameterInfo/ParameterInfoHandlerWithTabActionSupport.java)
+[ParameterInfoHandlerWithTabActionSupport](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-api/src/com/intellij/lang/parameterInfo/ParameterInfoHandlerWithTabActionSupport.java)
 to extend the parameter info functionality with the ability to jump between parameter positions by pressing the tab key.
 For recurring tasks like finding the index of the current parameter in a function call,
-[ParameterInfoUtils](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/lang-api/src/com/intellij/lang/parameterInfo/ParameterInfoUtils.java) provides a collection of useful functions.
+[ParameterInfoUtils](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-api/src/com/intellij/lang/parameterInfo/ParameterInfoUtils.java) provides a collection of useful functions.
 
 It is further helpful to inspect all the context-interfaces that extend from `ParameterInfoContext` and can be found in the `com.intellij.lang.parameterInfo` package
 as they provide insight into what data of the parameter info can be accessed and changed in the different stages.
@@ -90,7 +90,7 @@ Methods of the `ParameterInfoHandler` that have a default implementation can usu
 `syncUpdateOnCaretMove()` and `supportsOverloadSwitching()` are used internally by the IntelliJ Platform and are not required to be implemented by plugins.
 The `dispose()` method is called when the currently displayed parameter info is invalidated and destroyed.
 Only `isWhitespaceSensitive()` which is used in the `getCurrentOffset()` method of
-[ParameterInfoControllerBase](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/lang-impl/src/com/intellij/codeInsight/hint/ParameterInfoControllerBase.java)
+[ParameterInfoControllerBase](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-impl/src/com/intellij/codeInsight/hint/ParameterInfoControllerBase.java)
 should be implemented when whitespace matters in a language.
 
 Note that parameter info works during indexing (using incomplete data) when the implementation is marked as [dumb aware](indexing-and-psi-stubs.html#DumbAwareAPI).
@@ -98,7 +98,7 @@ It is recommended to adapt tests for [dumb mode](indexing-and-psi-stubs.html#dum
 and more changes to the handler might be required for better results.
 
 Finally, language authors should be aware of the global
-[CodeInsightSettings#SHOW_FULL_SIGNATURES_IN_PARAMETER_INFO](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/analysis-impl/src/com/intellij/codeInsight/CodeInsightSettings.java)
+[CodeInsightSettings#SHOW_FULL_SIGNATURES_IN_PARAMETER_INFO](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-impl/src/com/intellij/codeInsight/CodeInsightSettings.java)
 setting that can be used to present results that are consistent with the default IDE behavior.
 For Java, for instance, the IDE shows the full signature of the method/function on parameter info if this setting is enabled.
 
@@ -106,9 +106,9 @@ For Java, for instance, the IDE shows the full signature of the method/function 
 
 Existing, moderately complex, implementations of `ParameterInfoHandler` in the IntelliJ Platform that can serve as a reference are:
 
-* [XPathParameterInfoHandler](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/plugins/xpath/xpath-lang/src/org/intellij/lang/xpath/XPathParameterInfoHandler.java)
+* [XPathParameterInfoHandler](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/plugins/xpath/xpath-lang/src/org/intellij/lang/xpath/XPathParameterInfoHandler.java)
 
-* [XmlParameterInfoHandler](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/xml/impl/src/com/intellij/codeInsight/hint/api/impls/XmlParameterInfoHandler.java)
+* [XmlParameterInfoHandler](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/xml/impl/src/com/intellij/codeInsight/hint/api/impls/XmlParameterInfoHandler.java)
 
 Implementations of third-party plugins can be discovered using the
 [IntelliJ Platform Explorer](https://jb.gg/ipe?extensions=com.intellij.codeInsight.parameterInfo).

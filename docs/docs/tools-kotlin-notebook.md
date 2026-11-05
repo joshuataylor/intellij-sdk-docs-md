@@ -89,9 +89,9 @@ These variables provide access to essential IDE components, configuration inform
 -------------------------------
 | `idePath` |`Path` |Represents the resolved file system path to the IntelliJ Platform installation directory. |
 | `ide` |[ProductInfoBasedIde](https://github.com/JetBrains/intellij-plugin-verifier/tree/1.411/intellij-plugin-structure/structure-ide/src/main/java/com/jetbrains/plugin/structure/ide/ProductInfoBasedIde.kt) |Represents an IDE instance, which allows interacting with plugins and resolving their dependencies based on the IDE's configuration. |
-| `notebookDisposable` |[Disposable](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/util/src/com/intellij/openapi/Disposable.java) |Represents a disposable used for managing the IntelliJ Platform lifetime of the current notebook. |
-| `notebookPluginDescriptor` |[PluginMainDescriptor](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-impl/src/com/intellij/ide/plugins/IdeaPluginDescriptorImpl.kt) |Represents a plugin descriptor for the plugin created with Kotlin Notebook IntelliJ Platform integration. |
-| `pluginManager` |[PluginManager](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-impl/src/com/intellij/ide/plugins/PluginManager.java) |Instance of the `PluginManager`, which allows accessing information about plugins and their states in the current IDE environment. |
+| `notebookDisposable` |[Disposable](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/util/src/com/intellij/openapi/Disposable.java) |Represents a disposable used for managing the IntelliJ Platform lifetime of the current notebook. |
+| `notebookPluginDescriptor` |[PluginMainDescriptor](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-impl/src/com/intellij/ide/plugins/IdeaPluginDescriptorImpl.kt) |Represents a plugin descriptor for the plugin created with Kotlin Notebook IntelliJ Platform integration. |
+| `pluginManager` |[PluginManager](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-impl/src/com/intellij/ide/plugins/PluginManager.java) |Instance of the `PluginManager`, which allows accessing information about plugins and their states in the current IDE environment. |
 | `pluginRepository` |[PluginRepository](https://github.com/JetBrains/intellij-plugin-verifier/tree/1.411/intellij-plugin-verifier/verifier-repository/src/main/java/com/jetbrains/pluginverifier/repository/PluginRepository.kt) |Instance of `PluginRepository`, responsible for managing plugins via the JetBrains Marketplace plugin repository. |
 | `productInfo` |[ProductInfo](https://github.com/JetBrains/intellij-plugin-verifier/tree/1.411/intellij-plugin-structure/structure-intellij/src/main/java/com/jetbrains/plugin/structure/intellij/platform/ProductInfo.kt) |Lazily initialized property containing current IntelliJ Platform product information. |
 
@@ -107,8 +107,8 @@ These variables provide access to essential IDE components, configuration inform
 
 | Function |Description |
 -------------------------
-| `currentProject()` |Returns the current open [Project](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/openapi/project/Project.java) instance. |
-| `currentEditor()` |Returns the current [FileEditor](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/editor-ui-api/src/com/intellij/openapi/fileEditor/FileEditor.java) instance or null if no editor is open. |
+| `currentProject()` |Returns the current open [Project](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/openapi/project/Project.java) instance. |
+| `currentEditor()` |Returns the current [FileEditor](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/openapi/fileEditor/FileEditor.java) instance or null if no editor is open. |
 | `registerExtension(extensionPointName: ExtensionPointName<T>, instance: T)` |Registers an extension programmatically for the given extension point. |
 | `registerExtension(extensionPointName: String, instance: T)` |Registers an extension programmatically for the given extension point. |
 

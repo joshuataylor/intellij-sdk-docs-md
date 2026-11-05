@@ -20,7 +20,7 @@ See [Interoperability with Project Model API](workspace-model.html#interoperabil
 
 ### Getting Project SDK Information
 
-The information about the project SDK is accessed via [ProjectRootManager](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/projectModel-api/src/com/intellij/openapi/roots/ProjectRootManager.java) like the following example shows
+The information about the project SDK is accessed via [ProjectRootManager](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/projectModel-api/src/com/intellij/openapi/roots/ProjectRootManager.java) like the following example shows
 
 ```JAVA
 Sdk projectSdk = ProjectRootManager.getInstance(project).getProjectSdk();
@@ -40,11 +40,11 @@ See the [project_model](https://github.com/JetBrains/intellij-sdk-code-samples/t
 
 ### Available SDKs
 
-[ProjectJdkTable](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/projectModel-api/src/com/intellij/openapi/projectRoots/ProjectJdkTable.java) can be used to query and modify configured SDKs.
+[ProjectJdkTable](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/projectModel-api/src/com/intellij/openapi/projectRoots/ProjectJdkTable.java) can be used to query and modify configured SDKs.
 
 ### Working with a Custom SDK
 
-To create a custom SDK, provide a class extending [SdkType](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/lang-core/src/com/intellij/openapi/projectRoots/SdkType.java), leave `saveAdditionalData()` blank, and register it
+To create a custom SDK, provide a class extending [SdkType](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-core/src/com/intellij/openapi/projectRoots/SdkType.java), leave `saveAdditionalData()` blank, and register it
 in the [com.intellij.sdkType](https://jb.gg/ipe?extensions=com.intellij.sdkType) extension point
 .
 
@@ -61,18 +61,18 @@ public boolean setupSdkPaths(@NotNull Sdk sdk, @NotNull SdkModel sdkModel) {
 }
 ```
 
-To let a user select an SDK, see [ProjectJdksEditor](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/java/idea-ui/src/com/intellij/openapi/projectRoots/ui/ProjectJdksEditor.java).
+To let a user select an SDK, see [ProjectJdksEditor](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/java/idea-ui/src/com/intellij/openapi/projectRoots/ui/ProjectJdksEditor.java).
 
 However, it is not recommended to use "SDK" in non-IntelliJ IDEA IDEs.
 Although "SDK" is available in most JetBrains products, `ProjectJdksEditor` is specific to Java, making the operation around "SDK" difficult.
-The recommended way of managing "SDK" settings is to create a [CustomStepProjectGenerator](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/lang-impl/src/com/intellij/ide/util/projectWizard/CustomStepProjectGenerator.java) implementation and save settings in a [PersistentStateComponent](persisting-state-of-components.html).
+The recommended way of managing "SDK" settings is to create a [CustomStepProjectGenerator](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-impl/src/com/intellij/ide/util/projectWizard/CustomStepProjectGenerator.java) implementation and save settings in a [PersistentStateComponent](persisting-state-of-components.html).
 
 ## Assisting in Setting Up an SDK
 
 Prompting the user with a notification to set up an SDK can help them get up-and-running with a plugin faster.
 Use [com.intellij.projectSdkSetupValidator](https://jb.gg/ipe?extensions=com.intellij.projectSdkSetupValidator) extension point
 to register
-an implementation of [ProjectSdkSetupValidator](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/lang-impl/src/com/intellij/codeInsight/daemon/ProjectSdkSetupValidator.java)
+an implementation of [ProjectSdkSetupValidator](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-impl/src/com/intellij/codeInsight/daemon/ProjectSdkSetupValidator.java)
 to notify the user if they are missing an SDK.
 
 The following is a simplified example that checks whether an instance of "DemoSdk" has been configured in the project when the user opens a "DemoFileType":
@@ -114,7 +114,7 @@ Within `DemoProjectSdkSetupValidator`:
 Warning:
 
 `ProjectSdkSetupValidator` will not work in IntelliJ Platform-based IDEs such as PyCharm.
-In such cases, you should register an implementation of [EditorNotificationProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-api/src/com/intellij/ui/EditorNotificationProvider.java)
+In such cases, you should register an implementation of [EditorNotificationProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/ui/EditorNotificationProvider.java)
 via [com.intellij.editorNotificationProvider](https://jb.gg/ipe?extensions=com.intellij.editorNotificationProvider) extension point
 and override the `createNotificationPanel()` method with the conditionality and panel setup you want.
 

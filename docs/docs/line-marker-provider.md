@@ -17,7 +17,7 @@ These markers can provide navigation targets to related code.
 A line marker provider annotates usages of Simple Language properties within Java code and provides navigation to the definition of these properties.
 The visual marker is a Simple Language icon in the gutter of the Editor window.
 
-The [SimpleLineMarkerProvider](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleLineMarkerProvider.java) subclasses [RelatedItemLineMarkerProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/lang-api/src/com/intellij/codeInsight/daemon/RelatedItemLineMarkerProvider.java).
+The [SimpleLineMarkerProvider](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleLineMarkerProvider.java) subclasses [RelatedItemLineMarkerProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-api/src/com/intellij/codeInsight/daemon/RelatedItemLineMarkerProvider.java).
 For this example, override the `collectNavigationMarkers()` method to collect usage of a Simple Language [key and separators](language-and-filetype.html#define-the-language):
 
 ```JAVA
@@ -57,7 +57,7 @@ final class SimpleLineMarkerProvider extends RelatedItemLineMarkerProvider {
 }
 ```
 
-Extending from [GutterIconDescriptor](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/lang-api/src/com/intellij/codeInsight/daemon/GutterIconDescriptor.java) allows configuring gutter icons to be shown via `Settings | Editor | General | Gutter Icons`.
+Extending from [GutterIconDescriptor](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-api/src/com/intellij/codeInsight/daemon/GutterIconDescriptor.java) allows configuring gutter icons to be shown via `Settings | Editor | General | Gutter Icons`.
 
 ## Best Practices for Implementing Line Marker Providers
 
@@ -67,7 +67,7 @@ The `collectNavigationMarkers()` method should:
 
 * Only return line marker information consistent with the element passed into the method. For example, do not return a class marker if `getLineMarkerInfo()` was called with an element that corresponds to a method.
 
-* Return line marker information for the appropriate element at the correct scope of the PSI tree. Return leaf elements only - i.e., the smallest possible elements. For example, do not return method marker for [PsiMethod](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/java/java-psi-api/src/com/intellij/psi/PsiMethod.java). Instead, return it for the [PsiIdentifier](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/java/java-psi-api/src/com/intellij/psi/PsiIdentifier.java) which contains the name of the method.
+* Return line marker information for the appropriate element at the correct scope of the PSI tree. Return leaf elements only - i.e., the smallest possible elements. For example, do not return method marker for [PsiMethod](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/java/java-psi-api/src/com/intellij/psi/PsiMethod.java). Instead, return it for the [PsiIdentifier](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/java/java-psi-api/src/com/intellij/psi/PsiIdentifier.java) which contains the name of the method.
 
 ![Line Marker Location](images/line_marker_location.png)
 What happens when a `LineMarkerProvider` returns marker information for a `PsiElement` that is a higher node in the PSI tree?
@@ -85,7 +85,7 @@ final class MyWrongLineMarkerProvider implements LineMarkerProvider {
 ```
 
 The consequences of the `MyWrongLineMarkerProvider()` implementation have to do with how the IntelliJ Platform performs inspections.
-For performance reasons, inspection, and specifically the [LineMarkersPass](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/lang-impl/src/com/intellij/codeInsight/daemon/impl/LineMarkersPass.java) queries all [LineMarkerProviders](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/lang-api/src/com/intellij/codeInsight/daemon/LineMarkerProviders.java) in two phases:
+For performance reasons, inspection, and specifically the [LineMarkersPass](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-impl/src/com/intellij/codeInsight/daemon/impl/LineMarkersPass.java) queries all [LineMarkerProviders](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-api/src/com/intellij/codeInsight/daemon/LineMarkerProviders.java) in two phases:
 
 * The first pass is for all elements visible in the Editor window,
 

@@ -20,7 +20,7 @@ This setup is especially important in [split mode](split-mode-and-remote-develop
 
 Start by implementing a settings component in a standard way.
 
-In the case of extending [SimplePersistentStateComponent](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/projectModel-api/src/com/intellij/openapi/components/SimplePersistentStateComponent.kt), it is recommended to override `noStateLoaded()`.
+In the case of extending [SimplePersistentStateComponent](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/projectModel-api/src/com/intellij/openapi/components/SimplePersistentStateComponent.kt), it is recommended to override `noStateLoaded()`.
 This helps handle the case in which the remote side sends an empty state: instead of leaving the component in an unexpected state, it is explicitly reset it to its defaults.
 
 ```KOTLIN
@@ -51,7 +51,7 @@ If that happens, `noStateLoaded()` provides a safe and predictable fallback.
 
 The next step is informing the platform that the persistent state component should participate in frontend/backend synchronization.
 
-This is achieved by implementing [RemoteSettingInfoProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-impl/src/com/intellij/ide/settings/RemoteSettingInfoProvider.kt) in the shared module, and registering it on both the frontend and the backend.
+This is achieved by implementing [RemoteSettingInfoProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-impl/src/com/intellij/ide/settings/RemoteSettingInfoProvider.kt) in the shared module, and registering it on both the frontend and the backend.
 
 In practice, this usually means either:
 
@@ -103,7 +103,7 @@ Without them, the platform does not know that the settings should be included in
 
 ## 4. Choose the Right Sync Direction
 
-When registering settings, it is required to define the [RemoteSettingInfo.direction](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-impl/src/com/intellij/ide/settings/RemoteSettingInfo.kt) determining where the initial value should come from.
+When registering settings, it is required to define the [RemoteSettingInfo.direction](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-impl/src/com/intellij/ide/settings/RemoteSettingInfo.kt) determining where the initial value should come from.
 
 In most cases, the correct choice depends on whether the settings are application-level or project-level.
 Use the following guidance for choosing the right direction:

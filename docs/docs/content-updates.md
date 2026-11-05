@@ -38,7 +38,7 @@ Error Reporting
 : Add a new page with details about [Error Reporting](error-reporting.html).
 
 Debouncing and Batching Updates
-: Add a new page describing [how to debounce and batch events](debounced-updates.html) with [DebouncedUpdates](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/ide-core/src/com/intellij/util/ui/update/DebouncedUpdates.kt) - a builder API for debounced/throttled update queues.
+: Add a new page describing [how to debounce and batch events](debounced-updates.html) with [DebouncedUpdates](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/ide-core/src/com/intellij/util/ui/update/DebouncedUpdates.kt) - a builder API for debounced/throttled update queues.
 
 Persisting Sensitive Data
 : Add more information about [persisting sensitive data](persisting-sensitive-data.html).
@@ -496,7 +496,7 @@ Element Patterns
 : Add a new section about [Element Patterns](element-patterns.html) that are used when implementing [Completion Contributors](completion-contributor.html) or [PSI Reference Contributors](psi-references.html#contributed-references).
 
 Editor - Text Selection
-: Add a new section about [Text Selection EPs](text-selection.html) and describe [ExtendWordSelectionHandler](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/lang-api/src/com/intellij/codeInsight/editorActions/ExtendWordSelectionHandler.java).
+: Add a new section about [Text Selection EPs](text-selection.html) and describe [ExtendWordSelectionHandler](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-api/src/com/intellij/codeInsight/editorActions/ExtendWordSelectionHandler.java).
 
 SDK Setup Assistance
 : Added a code sample to the SDK tutorial that expands on [assisting in the setup of an SDK](sdk.html#assisting-in-setting-up-an-sdk).

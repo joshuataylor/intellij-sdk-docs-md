@@ -12,19 +12,19 @@ See also the [PSI Performance](psi-performance.html) section.
 
 ### How do I find a file if I know its name but don't know the path?
 
-[FilenameIndex.getFilesByName()](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/indexing-api/src/com/intellij/psi/search/FilenameIndex.java)
+[FilenameIndex.getFilesByName()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/indexing-api/src/com/intellij/psi/search/FilenameIndex.java)
 
 ### How do I find where a particular PSI element is used?
 
-[ReferencesSearch.search()](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/indexing-api/src/com/intellij/psi/search/searches/ReferencesSearch.java)
+[ReferencesSearch.search()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/indexing-api/src/com/intellij/psi/search/searches/ReferencesSearch.java)
 
 ### How do I rename a PSI element?
 
-[RefactoringFactory.createRename()](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/lang-api/src/com/intellij/refactoring/RefactoringFactory.java)
+[RefactoringFactory.createRename()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-api/src/com/intellij/refactoring/RefactoringFactory.java)
 
 ### How can I cause the PSI for a virtual file to be rebuilt?
 
-[FileContentUtil.reparseFiles()](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/analysis-api/src/com/intellij/util/FileContentUtil.java)
+[FileContentUtil.reparseFiles()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/util/FileContentUtil.java)
 
 ## Java Specific
 
@@ -35,42 +35,42 @@ Also consider using [UAST](uast.html) if your plugin supports other JVM language
 
 ### How do I find all inheritors of a class?
 
-[ClassInheritorsSearch.search()](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/java/java-indexing-api/src/com/intellij/psi/search/searches/ClassInheritorsSearch.java)
+[ClassInheritorsSearch.search()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/java/java-indexing-api/src/com/intellij/psi/search/searches/ClassInheritorsSearch.java)
 
 ### How do I find a class by qualified name?
 
-[JavaPsiFacade.findClass()](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/java/java-psi-api/src/com/intellij/psi/JavaPsiFacade.java)
+[JavaPsiFacade.findClass()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/java/java-psi-api/src/com/intellij/psi/JavaPsiFacade.java)
 
 ### How do I find a class by short name?
 
-[PsiShortNamesCache.getClassesByName()](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/java/java-indexing-api/src/com/intellij/psi/search/PsiShortNamesCache.java)
+[PsiShortNamesCache.getClassesByName()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/java/java-indexing-api/src/com/intellij/psi/search/PsiShortNamesCache.java)
 
 ### How do I find a superclass of a Java class?
 
-[PsiClass.getSuperClass()](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/java/java-psi-api/src/com/intellij/psi/PsiClass.java)
+[PsiClass.getSuperClass()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/java/java-psi-api/src/com/intellij/psi/PsiClass.java)
 
 ### How do I get a reference to the containing package of a Java class?
 
-[PsiUtil.getPackageName()](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/java/java-psi-api/src/com/intellij/psi/util/PsiUtil.java)
+[PsiUtil.getPackageName()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/java/java-psi-api/src/com/intellij/psi/util/PsiUtil.java)
 
 ### How do I find the methods overriding a specific method?
 
-[OverridingMethodsSearch.search()](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/java/java-indexing-api/src/com/intellij/psi/search/searches/OverridingMethodsSearch.java)
+[OverridingMethodsSearch.search()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/java/java-indexing-api/src/com/intellij/psi/search/searches/OverridingMethodsSearch.java)
 
 ### How do I create a new class/interface/enum/record in a given directory?
 
-[JavaDirectoryService](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/java/java-psi-api/src/com/intellij/psi/JavaDirectoryService.java)
+[JavaDirectoryService](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/java/java-psi-api/src/com/intellij/psi/JavaDirectoryService.java)
 
 ### How can I locate specific Java PSI elements within a class/method?
 
-Extend [JavaElementVisitor](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/java/java-psi-api/src/com/intellij/psi/JavaElementVisitor.java)
-or [JavaRecursiveElementVisitor](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/java/java-psi-api/src/com/intellij/psi/JavaRecursiveElementVisitor.java) and override relevant method(s).
-Pass it to `PsiElement.accept()` of the parent PSI element (for example, [PsiClass](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/java/java-psi-api/src/com/intellij/psi/PsiClass.java)
-or [PsiMethod](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/java/java-psi-api/src/com/intellij/psi/PsiMethod.java)).
+Extend [JavaElementVisitor](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/java/java-psi-api/src/com/intellij/psi/JavaElementVisitor.java)
+or [JavaRecursiveElementVisitor](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/java/java-psi-api/src/com/intellij/psi/JavaRecursiveElementVisitor.java) and override relevant method(s).
+Pass it to `PsiElement.accept()` of the parent PSI element (for example, [PsiClass](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/java/java-psi-api/src/com/intellij/psi/PsiClass.java)
+or [PsiMethod](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/java/java-psi-api/src/com/intellij/psi/PsiMethod.java)).
 
 ### How do I check the presence of a JVM library?
 
-Use dedicated (and heavily cached) methods from [JavaLibraryUtil](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/java/openapi/src/com/intellij/java/library/JavaLibraryUtil.java):
+Use dedicated (and heavily cached) methods from [JavaLibraryUtil](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/java/openapi/src/com/intellij/java/library/JavaLibraryUtil.java):
 
 * `hasLibraryClass()` to check presence via known library class FQN
 

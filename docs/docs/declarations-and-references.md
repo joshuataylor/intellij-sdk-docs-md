@@ -17,18 +17,18 @@ Each [symbol](symbols.html) may be declared in zero or more places, for example:
 * and a file is a symbol without declarations; it has only references.
 
 Declarations in PSI elements are implementations of
-[PsiSymbolDeclaration](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/model/psi/PsiSymbolDeclaration.java).
+[PsiSymbolDeclaration](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/model/psi/PsiSymbolDeclaration.java).
 
 To report a declaration in a PSI element, either:
 
-* implement and register [PsiSymbolDeclarationProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/model/psi/PsiSymbolDeclarationProvider.java) in [com.intellij.psi.declarationProvider](https://jb.gg/ipe?extensions=com.intellij.psi.declarationProvider) extension point
+* implement and register [PsiSymbolDeclarationProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/model/psi/PsiSymbolDeclarationProvider.java) in [com.intellij.psi.declarationProvider](https://jb.gg/ipe?extensions=com.intellij.psi.declarationProvider) extension point
 
 * implement `PsiSymbolDeclaration` directly in the `PsiElement`.
 
 ## References
 
 References from PSI elements are implementations of
-[PsiSymbolReference](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/model/psi/PsiSymbolReference.java).
+[PsiSymbolReference](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/model/psi/PsiSymbolReference.java).
 
 The main method of `PsiSymbolReference` is `resolveReference()`, which returns the collection of symbols to which the reference points,
 plus additional data.
@@ -38,7 +38,7 @@ which checks if the reference resolves to the specified symbol.
 This method can be implemented to walk the tree only if the element's text is equal to the reference's text.
 
 For convenience, if the reference can possibly be resolved to a single symbol without additional data, then it can extend from
-[SingleTargetReference](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/model/SingleTargetReference.java).
+[SingleTargetReference](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/model/SingleTargetReference.java).
 
 ### Own References
 
@@ -49,7 +49,7 @@ PSI element representing `x` in `x * 2` Java expression has an Own reference to 
 because this is a reference from Java language point of view, and Java language support uses it, e.g., for code analysis.
 
 To provide Own references by the `PsiElement`, implement
-[PsiElement.getOwnReferences()](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/psi/PsiElement.java) in the `PsiElement`.
+[PsiElement.getOwnReferences()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiElement.java) in the `PsiElement`.
 For a single reference, use `Collections.singletonList()`.
 
 ### External References
@@ -62,10 +62,10 @@ PSI element representing `"users.txt"` in `new File("users.txt")` Java expressio
 but there is a plugin which knows that this literal references a file name, and provides such a reference.
 
 External references might be contributed to PSI elements
-that implement [PsiExternalReferenceHost](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/model/psi/PsiExternalReferenceHost.java).
+that implement [PsiExternalReferenceHost](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/model/psi/PsiExternalReferenceHost.java).
 To allow other plugins to contribute references of `PsiElement`, implement `PsiExternalReferenceHost` in the `PsiElement`.
 To contribute an External reference to the existing `PsiExternalReferenceHost`, implement and register
-[PsiSymbolReferenceProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/model/psi/PsiSymbolReferenceProvider.java).
+[PsiSymbolReferenceProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/model/psi/PsiSymbolReferenceProvider.java).
 
 ### Implicit References
 
@@ -84,7 +84,7 @@ At the same time, it's possible:
 * to view documentation of the class targeted by this reference.
 
 To provide an Implicit reference, implement and register
-[ImplicitReferenceProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/model/psi/ImplicitReferenceProvider.java)
+[ImplicitReferenceProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/model/psi/ImplicitReferenceProvider.java)
 in [com.intellij.psi.implicitReferenceProvider](https://jb.gg/ipe?extensions=com.intellij.psi.implicitReferenceProvider) extension point
 .
 

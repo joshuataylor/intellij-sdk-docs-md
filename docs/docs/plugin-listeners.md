@@ -32,7 +32,7 @@ To define an application-level listener, add the [&lt;applicationListeners&gt;](
 ```
 
 The `topic` attribute specifies the listener interface corresponding to the type of events to receive.
-Usually, this is the interface used as the type parameter of the [Topic](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/extensions/src/com/intellij/util/messages/Topic.java) instance for the type of events.
+Usually, this is the interface used as the type parameter of the [Topic](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/extensions/src/com/intellij/util/messages/Topic.java) instance for the type of events.
 The `class` attribute specifies the class in the plugin that implements the listener interface and receives the events.
 
 As a specific example, to receive events about all [Virtual File System](virtual-file-system.html) changes, implement the `BulkFileListener` interface, corresponding to the topic `VirtualFileManager.VFS_CHANGES`.
@@ -87,7 +87,7 @@ They can be used to listen to project-level events, for example, [tool window](t
 </idea-plugin>
 ```
 
-The class implementing the listener interface can define a one-argument constructor accepting a [Project](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/openapi/project/Project.java), and it will receive the instance of the project for which the listener is created:
+The class implementing the listener interface can define a one-argument constructor accepting a [Project](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/openapi/project/Project.java), and it will receive the instance of the project for which the listener is created:
 
 ```JAVA
 package myPlugin;
@@ -114,10 +114,10 @@ Registration of listeners can be restricted using the following attributes.
 : Allows restricting listener to a given OS, e.g., `os="windows"` for Windows only.
 
 `activeInTestMode`
-: Set to `false` to disable listener if [Application.isUnitTestMode()](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/openapi/application/Application.java) returns `true`
+: Set to `false` to disable listener if [Application.isUnitTestMode()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/openapi/application/Application.java) returns `true`
 
 `activeInHeadlessMode`
-: Set to `false` to disable the listener if [Application.isHeadlessEnvironment()](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/openapi/application/Application.java) returns `true`.
+: Set to `false` to disable the listener if [Application.isHeadlessEnvironment()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/openapi/application/Application.java) returns `true`.
 Also covers `activeInTestMode` as test mode implies headless mode.
 
 Note:

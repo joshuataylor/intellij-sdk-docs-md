@@ -19,7 +19,7 @@ Note:
 For plugins targeting IntelliJ Platform version 2023.1 or later, it is recommended to use the
 [Documentation Target API](documentation.html#documentation-target-api).
 
-A [DocumentationProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/analysis-api/src/com/intellij/lang/documentation/DocumentationProvider.java)
+A [DocumentationProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/lang/documentation/DocumentationProvider.java)
 helps users by showing documentation for symbols like method calls inside the editor.
 For the custom language tutorial, we're implementing a version of this extension point (EP) for the Simple Language that shows the key/value,
 the file where it is defined, and any related documentation comment.
@@ -27,7 +27,7 @@ the file where it is defined, and any related documentation comment.
 ## Implement a Documentation Provider and Register the EP
 
 In the first step, we create an empty class that extends
-[AbstractDocumentationProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/analysis-api/src/com/intellij/lang/documentation/AbstractDocumentationProvider.java)
+[AbstractDocumentationProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/lang/documentation/AbstractDocumentationProvider.java)
 and register it in the `[plugin.xml](plugin-configuration-file.html)`.
 
 ```JAVA

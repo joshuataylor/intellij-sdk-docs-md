@@ -2,7 +2,7 @@
 
 File templates provided by a plugin can be used during new file creation, in code intention actions, or other plugin features.
 They can be accessed with the
-[FileTemplateManager](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/ide-core-impl/src/com/intellij/ide/fileTemplates/FileTemplateManager.java)
+[FileTemplateManager](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/ide-core-impl/src/com/intellij/ide/fileTemplates/FileTemplateManager.java)
 service providing methods returning all or single file templates from a given category.
 For example, to obtain a template from the [Code](providing-file-templates.html#code) category, pass its name to the `getCodeTemplate()` method (notice the lack of the `.ft` extension):
 
@@ -26,19 +26,19 @@ The common use case for file templates is creating new files with the initial co
 File templates assigned to the [Files](providing-file-templates.html#files) category are automatically available in the `File | New` action group.
 Sometimes, creating a file from a given template in a specific project place doesn't make sense, or a template requires some additional properties for its content.
 It is possible to control a file template's visibility and its available properties using
-[CreateFromTemplateHandler](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/lang-impl/src/com/intellij/ide/fileTemplates/CreateFromTemplateHandler.java)
+[CreateFromTemplateHandler](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-impl/src/com/intellij/ide/fileTemplates/CreateFromTemplateHandler.java)
 implementation registered in the [com.intellij.createFromTemplateHandler](https://jb.gg/ipe?extensions=com.intellij.createFromTemplateHandler) extension point
 .
 
 Example:
-[JavaCreateFromTemplateHandler](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/java/java-impl/src/com/intellij/ide/fileTemplates/JavaCreateFromTemplateHandler.java)
+[JavaCreateFromTemplateHandler](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/java/java-impl/src/com/intellij/ide/fileTemplates/JavaCreateFromTemplateHandler.java)
 
 ### Exposing File Templates from the Other Category
 
 File templates from the [Other](providing-file-templates.html#other) category are not exposed by default.
 To make them available in the UI, a plugin has to implement and register an action.
 The easiest way to do it is by extending
-[CreateFileFromTemplateAction](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/lang-impl/src/com/intellij/ide/actions/CreateFileFromTemplateAction.java)
+[CreateFileFromTemplateAction](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-impl/src/com/intellij/ide/actions/CreateFileFromTemplateAction.java)
 base class which contains standard implementations of necessary methods.
 It allows customizing the action by providing an action name, icon, overriding methods creating dialog, and others.
 Example action:
@@ -89,7 +89,7 @@ It is more user-friendly to provide a single `File | New | Java Class` action an
 
 ![Create Java class](images/new_java_class_popup.png)
 This can be achieved by placing templates in the [Internal](providing-file-templates.html#internal) category, so they are not picked up by the default mechanism, and then registering a custom
-[CreateFileFromTemplateAction](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/lang-impl/src/com/intellij/ide/actions/CreateFileFromTemplateAction.java)
+[CreateFileFromTemplateAction](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-impl/src/com/intellij/ide/actions/CreateFileFromTemplateAction.java)
 implementation as described in the [Exposing File Templates from the Other Category](#exposing-file-templates-from-the-other-category) section.
 To provide a list of selectable entity types, the action should provide a custom dialog with multiple file kinds for every template type, e.g.:
 
@@ -114,7 +114,7 @@ Internal templates can be exposed in the Files category by additionally register
 ```
 
 Example:
-[NewKotlinFileAction](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/plugins/kotlin/kotlin.ide/src/org/jetbrains/kotlin/idea/actions/NewKotlinFileAction.kt) for Kotlin files creation action.
+[NewKotlinFileAction](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/plugins/kotlin/kotlin.ide/src/org/jetbrains/kotlin/idea/actions/NewKotlinFileAction.kt) for Kotlin files creation action.
 
 ## Improving "Save File as Template…" Action
 
@@ -122,10 +122,10 @@ Some languages or frameworks may require creating many custom file templates dir
 Adjusting created templates manually by replacing dynamic parts with properties can be tedious.
 It is possible to speed up this process by replacing known elements like package or class names with template properties placeholder.
 It can be achieved by implementing the
-[SaveFileAsTemplateHandler](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/lang-impl/src/com/intellij/ide/actions/SaveFileAsTemplateHandler.java)
+[SaveFileAsTemplateHandler](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-impl/src/com/intellij/ide/actions/SaveFileAsTemplateHandler.java)
 and registering it via the [com.intellij.saveFileAsTemplateHandler](https://jb.gg/ipe?extensions=com.intellij.saveFileAsTemplateHandler) extension point
 .
 
 Example:
-[SaveJavaAsTemplateHandler](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/java/java-impl/src/com/intellij/ide/fileTemplates/SaveJavaAsTemplateHandler.java) replacing existing class and package names with `${NAME}` and `${PACKAGE_NAME}` properties placeholders respectively.
+[SaveJavaAsTemplateHandler](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/java/java-impl/src/com/intellij/ide/fileTemplates/SaveJavaAsTemplateHandler.java) replacing existing class and package names with `${NAME}` and `${PACKAGE_NAME}` properties placeholders respectively.
 

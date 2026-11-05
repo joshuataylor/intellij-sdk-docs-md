@@ -12,7 +12,7 @@ Tip:
 This page is part of multi-step [Custom Language Support Tutorial](custom-language-support-tutorial.html).
 All previous steps must be executed in sequence for the code to work.
 
-In order for the IntelliJ Platform to parse a Simple Language file, tokens and elements must be defined based on [IElementType](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/psi/tree/IElementType.java).
+In order for the IntelliJ Platform to parse a Simple Language file, tokens and elements must be defined based on [IElementType](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/tree/IElementType.java).
 The Simple Language grammar must also be defined to generate a parser.
 
 ## Define a Token Type

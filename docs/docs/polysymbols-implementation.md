@@ -1,6 +1,6 @@
 # Implementing Poly Symbols
 
-The core element of the framework is a [PolySymbol](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/polySymbols/src/com/intellij/polySymbols/PolySymbol.kt).
+The core element of the framework is a [PolySymbol](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/polySymbols/src/com/intellij/polySymbols/PolySymbol.kt).
 It is identified through `name` and `kind` properties.
 The symbol has a very generic meaning and may represent a variable in some language, or an endpoint of some web server, or a file.
 
@@ -49,7 +49,7 @@ If none is specified, a default icon of the `origin` will be used, and if thatâ€
 Symbols with higher priority will also show higher on the completion list.
 
 `apiStatus`
-: Documents API status of the symbol. It is one of the sub-interfaces of [PolySymbolApiStatus](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/polySymbols/src/com/intellij/polySymbols/PolySymbolApiStatus.kt):
+: Documents API status of the symbol. It is one of the sub-interfaces of [PolySymbolApiStatus](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/polySymbols/src/com/intellij/polySymbols/PolySymbolApiStatus.kt):
 `Stable`, `Experimental` or `Deprecated`.
 Deprecated symbols are appropriately highlighted in the code editor, code completion, and quick documentation.
 
@@ -63,20 +63,20 @@ how modifiers from different symbols in the sequence are merged for the resultin
 `psiContext`
 : A `PsiElement`, which is a file or an element, which can be used to roughly locate the source of the symbol within a project to provide a context for loading additional information, like types.
 If the symbol is
-[PsiLinkedPolySymbolProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/polySymbols/backend/src/com/intellij/polySymbols/search/PsiLinkedPolySymbolProvider.kt)
+[PsiLinkedPolySymbolProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/polySymbols/backend/src/com/intellij/polySymbols/search/PsiLinkedPolySymbolProvider.kt)
 (see [PsiLinkedPolySymbolProvider](#psilinkedpolysymbolprovider)), then `psiContext` is equal to `linkedElement` (`linkedElement` name exists since 2026.2; before, it was `source`).
 
 `presentation`
 : Returns
-[TargetPresentation](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/platform/backend/presentation/TargetPresentation.kt)
+[TargetPresentation](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/platform/backend/presentation/TargetPresentation.kt)
 used by
-[SearchTarget](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/lang-impl/src/com/intellij/find/usages/api/SearchTarget.kt)
+[SearchTarget](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-impl/src/com/intellij/find/usages/api/SearchTarget.kt)
 and
-[RenameTarget](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/lang-impl/src/com/intellij/refactoring/rename/api/RenameTarget.kt).
+[RenameTarget](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-impl/src/com/intellij/refactoring/rename/api/RenameTarget.kt).
 Default implementations of
-[PolySymbolRenameTarget](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/polySymbols/src/com/intellij/polySymbols/refactoring/PolySymbolRenameTarget.kt)
+[PolySymbolRenameTarget](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/polySymbols/src/com/intellij/polySymbols/refactoring/PolySymbolRenameTarget.kt)
 and
-[PolySymbolSearchTarget](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/polySymbols/src/com/intellij/polySymbols/search/PolySymbolSearchTarget.kt)
+[PolySymbolSearchTarget](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/polySymbols/src/com/intellij/polySymbols/search/PolySymbolSearchTarget.kt)
 use the `presentation` property.
 
 `searchTarget`
@@ -124,10 +124,10 @@ E.g., to provide custom presentation for a symbol, implement getter for `PolySym
 ```
 
 `getDocumentationTarget(location: PsiElement?)`
-: Used by the Poly Symbols framework to get a [DocumentationTarget](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/lang-impl/src/com/intellij/platform/backend/documentation/DocumentationTarget.kt), which handles documentation rendering for the symbol.
+: Used by the Poly Symbols framework to get a [DocumentationTarget](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-impl/src/com/intellij/platform/backend/documentation/DocumentationTarget.kt), which handles documentation rendering for the symbol.
 The additional `location` parameter allows calculating more specific properties for the symbol documentation, like inferred generic parameters.
 : By default, the `PolySymbolDocumentationTarget.create` method should be used to build the documentation target for the symbol.
-It allows for documentation to be further customized by [PolySymbolDocumentationCustomizer](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/polySymbols/src/com/intellij/polySymbols/documentation/PolySymbolDocumentationCustomizer.kt)s.
+It allows for documentation to be further customized by [PolySymbolDocumentationCustomizer](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/polySymbols/src/com/intellij/polySymbols/documentation/PolySymbolDocumentationCustomizer.kt)s.
 
 `getNavigationTargets(project: Project)`
 : Override to provide navigation targets for the symbol.
@@ -154,7 +154,7 @@ Note:
 See the [incompatible changes list](api-changes-list-2026.html) for related breaking changes.
 
 A symbol should implement
-[PsiLinkedPolySymbolProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/polySymbols/backend/src/com/intellij/polySymbols/search/PsiLinkedPolySymbolProvider.kt)
+[PsiLinkedPolySymbolProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/polySymbols/backend/src/com/intellij/polySymbols/search/PsiLinkedPolySymbolProvider.kt)
 if its declaration is a regular `PsiElement`, for example, a variable or a declared type.
 Once a symbol implements this interface, it can be searched and refactored together with the PSI element declaration.
 In case a symbol is:
@@ -176,14 +176,14 @@ then, a contribution of a dedicated declaration provider instead of implementing
 
 `PolySymbolWithPattern`
 
-The [PolySymbolWithPattern](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolWithPattern.kt) represents a symbol, which might consist of other symbols and provides a pattern,
+The [PolySymbolWithPattern](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolWithPattern.kt) represents a symbol, which might consist of other symbols and provides a pattern,
 which describes the relationship.
 
 ### Properties
 
 `pattern`
 : The pattern to match names against.
-As a result of pattern matching, a [PolySymbolMatch](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolMatch.kt) will be created.
+As a result of pattern matching, a [PolySymbolMatch](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolMatch.kt) will be created.
 A pattern may specify that a reference to other Poly Symbols is expected in some part of it.
 For such places, appropriate segments with referenced Poly Symbols will be created, and navigation, validation, and refactoring support are available out-of-the-box.
 
@@ -191,14 +191,14 @@ For such places, appropriate segments with referenced Poly Symbols will be creat
 
 `CompositePolySymbol`
 
-[PolySymbolMatch](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolMatch.kt)
+[PolySymbolMatch](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolMatch.kt)
 and some special symbols can have a name, which consists of other Poly Symbols.
 
 ### Properties
 
 `nameSegments`
 : List of
-[PolySymbolNameSegment](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/polySymbols/src/com/intellij/polySymbols/PolySymbolNameSegment.kt).
+[PolySymbolNameSegment](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/polySymbols/src/com/intellij/polySymbols/PolySymbolNameSegment.kt).
 Each segment describes a range in the symbol name.
 Segments can be built of other Poly Symbols and/or have related matching problems â€“ missing the required part, unknown symbol name or be a duplicate of another segment.
 See the [Model Queries Example](#model-queries-example) section for an example.
@@ -211,9 +211,9 @@ Each `PolySymbol` can contain other Poly Symbols, in which case it should implem
 For instance, an HTML element symbol would contain some HTML attribute symbols, or a JavaScript class symbol would contain field and method symbols.
 
 When configuring queries, `PolySymbolScope`s contributed by
-[PolySymbolQueryScopeContributor](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolQueryScopeContributor.kt)
+[PolySymbolQueryScopeContributor](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolQueryScopeContributor.kt)
 for the given location are added to a
-[PolySymbolQueryStack](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolQueryStack.kt)
+[PolySymbolQueryStack](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolQueryStack.kt)
 to create an initial scope for symbol resolve.
 During pattern matching with symbol sequences, all matched symbols' query scopes (`PolySymbol.queryScope`) are added to the stack allowing for extending scope matching.
 
@@ -234,40 +234,40 @@ If the provided `name` is `null`, no pattern evaluation will happen, and all sym
 The dereferenced symbol scope should be valid.
 
 When implementing a scope containing many elements, an extension of
-[PolySymbolScopeWithCache](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/polySymbols/src/com/intellij/polySymbols/utils/PolySymbolScopeWithCache.kt) is advised.
+[PolySymbolScopeWithCache](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/polySymbols/src/com/intellij/polySymbols/utils/PolySymbolScopeWithCache.kt) is advised.
 This structure caches the list of symbols and uses an efficient cache mechanism to speed up queries.
 On extension of this class, it's only necessary to override `initialize()` and provide parameters to the super constructor to specify the caching strategy for the results.
 
 ## Model Queries
 
 Poly Symbols can contain patterns, which allow composing them from other Poly Symbols.
-Such symbols should implement the [PolySymbolWithPattern](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolWithPattern.kt) interface.
+Such symbols should implement the [PolySymbolWithPattern](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolWithPattern.kt) interface.
 
 To find which symbols match available patterns, we need to make a match query.
 One can also run a code completion query, which will produce a list of valid completions in the provided context,
 or a symbol list query, which will list all available symbols.
 
 To perform a query, create a
-[PolySymbolQueryExecutor](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolQueryExecutor.kt)
+[PolySymbolQueryExecutor](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolQueryExecutor.kt)
 using
-[PolySymbolQueryExecutorFactory](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolQueryExecutorFactory.kt).
+[PolySymbolQueryExecutorFactory](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolQueryExecutorFactory.kt).
 The query executor will be configured by all registered
-[PolySymbolQueryScopeContributor](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolQueryScopeContributor.kt)
+[PolySymbolQueryScopeContributor](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolQueryScopeContributor.kt)
 and
-[PolySymbolQueryConfigurator](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolQueryConfigurator.kt)
+[PolySymbolQueryConfigurator](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolQueryConfigurator.kt)
 extensions based on the provided PSI context.
 Scope contributors will provide initial Poly Symbol scopes, and configurators will provider rules for calculating Poly Symbols context, and rules for symbol names conversion.
 
 The result of the match query is a list of `PolySymbol`s.
 Some of them might be
-[PolySymbolMatch](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolMatch.kt)es.
+[PolySymbolMatch](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolMatch.kt)es.
 Such objects represent complex matches when patterns are used.
 Poly Symbol Match has `nameSegments` property, which precisely describes how segments of the name relate to referenced Poly Symbols and whether there are any problems with resolution or the name itself.
 
 When working with code completion, one can query for the list of code completions.
 To properly calculate completions, a position in the current text under completion is required.
 As a result, a list of
-[PolySymbolCodeCompletionItem](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/polySymbols/src/com/intellij/polySymbols/completion/PolySymbolCodeCompletionItem.kt)
+[PolySymbolCodeCompletionItem](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/polySymbols/src/com/intellij/polySymbols/completion/PolySymbolCodeCompletionItem.kt)
 will be provided.
 
 ### Example
@@ -280,7 +280,7 @@ Its structure looks as follows:
 ![JavaScript Example Image](images/polysymbols_web_types.svg)
 An example of how a Vue directive might be declared in Web Types is here.
 Once a match query is run on `v-on:click.once.alt`, we will get a
-[PolySymbolMatch](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolMatch.kt)
+[PolySymbolMatch](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolMatch.kt)
 with the following segments:
 
 1. `v-`: Vue directive pattern symbol
@@ -313,8 +313,8 @@ There are seven types of patterns:
 
 3. Symbol reference placeholder: a symbol reference resolve will be attempted when this pattern is reached.
 A resolve will be made by the symbol provider from an enclosing complex pattern.
-If none of the symbols match the segment, the segment will have a [MatchProblem.UNKNOWN_SYMBOL](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/polySymbols/src/com/intellij/polySymbols/PolySymbolNameSegment.kt) problem reported.
-The matched symbol might be a [PolySymbolMatch](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolMatch.kt) itself, which allows for nesting patterns.
+If none of the symbols match the segment, the segment will have a [MatchProblem.UNKNOWN_SYMBOL](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/polySymbols/src/com/intellij/polySymbols/PolySymbolNameSegment.kt) problem reported.
+The matched symbol might be a [PolySymbolMatch](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolMatch.kt) itself, which allows for nesting patterns.
 
 4. Pattern sequence: a sequence of patterns. If some patterns are not matched, an empty segment with `MatchProblem.MISSING_REQUIRED_PART` will be created.
 
@@ -343,57 +343,57 @@ The pattern can be sticky, which means that the prefix will be shown in the nest
 
 When performing queries, some symbols should be excluded and others included in particular contexts.
 For instance, if we have an Angular project, none of the Vue components should be available.
-[PolyContext](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/polySymbols/src/com/intellij/polySymbols/context/PolyContext.kt)
-is created using rules provided by [PolySymbolQueryConfigurator](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolQueryConfigurator.kt)s with the addition of custom
-[PolyContextProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/polySymbols/src/com/intellij/polySymbols/context/PolyContextProvider.kt).
+[PolyContext](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/polySymbols/src/com/intellij/polySymbols/context/PolyContext.kt)
+is created using rules provided by [PolySymbolQueryConfigurator](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolQueryConfigurator.kt)s with the addition of custom
+[PolyContextProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/polySymbols/src/com/intellij/polySymbols/context/PolyContextProvider.kt).
 As a result, for each kind of context, there is at most a single name assigned.
 `PolyContext` can also be used outside the
-[PolySymbolQueryExecutor](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolQueryExecutor.kt)
+[PolySymbolQueryExecutor](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolQueryExecutor.kt)
 as an efficient way to determine whether to enable or disable particular functionality in the IDE based on PSI or VFS context.
 
 ### Query stack
 
 The stack is used as a scope for resolving symbols.
 All scopes provided by
-[PolySymbolQueryConfigurator](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolQueryConfigurator.kt)s
+[PolySymbolQueryConfigurator](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolQueryConfigurator.kt)s
 together with the list of additional scopes passed as arguments to the query create an initial query stack.
 Each time a symbol is matched, the list returned by `queryScope` property is added to the stack for any subsequent matches further right the pattern.
 
 ## Declarations
 
 To provide locations of declarations of Poly Symbols, which are not
-[PsiLinkedPolySymbolProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/polySymbols/backend/src/com/intellij/polySymbols/search/PsiLinkedPolySymbolProvider.kt)s,
+[PsiLinkedPolySymbolProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/polySymbols/backend/src/com/intellij/polySymbols/search/PsiLinkedPolySymbolProvider.kt)s,
 a dedicated
-[PolySymbolDeclarationProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/polySymbols/src/com/intellij/polySymbols/declarations/PolySymbolDeclarationProvider.kt)
+[PolySymbolDeclarationProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/polySymbols/src/com/intellij/polySymbols/declarations/PolySymbolDeclarationProvider.kt)
 should be registered.
 It should return a list of
-[PolySymbolDeclaration](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/polySymbols/src/com/intellij/polySymbols/declarations/PolySymbolDeclaration.kt)s
+[PolySymbolDeclaration](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/polySymbols/src/com/intellij/polySymbols/declarations/PolySymbolDeclaration.kt)s
 in a particular `PsiElement` at a particular offset.
-Symbols may implement the [PolySymbolDeclaredInPsi](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/polySymbols/src/com/intellij/polySymbols/utils/PolySymbolDeclaredInPsi.kt)
+Symbols may implement the [PolySymbolDeclaredInPsi](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/polySymbols/src/com/intellij/polySymbols/utils/PolySymbolDeclaredInPsi.kt)
 interface to avoid boilerplate related to declaration building.
 
 ## References and Code Completion
 
-Usually, it is enough to provide a [PolySymbolQueryScopeContributor](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolQueryScopeContributor.kt) for the [supported language features](polysymbols-integration.html#supported-language-features).
+Usually, it is enough to provide a [PolySymbolQueryScopeContributor](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolQueryScopeContributor.kt) for the [supported language features](polysymbols-integration.html#supported-language-features).
 However, when implementing integration for a language feature, reference providers and code completions need to be implemented from scratch.
 
 To provide references, a
-[PsiPolySymbolReferenceProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/polySymbols/src/com/intellij/polySymbols/references/PsiPolySymbolReferenceProvider.kt)
+[PsiPolySymbolReferenceProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/polySymbols/src/com/intellij/polySymbols/references/PsiPolySymbolReferenceProvider.kt)
 should be registered.
 If references resolve to a single `PolySymbol`, even if it may be a composite `PolySymbol`, the `getReferencedSymbol` method should be implemented.
 If the symbol reference is offset within the `PsiElement`, for example, within a string literal, the `getReferencedSymbolNameOffset` should also be implemented.
-If there are multiple symbol references within the `PsiElement` and it is not possible to use a [PolySymbolWithPattern](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolWithPattern.kt) to represent that, `getOffsetsToReferencedSymbols` should be overridden instead.
+If there are multiple symbol references within the `PsiElement` and it is not possible to use a [PolySymbolWithPattern](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolWithPattern.kt) to represent that, `getOffsetsToReferencedSymbols` should be overridden instead.
 The `PsiPolySymbolReferenceProvider` should use `PolySymbolQueryExecutor` to produce the list of the symbols at the given location.
 
 Together with references, completion providers should also be implemented.
 Due to the nature of Poly Symbol patterns, providers need to be implemented separately from reference contributions.
-A regular `CompletionContributor` should be registered, which in turn should register a pattern for completion provider, which extends [PolySymbolsCompletionProviderBase](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/polySymbols/backend/src/com/intellij/polySymbols/completion/PolySymbolsCompletionProviderBase.kt).
+A regular `CompletionContributor` should be registered, which in turn should register a pattern for completion provider, which extends [PolySymbolsCompletionProviderBase](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/polySymbols/backend/src/com/intellij/polySymbols/completion/PolySymbolsCompletionProviderBase.kt).
 
 ## Documentation, Navigation, Find Usages, and Rename Refactoring
 
 These platform features are based on the reference resolve, so once the reference is resolved to a `PolySymbol`, it is up to implementations of the interface to provide particular support.
 Override `getDocumentationTarget`, `getNavigationTargets` methods, or `searchTarget`, `renameTarget` properties to inform the platform about how it should use the symbol.
-To customize symbols documentation generically, [PolySymbolDocumentationCustomizer](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/polySymbols/src/com/intellij/polySymbols/documentation/PolySymbolDocumentationCustomizer.kt) should be implemented.
+To customize symbols documentation generically, [PolySymbolDocumentationCustomizer](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/polySymbols/src/com/intellij/polySymbols/documentation/PolySymbolDocumentationCustomizer.kt) should be implemented.
 
 ## Semantic highlighting
 

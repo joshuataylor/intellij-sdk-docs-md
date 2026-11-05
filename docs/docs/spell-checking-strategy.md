@@ -16,7 +16,7 @@ Spell checking allows users to see spelling errors while editing code.
 ## Define a SimpleSpellcheckingStrategy
 
 The [SimpleSpellcheckingStrategy](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleSpellcheckingStrategy.java) extends
-[SpellcheckingStrategy](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/spellchecker/src/com/intellij/spellchecker/tokenizer/SpellcheckingStrategy.java)
+[SpellcheckingStrategy](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/spellchecker/src/com/intellij/spellchecker/tokenizer/SpellcheckingStrategy.java)
 
 ```JAVA
 final class SimpleSpellcheckingStrategy extends SpellcheckingStrategy {

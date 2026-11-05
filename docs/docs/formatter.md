@@ -20,10 +20,10 @@ The formatter controls spaces, indents, wrap, and alignment.
 
 ## Define a Block
 
-The formatting model represents the formatting structure of a file as a tree of [Block](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/code-style-api/src/com/intellij/formatting/Block.java) objects, with associated indent, wrap, alignment, and spacing settings.
+The formatting model represents the formatting structure of a file as a tree of [Block](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/code-style-api/src/com/intellij/formatting/Block.java) objects, with associated indent, wrap, alignment, and spacing settings.
 The goal is to cover each PSI element with such a block.
 Since each block builds its children's blocks, it can generate extra blocks or skip any PSI elements.
-Define [SimpleBlock](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleBlock.java) based on [AbstractBlock](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/code-style-impl/src/com/intellij/psi/formatter/common/AbstractBlock.java).
+Define [SimpleBlock](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleBlock.java) based on [AbstractBlock](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/code-style-impl/src/com/intellij/psi/formatter/common/AbstractBlock.java).
 
 ```JAVA
 public class SimpleBlock extends AbstractBlock {
@@ -86,7 +86,7 @@ After:
 foo = bar
 ```
 
-Create [SimpleFormattingModelBuilder](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleFormattingModelBuilder.java) by implementing [FormattingModelBuilder](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/code-style-api/src/com/intellij/formatting/FormattingModelBuilder.java).
+Create [SimpleFormattingModelBuilder](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleFormattingModelBuilder.java) by implementing [FormattingModelBuilder](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/code-style-api/src/com/intellij/formatting/FormattingModelBuilder.java).
 
 ```JAVA
 final class SimpleFormattingModelBuilder implements FormattingModelBuilder {

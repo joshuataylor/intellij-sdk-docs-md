@@ -62,7 +62,7 @@ Highlighting References
 ### IntelliJ Platform 2022.1
 
 New Project Wizard
-: The New Project wizard has been refreshed and some base [ModuleBuilder](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/lang-core/src/com/intellij/ide/util/projectWizard/ModuleBuilder.java) classes return `false` from the `isAvailable()` method. If your module builder extends a base class and is hidden in the 2022.1 wizard, override the method to return `true`.
+: The New Project wizard has been refreshed and some base [ModuleBuilder](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-core/src/com/intellij/ide/util/projectWizard/ModuleBuilder.java) classes return `false` from the `isAvailable()` method. If your module builder extends a base class and is hidden in the 2022.1 wizard, override the method to return `true`.
 
 External System Test Framework
 : Available as `com.jetbrains.intellij.platform:external-system-test-framework` from [IntelliJ Platform Artifacts Repositories](intellij-artifacts.html), see [Testing](external-system-integration.html#testing).

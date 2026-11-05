@@ -3,7 +3,7 @@
 <tldr>
 Implementation:
 [JCheckBox](https://docs.oracle.com/javase/8/docs/api/javax/swing/JCheckBox.html),
-[JBCheckBox](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-api/src/com/intellij/ui/components/JBCheckBox.java)
+[JBCheckBox](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/ui/components/JBCheckBox.java)
 </tldr>
 
 ![A preview of checkboxes in different states](images/checkbox.png)
@@ -65,7 +65,7 @@ row:
 ![A table with checkboxes where the label is placed into the column header](images/checkbox_when_to_use_3.png)
 #### Implementation
 
-Checkboxes are rendered in tables with [BooleanTableCellRenderer](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-ui/src/ui/BooleanTableCellRenderer.java)
+Checkboxes are rendered in tables with [BooleanTableCellRenderer](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-ui/src/ui/BooleanTableCellRenderer.java)
 and edited with `DefaultCellEditor(JCheckBox)` implementation.
 For any column that should be rendered as a checkbox, set both a renderer and editor for consistency.
 The type of data in the correspondent column of the `Table` model should either be `Boolean`
@@ -86,7 +86,7 @@ In a group of options, use the parent checkbox to show the status of its childre
 ![Different states for a parent checkbox: checked, indeterminate, and unchecked](images/checkbox_three_state.png)
 ##### Implementation
 
-The three-state checkbox is represented by the [ThreeStateCheckBox](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/util/ui/src/com/intellij/util/ui/ThreeStateCheckBox.java)
+The three-state checkbox is represented by the [ThreeStateCheckBox](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/util/ui/src/com/intellij/util/ui/ThreeStateCheckBox.java)
 class which represents its state with the `ThreeStateCheckBox.State` enum containing `SELECTED,
 NOT_SELECTED, DONT_CARE` states.
 
@@ -97,7 +97,7 @@ An indeterminate checkbox can also show the download status. In the example belo
 ![Indeterminate checkboxes showing download status](images/checkbox_download_status.png)
 ##### Implementation
 
-In a table, the three-state checkbox is represented by [ThreeStateCheckBoxRenderer](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/lang-impl/src/com/intellij/profile/codeInspection/ui/table/ThreeStateCheckBoxRenderer.java)
+In a table, the three-state checkbox is represented by [ThreeStateCheckBoxRenderer](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-impl/src/com/intellij/profile/codeInspection/ui/table/ThreeStateCheckBoxRenderer.java)
 that provides both `TableCellRenderer` and `TableEditor`.
 It accepts `Boolean` type in the column being supplied by the `TableModel` and
 becomes `DONT_CARE` when the value in the cell is null.

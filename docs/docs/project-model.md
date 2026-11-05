@@ -18,23 +18,23 @@ The project model organizes files into a four-level hierarchy:
 1. [Project](#project) — the top-level container for all project content.
 
 2. [Module](#module) — a discrete unit of functionality within a project.
-Each module's root configuration is available through [ModuleRootManager](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/projectModel-api/src/com/intellij/openapi/roots/ModuleRootManager.java).
+Each module's root configuration is available through [ModuleRootManager](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/projectModel-api/src/com/intellij/openapi/roots/ModuleRootManager.java).
 
-3. Content Root ([ContentEntry](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/projectModel-api/src/com/intellij/openapi/roots/ContentEntry.java)) — a directory on disk owned by a module, defining the filesystem boundary for that module's files.
+3. Content Root ([ContentEntry](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/projectModel-api/src/com/intellij/openapi/roots/ContentEntry.java)) — a directory on disk owned by a module, defining the filesystem boundary for that module's files.
 A module may have multiple content roots.
 
 4. Source Root and Exclude Root — designated subdirectories within a content root.
-Represented by [SourceFolder](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/projectModel-api/src/com/intellij/openapi/roots/SourceFolder.java) and [ExcludeFolder](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/projectModel-api/src/com/intellij/openapi/roots/ExcludeFolder.java),
-both extending [ContentFolder](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/projectModel-api/src/com/intellij/openapi/roots/ContentFolder.java).
+Represented by [SourceFolder](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/projectModel-api/src/com/intellij/openapi/roots/SourceFolder.java) and [ExcludeFolder](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/projectModel-api/src/com/intellij/openapi/roots/ExcludeFolder.java),
+both extending [ContentFolder](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/projectModel-api/src/com/intellij/openapi/roots/ContentFolder.java).
 See [Module](module.html) for details.
 
 Key entry points for querying the project model:
 
-* [ProjectRootManager](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/projectModel-api/src/com/intellij/openapi/roots/ProjectRootManager.java) — project-wide root information and change notifications.
+* [ProjectRootManager](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/projectModel-api/src/com/intellij/openapi/roots/ProjectRootManager.java) — project-wide root information and change notifications.
 
-* [ModuleRootManager](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/projectModel-api/src/com/intellij/openapi/roots/ModuleRootManager.java) — per-module access to content entries, source roots, and order entries.
+* [ModuleRootManager](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/projectModel-api/src/com/intellij/openapi/roots/ModuleRootManager.java) — per-module access to content entries, source roots, and order entries.
 
-* [ProjectFileIndex](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/projectModel-api/src/com/intellij/openapi/roots/ProjectFileIndex.java) — fast queries from a [VirtualFile](virtual-file.html) to its owning module, content root, and source root type.
+* [ProjectFileIndex](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/projectModel-api/src/com/intellij/openapi/roots/ProjectFileIndex.java) — fast queries from a [VirtualFile](virtual-file.html) to its owning module, content root, and source root type.
 
 ## Project
 
@@ -112,5 +112,5 @@ Product Help: [Project Structure](https://www.jetbrains.com/help/idea/project-se
 
 The user can configure all entities listed above in the Project Structure dialog.
 
-Use [ProjectSettingsService](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/lang-api/src/com/intellij/openapi/roots/ui/configuration/ProjectSettingsService.java) to open related entries programmatically.
+Use [ProjectSettingsService](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-api/src/com/intellij/openapi/roots/ui/configuration/ProjectSettingsService.java) to open related entries programmatically.
 

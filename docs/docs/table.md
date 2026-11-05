@@ -1,7 +1,7 @@
 # Table
 
 <tldr>
-Implementation: [JBTable](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-api/src/com/intellij/ui/table/JBTable.java)
+Implementation: [JBTable](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/ui/table/JBTable.java)
 </tldr>
 
 ![Table table](images/table_table.png)
@@ -127,7 +127,7 @@ See more on empty tables [here](empty-state.html).
 Add a toolbar to provide actions which help manipulate data in the table (add, remove, import, etc.):
 
 ![Too long line](images/too-long-line.png)
-Use the [ToolbarDecorator](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-api/src/com/intellij/ui/ToolbarDecorator.java) class to implement such a toolbar. See more on toolbars [here](toolbar.html).
+Use the [ToolbarDecorator](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/ui/ToolbarDecorator.java) class to implement such a toolbar. See more on toolbars [here](toolbar.html).
 
 ### Zebra striping and inner borders
 

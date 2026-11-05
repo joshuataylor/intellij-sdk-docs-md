@@ -18,7 +18,7 @@ See [Interoperability with Project Model API](workspace-model.html#interoperabil
 
 ### Managing Facets
 
-To create, search, and access the list of facets for a module, use [FacetManager](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/lang-core/src/com/intellij/facet/FacetManager.java).
+To create, search, and access the list of facets for a module, use [FacetManager](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-core/src/com/intellij/facet/FacetManager.java).
 
 ### Facet-Based Tool Window
 

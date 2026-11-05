@@ -130,14 +130,14 @@ General Markdown links have the default Markdown link style:
 
 #### Links to IntelliJ Platform Source
 
-Links to files in the IntelliJ Platform ([intellij-community](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/README.md)) repository use the `%gh-ic%` prefix instead of the full URL to the repository.
+Links to files in the IntelliJ Platform ([intellij-community](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/README.md)) repository use the `%gh-ic%` prefix instead of the full URL to the repository.
 Links to files in source code packages in other GitHub repositories follow the same rules, except the links use a different custom `gh-...` prefix defined in `v.list`.
 
-* `[README.md](%gh-ic%/README.md)` links to any general, non-code information files. ([README.md](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/README.md)) Examples of this file type include LICENSE.txt and README.md.
+* `[README.md](%gh-ic%/README.md)` links to any general, non-code information files. ([README.md](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/README.md)) Examples of this file type include LICENSE.txt and README.md.
 
-* `[`IdeaPlugin.xml`](%gh-ic%/community-resources/resources/META-INF/IdeaPlugin.xml)` links to declarative source code files, use `code` style. ([IdeaPlugin.xml](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/community-resources/resources/META-INF/IdeaPlugin.xml)) Examples of this file type include: `settings.gradle`, `plugin.xml` or `theme_basics.theme.json`.
+* `[`IdeaPlugin.xml`](%gh-ic%/community-resources/resources/META-INF/IdeaPlugin.xml)` links to declarative source code files, use `code` style. ([IdeaPlugin.xml](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/community-resources/resources/META-INF/IdeaPlugin.xml)) Examples of this file type include: `settings.gradle`, `plugin.xml` or `theme_basics.theme.json`.
 
-* `[``AnAction``](%gh-ic%/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnAction.java)` links to source files for code objects like interfaces and classes, use `code` style but without the file extension. ([AnAction](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnAction.java)) Examples of this file type include Java and Kotlin sources. * Note the use of `` characters surrounding the class name in the link. * When linking to an API in this manner, the FQN isn't necessary in the link. * No file extension (*.java, *.kt, *.py, etc.) is used by convention. * Be judicious when using such links. Generally, only one link is needed for a given file on a documentation page.
+* `[``AnAction``](%gh-ic%/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnAction.java)` links to source files for code objects like interfaces and classes, use `code` style but without the file extension. ([AnAction](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnAction.java)) Examples of this file type include Java and Kotlin sources. * Note the use of `` characters surrounding the class name in the link. * When linking to an API in this manner, the FQN isn't necessary in the link. * No file extension (*.java, *.kt, *.py, etc.) is used by convention. * Be judicious when using such links. Generally, only one link is needed for a given file on a documentation page.
 
 ### Guidelines for Highlighting Syntax
 

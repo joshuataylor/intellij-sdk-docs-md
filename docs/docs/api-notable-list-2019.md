@@ -18,7 +18,7 @@ Run task once (per project)
 
 Symbol completion in plain text editor (VCS Commit Message)
 : Contribute symbol names (classes, methods, ...) via [com.intellij.completion.plainTextSymbol](https://jb.gg/ipe?extensions=com.intellij.completion.plainTextSymbol) extension point
-([PlainTextSymbolCompletionContributor](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/lang-api/src/com/intellij/codeInsight/completion/PlainTextSymbolCompletionContributor.java)).
+([PlainTextSymbolCompletionContributor](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-api/src/com/intellij/codeInsight/completion/PlainTextSymbolCompletionContributor.java)).
 
 User-customizable date/time formatting
 : Use `com.intellij.util.text.JBDateFormat#getFormatter()` to use configured format from `Settings | Appearance & Behavior | System Settings | Date Formats`.
@@ -103,5 +103,5 @@ Unbundled plugins
 : Assert references are created for the given underlying `PsiElement`. [Issue](https://youtrack.jetbrains.com/issue/IDEA-203954)
 
 `CachedValue` more strict assertions
-: Enabled in tests and EAP/internal mode, see [CachedValueStabilityChecker](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-impl/src/com/intellij/util/CachedValueStabilityChecker.java) Javadoc.
+: Enabled in tests and EAP/internal mode, see [CachedValueStabilityChecker](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-impl/src/com/intellij/util/CachedValueStabilityChecker.java) Javadoc.
 

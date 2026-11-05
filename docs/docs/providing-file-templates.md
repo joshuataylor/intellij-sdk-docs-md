@@ -60,17 +60,17 @@ It includes templates located in the `fileTemplates/j2ee` directory and register
 Note that the `j2ee` directory name is historical and unrelated to the J2EE technology.
 This category is intended for templates that are not used for creating core language entities or are used less frequently by users, e.g., a specific XML configuration file, a framework-specific class in Java language, etc.
 To include file templates in the Other section of the `Settings | Editor | File and Code Templates` settings page, provide an implementation of the
-[FileTemplateGroupDescriptorFactory](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/lang-api/src/com/intellij/ide/fileTemplates/FileTemplateGroupDescriptorFactory.java)
+[FileTemplateGroupDescriptorFactory](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-api/src/com/intellij/ide/fileTemplates/FileTemplateGroupDescriptorFactory.java)
 and register it via the [com.intellij.fileTemplateGroup](https://jb.gg/ipe?extensions=com.intellij.fileTemplateGroup) extension point
 .
 
 Example:
-[MavenFileTemplateGroupFactory](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/plugins/maven/src/main/java/org/jetbrains/idea/maven/utils/MavenFileTemplateGroupFactory.java)
+[MavenFileTemplateGroupFactory](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/plugins/maven/src/main/java/org/jetbrains/idea/maven/utils/MavenFileTemplateGroupFactory.java)
 
 Note that
-[FileTemplateGroupDescriptor](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/lang-api/src/com/intellij/ide/fileTemplates/FileTemplateGroupDescriptor.java)
+[FileTemplateGroupDescriptor](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-api/src/com/intellij/ide/fileTemplates/FileTemplateGroupDescriptor.java)
 is a subclass of
-[FileTemplateDescriptor](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/ide/fileTemplates/FileTemplateDescriptor.java),
+[FileTemplateDescriptor](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/ide/fileTemplates/FileTemplateDescriptor.java),
 which allows creating nested groups.
 
 ## Creating File Template Description
@@ -86,7 +86,7 @@ Example:
 
 The description file must be located in the same directory as the template file.
 It is recommended to follow the convention from the
-[default.html](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-resources-en/src/fileTemplates/default.html)
+[default.html](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-resources-en-file-templates/src/fileTemplates/default.html)
 file.
 
 Warning:
@@ -103,11 +103,11 @@ See the [Bundled Translations](providing-translations.html#bundled-translations)
 A file template body can use a set of [predefined properties](https://www.jetbrains.com/help/idea/file-template-variables.html#predefined_template_variables) exposed by the IntelliJ Platform out of the box.
 Some languages or frameworks may require additional properties exposed to existing templates.
 To provide custom properties, implement
-[DefaultTemplatePropertiesProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/lang-api/src/com/intellij/ide/fileTemplates/DefaultTemplatePropertiesProvider.java)
+[DefaultTemplatePropertiesProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-api/src/com/intellij/ide/fileTemplates/DefaultTemplatePropertiesProvider.java)
 and register it via the [com.intellij.defaultTemplatePropertiesProvider](https://jb.gg/ipe?extensions=com.intellij.defaultTemplatePropertiesProvider) extension point
 .
 
 Example: Java Plugin's
-[TemplatePackagePropertyProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/java/java-impl/src/com/intellij/ide/fileTemplates/TemplatePackagePropertyProvider.java)
+[TemplatePackagePropertyProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/java/java-impl/src/com/intellij/ide/fileTemplates/TemplatePackagePropertyProvider.java)
 providing `PACKAGE_NAME` property based on the directory a file is created in.
 

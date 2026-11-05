@@ -38,9 +38,9 @@ For more information, refer to [Overriding the AnAction.update() Method](action-
 
 To work with a selected part of the text, it's reasonable to make the menu action available only when the following requirements are met:
 
-* There is a [Project](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/openapi/project/Project.java) object,
+* There is a [Project](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/openapi/project/Project.java) object,
 
-* There is an instance of [Editor](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/editor-ui-api/src/com/intellij/openapi/editor/Editor.java) available,
+* There is an instance of [Editor](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/openapi/editor/Editor.java) available,
 
 * There is a text selection in `Editor`.
 
@@ -48,7 +48,7 @@ Additional steps will show how to check these conditions through getting instanc
 
 ### Getting an Instance of the Active Editor from an Action Event
 
-Using the [AnActionEvent](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnActionEvent.java) event passed into the `update` method, a reference to an instance of the `Editor` can be obtained by calling `getData(CommonDataKeys.EDITOR)`.
+Using the [AnActionEvent](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnActionEvent.java) event passed into the `update` method, a reference to an instance of the `Editor` can be obtained by calling `getData(CommonDataKeys.EDITOR)`.
 Similarly, to get a project reference, we use the `getProject()` method.
 
 ```JAVA
@@ -66,14 +66,14 @@ public class EditorIllustrationAction extends AnAction {
 Note:
 There are other ways to access an `Editor` instance:
 
-* If a [DataContext](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-ui/src/openapi/actionSystem/DataContext.java) object is available: `CommonDataKeys.EDITOR.getData(context);`
+* If a [DataContext](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-ui/src/openapi/actionSystem/DataContext.java) object is available: `CommonDataKeys.EDITOR.getData(context);`
 
 * If only a `Project` object is available, use `FileEditorManager.getInstance(project).getSelectedTextEditor()`
 
 ### Getting a Caret Model and Selection
 
 After making sure a project is open, and an instance of the `Editor` is obtained, we need to check if any selection is available.
-The [SelectionModel](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/editor-ui-api/src/com/intellij/openapi/editor/SelectionModel.java) interface is accessed from the `Editor` object.
+The [SelectionModel](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/openapi/editor/SelectionModel.java) interface is accessed from the `Editor` object.
 Determining whether some text is selected is achieved by calling the `SelectionModel.hasSelection()` method.
 Here's how the `EditorIllustrationAction.update(AnActionEvent event)` method should look:
 
@@ -97,17 +97,17 @@ public class EditorIllustrationAction extends AnAction {
 
 Note:
 `Editor` also allows access to different models of text representation.
-The model classes are located in the [editor](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/editor-ui-api/src/com/intellij/openapi/editor) and include:
+The model classes are located in the [editor](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/openapi/editor) and include:
 
-* [CaretModel](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/editor-ui-api/src/com/intellij/openapi/editor/CaretModel.java),
+* [CaretModel](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/openapi/editor/CaretModel.java),
 
-* [FoldingModel](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/editor-ui-api/src/com/intellij/openapi/editor/FoldingModel.java),
+* [FoldingModel](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/openapi/editor/FoldingModel.java),
 
-* [IndentsModel](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/editor-ui-api/src/com/intellij/openapi/editor/IndentsModel.java),
+* [IndentsModel](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/openapi/editor/IndentsModel.java),
 
-* [ScrollingModel](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/editor-ui-api/src/com/intellij/openapi/editor/ScrollingModel.java),
+* [ScrollingModel](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/openapi/editor/ScrollingModel.java),
 
-* [SoftWrapModel](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/editor-ui-api/src/com/intellij/openapi/editor/SoftWrapModel.java)
+* [SoftWrapModel](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/openapi/editor/SoftWrapModel.java)
 
 ## Safely Replacing Selected Text in the Document
 
@@ -121,7 +121,7 @@ As explained below, this will require the `EditorIllustrationAction.actionPerfor
 
 * Safely replace the contents of the selection.
 
-Modifying the selected text requires an instance of the [Document](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/openapi/editor/Document.java) object, which is accessed from the `Editor` object.
+Modifying the selected text requires an instance of the [Document](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/openapi/editor/Document.java) object, which is accessed from the `Editor` object.
 The [Document](documents.html) represents the contents of a text file loaded into memory and opened in an IntelliJ Platform-based IDE editor.
 An instance of the `Document` will be used later when a text replacement is performed.
 
@@ -131,7 +131,7 @@ Selection information is measured in terms of [Offset](coordinates-system.html#c
 Text replacement could be done by calling the `Document` object's `replaceString()` method.
 However, safely replacing the text requires the `Document` to be locked and any changes performed in a write action.
 See the [Threading Issues](threading-model.html) section to learn more about synchronization issues and changes safety on the IntelliJ Platform.
-This example changes the document within a [WriteCommandAction](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/openapi/command/WriteCommandAction.java).
+This example changes the document within a [WriteCommandAction](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/openapi/command/WriteCommandAction.java).
 
 The complete `EditorIllustrationAction.actionPerformed()` method is shown below:
 

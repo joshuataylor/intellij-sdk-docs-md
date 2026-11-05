@@ -13,11 +13,11 @@ When the user invokes an action that involves executing an external build (Make,
 
 * Some source generation tasks that depend on the PSI (e.g., UI designer form to source compilation) are executed in the IDE process.
 
-* [BuildTargetScopeProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/java/compiler/impl/src/com/intellij/compiler/impl/BuildTargetScopeProvider.java) extensions are called to calculate the scope of the external build (the set of build targets to compile based on the target module to make and the known set of changes).
+* [BuildTargetScopeProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/java/compiler/impl/src/com/intellij/compiler/impl/BuildTargetScopeProvider.java) extensions are called to calculate the scope of the external build (the set of build targets to compile based on the target module to make and the known set of changes).
 
 * The external build process is spawned (or an existing build process background process is reused).
 
-* The external build process loads the project model (`.idea`, `.iml` files, and so on), represented by a [JpsModel](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/jps/model-api/src/org/jetbrains/jps/model/JpsModel.java) instance.
+* The external build process loads the project model (`.idea`, `.iml` files, and so on), represented by a [JpsModel](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/jps/model-api/src/org/jetbrains/jps/model/JpsModel.java) instance.
 
 * The full tree of targets to build is calculated based on each build target's dependencies to be compiled.
 
@@ -27,7 +27,7 @@ When the user invokes an action that involves executing an external build (Make,
 
 * Caches to record the state of the compilation are saved.
 
-* Compilation messages reported through the [CompileContext](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/jps/jps-builders/src/org/jetbrains/jps/incremental/CompileContext.java) API are transmitted to the IDE process and displayed in the UI (in the Messages view).
+* Compilation messages reported through the [CompileContext](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/jps/jps-builders/src/org/jetbrains/jps/incremental/CompileContext.java) API are transmitted to the IDE process and displayed in the UI (in the Messages view).
 
 * Post-compile tasks are executed in the IDE process.
 
@@ -36,7 +36,7 @@ When the user invokes an action that involves executing an external build (Make,
 To support incremental build, the build process uses several caches which are persisted between build invocations.
 Even if your compiler doesn't support incremental build, you still need to report correct information so that incremental build works correctly for other compilers.
 
-* [SourceToOutputMapping](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/jps/jps-builders/src/org/jetbrains/jps/builders/storage/SourceToOutputMapping.java) is a many-to-many relationship between source files and output files ("which source files were used to produce the specified output file"). It's filled by calls to `BuildOutputConsumer.registerOutputFile()` and `ModuleLevelBuilder.OutputConsumer.registerOutputFile()`.
+* [SourceToOutputMapping](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/jps/jps-builders/src/org/jetbrains/jps/builders/storage/SourceToOutputMapping.java) is a many-to-many relationship between source files and output files ("which source files were used to produce the specified output file"). It's filled by calls to `BuildOutputConsumer.registerOutputFile()` and `ModuleLevelBuilder.OutputConsumer.registerOutputFile()`.
 
 The IDE monitors the project content changes and uses the information from those caches to generate the set of dirty and deleted files for every compilation. (Dirty files need to be recompiled, and deleted files need to have their output deleted).
 A builder can also report additional files as dirty (e.g., if a method is deleted, the builder can report the classes using this method as dirty.) A module-level builder can add some files to the dirty scope; if this happens, and if the builder returns `ADDITIONAL_PASS_REQUIRED` from its `build()` method, another round of builder execution for the same module chunk will be started with the new dirty scope.
@@ -49,7 +49,7 @@ To pass custom data between the invocation of the same builder between multiple 
 ## Services and Extensions in External Builder
 
 The external builder process uses the standard Java [services](https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/ServiceLoader.html) mechanism to support plugins.
-There are several service interfaces (e.g. [BuilderService](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/jps/jps-builders/src/org/jetbrains/jps/incremental/BuilderService.java)) which can be implemented in plugins to extend the builder functionality.
+There are several service interfaces (e.g. [BuilderService](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/jps/jps-builders/src/org/jetbrains/jps/incremental/BuilderService.java)) which can be implemented in plugins to extend the builder functionality.
 An implementation of a service needs to be registered by creating the `META-INF/services/$service-interface-fqn$` file containing the implementation class's qualified name.
 E.g. `BuilderService` implementations are registered in `META-INF/services/org.jetbrains.jps.incremental.BuilderService` file.
 These files don't have extensions, so you need to map corresponding patterns to text files in IDE settings.
@@ -118,13 +118,13 @@ In IntelliJ Platform versions before version 14.1, log4j configuration was store
 ## Accessing Project Model and Configuration from External Build
 
 The project model in the External Build process is provided by JPS (JetBrains Project System).
-A project is represented by [JpsProject](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/jps/model-api/src/org/jetbrains/jps/model/JpsProject.java), a module by [JpsModule](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/jps/model-api/src/org/jetbrains/jps/model/JpsProject.java), and so on.
+A project is represented by [JpsProject](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/jps/model-api/src/org/jetbrains/jps/model/JpsProject.java), a module by [JpsModule](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/jps/model-api/src/org/jetbrains/jps/model/JpsProject.java), and so on.
 Suppose your compiler depends on something that isn't added to the model yet (e.g., some facet settings).
-In that case, you need to extend the JPS model (use `JpsOsmorcModuleExtension` as a reference implementation) and provide an implementation of [JpsModelSerializerExtension](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/jps/model-serialization/src/org/jetbrains/jps/model/serialization/JpsModelSerializerExtension.java) to load the configuration from project files.
+In that case, you need to extend the JPS model (use `JpsOsmorcModuleExtension` as a reference implementation) and provide an implementation of [JpsModelSerializerExtension](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/jps/model-serialization/src/org/jetbrains/jps/model/serialization/JpsModelSerializerExtension.java) to load the configuration from project files.
 
 ### Implementing Builder
 
-If your compiler isn't involved in the compilation of an existing [BuildTarget](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/jps/jps-builders/src/org/jetbrains/jps/builders/BuildTarget.java), you need to create a new implementation of `BuildTarget` and `BuildTargetType`.
-Also, register an implementation of [BuildTargetScopeProvider](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/java/compiler/impl/src/com/intellij/compiler/impl/BuildTargetScopeProvider.java) extension on the IDE side to add required targets to the build scope.
-The builder implementation should extend either [TargetBuilder](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/jps/jps-builders/src/org/jetbrains/jps/incremental/TargetBuilder.java) or [ModuleLevelBuilder](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/jps/jps-builders/src/org/jetbrains/jps/incremental/ModuleLevelBuilder.java) class and should be created using [BuilderService](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/jps/jps-builders/src/org/jetbrains/jps/incremental/BuilderService.java) extension.
+If your compiler isn't involved in the compilation of an existing [BuildTarget](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/jps/jps-builders/src/org/jetbrains/jps/builders/BuildTarget.java), you need to create a new implementation of `BuildTarget` and `BuildTargetType`.
+Also, register an implementation of [BuildTargetScopeProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/java/compiler/impl/src/com/intellij/compiler/impl/BuildTargetScopeProvider.java) extension on the IDE side to add required targets to the build scope.
+The builder implementation should extend either [TargetBuilder](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/jps/jps-builders/src/org/jetbrains/jps/incremental/TargetBuilder.java) or [ModuleLevelBuilder](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/jps/jps-builders/src/org/jetbrains/jps/incremental/ModuleLevelBuilder.java) class and should be created using [BuilderService](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/jps/jps-builders/src/org/jetbrains/jps/incremental/BuilderService.java) extension.
 

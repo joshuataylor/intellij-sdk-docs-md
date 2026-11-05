@@ -12,7 +12,7 @@ Changes from API marked with `@Deprecated(forRemoval=true)` or any of [ApiStatus
 `@Experimental`, `@ScheduledForRemoval`, or `@Internal` are not listed
 here, as incompatible changes are to be expected.
 
-For API annotated with `@ApiStatus.Internal`/`@IntellijInternalApi`, see [Internal API Migration](api-internal.html) for more details and replacements.
+For API annotated with `@ApiStatus.Internal`, see [Internal API Migration](api-internal.html) for more details and replacements.
 
 Note: IDE and Java Versions
 
@@ -338,7 +338,7 @@ Add implementation for `com.intellij.openapi.fileEditor.FileEditor.getFile()`
 
 JSON Widget suppressor [com.intellij.json.jsonWidgetSuppressor](https://jb.gg/ipe?extensions=com.intellij.json.jsonWidgetSuppressor) extension point
 
-: Override new method [JsonWidgetSuppressor.isCandidateForSuppress(VirtualFile, Project)](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/json/backend/src/com/jetbrains/jsonSchema/extension/JsonWidgetSuppressor.java) for quick check in [EDT](threading-model.html) before `suppressSwitcherWidget()` is called on a background thread.
+: Override new method [JsonWidgetSuppressor.isCandidateForSuppress(VirtualFile, Project)](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/json/backend/src/com/jetbrains/jsonSchema/extension/JsonWidgetSuppressor.java) for quick check in [EDT](threading-model.html) before `suppressSwitcherWidget()` is called on a background thread.
 
 ### HTTP Client Plugin 2021.1
 

@@ -20,7 +20,7 @@ This includes buttons, checkboxes, text fields, lists, tables, dropdowns, and ot
 
 Non-interactive components, such as labels and panels, should not be focusable.
 However, in some cases, they can be focusable to let screen reader users access important information.
-Use [ScreenReader.isActive()](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/util/ui/src/com/intellij/util/ui/accessibility/ScreenReader.java) to adjust the behavior only for screen reader users.
+Use [ScreenReader.isActive()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/util/ui/src/com/intellij/util/ui/accessibility/ScreenReader.java) to adjust the behavior only for screen reader users.
 
 ### Keyboard traps
 
@@ -268,7 +268,7 @@ This happens through property change events fired by the component.
 
 However, in some cases, users need to be notified of changes outside the focused component. Or the event that you want to notify about doesn't fit into existing property change support.
 
-For these scenarios, use [AccessibleAnnouncerUtil.announce()](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/util/ui/src/com/intellij/util/ui/accessibility/AccessibleAnnouncerUtil.java) to make screen readers announce a specific string.
+For these scenarios, use [AccessibleAnnouncerUtil.announce()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/util/ui/src/com/intellij/util/ui/accessibility/AccessibleAnnouncerUtil.java) to make screen readers announce a specific string.
 
 Kotlin:
 

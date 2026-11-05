@@ -1,7 +1,7 @@
 # Empty State
 
 <tldr>
-Implementation: [ComponentWithEmptyText](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-api/src/com/intellij/util/ui/ComponentWithEmptyText.java)
+Implementation: [ComponentWithEmptyText](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/util/ui/ComponentWithEmptyText.java)
 </tldr>
 
 Empty states of tool windows, lists, trees, tables, master-detail layouts, or other container components should be informative for the users.

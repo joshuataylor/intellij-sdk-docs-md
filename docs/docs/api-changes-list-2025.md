@@ -12,7 +12,7 @@ Changes from API marked with `@Deprecated(forRemoval=true)` or any of [ApiStatus
 `@Experimental`, `@ScheduledForRemoval`, or `@Internal` are not listed
 here, as incompatible changes are to be expected.
 
-For API annotated with `@ApiStatus.Internal`/`@IntellijInternalApi`, see [Internal API Migration](api-internal.html) for more details and replacements.
+For API annotated with `@ApiStatus.Internal`, see [Internal API Migration](api-internal.html) for more details and replacements.
 
 Note: IDE and Java Versions
 
@@ -67,7 +67,7 @@ This shouldn't affect binary compatibility, but an explicit dependency should be
 
 The annotation `com.intellij.openapi.components.Storage` cannot be used at top-level
 : Actually, it has never been correct.
-The annotation can be used only in [@State.storages](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/projectModel-api/src/com/intellij/openapi/components/State.java).
+The annotation can be used only in [@State.storages](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/projectModel-api/src/com/intellij/openapi/components/State.java).
 See [IJPL-207245](https://youtrack.jetbrains.com/issue/IJPL-207245) for details.
 
 The `org.intellij.intelliLang` plugin requires Gradle dependency on bundled module `intellij.platform.langInjection`
@@ -248,7 +248,7 @@ instead of now removed Kotlin methods with default parameters.
 ### IntelliJ Platform 2025.1
 
 Code scheduled with `SwingUtilities.invokeLater` and `SwingUtilities.invokeAndWait` does not hold the write-intent lock
-: Consider using an explicit wrapping with [ReadAction.compute()](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/openapi/application/ReadAction.java) or [WriteAction.run(ThrowableRunnable&lt;E&gt;)](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/openapi/application/WriteAction.java).
+: Consider using an explicit wrapping with [ReadAction.compute()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/openapi/application/ReadAction.java) or [WriteAction.run(ThrowableRunnable&lt;E&gt;)](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/openapi/application/WriteAction.java).
 See [Threading Model](threading-model.html).
 
 Coroutines running under `Dispatchers.Main` do not hold the write-intent lock

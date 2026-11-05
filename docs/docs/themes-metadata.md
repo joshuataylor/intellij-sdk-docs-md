@@ -51,7 +51,7 @@ Tip:
 
 Do not remove existing keys, but deprecate them instead to help Theme authors upgrade their existing themes.
 
-Color keys can be used via [JBColor.namedColor()](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/util/ui/src/com/intellij/ui/JBColor.java) providing defaults for Light and Dark theme:
+Color keys can be used via [JBColor.namedColor()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/util/ui/src/com/intellij/ui/JBColor.java) providing defaults for Light and Dark theme:
 
 ```JAVA
 private static final JBColor SECTION_HEADER_FOREGROUND =
@@ -162,9 +162,9 @@ This section is relevant for IntelliJ Platform developers only.
 
 Metadata is split up as follows:
 
-* [IntelliJPlatform.themeMetadata.json](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-resources/src/themes/metadata/IntelliJPlatform.themeMetadata.json) - all keys from IntelliJ Platform and custom UI components
+* [IntelliJPlatform.themeMetadata.json](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-resources/src/themes/metadata/IntelliJPlatform.themeMetadata.json) - all keys from IntelliJ Platform and custom UI components
 
-* [JDK.themeMetadata.json](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-resources/src/themes/metadata/JDK.themeMetadata.json) - all keys from Swing components
+* [JDK.themeMetadata.json](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-resources/src/themes/metadata/JDK.themeMetadata.json) - all keys from Swing components
 
 New keys should be added to `IntelliJPlatform.themeMetadata.json` only (or corresponding "local" `*.themeMetadata.json` file of the plugin if applicable).
 

@@ -85,7 +85,7 @@ Everything else, even if it's necessary for resolve/highlighting purposes, can b
 
 If stubs don't suit your case well (e.g., the information you need is large and/or very rarely needed, or you're developing a plugin for a language whose PSI you don't control), you can create a [custom index or gist](indexing-and-psi-stubs.html).
 
-To ensure you're not loading AST accidentally, you can use [AstLoadingFilter](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/util/AstLoadingFilter.java) in production and `PsiManagerEx.setAssertOnFileLoadingFilter()` in tests.
+To ensure you're not loading AST accidentally, you can use [AstLoadingFilter](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/util/AstLoadingFilter.java) in production and `PsiManagerEx.setAssertOnFileLoadingFilter()` in tests.
 
 The same applies to documents: only the ones opened in editors should be loaded.
 Usually, you shouldn't need document contents (as most information can be retrieved from PSI).
@@ -96,7 +96,7 @@ If you still need documents, then at least ensure you load them one by one and d
 
 Method calls such as `PsiElement.getReference()` (and `getReferences()`), `PsiReference.resolve()` (and `multiResolve()` and other equivalents) or computation of expression types, type inference results, control flow graphs, etc. can be expensive.
 To avoid paying this cost several times, the result of such computation can be cached and reused.
-Usually, [CachedValue](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/psi/util/CachedValue.java) created with [CachedValuesManager](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/psi/util/CachedValuesManager.java) works well for this purpose.
+Usually, [CachedValue](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/util/CachedValue.java) created with [CachedValuesManager](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/util/CachedValuesManager.java) works well for this purpose.
 
 If the information you cache depends only on a subtree of the current PSI element (and nothing else: no resolve results or other files), you can cache it in a field in your `PsiElement` implementation and drop the cache in an override of `ASTDelegatePsiElement.subtreeChanged()`.
 
@@ -105,8 +105,8 @@ If the information you cache depends only on a subtree of the current PSI elemen
 Using `ProjectRootManager` as a Dependency
 
 The platform no longer increments root changes modification tracker on finish of [dumb mode](indexing-and-psi-stubs.html#dumb-mode).
-If cached values use [ProjectRootManager](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/projectModel-api/src/com/intellij/openapi/roots/ProjectRootManager.java) as a dependency
-(without [PsiModificationTracker](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/psi/util/PsiModificationTracker.java))
+If cached values use [ProjectRootManager](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/projectModel-api/src/com/intellij/openapi/roots/ProjectRootManager.java) as a dependency
+(without [PsiModificationTracker](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/util/PsiModificationTracker.java))
 and at the same time depend on [indexes](indexing-and-psi-stubs.html), a dependency on
-[DumbService](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/openapi/project/DumbService.kt) must be added.
+[DumbService](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/openapi/project/DumbService.kt) must be added.
 

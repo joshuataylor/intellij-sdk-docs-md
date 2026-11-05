@@ -59,7 +59,7 @@ Only a single language pack can be installed at the same time, and restart is re
 
 ### Getting the Current Locale Programmatically
 
-To get a current UI language set in the IDE, use [DynamicBundle.getLocale()](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/DynamicBundle.java).
+To get a current UI language set in the IDE, use [DynamicBundle.getLocale()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/DynamicBundle.java).
 
 ### Language Pack Translations Structure
 

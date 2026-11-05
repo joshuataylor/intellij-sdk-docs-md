@@ -125,8 +125,8 @@ The persistent state component is declared in the plugin configuration file:
 
 ## Roaming Types
 
-The `roamingType` attribute of the [@Storage](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/projectModel-api/src/com/intellij/openapi/components/Storage.java) annotation specifies whether and how the settings are shared.
-The available values are defined in [RoamingType](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/openapi/components/RoamingType.java):
+The `roamingType` attribute of the [@Storage](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/projectModel-api/src/com/intellij/openapi/components/Storage.java) annotation specifies whether and how the settings are shared.
+The available values are defined in [RoamingType](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/openapi/components/RoamingType.java):
 
 | `RoamingType` |Description |
 ------------------------------
@@ -143,7 +143,7 @@ If multiple components store their state in the same file, they must use the sam
 
 Warning:
 
-The `other.xml` file, defined by the [StoragePathMacros.NON_ROAMABLE_FILE](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/projectModel-api/src/com/intellij/openapi/components/StoragePathMacros.java) constant, is a non-roamable storage.
+The `other.xml` file, defined by the [StoragePathMacros.NON_ROAMABLE_FILE](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/projectModel-api/src/com/intellij/openapi/components/StoragePathMacros.java) constant, is a non-roamable storage.
 The state of a component stored in this file is never exported, backed up, or synchronized, regardless of the `roamingType` value.
 
 ## Export Settings
@@ -152,7 +152,7 @@ The [Export Settings](https://www.jetbrains.com/help/idea/sharing-your-ide-setti
 
 By default, all application-level persistent components declared in the plugin configuration file are eligible for export if their storage:
 
-* is an explicitly specified custom file. The following storages don't support roaming, and components stored in them are not exported: * [StoragePathMacros.NON_ROAMABLE_FILE](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/projectModel-api/src/com/intellij/openapi/components/StoragePathMacros.java) (`other.xml`) * [StoragePathMacros.WORKSPACE_FILE](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/projectModel-api/src/com/intellij/openapi/components/StoragePathMacros.java) (the workspace file) * [StoragePathMacros.CACHE_FILE](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/projectModel-api/src/com/intellij/openapi/components/StoragePathMacros.java) (the cache file) See [Defining the Storage Location](persisting-state-of-components.html#defining-the-storage-location).
+* is an explicitly specified custom file. The following storages don't support roaming, and components stored in them are not exported: * [StoragePathMacros.NON_ROAMABLE_FILE](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/projectModel-api/src/com/intellij/openapi/components/StoragePathMacros.java) (`other.xml`) * [StoragePathMacros.WORKSPACE_FILE](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/projectModel-api/src/com/intellij/openapi/components/StoragePathMacros.java) (the workspace file) * [StoragePathMacros.CACHE_FILE](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/projectModel-api/src/com/intellij/openapi/components/StoragePathMacros.java) (the cache file) See [Defining the Storage Location](persisting-state-of-components.html#defining-the-storage-location).
 
 * has the `roamingType` set to `RoamingType.DEFAULT` (default value) or `RoamingType.PER_OS`. Omitting the `roamingType` attribute is equivalent to setting it to `RoamingType.DEFAULT`.
 
@@ -176,7 +176,7 @@ Java:
 )
 ```
 
-To make a component exportable regardless of its roaming type, set `exportable = true` in the [@State](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/projectModel-api/src/com/intellij/openapi/components/State.java) or `@Storage` annotation.
+To make a component exportable regardless of its roaming type, set `exportable = true` in the [@State](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/projectModel-api/src/com/intellij/openapi/components/State.java) or `@Storage` annotation.
 
 ### Presentable Name in Export Settings
 
@@ -230,7 +230,7 @@ To include a component state in the Backup and Sync synchronization, the followi
 
 * The `category` attribute of the `@State` annotation is set explicitly to a value other than `OTHER`.
 
-Set the `category` to the [SettingsCategory](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/projectModel-api/src/com/intellij/openapi/components/SettingsCategory.java) constant that best describes the component state.
+Set the `category` to the [SettingsCategory](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/projectModel-api/src/com/intellij/openapi/components/SettingsCategory.java) constant that best describes the component state.
 Each category corresponds to an option in the Backup and Sync settings, where users can enable or disable synchronization of each category separately:
 
 | Category |`SettingsCategory` |Related Settings |

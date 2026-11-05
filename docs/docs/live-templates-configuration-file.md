@@ -62,9 +62,9 @@ Attributes
 
 * `toReformat` (optional) Defines whether the inserted code should be reformatted according to the language code style. Default value: `false`.
 
-* `toShortenFQNames` (optional) Defines whether qualified names in the expanded code should be shortened, for example, fully qualified names of Java classes are imported. Shortening qualified names is performed in implementations of [TemplateOptionalProcessor](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/analysis-impl/src/com/intellij/codeInsight/template/impl/TemplateOptionalProcessor.java). Default value: `false`.
+* `toShortenFQNames` (optional) Defines whether qualified names in the expanded code should be shortened, for example, fully qualified names of Java classes are imported. Shortening qualified names is performed in implementations of [TemplateOptionalProcessor](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-impl/src/com/intellij/codeInsight/template/impl/TemplateOptionalProcessor.java). Default value: `false`.
 
-* `useStaticImport` (optional) Defines whether symbols used in the expanded code should be statically imported, if possible. Importing symbols statically is performed in implementations of [TemplateOptionalProcessor](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/analysis-impl/src/com/intellij/codeInsight/template/impl/TemplateOptionalProcessor.java). Default value: `false`.
+* `useStaticImport` (optional) Defines whether symbols used in the expanded code should be statically imported, if possible. Importing symbols statically is performed in implementations of [TemplateOptionalProcessor](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-impl/src/com/intellij/codeInsight/template/impl/TemplateOptionalProcessor.java). Default value: `false`.
 
 * `deactivated` (optional) Allows deactivating the template. Deactivated templates are listed in the UI and can be activated by users. Default value: `false`.
 

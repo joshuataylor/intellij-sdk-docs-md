@@ -36,20 +36,20 @@ Warning:
 Executing code on application startup should be avoided whenever possible because it slows down startup.
 
 Plugin code should only be executed when projects are opened (see [Project Open](#project-open)) or when the user invokes an action of a plugin.
-If this can't be avoided, add a [listener](plugin-listeners.html) subscribing to the [AppLifecycleListener](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/ide-core/src/com/intellij/ide/AppLifecycleListener.java) topic.
+If this can't be avoided, add a [listener](plugin-listeners.html) subscribing to the [AppLifecycleListener](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/ide-core/src/com/intellij/ide/AppLifecycleListener.java) topic.
 See also [Running Tasks Once](ide-infrastructure.html#running-tasks-once).
 
 ### Project Open
 
 2023.1 and later:
 
-Using [Kotlin coroutines](kotlin-coroutines.html), implement [ProjectActivity](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/openapi/startup/StartupActivity.kt) and register in [com.intellij.postStartupActivity](https://jb.gg/ipe?extensions=com.intellij.postStartupActivity) extension point
+Using [Kotlin coroutines](kotlin-coroutines.html), implement [ProjectActivity](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/openapi/startup/StartupActivity.kt) and register in [com.intellij.postStartupActivity](https://jb.gg/ipe?extensions=com.intellij.postStartupActivity) extension point
 .
 Examples:
 
-* [PowerSaveModeNotifier](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/lang-impl/src/com/intellij/ide/actions/PowerSaveModeNotifier.kt)
+* [PowerSaveModeNotifier](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-impl/src/com/intellij/ide/actions/PowerSaveModeNotifier.kt)
 
-* [TipOfTheDayStartupActivity](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/tips-of-the-day/src/com/intellij/ide/TipOfTheDayStartupActivity.kt)
+* [TipOfTheDayStartupActivity](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/plugins/tips-of-the-day/src/com/intellij/ide/TipOfTheDayStartupActivity.kt)
 
 Implementation in [Kotlin](using-kotlin.html) is required because Java doesn't support suspending functions.
 
@@ -58,11 +58,11 @@ Pre-2023.1:
 To execute code when a project is being opened, use one of these two [extensions](plugin-extensions.html):
 
 `com.intellij.postStartupActivity`
-: [StartupActivity](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/openapi/startup/StartupActivity.kt) for immediate execution on [EDT](threading-model.html).
+: [StartupActivity](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/openapi/startup/StartupActivity.kt) for immediate execution on [EDT](threading-model.html).
 Implement `DumbAware` to indicate activity can run in a background thread (in parallel with other such tasks).
 
 `com.intellij.backgroundPostStartupActivity`
-: [StartupActivity.Background](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/openapi/startup/StartupActivity.kt) for execution with a 5-second delay in a background thread.
+: [StartupActivity.Background](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/openapi/startup/StartupActivity.kt) for execution with a 5-second delay in a background thread.
 
 Any long-running or CPU-intensive tasks should be made visible to users by using `ProgressManager.run(Task.Backgroundable)` (see [Background Processes](background-processes.html)).
 Access to indexes must be wrapped with [DumbService](indexing-and-psi-stubs.html#dumb-mode), see also [Threading Model](threading-model.html).
@@ -71,6 +71,6 @@ See also [Running Tasks Once](ide-infrastructure.html#running-tasks-once).
 
 ### Project and Application Close
 
-To execute code on project closing or application shutdown, implement the [Disposable](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/util/src/com/intellij/openapi/Disposable.java) interface in a [Service](plugin-services.html) and place the code in the `dispose()` method.
+To execute code on project closing or application shutdown, implement the [Disposable](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/util/src/com/intellij/openapi/Disposable.java) interface in a [Service](plugin-services.html) and place the code in the `dispose()` method.
 Alternatively, use `Disposer.register()` passing a `Project` or `Application` service instance as the `parent` argument (see [Choosing a Disposable Parent](disposers.html#choosing-a-disposable-parent)).
 

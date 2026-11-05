@@ -1,7 +1,7 @@
 # Icon Button
 
 <tldr>
-Implementation: [ActionButton](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-impl/src/com/intellij/openapi/actionSystem/impl/ActionButton.java)
+Implementation: [ActionButton](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-impl/src/com/intellij/openapi/actionSystem/impl/ActionButton.java)
 </tldr>
 
 | ![Using links instead of buttons](images/toolbar_icon_button.png) |             A toolbar icon button contains only an icon. There are three types of icon buttons:               * An action triggers immediately.    * A toggle switches between on and off states.    * A drop-down opens a menu.            |

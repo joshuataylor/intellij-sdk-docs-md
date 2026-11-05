@@ -1,7 +1,7 @@
 # Search Field
 
 <tldr>
-Implementation: [SearchTextField](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-api/src/com/intellij/ui/SearchTextField.java)
+Implementation: [SearchTextField](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/ui/SearchTextField.java)
 </tldr>
 
 A search field is an [input field](input-field.html) that helps users locate objects, actions, or text.

@@ -10,7 +10,7 @@ Tip:
 
 See [IntelliJ Platform Extension Point and Listener List](intellij-platform-extension-point-list.html) for IntelliJ Platform and [Open Source Plugins Extension Point and Listener List](oss-plugins-extension-point-list.html) for additional plugins.
 
-99 Extension Points and 5 Listeners
+100 Extension Points and 5 Listeners
 
 ## Legend
 
@@ -49,8 +49,8 @@ See [Verifying Plugin Compatibility](verifying-plugin-compatibility.html) for ov
 | ![Obsolete](https://img.shields.io/badge/-Obsolete-grey?style=flat-square)                          |Obsolete API |Annotated with [@ApiStatus.Obsolete](https://github.com/JetBrains/java-annotations/tree/24.0.0/common/src/main/java/org/jetbrains/annotations/ApiStatus.java).                             Do not use in new code, see code documentation for replacement.   |
 | ![Experimental API](https://img.shields.io/badge/-Experimental-violet?style=flat-square)                               |Experimental API |Annotated with [@ApiStatus.Experimental](https://github.com/JetBrains/java-annotations/tree/24.0.0/common/src/main/java/org/jetbrains/annotations/ApiStatus.java).                             API might be altered or removed without prior notice.   |
 | ![Internal API](https://img.shields.io/badge/-Internal-darkred?style=flat-square) |Internal API |Annotated with [@ApiStatus.Internal](https://github.com/JetBrains/java-annotations/tree/24.0.0/common/src/main/java/org/jetbrains/annotations/ApiStatus.java).                             Must not be used by third party plugins, see [Internal API Migration](api-internal.html).   |
-| ![Project-Level](https://img.shields.io/badge/-Project--Level-blue?style=flat-square) |Project-LevelExtension Point/Topic   |Can have [Project](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/openapi/project/Project.java)                             as constructor parameter.                               - Extension Point: declared with `area="IDEA_PROJECT"`                               - Listener: registered in [&lt;projectListeners&gt;](plugin-configuration-file.html#idea-plugin__projectListeners)                                |
-| ![DumbAware](https://img.shields.io/badge/-DumbAware-darkgreen?style=flat-square) |`DumbAware`                             Extension Point   |Implementations marked with [DumbAware](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/openapi/project/DumbAware.java)                             will be processed during [dumb                                 mode](indexing-and-psi-stubs.html#dumb-mode).                          |
+| ![Project-Level](https://img.shields.io/badge/-Project--Level-blue?style=flat-square) |Project-LevelExtension Point/Topic   |Can have [Project](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/openapi/project/Project.java)                             as constructor parameter.                               - Extension Point: declared with `area="IDEA_PROJECT"`                               - Listener: registered in [&lt;projectListeners&gt;](plugin-configuration-file.html#idea-plugin__projectListeners)                                |
+| ![DumbAware](https://img.shields.io/badge/-DumbAware-darkgreen?style=flat-square) |`DumbAware`                             Extension Point   |Implementations marked with [DumbAware](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/openapi/project/DumbAware.java)                             will be processed during [dumb                                 mode](indexing-and-psi-stubs.html#dumb-mode).                          |
 | ![Non-Dynamic](https://img.shields.io/badge/-Non--Dynamic-orange?style=flat-square) |Non-DynamicExtension Point   |Installation/update of plugin requires restarting the IDE, see [Dynamic Plugins](dynamic-plugins.html).                          |
 
 ## WebStorm
@@ -65,6 +65,12 @@ See [Verifying Plugin Compatibility](verifying-plugin-compatibility.html) for ov
 | [JSLibraryManager#TOPIC](https://jb.gg/ipe/listeners?topics=com.intellij.lang.javascript.library.JSLibraryManager.JSLibraryManagerChangeListener)  ![Project-Level](https://img.shields.io/badge/-Project--Level-blue?style=flat-square) |`JSLibraryManagerChangeListener` |
 | [JSRemoteModulesRegistry#TOPIC](https://jb.gg/ipe/listeners?topics=com.intellij.lang.javascript.modules.remote.JSRemoteModulesChangeListener) |`JSRemoteModulesChangeListener` |
 
+### intellij.css.actions.xml
+
+| Extension Point |Implementation |
+-----------------------------------
+| [com.intellij.css.cssIntentionFilter](https://jb.gg/ipe?extensions=com.intellij.css.cssIntentionFilter)      |`CssIntentionFilter` |
+
 ### intellij.css.analysis.xml
 
 | Extension Point |Implementation |
@@ -76,7 +82,6 @@ See [Verifying Plugin Compatibility](verifying-plugin-compatibility.html) for ov
 
 | Extension Point |Implementation |
 -----------------------------------
-| [com.intellij.css.cssIntentionFilter](https://jb.gg/ipe?extensions=com.intellij.css.cssIntentionFilter)      |`CssIntentionFilter` |
 | [com.intellij.css.cssRelatedStylesheetsProvider](https://jb.gg/ipe?extensions=com.intellij.css.cssRelatedStylesheetsProvider)      |`CssRelatedStylesheetsProvider` |
 
 ### intellij.css.common.psi.xml
@@ -203,7 +208,7 @@ See [Verifying Plugin Compatibility](verifying-plugin-compatibility.html) for ov
 | [JavaScript.itemPresentation](https://jb.gg/ipe?extensions=JavaScript.itemPresentation)      ![Experimental](https://img.shields.io/badge/-Experimental-violet?style=flat-square) |`JSItemPresentationProvider` |
 | [JavaScript.jsDocCustomTagsHandler](https://jb.gg/ipe?extensions=JavaScript.jsDocCustomTagsHandler)      ![Experimental](https://img.shields.io/badge/-Experimental-violet?style=flat-square) |`JSDocCustomTagsHandler` |
 | [JavaScript.jsxImplementation](https://jb.gg/ipe?extensions=JavaScript.jsxImplementation)      |`JSXImplementation` |
-| [JavaScript.lang.templates](https://jb.gg/ipe?extensions=JavaScript.lang.templates)      ![Project-Level](https://img.shields.io/badge/-Project--Level-blue?style=flat-square) |[Configurable](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/ide-core/src/com/intellij/openapi/options/Configurable.java) |
+| [JavaScript.lang.templates](https://jb.gg/ipe?extensions=JavaScript.lang.templates)      ![Project-Level](https://img.shields.io/badge/-Project--Level-blue?style=flat-square) |[Configurable](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/ide-core/src/com/intellij/openapi/options/Configurable.java) |
 | [JavaScript.libraryVersionChecker](https://jb.gg/ipe?extensions=JavaScript.libraryVersionChecker)      |`JSLibraryVersionChecker` |
 | [JavaScript.minifiedFileIndexingProvider](https://jb.gg/ipe?extensions=JavaScript.minifiedFileIndexingProvider)      ![Internal](https://img.shields.io/badge/-Internal-darkred?style=flat-square) |`JSMinifiedFileIndexingProvider` |
 | [JavaScript.moduleExportsProvider](https://jb.gg/ipe?extensions=JavaScript.moduleExportsProvider)      |`JSModuleExportsProvider` |
@@ -237,6 +242,12 @@ See [Verifying Plugin Compatibility](verifying-plugin-compatibility.html) for ov
 | Extension Point |Implementation |
 -----------------------------------
 | [com.intellij.sass.extension](https://jb.gg/ipe?extensions=com.intellij.sass.extension)      |`SassExtension` |
+
+### NodeJS
+
+| Extension Point |Implementation |
+-----------------------------------
+| [com.intellij.javascript.nodejs.mochaCoverageSupport](https://jb.gg/ipe?extensions=com.intellij.javascript.nodejs.mochaCoverageSupport)      |`MochaCoverageSupport` |
 
 ### org.jetbrains.plugins.node-remote-interpreter
 

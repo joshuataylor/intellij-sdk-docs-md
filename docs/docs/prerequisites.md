@@ -15,7 +15,7 @@ Note:
 
 While not required, having the full sources of the platform and all bundled plugins available for browsing allows finding related implementations.
 
-Download the IntelliJ Platform source files as described in the IntelliJ IDEA [README](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/README.md) file.
+Download the IntelliJ Platform source files as described in the IntelliJ IDEA [README](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/README.md) file.
 
 ## Install Required Plugins
 

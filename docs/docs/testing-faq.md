@@ -12,37 +12,37 @@ and [conditional_operator_intention](https://github.com/JetBrains/intellij-sdk-c
 
 ## Useful Classes
 
-* [UsefulTestCase](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/testFramework/src/com/intellij/testFramework/UsefulTestCase.java)
+* [UsefulTestCase](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/testFramework/src/com/intellij/testFramework/UsefulTestCase.java)
 
-* [PlatformTestUtil](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/testFramework/src/com/intellij/testFramework/PlatformTestUtil.java)
+* [PlatformTestUtil](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/testFramework/src/com/intellij/testFramework/PlatformTestUtil.java)
 
-* [CodeInsightTestUtil](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/testFramework/src/com/intellij/testFramework/fixtures/CodeInsightTestUtil.java)
+* [CodeInsightTestUtil](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/testFramework/src/com/intellij/testFramework/fixtures/CodeInsightTestUtil.java)
 
-* [EditorTestUtil](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/testFramework/src/com/intellij/testFramework/EditorTestUtil.java)
+* [EditorTestUtil](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/testFramework/src/com/intellij/testFramework/EditorTestUtil.java)
 
-* [PsiTestUtil](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/testFramework/src/com/intellij/testFramework/PsiTestUtil.java)
+* [PsiTestUtil](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/testFramework/src/com/intellij/testFramework/PsiTestUtil.java)
 
-* [VfsTestUtil](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/testFramework/src/com/intellij/testFramework/VfsTestUtil.java)
+* [VfsTestUtil](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/testFramework/src/com/intellij/testFramework/VfsTestUtil.java)
 
-* [IoTestUtil](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/testFramework/src/com/intellij/openapi/util/io/IoTestUtil.java)
+* [IoTestUtil](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/testFramework/src/com/intellij/openapi/util/io/IoTestUtil.java)
 
-* [IndexingTestUtil](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/testFramework/src/com/intellij/testFramework/IndexingTestUtil.kt)
+* [IndexingTestUtil](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/testFramework/src/com/intellij/testFramework/IndexingTestUtil.kt)
 
-* [LeakHunter](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/testFramework/common/src/LeakHunter.java)
+* [LeakHunter](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/testFramework/common/src/LeakHunter.java)
 
 ### UI
 
 See [Introduction to Integration Tests](integration-tests-intro.html) for UI integration tests.
 
-* [ProjectViewTestUtil](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/testFramework/src/com/intellij/testFramework/ProjectViewTestUtil.java)
+* [ProjectViewTestUtil](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/testFramework/src/com/intellij/testFramework/ProjectViewTestUtil.java)
 
-* [TestLookupElementPresentation](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/testFramework/src/com/intellij/testFramework/fixtures/TestLookupElementPresentation.java)
+* [TestLookupElementPresentation](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/testFramework/src/com/intellij/testFramework/fixtures/TestLookupElementPresentation.java)
 
-* [IconTestUtil](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/testFramework/src/com/intellij/ui/IconTestUtil.java)
+* [IconTestUtil](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/testFramework/src/com/intellij/ui/IconTestUtil.java)
 
-* [TreeTestUtil](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/testFramework/src/com/intellij/ui/tree/TreeTestUtil.java)
+* [TreeTestUtil](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/testFramework/src/com/intellij/ui/tree/TreeTestUtil.java)
 
-* [EdtTestUtil](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/testFramework/common/src/EdtTestUtil.java)
+* [EdtTestUtil](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/testFramework/common/src/EdtTestUtil.java)
 
 ## Issues
 
@@ -90,7 +90,7 @@ override fun tearDown() {
 
 Avoid OS-specific assumptions (e.g., filesystem case-sensitivity, hardcoded separator instead of `java.io.File.separator`, default encoding, line endings).
 
-Use ordered collections or [UsefulTestCase.assertUnorderedCollection()](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/testFramework/src/com/intellij/testFramework/UsefulTestCase.java).
+Use ordered collections or [UsefulTestCase.assertUnorderedCollection()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/testFramework/src/com/intellij/testFramework/UsefulTestCase.java).
 
 Code-deferring execution (e.g., via `Application.invokeLater()`) might not run during test execution (and possibly fails in production, too).
 Use `Application.invokeLater(runnable, myProject.getDisposed())`.
@@ -141,7 +141,7 @@ To mark members whose visibility is higher than necessary to be used from tests,
 
 ### How to run tests for all files in a directory?
 
-Use [FileBasedTestCaseHelper](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/testFramework/src/com/intellij/testFramework/FileBasedTestCaseHelper.java), please see its Javadoc for instructions.
+Use [FileBasedTestCaseHelper](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/testFramework/src/com/intellij/testFramework/FileBasedTestCaseHelper.java), please see its Javadoc for instructions.
 
 ### How to modify setup on a per-test basis?
 
@@ -149,27 +149,27 @@ Use `UsefulTestCase.getTestName()` or create your own annotation which can be ch
 
 ### How to run a performance test?
 
-Use [PlatformTestUtil.startPerformanceTest()](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/testFramework/src/com/intellij/testFramework/PlatformTestUtil.java) to assert machine-adjusted metrics.
+Use [PlatformTestUtil.startPerformanceTest()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/testFramework/src/com/intellij/testFramework/PlatformTestUtil.java) to assert machine-adjusted metrics.
 
 ### How to dispatch pending UI events?
 
-Use [PlatformTestUtil.dispatchAllInvocationEventsInIdeEventQueue()](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/testFramework/src/com/intellij/testFramework/PlatformTestUtil.java).
+Use [PlatformTestUtil.dispatchAllInvocationEventsInIdeEventQueue()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/testFramework/src/com/intellij/testFramework/PlatformTestUtil.java).
 
 ### How to disable stderr logging?
 
-Use [DefaultLogger.disableStderrDumping()](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/util/src/com/intellij/openapi/diagnostic/DefaultLogger.java) passing `getTestRootDisposable()`.
+Use [DefaultLogger.disableStderrDumping()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/util/src/com/intellij/openapi/diagnostic/DefaultLogger.java) passing `getTestRootDisposable()`.
 
 ### How to register a resource (DTD, XSD) temporarily?
 
-Use [ExternalResourceManagerExImpl.registerResourceTemporarily()](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/xml/impl/src/com/intellij/javaee/ExternalResourceManagerExImpl.kt) passing `getTestRootDisposable()`.
+Use [ExternalResourceManagerExBase.registerResourceTemporarily()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/xml/xml-psi-impl/src/com/intellij/javaee/ExternalResourceManagerExBase.kt) passing `getTestRootDisposable()`.
 
 ### How to replace a component/service in tests?
 
-Provide dedicated test implementation via `testServiceImplementation` in [service declaration](plugin-services.html#declaring-a-service), or use [ServiceContainerUtil](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/testFramework/common/src/ServiceContainerUtil.kt).
+Provide dedicated test implementation via `testServiceImplementation` in [service declaration](plugin-services.html#declaring-a-service), or use [ServiceContainerUtil](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/testFramework/common/src/ServiceContainerUtil.kt).
 
 ### How to replace extension points in tests?
 
-Use [ExtensionTestUtil](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/testFramework/src/com/intellij/testFramework/ExtensionTestUtil.kt).
+Use [ExtensionTestUtil](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/testFramework/src/com/intellij/testFramework/ExtensionTestUtil.kt).
 
 ### How to wait for a specified amount of time?
 
@@ -177,12 +177,12 @@ If possible, use the [How to wait for condition with timeout?](#how-to-wait-for-
 
 ### How to wait for condition with timeout?
 
-Use [WaitFor](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/util/src/com/intellij/util/WaitFor.java).
+Use [WaitFor](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/util/src/com/intellij/util/WaitFor.java).
 
 ### How to test a JVM language?
 
 Plugins supporting a JVM language may require JDK and language standard library to be set up in a test project, so that classes like `java.lang.String` can be correctly resolved during tests.
-Tests extending [LightJavaCodeInsightFixtureTestCase](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/java/testFramework/src/com/intellij/testFramework/fixtures/LightJavaCodeInsightFixtureTestCase.java) use one of the mock JDKs in the [Java plugin](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/java) sources (notice `mockJDK-$JAVA_VERSION$` directories).
+Tests extending [LightJavaCodeInsightFixtureTestCase](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/java/testFramework/src/com/intellij/testFramework/fixtures/LightJavaCodeInsightFixtureTestCase.java) use one of the mock JDKs in the [Java plugin](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/java) sources (notice `mockJDK-$JAVA_VERSION$` directories).
 These JAR files are not available in plugin project dependencies, so the IntelliJ Platform sources must be checked out to the machine running the tests, and sources' location must be provided to the test framework.
 It's done by setting the `idea.home.path` system property to the absolute path of the checked-out sources in the `test` task configuration:
 
@@ -204,20 +204,20 @@ test {
 
 The default JDK version used by the test framework depends on the target platform version and is the latest supported version.
 The easiest way to change the JDK version to a custom one is by overriding `LightJavaCodeInsightFixtureTestCase.getProjectDescriptor()` and using one of the predefined project descriptors in `LightJavaCodeInsightFixtureTestCase`.
-If a project descriptor requires more customizations, its `getSdk()` method can use one of the [IdeaTestUtil.getMockJdk*()](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/java/testFramework/shared/src/com/intellij/testFramework/IdeaTestUtil.java) methods.
+If a project descriptor requires more customizations, its `getSdk()` method can use one of the [IdeaTestUtil.getMockJdk*()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/java/testFramework/shared/src/com/intellij/testFramework/IdeaTestUtil.java) methods.
 
 Sometimes, testing a JVM language requires adding standard or other libraries to a test project.
-If a required library is available in the Maven repository, use [MavenDependencyUtil](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/java/testFramework/shared/src/com/intellij/testFramework/fixtures/MavenDependencyUtil.java), e.g.:
+If a required library is available in the Maven repository, use [MavenDependencyUtil](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/java/testFramework/shared/src/com/intellij/testFramework/fixtures/MavenDependencyUtil.java), e.g.:
 
 ```JAVA
 MavenDependencyUtil.addFromMaven(model,
     "org.jetbrains.kotlin:kotlin-stdlib:1.6.10");
 ```
 
-For [light tests](light-and-heavy-tests.html), use convenience method [DefaultLightProjectDescriptor.withRepositoryLibrary()](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/java/testFramework/src/com/intellij/testFramework/fixtures/DefaultLightProjectDescriptor.java)
-and [JavaModuleFixtureBuilder.addMavenLibrary()](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/java/testFramework/src/com/intellij/testFramework/builders/JavaModuleFixtureBuilder.java) for [heavy tests](light-and-heavy-tests.html).
+For [light tests](light-and-heavy-tests.html), use convenience method [DefaultLightProjectDescriptor.withRepositoryLibrary()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/java/testFramework/src/com/intellij/testFramework/fixtures/DefaultLightProjectDescriptor.java)
+and [JavaModuleFixtureBuilder.addMavenLibrary()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/java/testFramework/src/com/intellij/testFramework/builders/JavaModuleFixtureBuilder.java) for [heavy tests](light-and-heavy-tests.html).
 
-If a required library is an unpublished JAR file, use [PsiTestUtil.addLibrary()](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/testFramework/src/com/intellij/testFramework/PsiTestUtil.java) or `addProjectLibrary()` method and the JAR file path, e.g.:
+If a required library is an unpublished JAR file, use [PsiTestUtil.addLibrary()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/testFramework/src/com/intellij/testFramework/PsiTestUtil.java) or `addProjectLibrary()` method and the JAR file path, e.g.:
 
 ```JAVA
 PsiTestUtil.addLibrary(model,
@@ -228,14 +228,14 @@ PsiTestUtil.addLibrary(model,
 
 How to handle `ProjectActivity`?
 
-[ProjectActivity](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/core-api/src/com/intellij/openapi/startup/StartupActivity.kt) is no longer awaited when opening a project in tests.
+[ProjectActivity](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/openapi/startup/StartupActivity.kt) is no longer awaited when opening a project in tests.
 If tests depend on some job done in `ProjectActivity` (e.g., automatic project re-import), implement a dedicated [event/listener](messaging-infrastructure.html) and wait for it explicitly.
-As a workaround, use [StartupActivityTestUtil.waitForProjectActivitiesToComplete()](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/testFramework/src/com/intellij/testFramework/StartupActivityTestUtil.kt).
+As a workaround, use [StartupActivityTestUtil.waitForProjectActivitiesToComplete()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/testFramework/src/com/intellij/testFramework/StartupActivityTestUtil.kt).
 
 ### How to handle indexing?
 
 Indexing is now run asynchronously in a background thread.
-Use [IndexingTestUtil.waitUntilIndexesAreReady()/suspendUntilIndexesAreReady()](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/testFramework/src/com/intellij/testFramework/IndexingTestUtil.kt)
+Use [IndexingTestUtil.waitUntilIndexesAreReady()/suspendUntilIndexesAreReady()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/testFramework/src/com/intellij/testFramework/IndexingTestUtil.kt)
 to wait for fully populated indexes.
 
 Note: Something missing?

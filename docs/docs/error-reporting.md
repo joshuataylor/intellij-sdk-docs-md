@@ -3,9 +3,9 @@
 The IntelliJ Platform can detect many errors caused by plugin code and attribute them to the responsible plugin.
 Plugin authors can integrate with that flow in two different ways:
 
-* [ErrorReportSubmitter](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-api/src/com/intellij/openapi/diagnostic/ErrorReportSubmitter.java) handles the user-facing reporting flow from the IDE Fatal Errors UI.
+* [ErrorReportSubmitter](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/openapi/diagnostic/ErrorReportSubmitter.java) handles the user-facing reporting flow from the IDE Fatal Errors UI.
 
-* [ErrorReportSink](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-api/src/com/intellij/openapi/diagnostic/ErrorReportSink.kt) receives automatic background reports about unhandled exceptions and UI freezes attributed to the plugin.
+* [ErrorReportSink](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/openapi/diagnostic/ErrorReportSink.kt) receives automatic background reports about unhandled exceptions and UI freezes attributed to the plugin.
 
 These APIs complement each other.
 `ErrorReportSubmitter` is the user-facing reporting API.
@@ -16,8 +16,8 @@ and a callback used to complete the submission flow.
 
 `ErrorReportSink` is the automatic background reporting API.
 It is triggered when the platform automatically forwards a plugin-attributed exception or freeze, so no user action is required.
-The sink receives either [UnhandledExceptionReport](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-api/src/com/intellij/openapi/diagnostic/ErrorReportSink.kt)
-or [UnhandledFreezeReport](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-api/src/com/intellij/openapi/diagnostic/ErrorReportSink.kt),
+The sink receives either [UnhandledExceptionReport](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/openapi/diagnostic/ErrorReportSink.kt)
+or [UnhandledFreezeReport](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/openapi/diagnostic/ErrorReportSink.kt),
 which makes it suitable for observability scenarios even when the user never clicks a reporting action.
 
 [Video](https://www.youtube.com/v/F4ZQe3AU3v4)
@@ -28,7 +28,7 @@ which makes it suitable for observability scenarios even when the user never cli
 
 If the plugin is published on JetBrains Marketplace and the built-in reporting flow is sufficient, this is the simplest supported setup.
 
-Register [JetBrainsMarketplaceErrorReportSubmitter](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-impl/src/com/intellij/diagnostic/JetBrainsMarketplaceErrorReportSubmitter.kt)
+Register [JetBrainsMarketplaceErrorReportSubmitter](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-impl/src/com/intellij/diagnostic/JetBrainsMarketplaceErrorReportSubmitter.kt)
 as an implementation of the [com.intellij.errorHandler](https://jb.gg/ipe?extensions=com.intellij.errorHandler) extension point
 
 in `plugin.xml`:
@@ -59,10 +59,10 @@ Register the submitter in `plugin.xml`:
 </extensions>
 ```
 
-The public contract is defined by [ErrorReportSubmitter](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-api/src/com/intellij/openapi/diagnostic/ErrorReportSubmitter.java).
-Reports are delivered as [IdeaLoggingEvent](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-api/src/com/intellij/openapi/diagnostic/IdeaLoggingEvent.java) instances,
+The public contract is defined by [ErrorReportSubmitter](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/openapi/diagnostic/ErrorReportSubmitter.java).
+Reports are delivered as [IdeaLoggingEvent](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/openapi/diagnostic/IdeaLoggingEvent.java) instances,
 and the final result is reported back to the IDE using
-[SubmittedReportInfo](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-api/src/com/intellij/openapi/diagnostic/SubmittedReportInfo.java).
+[SubmittedReportInfo](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/openapi/diagnostic/SubmittedReportInfo.java).
 
 ```KOTLIN
 class MyErrorReportSubmitter : ErrorReportSubmitter() {
@@ -92,7 +92,7 @@ Where:
 
 * `submit()` performs the actual submission
 
-The `submit()` method receives the [IdeaLoggingEvent](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-api/src/com/intellij/openapi/diagnostic/IdeaLoggingEvent.java) data selected for the report:
+The `submit()` method receives the [IdeaLoggingEvent](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/openapi/diagnostic/IdeaLoggingEvent.java) data selected for the report:
 
 * events - `IdeaLoggingEvent` instances give access to the core report data, such as the `Throwable`, message text, and attachments included in the report.
 
@@ -100,7 +100,7 @@ The `submit()` method receives the [IdeaLoggingEvent](https://github.com/JetBrai
 
 * `parentComponent` - for any necessary interaction
 
-* `consumer` - callback that must receive the final [SubmittedReportInfo](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-api/src/com/intellij/openapi/diagnostic/SubmittedReportInfo.java). This is the main integration point for building a custom payload for an issue tracker or backend service.
+* `consumer` - callback that must receive the final [SubmittedReportInfo](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/openapi/diagnostic/SubmittedReportInfo.java). This is the main integration point for building a custom payload for an issue tracker or backend service.
 
 If `submit()` returns `true`, the submitter is declaring that the submission has started and the callback will be completed later.
 The callback must eventually receive a `SubmittedReportInfo` with the proper `SubmissionStatus`:
@@ -162,7 +162,7 @@ and coroutine APIs described in [Accessing Data](threading-model.html#accessing-
 
 Automatic Reporting with `ErrorReportSink`
 
-[ErrorReportSink](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-api/src/com/intellij/openapi/diagnostic/ErrorReportSink.kt)
+[ErrorReportSink](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/openapi/diagnostic/ErrorReportSink.kt)
 is an experimental API for automatic background reporting.
 
 Register it via the [com.intellij.errorReportSink](https://jb.gg/ipe?extensions=com.intellij.errorReportSink) extension point
@@ -269,9 +269,9 @@ Use both APIs when the plugin needs background observability during normal usage
 
 ## Example Implementations
 
-* [ITNReporter](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-impl/src/com/intellij/diagnostic/ITNReporter.kt) A full production implementation that submits fatal error reports, shows progress and notifications, and completes the `SubmittedReportInfo` callback.
+* [ITNReporter](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-impl/src/com/intellij/diagnostic/ITNReporter.kt) A full production implementation that submits fatal error reports, shows progress and notifications, and completes the `SubmittedReportInfo` callback.
 
-* [UnhandledReportSinkServiceTest.TestSink](https://github.com/JetBrains/intellij-community/tree/idea/262.10968.63/platform/platform-tests/testSrc/com/intellij/diagnostic/UnhandledReportSinkServiceTest.kt) A tiny sink used in tests that simply receives an UnhandledErrorReport in submit(report) and stores it for verification.
+* [UnhandledReportSinkServiceTest.TestSink](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-tests/testSrc/com/intellij/diagnostic/UnhandledReportSinkServiceTest.kt) A tiny sink used in tests that simply receives an UnhandledErrorReport in submit(report) and stores it for verification.
 
 * [Third party tutorial](https://www.plugin-dev.com/intellij/general/error-reporting/) for error reporting using Sentry
 

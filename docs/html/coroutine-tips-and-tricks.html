@@ -1,5 +1,5 @@
 <!DOCTYPE html SYSTEM "about:legacy-compat">
-<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF" data-resizable-sidebar="true"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="built-on" content="2026-11-05T02:09:55.570389046"><!-- Google Tag Manager -->
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF" data-resizable-sidebar="true"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="built-on" content="2026-11-05T12:12:46.408143402"><!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -24,7 +24,7 @@
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5P98"
                   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-<div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>IntelliJ Platform Plugin SDK  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="coroutine_tips_and_tricks" data-label-id="2024.1" id="coroutine_tips_and_tricks.md">Coroutine Tips and Tricks</h1><aside class="prompt" data-type="tip" data-title="Kotlin Coroutines×IntelliJ Platform" id="-ftuq35_13"><p id="-ftuq35_14">This section focuses on explaining coroutines in the specific context of the <a href="intellij-platform.html" id="-ftuq35_15" data-tooltip="Introduction to the IntelliJ Platform, plugins, and IDEs based on it.">IntelliJ Platform</a>. If you are not experienced with Kotlin Coroutines, it is highly recommended to get familiar with <a href="kotlin-coroutines.html#learning-resources" id="-ftuq35_16">Learning Resources</a> first.</p></aside><p id="-ftuq35_6">This section presents techniques to use coroutines efficiently and avoid common pitfalls.</p><section class="chapter"><h2 id="switching-between-the-background-threads-and-edt" data-toc="switching-between-the-background-threads-and-edt">Switching Between the Background Threads and EDT</h2><p id="-ftuq35_17">Avoid the <code class="code" id="-ftuq35_21">invokeLater</code>-style often found in Java:</p><div class="code-block" data-lang="kotlin">
+<div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>IntelliJ Platform Plugin SDK  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="coroutine_tips_and_tricks" data-label-id="2024.1" id="coroutine_tips_and_tricks.md">Coroutine Tips and Tricks</h1><aside class="prompt" data-type="tip" data-title="Kotlin Coroutines×IntelliJ Platform" id="lj93qh_13"><p id="lj93qh_14">This section focuses on explaining coroutines in the specific context of the <a href="intellij-platform.html" id="lj93qh_15" data-tooltip="Introduction to the IntelliJ Platform, plugins, and IDEs based on it.">IntelliJ Platform</a>. If you are not experienced with Kotlin Coroutines, it is highly recommended to get familiar with <a href="kotlin-coroutines.html#learning-resources" id="lj93qh_16">Learning Resources</a> first.</p></aside><p id="lj93qh_6">This section presents techniques to use coroutines efficiently and avoid common pitfalls.</p><section class="chapter"><h2 id="switching-between-the-background-threads-and-edt" data-toc="switching-between-the-background-threads-and-edt">Switching Between the Background Threads and EDT</h2><p id="lj93qh_17">Avoid the <code class="code" id="lj93qh_21">invokeLater</code>-style often found in Java:</p><div class="code-block" data-lang="kotlin">
 launch(Dispatchers.EDT) {
   val uiData = collectUiData()
   // switch to Default:
@@ -36,7 +36,7 @@ launch(Dispatchers.EDT) {
     }
   }
 }
-</div><p id="-ftuq35_19">The recommended approach:</p><div class="code-block" data-lang="kotlin">
+</div><p id="lj93qh_19">The recommended approach:</p><div class="code-block" data-lang="kotlin">
 launch(Dispatchers.EDT) {
   val uiData = collectUiData()
   // switch to Default:
@@ -46,7 +46,7 @@ launch(Dispatchers.EDT) {
   // this will be resumed on EDT automatically:
   applyUiData(result)
 }
-</div></section><section class="chapter"><h2 id="dispatching-to-the-end-of-a-queue" data-toc="dispatching-to-the-end-of-a-queue">Dispatching to the End of a Queue</h2><p id="-ftuq35_22">In some cases, it is required to exit the current EDT event and continue after all events in the queue are processed. In a non-coroutine context, it could be implemented like in the following snippet:</p><div class="code-block" data-lang="kotlin">
+</div></section><section class="chapter"><h2 id="dispatching-to-the-end-of-a-queue" data-toc="dispatching-to-the-end-of-a-queue">Dispatching to the End of a Queue</h2><p id="lj93qh_22">In some cases, it is required to exit the current EDT event and continue after all events in the queue are processed. In a non-coroutine context, it could be implemented like in the following snippet:</p><div class="code-block" data-lang="kotlin">
 invokeLater {
   step1()
   invokeLater {
@@ -56,7 +56,7 @@ invokeLater {
     }
   }
 }
-</div><p id="-ftuq35_24">In a coroutine context, use the following approach:</p><div class="code-block" data-lang="kotlin">
+</div><p id="lj93qh_24">In a coroutine context, use the following approach:</p><div class="code-block" data-lang="kotlin">
 withContext(Dispatchers.EDT) {
   step1()
   yield() // suspends here, dispatches the following block again on EDT
@@ -64,7 +64,7 @@ withContext(Dispatchers.EDT) {
   yield()
   step3()
 }
-</div><p id="-ftuq35_26">This approach works with any sequential dispatcher, e.g., created with <code class="code" id="-ftuq35_29">Dispatchers.Default.limitedParallelism(1)</code>.</p><p id="-ftuq35_27">The same applies to <a href="launching-coroutines.html#using-runblockingcancellable" id="-ftuq35_30"><code class="code" id="-ftuq35_31">runBlockingCancellable</code></a>:</p><div class="code-block" data-lang="kotlin">
+</div><p id="lj93qh_26">This approach works with any sequential dispatcher, e.g., created with <code class="code" id="lj93qh_29">Dispatchers.Default.limitedParallelism(1)</code>.</p><p id="lj93qh_27">The same applies to <a href="launching-coroutines.html#using-runblockingcancellable" id="lj93qh_30"><code class="code" id="lj93qh_31">runBlockingCancellable</code></a>:</p><div class="code-block" data-lang="kotlin">
 runBlockingCancellable {
   println(1)
   launch {
@@ -79,7 +79,7 @@ runBlockingCancellable {
   print(6)
 }
 // Output: 142536
-</div></section><section class="chapter"><h2 id="scheduling-tasks-with-a-fixed-delay" data-toc="scheduling-tasks-with-a-fixed-delay">Scheduling Tasks With a Fixed Delay</h2><p id="-ftuq35_32">There is no <code class="code" id="-ftuq35_38">scheduleWithFixedDelay()</code> in coroutines, because it can be easily implemented with the following snippet:</p><div class="code-block" data-lang="kotlin">
+</div></section><section class="chapter"><h2 id="scheduling-tasks-with-a-fixed-delay" data-toc="scheduling-tasks-with-a-fixed-delay">Scheduling Tasks With a Fixed Delay</h2><p id="lj93qh_32">There is no <code class="code" id="lj93qh_38">scheduleWithFixedDelay()</code> in coroutines, because it can be easily implemented with the following snippet:</p><div class="code-block" data-lang="kotlin">
 val job = coroutineScope.launch {
   delay(initialDelayMs)
   while (true) {
@@ -87,17 +87,17 @@ val job = coroutineScope.launch {
     delay(delayMs)
   }
 }
-</div><p id="-ftuq35_34">When the job is no longer needed, remember to cancel the launched coroutine:</p><div class="code-block" data-lang="kotlin">
+</div><p id="lj93qh_34">When the job is no longer needed, remember to cancel the launched coroutine:</p><div class="code-block" data-lang="kotlin">
 job.cancel()
-</div><p id="-ftuq35_36">or the whole scope:</p><div class="code-block" data-lang="kotlin">
+</div><p id="lj93qh_36">or the whole scope:</p><div class="code-block" data-lang="kotlin">
 coroutineScope.cancel()
-</div></section><section class="chapter"><h2 id="limiting-dispatcher-parallelism" data-toc="limiting-dispatcher-parallelism">Limiting Dispatcher Parallelism</h2><p id="-ftuq35_39">Each call of <a href="https://kotlinlang.org/api/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-coroutine-dispatcher/limited-parallelism.html" id="-ftuq35_44" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="-ftuq35_45">limitedParallelism()</code></a> creates a new independent dispatcher instance, effectively not limiting the parallelism:</p><div class="code-block" data-lang="kotlin">
+</div></section><section class="chapter"><h2 id="limiting-dispatcher-parallelism" data-toc="limiting-dispatcher-parallelism">Limiting Dispatcher Parallelism</h2><p id="lj93qh_39">Each call of <a href="https://kotlinlang.org/api/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-coroutine-dispatcher/limited-parallelism.html" id="lj93qh_44" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="lj93qh_45">limitedParallelism()</code></a> creates a new independent dispatcher instance, effectively not limiting the parallelism:</p><div class="code-block" data-lang="kotlin">
 suspend fun doSomething() {
   withContext(Dispatchers.Default.limitedParallelism(3)) {
     // ...
   }
 }
-</div><p id="-ftuq35_41">Instead, store the dispatcher instance into a static property and use it as a context:</p><div class="code-block" data-lang="kotlin">
+</div><p id="lj93qh_41">Instead, store the dispatcher instance into a static property and use it as a context:</p><div class="code-block" data-lang="kotlin">
 private val myDispatcher = Dispatchers.Default.limitedParallelism(3)
 
 suspend fun doSomething() {
@@ -105,18 +105,18 @@ suspend fun doSomething() {
     // ...
   }
 }
-</div><aside class="prompt" data-type="warning" data-title="" id="-ftuq35_43"><p id="-ftuq35_46">Do not use <code class="code" id="-ftuq35_47">limitedParallelism(1)</code> for code synchronization. Use <a href="https://kotlinlang.org/api/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.sync/-mutex/" id="-ftuq35_48" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="-ftuq35_49">Mutex</code></a> instead.</p></aside></section><section class="chapter"><h2 id="changing-modality-state" data-toc="changing-modality-state">Changing Modality State</h2><p id="-ftuq35_50">Avoid <a href="threading-model.html#invoking-operations-on-edt-and-modality" id="-ftuq35_56">changing modality state</a> in the middle of a running coroutine:</p><div class="code-block" data-lang="kotlin">
+</div><aside class="prompt" data-type="warning" data-title="" id="lj93qh_43"><p id="lj93qh_46">Do not use <code class="code" id="lj93qh_47">limitedParallelism(1)</code> for code synchronization. Use <a href="https://kotlinlang.org/api/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.sync/-mutex/" id="lj93qh_48" data-external="true" rel="noopener noreferrer" target="_blank"><code class="code" id="lj93qh_49">Mutex</code></a> instead.</p></aside></section><section class="chapter"><h2 id="changing-modality-state" data-toc="changing-modality-state">Changing Modality State</h2><p id="lj93qh_50">Avoid <a href="threading-model.html#invoking-operations-on-edt-and-modality" id="lj93qh_56">changing modality state</a> in the middle of a running coroutine:</p><div class="code-block" data-lang="kotlin">
 cs.launch {
   // ...
   withContext(Dispatchers.EDT + ModalityState.any().asContextElement()) {
     // ...
   }
 }
-</div><p id="-ftuq35_52">Add the modality state to the context when launching a coroutine:</p><div class="code-block" data-lang="kotlin">
+</div><p id="lj93qh_52">Add the modality state to the context when launching a coroutine:</p><div class="code-block" data-lang="kotlin">
 cs.launch(ModalityState.current().asContextElement()) {
   // ...
   withContext(Dispatchers.EDT) {
     // ...
   }
 }
-</div><p id="-ftuq35_54">It is possible that the coroutine is launched as a response to a user event from EDT, where <code class="code" id="-ftuq35_57">ModalityState.current()</code> is available.</p><p id="-ftuq35_55">If the coroutine is launched from a background thread, then it should not be invoked on top of an unrelated dialog anyway. The absence of the context modality state is effectively equivalent to specifying <code class="code" id="-ftuq35_58">ModalityState.nonModal()</code>.</p></section><div class="last-modified">21 February 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="coroutine-edt-and-locks.html" class="navigation-links__prev">Coroutines on EDT and Locks</a><a href="coroutine-dumps.html" class="navigation-links__next">Coroutine Dumps</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.js"></script></body></html>
+</div><p id="lj93qh_54">It is possible that the coroutine is launched as a response to a user event from EDT, where <code class="code" id="lj93qh_57">ModalityState.current()</code> is available.</p><p id="lj93qh_55">If the coroutine is launched from a background thread, then it should not be invoked on top of an unrelated dialog anyway. The absence of the context modality state is effectively equivalent to specifying <code class="code" id="lj93qh_58">ModalityState.nonModal()</code>.</p></section><div class="last-modified">21 February 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="coroutine-edt-and-locks.html" class="navigation-links__prev">Coroutines on EDT and Locks</a><a href="coroutine-dumps.html" class="navigation-links__next">Coroutine Dumps</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.js"></script></body></html>
