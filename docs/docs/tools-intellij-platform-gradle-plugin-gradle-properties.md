@@ -7,7 +7,7 @@ See [IntelliJ Platform Gradle Plugin – FAQ](tools-intellij-platform-gradle-plu
 The IntelliJ Platform Gradle Plugin exposes a number of Gradle properties to control some of the low-level Gradle plugin behaviors.
 To enable or disable a particular feature, add a Project property to the `gradle.properties` file with the following pattern:
 
-```
+```PROPERTIES
 org.jetbrains.intellij.platform.<name>=<value>
 ```
 
@@ -27,7 +27,7 @@ Default value
 : `true`
 
 Example
-: ```
+: ```PROPERTIES
 org.jetbrains.intellij.platform.downloadSources=true
 ```
 
@@ -68,7 +68,7 @@ Default value
 
 
 Example
-: ```
+: ```PROPERTIES
 org.jetbrains.intellij.platform.intellijPlatformCache=/path/to/intellijPlatformCache/
 ```
 
@@ -90,7 +90,7 @@ Default value
 : `[intellijPlatformCache](#intellijPlatformCache)/ides/`
 
 Example
-: ```
+: ```PROPERTIES
 org.jetbrains.intellij.platform.intellijPlatformIdesCache=/path/to/ides-cache/
 ```
 
@@ -127,7 +127,7 @@ Default value
 
 
 Example
-: ```
+: ```PROPERTIES
 org.jetbrains.intellij.platform.intellijPlatformIdesCacheEnabled=true
 ```
 
@@ -141,7 +141,7 @@ Default value
 : `[intellijPlatformCache](#intellijPlatformCache)/localPlatformArtifacts/`
 
 Example
-: ```
+: ```PROPERTIES
 org.jetbrains.intellij.platform.localPlatformArtifacts=/path/to/localPlatformArtifacts/
 ```
 
@@ -169,7 +169,7 @@ Default value
 
 
 Example
-: ```
+: ```PROPERTIES
 org.jetbrains.intellij.platform.noSearchableOptionsWarning=false
 ```
 
@@ -184,7 +184,7 @@ Default value
 : `false`
 
 Example
-: ```
+: ```PROPERTIES
 org.jetbrains.intellij.platform.forceBuildSearchableOptions=true
 ```
 
@@ -214,7 +214,7 @@ Default value
 
 
 Example
-: ```
+: ```PROPERTIES
 org.jetbrains.intellij.platform.paidPluginSearchableOptionsWarning=false
 ```
 
@@ -229,7 +229,7 @@ Default value
 : `https://jb.gg/android-studio-releases-list.xml`
 
 Example
-: ```
+: ```PROPERTIES
 org.jetbrains.intellij.platform.productsReleasesAndroidStudioUrl=https://...
 ```
 
@@ -258,7 +258,7 @@ Default value
 
 
 Example
-: ```
+: ```PROPERTIES
 org.jetbrains.intellij.platform.productsReleasesJetBrainsIdesUrl=https://...
 ```
 
@@ -282,7 +282,7 @@ Default value
 : `true`
 
 Example
-: ```
+: ```PROPERTIES
 org.jetbrains.intellij.platform.selfUpdateCheck=false
 ```
 
@@ -381,7 +381,7 @@ Default value
 : `true`
 
 Example
-: ```
+: ```PROPERTIES
 org.jetbrains.intellij.platform.verifyPluginDefaultRecommendedIdes=false
 ```
 
@@ -410,7 +410,7 @@ Default value
 
 
 Example
-: ```
+: ```PROPERTIES
 org.jetbrains.intellij.platform.shimServerPort=7348
 ```
 
@@ -427,7 +427,7 @@ Default value
 : `true`
 
 Example
-: ```
+: ```PROPERTIES
 org.jetbrains.intellij.platform.useCacheRedirector=false
 ```
 
@@ -471,7 +471,7 @@ Default value
 : `true`
 
 Example
-: ```
+: ```PROPERTIES
 org.jetbrains.intellij.platform.addDefaultIntelliJPlatformDependencies=false
 ```
 
@@ -499,7 +499,7 @@ Default value
 
 
 Example
-: ```
+: ```PROPERTIES
 org.jetbrains.intellij.platform.productsReleasesCdnBuildsUrl=https://...
 ```
 
@@ -513,7 +513,7 @@ Default value
 : empty (no messages are muted)
 
 Example
-: ```
+: ```PROPERTIES
 org.jetbrains.intellij.platform.verifyPluginProjectConfigurationMutedMessages=Kotlin Standard Library,Java Runtime is not JetBrains Runtime
 ```
 

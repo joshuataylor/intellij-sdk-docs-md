@@ -90,7 +90,7 @@ Minor Changes and Additions
 ### October
 
 PSI Performance Introduction
-: Describe why [caching get method results](psi-performance.html#overview) is important when working with PSI.
+: Describe why [caching get method results](psi-performance.html#avoid-repeated-calls-of-psi-getters) is important when working with PSI.
 
 Avoiding `idea-version@until-build`
 : Add information about recommendation to [avoid using idea-version@until-build](plugin-configuration-file.html#idea-plugin__idea-version) for plugins.

@@ -10,7 +10,7 @@ Since 2025.1, the problem has been solved internally in the IntelliJ Platform, a
 
 Sometimes, errors similar to the below can be observed in the IDE running in the [internal mode](enabling-internal.html):
 
-```
+```TEXT
 Access is allowed with explicit read lock.
 Now each coroutine scheduled on EDT wrapped in implicit write intent
 lock (which implies read lock too). This implicit lock will be removed

@@ -14,7 +14,7 @@ See also:
 
 * [Additional Minor Features](additional-minor-features.html)
 
-### Overview
+### Implementation
 
 The two actions [Extend Selection and Shrink Selection](https://www.jetbrains.com/help/idea/working-with-source-code.html#editor_code_selection) in IntelliJ Platform IDEs let you adjust selected text based on the structure of the source code.
 This makes it easy to select not only expressions, blocks, and function definitions, but also code like whole lines or tags in Javadoc comments.

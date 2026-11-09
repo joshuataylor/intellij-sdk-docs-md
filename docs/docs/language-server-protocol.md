@@ -326,7 +326,7 @@ All the IDE and LSP server communication logs are passed to the IDE log file.
 
 To include them, add the following entry to the Help | Diagnostic Tools | Debug Log Settings… configuration dialog:
 
-```
+```TEXT
 #com.intellij.platform.lsp
 ```
 

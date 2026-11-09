@@ -6,7 +6,7 @@ Tip:
 
 [IDE Perf](https://plugins.jetbrains.com/plugin/15104-ide-perf) plugin provides on-the-fly performance diagnostic tools, including a dedicated view for [CachedValue](#cache-results-of-heavy-computations) metrics.
 
-## Overview
+## Avoid Repeated Calls of PSI Getters
 
 PSI has a lot of time-space compromises.
 There are tons of PSI elements in IDE memory, so the IntelliJ Platform and language plugins strive to keep them as compact as possible, storing very little data inside.
@@ -21,7 +21,7 @@ String.format("Hello, %s!", name);
 
 This is its (simplified) PSI:
 
-```
+```TEXT
 PsiMethodCallExpression:String.format("Hello, %s!", name)
   PsiReferenceExpression:String.format
   PsiExpressionList

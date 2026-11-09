@@ -86,13 +86,13 @@ Hints displayed in the preview panel are defined with the dedicated markup:
 
 2023.2+:
 
-```
+```TEXT
 /*<# Displayed Hint #>*/
 ```
 
 Pre-2023.2:
 
-```
+```TEXT
 <# Displayed Hint #>
 ```
 

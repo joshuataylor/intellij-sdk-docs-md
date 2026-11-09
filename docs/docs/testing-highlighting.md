@@ -36,7 +36,7 @@ To test syntax highlighting provided by [Lexer](implementing-lexer.html), use [E
 This method takes the tested file and the answer file describing expected highlighting information for each token.
 The answer file format is as follows:
 
-```
+```TEXT
 token_value
     EXPECTED_TEXT_ATTRIBUTE_KEY => FALLBACK_KEY
 string␣value

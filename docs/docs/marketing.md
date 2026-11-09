@@ -40,7 +40,7 @@ IntelliJ Plugins
 
 ![Downloads](https://img.shields.io/badge/downloads-10M-brightgreen)
 
-```
+```MD
 ![Downloads](https://img.shields.io/jetbrains/plugin/d/:pluginId)
 ```
 
@@ -48,7 +48,7 @@ ReSharper Plugins
 
 ![Downloads](https://img.shields.io/badge/downloads-90k-brightgreen)
 
-```
+```MD
 ![Downloads](https://img.shields.io/resharper/dt/:packageName)
 ```
 
@@ -58,7 +58,7 @@ IntelliJ Plugin Numeric Rating
 
 ![Rating](https://img.shields.io/badge/rating-4.5/5-brightgreen)
 
-```
+```MD
 ![Rating](https://img.shields.io/jetbrains/plugin/r/rating/:pluginId)
 ```
 
@@ -66,7 +66,7 @@ IntelliJ Plugin Stars Rating
 
 ![Rating](https://img.shields.io/badge/rating-%E2%98%85%E2%98%85%E2%98%85%E2%98%85%C2%BD-brightgreen)
 
-```
+```MD
 ![Rating](https://img.shields.io/jetbrains/plugin/r/stars/:pluginId)
 ```
 
@@ -76,7 +76,7 @@ IntelliJ Plugins
 
 ![Version](https://img.shields.io/jetbrains/plugin/v/IdeaVim)
 
-```
+```MD
 ![Version](https://img.shields.io/jetbrains/plugin/v/:pluginId)
 ```
 
@@ -84,7 +84,7 @@ ReSharper Plugins
 
 ![Version](https://img.shields.io/badge/resharper-v2017.2.0-blue)
 
-```
+```MD
 ![Version](https://img.shields.io/resharper/v/:packageName)
 ```
 
@@ -92,7 +92,7 @@ ReSharper Plugins (incl. pre-releases)
 
 ![Version](https://img.shields.io/badge/resharper-v2017.3.0--pre0001-yellow)
 
-```
+```MD
 ![Version](https://img.shields.io/resharper/v/:packageName?include_prereleases)
 ```
 
@@ -102,7 +102,7 @@ GitHub Actions Workflow
 
 ![Build](https://github.com/JetBrains/intellij-sdk-docs/actions/workflows/code-samples.yml/badge.svg)
 
-```
+```MD
 ![Build](https://github.com/<OWNER>/<REPOSITORY>/actions/workflows/<WORKFLOW_FILE>/badge.svg)
 ```
 

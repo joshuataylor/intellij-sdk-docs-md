@@ -71,7 +71,7 @@ In a working copy of IDE, a "Remote" run configuration should be created and poi
 Suppose you often need to debug external builders and want to reuse the created "Remote" run configuration.
 In that case, you may fix the port number by adding the following VM option to the plugin run configuration:
 
-```
+```TEXT
 -Dcompiler.process.debug.port=<port-number>
 ```
 
@@ -79,7 +79,7 @@ If your test IDE is IntelliJ IDEA 15.0 or older
 
 Start IDE with your plugin with the following VM option:
 
-```
+```TEXT
 -Dcompiler.process.debug.port=<port-number>
 ```
 
@@ -105,7 +105,7 @@ Please also provide details about the memory and other VM settings for the build
 
 The log file is located under the directory:
 
-```
+```TEXT
 <ide-system-directory>/log/build-log
 ```
 

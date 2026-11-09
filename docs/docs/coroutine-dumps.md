@@ -13,7 +13,7 @@ Thread dumps include all application threads and coroutines existing at the mome
 
 A coroutine dump format is:
 
-```
+```TEXT
 - parent coroutine header
 	at stackframe
 	at stackframe
@@ -39,13 +39,13 @@ A coroutine entry may not include a stacktrace (see `child coroutine 1 header`) 
 
 An example coroutine header:
 
-```
+```TEXT
 -[x5 of] "my task":StandaloneCoroutine{Active}, state: SUSPENDED [ComponentManager(ApplicationImpl@xxxxxxxx), Dispatchers.EDT]
 ```
 
 Its format is as follows:
 
-```
+```TEXT
 -[xN of] "name":CoroutineClass{JobState}, state: STATE [context]
 ```
 

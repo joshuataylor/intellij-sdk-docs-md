@@ -80,7 +80,7 @@ Consistent text styles are used to standardize references and keywords:
 
 * Menu paths are wrapped using `<ui-path>` with pipe characters separating each level: `<ui-path>Settings | Editor</ui-path>`: `Settings | Editor` Inside tables, use `&#124;` instead of `|` to prevent escaping problems.
 
-* User interface element names like labels, buttons, checkboxes, etc. are wrapped using `<control>`: `Press <control>Continue</continue>`: Press Continue
+* User interface element names like labels, buttons, checkboxes, etc. are wrapped using `<control>`: `Press <control>Continue</control>`: Press Continue
 
 * Non-code keywords and quotations, or the names of non-code files are formatted as italic style: _Theme_ (Theme), _README.md_ (README.md.) Examples of this file type include LICENSE.txt and README.md.
 
@@ -172,7 +172,7 @@ Source code is represented by using code fences, which are three backticks.
 
 Syntax highlighting is applied by specifying the language after the first set of ticks:
 
-```
+```MD
 ```xml
 <tagName attribute="value">XML Text</tagName>
 ```
@@ -294,7 +294,7 @@ SVG:
 
 For SVG images, use this notation:
 
-```
+```MD
 ![Alt text](image.svg){thumbnail-same-file="true"}
 ```
 

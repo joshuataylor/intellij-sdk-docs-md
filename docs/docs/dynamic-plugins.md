@@ -110,7 +110,7 @@ Procedure: Finding leaks preventing unload
 When steps 1 and 2 are completed, the log will contain more information about the memory leak.
 For example, the following shows a chain of field references that is keeping the class loader in memory:
 
-```
+```TEXT
 2020-12-26 14:43:24,563 [ 251086]   INFO - lij.ide.plugins.DynamicPlugins - Snapshot analysis result: Root 1:
   ROOT: Global JNI
   sun.awt.X11.XInputMethod.clientComponentWindow

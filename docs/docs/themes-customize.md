@@ -16,7 +16,7 @@ Note: Theme Plugin Sample
 
 To see a full example theme project, see the [Theme Basics](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/theme_basics) in IntelliJ SDK Code Samples.
 
-## Introduction to Theme Description File Syntax
+## Theme Description File Syntax
 
 The syntax of a Theme description file follows the JSON open-standard file format of key-value pairs.
 The minimum valid default file is the output of the [DevKit Theme Wizard](creating-theme-project.html).

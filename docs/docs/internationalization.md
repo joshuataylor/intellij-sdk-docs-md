@@ -181,7 +181,7 @@ Using `&` in Messages
 The `&` symbol in message bundles is used to specify [mnemonic](mnemonics.html) characters for buttons and labels.
 To use `&` in a value, escape it by a backslash (note that you also need to escape the backslash symbol):
 
-```
+```PROPERTIES
 section.title=Drag \\\& Drop
 ```
 
@@ -190,7 +190,7 @@ section.title=Drag \\\& Drop
 To wrap a long value in a message bundle, put a backslash at the end of the line, and continue the value on the next line with an indent.
 Starting spaces on the next line are ignored, so if a space character is required before the word in the next line, add a space before the backslash:
 
-```
+```PROPERTIES
 key=very, very long \
   description
 ```
@@ -235,7 +235,7 @@ If an NLS string is not a simple literal but obtained as a concatenation of seve
 
 For example, to internationalize `"Delete Class " + className` add the following property:
 
-```
+```PROPERTIES
 title.delete.class=Delete Class {0}
 ```
 
@@ -272,7 +272,7 @@ The following example won't be translated correctly into the languages which use
 
 English messages:
 
-```
+```PROPERTIES
 dialog.title.add.0=Add {0}
 dialog.title.edit.0=Edit {0}
 dialog.title.name.0.1={0} ''{1}''
@@ -282,7 +282,7 @@ concept.dependency=Dependency
 
 Polish translations:
 
-```
+```PROPERTIES
 dialog.title.add.0=Dodaj {0}
 dialog.title.add.0=Edytuj {0}
 concept.library=Bibilioteka
@@ -318,11 +318,11 @@ If several localized strings (non-user input) are used to concatenate the string
 
 * Don't use the term at all: `"Preview " + term` → `"Preview"` The UI might still need a slight rework to be clear what will be previewed (consult the UX expert if possible).
 
-* In some cases, it might be correct to use the sentence concatenation: ``` guidelines.browser.tab.name={0} | IntelliJ Platform UI Guidelines google.docs.browser.tab.name={0} - Google Docs ```
+* In some cases, it might be correct to use the sentence concatenation: ```PROPERTIES guidelines.browser.tab.name={0} | IntelliJ Platform UI Guidelines google.docs.browser.tab.name={0} - Google Docs ```
 
 3. Provide the whole string for each context and term pair:
 
-```
+```PROPERTIES
 dialog.title.add.library=Add Library
 dialog.title.edit.library=Edit Library
 dialog.title.name.library.0=Library ''{0}''
@@ -347,7 +347,7 @@ and the rest specifies pairs of numbers and corresponding values separated by `|
 
 For example, for pattern:
 
-```
+```PROPERTIES
 title.selected.files=Selected {0,choice,1#File|2#Files}
 ```
 
@@ -361,7 +361,7 @@ The number before `#` characters does not specify the exact value but start of t
 The corresponding variant will be used if the argument is greater or equal to the number in this clause and less than the number in the next clause.
 For example, for pattern:
 
-```
+```PROPERTIES
 label.selected.files={0,choice,0#No files are|1#One file is|2#A few files are|10#Many files are} selected
 ```
 
@@ -370,14 +370,14 @@ the expression `message("label.selected.files", 6)` will evaluate to `"A few fil
 If an argument is referred in one of the choice's variants, it becomes a message pattern itself, and this adds additional layer of escaping of single quotes, so to add `'` character in such a variant, add: `''''`.
 For example, below is the correct sentence:
 
-```
+```PROPERTIES
 warning.message={0,choice,1#One person doesn''t|2#{0} people don''''t} like MessageFormat
 ```
 
 In some cases, the ordinal format can be useful.
 It adds an appropriate ending to numbers, so it turns into `1st`, `2nd`, `3rd`, `10th`, and so on:
 
-```
+```PROPERTIES
 parameter.cast.fix=Cast {0,number,ordinal} parameter to {1}
 ```
 

@@ -133,13 +133,13 @@ Provided `version`, `variant`, and `architecture` parameters along with the `exp
 
 To correctly understand the pattern, refer to the archive names in format:
 
-```
+```TEXT
 jbr_[prefix]-[jdk]-[os]-[arch]-b[build].tar.gz
 ```
 
 e.g.:
 
-```
+```TEXT
 jbr_jcef-21.0.3-osx-aarch64-b446.1.tar.gz
 ```
 

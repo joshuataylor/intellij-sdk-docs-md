@@ -159,7 +159,7 @@ To achieve that, the [gradle-idea-ext-plugin](https://github.com/JetBrains/gradl
 
 Unfortunately, this entry remains even after disabling the `org.jetbrains.intellij` plugin in a project – the [setupDependencies](tools-gradle-intellij-plugin.html#tasks-setupdependencies) task won't be resolved appropriately, which produces the following exception:
 
-```
+```TEXT
 Task 'setupDependencies' not found in root project 'projectName'.
 ```
 
@@ -200,7 +200,7 @@ runPluginVerifier {
 
 The Gradle IntelliJ Plugin, when targeting the IntelliJ SDK `2022.1+`, uses the `PathClassLoader` class loader by the following system property:
 
-```
+```TEXT
 -Djava.system.class.loader=com.intellij.util.lang.PathClassLoader
 ```
 
@@ -256,7 +256,7 @@ Exception `SSLPeerUnverifiedException: peer not authenticated`
 
 When using Java `11.0.2` for building plugins, resolving dependencies (or making any other network requests) in Gradle IntelliJ Plugin fails due to the [JDK-8220723](https://bugs.openjdk.org/browse/JDK-8220723) issue with the following exception:
 
-```
+```TEXT
 Exception in thread "main" javax.net.ssl.SSLPeerUnverifiedException: peer not authenticated
 ```
 

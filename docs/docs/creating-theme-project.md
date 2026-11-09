@@ -42,7 +42,7 @@ end title
 
 * `pluginIcon.svg` file that is a [plugin logo](plugin-icon-file.html) Replace it with a custom logo representing the Theme.
 
-* `my_theme.theme.json` - a minimal [theme description file](themes-customize.html#introduction-to-theme-description-file-syntax)
+* `my_theme.theme.json` - a minimal [theme description file](themes-customize.html#theme-description-file-syntax)
 
 * `my_theme.iml` - [IntelliJ IDEA Module](https://www.jetbrains.com/help/idea/creating-and-managing-modules.html) configuration file
 

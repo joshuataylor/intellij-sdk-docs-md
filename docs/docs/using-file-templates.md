@@ -74,7 +74,7 @@ The new action should be registered under the `NewGroup` group, e.g:
 
 Action presentation texts should be added to the [resource bundle defined in plugin.xml](plugin-configuration-file.html#idea-plugin__resource-bundle) according to the rules described in [Localizing Actions and Groups](action-system.html#localizing-actions-and-groups):
 
-```
+```PROPERTIES
 action.Create.MyClass.text=My Class
 action.Create.MyClass.description=Creates new class
 ```

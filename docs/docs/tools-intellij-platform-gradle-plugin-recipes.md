@@ -34,7 +34,7 @@ intellijPlatformTesting.runIde {
 
 This will result in the following sandbox structure:
 
-```
+```TEXT
 build/
 ├── custom-sandbox
 │   ├── config
