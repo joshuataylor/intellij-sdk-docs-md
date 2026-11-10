@@ -8,7 +8,7 @@ The Find Usages action is a multi-step process, and each step of the process req
 
 The language plugin participates in the Find Usages process by registering an implementation of [FindUsagesProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/indexing-api/src/com/intellij/lang/findUsages/FindUsagesProvider.java) in
 the [com.intellij.lang.findUsagesProvider](https://jb.gg/ipe?extensions=com.intellij.lang.findUsagesProvider) extension point
-, and through the PSI implementation using [PsiNamedElement](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiNamedElement.java) and [PsiReference](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiReference.java) interfaces.
+, and through the PSI implementation using [PsiNamedElement](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiNamedElement.java) and [PsiReference](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiReference.java).
 
 Tip:
 
@@ -37,7 +37,7 @@ Examples:
 
 ## Grouping Results
 
-To have the title of the found element be correctly displayed in the title of the Find Usages tool window, provide an implementation of the [ElementDescriptionProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/ElementDescriptionProvider.java) interface.
+To have the title of the found element be correctly displayed in the title of the Find Usages tool window, provide an implementation of [ElementDescriptionProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/ElementDescriptionProvider.java).
 The [ElementDescriptionLocation](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/ElementDescriptionLocation.java) passed to the provider in this case will be an instance of [UsageViewLongNameLocation](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/usageView/src/com/intellij/usageView/UsageViewLongNameLocation.java).
 
 Example:

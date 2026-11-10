@@ -78,7 +78,7 @@ tasks.register('myTask', MyTask) {
 }
 ```
 
-As soon as the registered task inherits from the `*Aware` interface, such as [IntelliJPlatformVersionAware](tools-intellij-platform-gradle-plugin-task-awares.html#IntelliJPlatformVersionAware), all the related information will be injected during the configuration phase.
+As soon as the registered task inherits from a `*Aware` interface, such as [IntelliJPlatformVersionAware](tools-intellij-platform-gradle-plugin-task-awares.html#IntelliJPlatformVersionAware), all the related information will be injected during the configuration phase.
 
 ## Bundle additional files with the plugin
 

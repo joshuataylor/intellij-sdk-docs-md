@@ -10,7 +10,7 @@ Their two main applications inside the IntelliJ Platform are:
 
 2. Specifying PSI elements that provide further references via [a PSI reference contributor](psi-references.html#contributed-references).
 
-However, plugin authors rarely implement the [ElementPattern](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/patterns/ElementPattern.java) interface directly.
+However, plugin authors rarely implement [ElementPattern](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/patterns/ElementPattern.java) directly.
 Instead, use the high-level pattern classes provided by the IntelliJ Platform:
 
 | Class |Main Contents |Notable Examples |
@@ -99,7 +99,7 @@ Note that finding an identifiable part of a pattern can be achieved by setting a
 
 ### Debugging Example
 
-In the Markdown code example from above, the `MarkdownLinkDestinationImpl` class is used in the element pattern.
+In the Markdown code example from above, `MarkdownLinkDestinationImpl` is used in the element pattern.
 Now, set a breakpoint at:
 
 ```TEXT

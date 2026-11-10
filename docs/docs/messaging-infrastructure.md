@@ -18,7 +18,7 @@ The following sections describe the main components of the messaging API:
 
 ### Topic
 
-The [Topic](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/extensions/src/com/intellij/util/messages/Topic.java) class serves as an endpoint at the messaging infrastructure.
+[Topic](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/extensions/src/com/intellij/util/messages/Topic.java) serves as an endpoint at the messaging infrastructure.
 Clients are allowed to subscribe to a specific topic within a bus and send messages to that topic within that particular bus.
 To clarify the corresponding message bus, a `Topic` field declaration should be annotated with `@Topic.AppLevel` and/or `@Topic.ProjectLevel`.
 
@@ -90,7 +90,7 @@ Publisher --> Publish
 
 ### Connection
 
-Connection is represented by [MessageBusConnection](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/extensions/src/com/intellij/util/messages/MessageBusConnection.kt) class and manages all subscriptions for a particular client within a particular bus.
+Connection is represented by [MessageBusConnection](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/extensions/src/com/intellij/util/messages/MessageBusConnection.kt) and manages all subscriptions for a particular client within a particular bus.
 
 ```PLANTUML
 @startuml

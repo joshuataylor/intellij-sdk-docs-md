@@ -37,7 +37,7 @@ If the cursor is located at argument `a`, extending the selection would first se
 However, an intermediate step selecting the list of all arguments might be useful.
 This can be achieved by implementing this EP in the following way:
 
-1. Create a class that implements the `ExtendWordSelectionHandler` interface and register it in a [com.intellij.extendWordSelectionHandler](https://jb.gg/ipe?extensions=com.intellij.extendWordSelectionHandler) extension point
+1. Create a class that implements `ExtendWordSelectionHandler` and register it in a [com.intellij.extendWordSelectionHandler](https://jb.gg/ipe?extensions=com.intellij.extendWordSelectionHandler) extension point
 in the `plugin.xml`.
 
 2. The `canSelect(PsiElement)` method should return `true` for the function call node.

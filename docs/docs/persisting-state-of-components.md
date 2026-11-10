@@ -16,11 +16,11 @@ For persisting sensitive data like passwords, see [Persisting Sensitive Data](pe
 
 Using `PersistentStateComponent`
 
-The [PersistentStateComponent](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/projectModel-api/src/com/intellij/openapi/components/PersistentStateComponent.java) interface allows for persisting state classes and gives the most flexibility for defining the values to be persisted, their format, and storage location.
+[PersistentStateComponent](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/projectModel-api/src/com/intellij/openapi/components/PersistentStateComponent.java) allows for persisting state classes and gives the most flexibility for defining the values to be persisted, their format, and storage location.
 
 To use it:
 
-* mark a [service](plugin-services.html) (project or application-level service for storing project or application data, respectively) as implementing the `PersistentStateComponent` interface
+* mark a [service](plugin-services.html) (project or application-level service for storing project or application data, respectively) as implementing `PersistentStateComponent`
 
 * define the state class
 
@@ -101,7 +101,7 @@ The state class can either be a separate class or the class implementing `Persis
 
 #### Persistent Component with Separate State Class
 
-In this case, the state class instance is typically stored as a field in the `PersistentStateComponent` class.
+In this case, the state class instance is typically stored as a field in the `PersistentStateComponent` implementation.
 When the state is loaded from the storage, it is assigned to the state field (see `loadState()`):
 
 ```JAVA
@@ -213,7 +213,7 @@ class State {
 
 ### Defining the Storage Location
 
-To specify where precisely the persisted values are stored, add the `@State` annotation to the `PersistentStateComponent` class.
+To specify where precisely the persisted values are stored, add the `@State` annotation to the `PersistentStateComponent` implementation.
 
 It has the following fields:
 
@@ -576,10 +576,10 @@ Project-level values are stored in the project’s `.idea/workspace.xml` file, w
 
 Legacy API (`JDOMExternalizable`)
 
-Older components use the [JDOMExternalizable](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/util/src/com/intellij/openapi/util/JDOMExternalizable.java) interface for persisting state.
+Older components use [JDOMExternalizable](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/util/src/com/intellij/openapi/util/JDOMExternalizable.java) for persisting state.
 It uses the `readExternal()` method for reading the state from a JDOM element, and `writeExternal()` to write the state.
 
-Implementations can manually store the state in attributes and sub-elements or use the [DefaultJDOMExternalizer](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/util/src/com/intellij/openapi/util/DefaultJDOMExternalizer.java) class to store the values of all public fields automatically.
+Implementations can manually store the state in attributes and sub-elements or use [DefaultJDOMExternalizer](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/util/src/com/intellij/openapi/util/DefaultJDOMExternalizer.java) to store the values of all public fields automatically.
 
 Components save their state in the following files:
 

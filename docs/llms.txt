@@ -531,7 +531,7 @@ In-paragraph code fragments and IntelliJ Platform APIs are formatted according t
 
 #### Code
 
-* Avoid using qualifiers like "`Foo` interface" or "`Foo` abstract class". Instead, refer to `Foo`.
+* Omit qualifiers like "`Foo` interface" or "`Foo` class" by default and refer to `Foo`. Keep a qualifier only when the kind matters to the reader (for example, an abstract class that must be extended, or an enum whose values follow) or when the bare name would read as an ordinary word (for example, "the `Test` class").
 
 * The FQN is used for the first reference to an interface, class, or package on a page. Rather than `AnAction`, introduce it as `com.intellij.openapi.actionSystem.AnAction`. Later references on the page can be `AnAction`. Exception: the FQN is not used with a GitHub [link](#links).
 
@@ -1107,7 +1107,7 @@ and visit
 Minor Changes and Additions
 : * Document registering [color settings pages](syntax-highlighting-and-error-highlighting.html#registering-a-color-settings-page) with the declarative `com.intellij.colorSettings` extension point available since 2026.3.
 
-* Document the [beta](settings-guide.html#table-of-attributes) attribute of settings declarations, which replaces the deprecated `Configurable.Beta` interface.
+* Document the [beta](settings-guide.html#table-of-attributes) attribute of settings declarations, which replaces the deprecated `Configurable.Beta`.
 
 ### October
 
@@ -5592,7 +5592,7 @@ The `topic` attribute specifies the listener interface corresponding to the type
 Usually, this is the interface used as the type parameter of the [Topic](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/extensions/src/com/intellij/util/messages/Topic.java) instance for the type of events.
 The `class` attribute specifies the class in the plugin that implements the listener interface and receives the events.
 
-As a specific example, to receive events about all [Virtual File System](virtual-file-system.html) changes, implement the `BulkFileListener` interface, corresponding to the topic `VirtualFileManager.VFS_CHANGES`.
+As a specific example, to receive events about all [Virtual File System](virtual-file-system.html) changes, implement `BulkFileListener`, corresponding to the topic `VirtualFileManager.VFS_CHANGES`.
 To subscribe to this topic from code, use something like the following snippet:
 
 ```JAVA
@@ -5880,7 +5880,7 @@ To manage some state or logic that is only necessary when the user performs a sp
 
 ### Persisting State
 
-To store the state of a plugin at the application or project level, use a [Service](plugin-services.html) and implement the `PersistentStateComponent` interface.
+To store the state of a plugin at the application or project level, use a [Service](plugin-services.html) and implement `PersistentStateComponent`.
 See [Persisting State of Components](persisting-state-of-components.html) for details.
 
 ### Subscribing to Events
@@ -5931,7 +5931,7 @@ See also [Running Tasks Once](ide-infrastructure.html#running-tasks-once).
 
 ### Project and Application Close
 
-To execute code on project closing or application shutdown, implement the [Disposable](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/util/src/com/intellij/openapi/Disposable.java) interface in a [Service](plugin-services.html) and place the code in the `dispose()` method.
+To execute code on project closing or application shutdown, implement [Disposable](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/util/src/com/intellij/openapi/Disposable.java) in a [Service](plugin-services.html) and place the code in the `dispose()` method.
 Alternatively, use `Disposer.register()` passing a `Project` or `Application` service instance as the `parent` argument (see [Choosing a Disposable Parent](disposers.html#choosing-a-disposable-parent)).
 
 
@@ -8286,7 +8286,7 @@ The `Disposer` supports chaining `Disposable` objects in parent-child relationsh
 
 ## Automatically Disposed Objects
 
-Many objects are disposed automatically by the platform if they implement the `Disposable` interface.
+Many objects are disposed automatically by the platform if they implement `Disposable`.
 The most important type of such objects is [services](plugin-services.html).
 The platform automatically disposes application-level services when the IDE is closed or the plugin providing the service is unloaded.
 Project-level services are disposed on project close or plugin unload events.
@@ -8357,7 +8357,7 @@ projectServices -- projectService2
 
 When My Project is closed and its disposal is triggered by the platform, the Disposer API will dispose My Listener and My Alarm before My Project, and Project Service A and Project Service B before Services of My Project.
 
-See [The Disposable Interface](#implementing-the-disposable-interface) for more information about creating `Disposable` classes.
+See [Implementing Disposable](#implementing-disposable) for more information about creating `Disposable` implementations.
 
 Registering a disposable is performed by calling `Disposer.register()`:
 
@@ -8462,9 +8462,9 @@ This method handles recursively disposing of all the `Disposable` child descenda
 
 ## 
 
-Implementing the `Disposable` Interface
+Implementing `Disposable`
 
-Creating a class requires implementing the `Disposable` interface and defining the `dispose()` method.
+Creating a class requires implementing `Disposable` and defining the `dispose()` method.
 
 In many cases, when the object implements `Disposable` only to be used as a parent disposable, the method's implementation will be completely empty.
 
@@ -10792,7 +10792,7 @@ The following sections describe the main components of the messaging API:
 
 ### Topic
 
-The [Topic](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/extensions/src/com/intellij/util/messages/Topic.java) class serves as an endpoint at the messaging infrastructure.
+[Topic](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/extensions/src/com/intellij/util/messages/Topic.java) serves as an endpoint at the messaging infrastructure.
 Clients are allowed to subscribe to a specific topic within a bus and send messages to that topic within that particular bus.
 To clarify the corresponding message bus, a `Topic` field declaration should be annotated with `@Topic.AppLevel` and/or `@Topic.ProjectLevel`.
 
@@ -10864,7 +10864,7 @@ Publisher --> Publish
 
 ### Connection
 
-Connection is represented by [MessageBusConnection](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/extensions/src/com/intellij/util/messages/MessageBusConnection.kt) class and manages all subscriptions for a particular client within a particular bus.
+Connection is represented by [MessageBusConnection](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/extensions/src/com/intellij/util/messages/MessageBusConnection.kt) and manages all subscriptions for a particular client within a particular bus.
 
 ```PLANTUML
 @startuml
@@ -11863,7 +11863,7 @@ There's also a DSL-like API via [DialogBuilder](https://github.com/JetBrains/int
 
 ### Usage
 
-When using the [DialogWrapper](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/openapi/ui/DialogWrapper.java) class for a dialog, follow these required steps:
+When using [DialogWrapper](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/openapi/ui/DialogWrapper.java) for a dialog, follow these required steps:
 
 * Call the base class constructor and provide either a `Project` in the frame of which the dialog will be displayed, or a parent component for the dialog.
 
@@ -11884,7 +11884,7 @@ Optionally:
 #### Dialog Content
 
 Use [Kotlin UI DSL](kotlin-ui-dsl-version-2.html) to provide the dialog's contents (see [samples](#kotlin)).
-Alternatively or when using Java, the `DialogWrapper` class can be used together with [GUI Designer forms](https://www.jetbrains.com/help/idea/gui-designer-basics.html).
+Alternatively or when using Java, `DialogWrapper` can be used together with [GUI Designer forms](https://www.jetbrains.com/help/idea/gui-designer-basics.html).
 In this case, bind a GUI Designer form to the class extending `DialogWrapper`, bind the top-level panel of the form to a field, and return that field from the `createCenterPanel()` method.
 
 Tip:
@@ -12157,7 +12157,7 @@ Registers callbacks that will be called from `DialogPanel.apply()`/`reset()`/`is
 
 `Row`
 
-Every row is represented by the [Row](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/ui/dsl/builder/Row.kt) interface.
+Every row is represented by [Row](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/ui/dsl/builder/Row.kt).
 It contains all available factory methods for creating components (like `button()`, `label()`, `textField()`, etc.) and methods for row configuration.
 
 ### 
@@ -12284,8 +12284,8 @@ For example, it is possible to create several columns by creating a row with sev
 
 `Cell`
 
-Every component in the UI DSL builder is wrapped into [Cell](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/ui/dsl/builder/Cell.kt) class.
-Standard components should not be created directly but with factory methods from [Row](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/ui/dsl/builder/Row.kt) class like `checkBox()`, `button()` and others because of additional functionality, e.g., `textField()` is configured with the column's width, radio buttons are placed into radio buttons groups.
+Every component in the UI DSL builder is wrapped into [Cell](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/ui/dsl/builder/Cell.kt).
+Standard components should not be created directly but with factory methods from [Row](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/ui/dsl/builder/Row.kt) like `checkBox()`, `button()` and others because of additional functionality, e.g., `textField()` is configured with the column's width, radio buttons are placed into radio buttons groups.
 
 ### 
 
@@ -12916,7 +12916,7 @@ Making use of these controls in a plugin ensures a consistent user experience be
 
 Popups can optionally display a title, are optionally movable and resizable (and support remembering their size), and can be nested (show another popup when an item is selected).
 
-The [JBPopupFactory](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/openapi/ui/popup/JBPopupFactory.java) interface creates popups that display different kinds of components, depending on specific needs.
+[JBPopupFactory](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/openapi/ui/popup/JBPopupFactory.java) creates popups that display different kinds of components, depending on specific needs.
 The most commonly used methods are:
 
 | Method |Description |
@@ -12998,7 +12998,7 @@ described in the [Dialogs](dialog-wrapper.html#input-validation) section.
 
 ## Editor Hints
 
-For actions invoked from the editor (such as refactorings, navigation actions, and different code insight features), the best way to notify the user about the inability to perform an action is to use the [HintManager](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/codeInsight/hint/HintManager.java) class.
+For actions invoked from the editor (such as refactorings, navigation actions, and different code insight features), the best way to notify the user about the inability to perform an action is to use [HintManager](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/codeInsight/hint/HintManager.java).
 
 Its method `showErrorHint()` displays a floating popup above the editor which is automatically hidden when the user starts performing another action in the editor.
 Other [HintManager](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/codeInsight/hint/HintManager.java) methods can be used for displaying other kinds of non-modal notification hints over an editor.
@@ -13283,7 +13283,7 @@ They are considered to be obsolete or too complex.
 
 * The `Notifications.Bus.notify` method can be replaced with the `notify` method on the `Notification` instance.
 
-* `NotificationsManager` is considered to be internal. Its methods should be replaced by the corresponding methods in the `Notification` class.
+* `NotificationsManager` is considered to be internal. Its methods should be replaced by the corresponding methods in `Notification`.
 
 ## Summary
 
@@ -13295,7 +13295,7 @@ They are considered to be obsolete or too complex.
 
 * Tool Window Notification visually points to the specific tool windows. The primary action is shown as a hyperlink. It is automatically dismissed on click or keypress.
 
-* Use the `Notification` class to create instances, its builder methods to configure, and the `notify` method to show a notification.
+* Use `Notification` to create instances, its builder methods to configure, and the `notify` method to show a notification.
 
 
 
@@ -13310,7 +13310,7 @@ This method has multiple overloads.
 The best method to use is the one which returns void and takes a callback receiving the list of selected files as a parameter.
 This is the only overload which will display a native file open dialog on macOS.
 
-The [FileChooserDescriptor](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/ide-core/src/com/intellij/openapi/fileChooser/FileChooserDescriptor.java) class controls which files can be selected.
+[FileChooserDescriptor](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/ide-core/src/com/intellij/openapi/fileChooser/FileChooserDescriptor.java) controls which files can be selected.
 The constructor parameters specify whether files and/or directories can be selected, and whether multiple selection is allowed (see [FileChooserDescriptorFactory](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/ide-core/src/com/intellij/openapi/fileChooser/FileChooserDescriptorFactory.java) for common variants).
 
 For more fine-grained control over the allowed selection, overload the `isFileSelectable()` method.
@@ -13325,8 +13325,8 @@ As an added bonus, this will enable filename completion when entering paths in t
 
 ### Via Tree
 
-An alternative UI for selecting files, which works best when the most common way of selecting a file is by typing its name, is available through the
-[TreeFileChooserFactory](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-api/src/com/intellij/ide/util/TreeFileChooserFactory.java) class.
+An alternative UI for selecting files, which works best when the most common way of selecting a file is by typing its name, is available through
+[TreeFileChooserFactory](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-api/src/com/intellij/ide/util/TreeFileChooserFactory.java).
 
 The dialog shown by this API has two tabs:
 
@@ -13338,10 +13338,10 @@ To show the dialog, call `showDialog()` on the chooser returned from `createFile
 
 ## Class and Package Choosers
 
-To offer the user a possibility to select a Java class, use the [TreeClassChooserFactory](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/java/openapi/src/com/intellij/ide/util/TreeClassChooserFactory.java) class.
+To offer the user a possibility to select a Java class, use [TreeClassChooserFactory](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/java/openapi/src/com/intellij/ide/util/TreeClassChooserFactory.java).
 Its different methods provide options to specify the scope from which the classes are taken, to restrict the choice to descendants of a specific class or implementations of an interface, and to include or exclude inner classes from the list.
 
-For choosing a Java package, use the [PackageChooserDialog](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/java/java-impl/src/com/intellij/ide/util/PackageChooserDialog.java) class.
+For choosing a Java package, use [PackageChooserDialog](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/java/java-impl/src/com/intellij/ide/util/PackageChooserDialog.java).
 
 Note:
 
@@ -13450,7 +13450,7 @@ EditorTextField editorTextField =
 `JBList` and `Tree`
 
 Instead of a standard [Swing JList](https://docs.oracle.com/en/java/javase/24/docs/api/java.desktop/javax/swing/JList.html) component,
-use the [JBList](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/ui/components/JBList.java) class as drop-in replacement.
+use [JBList](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/ui/components/JBList.java) as drop-in replacement.
 `JBList` supports the following additional features on top of `JList`:
 
 * Drawing a tooltip with complete text of an item if the item doesn't fit into the list box width.
@@ -13459,15 +13459,15 @@ use the [JBList](https://github.com/JetBrains/intellij-community/tree/idea/263.7
 
 * Drawing a busy icon in the top right corner of the list box to indicate that a background operation is being performed. This can be enabled by calling `setPaintBusy()`.
 
-Similarly, the [Tree](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/ui/treeStructure/Tree.java) class provides a replacement for the standard
-[Swing JTree](https://docs.oracle.com/en/java/javase/24/docs/api/java.desktop/javax/swing/JTree.html) class.
+Similarly, [Tree](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/ui/treeStructure/Tree.java) provides a replacement for the standard
+[Swing JTree](https://docs.oracle.com/en/java/javase/24/docs/api/java.desktop/javax/swing/JTree.html).
 In addition to the features of [JBList](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/ui/components/JBList.java), it supports wide selection painting (Mac style) and auto-scroll on drag & drop.
 
 ## 
 
 `ColoredListCellRenderer` and `ColoredTreeCellRenderer`
 
-To customize the presentation of items in a list box or a tree, use the [ColoredListCellRenderer](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/ui/ColoredListCellRenderer.java) or [ColoredTreeCellRenderer](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/ui/ColoredTreeCellRenderer.java) classes as the cell renderer.
+To customize the presentation of items in a list box or a tree, use [ColoredListCellRenderer](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/ui/ColoredListCellRenderer.java) or [ColoredTreeCellRenderer](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/ui/ColoredTreeCellRenderer.java) as the cell renderer.
 With these classes, you can compose the presentation out of multiple text fragments with different attributes by calling `append()` and set an optional icon for the item by calling `setIcon()`.
 The renderer automatically takes care of setting the correct text color for selected items and of many other platform-specific rendering details.
 
@@ -13486,13 +13486,13 @@ A function needs to be passed as `elementTextDelegate` to the [ListSpeedSearch](
 `ToolbarDecorator`
 
 A very common task in plugin development is showing a list or a tree where the user is allowed to add, remove, edit or reorder the items.
-The implementation of this task is greatly facilitated by the [ToolbarDecorator](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/ui/ToolbarDecorator.java) class.
+The implementation of this task is greatly facilitated by [ToolbarDecorator](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/ui/ToolbarDecorator.java).
 This class provides a toolbar with actions on items and automatically enables drag & drop reordering of items in list boxes if supported by the underlying list model.
 The position of the toolbar above or below the list depends on the platform under which the IDE is running.
 
 To use a toolbar decorator:
 
-* To support removing and reordering of items in a list box, make sure the list model implements the [EditableModel](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/util/ui/src/com/intellij/util/ui/EditableModel.java) interface. [CollectionListModel](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/util/ui/src/com/intellij/ui/CollectionListModel.java) is a handy model class that implements this interface.
+* To support removing and reordering of items in a list box, make sure the list model implements [EditableModel](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/util/ui/src/com/intellij/util/ui/EditableModel.java). [CollectionListModel](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/util/ui/src/com/intellij/ui/CollectionListModel.java) is a handy model class that implements this interface.
 
 * Call [ToolbarDecorator.createDecorator()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/ui/ToolbarDecorator.java) to create a decorator instance.
 
@@ -13639,7 +13639,7 @@ Refer to the [Notification Balloons](notification-balloons.html) topic for more 
 `JBSplitter`
 
 [JBSplitter](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/ui/JBSplitter.java) is a replacement for the standard
-[Swing JSplitPane](https://docs.oracle.com/en/java/javase/24/docs/api/java.desktop/javax/swing/JSplitPane.html) class.
+[Swing JSplitPane](https://docs.oracle.com/en/java/javase/24/docs/api/java.desktop/javax/swing/JSplitPane.html).
 Unlike some other JetBrains-enhanced Swing components, it is not a drop-in replacement and has a different API.
 However, to achieve a consistent user experience, it is recommended to use `JBSplitter` instead of the standard `JSplitPane`.
 
@@ -14183,10 +14183,10 @@ JCEF can be unsupported when:
 
 ### Browser
 
-JCEF browser is represented by the [JBCefBrowser](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/ui.jcef/jcef/JBCefBrowser.java) class.
+JCEF browser is represented by [JBCefBrowser](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/ui.jcef/jcef/JBCefBrowser.java).
 It is responsible for loading and rendering requested documents in the actual Chromium-based browser.
 
-JCEF browsers can be created either by using the `JBCefBrowser` class' constructors or via [JBCefBrowserBuilder](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/ui.jcef/jcef/JBCefBrowserBuilder.java).
+JCEF browsers can be created either by using `JBCefBrowser` constructors or via [JBCefBrowserBuilder](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/ui.jcef/jcef/JBCefBrowserBuilder.java).
 Use constructors in the cases when a browser with the default [client](#browser-client) and default options is enough.
 The builder approach allows using custom clients and configuring other options.
 
@@ -14382,7 +14382,7 @@ It should be used when transparent scrollbars or other advanced options are requ
 
 ### Disposing Resources
 
-`JBCefBrowser`, `JBCefClient`, and `JBCefJSQuery` classes implement [JBCefDisposable](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/ui.jcef/jcef/JBCefDisposable.java), which extends [Disposable](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/util/src/com/intellij/openapi/Disposable.java).
+`JBCefBrowser`, `JBCefClient`, and `JBCefJSQuery` implement [JBCefDisposable](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/ui.jcef/jcef/JBCefDisposable.java), which extends [Disposable](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/util/src/com/intellij/openapi/Disposable.java).
 It means that these classes should clean up their resources according to the rules described on the [Disposer and Disposable](disposers.html) page.
 
 For example, a custom `JBCefClient` with registered handlers should remove them in the `dispose()` method implementation.
@@ -14736,14 +14736,14 @@ The [Grouping Actions](grouping-actions-tutorial.html) tutorial demonstrates thr
 
 ## Action Implementation
 
-An action is a class derived from the abstract class [AnAction](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnAction.java) (see also [Useful Action Base Classes](#useful-action-base-classes) below).
+An action is a class derived from [AnAction](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnAction.java) (see also [Useful Action Base Classes](#useful-action-base-classes) below).
 The IntelliJ Platform calls methods of actions when a user interacts with a menu item or toolbar button.
 
 Warning: No fields allowed
 
 Classes based on `AnAction` must not have class fields of any kind.
-This is because an instance of `AnAction` class exists for the entire lifetime of the application.
-If the `AnAction` class uses a field to store data that has a shorter lifetime and doesn't clear this data promptly, the data leaks.
+This is because an instance of `AnAction` exists for the entire lifetime of the application.
+If an `AnAction` implementation uses a field to store data that has a shorter lifetime and doesn't clear this data promptly, the data leaks.
 For example, any `AnAction` data that exists only within the context of a `Project` causes the `Project` to be kept in memory after the user has closed it.
 
 Tip: Actions available during indexing
@@ -14798,7 +14798,7 @@ See [Overriding the AnAction.actionPerformed() Method](#overriding-the-anactiona
 
 #### Miscellaneous
 
-There are other methods to override in the `AnAction` class, such as changing the default `Presentation` object for the action.
+There are other methods to override in `AnAction`, such as changing the default `Presentation` object for the action.
 There is also a use case for overriding action constructors when registering them with dynamic action groups, demonstrated in the [Grouping Actions](grouping-actions-tutorial.html#adding-child-actions-to-the-dynamic-group) tutorial.
 
 ### 
@@ -15235,7 +15235,7 @@ Using the SDK code sample [action_basics](https://github.com/JetBrains/intellij-
 
 ## Creating a Custom Action
 
-Custom actions extend the abstract class [AnAction](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnAction.java).
+Custom actions extend [AnAction](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnAction.java).
 Classes that extend it should override `AnAction.update()` and must override `AnAction.actionPerformed()`.
 
 * The `update()` method implements the code that enables or disables an action.
@@ -15268,7 +15268,7 @@ public class PopupDialogAction extends AnAction {
 
 Warning:
 
-`AnAction` classes do not have class fields of any kind.
+`AnAction` implementations do not have class fields of any kind.
 This restriction prevents memory leaks.
 For more information about why, see [Action Implementation](action-system.html#action-implementation).
 
@@ -15586,10 +15586,10 @@ This condition is needed because the custom action group is added to an IntelliJ
 Extending `DefaultActionGroup`
 
 The [DefaultActionGroup](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/openapi/actionSystem/DefaultActionGroup.java) is an implementation of [ActionGroup](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/ActionGroup.java).
-The `DefaultActionGroup` class is used to add child actions and separators between them to a group.
+`DefaultActionGroup` is used to add child actions and separators between them to a group.
 This class is used if a set of actions belonging to the group does not change at runtime.
 
-As an example, extend `DefaultActionGroup` to create the `CustomDefaultActionGroup` class in the `action_basics` code sample:
+As an example, extend `DefaultActionGroup` to create `CustomDefaultActionGroup` in the `action_basics` code sample:
 
 ```JAVA
 public class CustomDefaultActionGroup extends DefaultActionGroup {
@@ -15702,7 +15702,7 @@ The set of actions in the `ActionGroup` is dynamically defined.
 ### Creating Variable Action Group
 
 To create a group of actions with a variable number of actions, extend `ActionGroup`.
-For example, as in the `action_basics` class [DynamicActionGroup](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/action_basics/src/main/java/org/intellij/sdk/action/DynamicActionGroup.java) code:
+For example, as in [DynamicActionGroup](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/action_basics/src/main/java/org/intellij/sdk/action/DynamicActionGroup.java) from the `action_basics` code sample:
 
 ```JAVA
 public class DynamicActionGroup extends ActionGroup {
@@ -15797,11 +15797,11 @@ For persisting sensitive data like passwords, see [Persisting Sensitive Data](pe
 
 Using `PersistentStateComponent`
 
-The [PersistentStateComponent](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/projectModel-api/src/com/intellij/openapi/components/PersistentStateComponent.java) interface allows for persisting state classes and gives the most flexibility for defining the values to be persisted, their format, and storage location.
+[PersistentStateComponent](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/projectModel-api/src/com/intellij/openapi/components/PersistentStateComponent.java) allows for persisting state classes and gives the most flexibility for defining the values to be persisted, their format, and storage location.
 
 To use it:
 
-* mark a [service](plugin-services.html) (project or application-level service for storing project or application data, respectively) as implementing the `PersistentStateComponent` interface
+* mark a [service](plugin-services.html) (project or application-level service for storing project or application data, respectively) as implementing `PersistentStateComponent`
 
 * define the state class
 
@@ -15882,7 +15882,7 @@ The state class can either be a separate class or the class implementing `Persis
 
 #### Persistent Component with Separate State Class
 
-In this case, the state class instance is typically stored as a field in the `PersistentStateComponent` class.
+In this case, the state class instance is typically stored as a field in the `PersistentStateComponent` implementation.
 When the state is loaded from the storage, it is assigned to the state field (see `loadState()`):
 
 ```JAVA
@@ -15994,7 +15994,7 @@ class State {
 
 ### Defining the Storage Location
 
-To specify where precisely the persisted values are stored, add the `@State` annotation to the `PersistentStateComponent` class.
+To specify where precisely the persisted values are stored, add the `@State` annotation to the `PersistentStateComponent` implementation.
 
 It has the following fields:
 
@@ -16357,10 +16357,10 @@ Project-level values are stored in the project’s `.idea/workspace.xml` file, w
 
 Legacy API (`JDOMExternalizable`)
 
-Older components use the [JDOMExternalizable](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/util/src/com/intellij/openapi/util/JDOMExternalizable.java) interface for persisting state.
+Older components use [JDOMExternalizable](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/util/src/com/intellij/openapi/util/JDOMExternalizable.java) for persisting state.
 It uses the `readExternal()` method for reading the state from a JDOM element, and `writeExternal()` to write the state.
 
-Implementations can manually store the state in attributes and sub-elements or use the [DefaultJDOMExternalizer](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/util/src/com/intellij/openapi/util/DefaultJDOMExternalizer.java) class to store the values of all public fields automatically.
+Implementations can manually store the state in attributes and sub-elements or use [DefaultJDOMExternalizer](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/util/src/com/intellij/openapi/util/DefaultJDOMExternalizer.java) to store the values of all public fields automatically.
 
 Components save their state in the following files:
 
@@ -17077,7 +17077,7 @@ See [Inspecting Settings](internal-ui-inspector.html#inspecting-settings) on how
 Custom Settings implementations are declared in the `[plugin.xml](plugin-configuration-file.html)` file using one of two extension points (EP), depending on the level of the Settings.
 Many [attributes](#settings-declaration-attributes) are shared between the EP declarations.
 
-Application and Project Settings typically provide an implementation based on the [Configurable](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/ide-core/src/com/intellij/openapi/options/Configurable.java) interface because they do not have runtime dependencies.
+Application and Project Settings typically provide an implementation based on [Configurable](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/ide-core/src/com/intellij/openapi/options/Configurable.java) because they do not have runtime dependencies.
 See [Implementations for Settings Extension Points](#implementations-for-settings-extension-points) for more information.
 
 Note:
@@ -17186,9 +17186,9 @@ Implementations for [com.intellij.applicationConfigurable](https://jb.gg/ipe?ext
 and [com.intellij.projectConfigurable](https://jb.gg/ipe?extensions=com.intellij.projectConfigurable) extension point
 can have one of two bases:
 
-* The [Configurable](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/ide-core/src/com/intellij/openapi/options/Configurable.java) interface, which provides a named configurable component with a Swing form. Most Settings providers are based on the `Configurable` interface or one of its sub- or supertypes.
+* [Configurable](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/ide-core/src/com/intellij/openapi/options/Configurable.java), which provides a named configurable component with a Swing form. Most Settings providers are based on `Configurable` or one of its sub- or supertypes.
 
-* The [ConfigurableProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/ide-core/src/com/intellij/openapi/options/ConfigurableProvider.java) class, which can hide a configurable component from the Settings dialog based on runtime conditions.
+* [ConfigurableProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/ide-core/src/com/intellij/openapi/options/ConfigurableProvider.java), which can hide a configurable component from the Settings dialog based on runtime conditions.
 
 ### 
 
@@ -17239,7 +17239,7 @@ Implementations based on `Configurable` can implement marker interfaces, which p
 `Configurable.NoScroll`
 : Do not add scroll bars to the form. By default, a plugin's Settings component is put into a scrollable pane.
 However, a Settings panel can have a `JTree`, which requires its own `JScrollPane`.
-So the `NoScroll` interface should be used to remove the outer `JScrollPane`.
+So `NoScroll` should be used to remove the outer `JScrollPane`.
 
 `Configurable.NoMargin`
 : Do not add an empty border to the form. By default, an empty border is added for a plugin's Settings component.
@@ -17270,7 +17270,7 @@ Existing implementations of `Configurable` in the IntelliJ Platform that can ser
 
 The `ConfigurableProvider` Class
 
-The [ConfigurableProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/ide-core/src/com/intellij/openapi/options/ConfigurableProvider.java) class only provides a `Configurable` implementation if its runtime conditions are met.
+[ConfigurableProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/ide-core/src/com/intellij/openapi/options/ConfigurableProvider.java) only provides a `Configurable` implementation if its runtime conditions are met.
 The IntelliJ Platform first calls the `ConfigurableProvider.canCreateConfigurable()`, which evaluates runtime conditions to determine if Settings changes make sense in the current context.
 If the Settings make sense to display, `canCreateConfigurable()` returns `true`.
 In that case the IntelliJ Platform calls `ConfigurableProvider.createConfigurable()`, which returns the `Configurable` instance for its Settings implementation.
@@ -17396,9 +17396,9 @@ For more information about creating Settings implementations, see [Implementatio
 
 ### Configurable Marker Interfaces
 
-The `Configurable.Composite` interface indicates a configurable component has child components.
+`Configurable.Composite` indicates a configurable component has child components.
 The preferred approach is to specify child components in the [EP declaration](#extension-points-for-parent-child-settings-relationships).
-Using the `Composite` interface incurs the penalty of loading child classes while building the tree of Settings Swing components.
+Using `Composite` incurs the penalty of loading child classes while building the tree of Settings Swing components.
 
 
 
@@ -17433,7 +17433,7 @@ classes for the settings example implemented in Kotlin with usage of [Kotlin UI 
 
 The `AppSettings` Class
 
-The `AppSettings` class persistently stores the custom Settings.
+`AppSettings` persistently stores the custom Settings.
 It is based on the [IntelliJ Platform Persistence Model](persisting-state-of-components.html#using-persistentstatecomponent).
 
 ### 
@@ -17614,7 +17614,7 @@ An explanation of this declaration can be found in [Declaring Application Settin
 
 Creating the `AppSettingsConfigurable` Implementation
 
-The `AppSettingsConfigurable` class implements [Configurable](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/ide-core/src/com/intellij/openapi/options/Configurable.java).
+`AppSettingsConfigurable` implements [Configurable](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/ide-core/src/com/intellij/openapi/options/Configurable.java).
 The class has one field to hold a reference to the `AppSettingsComponent`.
 
 ```JAVA
@@ -17682,7 +17682,7 @@ final class AppSettingsConfigurable implements Configurable {
 
 `AppSettingsConfigurable` Methods
 
-All the methods in this class are overrides of the methods in the `Configurable` interface.
+All the methods in this class are overrides of the methods in `Configurable`.
 Readers are encouraged to review the Javadoc comments for the `Configurable` methods.
 Also, review notes about [IntelliJ Platform Interactions](settings-guide.html#intellij-platform-interactions-with-configurable) with `Configurable` methods.
 
@@ -17913,7 +17913,7 @@ Use [ProjectLocator](https://github.com/JetBrains/intellij-community/tree/idea/2
 
 ## How do I extend VFS?
 
-To provide an alternative file system implementation (for example, an FTP file system), implement the [VirtualFileSystem](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/openapi/vfs/VirtualFileSystem.java) class (most likely, together with `VirtualFile`),
+To provide an alternative file system implementation (for example, an FTP file system), implement [VirtualFileSystem](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/openapi/vfs/VirtualFileSystem.java) (most likely, together with `VirtualFile`),
 and register the implementation via [com.intellij.virtualFileSystem](https://jb.gg/ipe?extensions=com.intellij.virtualFileSystem) extension point
 .
 
@@ -18175,7 +18175,7 @@ There are other ways to access an `Editor` instance:
 ### Getting a Caret Model and Selection
 
 After making sure a project is open, and an instance of the `Editor` is obtained, check if any selection is available.
-The [SelectionModel](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/openapi/editor/SelectionModel.java) interface is accessed from the `Editor` object.
+[SelectionModel](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/openapi/editor/SelectionModel.java) is accessed from the `Editor` object.
 Determining whether some text is selected is achieved by calling the `SelectionModel.hasSelection()` method.
 Here's how the `EditorIllustrationAction.update(AnActionEvent event)` method should look:
 
@@ -18214,7 +18214,7 @@ The model classes are located in the [editor](https://github.com/JetBrains/intel
 ## Safely Replacing Selected Text in the Document
 
 Based on the evaluation of conditions by `EditorIllustrationAction.update()`, the `EditorIllustrationAction` action menu item is visible.
-To make the menu item do something, the `EditorIllustrationAction` class must override the `AnAction.actionPerformed()` method.
+To make the menu item do something, `EditorIllustrationAction` must override the `AnAction.actionPerformed()` method.
 As explained below, this will require the `EditorIllustrationAction.actionPerformed()` method to:
 
 * Gain access to the document.
@@ -18223,7 +18223,7 @@ As explained below, this will require the `EditorIllustrationAction.actionPerfor
 
 * Safely replace the contents of the selection.
 
-Modifying the selected text requires an instance of the [Document](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/openapi/editor/Document.java) object, which is accessed from the `Editor` object.
+Modifying the selected text requires an instance of [Document](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/openapi/editor/Document.java), which is accessed from the `Editor` object.
 The [Document](documents.html) represents the contents of a text file loaded into memory and opened in an IntelliJ Platform-based IDE editor.
 An instance of the `Document` will be used later when a text replacement is performed.
 
@@ -18294,7 +18294,7 @@ For more information about creating action classes, see the [Action System](acti
 
 Caret Positions from the `CaretModel` and `Caret` Objects
 
-The properties of a caret can be accessed by obtaining an instance of the [CaretModel](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/openapi/editor/CaretModel.java) object.
+The properties of a caret can be accessed by obtaining an instance of [CaretModel](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/openapi/editor/CaretModel.java).
 As in the [Working with Text](working-with-text.html) tutorial, the `AnActionEvent` is used to get the `Editor` object.
 The `Editor` object provides access to the `CaretModel` object, as shown below:
 
@@ -18352,7 +18352,7 @@ This means that caret Logical Position is not changed by Code Folding:
 However, note that applying Code Folding does change the reported Visual Position of the caret even if the Logical Position stays constant.
 More about [Visual Position](#caret-visual-position) is discussed below.
 However, it's clear combinations of Code Folding and Soft Wrap means that one Logical Position of a caret could map to multiple Visual Positions.
-The `Editor` interface provides methods to work with a caret Logical and Visual Position, such as the method `Editor.logicalToVisualPosition()`.
+`Editor` provides methods to work with a caret Logical and Visual Position, such as the method `Editor.logicalToVisualPosition()`.
 
 ### Caret Visual Position
 
@@ -18402,10 +18402,10 @@ The Column Position of a caret is the boundary between two characters.
 A caret can be associated with either a preceding or succeeding character.
 The association is important in bidirectional text, where mapping from Logical Column Position to Visual Column Position is not continuous.
 
-As defined in the [LogicalPosition](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/openapi/editor/LogicalPosition.java) class, if a caret position is associated with a succeeding character it Leans Forward.
+As defined in [LogicalPosition](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/openapi/editor/LogicalPosition.java), if a caret position is associated with a succeeding character it Leans Forward.
 Otherwise, it is associated with the preceding character.
 
-As defined in the [VisualPosition](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/openapi/editor/VisualPosition.java) class, if a caret position is associated with a succeeding character it Leans Right.
+As defined in [VisualPosition](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/openapi/editor/VisualPosition.java), if a caret position is associated with a succeeding character it Leans Right.
 Otherwise, it is associated with the preceding character.
 
 #### Examples of Caret Lean
@@ -18576,9 +18576,9 @@ Acquiring the Correct `EditorActionHandler`
 
 When the `EditorHandlerIllustration.actionPerformed()` method clones the caret, it should use the appropriate IntelliJ Platform [EditorActionHandler](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/openapi/editor/actionSystem/EditorActionHandler.java).
 An instance of [EditorActionManager](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/openapi/editor/actionSystem/EditorActionManager.java) is required to get the correct `EditorActionHandler`.
-The `EditorActionManager` class provides a static method to do this.
+`EditorActionManager` provides a static method to do this.
 
-To request the correct `EditorActionHandler` from `EditorActionManager`, consult the [IdeActions](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/ide-core/src/com/intellij/openapi/actionSystem/IdeActions.java) interface for the correct constant to pass into the `EditorActionManager.getActionHandler()` method.
+To request the correct `EditorActionHandler` from `EditorActionManager`, consult [IdeActions](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/ide-core/src/com/intellij/openapi/actionSystem/IdeActions.java) for the correct constant to pass into the `EditorActionManager.getActionHandler()` method.
 For cloning a caret below the primary caret, the constant is `ACTION_EDITOR_CLONE_CARET_BELOW`.
 Based on that constant, the `EditorActionManager` returns an instance of [CloneCaretActionHandler](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-impl/src/com/intellij/openapi/editor/actions/CloneCaretActionHandler.java), a subclass of `EditorActionHandler`.
 
@@ -18615,7 +18615,7 @@ public class EditorHandlerIllustration extends AnAction {
 
 Creating a Custom `TypedActionHandler`
 
-The [TypedActionHandler](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/openapi/editor/actionSystem/TypedActionHandler.java) interface is the basis for classes that handle keystroke events from the editor.
+[TypedActionHandler](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/openapi/editor/actionSystem/TypedActionHandler.java) is the basis for classes that handle keystroke events from the editor.
 Custom implementations of the class are registered to handle editor keystroke events and receive a callback for each keystroke.
 The steps below explain how to use `TypedActionHandler` to customize the behavior of the editor when keystroke events are received.
 
@@ -18633,7 +18633,7 @@ This method is called every time a key is pressed when the Editor Tool Window ha
 
 In the following example, the `MyTypedHandler.execute()` method inserts "editor_basics\n" at the zero [caret Offset](coordinates-system.html#caret-offset) position when a keystroke event occurs.
 As explained in [Working with Text](working-with-text.html#safely-replacing-selected-text-in-the-document), safe modifications to the document must be in the context of a write action.
-So although a method on the `Document` interface does the `String` insertion, the write action ensures a stable context.
+So although a method of `Document` does the `String` insertion, the write action ensures a stable context.
 
 ```JAVA
 final class MyTypedHandler implements TypedActionHandler {
@@ -18653,10 +18653,10 @@ final class MyTypedHandler implements TypedActionHandler {
 Registering a Custom `TypedActionHandler`
 
 A custom implementation of `TypedActionHandler` must be registered to replace the existing typing handler to receive editor keystroke events.
-The registration is done through the [TypedAction](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/openapi/editor/actionSystem/TypedAction.java) class.
+The registration is done through [TypedAction](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/openapi/editor/actionSystem/TypedAction.java).
 
-As is shown in the snippet below, the `EditorActionManager` is used to get access to the `TypedAction` class.
-The method `TypedAction.setupHandler()` is used to register the custom `MyTypedHandler` class:
+As is shown in the snippet below, the `EditorActionManager` is used to get access to `TypedAction`.
+The method `TypedAction.setupHandler()` is used to register the custom `MyTypedHandler` implementation:
 
 ```JAVA
 public class EditorHandlerIllustration extends AnAction {
@@ -18668,8 +18668,8 @@ public class EditorHandlerIllustration extends AnAction {
 }
 ```
 
-Placing the registration code in the `EditorHandlerIllustration` class is somewhat arbitrary in the sense that the registration of `MyTypedHandler` has nothing to do with the `EditorHandlerIllustration` class.
-However, the `EditorHandlerIllustration` class is convenient because as an action it gets instantiated at application startup.
+Placing the registration code in `EditorHandlerIllustration` is somewhat arbitrary in the sense that the registration of `MyTypedHandler` has nothing to do with `EditorHandlerIllustration`.
+However, `EditorHandlerIllustration` is convenient because as an action it gets instantiated at application startup.
 On instantiation, the `static` block of code in `EditorHandlerIllustration` gets evaluated.
 In the `editor_basics` code sample, any of the `AnAction` derived classes would work for registering `MyTypedHandler`.
 
@@ -18714,7 +18714,7 @@ If the cursor is located at argument `a`, extending the selection would first se
 However, an intermediate step selecting the list of all arguments might be useful.
 This can be achieved by implementing this EP in the following way:
 
-1. Create a class that implements the `ExtendWordSelectionHandler` interface and register it in a [com.intellij.extendWordSelectionHandler](https://jb.gg/ipe?extensions=com.intellij.extendWordSelectionHandler) extension point
+1. Create a class that implements `ExtendWordSelectionHandler` and register it in a [com.intellij.extendWordSelectionHandler](https://jb.gg/ipe?extensions=com.intellij.extendWordSelectionHandler) extension point
 in the `plugin.xml`.
 
 2. The `canSelect(PsiElement)` method should return `true` for the function call node.
@@ -18920,7 +18920,7 @@ It is used by the `ProgramRunner.execute()` method.
 [RunContentBuilder](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/execution-impl/src/com/intellij/execution/runners/RunContentBuilder.java) is responsible for building the content of the Run or Debug tool window.
 The content is built by the `ProgramRunner` executing the process.
 
-[ExecutionResult](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/execution/src/com/intellij/execution/ExecutionResult.java) is prepared by `RunProfileState` class before execution and contains `ExecutionConsole` and `ProcessHandler`.
+[ExecutionResult](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/execution/src/com/intellij/execution/ExecutionResult.java) is prepared by `RunProfileState` before execution and contains `ExecutionConsole` and `ProcessHandler`.
 
 [ExecutionConsole](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/consoleView/src/com/intellij/execution/ui/ExecutionConsole.java) is a component displaying the result of executing the process.
 It can be a console, a test results view, or another similar component.
@@ -18966,9 +18966,9 @@ Example:
 
 The standard base class used as an implementation of `RunProfileState` is [CommandLineState](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/execution/src/com/intellij/execution/configurations/CommandLineState.java).
 It contains the logic for putting together a running process and a console into an `ExecutionResult` but doesn't know anything about how the process is actually started.
-For starting the process, it's recommended to use the [GeneralCommandLine](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-util-io/src/com/intellij/execution/configurations/GeneralCommandLine.java) class, which takes care of setting up the command line parameters and executing the process.
+For starting the process, it's recommended to use [GeneralCommandLine](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-util-io/src/com/intellij/execution/configurations/GeneralCommandLine.java), which takes care of setting up the command line parameters and executing the process.
 
-Alternatively, if the process is a JVM-based one, use the [JavaCommandLineState](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/java/execution/impl/src/com/intellij/execution/configurations/JavaCommandLineState.java) base class.
+Alternatively, if the process is a JVM-based one, extend [JavaCommandLineState](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/java/execution/impl/src/com/intellij/execution/configurations/JavaCommandLineState.java).
 It handles the JVM command line parameters and can take care of details like calculating the classpath for the JVM.
 Note that using this class requires a [dependency](plugin-dependencies.html) on the [Java Plugin](idea.html#java-plugin).
 
@@ -18988,7 +18988,7 @@ Alternatively, it can be handled with the following steps:
 
 2. `ConsoleView.attachToProcess()` attaches it to the output of a process.
 
-If the running process uses [ANSI escape codes to color its output](https://en.wikipedia.org/wiki/ANSI_escape_code#Colors), use the [ColoredProcessHandler](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-util-io/src/com/intellij/execution/process/ColoredProcessHandler.java) class to display the colors in the IDE console.
+If the running process uses [ANSI escape codes to color its output](https://en.wikipedia.org/wiki/ANSI_escape_code#Colors), use [ColoredProcessHandler](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-util-io/src/com/intellij/execution/process/ColoredProcessHandler.java) to display the colors in the IDE console.
 
 #### Console Filters
 
@@ -19045,7 +19045,7 @@ RunConfiguration -l|> RunProfile
 @enduml
 ```
 
-Run Configuration API (except `SettingsEditor` class, which is a class shared by many IntelliJ Platform APIs) is a part of the [Execution API](execution.html).
+Run Configuration API (except `SettingsEditor`, which is shared by many IntelliJ Platform APIs) is a part of the [Execution API](execution.html).
 
 ### 
 
@@ -19082,7 +19082,7 @@ Editing its template is also not available.
 
 `ConfigurationFactory`
 
-[ConfigurationFactory](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/execution/src/com/intellij/execution/configurations/ConfigurationFactory.java) classes are responsible for creating [run configuration](#runconfiguration) instances.
+[ConfigurationFactory](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/execution/src/com/intellij/execution/configurations/ConfigurationFactory.java) implementations are responsible for creating [run configuration](#runconfiguration) instances.
 The only method required to be implemented is `createTemplateConfiguration()`, which is called once for each project to create the run configuration template.
 The actual run configurations are created in the `createConfiguration()` method by cloning the template.
 
@@ -19138,9 +19138,9 @@ Example: [DemoSettingsEditor](https://github.com/JetBrains/intellij-sdk-code-sam
 
 Run configuration settings are persistent.
 They are stored in the file system and loaded back after the IDE restart.
-Persisting and loading settings are performed by `writeExternal()` and `readExternal()` methods of the `RunConfiguration` class correspondingly.
+Persisting and loading settings are performed by `writeExternal()` and `readExternal()` methods of `RunConfiguration` correspondingly.
 
-The actually stored configurations are represented by instances of the [RunnerAndConfigurationSettings](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/execution/src/com/intellij/execution/RunnerAndConfigurationSettings.java) class, which combines a run configuration with runner-specific settings and stores general run configuration flags and properties.
+The actually stored configurations are represented by instances of [RunnerAndConfigurationSettings](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/execution/src/com/intellij/execution/RunnerAndConfigurationSettings.java), which combines a run configuration with runner-specific settings and stores general run configuration flags and properties.
 
 ## Creating a Run Configuration Programmatically
 
@@ -19250,7 +19250,7 @@ Example: [ApplicationConfiguration.getConfigurationEditor()](https://github.com/
 ## Refactoring Support
 
 Some run configurations contain references to classes, files, or directories in their settings, and these settings usually need to be updated when the corresponding element is renamed or moved.
-To support that, a run configuration needs to implement the [RefactoringListenerProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/execution/src/com/intellij/execution/configurations/RefactoringListenerProvider.java) interface.
+To support that, a run configuration needs to implement [RefactoringListenerProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/execution/src/com/intellij/execution/configurations/RefactoringListenerProvider.java).
 
 The `RefactoringListenerProvider.getRefactoringElementListener()`'s implementation should check whether the refactored element is referred from the run configuration.
 If it is, return a [RefactoringElementListener](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/refactoring/listeners/RefactoringElementListener.java) that updates the run configuration according to the new name and location of the element.
@@ -19431,7 +19431,7 @@ To make the changes visible from the UI, implement a new run configuration.
 Note:
 
 In most of the cases it is sufficient derive a custom run configuration class from the [RunConfigurationBase](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/execution/src/com/intellij/execution/configurations/RunConfigurationBase.java).
-If implementing specific settings externalization rules and I/O behaviour is required, use [RunConfiguration](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/execution/src/com/intellij/execution/configurations/RunConfiguration.java) interface.
+If implementing specific settings externalization rules and I/O behaviour is required, use [RunConfiguration](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/execution/src/com/intellij/execution/configurations/RunConfiguration.java).
 
 ```JAVA
 public class DemoRunConfiguration extends RunConfigurationBase<DemoRunConfigurationOptions> {
@@ -20828,7 +20828,7 @@ Note that this method returns `null` if the file or directory does not belong to
 
 ### Checking Whether a File or Directory Is Related to the Project Libraries
 
-The [ProjectFileIndex](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/projectModel-api/src/com/intellij/openapi/roots/ProjectFileIndex.java) interface implements a number of methods to check whether the specified file belongs to the project library classes or library sources:
+[ProjectFileIndex](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/projectModel-api/src/com/intellij/openapi/roots/ProjectFileIndex.java) provides a number of methods to check whether the specified file belongs to the project library classes or library sources:
 
 * `isLibraryClassFile()`: Returns `true` if the specified `virtualFile` is a compiled class file.
 
@@ -21521,7 +21521,7 @@ in the `[plugin.xml](plugin-configuration-file.html)` configuration file.
 
 ## Create a Custom Module Builder
 
-Extend [ModuleBuilder](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-core/src/com/intellij/ide/util/projectWizard/ModuleBuilder.java) class to provide custom configuration.
+Extend [ModuleBuilder](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-core/src/com/intellij/ide/util/projectWizard/ModuleBuilder.java) to provide custom configuration.
 
 ```JAVA
 public class DemoModuleWizardStep extends ModuleBuilder {
@@ -21748,7 +21748,7 @@ Note that this feature requires a [dependency](plugin-dependencies.html) on the 
 
 ## Creating a New Framework
 
-In order to make a custom framework available and configurable for a project, the [FrameworkTypeEx](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/java/idea-ui/src/com/intellij/framework/FrameworkTypeEx.java) class needs to be extended, in this example to make the [DemoFramework](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/framework_basics/src/main/java/org/intellij/sdk/framework/DemoFramework.java) class.
+In order to make a custom framework available and configurable for a project, [FrameworkTypeEx](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/java/idea-ui/src/com/intellij/framework/FrameworkTypeEx.java) needs to be extended, in this example to make [DemoFramework](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/framework_basics/src/main/java/org/intellij/sdk/framework/DemoFramework.java).
 
 ```JAVA
 final class DemoFramework extends FrameworkTypeEx {
@@ -21959,7 +21959,7 @@ Use the `ModuleManager.getModules()` method.
 Order entries include SDK, libraries and other modules the module uses.
 In the IntelliJ IDEA UI, order entries for a module are shown on the Dependencies tab of the Project Structure dialog box.
 
-To explore the module dependencies, use the [OrderEnumerator](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/projectModel-api/src/com/intellij/openapi/roots/OrderEnumerator.java) class.
+To explore the module dependencies, use [OrderEnumerator](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/projectModel-api/src/com/intellij/openapi/roots/OrderEnumerator.java).
 
 The following code snippet illustrates how to get classpath (classes root of all dependencies) for a module:
 
@@ -22325,7 +22325,7 @@ Use `ModuleRootModificationUtil.addDependency(Module, Library)` from under a [wr
 
 ### Checking Belonging to a Library
 
-The [ProjectFileIndex](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/projectModel-api/src/com/intellij/openapi/roots/ProjectFileIndex.java) interface implements a number of methods that can be used to check whether the specified file belongs to the project library classes or library sources.
+[ProjectFileIndex](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/projectModel-api/src/com/intellij/openapi/roots/ProjectFileIndex.java) provides a number of methods that can be used to check whether the specified file belongs to the project library classes or library sources.
 
 * To check if a specified virtual file is a compiled class file use ```KOTLIN ProjectFileIndex.isLibraryClassFile(virtualFile) ```
 
@@ -23845,7 +23845,7 @@ DataNode -- child3
 @enduml
 ```
 
-The `DataNode` class is just a holder for the target data (a data type is defined by the `Key`).
+`DataNode` is just a holder for the target data (a data type is defined by the `Key`).
 Multiple `DataNode` objects might be organized in a directed graph where every edge identifies parent-child relation.
 
 For example, a simple one-module project might look as below:
@@ -23932,7 +23932,7 @@ Describe the project's settings files to track by having external system [Extern
 Note:
 
 The `ExternalSystemAutoImportAware.getAffectedExternalProjectPath()` method is called quite often, that's why it's expected to return control as soon as possible.
-Helper `CachingExternalSystemAutoImportAware` class might be used for caching, i.e. `ExternalSystemManager` which implements `ExternalSystemAutoImportAware` can have a field like `new CachingExternalSystemAutoImportAware(new MyExternalSystemAutoImportAware())` and delegate `ExternalSystemAutoImportAware.getAffectedExternalProjectPath()` calls to it.
+`CachingExternalSystemAutoImportAware` helper might be used for caching, i.e. `ExternalSystemManager` which implements `ExternalSystemAutoImportAware` can have a field like `new CachingExternalSystemAutoImportAware(new MyExternalSystemAutoImportAware())` and delegate `ExternalSystemAutoImportAware.getAffectedExternalProjectPath()` calls to it.
 
 ### Auto-Import for Standalone External Systems
 
@@ -24008,7 +24008,7 @@ See [useful tools](explore-api.html#internalMode) on how to inspect the PSI stru
 
 A PSI (Program Structure Interface) file is the root of a structure representing a file's contents as a hierarchy of elements in a particular programming language.
 
-The [PsiFile](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiFile.java) class is the common base class for all PSI files, while files in a specific language are usually represented by its subclasses.  For example, the [PsiJavaFile](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/java/java-psi-api/src/com/intellij/psi/PsiJavaFile.java) class represents a Java file, and the [XmlFile](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/xml/xml-psi-api/src/com/intellij/psi/xml/XmlFile.java) class represents an XML file.
+[PsiFile](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiFile.java) is the common base class for all PSI files, while files in a specific language are usually represented by its subclasses.  For example, [PsiJavaFile](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/java/java-psi-api/src/com/intellij/psi/PsiJavaFile.java) represents a Java file, and [XmlFile](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/xml/xml-psi-api/src/com/intellij/psi/xml/XmlFile.java) represents an XML file.
 
 Unlike [Virtual Files](virtual-file.html) and [Documents](documents.html), which have application scope (even if multiple projects are open, each file is represented by the same
 [VirtualFile](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/openapi/vfs/VirtualFile.java) instance), PSI has [Project](project.html) scope:
@@ -24144,7 +24144,7 @@ A PSI element, in its turn, can have child PSI elements.
 PSI elements and operations at the level of individual PSI elements are used to explore the source code's internal structure as it is interpreted by the IntelliJ Platform.
 For example, PSI elements can be used to perform code analysis, such as [code inspections](https://www.jetbrains.com/help/idea/code-inspection.html) or [intention actions](https://www.jetbrains.com/idea/help/intention-actions.html).
 
-The [PsiElement](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiElement.java) class is the common base class for PSI elements.
+[PsiElement](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiElement.java) is the common base for PSI elements.
 
 Tip:
 
@@ -24253,7 +24253,7 @@ Note that `String message` is not a reference and cannot be resolved.
 Instead, it's a declaration.
 It does not refer to any name defined elsewhere; instead, it defines a name by itself.
 
-A reference is an instance of a class implementing the [PsiReference](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiReference.java) interface.
+A reference is an instance of [PsiReference](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiReference.java).
 Note that references are distinct from PSI elements.
 References created by a PSI element are returned from `PsiElement.getReferences()`, the underlying PSI element of a reference can be obtained from `PsiReference.getElement()`.
 
@@ -24311,7 +24311,7 @@ The second case is polyvariant references.
 Consider the case of a JavaScript program.
 JavaScript is a dynamically typed language, so the IDE cannot always precisely determine which method is being called at a particular location.
 To handle this, it provides a reference that can be resolved to multiple possible elements.
-Such references implement the [PsiPolyVariantReference](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiPolyVariantReference.java) interface.
+Such references implement [PsiPolyVariantReference](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiPolyVariantReference.java).
 
 To resolve a `PsiPolyVariantReference`, call its `multiResolve()` method.
 The call returns an array of [ResolveResult](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/ResolveResult.java) objects.
@@ -24355,7 +24355,7 @@ In most cases, the flow is:
 
 Most languages provide factory methods to create specific code constructs more easily, for example:
 
-* [PsiJavaParserFacade](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/java/java-psi-api/src/com/intellij/psi/PsiJavaParserFacade.java) class contains methods such as `createMethodFromText()`, which creates a Java method from the given text
+* [PsiJavaParserFacade](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/java/java-psi-api/src/com/intellij/psi/PsiJavaParserFacade.java) contains methods such as `createMethodFromText()`, which creates a Java method from the given text
 
 * [SimpleElementFactory.createProperty()](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/psi/SimpleElementFactory.java) creating a Simple language property
 
@@ -24828,7 +24828,7 @@ Please set system property `intellij.idea.indices.debug`/`intellij.idea.indices.
 
 ## Accessing a File-Based Index
 
-Access to file-based indexes is performed through the [FileBasedIndex](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/indexing-api/src/com/intellij/util/indexing/FileBasedIndex.java) class.
+Access to file-based indexes is performed through [FileBasedIndex](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/indexing-api/src/com/intellij/util/indexing/FileBasedIndex.java).
 
 Note:
 
@@ -24872,7 +24872,7 @@ The most useful indexes for plugin developers are:
 
 ### Word Index
 
-Generally, the word index should be accessed indirectly by using helper methods of the [PsiSearchHelper](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/indexing-api/src/com/intellij/psi/search/PsiSearchHelper.java) class.
+Generally, the word index should be accessed indirectly by using helper methods of [PsiSearchHelper](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/indexing-api/src/com/intellij/psi/search/PsiSearchHelper.java).
 
 ### File Name Index
 
@@ -24993,7 +24993,7 @@ Their two main applications inside the IntelliJ Platform are:
 
 2. Specifying PSI elements that provide further references via [a PSI reference contributor](psi-references.html#contributed-references).
 
-However, plugin authors rarely implement the [ElementPattern](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/patterns/ElementPattern.java) interface directly.
+However, plugin authors rarely implement [ElementPattern](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/patterns/ElementPattern.java) directly.
 Instead, use the high-level pattern classes provided by the IntelliJ Platform:
 
 | Class |Main Contents |Notable Examples |
@@ -25082,7 +25082,7 @@ Note that finding an identifiable part of a pattern can be achieved by setting a
 
 ### Debugging Example
 
-In the Markdown code example from above, the `MarkdownLinkDestinationImpl` class is used in the element pattern.
+In the Markdown code example from above, `MarkdownLinkDestinationImpl` is used in the element pattern.
 Now, set a breakpoint at:
 
 ```TEXT
@@ -25141,7 +25141,7 @@ Some known examples are:
 ## What about modifying PSI?
 
 UAST is a read-only API.
-There are experimental [UastCodeGenerationPlugin](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/uast/uast-common-ide/src/org/jetbrains/uast/generate/UastCodeGenerationPlugin.kt) and [JvmElementActionsFactory](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/java/java-analysis-api/src/com/intellij/lang/jvm/actions/JvmElementActionsFactory.kt) classes, but they are currently not recommended for external usage.
+[UastCodeGenerationPlugin](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/uast/uast-common-ide/src/org/jetbrains/uast/generate/UastCodeGenerationPlugin.kt) and [JvmElementActionsFactory](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/java/java-analysis-api/src/com/intellij/lang/jvm/actions/JvmElementActionsFactory.kt) are experimental and currently not recommended for external usage.
 
 ## Working with UAST
 
@@ -25153,7 +25153,7 @@ All these sub-interfaces provide methods to get the information about common syn
 
 ### PSI to UAST Conversion
 
-To obtain UAST for a given `PsiElement` of one of the supported languages, use [UastFacade](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/uast/uast-common/src/org/jetbrains/uast/UastContext.kt) class or [UastContextKt.toUElement()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/uast/uast-common/src/org/jetbrains/uast/UastContext.kt):
+To obtain UAST for a given `PsiElement` of one of the supported languages, use [UastFacade](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/uast/uast-common/src/org/jetbrains/uast/UastContext.kt) or [UastContextKt.toUElement()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/uast/uast-common/src/org/jetbrains/uast/UastContext.kt):
 
 Java:
 
@@ -25411,7 +25411,7 @@ interface Bar extends com.intellij.util.xml.DomElement {
 }
 ```
 
-Next, create a [DomFileDescription](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/xml/dom-openapi/src/com/intellij/util/xml/DomFileDescription.java) class, pass to its constructor the root tag name and root element interface.
+Next, create a [DomFileDescription](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/xml/dom-openapi/src/com/intellij/util/xml/DomFileDescription.java) implementation, pass to its constructor the root tag name and root element interface.
 Register it in `[plugin.xml](plugin-configuration-file.html)`
 using [com.intellij.dom.fileMetaData](https://jb.gg/ipe?extensions=com.intellij.dom.fileMetaData) extension point
 and specify `rootTagName` and `domVersion`/`stubVersion` attributes.
@@ -25478,7 +25478,7 @@ In such cases, change the type in methods to the required one, and everything wi
 #### Custom Value Types
 
 For even more exotic types, tell DOM how to deal with them.
-First, annotate the accessor methods with the `@Convert` annotation, and specify a custom class that should extend the `Converter<T>` class in the annotation.
+First, annotate the accessor methods with the `@Convert` annotation, and specify a custom class that should extend `Converter<T>` in the annotation.
 Here `T` is the exotic type, while `Converter<T>` is a thing that knows how to convert values between `String` and `T`.
 If the value cannot be converted (for example, "foo" is not convertible into `Integer`), the converter may return `null`.
 Please also note that the implementation should have a no-argument constructor.
@@ -25487,7 +25487,7 @@ Consider an interesting case when `T` represents an enum value.
 Usually, the converter just searches for enum elements with the names specified in XML.
 But sometimes, enum element names need to match values that are not valid Java identifiers.
 For example, the CMP version in EJB may be "1.x" or "2.x", but Java enum constants can't have such names.
-For such cases, let the enum implement `NamedEnum` interface, and then use any names for the enum elements.
+For such cases, let the enum implement `NamedEnum`, and then use any names for the enum elements.
 Now, just provide the `getValue()` implementation that will return the right value to match with XML contents, and voilà!
 In the example, the code will look as follows:
 
@@ -25562,7 +25562,7 @@ For example:
 GenericAttributeValue<PsiClass> getSomeClass();
 ```
 
-The [DomNameStrategy](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/xml/dom-openapi/src/com/intellij/util/xml/DomNameStrategy.java) interface specifies how to convert accessor names to XML element names.
+[DomNameStrategy](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/xml/dom-openapi/src/com/intellij/util/xml/DomNameStrategy.java) specifies how to convert accessor names to XML element names.
 Or more precisely, not the full accessor names, but rather the names minus any "get", "set" or "is" prefixes.
 The strategy class is specified in the `@NameStrategy` annotation in any DOM element interface.
 Then any descendants and children of this interface will use this strategy.
@@ -25721,10 +25721,10 @@ As an example, JSF Managed Beans may be of three types.
 If a `<managed-bean>` tag contains a `<map-entries>` sub-tag, then the Managed Bean type is `MapEntriesBean`.
 If it contains a `<list-entries>` sub-tag, then the type is `ListEntriesBean`.
 Otherwise, it's a `PropertyBean` (all three interfaces extend `ManagedBean`).
-And `List<ManagedBean> getManagedBeans()` should return not only a list where all elements are instances of the `ManagedBean` interface, but a list where each element is of a certain type, i.e. `MapEntriesBean`, `ListEntriesBean`, or `PropertyBean`.
+And `List<ManagedBean> getManagedBeans()` should return not only a list where all elements are instances of `ManagedBean`, but a list where each element is of a certain type, i.e. `MapEntriesBean`, `ListEntriesBean`, or `PropertyBean`.
 
 In such cases, one should decide which interface the DOM element should actually implement (according to the given tag).
-This is achieved by extending the [TypeChooser](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/xml/dom-openapi/src/com/intellij/util/xml/TypeChooser.java) abstract class:
+This is achieved by extending [TypeChooser](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/xml/dom-openapi/src/com/intellij/util/xml/TypeChooser.java):
 
 ```JAVA
 public abstract class TypeChooser {
@@ -25782,7 +25782,7 @@ Element validity is very important, since no methods can be invoked on invalid e
 
 DOM also has a kind of reflection, called "Generic Info".
 One would use it to be able to access children by tag names directly, instead of calling getter methods.
-See [DomGenericInfo](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/xml/dom-openapi/src/com/intellij/util/xml/reflect/DomGenericInfo.java) interface and `getGenericInfo()` methods in `DomElement` and `DomManager` for more information.
+See [DomGenericInfo](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/xml/dom-openapi/src/com/intellij/util/xml/reflect/DomGenericInfo.java) and `getGenericInfo()` methods in `DomElement` and `DomManager` for more information.
 There's also `DomElement.getXmlElementName()` method that returns the name of a corresponding tag or attribute.
 
 #### Presentation
@@ -25804,7 +25804,7 @@ DOM supports the following events: tag value changed, element defined/undefined/
 
 The DOM supports error checking and highlighting.
 It's based on annotations added to the DOM element in a special place (don't confuse these annotations with the ones of Java 5 - they are very different).
-Implement the [DomElementsAnnotator](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/xml/dom-openapi/src/com/intellij/util/xml/highlighting/DomElementsAnnotator.java) interface, override `DomFileDescription.createAnnotator()` method, and create this annotator there.
+Implement [DomElementsAnnotator](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/xml/dom-openapi/src/com/intellij/util/xml/highlighting/DomElementsAnnotator.java), override `DomFileDescription.createAnnotator()` method, and create this annotator there.
 In `DomElementsAnnotator.annotate(DomElement element, DomElementsProblemsHolder annotator)`, report all errors and warnings in the element's subtree to the annotator (`DomElementsProblemsHolder.createProblem()`).
 Return this annotator in the corresponding virtual method of the `DomFileDescription`.
 
@@ -25834,7 +25834,7 @@ Also, creating a new element that has required fixed-number or attribute childre
 
 ### Resolving
 
-Remember the interface `GenericDomValue<T>` and its sub-interface `GenericAttributeValue<T>`?
+Remember `GenericDomValue<T>` and its sub-interface `GenericAttributeValue<T>`?
 Remember, that ANY class may be passed as `T` - for example, `GenericDomValue<PsiClass>` can be interpreted as a reference to a class.
 Then it can always be considered as a reference to an object of class `T`!
 With strings or enums, this is not very useful, but the idea applies in another way.
@@ -25890,7 +25890,7 @@ As soon as that real element becomes invalid, the factory is called once more, a
 And so on...
 In the example with EJB, the factory would once again look for an Entity Bean named "SomeEntity".
 
-Stable DOM elements also implement the `StableElement` interface, which has the following methods:
+Stable DOM elements also implement `StableElement`, which has the following methods:
 
 * `DomElement getWrappedElement()` - just returns the current element to which all method calls are delegated;
 
@@ -25902,12 +25902,12 @@ Stable DOM elements also implement the `StableElement` interface, which has the 
 
 Visitor is a very common design pattern.
 DOM model also has a visitor, and it's called `DomElementVisitor`.
-The `DomElement` interface has methods `accept()` and `acceptChildren()` that take this visitor as a parameter.
-The `DomElementVisitor` interface itself may look surprising, since it has only one method: `visitDomElement(DomElement)`.
+`DomElement` has methods `accept()` and `acceptChildren()` that take this visitor as a parameter.
+`DomElementVisitor` itself may look surprising, since it has only one method: `visitDomElement(DomElement)`.
 Where is the visitor pattern?
 Where are all those methods with names like `visitT(T)` that are usually found in it?
 There are no such methods, because the actual interfaces (T's) aren't known to anyone except the plugin developer.
-But when instantiating the `DomElementVisitor` interface, add these `visitT()` methods there, and they will be called!
+But when instantiating `DomElementVisitor`, add these `visitT()` methods there, and they will be called!
 They can even be named just `visit()` with the parameter type specified, and everything will be fine.
 For example, for two DOM element classes - `Foo` and `Bar` - the visitor may look like this:
 
@@ -25981,7 +25981,7 @@ This API is unmaintained and will likely be removed in future versions.
 All forms that deal with DOM are organized in a special way.
 They support two main things: getting data from XML into the UI, and saving UI data to XML.
 The former is called resetting, the latter - committing.
-There's [Committable](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/xml/dom-openapi/src/com/intellij/util/xml/ui/Committable.java) interface that has corresponding methods: `commit()` and `reset()`.
+[Committable](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/xml/dom-openapi/src/com/intellij/util/xml/ui/Committable.java) has corresponding methods: `commit()` and `reset()`.
 There's also a way of structuring forms into smaller parts, namely the Composite pattern: [CompositeCommittable](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/xml/dom-openapi/src/com/intellij/util/xml/ui/CompositeCommittable.java).
 Methods `commit()` and `reset()` are invoked automatically on editor tab switch or undo.
 So it is enough to organize the whole Swing structure in a tree of `CompositeCommittable`, and the IDE will do all the hard work.
@@ -26005,7 +26005,7 @@ This method will be invoked inside the same write action as the main `commit()`,
 
 Simple controls allow editing `GenericDomValue`: simple text, class names, enums and boolean values.
 These controls take a special object as a constructor parameter.
-This object should implement the `DomWrapper` interface that knows how to set/get values to/from a DOM model.
+This object should implement `DomWrapper`, which knows how to set/get values to/from a DOM model.
 
 There are three major DomWrapper's: [DomFixedWrapper&lt;T&gt;](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/xml/dom-openapi/src/com/intellij/util/xml/ui/DomFixedWrapper.java) redirecting calls to
 [GenericDomValue&lt;T&gt;](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/xml/dom-openapi/src/com/intellij/util/xml/GenericDomValue.java),
@@ -26144,7 +26144,7 @@ To change this behavior, override `DomTableView.allowMultipleRowsSelection()`.
 ### UI Organization
 
 The easiest way to create a DOM-based UI form is to extend the
-[BasicDomElementComponent](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/xml/dom-openapi/src/com/intellij/util/xml/ui/BasicDomElementComponent.java) class.
+[BasicDomElementComponent](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/xml/dom-openapi/src/com/intellij/util/xml/ui/BasicDomElementComponent.java).
 This requires passing some DOM element to the constructor.
 Then bind an IntelliJ IDEA GUI Designer form to the subclass and design the form there.
 When binding some controls to DOM UI, ensure that they have the right types.
@@ -26315,7 +26315,7 @@ See the [Advanced Postfix Templates](advanced-postfix-templates.html) section fo
 
 All postfix templates must provide descriptions and examples showing the code before and after a template is expanded.
 The files describing the template must be placed in the plugin's `resources` in the `postfixTemplates/$TEMPLATE_NAME$` where the $TEMPLATE_NAME$ directory must match the simple name of the template class,
-e.g., for a template implemented in `com.example.IntroduceVariablePostfixTemplate` class, the directory name should be named as `IntroduceVariablePostfixTemplate`.
+e.g., for a template implemented in `com.example.IntroduceVariablePostfixTemplate`, the directory name should be named as `IntroduceVariablePostfixTemplate`.
 
 Providing the description explaining the template purpose and context details is achieved by creating the `description.html` file.
 
@@ -26584,7 +26584,7 @@ Implement `TemplateContextType`
 
 A [TemplateContextType](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/codeInsight/template/TemplateContextType.java) tells the IntelliJ Platform where the Live Template is applicable: Markdown files.
 Every context must have a unique `TemplateContextType` defined for it, and the Platform defines many context types out of the box.
-The `MarkdownContext` class defines it for Markdown files.
+`MarkdownContext` defines it for Markdown files.
 Ultimately, a file's extension determines the applicable Markdown context.
 
 ```JAVA
@@ -26874,7 +26874,7 @@ Three `TitleCaseMacro` methods are of particular interest:
 
 * The `TitleCaseMacro()` constructor passes the name and description of the macro to the parent constructor.
 
-* The `isAcceptableInContext()` method tests whether the macro is available in the current context. The test relies on the [MarkdownContext](providing-live-templates.html#implement-templatecontexttype) object previously defined in the `live_templates` plugin.
+* The `isAcceptableInContext()` method tests whether the macro is available in the current context. The test relies on [MarkdownContext](providing-live-templates.html#implement-templatecontexttype) previously defined in the `live_templates` plugin.
 
 * The `calculateResult()` method gets invoked when the titleCase function is used in a Live Template. The text to be capitalized is retrieved from the Live Template and converted to Title Case.
 
@@ -27313,9 +27313,9 @@ The [conditional_operator_intention](https://github.com/JetBrains/intellij-sdk-c
 
 * How to find a Java token of interest in the PSI tree.
 
-* How to invoke a quick-fix action for a token element under the cursor using the [PsiElementBaseIntentionAction](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-api/src/com/intellij/codeInsight/intention/PsiElementBaseIntentionAction.java) class.
+* How to invoke a quick-fix action for a token element under the cursor using [PsiElementBaseIntentionAction](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-api/src/com/intellij/codeInsight/intention/PsiElementBaseIntentionAction.java).
 
-* How to create a JUnit test for this plugin using the [IdeaTestFixtureFactory](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/testFramework/src/com/intellij/testFramework/fixtures/IdeaTestFixtureFactory.java) class.
+* How to create a JUnit test for this plugin using [IdeaTestFixtureFactory](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/testFramework/src/com/intellij/testFramework/fixtures/IdeaTestFixtureFactory.java).
 
 * How to add an intention description and before/after examples in the Settings dialog
 
@@ -27736,10 +27736,10 @@ If required, inspections can define all the attribute information (except `imple
 
 ### Inspection Implementation Java Class
 
-Inspection implementations for Java files, like [ComparingStringReferencesInspection](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/comparing_string_references_inspection/src/main/java/org/intellij/sdk/codeInspection/ComparingStringReferencesInspection.java), are often based on the Java class [AbstractBaseJavaLocalInspectionTool](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/java/java-analysis-api/src/com/intellij/codeInspection/AbstractBaseJavaLocalInspectionTool.java).
-The [AbstractBaseJavaLocalInspectionTool](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/java/java-analysis-api/src/com/intellij/codeInspection/AbstractBaseJavaLocalInspectionTool.java) base class offers methods to inspect Java classes, fields, and methods.
+Inspection implementations for Java files, like [ComparingStringReferencesInspection](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/comparing_string_references_inspection/src/main/java/org/intellij/sdk/codeInspection/ComparingStringReferencesInspection.java), are often based on [AbstractBaseJavaLocalInspectionTool](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/java/java-analysis-api/src/com/intellij/codeInspection/AbstractBaseJavaLocalInspectionTool.java).
+[AbstractBaseJavaLocalInspectionTool](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/java/java-analysis-api/src/com/intellij/codeInspection/AbstractBaseJavaLocalInspectionTool.java) offers methods to inspect Java classes, fields, and methods.
 
-More generally, `localInspection` types are based on the class [LocalInspectionTool](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/codeInspection/LocalInspectionTool.java).
+More generally, `localInspection` types are based on [LocalInspectionTool](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/codeInspection/LocalInspectionTool.java).
 Examining the class hierarchy for `LocalInspectionTool` shows that the IntelliJ Platform provides many child inspection classes for a variety of languages and frameworks.
 One of these classes is a good basis for a new inspection implementation, but a bespoke implementation can also be based directly on `LocalInspectionTool`.
 
@@ -27747,7 +27747,7 @@ The primary responsibilities of the inspection implementation class are to provi
 
 * A `PsiElementVisitor` object to traverse the PSI tree of the file being inspected.
 
-* A `LocalQuickFix` class to fix an identified problem (optional).
+* A `LocalQuickFix` implementation to fix an identified problem (optional).
 
 * An options panel to be displayed in the Inspections settings dialog (optional). See [Inspection Options](inspection-options.html) for more details.
 
@@ -27765,7 +27765,7 @@ The anonymous class overrides `visitBinaryExpression()`, which checks if a `PsiB
 The quick fix class acts much like an intention, allowing the user to invoke it on the `PsiElement` (or `TextRange`) highlighted by the inspection.
 
 The `ComparingStringReferencesInspection` implementation uses the nested class `ReplaceWithEqualsQuickFix` to implement a quick fix based on [LocalQuickFix](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/codeInspection/LocalQuickFix.java).
-The `ReplaceWithEqualsQuickFix` class allows the user to change the use of `a == b` and `a != b` expression to `a.equals(b)` and `!a.equals(b)` respectively.
+`ReplaceWithEqualsQuickFix` allows the user to change the use of `a == b` and `a != b` expression to `a.equals(b)` and `!a.equals(b)` respectively.
 
 The heavy lifting is done in `ReplaceWithEqualsQuickFix.applyFix()`, which manipulates the PSI tree to convert the expressions.
 The change to the PSI tree is accomplished by the usual approach to modification:
@@ -27844,7 +27844,7 @@ Please note that running the test requires setting system property `idea.home.pa
 The `comparing_string_references_inspection` code sample provides a test for the inspection.
 See the [Testing Overview](testing-plugins.html) section for general information about plugin testing.
 
-The `comparing_string_references_inspection` test is based on the [UsefulTestCase](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/testFramework/src/com/intellij/testFramework/UsefulTestCase.java) class, part of the JUnit framework APIs.
+The `comparing_string_references_inspection` test is based on [UsefulTestCase](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/testFramework/src/com/intellij/testFramework/UsefulTestCase.java), part of the JUnit framework APIs.
 This class handles much of the underlying boilerplate for tests.
 
 By convention, the folder `test/testData/` contains the test files.
@@ -27932,7 +27932,7 @@ for the full implementation context):
 
 * Checkbox, which value is bound to the boolean `ignoreNegations` field in the inspection class.
 
-The `OptPane` class exposes methods for building fields of other types, e.g., number or dropdown fields.
+`OptPane` exposes methods for building fields of other types, e.g., number or dropdown fields.
 
 Note that the bind identifiers passed as a first string argument of methods creating form controls contain injected references that resolve to the bound fields.
 It enables resolving and other resolve-related features available, making it easy to rename fields and minimizing the risk of introducing typos resulting in bugs, as unresolved references will be highlighted as errors.
@@ -28479,7 +28479,7 @@ In that case, extend the JPS model (use `JpsOsmorcModuleExtension` as a referenc
 
 If the compiler isn't involved in the compilation of an existing [BuildTarget](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/jps/jps-builders/src/org/jetbrains/jps/builders/BuildTarget.java), create a new implementation of `BuildTarget` and `BuildTargetType`.
 Also, register an implementation of [BuildTargetScopeProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/java/compiler/impl/src/com/intellij/compiler/impl/BuildTargetScopeProvider.java) extension on the IDE side to add required targets to the build scope.
-The builder implementation should extend either [TargetBuilder](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/jps/jps-builders/src/org/jetbrains/jps/incremental/TargetBuilder.java) or [ModuleLevelBuilder](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/jps/jps-builders/src/org/jetbrains/jps/incremental/ModuleLevelBuilder.java) class and should be created using [BuilderService](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/jps/jps-builders/src/org/jetbrains/jps/incremental/BuilderService.java) extension.
+The builder implementation should extend either [TargetBuilder](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/jps/jps-builders/src/org/jetbrains/jps/incremental/TargetBuilder.java) or [ModuleLevelBuilder](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/jps/jps-builders/src/org/jetbrains/jps/incremental/ModuleLevelBuilder.java) and should be created using [BuilderService](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/jps/jps-builders/src/org/jetbrains/jps/incremental/BuilderService.java) extension.
 
 
 
@@ -28568,7 +28568,7 @@ All required [test-framework dependencies](tools-intellij-platform-gradle-plugin
 
 With the former approach, use classes such as [BasePlatformTestCase](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/testFramework/src/com/intellij/testFramework/fixtures/BasePlatformTestCase.java).
 
-With the latter approach, use the [IdeaTestFixtureFactory](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/testFramework/src/com/intellij/testFramework/fixtures/IdeaTestFixtureFactory.java) class to create instances of fixtures for the test environment.
+With the latter approach, use [IdeaTestFixtureFactory](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/testFramework/src/com/intellij/testFramework/fixtures/IdeaTestFixtureFactory.java) to create instances of fixtures for the test environment.
 Call the fixture creation and setup methods from the test setup method used by the test framework.
 
 
@@ -28649,7 +28649,7 @@ See [How to test a JVM language?](testing-faq.html#how-to-test-a-jvm-language) o
 ### LightProjectDescriptor
 
 When writing a light test, it is possible to specify the requirements of the project used in test, such as the module type, the configured [SDK](sdk.html), [facets](facet.html), [libraries](library.html), etc.
-It is done by extending the [LightProjectDescriptor](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/testFramework/src/com/intellij/testFramework/LightProjectDescriptor.java) class and returning the project descriptor (usually stored in `static final` field) from `getProjectDescriptor()`.
+It is done by extending [LightProjectDescriptor](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/testFramework/src/com/intellij/testFramework/LightProjectDescriptor.java) and returning the project descriptor (usually stored in `static final` field) from `getProjectDescriptor()`.
 
 Before executing each test, the project instance will be reused if the test case returns the same project descriptor as the previous one or recreated if the descriptor is different (`equals() = false`).
 
@@ -30353,7 +30353,7 @@ To control file type association with the IDE in the operating system, implement
 The lexer, or [lexical analyzer](https://en.wikipedia.org/wiki/Lexical_analysis), defines how a file's contents are broken into tokens.
 The lexer serves as a foundation for nearly all features of custom language plugins, from basic syntax highlighting to advanced code analysis features.
 
-The API for the lexer is defined by the [Lexer](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/lexer/Lexer.java) interface.
+The API for the lexer is defined by [Lexer](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/lexer/Lexer.java).
 
 The IDE invokes the lexer in three main contexts, and the plugin can provide different lexer implementations if needed:
 
@@ -30401,7 +30401,7 @@ Examples:
 ## Token Types
 
 Types of tokens for lexers are defined by instances of [IElementType](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/tree/IElementType.java).
-Many token types common for all languages are defined in the [TokenType](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/TokenType.java) interface.
+Many token types common for all languages are defined in [TokenType](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/TokenType.java).
 Custom language plugins should reuse these token types wherever applicable.
 For all other token types, the plugin needs to create new [IElementType](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/tree/IElementType.java) instances and associate with the language in which the token type is used.
 The same [IElementType](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/tree/IElementType.java) instance should be returned every time a particular token type is encountered by the lexer.
@@ -30419,7 +30419,7 @@ Example:
 
 An important feature that can be implemented at the lexer level is mixing languages within a file, such as embedding fragments of Java code in some template language.
 Suppose a language supports embedding its fragments in another language.
-In that case, it needs to define the chameleon token types for different types of fragments that can be embedded, and these token types need to implement the [ILazyParseableElementType](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/tree/ILazyParseableElementType.java) interface.
+In that case, it needs to define the chameleon token types for different types of fragments that can be embedded, and these token types need to implement [ILazyParseableElementType](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/tree/ILazyParseableElementType.java).
 The enclosing language's lexer needs to return the entire fragment of the embedded language as a single chameleon token, of the type defined by the embedded language.
 To parse the contents of the chameleon token, the IDE will call the parser of the embedded language through a call to [ILazyParseableElementType.parseContents()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/tree/ILazyParseableElementType.java).
 
@@ -30430,17 +30430,17 @@ To parse the contents of the chameleon token, the IDE will call the parser of th
 Parsing files in IntelliJ Platform is a two-step process.
 
 First, an abstract syntax tree (AST) is built, defining the structure of the program.
-AST nodes are created internally by the IDE and are represented by instances of the [ASTNode](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/lang/ASTNode.java) class.
+AST nodes are created internally by the IDE and are represented by instances of [ASTNode](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/lang/ASTNode.java).
 Each AST node has an associated element type [IElementType](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/tree/IElementType.java) instance, and the element types are defined by the language plugin.
-The AST tree's top-level node for a file needs to have a special element type, which extends the [IFileElementType](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/tree/IFileElementType.java) class.
+The AST tree's top-level node for a file needs to have a special element type, which extends [IFileElementType](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/tree/IFileElementType.java).
 
 The AST nodes have a direct mapping to text ranges in the underlying document.
 The bottom-most nodes of the AST match individual tokens returned by the [lexer](implementing-lexer.html), and higher-level nodes match multiple-token fragments.
 Operations performed on nodes of the AST tree, such as inserting, removing, reordering nodes, and so on, are immediately reflected as changes to the underlying document's text.
 
 Second, a [Program Structure Interface (PSI)](psi.html) tree is built on top of the AST, adding semantics and methods for manipulating specific language constructs.
-Nodes of the PSI tree are represented by classes implementing the [PsiElement](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiElement.java) interface and are created by the language plugin in the [ParserDefinition.createElement()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/lang/ParserDefinition.java) method.
-The top-level node of the PSI tree for a file needs to implement the [PsiFile](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiFile.java) interface and is created in the [ParserDefinition.createFile()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/lang/ParserDefinition.java) method.
+Nodes of the PSI tree are represented by classes implementing [PsiElement](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiElement.java) and are created by the language plugin in the [ParserDefinition.createElement()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/lang/ParserDefinition.java) method.
+The top-level node of the PSI tree for a file needs to implement [PsiFile](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiFile.java) and is created in the [ParserDefinition.createFile()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/lang/ParserDefinition.java) method.
 
 Example:
 [ParserDefinition](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/plugins/properties/properties-common/src/com/intellij/lang/properties/parsing/PropertiesParserDefinition.java) for [Properties language plugin](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/plugins/properties)
@@ -30463,8 +30463,8 @@ The Grammar-Kit plugin is built using its own engine; its source code and docume
 
 For re-using existing ANTLRv4 grammars, see [antlr4-intellij-adaptor](https://github.com/antlr/antlr4-intellij-adaptor) third-party library.
 
-The language plugin provides the parser implementation as an implementation of the [PsiParser](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/lang/PsiParser.java) interface, returned from [ParserDefinition.createParser()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/lang/ParserDefinition.java).
-The parser receives an instance of the [PsiBuilder](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/lang/PsiBuilder.java) class, which is used to get the stream of tokens from the [lexer](implementing-lexer.html) and to hold the intermediate state of the AST being built.
+The language plugin provides the parser implementation as an implementation of [PsiParser](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/lang/PsiParser.java), returned from [ParserDefinition.createParser()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/lang/ParserDefinition.java).
+The parser receives an instance of [PsiBuilder](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/lang/PsiBuilder.java), which is used to get the stream of tokens from the [lexer](implementing-lexer.html) and to hold the intermediate state of the AST being built.
 
 Tip:
 
@@ -30510,9 +30510,9 @@ To better understand the process of building a PSI tree for a simple expression,
 In general, there is no single right way to implement a PSI for a custom language, and the plugin author can choose the PSI structure and set of methods that are the most convenient for the code which uses the PSI (error analysis, refactorings, and so on).
 
 However, one base interface needs to be used by a custom language PSI implementation to support features like [Rename Refactoring](rename-refactoring.html) and [Find Usages](find-usages.html).
-Every element which can be renamed or referenced (a class definition, a method definition, and so on) needs to implement the [PsiNamedElement](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiNamedElement.java) interface, with methods `getName()` and `setName()`.
+Every element which can be renamed or referenced (a class definition, a method definition, and so on) needs to implement [PsiNamedElement](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiNamedElement.java), with methods `getName()` and `setName()`.
 
-Several functions which can be used for implementing and using the PSI can be found in the `com.intellij.psi.util` package, and in particular in the [PsiUtilCore](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/util/PsiUtilCore.java) and [PsiTreeUtil](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/util/PsiTreeUtil.java) classes.
+Several functions which can be used for implementing and using the PSI can be found in the `com.intellij.psi.util` package, and in particular in [PsiUtilCore](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/util/PsiUtilCore.java) and [PsiTreeUtil](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/util/PsiTreeUtil.java).
 
 Tip:
 
@@ -30548,7 +30548,7 @@ The underlying `TextAttributeKey`'s external name for items in `Settings | Edito
 
 ## Color Settings
 
-The mapping of the `TextAttributesKey` to specific attributes used in an editor is defined by the [EditorColorsScheme](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/openapi/editor/colors/EditorColorsScheme.java) class.
+The mapping of the `TextAttributesKey` to specific attributes used in an editor is defined by [EditorColorsScheme](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/openapi/editor/colors/EditorColorsScheme.java).
 It can be configured by the user via `Settings | Editor | Color Scheme` by providing an implementation of [ColorSettingsPage](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/openapi/options/colors/ColorSettingsPage.java).
 
 To look up the external name for a setting in the IDE, use [UI Inspector](internal-ui-inspector.html#inspecting-settings).
@@ -30639,7 +30639,7 @@ If that matters, register only `com.intellij.colorSettingsPage` until the plugin
 
 ## Lexer
 
-The first syntax highlighting level is based on the lexer output and is provided through the [SyntaxHighlighter](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/openapi/fileTypes/SyntaxHighlighter.java) interface.
+The first syntax highlighting level is based on the lexer output and is provided through [SyntaxHighlighter](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/openapi/fileTypes/SyntaxHighlighter.java).
 The syntax highlighter returns the `TextAttributesKey` instances for each token type, which needs special highlighting.
 For highlighting lexer errors use [HighlighterColors.BAD_CHARACTER](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/openapi/editor/HighlighterColors.java).
 
@@ -30671,7 +30671,7 @@ See [Syntax Errors](syntax-errors.html) on how to programmatically suppress thes
 
 ## Annotator
 
-The third level of highlighting is performed through the [Annotator](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/lang/annotation/Annotator.java) interface.
+The third level of highlighting is performed through [Annotator](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/lang/annotation/Annotator.java).
 A plugin can register one or more annotators in the [com.intellij.annotator](https://jb.gg/ipe?extensions=com.intellij.annotator) extension point
 , and these annotators are called during the background highlighting pass to process the elements in the custom language's PSI tree.
 Attribute `language` should be set to the Language ID where this annotator applies to.
@@ -30719,12 +30719,12 @@ Examples:
 ## External Annotator
 
 If the custom language employs external tools for validating files in the language (for example, using the Xerces library for XML schema validation),
-it can provide an implementation of the [ExternalAnnotator](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/lang/annotation/ExternalAnnotator.java) interface and register
+it can provide an implementation of [ExternalAnnotator](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/lang/annotation/ExternalAnnotator.java) and register
 it in [com.intellij.externalAnnotator](https://jb.gg/ipe?extensions=com.intellij.externalAnnotator) extension point
 (`language` attribute must be specified).
 
 The `ExternalAnnotator` highlighting has the lowest priority and is invoked only after all other background processing has completed.
-It uses the same [AnnotationHolder](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/lang/annotation/AnnotationHolder.java) interface for converting the output of the external tool into editor highlighting.
+It uses the same [AnnotationHolder](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/lang/annotation/AnnotationHolder.java) for converting the output of the external tool into editor highlighting.
 
 To skip running specific `ExternalAnnotator` for a given file, register an [ExternalAnnotatorsFilter](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/lang/ExternalAnnotatorsFilter.java) extension
 in [com.intellij.daemon.externalAnnotatorsFilter](https://jb.gg/ipe?extensions=com.intellij.daemon.externalAnnotatorsFilter) extension point
@@ -30796,9 +30796,9 @@ The `PsiReference` can be implemented by the same class as `PsiElement`, or by a
 An element can also contain multiple references (for example, a string literal can contain multiple substrings which are valid fully qualified class names), in which case it can implement `PsiElement.getReferences()` and return the references as an array.
 To optimize `PsiElement.getReferences()` performance, consider implementing [HintedReferenceHost](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/HintedReferenceHost.java) to provide additional hints.
 
-The primary method of the [PsiReference](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiReference.java) interface is `resolve()`.
+The primary method of [PsiReference](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiReference.java) is `resolve()`.
 It returns the element to which the reference points, or `null` if it was not possible to resolve the reference to a valid element (for example, should it point to an undefined class).
-The resolved element should implement the [PsiNamedElement](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiNamedElement.java) interface.
+The resolved element should implement [PsiNamedElement](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiNamedElement.java).
 To enable more advanced functionality, prefer implementing [PsiNameIdentifierOwner](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiNameIdentifierOwner.java) over [PsiNamedElement](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiNamedElement.java) where possible.
 
 Note:
@@ -30818,7 +30818,7 @@ Examples:
 
 ## Implementing Resolve Logic
 
-There is a set of interfaces that can be used as a base for implementing resolve support, namely the [PsiScopeProcessor](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/scope/PsiScopeProcessor.java) interface and the [PsiElement.processDeclarations()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiElement.java) method.
+There is a set of interfaces that can be used as a base for implementing resolve support, namely [PsiScopeProcessor](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/scope/PsiScopeProcessor.java) and the [PsiElement.processDeclarations()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiElement.java) method.
 These interfaces have several extra complexities that are unnecessary for most custom languages (like support for substituting Java generics types).
 Still, they are required if the custom language can have references to Java code.
 If Java interoperability is not required, the plugin can forgo the standard interfaces and provide its own, different implementation of resolve.
@@ -30827,9 +30827,9 @@ See also [Cache Results of Heavy Computations](psi-performance.html#cache-result
 
 The implementation of resolve based on the standard helper classes contains the following components:
 
-* A class implements the [PsiScopeProcessor](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/scope/PsiScopeProcessor.java) interface, which gathers the possible declarations for the reference and stops the resolve process when it has successfully completed. The primary method which needs to be implemented is `execute()`, which is called to process every declaration encountered during the resolve, and returns `true` if the resolve needs to be continued or `false` if the declaration has been found. The methods `getHint()` and `handleEvent()` are used for internal optimizations and can be left empty in the `PsiScopeProcessor` implementations for custom languages.
+* A class implements [PsiScopeProcessor](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/scope/PsiScopeProcessor.java), which gathers the possible declarations for the reference and stops the resolve process when it has successfully completed. The primary method which needs to be implemented is `execute()`, which is called to process every declaration encountered during the resolve, and returns `true` if the resolve needs to be continued or `false` if the declaration has been found. The methods `getHint()` and `handleEvent()` are used for internal optimizations and can be left empty in the `PsiScopeProcessor` implementations for custom languages.
 
-* A function which walks the PSI tree up from the reference location until the resolve has successfully completed or until the end of the resolve scope has been reached. If the target of the reference is located in a different file, the file can be located, for example, using [FilenameIndex.getFilesByName()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/indexing-api/src/com/intellij/psi/search/FilenameIndex.java) (if the file name is known) or by iterating through all custom language files in the project (`iterateContent()` in the [ProjectFileIndex](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/projectModel-api/src/com/intellij/openapi/roots/ProjectFileIndex.java) interface obtained from [ProjectRootManager.getFileIndex()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/projectModel-api/src/com/intellij/openapi/roots/ProjectRootManager.java)).
+* A function which walks the PSI tree up from the reference location until the resolve has successfully completed or until the end of the resolve scope has been reached. If the target of the reference is located in a different file, the file can be located, for example, using [FilenameIndex.getFilesByName()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/indexing-api/src/com/intellij/psi/search/FilenameIndex.java) (if the file name is known) or by iterating through all custom language files in the project (`iterateContent()` in [ProjectFileIndex](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/projectModel-api/src/com/intellij/openapi/roots/ProjectFileIndex.java) obtained from [ProjectRootManager.getFileIndex()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/projectModel-api/src/com/intellij/openapi/roots/ProjectRootManager.java)).
 
 * The individual PSI elements, on which the `processDeclarations()` method is called during the PSI tree walk. If a PSI element is a declaration, it passes itself to the `execute()` method of the `PsiScopeProcessor` passed to it. Also, if necessary, according to the language scoping rules, a PSI element can pass the `PsiScopeProcessor` to its child elements.
 
@@ -31172,13 +31172,13 @@ use the `presentation` property.
 `searchTarget`
 : Implement to provide usage search for the symbol.
 In most cases the implementation would simply call `PolySymbolSearchTarget.create`.
-: Symbol can also implement the `SearchTarget` interface directly and override its methods, in which case `PolySymbolSearchTarget` returned by `searchTarget` property is ignored.
+: Symbol can also implement `SearchTarget` directly and override its methods, in which case `PolySymbolSearchTarget` returned by `searchTarget` property is ignored.
 If the returned target is not a `PolySymbolSearchTarget`, a dedicated `UsageSearcher` needs to be implemented to handle it.
 
 `renameTarget`
 : Implement to provide rename refactoring for the symbol.
 In most cases the implementation would simply call `PolySymbolRenameTarget.create`.
-: Symbol can also implement the `RenameTarget` interface directly and override its methods, in which case `PolySymbolRenameTarget` returned by `renameTarget` property is ignored.
+: Symbol can also implement `RenameTarget` directly and override its methods, in which case `PolySymbolRenameTarget` returned by `renameTarget` property is ignored.
 If the returned target is not a `PolySymbolRenameTarget`, a dedicated `RenameUsageSearcher` needs to be implemented to handle it.
 
 ## Query Related Properties
@@ -31187,7 +31187,7 @@ The following properties are related to name matching and code completion querie
 
 `queryScope`
 : When a pattern is being evaluated, matched symbols can provide additional scope for further resolution in the pattern.
-By default, the `queryScope` returns the symbol itself if it implements the `PolySymbolScope` interface.
+By default, the `queryScope` returns the symbol itself if it implements `PolySymbolScope`.
 
 `extension`
 : Specifies whether the symbol is an extension.
@@ -31197,7 +31197,7 @@ When matched along with a non-extension symbol, it can provide or override some 
 
 `get(property: PolySymbolProperty<T>)`
 : Accessor for various symbol properties. All properties supported by the PolySymbol framework are defined through `*Property`
-objects within the `PolySymbol` interface. Check their documentation for further reference. Overall, avoid
+objects within `PolySymbol`. Check their documentation for further reference. Overall, avoid
 overriding this method to provide property values and instead define property getters by annotating properties,
 fields, or methods with `PolySymbol.Property` annotation.
 
@@ -31331,7 +31331,7 @@ On extension of this class, it's only necessary to override `initialize()` and p
 ## Model Queries
 
 Poly Symbols can contain patterns, which allow composing them from other Poly Symbols.
-Such symbols should implement the [PolySymbolWithPattern](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolWithPattern.kt) interface.
+Such symbols should implement [PolySymbolWithPattern](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/polySymbols/src/com/intellij/polySymbols/query/PolySymbolWithPattern.kt).
 
 To find which symbols match available patterns, make a match query.
 One can also run a code completion query, which will produce a list of valid completions in the provided context,
@@ -31544,7 +31544,7 @@ Suppose a plugin can produce a list of symbols representing message bundle file 
 Such symbols could have a qualified kind named: `message-bundle/properties`.
 Suppose that these message bundle properties can be used as string literal parameters to some Java method calls.
 A scope contributor would provide a scope containing all the `properties` symbols and a symbol with a reference pattern, which would map from `message-bundle/properties` to the `java/string-literals` kind.
-A convenient way of defining such a symbol is to use the `ReferencingPolySymbol` class.
+A convenient way of defining such a symbol is to use `ReferencingPolySymbol`.
 
 As a result, in a particular place in the code, all provided message bundle properties should be treated as possible string literal values.
 Such an approach allows symbol contributors to abstract from the actual implementation details of registering completion providers or reference providers in a particular language and focus on building the symbol model.
@@ -31794,7 +31794,7 @@ Dedicated support for `PolySymbol` `get` properties:
 
 * `JSTypeProperty` - the type will be used in JavaScript type evaluator as the type of the symbol
 
-* `JsSymbolKindProperty` - the kind of the symbol, one of [JsSymbolSymbolKind](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/polySymbols-web/src/com/intellij/polySymbols/js/JsSymbolSymbolKind.kt) enum values. The kind will be used to render the appropriate icon in the code completion popup Integration with unqualified reference resolution is not available in TypeScript code
+* `JsSymbolKindProperty` - the kind of the symbol, one of [JsSymbolSymbolKind](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/polySymbols-web/src/com/intellij/polySymbols/js/JsSymbolSymbolKind.kt) values. The kind will be used to render the appropriate icon in the code completion popup Integration with unqualified reference resolution is not available in TypeScript code
 
 #### DOM Events
 
@@ -32659,7 +32659,7 @@ and can be used, for example, to implement keyword completion.
 ## Reference Completion
 
 To fill the completion list, the IDE calls [PsiReference.getVariants()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiReference.java) either on the reference at the caret location or on a dummy reference that would be placed at the caret.
-This method needs to return an array of objects containing either strings, [PsiElement](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiElement.java) instances or instances of the [LookupElement](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/codeInsight/lookup/LookupElement.java) class (see [Lookup Items](#lookup-items) below).
+This method needs to return an array of objects containing either strings, [PsiElement](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiElement.java) instances or instances of [LookupElement](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/codeInsight/lookup/LookupElement.java) (see [Lookup Items](#lookup-items) below).
 If a `PsiElement` instance is returned in the array, the completion list shows the icon for the element.
 
 A common way to implement `getVariants()` is to use the same function for walking up the tree as in [PsiReference.resolve()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiReference.java)
@@ -32703,8 +32703,8 @@ Examples:
 
 ## Lookup Items
 
-Items shown in the completion list are represented by instances of the [LookupElement](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/codeInsight/lookup/LookupElement.java) interface.
-These instances are typically created through the [LookupElementBuilder](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/codeInsight/lookup/LookupElementBuilder.java) class.
+Items shown in the completion list are represented by instances of [LookupElement](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/codeInsight/lookup/LookupElement.java).
+These instances are typically created through [LookupElementBuilder](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/codeInsight/lookup/LookupElementBuilder.java).
 
 If there's only one lookup item to be shown, the behavior can be customized via [AutoCompletionPolicy](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/codeInsight/lookup/AutoCompletionPolicy.java).
 
@@ -32781,7 +32781,7 @@ The Find Usages action is a multi-step process, and each step of the process req
 
 The language plugin participates in the Find Usages process by registering an implementation of [FindUsagesProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/indexing-api/src/com/intellij/lang/findUsages/FindUsagesProvider.java) in
 the [com.intellij.lang.findUsagesProvider](https://jb.gg/ipe?extensions=com.intellij.lang.findUsagesProvider) extension point
-, and through the PSI implementation using [PsiNamedElement](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiNamedElement.java) and [PsiReference](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiReference.java) interfaces.
+, and through the PSI implementation using [PsiNamedElement](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiNamedElement.java) and [PsiReference](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiReference.java).
 
 Tip:
 
@@ -32810,7 +32810,7 @@ Examples:
 
 ## Grouping Results
 
-To have the title of the found element be correctly displayed in the title of the Find Usages tool window, provide an implementation of the [ElementDescriptionProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/ElementDescriptionProvider.java) interface.
+To have the title of the found element be correctly displayed in the title of the Find Usages tool window, provide an implementation of [ElementDescriptionProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/ElementDescriptionProvider.java).
 The [ElementDescriptionLocation](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/ElementDescriptionLocation.java) passed to the provider in this case will be an instance of [UsageViewLongNameLocation](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/usageView/src/com/intellij/usageView/UsageViewLongNameLocation.java).
 
 Example:
@@ -32879,12 +32879,12 @@ Implementations of `RenameInputValidator` or `RenameInputValidatorEx` are regist
 ## Custom Rename UI and Workflow
 
 Further customization of the Rename refactoring processing is possible on multiple levels.
-A custom implementation of the [RenameHandler](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/refactoring/src/com/intellij/refactoring/rename/RenameHandler.java) interface entirely replaces the UI and workflow of the rename refactoring, and can also support renaming something which is not a [PsiElement](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiElement.java) at all.
+A custom implementation of [RenameHandler](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/refactoring/src/com/intellij/refactoring/rename/RenameHandler.java) entirely replaces the UI and workflow of the rename refactoring, and can also support renaming something which is not a [PsiElement](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiElement.java) at all.
 
 Example:
 [PropertyRenameHandler](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/plugins/groovy/src/org/jetbrains/plugins/groovy/refactoring/rename/PropertyRenameHandler.java) for renaming a Groovy property
 
-If the standard UI is sufficient but the default logic of renaming needs to be extended, provide an implementation of the [RenamePsiElementProcessor](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-impl/src/com/intellij/refactoring/rename/RenamePsiElementProcessor.java) interface.
+If the standard UI is sufficient but the default logic of renaming needs to be extended, provide an implementation of [RenamePsiElementProcessor](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-impl/src/com/intellij/refactoring/rename/RenamePsiElementProcessor.java).
 Such a processor can:
 
 * Rename an element different from the one on which the action was invoked (a super method, for example)
@@ -32998,7 +32998,7 @@ However, in most cases, the `PsiBasedFormattingModel` should meet the requiremen
 
 Building the `Block` Tree
 
-Instead of implementing the `Block` interface, [AbstractBlock](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/code-style-impl/src/com/intellij/psi/formatter/common/AbstractBlock.java)
+Instead of implementing `Block`, [AbstractBlock](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/code-style-impl/src/com/intellij/psi/formatter/common/AbstractBlock.java)
 should be used as a base class which provides useful default implementations.
 Although the block implementation of a plugin is specific to the custom language, for the implementation of `AbstractBlock` some general remarks can be given.
 It is common to store an instance of the `SpacingBuilder` which can directly be used when implementing the `getSpacing()` method
@@ -33074,7 +33074,7 @@ Blocks that return the same `Alignment` object instance from the `getAlignment()
 If two blocks with the same alignment are on different lines and the second block is the first non-whitespace block on its line,
 the formatter inserts whitespaces before the second block to align it with the first block.
 
-The `Alignment` includes the `Anchor` enum with two values, `LEFT` and `RIGHT`, determining how the code blocks are aligned.
+`Alignment` includes `Anchor` with two values, `LEFT` and `RIGHT`, determining how the code blocks are aligned.
 The default alignment is created with the left anchor.
 To create an alignment instance, the class provides several static methods:
 
@@ -33191,7 +33191,7 @@ Inspections are run on a full PSI tree and report found problems, while intentio
 
 ## Inspections
 
-The code inspections for custom languages use the same API as all other code inspections, based on the [LocalInspectionTool](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/codeInspection/LocalInspectionTool.java) class.
+The code inspections for custom languages use the same API as all other code inspections, based on [LocalInspectionTool](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/codeInspection/LocalInspectionTool.java).
 
 The functionality of [LocalInspectionTool](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/codeInspection/LocalInspectionTool.java) partially duplicates that of [Annotator](syntax-highlighting-and-error-highlighting.html#annotator).
 
@@ -33224,7 +33224,7 @@ to optimize processing.
 ## Intentions
 
 The code intentions for custom languages also use the standard API for intentions.
-The intention classes need to implement the [IntentionAction](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/codeInsight/intention/IntentionAction.java) interface
+The intention classes need to implement [IntentionAction](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/codeInsight/intention/IntentionAction.java)
 and are registered using the [com.intellij.intentionAction](https://jb.gg/ipe?extensions=com.intellij.intentionAction) extension point
 .
 
@@ -33245,7 +33245,7 @@ Product Help: [Source file structure](https://www.jetbrains.com/help/idea/viewin
 </tldr>
 
 The Structure View implementation used for a specific file type can be customized on many levels.
-If a custom language plugin provides an implementation of the [StructureView](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/ide/structureView/StructureView.java) interface, it can completely replace the standard structure view implementation with a custom user interface component.
+If a custom language plugin provides an implementation of [StructureView](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/ide/structureView/StructureView.java), it can completely replace the standard structure view implementation with a custom user interface component.
 However, for most languages, this is not necessary, and the standard `StructureView` implementation provided by IntelliJ Platform can be reused.
 
 Tip:
@@ -33254,7 +33254,7 @@ To modify an existing Structure View (e.g., add/filter nodes of builtin language
 in [com.intellij.lang.structureViewExtension](https://jb.gg/ipe?extensions=com.intellij.lang.structureViewExtension) extension point
 .
 
-The starting point for the structure view is the [PsiStructureViewFactory](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/lang/PsiStructureViewFactory.java) interface, which is registered
+The starting point for the structure view is [PsiStructureViewFactory](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/lang/PsiStructureViewFactory.java), which is registered
 in the [com.intellij.lang.psiStructureViewFactory](https://jb.gg/ipe?extensions=com.intellij.lang.psiStructureViewFactory) extension point
 .
 
@@ -33270,7 +33270,7 @@ As the builder model, the plugin can specify a subclass of [TextEditorBasedStruc
 Example:
 [StructureViewModel](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/plugins/properties/properties-psi-impl/src/com/intellij/lang/properties/structureView/PropertiesFileStructureViewModel.java) for [Properties language plugin](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/plugins/properties)
 
-The main method to override is `getRoot()`, which returns the instance of a class implementing the [StructureViewTreeElement](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/ide/structureView/StructureViewTreeElement.java) interface.
+The main method to override is `getRoot()`, which returns an instance of [StructureViewTreeElement](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/ide/structureView/StructureViewTreeElement.java).
 There exists no standard implementation of this interface, so a plugin will need to implement it completely.
 
 The structure view tree is usually built as a partial mirror of the PSI tree.
@@ -33333,7 +33333,7 @@ In this case, also override `getLanguage()` in addition to the two methods descr
 The `adjustElement()` method modifies the navigation bar element.
 It can be used, for example, to show a class in the navigation bar when the caret is located in a comment that is attached to the class.
 
-Overriding other methods is usually not needed unless the plugin provides its own implementation of the entire `NavBarModelExtension` interface.
+Overriding other methods is usually not needed unless the plugin provides its own implementation of the entire `NavBarModelExtension`.
 
 Note that the `getSuitableClasses()` method on the structure view model class that implements `com.intellij.ide.structureView.TextEditorBasedStructureViewModel` (see [Structure View](structure-view.html))
 must return all the element types to display in the navigation bar.
@@ -33348,7 +33348,7 @@ Example: [Custom Language Support Tutorial: Structure Aware Navigation Bar](stru
 Product Help: [Surround code fragments](https://www.jetbrains.com/help/idea/surrounding-blocks-of-code-with-language-constructs.html)
 </tldr>
 
-To support the Surround With action, the plugin needs to register one or more implementations of the [SurroundDescriptor](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-api/src/com/intellij/lang/surroundWith/SurroundDescriptor.java) interface
+To support the Surround With action, the plugin needs to register one or more implementations of [SurroundDescriptor](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-api/src/com/intellij/lang/surroundWith/SurroundDescriptor.java)
 in the [com.intellij.lang.surroundDescriptor](https://jb.gg/ipe?extensions=com.intellij.lang.surroundDescriptor) extension point
 .
 Each of the surround descriptors defines a possible type of code fragment that can be surrounded - for example, one surround descriptor can handle surrounding expressions, and another can handle statements.
@@ -33375,7 +33375,7 @@ Product Help: [Searching Everywhere](https://www.jetbrains.com/help/idea/searchi
 
 A custom language plugin can provide its items to be included in the lists shown when the user chooses the `Navigate | Class` or `Navigate | Symbol` action.
 
-Provide implementations of [ChooseByNameContributorEx](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-impl/src/com/intellij/navigation/ChooseByNameContributorEx.java) interface (separate implementations need to be provided for Class and Symbol, respectively), and register them
+Provide implementations of [ChooseByNameContributorEx](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-impl/src/com/intellij/navigation/ChooseByNameContributorEx.java) (separate implementations need to be provided for Class and Symbol, respectively), and register them
 in the [com.intellij.gotoClassContributor](https://jb.gg/ipe?extensions=com.intellij.gotoClassContributor) extension point
 or [com.intellij.gotoSymbolContributor](https://jb.gg/ipe?extensions=com.intellij.gotoSymbolContributor) extension point
 .
@@ -33490,8 +33490,8 @@ authors should use the [Documentation Target API](#documentation-target-api) ins
 
 Custom language developers usually extend from
 [AbstractDocumentationProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/lang/documentation/AbstractDocumentationProvider.java)
-instead of implementing the
-[DocumentationProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/lang/documentation/DocumentationProvider.java) interface.
+instead of implementing
+[DocumentationProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/lang/documentation/DocumentationProvider.java).
 This implementation needs to be registered in [com.intellij.lang.documentationProvider](https://jb.gg/ipe?extensions=com.intellij.lang.documentationProvider) extension point
 .
 
@@ -34391,7 +34391,7 @@ Register the `LanguageFileType` with the IntelliJ Platform in the plugin configu
 ## Define the Language
 
 The language implemented in this tutorial is named "Simple" - note the case of the name.
-The [SimpleLanguage](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleLanguage.java) class is defined in the `org.intellij.sdk.language` package of the `simple_language_plugin` code sample:
+[SimpleLanguage](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleLanguage.java) is defined in the `org.intellij.sdk.language` package of the `simple_language_plugin` code sample:
 
 ```JAVA
 public class SimpleLanguage extends Language {
@@ -34407,8 +34407,8 @@ public class SimpleLanguage extends Language {
 
 ## Define an Icon
 
-The [icon](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/resources/icons/jar-gray.png) for the Simple Language is defined by the
-[SimpleIcons](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleIcons.java) class.
+The [icon](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/resources/icons/jar-gray.png) for the Simple Language is defined by
+[SimpleIcons](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleIcons.java).
 Please see [Working with Icons](icons.html) for details on how to define and use icons.
 
 ```JAVA
@@ -34569,7 +34569,7 @@ The grammar defines the flexibility of the support for a language.
 The above grammar specifies that a property may have or may not have a key and value.
 This flexibility allows the IntelliJ Platform to recognize incorrectly defined properties and provide corresponding code analysis and quick fixes.
 
-Note that the `SimpleTypes` class in the `elementTypeHolderClass` attribute above specifies the name of a class that gets generated from the grammar in the scope of the Generate Parser Code action (see [Generate a Parser](#generate-a-parser)); it doesn't exist at this point.
+Note that `SimpleTypes` in the `elementTypeHolderClass` attribute above specifies the name of a class that gets generated from the grammar in the scope of the Generate Parser Code action (see [Generate a Parser](#generate-a-parser)); it doesn't exist at this point.
 
 ## Generate a Parser
 
@@ -34867,7 +34867,7 @@ A plugin can also define color settings based on `ColorSettingPage` so the user 
 
 ## Define a Syntax Highlighter
 
-The [SimpleSyntaxHighlighter](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleSyntaxHighlighter.java) class extends [SyntaxHighlighterBase](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/openapi/fileTypes/SyntaxHighlighterBase.java).
+[SimpleSyntaxHighlighter](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleSyntaxHighlighter.java) extends [SyntaxHighlighterBase](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/openapi/fileTypes/SyntaxHighlighterBase.java).
 As recommended in [Color Scheme Management](color-scheme-management.html#text-attribute-key-dependency), the Simple Language highlighting text attributes are specified as a dependency on one of standard IntelliJ Platform keys.
 For the Simple Language, define only one scheme.
 
@@ -35124,7 +35124,7 @@ public class SimplePsiImplUtil {
 }
 ```
 
-The parser generates the `SimpleProperty` interface referenced in the code above.
+The parser generates `SimpleProperty`, which is referenced in the code above.
 
 ## Update Grammar and Regenerate the Parser
 
@@ -35610,13 +35610,13 @@ Resolving references means the ability to go from the usage of an element to its
 
 Note:
 
-Every PSI element that can be renamed or referenced needs to implement [PsiNamedElement](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiNamedElement.java) interface.
+Every PSI element that can be renamed or referenced needs to implement [PsiNamedElement](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiNamedElement.java).
 
 ## Define a Named Element Class
 
 The classes below show how the Simple Language fulfills the need to implement `PsiNamedElement`.
 
-The [SimpleNamedElement](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/psi/SimpleNamedElement.java) interface is subclassed from [PsiNameIdentifierOwner](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiNameIdentifierOwner.java).
+[SimpleNamedElement](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/psi/SimpleNamedElement.java) is subclassed from [PsiNameIdentifierOwner](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiNameIdentifierOwner.java).
 
 ```JAVA
 public interface SimpleNamedElement extends PsiNameIdentifierOwner {
@@ -35624,7 +35624,7 @@ public interface SimpleNamedElement extends PsiNameIdentifierOwner {
 }
 ```
 
-The [SimpleNamedElementImpl](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/psi/impl/SimpleNamedElementImpl.java) class implements the `SimpleNamedElement` interface and extends [ASTWrapperPsiElement](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-impl/src/com/intellij/extapi/psi/ASTWrapperPsiElement.java).
+[SimpleNamedElementImpl](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/psi/impl/SimpleNamedElementImpl.java) implements `SimpleNamedElement` and extends [ASTWrapperPsiElement](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-impl/src/com/intellij/extapi/psi/ASTWrapperPsiElement.java).
 
 ```JAVA
 public abstract class SimpleNamedElementImpl extends ASTWrapperPsiElement implements SimpleNamedElement {
@@ -37155,7 +37155,7 @@ Refer to the [Addendum](#addendum) below, which explains how to improve on this 
 
 While `SimpleProperty` elements provide their key and value, there is no direct access to a possible comment that is preceding the key/value definition.
 To show this comment in the documentation as well, add a small helper function that extracts the text from the comment.
-This function will reside in the `SimpleUtil` class and will find, for instance, the comment preceding `apikey` in the following short example:
+This function will reside in `SimpleUtil` and will find, for instance, the comment preceding `apikey` in the following short example:
 
 ```PROPERTIES
 # An application programming interface key (API key) is a unique
@@ -37848,7 +37848,7 @@ See how to [generate highlighting test data](testing-highlighting.html#generatin
 
 ## Define a Test Method
 
-Add the `testAnnotator()` method to the `SimpleCodeInsightTest` class [previously defined](completion-test.html#define-a-test).
+Add the `testAnnotator()` method to `SimpleCodeInsightTest` [previously defined](completion-test.html#define-a-test).
 Again, this method configures the test fixture by using the test files.
 It then calls the `checkHighlighting()` method to verify weak warnings.
 
@@ -37903,7 +37903,7 @@ tab :\u0009
 
 ## Define a Test Method
 
-Add the `testFormatter()` method to the `SimpleCodeInsightTest` class [previously defined](completion-test.html#define-a-test).
+Add the `testFormatter()` method to `SimpleCodeInsightTest` [previously defined](completion-test.html#define-a-test).
 
 * Again, this method configures the test fixture by using the test file.
 
@@ -38001,7 +38001,7 @@ tab : \u0009
 
 ## Define a Test Method
 
-Add the `testRename()` method to the `SimpleCodeInsightTest` class [previously defined](completion-test.html#define-a-test).
+Add the `testRename()` method to `SimpleCodeInsightTest` [previously defined](completion-test.html#define-a-test).
 
 * Again, this method configures the test fixture by using the test files.
 
@@ -38061,7 +38061,7 @@ public class Test {
 
 ## Define a Test
 
-Add the `testFolding()` method to the `SimpleCodeInsightTest` class [previously defined](completion-test.html#define-a-test).
+Add the `testFolding()` method to `SimpleCodeInsightTest` [previously defined](completion-test.html#define-a-test).
 This test method reuses the `DefaultTestData.simple` Simple file.
 
 ```JAVA
@@ -38121,7 +38121,7 @@ public class Test {
 
 ## Define a Test Method
 
-Add the `testFindUsages()` method to the `SimpleCodeInsightTest` class [previously defined](completion-test.html#define-a-test).
+Add the `testFindUsages()` method to `SimpleCodeInsightTest` [previously defined](completion-test.html#define-a-test).
 This test verifies the find usage functionality will identify the "key with spaces".
 
 ```JAVA
@@ -38151,7 +38151,7 @@ This page is part of multistep [Testing a Custom Language Plugin](writing-tests-
 
 ## Define a Test Method
 
-Add the `testCommenter()` method to the `SimpleCodeInsightTest` class [previously defined](completion-test.html#define-a-test).
+Add the `testCommenter()` method to `SimpleCodeInsightTest` [previously defined](completion-test.html#define-a-test).
 This test constructs a Simple Language properties file containing one line, with the virtual caret positioned at the beginning of the line.
 The test calls the commenter to insert a comment character at the caret, then verifies the results.
 It again calls the line comment action to remove the comment character and verifies the results.
@@ -38202,7 +38202,7 @@ public class Test {
 
 ## Define a Test Method
 
-Add the `testReference()` method to the `SimpleCodeInsightTest` class [previously defined](completion-test.html#define-a-test).
+Add the `testReference()` method to `SimpleCodeInsightTest` [previously defined](completion-test.html#define-a-test).
 This test is configured by the test files.
 The fixture gets the `PsiReference` at the caret position, and then asserts the resolved `SimpleProperty.value()` with the known value of that key.
 
@@ -38235,7 +38235,7 @@ This page is part of multistep [Testing a Custom Language Plugin](writing-tests-
 
 ## Define a Test Method
 
-Add the `testDocumentation()` method to the `SimpleCodeInsightTest` class [previously defined](completion-test.html#define-a-test).
+Add the `testDocumentation()` method to `SimpleCodeInsightTest` [previously defined](completion-test.html#define-a-test).
 This test uses the files `DocumentationTestData.java` and `DocumentationTestData.simple` from the `testData` directory
 to construct a test project and opens the first one in the editor with the virtual caret positioned at the usage of the Simple Language property.
 
@@ -38700,7 +38700,7 @@ The `plugin.xml` configuration file must specify the dependency on the IntelliJ 
 
 Since 2024.2, LSP API sources are provided with the `IntelliJ IDEA sources` artifact.
 See [Attaching Sources in the IDE](tools-intellij-platform-gradle-plugin.html#attaching-sources-in-the-ide) on how to enable downloading sources.
-Then, use `Navigate | Class...` to open the `LspServerState` class.
+Then, use `Navigate | Class...` to open `LspServerState`.
 In the opened editor, invoke Download IntelliJ Platform sources to download and attach sources.
 
 #### Earlier IDE Versions
@@ -38902,15 +38902,15 @@ Review the servers and enable [LspOnTypeFormattingCustomizer](https://github.com
 
 Pre-2025.2:
 
-To fine-tune or disable the implementation of LSP-based features, plugins may override the corresponding properties of the `LspServerDescriptor` class (see their documentation for details).
+To fine-tune or disable the implementation of LSP-based features, plugins may override the corresponding properties of `LspServerDescriptor` (see their documentation for details).
 
 Warning:
 
 Note that LSP support is in active development and some customization options are available only in newer versions.
 
-To handle custom (undocumented) requests and notifications from the LSP server, override the `LspClientDescriptor.createLsp4jClient()` (`LspServerDescriptor.createLsp4jClient()` before 2026.1.4) function and the `Lsp4jClient` class according to their documentation.
+To handle custom (undocumented) requests and notifications from the LSP server, override the `LspClientDescriptor.createLsp4jClient()` (`LspServerDescriptor.createLsp4jClient()` before 2026.1.4) function and `Lsp4jClient` according to their documentation.
 
-To send custom (undocumented) requests and notifications to the LSP server, override `LspClientDescriptor.lsp4jServerClass` (`LspServerDescriptor.lsp4jServerClass` before 2026.1.4) property and implement the `LspClientNotification` and/or `LspRequest` classes.
+To send custom (undocumented) requests and notifications to the LSP server, override `LspClientDescriptor.lsp4jServerClass` (`LspServerDescriptor.lsp4jServerClass` before 2026.1.4) property and implement `LspClientNotification` and/or `LspRequest`.
 The documentation in the source code includes implementation examples.
 
 ## Troubleshooting
@@ -41350,7 +41350,7 @@ $a; // (1)
 
 In (1), the variable `$a` will be of type `int|string` because PhpStorm can't deduce exactly which branch the execution will take.
 
-PhpStorm stores this types as separate strings inside the [PhpType](#phptype) class.
+PhpStorm stores this types as separate strings inside [PhpType](#phptype).
 Each of the types can be either Complete or Incomplete.
 In the Incomplete type resolving process, PhpStorm will resolve each union type individually.
 
@@ -41360,7 +41360,7 @@ Since some providers may return types for the same PSI element, union types may 
 
 `PhpType`
 
-PhpStorm uses the `com.jetbrains.php.lang.psi.resolve.types.PhpType` class to work with types.
+PhpStorm uses `com.jetbrains.php.lang.psi.resolve.types.PhpType` to work with types.
 
 To add types to it, use `add()`, which can take either another `PhpType` or a `string`.
 
@@ -41373,14 +41373,14 @@ This method shouldn't be used during indexing, namely inside `PhpTypeProvider4.g
 
 How to get `PhpType` from PSI?
 
-In PhpStorm, PSI elements with types implement the `com.jetbrains.php.lang.psi.elements.PhpTypedElement` interface.
+In PhpStorm, PSI elements with types implement `com.jetbrains.php.lang.psi.elements.PhpTypedElement`.
 To get the type of element, use the `getType()`.
 
 ## 
 
 `PhpTypeProvider4` Implementation
 
-`PhpTypeProvider4` interface:
+Definition of `PhpTypeProvider4`:
 
 ```JAVA
 /**
@@ -41578,7 +41578,7 @@ The following changes were introduced:
 
 * `PhpThrow` PSI layout has changed: it is now a `Statement` with a single child `PhpThrowExpression`. The `PhpThrow#getArgument` delegates to `PhpThrowExpression#getArgument` for now.
 
-* In PhpStorm 2020.2, the `PhpThrow` class will be removed and replaced with `StatementImpl`.
+* In PhpStorm 2020.2, `PhpThrow` will be removed and replaced with `StatementImpl`.
 
 See the [YouTrack issue](https://youtrack.jetbrains.com/issue/WI-54357) for details.
 
@@ -55925,7 +55925,7 @@ Highlighting References
 ### IntelliJ Platform 2022.1
 
 New Project Wizard
-: The New Project wizard has been refreshed and some base [ModuleBuilder](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-core/src/com/intellij/ide/util/projectWizard/ModuleBuilder.java) classes return `false` from the `isAvailable()` method. If a module builder extends a base class and is hidden in the 2022.1 wizard, override the method to return `true`.
+: The New Project wizard has been refreshed and some base [ModuleBuilder](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-core/src/com/intellij/ide/util/projectWizard/ModuleBuilder.java) implementations return `false` from the `isAvailable()` method. If a module builder extends a base class and is hidden in the 2022.1 wizard, override the method to return `true`.
 
 External System Test Framework
 : Available as `com.jetbrains.intellij.platform:external-system-test-framework` from [IntelliJ Platform Artifacts Repositories](intellij-artifacts.html), see [Testing](external-system-integration.html#testing).
@@ -62234,7 +62234,7 @@ Extends: [Test](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.testing
 Sources: [TestCompanion](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.1/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/companion/TestCompanion.kt)
 </tldr>
 
-The base Gradle `test` task is preconfigured using the [TestCompanion](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.1/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/companion/TestCompanion.kt) class to run tests with IntelliJ Platform, sandbox, and all system properties set.
+The base Gradle `test` task is preconfigured using [TestCompanion](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.1/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/companion/TestCompanion.kt) to run tests with IntelliJ Platform, sandbox, and all system properties set.
 
 The task itself isn't mutated and a dedicated [prepareTest](#prepareTest) task is involved to request for required IntelliJ Platform and sandbox configuration.
 
@@ -65348,7 +65348,7 @@ tasks.register('myTask', MyTask) {
 }
 ```
 
-As soon as the registered task inherits from the `*Aware` interface, such as [IntelliJPlatformVersionAware](tools-intellij-platform-gradle-plugin-task-awares.html#IntelliJPlatformVersionAware), all the related information will be injected during the configuration phase.
+As soon as the registered task inherits from a `*Aware` interface, such as [IntelliJPlatformVersionAware](tools-intellij-platform-gradle-plugin-task-awares.html#IntelliJPlatformVersionAware), all the related information will be injected during the configuration phase.
 
 ## Bundle additional files with the plugin
 
@@ -67777,7 +67777,7 @@ Default value
 `failureLevel`
 
 Defines the verification level at which the task should fail if any reported issue matches.
-Can be set as `FailureLevel` enum or `EnumSet<FailureLevel>`.
+Can be set as `FailureLevel` or `EnumSet<FailureLevel>`.
 
 Type
 : `org.jetbrains.intellij.tasks.RunPluginVerifierTask.FailureLevel`
@@ -69189,12 +69189,12 @@ UI Inspector must be invoked only after opening the Settings dialog.
 
 | Settings page  Reference   |Properties |
 ------------------------------------------
-| All settings  [Settings Guide](settings-guide.html)   |Configurable class - [Configurable](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/ide-core/src/com/intellij/openapi/options/Configurable.java) class  Configurable ID - `id` attribute  Configurable weight - `groupWeight` attribute   |
+| All settings  [Settings Guide](settings-guide.html)   |Configurable class - [Configurable](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/ide-core/src/com/intellij/openapi/options/Configurable.java) implementation  Configurable ID - `id` attribute  Configurable weight - `groupWeight` attribute   |
 | `Editor \| Color Scheme`  [Text Attributes Key](syntax-highlighting-and-error-highlighting.html#text-attributes-key)   |Text Attributes Key - [TextAttributesKey](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/openapi/editor/colors/TextAttributesKey.java) external name   |
 | `Editor \| File Types`  [Registering a File Type](registering-file-type.html)   |FileTypeID - `FileType.getName()`  FileType Class - [FileType](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/openapi/fileTypes/FileType.java) implementation   |
 | `Editor \| Inspections`  [Code Inspections](code-inspections.html)   |Inspection key - Inspection `id`  Inspection tool class - Inspection implementation   |
 | `Editor \| Inlays`  [Inlay Hints](inlay-hints.html)   |Inlay Group Key - [InlayGroupSettingProvider.getGroup().key](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-api/src/com/intellij/codeInsight/hints/settings/InlayGroupSettingProvider.kt)  Inlay Group Key - [InlayGroup.key](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-api/src/com/intellij/codeInsight/hints/InlayHintsProvider.kt)  Inlay Provider Model ID - [InlayProviderSettingsModel.id](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-api/src/com/intellij/codeInsight/hints/settings/InlayProviderSettingsModel.kt)  Inlay ImmediateConfigurable ID - [ImmediateConfigurable.Case.id](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-api/src/com/intellij/codeInsight/hints/InlayHintsProvider.kt)   |
-| `Editor \| Intentions`  [Intentions](code-intentions.html)   |Intention Class - [IntentionAction](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/codeInsight/intention/IntentionAction.java) class  Intention description directory - `<descriptionDirectoryName>`   |
+| `Editor \| Intentions`  [Intentions](code-intentions.html)   |Intention Class - [IntentionAction](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/codeInsight/intention/IntentionAction.java) implementation  Intention description directory - `<descriptionDirectoryName>`   |
 | `Plugins`  [Plugin Configuration File](plugin-configuration-file.html)   |Plugin ID - Plugin `<id>`  Plugin Dependencies - IDs of dependent plugins   |
 
 ## Accessibility Checks
@@ -71447,7 +71447,7 @@ Don't cover the information the user is currently working with.
 
 #### Implementation
 
-See four predefined point providers in the [GotItTooltip](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-impl/src/com/intellij/ui/GotItTooltip.kt) class.
+See four predefined point providers in [GotItTooltip](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-impl/src/com/intellij/ui/GotItTooltip.kt).
 
 Kotlin:
 
@@ -73008,7 +73008,7 @@ See more on empty tables [here](empty-state.html).
 Add a toolbar to provide actions which help manipulate data in the table (add, remove, import, etc.):
 
 ![Too long line](images/too-long-line.png)
-Use the [ToolbarDecorator](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/ui/ToolbarDecorator.java) class to implement such a toolbar. See more on toolbars [here](toolbar.html).
+Use [ToolbarDecorator](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/ui/ToolbarDecorator.java) to implement such a toolbar. See more on toolbars [here](toolbar.html).
 
 ### Zebra striping and inner borders
 
@@ -73415,13 +73415,13 @@ Do not add the word "On" or "Off" to the item name, since the state description 
 
 ### Control
 
-A toggle button is implemented with the [OnOffButton](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/ui/components/OnOffButton.java) class.
+A toggle button is implemented with [OnOffButton](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/ui/components/OnOffButton.java).
 But generally, do not use the class directly.
 The IDE automatically places the buttons in the search feed if one of the patterns described below is followed:
 
 1. If this is a system or editor or another kind of settings, register the corresponding [BooleanOptionDescription](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/ide/ui/search/BooleanOptionDescription.java) for the option. The options can be bound (but not limited) to a [SearchTopHitProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/ide/SearchTopHitProvider.kt) instance which is registered in `plugin.xml` with the `<search.topHitProvider implementation="fq.class.name"/>` tag.
 
-For example, see the [SystemOptionsTopHitProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-impl/src/com/intellij/ide/ui/SystemOptionsTopHitProvider.java) class that represents matching of Reopen last project on startup checkbox to `BooleanOptionDescription`.
+For example, see [SystemOptionsTopHitProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-impl/src/com/intellij/ide/ui/SystemOptionsTopHitProvider.java) that represents matching of Reopen last project on startup checkbox to `BooleanOptionDescription`.
 
 2. Implement a custom action that is inherited from [ToggleAction](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/openapi/actionSystem/ToggleAction.java) and registered in `plugin.xml`.
 

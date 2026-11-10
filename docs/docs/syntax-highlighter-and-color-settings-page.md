@@ -18,7 +18,7 @@ A plugin can also define color settings based on `ColorSettingPage` so the user 
 
 ## Define a Syntax Highlighter
 
-The [SimpleSyntaxHighlighter](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleSyntaxHighlighter.java) class extends [SyntaxHighlighterBase](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/openapi/fileTypes/SyntaxHighlighterBase.java).
+[SimpleSyntaxHighlighter](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleSyntaxHighlighter.java) extends [SyntaxHighlighterBase](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/openapi/fileTypes/SyntaxHighlighterBase.java).
 As recommended in [Color Scheme Management](color-scheme-management.html#text-attribute-key-dependency), the Simple Language highlighting text attributes are specified as a dependency on one of standard IntelliJ Platform keys.
 For the Simple Language, define only one scheme.
 

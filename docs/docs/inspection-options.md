@@ -61,7 +61,7 @@ for the full implementation context):
 
 * Checkbox, which value is bound to the boolean `ignoreNegations` field in the inspection class.
 
-The `OptPane` class exposes methods for building fields of other types, e.g., number or dropdown fields.
+`OptPane` exposes methods for building fields of other types, e.g., number or dropdown fields.
 
 Note that the bind identifiers passed as a first string argument of methods creating form controls contain injected references that resolve to the bound fields.
 It enables resolving and other resolve-related features available, making it easy to rename fields and minimizing the risk of introducing typos resulting in bugs, as unresolved references will be highlighted as errors.

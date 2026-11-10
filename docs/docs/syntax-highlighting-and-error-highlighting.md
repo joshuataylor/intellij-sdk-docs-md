@@ -24,7 +24,7 @@ The underlying `TextAttributeKey`'s external name for items in `Settings | Edito
 
 ## Color Settings
 
-The mapping of the `TextAttributesKey` to specific attributes used in an editor is defined by the [EditorColorsScheme](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/openapi/editor/colors/EditorColorsScheme.java) class.
+The mapping of the `TextAttributesKey` to specific attributes used in an editor is defined by [EditorColorsScheme](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/openapi/editor/colors/EditorColorsScheme.java).
 It can be configured by the user via `Settings | Editor | Color Scheme` by providing an implementation of [ColorSettingsPage](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/openapi/options/colors/ColorSettingsPage.java).
 
 To look up the external name for a setting in the IDE, use [UI Inspector](internal-ui-inspector.html#inspecting-settings).
@@ -115,7 +115,7 @@ If that matters, register only `com.intellij.colorSettingsPage` until the plugin
 
 ## Lexer
 
-The first syntax highlighting level is based on the lexer output and is provided through the [SyntaxHighlighter](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/openapi/fileTypes/SyntaxHighlighter.java) interface.
+The first syntax highlighting level is based on the lexer output and is provided through [SyntaxHighlighter](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/openapi/fileTypes/SyntaxHighlighter.java).
 The syntax highlighter returns the `TextAttributesKey` instances for each token type, which needs special highlighting.
 For highlighting lexer errors use [HighlighterColors.BAD_CHARACTER](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/openapi/editor/HighlighterColors.java).
 
@@ -147,7 +147,7 @@ See [Syntax Errors](syntax-errors.html) on how to programmatically suppress thes
 
 ## Annotator
 
-The third level of highlighting is performed through the [Annotator](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/lang/annotation/Annotator.java) interface.
+The third level of highlighting is performed through [Annotator](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/lang/annotation/Annotator.java).
 A plugin can register one or more annotators in the [com.intellij.annotator](https://jb.gg/ipe?extensions=com.intellij.annotator) extension point
 , and these annotators are called during the background highlighting pass to process the elements in the custom language's PSI tree.
 Attribute `language` should be set to the Language ID where this annotator applies to.
@@ -195,12 +195,12 @@ Examples:
 ## External Annotator
 
 If the custom language employs external tools for validating files in the language (for example, using the Xerces library for XML schema validation),
-it can provide an implementation of the [ExternalAnnotator](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/lang/annotation/ExternalAnnotator.java) interface and register
+it can provide an implementation of [ExternalAnnotator](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/lang/annotation/ExternalAnnotator.java) and register
 it in [com.intellij.externalAnnotator](https://jb.gg/ipe?extensions=com.intellij.externalAnnotator) extension point
 (`language` attribute must be specified).
 
 The `ExternalAnnotator` highlighting has the lowest priority and is invoked only after all other background processing has completed.
-It uses the same [AnnotationHolder](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/lang/annotation/AnnotationHolder.java) interface for converting the output of the external tool into editor highlighting.
+It uses the same [AnnotationHolder](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/lang/annotation/AnnotationHolder.java) for converting the output of the external tool into editor highlighting.
 
 To skip running specific `ExternalAnnotator` for a given file, register an [ExternalAnnotatorsFilter](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/lang/ExternalAnnotatorsFilter.java) extension
 in [com.intellij.daemon.externalAnnotatorsFilter](https://jb.gg/ipe?extensions=com.intellij.daemon.externalAnnotatorsFilter) extension point

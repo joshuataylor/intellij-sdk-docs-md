@@ -62,7 +62,7 @@ Please set system property `intellij.idea.indices.debug`/`intellij.idea.indices.
 
 ## Accessing a File-Based Index
 
-Access to file-based indexes is performed through the [FileBasedIndex](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/indexing-api/src/com/intellij/util/indexing/FileBasedIndex.java) class.
+Access to file-based indexes is performed through [FileBasedIndex](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/indexing-api/src/com/intellij/util/indexing/FileBasedIndex.java).
 
 Note:
 
@@ -106,7 +106,7 @@ The most useful indexes for plugin developers are:
 
 ### Word Index
 
-Generally, the word index should be accessed indirectly by using helper methods of the [PsiSearchHelper](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/indexing-api/src/com/intellij/psi/search/PsiSearchHelper.java) class.
+Generally, the word index should be accessed indirectly by using helper methods of [PsiSearchHelper](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/indexing-api/src/com/intellij/psi/search/PsiSearchHelper.java).
 
 ### File Name Index
 

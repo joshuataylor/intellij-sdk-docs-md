@@ -34,7 +34,7 @@ tab :\u0009
 
 ## Define a Test Method
 
-Add the `testFormatter()` method to the `SimpleCodeInsightTest` class [previously defined](completion-test.html#define-a-test).
+Add the `testFormatter()` method to `SimpleCodeInsightTest` [previously defined](completion-test.html#define-a-test).
 
 * Again, this method configures the test fixture by using the test file.
 

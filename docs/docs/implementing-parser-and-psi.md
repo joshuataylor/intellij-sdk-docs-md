@@ -3,17 +3,17 @@
 Parsing files in IntelliJ Platform is a two-step process.
 
 First, an abstract syntax tree (AST) is built, defining the structure of the program.
-AST nodes are created internally by the IDE and are represented by instances of the [ASTNode](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/lang/ASTNode.java) class.
+AST nodes are created internally by the IDE and are represented by instances of [ASTNode](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/lang/ASTNode.java).
 Each AST node has an associated element type [IElementType](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/tree/IElementType.java) instance, and the element types are defined by the language plugin.
-The AST tree's top-level node for a file needs to have a special element type, which extends the [IFileElementType](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/tree/IFileElementType.java) class.
+The AST tree's top-level node for a file needs to have a special element type, which extends [IFileElementType](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/tree/IFileElementType.java).
 
 The AST nodes have a direct mapping to text ranges in the underlying document.
 The bottom-most nodes of the AST match individual tokens returned by the [lexer](implementing-lexer.html), and higher-level nodes match multiple-token fragments.
 Operations performed on nodes of the AST tree, such as inserting, removing, reordering nodes, and so on, are immediately reflected as changes to the underlying document's text.
 
 Second, a [Program Structure Interface (PSI)](psi.html) tree is built on top of the AST, adding semantics and methods for manipulating specific language constructs.
-Nodes of the PSI tree are represented by classes implementing the [PsiElement](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiElement.java) interface and are created by the language plugin in the [ParserDefinition.createElement()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/lang/ParserDefinition.java) method.
-The top-level node of the PSI tree for a file needs to implement the [PsiFile](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiFile.java) interface and is created in the [ParserDefinition.createFile()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/lang/ParserDefinition.java) method.
+Nodes of the PSI tree are represented by classes implementing [PsiElement](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiElement.java) and are created by the language plugin in the [ParserDefinition.createElement()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/lang/ParserDefinition.java) method.
+The top-level node of the PSI tree for a file needs to implement [PsiFile](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiFile.java) and is created in the [ParserDefinition.createFile()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/lang/ParserDefinition.java) method.
 
 Example:
 [ParserDefinition](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/plugins/properties/properties-common/src/com/intellij/lang/properties/parsing/PropertiesParserDefinition.java) for [Properties language plugin](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/plugins/properties)
@@ -36,8 +36,8 @@ The Grammar-Kit plugin is built using its own engine; its source code and docume
 
 For re-using existing ANTLRv4 grammars, see [antlr4-intellij-adaptor](https://github.com/antlr/antlr4-intellij-adaptor) third-party library.
 
-The language plugin provides the parser implementation as an implementation of the [PsiParser](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/lang/PsiParser.java) interface, returned from [ParserDefinition.createParser()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/lang/ParserDefinition.java).
-The parser receives an instance of the [PsiBuilder](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/lang/PsiBuilder.java) class, which is used to get the stream of tokens from the [lexer](implementing-lexer.html) and to hold the intermediate state of the AST being built.
+The language plugin provides the parser implementation as an implementation of [PsiParser](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/lang/PsiParser.java), returned from [ParserDefinition.createParser()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/lang/ParserDefinition.java).
+The parser receives an instance of [PsiBuilder](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/lang/PsiBuilder.java), which is used to get the stream of tokens from the [lexer](implementing-lexer.html) and to hold the intermediate state of the AST being built.
 
 Tip:
 
@@ -83,9 +83,9 @@ To better understand the process of building a PSI tree for a simple expression,
 In general, there is no single right way to implement a PSI for a custom language, and the plugin author can choose the PSI structure and set of methods that are the most convenient for the code which uses the PSI (error analysis, refactorings, and so on).
 
 However, one base interface needs to be used by a custom language PSI implementation to support features like [Rename Refactoring](rename-refactoring.html) and [Find Usages](find-usages.html).
-Every element which can be renamed or referenced (a class definition, a method definition, and so on) needs to implement the [PsiNamedElement](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiNamedElement.java) interface, with methods `getName()` and `setName()`.
+Every element which can be renamed or referenced (a class definition, a method definition, and so on) needs to implement [PsiNamedElement](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiNamedElement.java), with methods `getName()` and `setName()`.
 
-Several functions which can be used for implementing and using the PSI can be found in the `com.intellij.psi.util` package, and in particular in the [PsiUtilCore](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/util/PsiUtilCore.java) and [PsiTreeUtil](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/util/PsiTreeUtil.java) classes.
+Several functions which can be used for implementing and using the PSI can be found in the `com.intellij.psi.util` package, and in particular in [PsiUtilCore](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/util/PsiUtilCore.java) and [PsiTreeUtil](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/util/PsiTreeUtil.java).
 
 Tip:
 

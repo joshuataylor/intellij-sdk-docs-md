@@ -63,7 +63,7 @@ DataNode -- child3
 @enduml
 ```
 
-The `DataNode` class is just a holder for the target data (a data type is defined by the `Key`).
+`DataNode` is just a holder for the target data (a data type is defined by the `Key`).
 Multiple `DataNode` objects might be organized in a directed graph where every edge identifies parent-child relation.
 
 For example, a simple one-module project might look as below:
@@ -150,7 +150,7 @@ Describe the project's settings files to track by having external system [Extern
 Note:
 
 The `ExternalSystemAutoImportAware.getAffectedExternalProjectPath()` method is called quite often, that's why it's expected to return control as soon as possible.
-Helper `CachingExternalSystemAutoImportAware` class might be used for caching, i.e. `ExternalSystemManager` which implements `ExternalSystemAutoImportAware` can have a field like `new CachingExternalSystemAutoImportAware(new MyExternalSystemAutoImportAware())` and delegate `ExternalSystemAutoImportAware.getAffectedExternalProjectPath()` calls to it.
+`CachingExternalSystemAutoImportAware` helper might be used for caching, i.e. `ExternalSystemManager` which implements `ExternalSystemAutoImportAware` can have a field like `new CachingExternalSystemAutoImportAware(new MyExternalSystemAutoImportAware())` and delegate `ExternalSystemAutoImportAware.getAffectedExternalProjectPath()` calls to it.
 
 ### Auto-Import for Standalone External Systems
 

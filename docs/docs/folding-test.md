@@ -34,7 +34,7 @@ public class Test {
 
 ## Define a Test
 
-Add the `testFolding()` method to the `SimpleCodeInsightTest` class [previously defined](completion-test.html#define-a-test).
+Add the `testFolding()` method to `SimpleCodeInsightTest` [previously defined](completion-test.html#define-a-test).
 This test method reuses the `DefaultTestData.simple` Simple file.
 
 ```JAVA

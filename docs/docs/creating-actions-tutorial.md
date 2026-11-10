@@ -8,7 +8,7 @@ Using the SDK code sample [action_basics](https://github.com/JetBrains/intellij-
 
 ## Creating a Custom Action
 
-Custom actions extend the abstract class [AnAction](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnAction.java).
+Custom actions extend [AnAction](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnAction.java).
 Classes that extend it should override `AnAction.update()` and must override `AnAction.actionPerformed()`.
 
 * The `update()` method implements the code that enables or disables an action.
@@ -41,7 +41,7 @@ public class PopupDialogAction extends AnAction {
 
 Warning:
 
-`AnAction` classes do not have class fields of any kind.
+`AnAction` implementations do not have class fields of any kind.
 This restriction prevents memory leaks.
 For more information about why, see [Action Implementation](action-system.html#action-implementation).
 

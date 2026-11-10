@@ -10,7 +10,7 @@ This page is part of multistep [Testing a Custom Language Plugin](writing-tests-
 
 ## Define a Test Method
 
-Add the `testCommenter()` method to the `SimpleCodeInsightTest` class [previously defined](completion-test.html#define-a-test).
+Add the `testCommenter()` method to `SimpleCodeInsightTest` [previously defined](completion-test.html#define-a-test).
 This test constructs a Simple Language properties file containing one line, with the virtual caret positioned at the beginning of the line.
 The test calls the commenter to insert a comment character at the caret, then verifies the results.
 It again calls the line comment action to remove the comment character and verifies the results.

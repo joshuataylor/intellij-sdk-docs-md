@@ -14,7 +14,7 @@ Inspections are run on a full PSI tree and report found problems, while intentio
 
 ## Inspections
 
-The code inspections for custom languages use the same API as all other code inspections, based on the [LocalInspectionTool](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/codeInspection/LocalInspectionTool.java) class.
+The code inspections for custom languages use the same API as all other code inspections, based on [LocalInspectionTool](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/codeInspection/LocalInspectionTool.java).
 
 The functionality of [LocalInspectionTool](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/codeInspection/LocalInspectionTool.java) partially duplicates that of [Annotator](syntax-highlighting-and-error-highlighting.html#annotator).
 
@@ -47,7 +47,7 @@ to optimize processing.
 ## Intentions
 
 The code intentions for custom languages also use the standard API for intentions.
-The intention classes need to implement the [IntentionAction](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/codeInsight/intention/IntentionAction.java) interface
+The intention classes need to implement [IntentionAction](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/codeInsight/intention/IntentionAction.java)
 and are registered using the [com.intellij.intentionAction](https://jb.gg/ipe?extensions=com.intellij.intentionAction) extension point
 .
 

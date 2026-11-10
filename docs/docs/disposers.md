@@ -16,7 +16,7 @@ The `Disposer` supports chaining `Disposable` objects in parent-child relationsh
 
 ## Automatically Disposed Objects
 
-Many objects are disposed automatically by the platform if they implement the `Disposable` interface.
+Many objects are disposed automatically by the platform if they implement `Disposable`.
 The most important type of such objects is [services](plugin-services.html).
 The platform automatically disposes application-level services when the IDE is closed or the plugin providing the service is unloaded.
 Project-level services are disposed on project close or plugin unload events.
@@ -87,7 +87,7 @@ projectServices -- projectService2
 
 When My Project is closed and its disposal is triggered by the platform, the Disposer API will dispose My Listener and My Alarm before My Project, and Project Service A and Project Service B before Services of My Project.
 
-See [The Disposable Interface](#implementing-the-disposable-interface) for more information about creating `Disposable` classes.
+See [Implementing Disposable](#implementing-disposable) for more information about creating `Disposable` implementations.
 
 Registering a disposable is performed by calling `Disposer.register()`:
 
@@ -192,9 +192,9 @@ This method handles recursively disposing of all the `Disposable` child descenda
 
 ## 
 
-Implementing the `Disposable` Interface
+Implementing `Disposable`
 
-Creating a class requires implementing the `Disposable` interface and defining the `dispose()` method.
+Creating a class requires implementing `Disposable` and defining the `dispose()` method.
 
 In many cases, when the object implements `Disposable` only to be used as a parent disposable, the method's implementation will be completely empty.
 

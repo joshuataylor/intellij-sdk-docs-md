@@ -249,7 +249,7 @@ They are considered to be obsolete or too complex.
 
 * The `Notifications.Bus.notify` method can be replaced with the `notify` method on the `Notification` instance.
 
-* `NotificationsManager` is considered to be internal. Its methods should be replaced by the corresponding methods in the `Notification` class.
+* `NotificationsManager` is considered to be internal. Its methods should be replaced by the corresponding methods in `Notification`.
 
 ## Summary
 
@@ -261,5 +261,5 @@ They are considered to be obsolete or too complex.
 
 * Tool Window Notification visually points to the specific tool windows. The primary action is shown as a hyperlink. It is automatically dismissed on click or keypress.
 
-* Use the `Notification` class to create instances, its builder methods to configure, and the `notify` method to show a notification.
+* Use `Notification` to create instances, its builder methods to configure, and the `notify` method to show a notification.
 

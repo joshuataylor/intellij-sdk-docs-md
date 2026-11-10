@@ -74,7 +74,7 @@ See [How to test a JVM language?](testing-faq.html#how-to-test-a-jvm-language) o
 ### LightProjectDescriptor
 
 When writing a light test, it is possible to specify the requirements of the project used in test, such as the module type, the configured [SDK](sdk.html), [facets](facet.html), [libraries](library.html), etc.
-It is done by extending the [LightProjectDescriptor](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/testFramework/src/com/intellij/testFramework/LightProjectDescriptor.java) class and returning the project descriptor (usually stored in `static final` field) from `getProjectDescriptor()`.
+It is done by extending [LightProjectDescriptor](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/testFramework/src/com/intellij/testFramework/LightProjectDescriptor.java) and returning the project descriptor (usually stored in `static final` field) from `getProjectDescriptor()`.
 
 Before executing each test, the project instance will be reused if the test case returns the same project descriptor as the previous one or recreated if the descriptor is different (`equals() = false`).
 

@@ -97,7 +97,7 @@ Use [ProjectLocator](https://github.com/JetBrains/intellij-community/tree/idea/2
 
 ## How do I extend VFS?
 
-To provide an alternative file system implementation (for example, an FTP file system), implement the [VirtualFileSystem](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/openapi/vfs/VirtualFileSystem.java) class (most likely, together with `VirtualFile`),
+To provide an alternative file system implementation (for example, an FTP file system), implement [VirtualFileSystem](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/openapi/vfs/VirtualFileSystem.java) (most likely, together with `VirtualFile`),
 and register the implementation via [com.intellij.virtualFileSystem](https://jb.gg/ipe?extensions=com.intellij.virtualFileSystem) extension point
 .
 

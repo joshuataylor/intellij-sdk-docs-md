@@ -92,10 +92,10 @@ JCEF can be unsupported when:
 
 ### Browser
 
-JCEF browser is represented by the [JBCefBrowser](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/ui.jcef/jcef/JBCefBrowser.java) class.
+JCEF browser is represented by [JBCefBrowser](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/ui.jcef/jcef/JBCefBrowser.java).
 It is responsible for loading and rendering requested documents in the actual Chromium-based browser.
 
-JCEF browsers can be created either by using the `JBCefBrowser` class' constructors or via [JBCefBrowserBuilder](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/ui.jcef/jcef/JBCefBrowserBuilder.java).
+JCEF browsers can be created either by using `JBCefBrowser` constructors or via [JBCefBrowserBuilder](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/ui.jcef/jcef/JBCefBrowserBuilder.java).
 Use constructors in the cases when a browser with the default [client](#browser-client) and default options is enough.
 The builder approach allows using custom clients and configuring other options.
 
@@ -291,7 +291,7 @@ It should be used when transparent scrollbars or other advanced options are requ
 
 ### Disposing Resources
 
-`JBCefBrowser`, `JBCefClient`, and `JBCefJSQuery` classes implement [JBCefDisposable](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/ui.jcef/jcef/JBCefDisposable.java), which extends [Disposable](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/util/src/com/intellij/openapi/Disposable.java).
+`JBCefBrowser`, `JBCefClient`, and `JBCefJSQuery` implement [JBCefDisposable](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/ui.jcef/jcef/JBCefDisposable.java), which extends [Disposable](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/util/src/com/intellij/openapi/Disposable.java).
 It means that these classes should clean up their resources according to the rules described on the [Disposer and Disposable](disposers.html) page.
 
 For example, a custom `JBCefClient` with registered handlers should remove them in the `dispose()` method implementation.

@@ -49,7 +49,7 @@ Suppose a plugin can produce a list of symbols representing message bundle file 
 Such symbols could have a qualified kind named: `message-bundle/properties`.
 Suppose that these message bundle properties can be used as string literal parameters to some Java method calls.
 A scope contributor would provide a scope containing all the `properties` symbols and a symbol with a reference pattern, which would map from `message-bundle/properties` to the `java/string-literals` kind.
-A convenient way of defining such a symbol is to use the `ReferencingPolySymbol` class.
+A convenient way of defining such a symbol is to use `ReferencingPolySymbol`.
 
 As a result, in a particular place in the code, all provided message bundle properties should be treated as possible string literal values.
 Such an approach allows symbol contributors to abstract from the actual implementation details of registering completion providers or reference providers in a particular language and focus on building the symbol model.
@@ -299,7 +299,7 @@ Dedicated support for `PolySymbol` `get` properties:
 
 * `JSTypeProperty` - the type will be used in JavaScript type evaluator as the type of the symbol
 
-* `JsSymbolKindProperty` - the kind of the symbol, one of [JsSymbolSymbolKind](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/polySymbols-web/src/com/intellij/polySymbols/js/JsSymbolSymbolKind.kt) enum values. The kind will be used to render the appropriate icon in the code completion popup Integration with unqualified reference resolution is not available in TypeScript code
+* `JsSymbolKindProperty` - the kind of the symbol, one of [JsSymbolSymbolKind](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/polySymbols-web/src/com/intellij/polySymbols/js/JsSymbolSymbolKind.kt) values. The kind will be used to render the appropriate icon in the code completion popup Integration with unqualified reference resolution is not available in TypeScript code
 
 #### DOM Events
 

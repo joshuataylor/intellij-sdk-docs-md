@@ -22,7 +22,7 @@ and visit
 Minor Changes and Additions
 : * Document registering [color settings pages](syntax-highlighting-and-error-highlighting.html#registering-a-color-settings-page) with the declarative `com.intellij.colorSettings` extension point available since 2026.3.
 
-* Document the [beta](settings-guide.html#table-of-attributes) attribute of settings declarations, which replaces the deprecated `Configurable.Beta` interface.
+* Document the [beta](settings-guide.html#table-of-attributes) attribute of settings declarations, which replaces the deprecated `Configurable.Beta`.
 
 ### October
 

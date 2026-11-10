@@ -4,7 +4,7 @@
 Product Help: [Surround code fragments](https://www.jetbrains.com/help/idea/surrounding-blocks-of-code-with-language-constructs.html)
 </tldr>
 
-To support the Surround With action, the plugin needs to register one or more implementations of the [SurroundDescriptor](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-api/src/com/intellij/lang/surroundWith/SurroundDescriptor.java) interface
+To support the Surround With action, the plugin needs to register one or more implementations of [SurroundDescriptor](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-api/src/com/intellij/lang/surroundWith/SurroundDescriptor.java)
 in the [com.intellij.lang.surroundDescriptor](https://jb.gg/ipe?extensions=com.intellij.lang.surroundDescriptor) extension point
 .
 Each of the surround descriptors defines a possible type of code fragment that can be surrounded - for example, one surround descriptor can handle surrounding expressions, and another can handle statements.

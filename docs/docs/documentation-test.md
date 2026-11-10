@@ -10,7 +10,7 @@ This page is part of multistep [Testing a Custom Language Plugin](writing-tests-
 
 ## Define a Test Method
 
-Add the `testDocumentation()` method to the `SimpleCodeInsightTest` class [previously defined](completion-test.html#define-a-test).
+Add the `testDocumentation()` method to `SimpleCodeInsightTest` [previously defined](completion-test.html#define-a-test).
 This test uses the files `DocumentationTestData.java` and `DocumentationTestData.simple` from the `testData` directory
 to construct a test project and opens the first one in the editor with the virtual caret positioned at the usage of the Simple Language property.
 

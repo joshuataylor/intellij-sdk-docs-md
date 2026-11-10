@@ -19,7 +19,7 @@ In most cases, the flow is:
 
 Most languages provide factory methods to create specific code constructs more easily, for example:
 
-* [PsiJavaParserFacade](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/java/java-psi-api/src/com/intellij/psi/PsiJavaParserFacade.java) class contains methods such as `createMethodFromText()`, which creates a Java method from the given text
+* [PsiJavaParserFacade](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/java/java-psi-api/src/com/intellij/psi/PsiJavaParserFacade.java) contains methods such as `createMethodFromText()`, which creates a Java method from the given text
 
 * [SimpleElementFactory.createProperty()](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/psi/SimpleElementFactory.java) creating a Simple language property
 

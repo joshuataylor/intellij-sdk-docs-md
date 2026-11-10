@@ -20,6 +20,6 @@ All required [test-framework dependencies](tools-intellij-platform-gradle-plugin
 
 With the former approach, use classes such as [BasePlatformTestCase](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/testFramework/src/com/intellij/testFramework/fixtures/BasePlatformTestCase.java).
 
-With the latter approach, use the [IdeaTestFixtureFactory](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/testFramework/src/com/intellij/testFramework/fixtures/IdeaTestFixtureFactory.java) class to create instances of fixtures for the test environment.
+With the latter approach, use [IdeaTestFixtureFactory](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/testFramework/src/com/intellij/testFramework/fixtures/IdeaTestFixtureFactory.java) to create instances of fixtures for the test environment.
 Call the fixture creation and setup methods from the test setup method used by the test framework.
 

@@ -20,7 +20,7 @@ Register the `LanguageFileType` with the IntelliJ Platform in the plugin configu
 ## Define the Language
 
 The language implemented in this tutorial is named "Simple" - note the case of the name.
-The [SimpleLanguage](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleLanguage.java) class is defined in the `org.intellij.sdk.language` package of the `simple_language_plugin` code sample:
+[SimpleLanguage](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleLanguage.java) is defined in the `org.intellij.sdk.language` package of the `simple_language_plugin` code sample:
 
 ```JAVA
 public class SimpleLanguage extends Language {
@@ -36,8 +36,8 @@ public class SimpleLanguage extends Language {
 
 ## Define an Icon
 
-The [icon](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/resources/icons/jar-gray.png) for the Simple Language is defined by the
-[SimpleIcons](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleIcons.java) class.
+The [icon](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/resources/icons/jar-gray.png) for the Simple Language is defined by
+[SimpleIcons](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleIcons.java).
 Please see [Working with Icons](icons.html) for details on how to define and use icons.
 
 ```JAVA

@@ -32,7 +32,7 @@ See how to [generate highlighting test data](testing-highlighting.html#generatin
 
 ## Define a Test Method
 
-Add the `testAnnotator()` method to the `SimpleCodeInsightTest` class [previously defined](completion-test.html#define-a-test).
+Add the `testAnnotator()` method to `SimpleCodeInsightTest` [previously defined](completion-test.html#define-a-test).
 Again, this method configures the test fixture by using the test files.
 It then calls the `checkHighlighting()` method to verify weak warnings.
 

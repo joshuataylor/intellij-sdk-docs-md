@@ -52,13 +52,13 @@ Do not add the word "On" or "Off" to the item name, since the state description 
 
 ### Control
 
-A toggle button is implemented with the [OnOffButton](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/ui/components/OnOffButton.java) class.
+A toggle button is implemented with [OnOffButton](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/ui/components/OnOffButton.java).
 But generally, do not use the class directly.
 The IDE automatically places the buttons in the search feed if one of the patterns described below is followed:
 
 1. If this is a system or editor or another kind of settings, register the corresponding [BooleanOptionDescription](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/ide/ui/search/BooleanOptionDescription.java) for the option. The options can be bound (but not limited) to a [SearchTopHitProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/ide/SearchTopHitProvider.kt) instance which is registered in `plugin.xml` with the `<search.topHitProvider implementation="fq.class.name"/>` tag.
 
-For example, see the [SystemOptionsTopHitProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-impl/src/com/intellij/ide/ui/SystemOptionsTopHitProvider.java) class that represents matching of Reopen last project on startup checkbox to `BooleanOptionDescription`.
+For example, see [SystemOptionsTopHitProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-impl/src/com/intellij/ide/ui/SystemOptionsTopHitProvider.java) that represents matching of Reopen last project on startup checkbox to `BooleanOptionDescription`.
 
 2. Implement a custom action that is inherited from [ToggleAction](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/openapi/actionSystem/ToggleAction.java) and registered in `plugin.xml`.
 

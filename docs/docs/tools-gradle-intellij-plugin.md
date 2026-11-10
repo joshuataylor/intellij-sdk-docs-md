@@ -1574,7 +1574,7 @@ Default value
 `failureLevel`
 
 Defines the verification level at which the task should fail if any reported issue matches.
-Can be set as `FailureLevel` enum or `EnumSet<FailureLevel>`.
+Can be set as `FailureLevel` or `EnumSet<FailureLevel>`.
 
 Type
 : `org.jetbrains.intellij.tasks.RunPluginVerifierTask.FailureLevel`

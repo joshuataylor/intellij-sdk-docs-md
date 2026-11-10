@@ -19,14 +19,14 @@ The [Grouping Actions](grouping-actions-tutorial.html) tutorial demonstrates thr
 
 ## Action Implementation
 
-An action is a class derived from the abstract class [AnAction](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnAction.java) (see also [Useful Action Base Classes](#useful-action-base-classes) below).
+An action is a class derived from [AnAction](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnAction.java) (see also [Useful Action Base Classes](#useful-action-base-classes) below).
 The IntelliJ Platform calls methods of actions when a user interacts with a menu item or toolbar button.
 
 Warning: No fields allowed
 
 Classes based on `AnAction` must not have class fields of any kind.
-This is because an instance of `AnAction` class exists for the entire lifetime of the application.
-If the `AnAction` class uses a field to store data that has a shorter lifetime and doesn't clear this data promptly, the data leaks.
+This is because an instance of `AnAction` exists for the entire lifetime of the application.
+If an `AnAction` implementation uses a field to store data that has a shorter lifetime and doesn't clear this data promptly, the data leaks.
 For example, any `AnAction` data that exists only within the context of a `Project` causes the `Project` to be kept in memory after the user has closed it.
 
 Tip: Actions available during indexing
@@ -81,7 +81,7 @@ See [Overriding the AnAction.actionPerformed() Method](#overriding-the-anactiona
 
 #### Miscellaneous
 
-There are other methods to override in the `AnAction` class, such as changing the default `Presentation` object for the action.
+There are other methods to override in `AnAction`, such as changing the default `Presentation` object for the action.
 There is also a use case for overriding action constructors when registering them with dynamic action groups, demonstrated in the [Grouping Actions](grouping-actions-tutorial.html#adding-child-actions-to-the-dynamic-group) tutorial.
 
 ### 

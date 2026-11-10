@@ -35,7 +35,7 @@ The `topic` attribute specifies the listener interface corresponding to the type
 Usually, this is the interface used as the type parameter of the [Topic](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/extensions/src/com/intellij/util/messages/Topic.java) instance for the type of events.
 The `class` attribute specifies the class in the plugin that implements the listener interface and receives the events.
 
-As a specific example, to receive events about all [Virtual File System](virtual-file-system.html) changes, implement the `BulkFileListener` interface, corresponding to the topic `VirtualFileManager.VFS_CHANGES`.
+As a specific example, to receive events about all [Virtual File System](virtual-file-system.html) changes, implement `BulkFileListener`, corresponding to the topic `VirtualFileManager.VFS_CHANGES`.
 To subscribe to this topic from code, use something like the following snippet:
 
 ```JAVA

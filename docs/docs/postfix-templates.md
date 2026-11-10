@@ -43,7 +43,7 @@ See the [Advanced Postfix Templates](advanced-postfix-templates.html) section fo
 
 All postfix templates must provide descriptions and examples showing the code before and after a template is expanded.
 The files describing the template must be placed in the plugin's `resources` in the `postfixTemplates/$TEMPLATE_NAME$` where the $TEMPLATE_NAME$ directory must match the simple name of the template class,
-e.g., for a template implemented in `com.example.IntroduceVariablePostfixTemplate` class, the directory name should be named as `IntroduceVariablePostfixTemplate`.
+e.g., for a template implemented in `com.example.IntroduceVariablePostfixTemplate`, the directory name should be named as `IntroduceVariablePostfixTemplate`.
 
 Providing the description explaining the template purpose and context details is achieved by creating the `description.html` file.
 

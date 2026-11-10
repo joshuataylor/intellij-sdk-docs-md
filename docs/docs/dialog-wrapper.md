@@ -30,7 +30,7 @@ There's also a DSL-like API via [DialogBuilder](https://github.com/JetBrains/int
 
 ### Usage
 
-When using the [DialogWrapper](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/openapi/ui/DialogWrapper.java) class for a dialog, follow these required steps:
+When using [DialogWrapper](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/openapi/ui/DialogWrapper.java) for a dialog, follow these required steps:
 
 * Call the base class constructor and provide either a `Project` in the frame of which the dialog will be displayed, or a parent component for the dialog.
 
@@ -51,7 +51,7 @@ Optionally:
 #### Dialog Content
 
 Use [Kotlin UI DSL](kotlin-ui-dsl-version-2.html) to provide the dialog's contents (see [samples](#kotlin)).
-Alternatively or when using Java, the `DialogWrapper` class can be used together with [GUI Designer forms](https://www.jetbrains.com/help/idea/gui-designer-basics.html).
+Alternatively or when using Java, `DialogWrapper` can be used together with [GUI Designer forms](https://www.jetbrains.com/help/idea/gui-designer-basics.html).
 In this case, bind a GUI Designer form to the class extending `DialogWrapper`, bind the top-level panel of the form to a field, and return that field from the `createCenterPanel()` method.
 
 Tip:

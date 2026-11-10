@@ -25,7 +25,7 @@ public class Test {
 
 ## Define a Test Method
 
-Add the `testReference()` method to the `SimpleCodeInsightTest` class [previously defined](completion-test.html#define-a-test).
+Add the `testReference()` method to `SimpleCodeInsightTest` [previously defined](completion-test.html#define-a-test).
 This test is configured by the test files.
 The fixture gets the `PsiReference` at the caret position, and then asserts the resolved `SimpleProperty.value()` with the known value of that key.
 

@@ -20,7 +20,7 @@ Refer to the [Notification Balloons](notification-balloons.html) topic for more 
 `JBSplitter`
 
 [JBSplitter](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/ui/JBSplitter.java) is a replacement for the standard
-[Swing JSplitPane](https://docs.oracle.com/en/java/javase/24/docs/api/java.desktop/javax/swing/JSplitPane.html) class.
+[Swing JSplitPane](https://docs.oracle.com/en/java/javase/24/docs/api/java.desktop/javax/swing/JSplitPane.html).
 Unlike some other JetBrains-enhanced Swing components, it is not a drop-in replacement and has a different API.
 However, to achieve a consistent user experience, it is recommended to use `JBSplitter` instead of the standard `JSplitPane`.
 

@@ -96,8 +96,8 @@ authors should use the [Documentation Target API](#documentation-target-api) ins
 
 Custom language developers usually extend from
 [AbstractDocumentationProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/lang/documentation/AbstractDocumentationProvider.java)
-instead of implementing the
-[DocumentationProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/lang/documentation/DocumentationProvider.java) interface.
+instead of implementing
+[DocumentationProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/lang/documentation/DocumentationProvider.java).
 This implementation needs to be registered in [com.intellij.lang.documentationProvider](https://jb.gg/ipe?extensions=com.intellij.lang.documentationProvider) extension point
 .
 

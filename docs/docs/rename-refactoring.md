@@ -59,12 +59,12 @@ Implementations of `RenameInputValidator` or `RenameInputValidatorEx` are regist
 ## Custom Rename UI and Workflow
 
 Further customization of the Rename refactoring processing is possible on multiple levels.
-A custom implementation of the [RenameHandler](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/refactoring/src/com/intellij/refactoring/rename/RenameHandler.java) interface entirely replaces the UI and workflow of the rename refactoring, and can also support renaming something which is not a [PsiElement](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiElement.java) at all.
+A custom implementation of [RenameHandler](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/refactoring/src/com/intellij/refactoring/rename/RenameHandler.java) entirely replaces the UI and workflow of the rename refactoring, and can also support renaming something which is not a [PsiElement](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiElement.java) at all.
 
 Example:
 [PropertyRenameHandler](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/plugins/groovy/src/org/jetbrains/plugins/groovy/refactoring/rename/PropertyRenameHandler.java) for renaming a Groovy property
 
-If the standard UI is sufficient but the default logic of renaming needs to be extended, provide an implementation of the [RenamePsiElementProcessor](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-impl/src/com/intellij/refactoring/rename/RenamePsiElementProcessor.java) interface.
+If the standard UI is sufficient but the default logic of renaming needs to be extended, provide an implementation of [RenamePsiElementProcessor](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-impl/src/com/intellij/refactoring/rename/RenamePsiElementProcessor.java).
 Such a processor can:
 
 * Rename an element different from the one on which the action was invoked (a super method, for example)

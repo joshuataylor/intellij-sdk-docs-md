@@ -102,10 +102,10 @@ This condition is needed because the custom action group is added to an IntelliJ
 Extending `DefaultActionGroup`
 
 The [DefaultActionGroup](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/openapi/actionSystem/DefaultActionGroup.java) is an implementation of [ActionGroup](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/ActionGroup.java).
-The `DefaultActionGroup` class is used to add child actions and separators between them to a group.
+`DefaultActionGroup` is used to add child actions and separators between them to a group.
 This class is used if a set of actions belonging to the group does not change at runtime.
 
-As an example, extend `DefaultActionGroup` to create the `CustomDefaultActionGroup` class in the `action_basics` code sample:
+As an example, extend `DefaultActionGroup` to create `CustomDefaultActionGroup` in the `action_basics` code sample:
 
 ```JAVA
 public class CustomDefaultActionGroup extends DefaultActionGroup {
@@ -218,7 +218,7 @@ The set of actions in the `ActionGroup` is dynamically defined.
 ### Creating Variable Action Group
 
 To create a group of actions with a variable number of actions, extend `ActionGroup`.
-For example, as in the `action_basics` class [DynamicActionGroup](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/action_basics/src/main/java/org/intellij/sdk/action/DynamicActionGroup.java) code:
+For example, as in [DynamicActionGroup](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/action_basics/src/main/java/org/intellij/sdk/action/DynamicActionGroup.java) from the `action_basics` code sample:
 
 ```JAVA
 public class DynamicActionGroup extends ActionGroup {

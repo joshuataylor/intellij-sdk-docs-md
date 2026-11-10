@@ -9,7 +9,7 @@ Note that this feature requires a [dependency](plugin-dependencies.html) on the 
 
 ## Creating a New Framework
 
-In order to make a custom framework available and configurable for a project, the [FrameworkTypeEx](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/java/idea-ui/src/com/intellij/framework/FrameworkTypeEx.java) class needs to be extended, in this example to make the [DemoFramework](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/framework_basics/src/main/java/org/intellij/sdk/framework/DemoFramework.java) class.
+In order to make a custom framework available and configurable for a project, [FrameworkTypeEx](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/java/idea-ui/src/com/intellij/framework/FrameworkTypeEx.java) needs to be extended, in this example to make [DemoFramework](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/framework_basics/src/main/java/org/intellij/sdk/framework/DemoFramework.java).
 
 ```JAVA
 final class DemoFramework extends FrameworkTypeEx {

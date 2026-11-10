@@ -29,7 +29,7 @@ classes for the settings example implemented in Kotlin with usage of [Kotlin UI 
 
 The `AppSettings` Class
 
-The `AppSettings` class persistently stores the custom Settings.
+`AppSettings` persistently stores the custom Settings.
 It is based on the [IntelliJ Platform Persistence Model](persisting-state-of-components.html#using-persistentstatecomponent).
 
 ### 
@@ -210,7 +210,7 @@ An explanation of this declaration can be found in [Declaring Application Settin
 
 Creating the `AppSettingsConfigurable` Implementation
 
-The `AppSettingsConfigurable` class implements [Configurable](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/ide-core/src/com/intellij/openapi/options/Configurable.java).
+`AppSettingsConfigurable` implements [Configurable](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/ide-core/src/com/intellij/openapi/options/Configurable.java).
 The class has one field to hold a reference to the `AppSettingsComponent`.
 
 ```JAVA
@@ -278,7 +278,7 @@ final class AppSettingsConfigurable implements Configurable {
 
 `AppSettingsConfigurable` Methods
 
-All the methods in this class are overrides of the methods in the `Configurable` interface.
+All the methods in this class are overrides of the methods in `Configurable`.
 Readers are encouraged to review the Javadoc comments for the `Configurable` methods.
 Also, review notes about [IntelliJ Platform Interactions](settings-guide.html#intellij-platform-interactions-with-configurable) with `Configurable` methods.
 

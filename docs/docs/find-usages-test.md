@@ -40,7 +40,7 @@ public class Test {
 
 ## Define a Test Method
 
-Add the `testFindUsages()` method to the `SimpleCodeInsightTest` class [previously defined](completion-test.html#define-a-test).
+Add the `testFindUsages()` method to `SimpleCodeInsightTest` [previously defined](completion-test.html#define-a-test).
 This test verifies the find usage functionality will identify the "key with spaces".
 
 ```JAVA

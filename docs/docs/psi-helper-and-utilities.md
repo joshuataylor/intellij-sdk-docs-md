@@ -51,7 +51,7 @@ public class SimplePsiImplUtil {
 }
 ```
 
-The parser generates the `SimpleProperty` interface referenced in the code above.
+The parser generates `SimpleProperty`, which is referenced in the code above.
 
 ## Update Grammar and Regenerate the Parser
 

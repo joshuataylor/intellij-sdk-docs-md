@@ -6,7 +6,7 @@ Product Help: [Searching Everywhere](https://www.jetbrains.com/help/idea/searchi
 
 A custom language plugin can provide its items to be included in the lists shown when the user chooses the `Navigate | Class` or `Navigate | Symbol` action.
 
-Provide implementations of [ChooseByNameContributorEx](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-impl/src/com/intellij/navigation/ChooseByNameContributorEx.java) interface (separate implementations need to be provided for Class and Symbol, respectively), and register them
+Provide implementations of [ChooseByNameContributorEx](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-impl/src/com/intellij/navigation/ChooseByNameContributorEx.java) (separate implementations need to be provided for Class and Symbol, respectively), and register them
 in the [com.intellij.gotoClassContributor](https://jb.gg/ipe?extensions=com.intellij.gotoClassContributor) extension point
 or [com.intellij.gotoSymbolContributor](https://jb.gg/ipe?extensions=com.intellij.gotoSymbolContributor) extension point
 .

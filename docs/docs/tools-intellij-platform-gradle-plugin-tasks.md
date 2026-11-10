@@ -1946,7 +1946,7 @@ Extends: [Test](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.testing
 Sources: [TestCompanion](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.1/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/companion/TestCompanion.kt)
 </tldr>
 
-The base Gradle `test` task is preconfigured using the [TestCompanion](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.1/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/companion/TestCompanion.kt) class to run tests with IntelliJ Platform, sandbox, and all system properties set.
+The base Gradle `test` task is preconfigured using [TestCompanion](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.1/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/companion/TestCompanion.kt) to run tests with IntelliJ Platform, sandbox, and all system properties set.
 
 The task itself isn't mutated and a dedicated [prepareTest](#prepareTest) task is involved to request for required IntelliJ Platform and sandbox configuration.
 

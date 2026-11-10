@@ -24,7 +24,7 @@ See [Inspecting Settings](internal-ui-inspector.html#inspecting-settings) on how
 Custom Settings implementations are declared in the `[plugin.xml](plugin-configuration-file.html)` file using one of two extension points (EP), depending on the level of the Settings.
 Many [attributes](#settings-declaration-attributes) are shared between the EP declarations.
 
-Application and Project Settings typically provide an implementation based on the [Configurable](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/ide-core/src/com/intellij/openapi/options/Configurable.java) interface because they do not have runtime dependencies.
+Application and Project Settings typically provide an implementation based on [Configurable](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/ide-core/src/com/intellij/openapi/options/Configurable.java) because they do not have runtime dependencies.
 See [Implementations for Settings Extension Points](#implementations-for-settings-extension-points) for more information.
 
 Note:
@@ -133,9 +133,9 @@ Implementations for [com.intellij.applicationConfigurable](https://jb.gg/ipe?ext
 and [com.intellij.projectConfigurable](https://jb.gg/ipe?extensions=com.intellij.projectConfigurable) extension point
 can have one of two bases:
 
-* The [Configurable](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/ide-core/src/com/intellij/openapi/options/Configurable.java) interface, which provides a named configurable component with a Swing form. Most Settings providers are based on the `Configurable` interface or one of its sub- or supertypes.
+* [Configurable](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/ide-core/src/com/intellij/openapi/options/Configurable.java), which provides a named configurable component with a Swing form. Most Settings providers are based on `Configurable` or one of its sub- or supertypes.
 
-* The [ConfigurableProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/ide-core/src/com/intellij/openapi/options/ConfigurableProvider.java) class, which can hide a configurable component from the Settings dialog based on runtime conditions.
+* [ConfigurableProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/ide-core/src/com/intellij/openapi/options/ConfigurableProvider.java), which can hide a configurable component from the Settings dialog based on runtime conditions.
 
 ### 
 
@@ -186,7 +186,7 @@ Implementations based on `Configurable` can implement marker interfaces, which p
 `Configurable.NoScroll`
 : Do not add scroll bars to the form. By default, a plugin's Settings component is put into a scrollable pane.
 However, a Settings panel can have a `JTree`, which requires its own `JScrollPane`.
-So the `NoScroll` interface should be used to remove the outer `JScrollPane`.
+So `NoScroll` should be used to remove the outer `JScrollPane`.
 
 `Configurable.NoMargin`
 : Do not add an empty border to the form. By default, an empty border is added for a plugin's Settings component.
@@ -217,7 +217,7 @@ Existing implementations of `Configurable` in the IntelliJ Platform that can ser
 
 The `ConfigurableProvider` Class
 
-The [ConfigurableProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/ide-core/src/com/intellij/openapi/options/ConfigurableProvider.java) class only provides a `Configurable` implementation if its runtime conditions are met.
+[ConfigurableProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/ide-core/src/com/intellij/openapi/options/ConfigurableProvider.java) only provides a `Configurable` implementation if its runtime conditions are met.
 The IntelliJ Platform first calls the `ConfigurableProvider.canCreateConfigurable()`, which evaluates runtime conditions to determine if Settings changes make sense in the current context.
 If the Settings make sense to display, `canCreateConfigurable()` returns `true`.
 In that case the IntelliJ Platform calls `ConfigurableProvider.createConfigurable()`, which returns the `Configurable` instance for its Settings implementation.

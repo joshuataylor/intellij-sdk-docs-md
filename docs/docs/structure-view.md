@@ -5,7 +5,7 @@ Product Help: [Source file structure](https://www.jetbrains.com/help/idea/viewin
 </tldr>
 
 The Structure View implementation used for a specific file type can be customized on many levels.
-If a custom language plugin provides an implementation of the [StructureView](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/ide/structureView/StructureView.java) interface, it can completely replace the standard structure view implementation with a custom user interface component.
+If a custom language plugin provides an implementation of [StructureView](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/ide/structureView/StructureView.java), it can completely replace the standard structure view implementation with a custom user interface component.
 However, for most languages, this is not necessary, and the standard `StructureView` implementation provided by IntelliJ Platform can be reused.
 
 Tip:
@@ -14,7 +14,7 @@ To modify an existing Structure View (e.g., add/filter nodes of builtin language
 in [com.intellij.lang.structureViewExtension](https://jb.gg/ipe?extensions=com.intellij.lang.structureViewExtension) extension point
 .
 
-The starting point for the structure view is the [PsiStructureViewFactory](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/lang/PsiStructureViewFactory.java) interface, which is registered
+The starting point for the structure view is [PsiStructureViewFactory](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/lang/PsiStructureViewFactory.java), which is registered
 in the [com.intellij.lang.psiStructureViewFactory](https://jb.gg/ipe?extensions=com.intellij.lang.psiStructureViewFactory) extension point
 .
 
@@ -30,7 +30,7 @@ As the builder model, the plugin can specify a subclass of [TextEditorBasedStruc
 Example:
 [StructureViewModel](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/plugins/properties/properties-psi-impl/src/com/intellij/lang/properties/structureView/PropertiesFileStructureViewModel.java) for [Properties language plugin](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/plugins/properties)
 
-The main method to override is `getRoot()`, which returns the instance of a class implementing the [StructureViewTreeElement](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/ide/structureView/StructureViewTreeElement.java) interface.
+The main method to override is `getRoot()`, which returns an instance of [StructureViewTreeElement](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/ide/structureView/StructureViewTreeElement.java).
 There exists no standard implementation of this interface, so a plugin will need to implement it completely.
 
 The structure view tree is usually built as a partial mirror of the PSI tree.

@@ -22,13 +22,13 @@ Resolving references means the ability to go from the usage of an element to its
 
 Note:
 
-Every PSI element that can be renamed or referenced needs to implement [PsiNamedElement](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiNamedElement.java) interface.
+Every PSI element that can be renamed or referenced needs to implement [PsiNamedElement](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiNamedElement.java).
 
 ## Define a Named Element Class
 
 The classes below show how the Simple Language fulfills the need to implement `PsiNamedElement`.
 
-The [SimpleNamedElement](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/psi/SimpleNamedElement.java) interface is subclassed from [PsiNameIdentifierOwner](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiNameIdentifierOwner.java).
+[SimpleNamedElement](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/psi/SimpleNamedElement.java) is subclassed from [PsiNameIdentifierOwner](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiNameIdentifierOwner.java).
 
 ```JAVA
 public interface SimpleNamedElement extends PsiNameIdentifierOwner {
@@ -36,7 +36,7 @@ public interface SimpleNamedElement extends PsiNameIdentifierOwner {
 }
 ```
 
-The [SimpleNamedElementImpl](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/psi/impl/SimpleNamedElementImpl.java) class implements the `SimpleNamedElement` interface and extends [ASTWrapperPsiElement](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-impl/src/com/intellij/extapi/psi/ASTWrapperPsiElement.java).
+[SimpleNamedElementImpl](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/psi/impl/SimpleNamedElementImpl.java) implements `SimpleNamedElement` and extends [ASTWrapperPsiElement](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-impl/src/com/intellij/extapi/psi/ASTWrapperPsiElement.java).
 
 ```JAVA
 public abstract class SimpleNamedElementImpl extends ASTWrapperPsiElement implements SimpleNamedElement {
