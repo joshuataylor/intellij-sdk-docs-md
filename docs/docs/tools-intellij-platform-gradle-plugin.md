@@ -1,7 +1,7 @@
 # IntelliJ Platform Gradle Plugin (2.x)
 
 <tldr>
-Current Release: 2.20.0
+Current Release: 2.20.1
 
 GitHub: [Releases &amp; Changelog](https://github.com/JetBrains/intellij-platform-gradle-plugin/releases), [Issue Tracker](https://github.com/JetBrains/intellij-platform-gradle-plugin/issues)
 
@@ -41,7 +41,7 @@ Kotlin:
 
 ```KOTLIN
 plugins {
-  id("org.jetbrains.intellij.platform") version "2.20.0"
+  id("org.jetbrains.intellij.platform") version "2.20.1"
 }
 ```
 
@@ -49,7 +49,7 @@ Groovy:
 
 ```GROOVY
 plugins {
-  id 'org.jetbrains.intellij.platform' version '2.20.0'
+  id 'org.jetbrains.intellij.platform' version '2.20.1'
 }
 ```
 
@@ -217,7 +217,7 @@ Kotlin:
 import org.jetbrains.intellij.platform.gradle.extensions.intellijPlatform
 
 plugins {
-  id("org.jetbrains.intellij.platform.settings") version "2.20.0"
+  id("org.jetbrains.intellij.platform.settings") version "2.20.1"
 }
 
 dependencyResolutionManagement {
@@ -241,7 +241,7 @@ Groovy:
 import org.jetbrains.intellij.platform.gradle.extensions.intellijPlatform
 
 plugins {
-  id 'org.jetbrains.intellij.platform.settings' version '2.20.0'
+  id 'org.jetbrains.intellij.platform.settings' version '2.20.1'
 }
 
 dependencyResolutionManagement {
@@ -491,7 +491,7 @@ Kotlin:
 
 ```KOTLIN
 plugins {
-  id("org.jetbrains.intellij.platform") version "2.20.0"
+  id("org.jetbrains.intellij.platform") version "2.20.1"
 }
 ```
 
@@ -499,7 +499,7 @@ Groovy:
 
 ```GROOVY
 plugins {
-  id 'org.jetbrains.intellij.platform' version '2.20.0'
+  id 'org.jetbrains.intellij.platform' version '2.20.1'
 }
 ```
 
