@@ -10,7 +10,7 @@ The JetBrains Marketplace platform provides the [IntelliJ Platform Explorer](htt
 
 One of its features is the possibility of filtering the plugins by those that utilize [Gradle](https://jb.gg/ipe?buildSystem=gradle) or [Gradle KTS](https://jb.gg/ipe?buildSystem=gradle_kts) build scripts.
 
-As examples of using this plugin, you can also check out the following projects:
+For examples of using this plugin, see also the following projects:
 
 * [Erlang plugin](https://github.com/ignatov/intellij-erlang) and its [TeamCity build configuration](https://teamcity.jetbrains.com/project.html?projectId=IntellijIdeaPlugins_Erlang&tab=projectOverview)
 

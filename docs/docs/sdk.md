@@ -114,7 +114,7 @@ Within `DemoProjectSdkSetupValidator`:
 Warning:
 
 `ProjectSdkSetupValidator` will not work in IntelliJ Platform-based IDEs such as PyCharm.
-In such cases, you should register an implementation of [EditorNotificationProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/ui/EditorNotificationProvider.java)
+In such cases, register an implementation of [EditorNotificationProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/ui/EditorNotificationProvider.java)
 via [com.intellij.editorNotificationProvider](https://jb.gg/ipe?extensions=com.intellij.editorNotificationProvider) extension point
-and override the `createNotificationPanel()` method with the conditionality and panel setup you want.
+and override the `createNotificationPanel()` method with the required conditionality and panel setup.
 

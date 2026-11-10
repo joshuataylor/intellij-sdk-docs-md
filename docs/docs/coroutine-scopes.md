@@ -3,7 +3,7 @@
 Tip: Kotlin Coroutines×IntelliJ Platform
 
 This section focuses on explaining coroutines in the specific context of the [IntelliJ Platform](intellij-platform.html).
-If you are not experienced with Kotlin Coroutines, it is highly recommended to get familiar with
+For developers not experienced with Kotlin Coroutines, it is highly recommended to get familiar with
 [Learning Resources](kotlin-coroutines.html#learning-resources) first.
 
 Kotlin's coroutines follow the principle of structured concurrency.
@@ -143,7 +143,7 @@ gantt
 ### Do Not Use Intersection Scopes
 
 There is no API for retrieving Application×Plugin and Project×Plugin [intersection scopes](#intersection-scopes),
-but let's assume there is a method exposing the Project×Plugin scope:
+but assume there is a method exposing the Project×Plugin scope:
 
 ```KOTLIN
 /**

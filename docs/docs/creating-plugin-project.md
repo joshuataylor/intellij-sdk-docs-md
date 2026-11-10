@@ -10,7 +10,7 @@ Note:
 This page describes the wizard available in IntelliJ IDEA 2026.1 and newer.
 
 The IDE Plugin wizard available in older versions may differ in available options.
-If you can't use the newest IDE, consider generating a project via the [web generator](https://plugins.jetbrains.com/generator) and opening the generated project in the IDE.
+If the newest IDE cannot be used, consider generating a project via the [web generator](https://plugins.jetbrains.com/generator) and opening the generated project in the IDE.
 
 Procedure: Create an IDE Plugin
 
@@ -41,7 +41,7 @@ To execute the Gradle tasks directly, open the Gradle tool window and search for
 If they are not on the list, click the Sync All Gradle Projects button on the [toolbar](https://www.jetbrains.com/help/idea/jetgradle-tool-window.html#gradle_toolbar) at the top of the Gradle tool window.
 Then double-click tasks to execute.
 
-To debug your plugin in a standalone IDE instance, please see [How to Debug Your Own IntelliJ IDEA Instance](https://medium.com/agorapulse-stories/how-to-debug-your-own-intellij-idea-instance-7d7df185a48d) blog post.
+To debug a plugin in a standalone IDE instance, please see [How to Debug Your Own IntelliJ IDEA Instance](https://medium.com/agorapulse-stories/how-to-debug-your-own-intellij-idea-instance-7d7df185a48d) blog post.
 
 Tip:
 

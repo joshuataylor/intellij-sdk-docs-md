@@ -20,7 +20,7 @@ Before visiting the [Issue Tracker](https://github.com/JetBrains/gradle-grammar-
 
 ## Usage
 
-To enable this plugin in your Gradle-based project, register the plugin in the Gradle build script's `plugins` section:
+To enable this plugin in a Gradle-based project, register the plugin in the Gradle build script's `plugins` section:
 
 Kotlin:
 

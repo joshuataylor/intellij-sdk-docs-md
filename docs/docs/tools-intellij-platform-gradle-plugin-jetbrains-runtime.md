@@ -71,7 +71,7 @@ dependencies {
 }
 ```
 
-Note: As of version `2.2.0` of the IntelliJ Platform Gradle Plugin, explicitly specifying `jetbrainsRuntime()` in the `repositories` block is no longer necessary if you also have `defaultRepositories()` specified.
+Note: As of version `2.2.0` of the IntelliJ Platform Gradle Plugin, explicitly specifying `jetbrainsRuntime()` in the `repositories` block is no longer necessary if `defaultRepositories()` is also specified.
 
 ## Declared Explicitly
 
@@ -127,7 +127,7 @@ dependencies {
 }
 ```
 
-Note: As of version `2.2.0` of the IntelliJ Platform Gradle Plugin, explicitly specifying `jetbrainsRuntime()` in the `repositories` block is no longer necessary if you also have `defaultRepositories()` specified.
+Note: As of version `2.2.0` of the IntelliJ Platform Gradle Plugin, explicitly specifying `jetbrainsRuntime()` in the `repositories` block is no longer necessary if `defaultRepositories()` is also specified.
 
 Provided `version`, `variant`, and `architecture` parameters along with the `explicitVersion` are used to resolve the JetBrains Runtime archives published on [GitHub Releases](https://github.com/JetBrains/JetBrainsRuntime/releases/) page.
 
@@ -157,7 +157,7 @@ which can be split into the following parts:
 
 Note that the `version` parameter is actually a combination of JDK and build numbers in format `[jdk]b[build]`.
 
-To resolve the `jbr_jcef-21.0.3-osx-aarch64-b446.1.tar.gz` archive, you can use:
+To resolve the `jbr_jcef-21.0.3-osx-aarch64-b446.1.tar.gz` archive, use:
 
 * `jetbrainsRuntime("21.0.3b446.1", "osx", "aarch64")`
 

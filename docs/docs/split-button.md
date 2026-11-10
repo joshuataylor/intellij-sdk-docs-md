@@ -27,7 +27,7 @@ the dropdown menu:
 ### The second action is dangerous and uncommon
 
 Dangerous actions can destroy users’ data and cannot be easily undone.
-To avoid accidental clicks on a dangerous action, you can hide it in the dropdown menu if this action is uncommon, for example Force Push:
+To avoid accidental clicks on a dangerous action, hide it in the dropdown menu if this action is uncommon, for example Force Push:
 
 ![Dangerous action in a split button](images/split_button_dangerous_action.png)
 An uncommon dangerous action can be the only action in the menu.

@@ -113,7 +113,7 @@ in `[plugin.xml](plugin-configuration-file.html)`, as shown in the following exa
 </idea-plugin>
 ```
 
-Here `name` is the unique name of the VCS (this must match the string returned by your implementation of `AbstractVcs.getName()`), and `vcsClass` is your implementation class.
+Here `name` is the unique name of the VCS (this must match the string returned by the implementation of `AbstractVcs.getName()`), and `vcsClass` is the implementation class.
 
 ### 
 

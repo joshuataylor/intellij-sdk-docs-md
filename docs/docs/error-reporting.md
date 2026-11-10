@@ -261,7 +261,7 @@ Use `ErrorReportSink` when:
 
 * the plugin should observe failures even if the user does nothing
 
-* the goal is telemetry, counting, alerting, or sending reports to your backend when possible, without guaranteeing delivery
+* the goal is telemetry, counting, alerting, or sending reports to a backend when possible, without guaranteeing delivery
 
 * automatic freeze visibility is important
 

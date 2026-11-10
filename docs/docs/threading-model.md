@@ -453,7 +453,7 @@ If NBRA needs to access a [file-based index](indexing-and-psi-stubs.html) (for e
 In particular, don't traverse [VFS](virtual-file-system.html), parse [PSI](psi.html), resolve [references,](psi-references.html) or query [indexes](indexing-and-psi-stubs.html).
 
 There are still some cases when the platform itself invokes such expensive code (for example, resolve in `AnAction.update()`), but these are being worked on.
-Meanwhile, try to speed up what you can in your plugin as it will be generally beneficial and will also improve background highlighting performance.
+Meanwhile, try to speed up as much as possible in the plugin as it will be generally beneficial and will also improve background highlighting performance.
 
 #### Action Update
 

@@ -27,7 +27,7 @@ plugins {
 
 Early 2.x releases introduced a dedicated migration plugin to ease the transition from Gradle IntelliJ Plugin 1.x.
 
-When you apply the [Plugin ID Change](#plugin-id-change), Gradle will fail to process the `build.gradle.kts` file as the old [intellij {} Extension](#intellij-extension) doesn't exist anymore.
+After applying the [Plugin ID Change](#plugin-id-change), Gradle will fail to process the `build.gradle.kts` file as the old [intellij {} Extension](#intellij-extension) doesn't exist anymore.
 
 Note:
 
@@ -270,7 +270,7 @@ Due to the presence of the `setupDependencies` task in the Tasks Activation, the
 Task 'setupDependencies' not found in root project 'projectName'.
 ```
 
-To fix this problem, remove any references to `setupDependencies` task from your project.
+To fix this problem, remove any references to `setupDependencies` task from the project.
 
 To completely drop this approach, it is mandatory to remove its reference manually in the IDE.
 

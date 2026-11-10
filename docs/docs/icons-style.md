@@ -177,7 +177,7 @@ Use these colors according to the following rules:
 Color is a great way to provide status information. Use status icons that are already present in the IDE repository:
 
 ![Colors status](images/colors_status.png)
-If you need a new icon, color it according to its semantics. Make sure that the status icons are easily distinguishable by their form, as many colorblind people find it difficult to distinguish between red and green.
+If a new icon is needed, color it according to its semantics. Make sure that the status icons are easily distinguishable by their form, as many colorblind people find it difficult to distinguish between red and green.
 
 ### Noun icons
 

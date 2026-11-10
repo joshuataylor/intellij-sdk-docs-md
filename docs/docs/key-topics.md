@@ -13,7 +13,7 @@ This page is intended to list the key topics that a plugin author would be inter
 
 * [Extension Points](plugin-extensions.html) - how to register components with extension points, and how to find out what extension points are available.
 
-* [Virtual Files](virtual-file.html) - all file access should go through the Virtual File System, which abstracts and caches the file system. It means you can work with files that are on the local file system, in a zip file or are old versions from version control.
+* [Virtual Files](virtual-file.html) - all file access should go through the Virtual File System, which abstracts and caches the file system. It means that plugins can work with files that are on the local file system, in a zip file or are old versions from version control.
 
 Tip:
 

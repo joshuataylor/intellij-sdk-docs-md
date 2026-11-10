@@ -27,20 +27,20 @@ Several commonly needed customization implementations exist, including:
 
 `EditorTextField` has a number of subclasses that can be used as needed for additional features.
 
-If you want to use an editor as an input field in a dialog, then consider using
+To use an editor as an input field in a dialog, consider using
 [LanguageTextField](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-impl/src/com/intellij/ui/LanguageTextField.java)
 as it provides a more accessible API.
 
 ### Providing Completion
 
-If you want to add autocompletion to the editor, then use
+To add autocompletion to the editor, use
 [TextFieldWithCompletion](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-impl/src/com/intellij/util/textCompletion/TextFieldWithCompletion.java).
 The constructor takes as an argument a class that implements
 [TextCompletionProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-impl/src/com/intellij/util/textCompletion/TextCompletionProvider.java)
 to provide autocompletion variants.
 Use
 [TextFieldCompletionProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-impl/src/com/intellij/util/TextFieldCompletionProvider.java)
-to create your own provider.
+to create a custom provider.
 For this, override `addCompletionVariants()` and add completion variants using `CompletionResultSet.addElement()`.
 
 See also
@@ -53,7 +53,7 @@ See [Code Completion](code-completion.html) to learn more about completion.
 
 Note:
 
-If your plugin depends on Java functionality, see [Java](plugin-compatibility.html#java).
+If the plugin depends on Java functionality, see [Java](plugin-compatibility.html#java).
 
 A common use case for `EditorTextField` is entering the name of a Java class or package.
 This can be accomplished with the following steps:
@@ -87,5 +87,5 @@ EditorTextField editorTextField =
 
 * `setText()` no longer works for the input field. However, `createExpressionCodeFragment()` accepts the text for the field as an argument. The empty string can be replaced and create a new document in lieu of `setText()`.
 
-* Instances of `JTextField` in the GUI builder can be replaced with a custom replacement component using the right click in your IDE. Make sure to use "Custom Create" so the initialization code works properly.
+* Instances of `JTextField` in the GUI builder can be replaced with a custom replacement component using the right click in the IDE. Make sure to use "Custom Create" so the initialization code works properly.
 

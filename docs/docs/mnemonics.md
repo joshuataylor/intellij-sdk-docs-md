@@ -18,7 +18,7 @@ If there are many actions and/or controls, and it is not possible to assign mnem
 
 * Provide mnemonics for [group headers](group-header.html) for quick navigation to the first element of the group.
 
-Note: The rules for using numeric mnemonics in popups are under discussion. [Contact us](https://youtrack.jetbrains.com/issues/IJSDK) if you have questions.
+Note: The rules for using numeric mnemonics in popups are under discussion. [Contact us](https://youtrack.jetbrains.com/issues/IJSDK) with any questions.
 
 ## How to use
 
@@ -39,5 +39,5 @@ Make it easy to remember for the most frequently used actions:
 
 Do not assign mnemonics to the default or Cancel buttons. The default button is typically assigned to the ENTER key, and Cancel is assigned to the ESC key.
 
-Do not use the same mnemonic letter twice in the same window; duplicated mnemonics confuse users. If you need to assign a new mnemonic in an existing context, check that it's not already taken. If it is, prioritize the mnemonic for the more frequently used action.
+Do not use the same mnemonic letter twice in the same window; duplicated mnemonics confuse users. Before assigning a new mnemonic in an existing context, check that it's not already taken. If it is, prioritize the mnemonic for the more frequently used action.
 

@@ -37,7 +37,7 @@ See the color values for the currently selected theme in the LaF Defaults dialog
 Tip:
 
 To store color values between theme switching, use a scratch `*.theme.json` file.
-This might be useful if you want to test colors before implementing them.
+This might be useful for testing colors before implementing them.
 See guidelines for the [Theme JSON Structure](themes-customize.html#defining-named-colors).
 
 * The dialog is available in the [internal mode](enabling-internal.html). See `Tools | Internal Actions | UI` in the main menu or find it with Help | Find Action.

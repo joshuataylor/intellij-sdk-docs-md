@@ -23,7 +23,7 @@ The color scheme manager will search first for text attributes specified by the 
 If those are not defined explicitly or if all the attributes are empty (undefined), it will search them using the `DEFAULT_KEYWORD` key.
 If neither is defined, it will further fall back to a default scheme.
 
-Text attribute keys can be chained, for example, you can define another key as:
+Text attribute keys can be chained, for example, define another key as:
 
 ```JAVA
 static final TextAttributesKey MY_PREDEFINED_SYMBOL =
@@ -36,7 +36,7 @@ Note:
 
 A use of fixed default attributes is strongly discouraged.
 
-If you are unsure which base key to use, it's better to pick the most generic one, for example, `DefaultLanguageHighlighterColors.IDENTIFIER`.
+If it is unclear which base key to use, it's better to pick the most generic one, for example, `DefaultLanguageHighlighterColors.IDENTIFIER`.
 Remember that using fixed default attributes will force a scheme designer to explicitly set up a color for this element.
 Otherwise, its default colors may visually conflict with a color scheme.
 If the scheme designer doesn't have a language plugin, he will not be able to fix this at all.
@@ -58,7 +58,7 @@ providing the name of the file containing desired text attributes, for example:
 ```
 
 It tells the IDE that the file `MyLangDefault.xml` must be searched in resources under `colorSchemes`.
-Note that the path should not start with a backslash and its fully qualified name (in our case `colorSchemes/MyLangDefault.xml`) MUST BE UNIQUE to avoid naming collisions between different providers.
+Note that the path should not start with a backslash and its fully qualified name (in this example `colorSchemes/MyLangDefault.xml`) MUST BE UNIQUE to avoid naming collisions between different providers.
 Thus, adding a language prefix, for example, "MyLang", is highly recommended.
 
 The file itself is an extract from a color scheme with required attributes, for example:

@@ -2,7 +2,7 @@
 
 Note: Testing Tutorial and Code Samples
 
-Check out [this step-by-step tutorial](writing-tests-for-plugins.html) teaching how to write and run automated tests for your custom language plugin.
+Check out [this step-by-step tutorial](writing-tests-for-plugins.html) teaching how to write and run automated tests for a custom language plugin.
 
 Also, code samples
 [comparing_string_references_inspection](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/comparing_string_references_inspection)
@@ -26,8 +26,8 @@ Example:
 
 ## Inspections
 
-If you need to test inspections, they must be enabled explicitly.
-This is done by calling `CodeInsightTestFixture.enableInspections()` in the setup method of your test or directly in a test method, before the call to `CodeInsightTestFixture.checkHighlighting()`.
+Inspections to be tested must be enabled explicitly.
+This is done by calling `CodeInsightTestFixture.enableInspections()` in the setup method of the test or directly in a test method, before the call to `CodeInsightTestFixture.checkHighlighting()`.
 
 ## Syntax Highlighting
 

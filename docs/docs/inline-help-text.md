@@ -220,5 +220,5 @@ panel {
 }
 ```
 
-You can find more examples by invoking the Tools | Internal Actions | UI | Kotlin UI DSL | UI DSL Showcase action (available in [internal mode](enabling-internal.html) and clicking the View source links on specific pages.
+Find more examples by invoking the Tools | Internal Actions | UI | Kotlin UI DSL | UI DSL Showcase action (available in [internal mode](enabling-internal.html) and clicking the View source links on specific pages.
 

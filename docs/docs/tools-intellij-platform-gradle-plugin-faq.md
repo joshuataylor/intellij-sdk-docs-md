@@ -50,7 +50,7 @@ This results in the `NoClassDefFoundError` exception:
 java.lang.NoClassDefFoundError: org/opentest4j/AssertionFailedError
 ```
 
-To apply the workaround, add the missing `org.opentest4j:opentest4j` test dependency to your Gradle build configuration:
+To apply the workaround, add the missing `org.opentest4j:opentest4j` test dependency to the Gradle build configuration:
 
 Kotlin:
 
@@ -82,7 +82,7 @@ Caused by: java.lang.NoClassDefFoundError: junit/framework/TestCase
 Caused by: java.lang.NoClassDefFoundError: org/junit/rules/TestRule
 ```
 
-To apply the workaround, add the JUnit4 test runtime dependency to your Gradle build configuration:
+To apply the workaround, add the JUnit4 test runtime dependency to the Gradle build configuration:
 
 Kotlin:
 
@@ -176,7 +176,7 @@ intellijPlatform {
 }
 ```
 
-As a result of disabling building searchable options, the [Settings](settings.html) that your plugin provides won't be searchable in the `Settings` dialog.
+As a result of disabling building searchable options, the [Settings](settings.html) that the plugin provides won't be searchable in the `Settings` dialog.
 Disabling of the task is suggested for plugins that are not intended to provide custom settings.
 
 ## 
@@ -254,7 +254,7 @@ Because of that, JaCoCo – and other external tools that rely on classes availa
 
 In addition, if the code instrumentation is enabled (see [intellij.instrumentCode](tools-intellij-platform-gradle-plugin-extension.html#intellijPlatform-instrumentCode)), it's required to switch to the compiled and instrumented output instead of default compiled classes.
 
-The following changes to your Gradle configuration file:
+The following changes to the Gradle configuration file:
 
 Kotlin:
 
@@ -304,7 +304,7 @@ Please upgrade to Kotlin 1.9.0. See the [Incremental compilation](using-kotlin.h
 
 ## How to check the latest available EAP release?
 
-To list the IntelliJ Platform releases matching your criteria (IntelliJ Platform type, release channels, or build range),
+To list the IntelliJ Platform releases matching specific criteria (IntelliJ Platform type, release channels, or build range),
 use the [printProductsReleases](tools-intellij-platform-gradle-plugin-tasks.html#printProductsReleases) task as follows:
 
 Kotlin:
@@ -373,7 +373,7 @@ Run the build once without `--offline` to populate the caches, then subsequent o
 
 ## The currently selected Java Runtime is not JetBrains Runtime (JBR)
 
-When running tests or IDE with your plugin loaded, it is necessary to use JetBrains Runtime (JBR).
+When running tests or IDE with the plugin loaded, it is necessary to use JetBrains Runtime (JBR).
 In the case, no JBR is found in the plugin configuration, there's the following warning logged by the [verifyPluginProjectConfiguration](tools-intellij-platform-gradle-plugin-tasks.html#verifyPluginProjectConfiguration) task:
 
 ```TEXT
@@ -383,7 +383,7 @@ Please use IntelliJ Platform binary release with bundled JBR
 or define it explicitly with project dependencies or JVM Toolchain.
 ```
 
-To correctly run your tests or a specific IDE:
+To correctly run the tests or a specific IDE:
 
 * use a binary IDE distribution with bundled JetBrains Runtime, i.e., by referring to a local IDE [local(localPath)](tools-intellij-platform-gradle-plugin-dependencies-extension.html#custom-target-platforms) Kotlin: ```KOTLIN repositories { mavenCentral() intellijPlatform { defaultRepositories() } } dependencies { intellijPlatform { local("/Users/hsz/Applications/IntelliJ IDEA Ultimate.app") } } ``` Groovy: ```GROOVY repositories { mavenCentral() intellijPlatform { defaultRepositories() } } dependencies { intellijPlatform { local '/Users/hsz/Applications/IntelliJ IDEA Ultimate.app' } } ```
 
@@ -407,13 +407,13 @@ This is caused by the `undertow` library used for custom repository creation, wh
 
 To resolve this issue:
 
-1. Set the `smallrye.cpu.determine-cache-level` system property to `false` in your `gradle.properties` file:
+1. Set the `smallrye.cpu.determine-cache-level` system property to `false` in the `gradle.properties` file:
 
 ```PROPERTIES
 systemProp.smallrye.cpu.determine-cache-level=false
 ```
 
-2. Force the `io.smallrye.common:smallrye-common-cpu` dependency version to `2.10.0` in the `buildscript` block of your `build.gradle.kts` (or `build.gradle`) file:
+2. Force the `io.smallrye.common:smallrye-common-cpu` dependency version to `2.10.0` in the `buildscript` block of the `build.gradle.kts` (or `build.gradle`) file:
 
 Kotlin:
 

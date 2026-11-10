@@ -38,10 +38,10 @@ Current Gradle IntelliJ Plugin version is 1.17.4
 
 ## Target Platform and Dependencies
 
-Tip: Which versions should your plugin support?
+Tip: Which versions should a plugin support?
 
 For new plugins, it is recommended to support current and previous stable versions.
-For example, if the current platform version is 2026.3.*, start developing your plugin by targeting 2026.2.*.
+For example, if the current platform version is 2026.3.*, start developing the plugin by targeting 2026.2.*.
 This will support:
 
 * 2026.3.* - current major version
@@ -124,7 +124,7 @@ The Gradle properties `project.version`, `project.group`, and `rootProject.name`
 However, the [Gradle IntelliJ Plugin (1.x)](tools-gradle-intellij-plugin.html) does not combine and substitute those Gradle properties for the default [&lt;id&gt;](plugin-configuration-file.html#idea-plugin__id) and [&lt;name&gt;](plugin-configuration-file.html#idea-plugin__name) elements in the `plugin.xml` file.
 
 The best practice is to keep `project.version` current.
-By default, if you modify `project.version` in Gradle build script, the Gradle plugin will automatically update the [&lt;version&gt;](plugin-configuration-file.html#idea-plugin__version) value in the `plugin.xml` file.
+By default, the Gradle plugin will automatically update the [&lt;version&gt;](plugin-configuration-file.html#idea-plugin__version) value in the `plugin.xml` file to match `project.version` from the Gradle build script.
 This practice keeps all version declarations synchronized.
 
 ## Verifying Plugin
@@ -137,7 +137,7 @@ The Gradle plugin provides tasks that allow for running integrity and compatibil
 
 * [runPluginVerifier](tools-gradle-intellij-plugin.html#tasks-runpluginverifier) - runs the [IntelliJ Plugin Verifier](https://github.com/JetBrains/intellij-plugin-verifier) tool to check the binary compatibility with specified IntelliJ IDE builds.
 
-Plugin Verifier integration task allows for configuring the exact IDE versions that your plugin will be checked against.
+Plugin Verifier integration task allows for configuring the exact IDE versions that the plugin will be checked against.
 See [Plugin Verifier](verifying-plugin-compatibility.html#plugin-verifier) for more information.
 
 ## Publishing Plugin

@@ -105,7 +105,7 @@ public class DemoRunConfigurationOptions extends RunConfigurationOptions {
 
 Implement a `RunConfiguration`
 
-To make your changes visible from the UI, implement a new run configuration.
+To make the changes visible from the UI, implement a new run configuration.
 
 Note:
 

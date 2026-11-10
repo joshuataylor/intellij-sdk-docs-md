@@ -1,6 +1,6 @@
 # Services
 
-A service is a plugin component loaded on demand when your plugin calls the `getService()` method of corresponding [ComponentManager](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/extensions/src/com/intellij/openapi/components/ComponentManager.java) instance (see [Types](#types)).
+A service is a plugin component loaded on demand when a plugin calls the `getService()` method of corresponding [ComponentManager](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/extensions/src/com/intellij/openapi/components/ComponentManager.java) instance (see [Types](#types)).
 The IntelliJ Platform ensures that only one instance of a service is loaded even though it is called several times.
 Services are used to encapsulate logic operating on a set of related classes or to provide some reusable functionality that can be used across the plugin project.
 Conceptually, they don't differ from the service classes in other languages or frameworks.
@@ -12,7 +12,7 @@ A service needing a shutdown hook/cleanup routine can implement [Disposable](htt
 
 Note: Services as API
 
-If declared services are intended to be used by other plugins depending on your plugin, consider [bundling their sources](bundling-plugin-openapi-sources.html) in the plugin distribution.
+If declared services are intended to be used by other plugins depending on the plugin, consider [bundling their sources](bundling-plugin-openapi-sources.html) in the plugin distribution.
 
 ## Types
 
@@ -33,7 +33,7 @@ Warning: Do not use Constructor Injection
 
 Using constructor injection of dependency services is deprecated (and not supported in [Light Services](#light-services)) for performance reasons.
 
-Other service dependencies must be [acquired only when needed](#retrieving-a-service) in all corresponding methods, e.g., if you need a service to get some data or execute a task, retrieve the service before calling its methods.
+Other service dependencies must be [acquired only when needed](#retrieving-a-service) in all corresponding methods, e.g., if a service is needed to get some data or execute a task, retrieve the service before calling its methods.
 Do not retrieve services in constructors to store them in class fields.
 
 Use inspection Plugin DevKit | Code | Non-default constructors for service and extension class to verify code.

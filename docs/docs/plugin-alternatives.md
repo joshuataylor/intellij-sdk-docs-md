@@ -1,10 +1,10 @@
 # Alternatives to Implementing a Plugin
 
-In some cases, implementing an actual IntelliJ Platform plugin can be overkill, and using one of the alternative approaches listed below may provide you with the required value in a much shorter time.
-If you need a functionality that is specific to your project domain, conventions, or practices, you can avoid all the steps that are required to implement and publish a plugin and provide these features as a part of your project or IDE configuration files.
+In some cases, implementing an actual IntelliJ Platform plugin can be overkill, and using one of the alternative approaches listed below may provide the required value in a much shorter time.
+If the required functionality is specific to a project domain, conventions, or practices, you can often skip all the steps that are required to implement and publish a plugin and provide these features as a part of the project or IDE configuration files.
 
-Before you start the IntelliJ Platform plugin development, define your requirements and verify if they can be covered with any of the alternatives described below.
-Consider implementing an actual plugin only when the described solutions are insufficient in your case and there is a significant number of developers who can benefit from it.
+Before starting the IntelliJ Platform plugin development, define the requirements and verify if they can be covered with any of the alternatives described below.
+Consider implementing an actual plugin only when the described solutions are insufficient in a given case and there is a significant number of developers who can benefit from it.
 
 ## Structural Search and Replace Inspections
 
@@ -37,7 +37,7 @@ Flora extensions have access to all available IntelliJ Platform APIs, just like 
 
 Every extension is represented by a single file and stored directly in a project's `.plugins` directory.
 Extensions can be easily shared with other team members by adding the `.plugins` directory to VCS.
-Also, adding the Flora plugin in the `Settings | Build, Execution, Deployment | Required Plugins` and sharing this configuration as part of a project makes it effortless to deliver additional IDE functionalities to your team without any manual setup.
+Also, adding the Flora plugin in the `Settings | Build, Execution, Deployment | Required Plugins` and sharing this configuration as part of a project makes it effortless to deliver additional IDE functionalities to the team without any manual setup.
 
 Tip:
 
@@ -70,7 +70,7 @@ Warning:
 Kotlin Notebook is being sunset starting from IntelliJ IDEA 2026.2.
 See the [blog post](https://blog.jetbrains.com/idea/2026/06/kotlin-notebook-sunset/) for more details.
 
-[Kotlin Notebook Integration](tools-kotlin-notebook.html) offers an interactive environment for testing IntelliJ Platform APIs directly within your IDE.
+[Kotlin Notebook Integration](tools-kotlin-notebook.html) offers an interactive environment for testing IntelliJ Platform APIs directly within the IDE.
 By declaring `%use intellij-platform` in a notebook cell and switching to "Run in IDE Process" mode, you can run IntelliJ Platform code within the active IDE runtime without needing to create a full plugin project.
 
 This integration is especially helpful for:

@@ -12,7 +12,7 @@ Plugin projects targeting [AppCode](https://www.jetbrains.com/objc/) can be deve
 
 Warning:
 
-With the release of AppCode 2022.3, we're sunsetting the product.
+With the release of AppCode 2022.3, JetBrains is sunsetting the product.
 Please see this [blog post](https://blog.jetbrains.com/appcode/2022/12/appcode-2022-3-release-and-end-of-sales-and-support/) for details.
 
 ## Configuring Plugin Projects Targeting AppCode
@@ -46,5 +46,5 @@ Note:
 See [AppCode Extension Point and Listener List](appcode-extension-point-list.html) for the complete list.
 
 Use the [Exploring APIs as a Consumer](plugin-compatibility.html#exploring-apis-as-a-consumer) process to identify the libraries in AppCode.
-Test your plugin with any version of AppCode you wish to support.
+Test the plugin with every supported version of AppCode.
 

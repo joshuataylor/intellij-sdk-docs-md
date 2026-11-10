@@ -1,7 +1,7 @@
 # Actions Tutorial
 
-This tutorial leads you through a series of steps which show how to create, register, and customize custom actions and action groups.
-By registering actions, you can add your own menu items, toolbar buttons and keyboard shortcuts to the IDE user interface.
+This tutorial consists of a series of steps which show how to create, register, and customize custom actions and action groups.
+By registering actions, a plugin can add its own menu items, toolbar buttons and keyboard shortcuts to the IDE user interface.
 
 * [Creating Actions](creating-actions-tutorial.html)
 

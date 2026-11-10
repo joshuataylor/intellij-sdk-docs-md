@@ -122,7 +122,7 @@ See the [previous section](#table-of-attributes) for all supported attributes.
 | Editor |`editor` |Child group containing Settings to personalize source code appearance, such as fonts, highlighting styles, indents, etc. It also contains Settings to customize the editor's appearance, such as line numbers, caret placement, tabs, source code inspections, setting up templates, and file encodings. |  |
 | Languages and Frameworks |`language` |Child group containing Settings related to specific language frameworks and technologies used in the project. |
 | 3rd Party Settings |`tools` |Child group containing Settings to configure integration with third-party applications, specify the SSH Terminal connection Settings, manage server certificates and tasks, configure diagrams layout, etc. |
-| Super Parent |`root` |The invisible parent of all existing groups. Not used except for IDEs built on top of the IntelliJ Platform, or extensive suites of Settings. You should not place settings in this group. |
+| Super Parent |`root` |The invisible parent of all existing groups. Not used except for IDEs built on top of the IntelliJ Platform, or extensive suites of Settings. Do not place settings in this group. |
 | `other`  Do not use   |default |If neither `parentId` nor `groupId` attribute is set, the component is added to the `other` Settings group. This is undesirable; see `other` group description. |
 | Catch-all  Deprecated   |`other` |The IntelliJ Platform no longer uses this group. Do not use this group. Use the `tools` group instead. |
 | Project-related Settings  Deprecated   |`project` |The IntelliJ Platform no longer uses this group. It was intended to store some project-related settings. Do not use this group. |

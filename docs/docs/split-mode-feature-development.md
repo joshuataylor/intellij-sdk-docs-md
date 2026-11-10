@@ -119,9 +119,9 @@ Get back to step 3 if some data is missing.
 
 4. Call the RPC where the backend data is required.
 
-* It is a crucial detail that RPC calls are always suspending. It may be impossible to use suspending code in a particular place in the frontend functionality, either because it is an old implementation written in Java and is not ready for suspend functions at all, or because the data must be available immediately, otherwise causing poor UX or even freezes. Remember that a proper UX is one of the main reasons we initiated the entire splitting process for, see the [split-mode introduction](split-mode-and-remote-development.html).
+* It is a crucial detail that RPC calls are always suspending. It may be impossible to use suspending code in a particular place in the frontend functionality, either because it is an old implementation written in Java and is not ready for suspend functions at all, or because the data must be available immediately, otherwise causing poor UX or even freezes. Remember that a proper UX is one of the main reasons for initiating the entire splitting process, see the [split-mode introduction](split-mode-and-remote-development.html).
 
-* RPC can't be called on [EDT](threading-model.html). Avoid wrapping it in `runBlockingCancellable` unless it is absolutely necessary, and you understand all the consequences of such a decision, namely blocking the caller thread and breaking the structured concurrency and suspending API concepts.
+* RPC can't be called on [EDT](threading-model.html). Avoid wrapping it in `runBlockingCancellable` unless it is absolutely necessary and the consequences of such a decision are clear, namely blocking the caller thread and breaking the structured concurrency and suspending API concepts.
 
 * Consider using the existing platform abstraction for shared state as a reference: [FlowWithHistory.kt](https://github.com/JetBrains/intellij-community/blob/1c3952828ff3af2d18f99a6721c48bb22f97bd57/platform/lang-impl/src/com/intellij/build/FlowWithHistory.kt).
 
@@ -157,12 +157,12 @@ Now that the general functionality works as expected, consider reviewing the lis
 Necessity of tuning the code depends on the specifics of the feature.
 
 1. Handle reconnection: wrap RPC calls in [durable {}](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/fleet/rpc/srcCommonMain/fleet/rpc/client/Durable.kt); this wrapper will restart the call if a network error occurs.
-Be careful with any side effects your code inside the durable block produces – ideally, avoid them.
+Be careful with any side effects the code inside the durable block produces – ideally, avoid them.
 Example: [RecentFileModelSynchronizer.kt](https://github.com/JetBrains/intellij-community/blob/1c3952828ff3af2d18f99a6721c48bb22f97bd57/platform/recentFiles/frontend/src/com/intellij/platform/recentFiles/frontend/model/RecentFileModelSynchronizer.kt)
 
 2. Register actions in proper plugin modules
 
-1. We strongly encourage registering actions on the frontend side, if possible.
+1. Register actions on the frontend side, if possible.
 The possibility is determined by the action's update method: if it requires backend entities, the action belongs on the backend.
 Otherwise – on the frontend.
 
@@ -174,7 +174,7 @@ Such cases must be addressed individually depending on a specific feature descri
 There are examples of shared, eventually synchronized state implementations in the IntelliJ Platform codebase, for example, in the [Recent Files implementation](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/recentFiles).
 There, an eventually consistent mutable shared state is implemented to make it possible to access the data model on both the frontend and the backend with no RPC calls required for access.
 
-4. Consider approaching us on the [JetBrains Platform Forum](https://platform.jetbrains.com) to discuss what could be done in your specific case.
+4. Consider asking on the [JetBrains Platform Forum](https://platform.jetbrains.com) to discuss what could be done in a specific case.
 
 3. Display empty state: UI must render without waiting for backend; show placeholders and progressively fill in data.
 
@@ -190,10 +190,10 @@ Known issues are mitigated, and the plugin quality is now good enough.
 
 ## 7. Add Tests
 
-Fix the split feature behavior and quality with unit and integration tests if you have not used the TDD approach earlier.
+Fix the split feature behavior and quality with unit and integration tests if the TDD approach was not used earlier.
 See the [Running Tests in Split Mode](split-mode-and-remote-development.html#running-tests-in-split-mode) section.
 
-We suggest paying attention to:
+Pay attention to:
 
 * Data transformations: correct (de)serialization
 
@@ -208,7 +208,7 @@ The feature implementation has tests covering its correct behavior in remote and
 ## Getting Help
 
 In case of any questions or uncertainties regarding the splitting process, please post a question on the [JetBrains Platform Forum](https://platform.jetbrains.com).
-We will try to provide as much help as possible there and reconsider and adjust for unexpected cases.
+JetBrains will try to provide as much help as possible there and reconsider and adjust for unexpected cases.
 
 Note: Something missing?
 

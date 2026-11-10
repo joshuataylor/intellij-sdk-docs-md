@@ -12,9 +12,9 @@ Gradle IntelliJ Plugin (1.x) is no longer under active development.
 
 Whenever possible, use [IntelliJ Platform Gradle Plugin (2.x)](tools-intellij-platform-gradle-plugin.html) instead.
 
-The Gradle IntelliJ Plugin is a plugin for the Gradle build system to help configure your environment for building, testing, verifying, and publishing plugins for IntelliJ-based IDEs.
+The Gradle IntelliJ Plugin is a plugin for the Gradle build system to help configure the environment for building, testing, verifying, and publishing plugins for IntelliJ-based IDEs.
 
-This plugin allows you to build plugins for IntelliJ Platform using specified IntelliJ SDK and bundled or third-party plugins.
+This plugin builds plugins for IntelliJ Platform using specified IntelliJ SDK and bundled or third-party plugins.
 
 The plugin provides functionalities like:
 
@@ -52,7 +52,7 @@ The Gradle plugin must be chosen depending on the target
 (Obsolete)
 1.10.1+
 
-To enable this plugin in your Gradle-based project, register the plugin in the Gradle build script's `plugins` section:
+To enable this plugin in a Gradle-based project, register the plugin in the Gradle build script's `plugins` section:
 
 Kotlin:
 
@@ -70,7 +70,7 @@ plugins {
 }
 ```
 
-When upgrading to `1.x` version, please make sure to follow the [migration guide](https://lp.jetbrains.com/gradle-intellij-plugin) to adjust your existing build script.
+When upgrading to `1.x` version, please make sure to follow the [migration guide](https://lp.jetbrains.com/gradle-intellij-plugin) to adjust the existing build script.
 
 Tip: Minimum Gradle Version
 
@@ -117,7 +117,7 @@ Note:
 
 The current Gradle IntelliJ Plugin Snapshot version is ![GitHub Snapshot Release](https://img.shields.io/nexus/s/org.jetbrains.intellij/org.jetbrains.intellij.gradle.plugin?server=https://oss.sonatype.org&label=)
 
-To make sure you obtain the latest snapshot version, invoke Gradle using `--refresh-dependencies` option.
+To ensure the latest snapshot version is used, invoke Gradle using `--refresh-dependencies` option.
 
 Kotlin:
 
@@ -183,10 +183,10 @@ See [Using the configuration cache](https://docs.gradle.org/current/userguide/co
 
 ### Multi-Module Project
 
-Sometimes, you may want to split your plugin into multiple modules — i.e., to separate the core plugin code from the code related to other third-party plugin dependencies.
+Sometimes, it is useful to split the plugin into multiple modules — i.e., to separate the core plugin code from the code related to other third-party plugin dependencies.
 The most common way to do this is to use the [Gradle Multi-Project Build](https://docs.gradle.org/current/userguide/multi_project_builds.html) feature.
 
-This approach allows you to declare dependencies between subprojects, like:
+With this approach, subprojects can declare dependencies on each other, like:
 
 Kotlin:
 
@@ -204,7 +204,7 @@ dependencies {
 }
 ```
 
-Because the Gradle IntelliJ Plugin introduces the code instrumentation, and the default `implementation` configuration is not compatible with it, you need to specify the `instrumentedJar` configuration explicitly to refer to the instrumented JAR file produced by the plugin instead of the default JAR file:
+Because the Gradle IntelliJ Plugin introduces the code instrumentation, and the default `implementation` configuration is not compatible with it, specify the `instrumentedJar` configuration explicitly to refer to the instrumented JAR file produced by the plugin instead of the default JAR file:
 
 Kotlin:
 
@@ -277,7 +277,7 @@ Acceptable values
 Tip:
 
 The version number format is the most common option for specifying the version of the IntelliJ Platform.
-Other formats should be used only when your plugin relies on specific parts of the targeted IDE or early-adopting EAP releases.
+Other formats should be used only when the plugin relies on specific parts of the targeted IDE or early-adopting EAP releases.
 
 #### 
 
@@ -374,7 +374,7 @@ Please see [Plugin Dependencies](plugin-dependencies.html) for more details.
 
 Notes:
 
-* For plugins from [JetBrains Marketplace](https://plugins.jetbrains.com), use the `pluginId:version` format, like `org.intellij.plugins.markdown:231.8109.126`. The version of your choice must be compatible with the version of the IDE you're building against.
+* For plugins from [JetBrains Marketplace](https://plugins.jetbrains.com), use the `pluginId:version` format, like `org.intellij.plugins.markdown:231.8109.126`. The chosen version must be compatible with the version of the target IDE.
 
 * For bundled plugins, use the plugin ID with the version part omitted, like: `org.intellij.groovy`.
 
@@ -382,7 +382,7 @@ Notes:
 
 * For plugin built locally, pass the path to the `lib/` directory of the extracted plugin archive, like: `file("/path/to/plugin/lib/")` or `file("/projects/plugin-name/build/idea-sandbox/plugins/plugin-name/lib/")`. See [How to add a dependency on a plugin available in the file system?](tools-gradle-intellij-plugin-faq.html#how-to-add-a-dependency-on-a-plugin-available-in-the-file-system).
 
-* If you need to refer plugin's classes from your project, you also have to define a dependency in your `[plugin.xml](plugin-configuration-file.html)` file, see [Plugin Dependencies](plugin-dependencies.html).
+* To refer to the plugin's classes from the project, also define a dependency in the `[plugin.xml](plugin-configuration-file.html)` file, see [Plugin Dependencies](plugin-dependencies.html).
 
 Type
 : `List<Any>`
@@ -483,7 +483,7 @@ Acceptable values
 
 * `maven(repositoryUrl)` - use custom Maven repository with plugins
 
-* `maven { repositoryUrl }` - use custom Maven repository with plugins where you can configure additional parameters (credentials, authentication, etc.)
+* `maven { repositoryUrl }` - use custom Maven repository with plugins and configurable additional parameters (credentials, authentication, etc.)
 
 * `custom(pluginsXmlUrl)` - use [Custom Plugin Repository](custom-plugin-repository.html)
 
@@ -603,7 +603,7 @@ Note, this is a [runIde](#tasks-runide)-based task with predefined arguments and
 
 Tip:
 
-If your plugin doesn't implement custom settings, it is recommended to [disable it](tools-gradle-intellij-plugin-faq.html#how-to-disable-building-searchable-options).
+If the plugin doesn't implement custom settings, it is recommended to [disable it](tools-gradle-intellij-plugin-faq.html#how-to-disable-building-searchable-options).
 See also [noSearchableOptionsWarning](tools-gradle-intellij-plugin-build-features.html#nosearchableoptionswarning) build feature.
 
 #### 
@@ -732,7 +732,7 @@ Initializes the Gradle IntelliJ Plugin and performs various checks, like if the 
 
 `instrumentCode`
 
-The following attributes help you to tune instrumenting behavior in the `instrumentCode { ... }` block.
+The following attributes tune instrumenting behavior in the `instrumentCode { ... }` block.
 
 #### 
 
@@ -905,7 +905,7 @@ Default value
 List all available IntelliJ-based IDE releases with their updates.
 The result list is used for testing the plugin with Plugin Verifier using the [runPluginVerifier](#tasks-runpluginverifier) task.
 
-Plugin Verifier requires a list of the IDEs that will be used for verifying your plugin build against.
+Plugin Verifier requires a list of the IDEs that will be used for verifying the plugin build against.
 The availability of the releases may change in time, i.e., due to security issues in one version – which will be later removed and replaced with an updated IDE release.
 
 With the [listProductsReleases](#tasks-listproductsreleases) task, it is possible to list the currently available IDEs matching given conditions, like platform types, since/until release versions.
@@ -1245,7 +1245,7 @@ Output file provided by the [listBundledPlugins](#tasks-listbundledplugins) task
 Publishes plugin to the remote [JetBrains Marketplace](https://plugins.jetbrains.com) repository.
 
 The following attributes are a part of the Publishing DSL `publishPlugin { ... }` in which allows Gradle to upload plugin to [JetBrains Marketplace](https://plugins.jetbrains.com).
-Note that you need to [upload the plugin](publishing-plugin.html#uploading-a-plugin-to-jetbrains-marketplace) to the repository at least once manually (to specify options like the license, repository URL, etc.) before uploads through Gradle can be used.
+Note that the plugin must be [uploaded](publishing-plugin.html#uploading-a-plugin-to-jetbrains-marketplace) to the repository at least once manually (to specify options like the license, repository URL, etc.) before uploads through Gradle can be used.
 
 See the instruction on [how to generate authentication token](https://plugins.jetbrains.com/docs/marketplace/plugin-upload.html).
 
@@ -1800,7 +1800,7 @@ This task is automatically added to the [&quot;After Sync&quot; Gradle trigger](
 
 Warning:
 
-After removing the Gradle IntelliJ Plugin from your project, the `Task 'setupDependencies' not found in root project` exception may occur.
+After removing the Gradle IntelliJ Plugin from the project, the `Task 'setupDependencies' not found in root project` exception may occur.
 See [Frequently Asked Questions](tools-gradle-intellij-plugin-faq.html#task-setupdependencies-not-found-in-root-project) for more details.
 
 #### 

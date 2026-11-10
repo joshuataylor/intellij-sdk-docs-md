@@ -4,12 +4,12 @@ Tip:
 
 How to address the private API usage violations:
 
-1. Look through the suggested replacements below, update your plugin accordingly, and upload a new version to JetBrains Marketplace.
+1. Look through the suggested replacements below, update the plugin accordingly, and upload a new version to JetBrains Marketplace.
 
-2. If you need help with the replacements, please [create a YouTrack issue](https://youtrack.jetbrains.com/newIssue?project=IJPL&c=Type%20Task&c=Subsystem%20Internal%20API).
-Please note that we may not be able to provide a replacement quickly, and in some cases, a replacement might not be available at all.
+2. For help with the replacements, please [create a YouTrack issue](https://youtrack.jetbrains.com/newIssue?project=IJPL&c=Type%20Task&c=Subsystem%20Internal%20API).
+Please note that JetBrains may not be able to provide a replacement quickly, and in some cases, a replacement might not be available at all.
 
-3. If you have any other issues or questions related to the Internal API usage, please [create a dedicated YouTrack issue](https://youtrack.jetbrains.com/newIssue?project=IJPL&c=Type%20Task&c=Subsystem%20Internal%20API).
+3. For any other issues or questions related to the Internal API usage, please [create a dedicated YouTrack issue](https://youtrack.jetbrains.com/newIssue?project=IJPL&c=Type%20Task&c=Subsystem%20Internal%20API).
 
 This page lists commonly used API annotated with [@ApiStatus.Internal](https://github.com/JetBrains/java-annotations/tree/24.0.0/common/src/main/java/org/jetbrains/annotations/ApiStatus.java),
 which indicates it is private API and must not be used outside of IntelliJ Platform itself:
@@ -32,7 +32,7 @@ Check the corresponding code documentation when encountering any API not listed 
 In some cases, such documentation might not be available inside the IDE for the current target platform version.
 Use Go to file to browse the latest version in the [intellij-community](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/) GitHub repository instead.
 
-Use the Feedback widget displayed on the right if you encounter missing or unclear information.
+Use the Feedback widget displayed on the right to report missing or unclear information.
 
 ## IntelliJ Platform
 
@@ -101,5 +101,5 @@ Check the corresponding code documentation when encountering any API not listed 
 In some cases, such documentation might not be available inside the IDE for the current target platform version.
 Use Go to file to browse the latest version in the [intellij-community](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/) GitHub repository instead.
 
-Use the Feedback widget displayed on the right if you encounter missing or unclear information.
+Use the Feedback widget displayed on the right to report missing or unclear information.
 

@@ -11,7 +11,7 @@ In addition, the sample plugin contains a JUnit-based test.
 
 ## About Intention Actions
 
-The IntelliJ Platform analyzes your code and helps handle situations that may result in errors.
+The IntelliJ Platform analyzes the code and helps handle situations that may result in errors.
 When a possible problem is suspected, the IDE suggests an appropriate intention action, denoted with special icons.
 
 See the [Inspections](inspections.html) topic in UI Guidelines on naming, writing description, and message texts for inspections/intentions.
@@ -53,7 +53,7 @@ See [Code Samples](code-samples.html) on how to set up and run the plugin.
 
 ### How does it work?
 
-The plugin analyzes symbols under the cursor in your code opened in the editor.
+The plugin analyzes symbols under the cursor in the code opened in the editor.
 If the cursor is positioned on the `?` conditional operator, IntelliJ IDEA proposes to replace this conditional (ternary) operator with the "if-then-else" statement:
 
 ![Convert ternary operator intention popup](images/ternary_operator_intention.png)
@@ -83,7 +83,7 @@ It can be customized with the `<descriptionDirectoryName>` element in `<intentio
 
 Warning:
 
-If your intention class names are obfuscated in the [plugin distribution](plugin-content.html), always declare the `<descriptionDirectoryName>` element.
+If intention class names are obfuscated in the [plugin distribution](plugin-content.html), always declare the `<descriptionDirectoryName>` element.
 
 "Before" and "after" filenames pattern is `before.$LANG_FILE_EXTENSION$.template` and `after.$LANG_FILE_EXTENSION$.template` respectively.
 If before/after preview is not needed, specify `<skipBeforeAfter>true</skipBeforeAfter>` in the `<intentionAction>` in `plugin.xml`.

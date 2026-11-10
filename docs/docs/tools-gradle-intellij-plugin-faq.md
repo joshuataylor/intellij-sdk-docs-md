@@ -115,7 +115,7 @@ Groovy:
 buildSearchableOptions.enabled = false
 ```
 
-As a result of disabling building searchable options, the [Settings](settings.html) that your plugin provides won't be searchable in the `Settings` dialog.
+As a result of disabling building searchable options, the [Settings](settings.html) that the plugin provides won't be searchable in the `Settings` dialog.
 Disabling of the task is suggested for plugins that are not intended to provide custom settings.
 
 ## How to show log file of sandbox instance?
@@ -174,9 +174,9 @@ See the [Bundling Plugin API Sources](bundling-plugin-openapi-sources.html) sect
 The Plugin Verifier download directory is set to [...], but downloaded IDEs were also found in [...]
 
 With the `1.10.0` release, the [runPluginVerifier](tools-gradle-intellij-plugin.html#tasks-runpluginverifier) task uses the `XDG_CACHE_HOME` environment variable (see [XDG Base Directory](https://wiki.archlinux.org/title/XDG_Base_Directory) for more details) to resolve the default directory for downloaded IDEs – instead of the user's home directory.
-We recommend moving your existing IDEs stored i.e., in `~/.pluginVerifier/ides/` directory into `$XDG_CACHE_HOME$/pluginVerifier/ides` to avoid downloading them once again.
+It is recommended to move the existing IDEs stored, e.g., in `~/.pluginVerifier/ides/` directory into `$XDG_CACHE_HOME$/pluginVerifier/ides` to avoid downloading them once again.
 
-In case you want to keep the downloaded archives in the previous location, specify the given path explicitly to the [runPluginVerifier.downloadDir](tools-gradle-intellij-plugin.html#tasks-runpluginverifier-downloaddir) property:
+To keep the downloaded archives in the previous location, specify the given path explicitly to the [runPluginVerifier.downloadDir](tools-gradle-intellij-plugin.html#tasks-runpluginverifier-downloaddir) property:
 
 Kotlin:
 
@@ -208,7 +208,7 @@ Because of that, JaCoCo – and other external tools that rely on classes availa
 
 In addition, if the code instrumentation is enabled (see [intellij.instrumentCode](tools-gradle-intellij-plugin.html#intellij-extension-instrumentcode)), it's required to switch to the compiled and instrumented output instead of a default compiled classes.
 
-The following changes to your Gradle configuration file:
+The following changes to the Gradle configuration file:
 
 Kotlin:
 
@@ -260,7 +260,7 @@ When using Java `11.0.2` for building plugins, resolving dependencies (or making
 Exception in thread "main" javax.net.ssl.SSLPeerUnverifiedException: peer not authenticated
 ```
 
-To fix that issue, upgrade the Java version to the latest patch available of the major version of your choice.
+To fix that issue, upgrade the Java version to the latest patch available of the chosen major version.
 
 ## How to add a dependency on a plugin available in the file system?
 

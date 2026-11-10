@@ -21,7 +21,7 @@ Tip: Bundled Libraries
 ## Loading Classes from Plugin Dependencies
 
 By default, the main IDE class loader loads classes that are not found in the plugin class loader.
-However, in the `[plugin.xml](plugin-configuration-file.html)` file, you may use the [&lt;depends&gt;](plugin-configuration-file.html#idea-plugin__depends) element to specify that a [plugin depends](plugin-dependencies.html) on one or more other plugins.
+However, in the `[plugin.xml](plugin-configuration-file.html)` file, use the [&lt;depends&gt;](plugin-configuration-file.html#idea-plugin__depends) element to specify that a [plugin depends](plugin-dependencies.html) on one or more other plugins.
 In this case, the class loaders of those plugins will be used for classes not found in the current plugin.
 This allows a plugin to reference classes from other plugins.
 

@@ -31,7 +31,7 @@ It's not unusual that injected fragments are distributed among, e.g., several st
 To solve this, the IntelliJ Platform allows injecting a language into several fragments at once.
 Multiple parts are then considered belonging together.
 
-As a plugin author, you can provide language injection in different ways:
+A plugin can provide language injection in different ways:
 
 * For simple cases, the bundled [IntelliLang plugin](https://plugins.jetbrains.com/plugin/13374-intellilang) can handle injections, and plugin authors need to provide a configuration with patterns that specify the context where languages should be injected. IntelliLang can also be extended to support unknown custom languages.
 
@@ -39,17 +39,17 @@ As a plugin author, you can provide language injection in different ways:
 
 * Implementing the [com.intellij.multiHostInjector](https://jb.gg/ipe?extensions=com.intellij.multiHostInjector) extension point gives plugin authors the most control over where and how language injection will take place.
 
-In the following sections, we'll discuss these three options in more detail.
+The following sections discuss these three options in more detail.
 
 ## IntelliLang
 
 First, please read the available [documentation](https://www.jetbrains.com/help/idea/language-injections-settings.html) on IntelliLang.
-A good point to start with is to inspect available language injections that you can find in the IntelliLang settings under `Settings | Editor | Language Injections`.
+A good point to start with is to inspect available language injections in the IntelliLang settings under `Settings | Editor | Language Injections`.
 The injections shown are configured through XML files and loaded automatically.
 
 ### Example
 
-Let's take a look at the Java `String.matches()` method that injects the RegExp language into the string of the first argument.
+Consider the Java `String.matches()` method that injects the RegExp language into the string of the first argument.
 In the IntelliLang settings, it is defined as one possible injection in Java code.
 
 ![Language Injection Settings](images/language_injection_settings.png)
@@ -106,7 +106,7 @@ as an example implementation.
 #### Create Injection Configuration
 
 Create an XML file with the injection configuration.
-You can export existing injections from the IntelliLang settings to create a template and then edit it.
+Export existing injections from the IntelliLang settings to create a template and then edit it.
 [Element Patterns](element-patterns.html) are used to specify the context where injections will take place.
 Custom language authors can use the specific patterns returned from their implementation of
 [JavaLanguageInjectionSupport.getPatternClasses](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/java/langInjection/src/org/intellij/plugins/intelliLang/inject/java/JavaLanguageInjectionSupport.java).
@@ -136,7 +136,7 @@ Inside an injection, the following tags can be used:
 
 #### Create an XML File to Load the Configuration
 
-Create an XML file `myLanguageID-injections.xml` next to your `plugin.xml` that loads the above configuration.
+Create an XML file `myLanguageID-injections.xml` next to the `plugin.xml` that loads the above configuration.
 Custom language authors also register their implementation of the [org.intellij.intelliLang.languageSupport](https://jb.gg/ipe?extensions=org.intellij.intelliLang.languageSupport) extension point
 there.
 
@@ -151,7 +151,7 @@ there.
 #### Load the Injection Configuration in plugin.xml
 
 The injections are an optional dependency that only works when IntelliLang is enabled.
-Therefore, you load the configuration optionally in your main `plugin.xml`:
+Therefore, load the configuration optionally in the main `plugin.xml`:
 
 ```XML
 <depends
@@ -167,7 +167,7 @@ The [com.intellij.languageInjectionContributor](https://jb.gg/ipe?extensions=com
 provides injection information for the given context in terms of what to inject.
 As a plugin author, implement [LanguageInjectionContributor](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/lang/injection/general/LanguageInjectionContributor.java) to provide context-specific injections.
 
-For instance, if you want to inject a YAML or JSON to a literal language depending on some conditions, you could implement this interface like this:
+For instance, to inject a YAML or JSON to a literal language depending on some conditions, implement this interface like this:
 
 ```JAVA
 final class MyInjector implements LanguageInjectionContributor {
@@ -189,7 +189,7 @@ final class MyInjector implements LanguageInjectionContributor {
 }
 ```
 
-Register the implementation in your `plugin.xml`:
+Register the implementation in the `plugin.xml`:
 
 ```XML
 <languageInjectionContributor
@@ -197,7 +197,7 @@ Register the implementation in your `plugin.xml`:
     language="YourLanguage"/>
 ```
 
-If you want more control over how the injection should be done then implement the [com.intellij.languageInjectionPerformer](https://jb.gg/ipe?extensions=com.intellij.languageInjectionPerformer) extension point
+For more control over how the injection should be done, implement the [com.intellij.languageInjectionPerformer](https://jb.gg/ipe?extensions=com.intellij.languageInjectionPerformer) extension point
 which allows for complex language injections, e.g. for concatenation or interpolation of strings.
 If it is not implemented, then the
 [DefaultLanguageInjectionPerformer](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/plugins/IntelliLang/src/org/intellij/plugins/intelliLang/inject/DefaultLanguageInjectionPerformer.java)
@@ -212,7 +212,7 @@ The method `performInjection()` does the actual injection into the context PSI e
 
 Note:
 
-To use Language Injection API in your project, [add dependency](plugin-dependencies.html#project-setup) on the `org.intellij.intelliLang` plugin.
+To use Language Injection API in the project, [add dependency](plugin-dependencies.html#project-setup) on the `org.intellij.intelliLang` plugin.
 
 ## 
 
@@ -249,15 +249,15 @@ final class MyRegExpToJavaInjector implements MultiHostInjector {
 }
 ```
 
-Register the implementation in your `plugin.xml`:
+Register the implementation in the `plugin.xml`:
 
 ```XML
 <multiHostInjector
     implementation="MyRegExpToJavaInjector"/>
 ```
 
-A more complex example is when you need to inject into several fragments at once.
-For example, if we have an XML-based DSL:
+A more complex example is injecting into several fragments at once.
+For example, consider an XML-based DSL:
 
 ```XML
 <myDSL>
@@ -274,7 +274,7 @@ which should be converted to the equivalent Java code:
 class MyDsl { void foo() { System.out.println(42); } }
 ```
 
-Here, we need to inject Java into several places at once, i.e. method name and its body:
+Here, the plugin needs to inject Java into several places at once, i.e. method name and its body:
 
 ```JAVA
 final class MyDSLInjector implements MultiHostInjector {

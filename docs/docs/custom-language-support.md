@@ -7,12 +7,12 @@ a plugin must implement only the language-specific part.
 
 ## Reference
 
-This part of the documentation explains the main concepts of the Language API and guides you through the sequence of steps that are usually required to develop a custom language plugin.
-You can obtain additional information about the Language API from the Javadoc comments for the Language API classes and from the Properties language support source code, which is part of the [IntelliJ Platform](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/README.md) source code.
+This part of the documentation explains the main concepts of the Language API and walks through the sequence of steps that are usually required to develop a custom language plugin.
+Additional information about the Language API is available in the Javadoc comments for the Language API classes and from the Properties language support source code, which is part of the [IntelliJ Platform](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/README.md) source code.
 
 ## Tutorial
 
-If you prefer a full example to the detailed descriptions offered in this section, please check out a step-by-step tutorial on how to create custom language support for Simple Language:
+For a full example instead of the detailed descriptions offered in this section, please check out a step-by-step tutorial on how to create custom language support for Simple Language:
 [Custom Language Support Tutorial](custom-language-support-tutorial.html).
 Corresponding steps from the tutorial are linked under the "Example" section on each page of this reference.
 

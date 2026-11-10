@@ -2,8 +2,8 @@
 
 Note:
 
-Adding JPS support to your plugin requires Java plugin to be present for it to work.
-Please see [Plugin Dependencies](plugin-dependencies.html) on how to set up your plugin with required dependency.
+Adding JPS support to a plugin requires Java plugin to be present for it to work.
+Please see [Plugin Dependencies](plugin-dependencies.html) on how to set up the plugin with required dependency.
 
 ## External Build Process Workflow
 
@@ -34,7 +34,7 @@ When the user invokes an action that involves executing an external build (Make,
 ## Incremental Build
 
 To support incremental build, the build process uses several caches which are persisted between build invocations.
-Even if your compiler doesn't support incremental build, you still need to report correct information so that incremental build works correctly for other compilers.
+Even if the compiler doesn't support incremental build, it still needs to report correct information so that incremental build works correctly for other compilers.
 
 * [SourceToOutputMapping](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/jps/jps-builders/src/org/jetbrains/jps/builders/storage/SourceToOutputMapping.java) is a many-to-many relationship between source files and output files ("which source files were used to produce the specified output file"). It's filled by calls to `BuildOutputConsumer.registerOutputFile()` and `ModuleLevelBuilder.OutputConsumer.registerOutputFile()`.
 
@@ -42,9 +42,9 @@ The IDE monitors the project content changes and uses the information from those
 A builder can also report additional files as dirty (e.g., if a method is deleted, the builder can report the classes using this method as dirty.) A module-level builder can add some files to the dirty scope; if this happens, and if the builder returns `ADDITIONAL_PASS_REQUIRED` from its `build()` method, another round of builder execution for the same module chunk will be started with the new dirty scope.
 
 A builder may also want to have its custom caches to store additional information to support the partial recompilation of a target (e.g., the dependencies between Java files in a module).
-To store this data, you can either store arbitrary files in the directory returned from `BuildDataManager.getDataPaths().getTargetDataRoot()` or use a higher-level API: `BuildDataManager.getStorage()`
+To store this data, either store arbitrary files in the directory returned from `BuildDataManager.getDataPaths().getTargetDataRoot()` or use a higher-level API: `BuildDataManager.getStorage()`
 
-To pass custom data between the invocation of the same builder between multiple targets, you can use `CompileContext.getUserData()` and `CompileContext.putUserData()`.
+To pass custom data between the invocation of the same builder between multiple targets, use `CompileContext.getUserData()` and `CompileContext.putUserData()`.
 
 ## Services and Extensions in External Builder
 
@@ -52,7 +52,7 @@ The external builder process uses the standard Java [services](https://docs.orac
 There are several service interfaces (e.g. [BuilderService](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/jps/jps-builders/src/org/jetbrains/jps/incremental/BuilderService.java)) which can be implemented in plugins to extend the builder functionality.
 An implementation of a service needs to be registered by creating the `META-INF/services/$service-interface-fqn$` file containing the implementation class's qualified name.
 E.g. `BuilderService` implementations are registered in `META-INF/services/org.jetbrains.jps.incremental.BuilderService` file.
-These files don't have extensions, so you need to map corresponding patterns to text files in IDE settings.
+These files don't have extensions, so map corresponding patterns to text files in IDE settings.
 
 ## Registering a Plugin for External Builder
 
@@ -63,21 +63,21 @@ to add the plugin to the classpath of the external build process, the plugin JAR
 
 ## Debugging a Plugin for External Builder
 
-If your test IDE is IntelliJ IDEA 16.0 or newer
+If the test IDE is IntelliJ IDEA 16.0 or newer
 
 Switch on "Debug Build Process" toggle action (available via 'Find Action') in the test IDE.
 After that, every time compilation is run, the build process will wait for debugger connection on some (random) port and will show the port number in the status bar.
 In a working copy of IDE, a "Remote" run configuration should be created and pointed to this port.
-Suppose you often need to debug external builders and want to reuse the created "Remote" run configuration.
-In that case, you may fix the port number by adding the following VM option to the plugin run configuration:
+When debugging external builders often, it is convenient to reuse the created "Remote" run configuration.
+In that case, fix the port number by adding the following VM option to the plugin run configuration:
 
 ```TEXT
 -Dcompiler.process.debug.port=<port-number>
 ```
 
-If your test IDE is IntelliJ IDEA 15.0 or older
+If the test IDE is IntelliJ IDEA 15.0 or older
 
-Start IDE with your plugin with the following VM option:
+Start the IDE with the plugin with the following VM option:
 
 ```TEXT
 -Dcompiler.process.debug.port=<port-number>
@@ -96,10 +96,10 @@ After this, every build process run should result in a CPU snapshot stored in `$
 Snapshots are named like `ExternalBuild\-$DATE$.snapshot`.
 
 Specifying `-Dprofiling.mode=false` will turn profiling off.
-Please capture a couple of snapshots for the situations you believe the build should work much faster than it does.
+Please capture a couple of snapshots for the situations where the build should work much faster than it does.
 
 Please create an issue in the issue tracker and attach generated `*.snapshot` files to it or upload them as [described here](https://intellij-support.jetbrains.com/hc/en-us/articles/206869619) and specify links in the issue.
-Please also provide details about the memory and other VM settings for the build process you were using.
+Please also provide details about the memory and other VM settings for the build process used.
 
 ## Accessing External Build Process' Logs
 
@@ -119,12 +119,12 @@ In IntelliJ Platform versions before version 14.1, log4j configuration was store
 
 The project model in the External Build process is provided by JPS (JetBrains Project System).
 A project is represented by [JpsProject](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/jps/model-api/src/org/jetbrains/jps/model/JpsProject.java), a module by [JpsModule](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/jps/model-api/src/org/jetbrains/jps/model/JpsProject.java), and so on.
-Suppose your compiler depends on something that isn't added to the model yet (e.g., some facet settings).
-In that case, you need to extend the JPS model (use `JpsOsmorcModuleExtension` as a reference implementation) and provide an implementation of [JpsModelSerializerExtension](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/jps/model-serialization/src/org/jetbrains/jps/model/serialization/JpsModelSerializerExtension.java) to load the configuration from project files.
+Suppose the compiler depends on something that isn't added to the model yet (e.g., some facet settings).
+In that case, extend the JPS model (use `JpsOsmorcModuleExtension` as a reference implementation) and provide an implementation of [JpsModelSerializerExtension](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/jps/model-serialization/src/org/jetbrains/jps/model/serialization/JpsModelSerializerExtension.java) to load the configuration from project files.
 
 ### Implementing Builder
 
-If your compiler isn't involved in the compilation of an existing [BuildTarget](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/jps/jps-builders/src/org/jetbrains/jps/builders/BuildTarget.java), you need to create a new implementation of `BuildTarget` and `BuildTargetType`.
+If the compiler isn't involved in the compilation of an existing [BuildTarget](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/jps/jps-builders/src/org/jetbrains/jps/builders/BuildTarget.java), create a new implementation of `BuildTarget` and `BuildTargetType`.
 Also, register an implementation of [BuildTargetScopeProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/java/compiler/impl/src/com/intellij/compiler/impl/BuildTargetScopeProvider.java) extension on the IDE side to add required targets to the build scope.
 The builder implementation should extend either [TargetBuilder](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/jps/jps-builders/src/org/jetbrains/jps/incremental/TargetBuilder.java) or [ModuleLevelBuilder](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/jps/jps-builders/src/org/jetbrains/jps/incremental/ModuleLevelBuilder.java) class and should be created using [BuilderService](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/jps/jps-builders/src/org/jetbrains/jps/incremental/BuilderService.java) extension.
 

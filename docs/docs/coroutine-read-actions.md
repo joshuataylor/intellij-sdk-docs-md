@@ -3,7 +3,7 @@
 Tip: Kotlin Coroutines×IntelliJ Platform
 
 This section focuses on explaining coroutines in the specific context of the [IntelliJ Platform](intellij-platform.html).
-If you are not experienced with Kotlin Coroutines, it is highly recommended to get familiar with
+For developers not experienced with Kotlin Coroutines, it is highly recommended to get familiar with
 [Learning Resources](kotlin-coroutines.html#learning-resources) first.
 
 The concept of read/write locks and running blocking and non-blocking read actions is explained in

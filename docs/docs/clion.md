@@ -19,7 +19,7 @@ Warning:
 
 Since CLion 2025.3, CLion Nova — the C/C++ language engine based on the ReSharper C++ engine — is enabled by default.
 Since CLion 2026.2, the previous Classic engine is no longer bundled with the IDE distribution.
-If your plugin uses the classic C/C++ language APIs (`OCFileType`, `OCLanguage`, `OCFile`, and other `com.jetbrains.cidr.lang` classes), see [C/C++ Language Engine: Nova and Classic](#language-engine) for the required changes.
+If a plugin uses the classic C/C++ language APIs (`OCFileType`, `OCLanguage`, `OCFile`, and other `com.jetbrains.cidr.lang` classes), see [C/C++ Language Engine: Nova and Classic](#language-engine) for the required changes.
 
 ## CLion Plugin Setup
 
@@ -143,7 +143,7 @@ Note:
 Plugins relying on these APIs cannot be fully ported to Nova.
 Keep depending on the [C/C++ Language Support via Classic Engine](https://plugins.jetbrains.com/plugin/32355-c-c--language-support-via-classic-engine) plugin if these APIs are required.
 
-If your plugin cannot be migrated to CLion Nova yet, follow and vote for [CPP-36085](https://youtrack.jetbrains.com/issue/CPP-36085) to track improvements to Classic-to-Nova plugin migration.
+If a plugin cannot be migrated to CLion Nova yet, follow and vote for [CPP-36085](https://youtrack.jetbrains.com/issue/CPP-36085) to track improvements to Classic-to-Nova plugin migration.
 
 ## Available CLion APIs
 
@@ -152,7 +152,7 @@ Note:
 See [CLion Extension Point and Listener List](clion-extension-point-list.html) for the complete list.
 
 Use the [Exploring APIs as a Consumer](plugin-compatibility.html#exploring-apis-as-a-consumer) process to identify the JAR files under the External Library `Gradle:com.jetbrains:clion:<version>`.
-Test your plugin with versions of CLion you intend to support.
+Test the plugin with all supported CLion versions.
 
 ## Open Source Plugins for CLion
 

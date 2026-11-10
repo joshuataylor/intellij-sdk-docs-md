@@ -43,9 +43,9 @@ Three or more actions would make it harder to choose what to start from.
 
 |        Correct       ![One action](images/empty_state_actions_correct.png)      |       Incorrect       ![Three actions](images/empty_state_actions_incorrect.png)      |
 
-In rare cases, when you need to list all possible starting points, use the list layout.
+In rare cases, when all possible starting points need to be listed, use the list layout.
 
-If there is enough space (for example, in horizontal tool windows), you may use the table layout to place action links, shortcuts, and action descriptions:
+If there is enough space (for example, in horizontal tool windows), you can use the table layout to place action links, shortcuts, and action descriptions:
 ![Table layout for actions](images/empty_state_table.png)
 
 ### Open menus from the toolbar

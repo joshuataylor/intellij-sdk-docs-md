@@ -82,7 +82,7 @@ registerExtension(extensionPointName, instance)
 
 ## Global Variables
 
-When the IntelliJ Platform integration is loaded, the following variables are automatically available in your Kotlin Notebook environment.
+When the IntelliJ Platform integration is loaded, the following variables are automatically available in the Kotlin Notebook environment.
 These variables provide access to essential IDE components, configuration information, and management interfaces.
 
 | Variable |Type |Description |

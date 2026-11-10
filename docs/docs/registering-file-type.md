@@ -31,11 +31,11 @@ Examples
 
 * [LanguageFileType](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/openapi/fileTypes/LanguageFileType.java) subclass in [Properties language plugin](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/plugins/properties/properties-psi-api/src/com/intellij/lang/properties/PropertiesFileType.java)
 
-To verify that the file type is registered correctly, you can implement the [LanguageFileType.getIcon()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/openapi/fileTypes/LanguageFileType.java) method and verify that the correct icon (see [Working with Icons](icons.html)) is displayed for files associated with your file type.
+To verify that the file type is registered correctly, implement the [LanguageFileType.getIcon()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/openapi/fileTypes/LanguageFileType.java) method and verify that the correct icon (see [Working with Icons](icons.html)) is displayed for files associated with the file type.
 
 ## Additional Features
 
-If you want IDEs to show a hint prompting users that your plugin supports a specific file type, see [Plugin Recommendations](https://plugins.jetbrains.com/docs/marketplace/intellij-plugin-recommendations.html).
+To make IDEs show a hint prompting users that the plugin supports a specific file type, see [Plugin Recommendations](https://plugins.jetbrains.com/docs/marketplace/intellij-plugin-recommendations.html).
 
 To control file type association with the IDE in the operating system, implement [OSFileIdeAssociation](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/openapi/fileTypes/OSFileIdeAssociation.java).
 

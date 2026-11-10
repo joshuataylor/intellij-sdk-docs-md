@@ -305,7 +305,7 @@ Plugin LSP customizations implemented via deprecated `LspServerDescriptor`'s pro
 New LSP features will be customizable only via the new API.
 
 Starting with 2026.1.2, on-type formatting ([textDocument/onTypeFormatting](https://microsoft.github.io/language-server-protocol/specification/#textDocument_onTypeFormatting)) is the first LSP feature disabled by default.
-Review your servers and enable [LspOnTypeFormattingCustomizer](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lsp/src/api/customization/LspOnTypeFormattingCustomizer.kt) via `LspClientDescriptor.lspCustomization` where formatting while typing is appropriate.
+Review the servers and enable [LspOnTypeFormattingCustomizer](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lsp/src/api/customization/LspOnTypeFormattingCustomizer.kt) via `LspClientDescriptor.lspCustomization` where formatting while typing is appropriate.
 
 Pre-2025.2:
 

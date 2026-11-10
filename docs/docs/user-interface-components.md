@@ -5,7 +5,7 @@ UI Guidelines: [Overview](ui-guidelines-welcome.html)
 </tldr>
 
 The IntelliJ Platform includes a large number of custom [Swing](https://en.wikipedia.org/wiki/Swing_(Java)) components.
-Using those components in your plugins will ensure that your plugin looks and works consistently with the UI of the rest of the IDE, and can often reduce the code size compared to using the default Swing components.
+Using those components in a plugin will ensure that the plugin looks and works consistently with the UI of the rest of the IDE, and can often reduce the code size compared to using the default Swing components.
 Use inspection `Plugin DevKit | Code | Undesirable class usage` to highlight replacement components provided by the platform.
 
 Tip: Inspecting existing UI

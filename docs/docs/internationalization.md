@@ -179,7 +179,7 @@ It will cause the IDE to generate prefix and suffix automatically when the strin
 Using `&` in Messages
 
 The `&` symbol in message bundles is used to specify [mnemonic](mnemonics.html) characters for buttons and labels.
-To use `&` in a value, escape it by a backslash (note that you also need to escape the backslash symbol):
+To use `&` in a value, escape it by a backslash (note that the backslash symbol also needs to be escaped):
 
 ```PROPERTIES
 section.title=Drag \\\& Drop
@@ -306,7 +306,7 @@ message("dialog.title.add.0", message("concept.library"))
 
 If several localized strings (non-user input) are used to concatenate the string, then the following techniques can be used (in order of preference):
 
-1. Consider reworking the UI to avoid the string concatenation (consult the UX expert if your organization has any, or check [IntelliJ Platform UI Guidelines](ui-guidelines-welcome.html)).
+1. Consider reworking the UI to avoid the string concatenation (consult the UX expert if the organization has any, or check [IntelliJ Platform UI Guidelines](ui-guidelines-welcome.html)).
 
 * Put string parts into different UI elements.
 

@@ -70,7 +70,7 @@ Note:
 See [DataGrip Extension Point and Listener List](data-grip-extension-point-list.html) for the complete list.
 
 Use the [Exploring APIs as a Consumer](plugin-compatibility.html#exploring-apis-as-a-consumer) process to identify the libraries in `DatabaseTools`.
-Test your plugin with any version of DataGrip you wish to support.
+Test the plugin with every supported version of DataGrip.
 
 ## Getting Help
 

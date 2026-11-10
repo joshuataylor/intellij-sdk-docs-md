@@ -19,7 +19,7 @@ How do I get a `Document`?
 
 What can I do with a `Document`?
 
-You may perform any operations that access or modify the file contents on the "plain text" level (as a sequence of characters, not as a tree of [Program Structure Interface (PSI)](psi.html) elements).
+It supports any operations that access or modify the file contents on the "plain text" level (as a sequence of characters, not as a tree of [Program Structure Interface (PSI)](psi.html) elements).
 
 ## 
 
@@ -71,8 +71,8 @@ See also [Working with Text](working-with-text.html#safely-replacing-selected-te
 ## Are there any utilities available for working with documents?
 
 [DocumentUtil](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-impl/src/com/intellij/util/DocumentUtil.java) contains utility methods for `Document` processing.
-This allows you to get information like the text offsets of particular lines.
-This is particularly useful when you need text location/offset information about a given `PsiElement`.
+They provide information like the text offsets of particular lines.
+This is particularly useful for obtaining text location/offset information about a given `PsiElement`.
 
 ## How can I mark a region as read-only?
 

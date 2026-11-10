@@ -2,12 +2,12 @@
 
 Note:
 
-See [Plugin Extensions](plugin-extensions.html) for using extension points in your plugin.
+See [Plugin Extensions](plugin-extensions.html) for using extension points in a plugin.
 
-By defining extension points in your plugin, you can allow other plugins to extend your plugin's functionality.
+Defining extension points in a plugin allows other plugins to extend its functionality.
 There are two types of extension points:
 
-* Interface extension points allow other plugins to extend your plugins with code. When defining an interface extension point, specify an interface, and other plugins will provide classes implementing that interface. The providing plugin can then invoke methods on this interface. In most cases, the interface can be annotated with `@ApiStatus.OverrideOnly` (see [Override-Only API](verifying-plugin-compatibility.html#override-only-api)).
+* Interface extension points allow other plugins to extend the plugin with code. When defining an interface extension point, specify an interface, and other plugins will provide classes implementing that interface. The providing plugin can then invoke methods on this interface. In most cases, the interface can be annotated with `@ApiStatus.OverrideOnly` (see [Override-Only API](verifying-plugin-compatibility.html#override-only-api)).
 
 * Bean extension points allow other plugins to extend a plugin with data. Specify the fully qualified name of an extension class, and other plugins will provide data that will be turned into instances of that class.
 

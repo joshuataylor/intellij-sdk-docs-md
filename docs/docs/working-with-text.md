@@ -13,10 +13,10 @@ It may be helpful to open that project in an IntelliJ Platform-based IDE, build 
 
 ## Creating a New Menu Action
 
-In this example, we access the `Editor` from an action.
+This example accesses the `Editor` from an action.
 The source code for the Java class in this example is [EditorIllustrationAction](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/editor_basics/src/main/java/org/intellij/sdk/editor/EditorIllustrationAction.java).
 
-To register the action, we must add the corresponding elements to the [&lt;actions&gt;](plugin-configuration-file.html#idea-plugin__actions) section of the plugin configuration file [plugin.xml](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/editor_basics/src/main/resources/META-INF/plugin.xml).
+To register the action, add the corresponding elements to the [&lt;actions&gt;](plugin-configuration-file.html#idea-plugin__actions) section of the plugin configuration file [plugin.xml](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/editor_basics/src/main/resources/META-INF/plugin.xml).
 For more information, refer to the [Registering a Custom Action](creating-actions-tutorial.html#registering-a-custom-action) section.
 The `EditorIllustrationAction` action is registered in the group `EditorPopupMenu` so it will be available from the context menu when the focus is on the editor:
 
@@ -49,7 +49,7 @@ Additional steps will show how to check these conditions through getting instanc
 ### Getting an Instance of the Active Editor from an Action Event
 
 Using the [AnActionEvent](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnActionEvent.java) event passed into the `update` method, a reference to an instance of the `Editor` can be obtained by calling `getData(CommonDataKeys.EDITOR)`.
-Similarly, to get a project reference, we use the `getProject()` method.
+Similarly, to get a project reference, use the `getProject()` method.
 
 ```JAVA
 public class EditorIllustrationAction extends AnAction {
@@ -72,7 +72,7 @@ There are other ways to access an `Editor` instance:
 
 ### Getting a Caret Model and Selection
 
-After making sure a project is open, and an instance of the `Editor` is obtained, we need to check if any selection is available.
+After making sure a project is open, and an instance of the `Editor` is obtained, check if any selection is available.
 The [SelectionModel](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/openapi/editor/SelectionModel.java) interface is accessed from the `Editor` object.
 Determining whether some text is selected is achieved by calling the `SelectionModel.hasSelection()` method.
 Here's how the `EditorIllustrationAction.update(AnActionEvent event)` method should look:

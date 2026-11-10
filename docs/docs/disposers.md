@@ -22,7 +22,7 @@ The platform automatically disposes application-level services when the IDE is c
 Project-level services are disposed on project close or plugin unload events.
 
 Note that extensions registered in `[plugin.xml](plugin-configuration-file.html)` are not automatically disposed.
-If an extension requires executing some code to dispose it, you need to define a service and to put the code in its `dispose()` method or use it as a parent disposable.
+If an extension requires executing some code to dispose it, define a service and put the code in its `dispose()` method or use it as a parent disposable.
 
 ## 
 
@@ -106,7 +106,7 @@ Use the following guidelines to choose the correct parent:
 
 * For resources required while a [dialog](dialog-wrapper.html) is displayed, use `DialogWrapper.getDisposable()`.
 
-* For resources required while a [tool window](tool-windows.html) tab is displayed, pass your instance implementing `Disposable` to `Content.setDisposer()`.
+* For resources required while a [tool window](tool-windows.html) tab is displayed, pass an instance implementing `Disposable` to `Content.setDisposer()`.
 
 * For resources with a shorter lifetime, create a disposable using `Disposer.newDisposable()` and dispose it manually using `Disposable.dispose()`. Note that it's always best to specify a parent for such a disposable (for example, a project-level service), so that there is no memory leak if the `Disposable.dispose()` call is not reached because of an exception or a programming error.
 
@@ -176,7 +176,7 @@ To choose the correct parent disposable, use the guidelines from the [previous s
 
 ### Determining Disposal Status
 
-You can use `Disposer.isDisposed()` to check whether a `Disposable` has already been disposed.
+Use `Disposer.isDisposed()` to check whether a `Disposable` has already been disposed.
 This check is useful, for example, for an asynchronous callback to a `Disposable` that may be disposed before the callback is executed.
 In such a case, the best strategy is usually to do nothing and return early.
 

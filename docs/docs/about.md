@@ -8,9 +8,10 @@ All source links and reference lists target IntelliJ Platform 2026.3.
 
 Note:
 
-While browsing this guide, you will notice that there are topics that are greyed out.
+Some topics in this guide are greyed out.
 Unfortunately, the guide is not complete and contains placeholders for specific topics.
-We are working on increasing the coverage, but if you get stuck due to missing content, please see the [Getting Help](getting-help.html) section for details on how to get moving again.
+JetBrains is working on increasing the coverage.
+If missing content blocks the progress, see the [Getting Help](getting-help.html) section for details on how to get moving again.
 
 The guide is also [Open Source on GitHub](https://github.com/JetBrains/intellij-sdk-docs), and Pull Requests for new content, corrections or updates are always gratefully received.
 Please see the [Contributing](intellij-sdk-docs-original-contributing.html) page for details.
@@ -22,7 +23,7 @@ See also [Glossary](glossary.html) for a handy reference of common terms.
 ## Plugins
 
 Describes how to create a plugin that can extend the IntelliJ Platform.
-Includes details on how to set up the project, register extension points, target specific versions of the IntelliJ Platform, and how to package, deploy, and test your plugins.
+Includes details on how to set up the project, register extension points, target specific versions of the IntelliJ Platform, and how to package, deploy, and test plugins.
 
 ## Base Platform
 

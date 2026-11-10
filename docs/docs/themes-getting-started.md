@@ -21,7 +21,7 @@ See the [Themes in IntelliJ-based IDEs](https://blog.jetbrains.com/platform/2021
 
 ## Theme Plugin Development
 
-Themes can be developed by using [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) as your IDE (it is highly recommended to use the latest available version).
+Themes can be developed by using [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) as the IDE (it is highly recommended to use the latest available version).
 Both include the complete set of development tools required to develop theme plugins.
 To become more familiar with IntelliJ IDEA, please refer to the [IntelliJ IDEA Web Help](https://www.jetbrains.com/idea/help/).
 
@@ -41,7 +41,7 @@ See the [Developing a Theme](developing-themes.html) section for the development
 Developing theme plugins with Gradle requires experience with the Gradle or a similar build tool.
 It offers the possibility of automating some parts of the development process, like patching `[plugin.xml](plugin-configuration-file.html)` file with the theme plugin version and other data, as well as building the plugin distribution on CI servers and publishing it to [JetBrains Marketplace](https://plugins.jetbrains.com).
 
-If your project requires any of the mentioned capabilities, see [Developing a Plugin using Gradle](developing-plugins.html) for more details.
+If the project requires any of the mentioned capabilities, see [Developing a Plugin using Gradle](developing-plugins.html) for more details.
 
 Note:
 

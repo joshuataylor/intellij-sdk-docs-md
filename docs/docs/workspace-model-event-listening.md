@@ -75,7 +75,7 @@ or the project model will be updated.
 
 To perform incremental computations, the last known version of the storage and the event of updates is required.
 This can be obtained by collecting indexed events.
-Assume we build some index and keep it updated:
+Assume some index is built and kept updated:
 
 ```KOTLIN
 workspaceModel.eventLog.collectIndexed { index, event ->

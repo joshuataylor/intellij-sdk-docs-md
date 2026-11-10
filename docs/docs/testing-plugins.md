@@ -17,10 +17,10 @@ In a product with 20+ years of a lifetime that has gone through many internal re
 
 ## Mocks
 
-Another consequence of our testing approach is that we do not provide a recommended approach to mocking.
-We have a few tests in our codebase that use JMock.
-Still, in general, we find it difficult to mock all the interactions with IntelliJ Platform components that your plugin class will need to have.
-We recommend working with real components instead.
+Another consequence of this testing approach is that there is no recommended approach to mocking.
+A few tests in the IntelliJ Platform codebase use JMock.
+Still, in general, it is difficult to mock all the interactions with IntelliJ Platform components that a plugin class will need to have.
+Work with real components instead.
 See also [How to replace a component/service in tests?](testing-faq.html#how-to-replace-a-componentservice-in-tests) and [How to replace extension points in tests?](testing-faq.html#how-to-replace-extension-points-in-tests).
 
 ## Integration and UI Tests
@@ -32,7 +32,7 @@ Check out [Introduction to Integration Tests](integration-tests-intro.html) tuto
 
 Note: Testing Tutorial and Code Samples
 
-Check out [this step-by-step tutorial](writing-tests-for-plugins.html) teaching how to write and run automated tests for your custom language plugin.
+Check out [this step-by-step tutorial](writing-tests-for-plugins.html) teaching how to write and run automated tests for a custom language plugin.
 
 Also, code samples
 [comparing_string_references_inspection](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/comparing_string_references_inspection)

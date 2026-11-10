@@ -62,7 +62,7 @@ to the [plugin.xml](https://github.com/JetBrains/intellij-sdk-code-samples/tree/
 
 See [Code Samples](code-samples.html) on how to set up and run the plugin.
 
-After going through the steps described above, you can see only text files and directories belonging to a project in the Project View.
+After going through the steps described above, the Project View shows only text files and directories belonging to a project.
 
 ![Text Files](images/text_only.png)
 

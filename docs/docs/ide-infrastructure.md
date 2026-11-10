@@ -4,7 +4,7 @@
 
 Note:
 
-If your plugin uses the log4j library directly: it is removed from IntelliJ Platform in 2022.1; please see this [blog post](https://blog.jetbrains.com/platform/2022/02/removing-log4j-from-the-intellij-platform/) for migration instructions.
+If a plugin uses the log4j library directly: it is removed from IntelliJ Platform in 2022.1; please see this [blog post](https://blog.jetbrains.com/platform/2022/02/removing-log4j-from-the-intellij-platform/) for migration instructions.
 
 The IntelliJ Platform uses [Logger](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/util/src/com/intellij/openapi/diagnostic/Logger.java) abstraction class to shield from underlying logging implementation and configuration.
 
@@ -104,7 +104,7 @@ For paid plugins, see also [Marketplace docs](https://plugins.jetbrains.com/docs
 
 ## Context Help
 
-To show custom context web-based help for your plugin's functionality (e.g., for [dialogs](dialog-wrapper.html)), provide [WebHelpProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/openapi/help/WebHelpProvider.java) registered in [com.intellij.webHelpProvider](https://jb.gg/ipe?extensions=com.intellij.webHelpProvider) extension point
+To show custom context web-based help for the plugin's functionality (e.g., for [dialogs](dialog-wrapper.html)), provide [WebHelpProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/openapi/help/WebHelpProvider.java) registered in [com.intellij.webHelpProvider](https://jb.gg/ipe?extensions=com.intellij.webHelpProvider) extension point
 .
 
 Tip:
@@ -139,7 +139,7 @@ Use the [LafManagerListener](https://github.com/JetBrains/intellij-community/tre
 ## Power Save Mode
 
 `File | Power Save Mode` can be enabled to limit power-consuming features on laptops.
-Use [PowerSaveMode](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/ide/PowerSaveMode.java) service and `PowerSaveMode.Listener` topic to disable such features in your plugin accordingly.
+Use [PowerSaveMode](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/ide/PowerSaveMode.java) service and `PowerSaveMode.Listener` topic to disable such features in the plugin accordingly.
 
 ## Plugin Management
 

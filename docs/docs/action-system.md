@@ -441,13 +441,13 @@ to "reserve" Action ID, so they become visible in `Settings | Keymap`.
 
 ## Executing Actions Programmatically
 
-Sometimes, it is required to execute actions programmatically, for example, executing an action implementing logic needed in another place, and the implementation is out of our control.
+Sometimes, it is required to execute actions programmatically, for example, executing an action implementing logic needed in another place, and the implementation is out of the plugin's control.
 Executing actions can be achieved with [ActionUtils.invokeAction()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/openapi/actionSystem/ex/ActionUtil.kt).
 
 Warning:
 
 Executing actions programmatically should be avoided whenever possible.
-If an action executed programmatically is under your control, extract its logic to a [service](plugin-services.html) or utility class and call it directly, without the action execution context.
+If an action executed programmatically is under the plugin's control, extract its logic to a [service](plugin-services.html) or utility class and call it directly, without the action execution context.
 
 ## 
 

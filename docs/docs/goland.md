@@ -53,7 +53,7 @@ GoLand IDE:
 The configuration of targeting GoLand IDE follows the methods described in [Configuring Plugin Projects Using a Product-Specific Attribute](dev-alternate-products.html#using-a-product-specific-attribute).
 
 Starting with 2020.2, it's possible to configure `GO` for `intellij.type` in the Gradle build script.
-If you need to use Go language APIs, specifying the `GO` platform type is not enough - it is required to add a dependency to the `org.jetbrains.plugins.go` plugin.
+To use Go language APIs, specifying the `GO` platform type is not enough - it is required to add a dependency to the `org.jetbrains.plugins.go` plugin.
 
 Kotlin:
 
@@ -124,7 +124,7 @@ Note:
 See [GoLand Extension Point and Listener List](goland-extension-point-list.html) for the complete list.
 
 Use the [Exploring APIs as a Consumer](plugin-compatibility.html#exploring-apis-as-a-consumer) process to identify the library `intellij-go-$version$.jar`, where `$version$` corresponds to the version of the Go plugin.
-Test your plugin with any version of GoLand you intend to support.
+Test the plugin with every supported version of GoLand.
 
 ## GoLand Test Framework
 

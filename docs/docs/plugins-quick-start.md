@@ -9,7 +9,7 @@ Note: UI Themes
 See [Themes](themes-getting-started.html) for information about UI theme development.
 
 This section covers the basics of working with the IntelliJ Platform.
-It will familiarize you with the working environment, project structure, and frequently used API components.
+It introduces the working environment, project structure, and frequently used API components.
 
 * [Required Experience](plugin-required-experience.html)
 

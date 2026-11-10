@@ -108,7 +108,7 @@ Note that this method returns `null` if the file or directory does not belong to
 
 ### Checking Whether a File or Directory Is Related to the Project Libraries
 
-The [ProjectFileIndex](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/projectModel-api/src/com/intellij/openapi/roots/ProjectFileIndex.java) interface implements a number of methods you can use to check whether the specified file belongs to the project library classes or library sources:
+The [ProjectFileIndex](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/projectModel-api/src/com/intellij/openapi/roots/ProjectFileIndex.java) interface implements a number of methods to check whether the specified file belongs to the project library classes or library sources:
 
 * `isLibraryClassFile()`: Returns `true` if the specified `virtualFile` is a compiled class file.
 

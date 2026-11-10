@@ -54,7 +54,7 @@ The whole phrase after the comma is not needed because its meaning is already ex
 
 ## Remove duplicates
 
-If the repeating word appears in element labels, move it to the beginning. Finding a setting becomes faster as you scan only meaningful words:
+If the repeating word appears in element labels, move it to the beginning. Finding a setting becomes faster as the user scans only meaningful words:
 
 ![Writing short duplicates](images/writing_short_duplicates.png)
 Remove duplicates in meaning:
@@ -68,13 +68,13 @@ Remove duplicates in meaning:
 
 |  Removed  | Explanation  |
 ----------------------------
-|   click I agree  |  The verb "click" is obvious from context: you cannot do much with a link other than click.   |
+|   click I agree  |  The verb "click" is obvious from context: there is not much to do with a link other than click it.   |
 |   click... I don’t agree otherwise   |  The link "I don’t agree" duplicates the notification "Close" button which appears on hover.   |
 |  ![Notification info](images/notificationInfo.png)  |  The icon is not needed because the message is purely informative, not an error or a warning. Texts are information by default, there is no need to specify that meaning explicitly.   |
 
 ## Translate from tech to human
 
-When you make a feature, you know how it works from the inside and can describe it from the implementation point of view:
+Feature authors know how it works from the inside and tend to describe it from the implementation point of view:
 
 ![Indent options before](images/indent-options-before.png)
 A person not familiar with implementation details won’t know what the Automatic indent options detector is, why file’s indent options have been overwritten and what indent size=2 means. Translated to the "human" language, the message reads:
@@ -95,7 +95,7 @@ Rewritten: now all options are equal.
 More examples:
 
 ![First time auto insert](images/first-time-auto-insert.png)
-Before: The title can be read as "Auto-insert when only one checkbox is on" making you ask how it works when both checkboxes are on. After: Replacing choice with completion option makes the title unambiguous.
+Before: The title can be read as "Auto-insert when only one checkbox is on" raising the question of how it works when both checkboxes are on. After: Replacing choice with completion option makes the title unambiguous.
 
 ![First time smart keys](images/first-time-smart-keys.png)
 Before: What do smart Home and End keys do? What do they do if they are not smart? After: The added text explains what the options do so that the reader can make an informed choice.
@@ -108,7 +108,7 @@ Before: What do smart Home and End keys do? What do they do if they are not smar
 |  Project name Project SDK Project language level  | Project name SDK Language level  |  "Project" can be left only for the first field. All others will be understood as project settings because they appear in the same group of UI elements.   |
 |  This path is used to store  | This path stores  |  Simple verb form   |
 |  store all project compilation results  | stores project compilation output  |  "all" is extra because it is implied by default. "results" is another word for "output" — having different words for the same meaning complicates understanding.   |
-|  A directory corresponding to each module is created under this path. This directory contains two subdirectories...  | It has a separate directory for each module, with the Production and Test subdirectories.  |  "is created" is not relevant to the meaning of this phrase. "two" is obvious from context: you see that there are two subdirectories because only two are named.   |
+|  A directory corresponding to each module is created under this path. This directory contains two subdirectories...  | It has a separate directory for each module, with the Production and Test subdirectories.  |  "is created" is not relevant to the meaning of this phrase. "two" is obvious from context: it is clear that there are two subdirectories because only two are named.   |
 
 |  Moved  | Moved  |
 --------------------

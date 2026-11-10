@@ -2,7 +2,7 @@
 
 Note: Testing Tutorial and Code Samples
 
-Check out [this step-by-step tutorial](writing-tests-for-plugins.html) teaching how to write and run automated tests for your custom language plugin.
+Check out [this step-by-step tutorial](writing-tests-for-plugins.html) teaching how to write and run automated tests for a custom language plugin.
 
 Also, code samples
 [comparing_string_references_inspection](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/comparing_string_references_inspection)
@@ -15,7 +15,7 @@ All required [test-framework dependencies](tools-intellij-platform-gradle-plugin
 Plugin tests run in a real, rather than mocked, IntelliJ Platform environment and use real implementations for most application and project [services](plugin-services.html).
 
 Loading and initializing all the project components and services for a project to run tests is a relatively expensive operation, and it is desired to avoid doing it for each test.
-Dependently on the loading and execution time, we make a difference between light tests and heavy tests available in the IntelliJ Platform test framework:
+Dependently on the loading and execution time, the IntelliJ Platform test framework distinguishes between light tests and heavy tests:
 
 * Light tests reuse a project from the previous test run when possible.
 
@@ -25,7 +25,7 @@ Light and heavy tests use different base classes or fixture classes, as describe
 
 Note:
 
-Because of the performance difference, we recommend plugin developers to write light tests whenever possible.
+Because of the performance difference, write light tests whenever possible.
 
 ## Light Tests
 
@@ -69,7 +69,7 @@ Examples:
 
 Tip:
 
-See [How to test a JVM language?](testing-faq.html#how-to-test-a-jvm-language) on how to set up your test environment to obtain the required Mock JDK automatically.
+See [How to test a JVM language?](testing-faq.html#how-to-test-a-jvm-language) on how to set up the test environment to obtain the required Mock JDK automatically.
 
 ### LightProjectDescriptor
 

@@ -4,7 +4,7 @@ This page lists a number of common questions/issues and techniques useful for te
 
 Note: Testing Tutorial and Code Samples
 
-Check out [this step-by-step tutorial](writing-tests-for-plugins.html) teaching how to write and run automated tests for your custom language plugin.
+Check out [this step-by-step tutorial](writing-tests-for-plugins.html) teaching how to write and run automated tests for a custom language plugin.
 
 Also, code samples
 [comparing_string_references_inspection](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/comparing_string_references_inspection)
@@ -58,7 +58,7 @@ See [notes](api-changes-list-2021.html#20213).
 
 ### How to avoid flaky tests?
 
-Always call `super.tearDown()` inside the `finally {}` block of your test class to avoid leaks and side effects from previously run (failed) tests:
+Always call `super.tearDown()` inside the `finally {}` block of the test class to avoid leaks and side effects from previously run (failed) tests:
 
 Java:
 
@@ -100,7 +100,7 @@ When targeting 2024.2 or later, see also [How to handle ProjectActivity?](#how-t
 ### How to avoid test failure when using resources?
 
 In some situations, added or changed files (e.g. XML DTDs provided by a plugin) are not refreshed in [Virtual File System](virtual-file-system.html).
-In such cases, delete the `test-system/caches` folder in your [sandbox directory](ide-development-instance.html#the-development-instance-sandbox-directory) and try again.
+In such cases, delete the `test-system/caches` folder in the [sandbox directory](ide-development-instance.html#the-development-instance-sandbox-directory) and try again.
 
 ### How to enable DEBUG/TRACE logging?
 
@@ -145,7 +145,7 @@ Use [FileBasedTestCaseHelper](https://github.com/JetBrains/intellij-community/tr
 
 ### How to modify setup on a per-test basis?
 
-Use `UsefulTestCase.getTestName()` or create your own annotation which can be checked via `UsefulTestCase.annotatedWith()`.
+Use `UsefulTestCase.getTestName()` or create a custom annotation which can be checked via `UsefulTestCase.annotatedWith()`.
 
 ### How to run a performance test?
 

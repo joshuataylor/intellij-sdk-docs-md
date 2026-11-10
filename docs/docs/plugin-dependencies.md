@@ -72,7 +72,7 @@ See also [Modules Specific to Functionality](plugin-compatibility.html#modules-s
 
 ### Preparing Sandbox
 
-If the plugin is not bundled with the target IDE, run the (sandbox) [IDE Development Instance](ide-development-instance.html) of your target IDE and install the plugin there.
+If the plugin is not bundled with the target IDE, run the (sandbox) [IDE Development Instance](ide-development-instance.html) of the target IDE and install the plugin there.
 
 ## 2. Project Setup
 
@@ -107,7 +107,7 @@ Note:
 
 See the [intellij.plugins](tools-gradle-intellij-plugin.html#intellij-extension-plugins) property for acceptable values.
 
-Add the dependency to the [intellij.plugins](tools-gradle-intellij-plugin.html#intellij-extension-plugins) parameter in your build script:
+Add the dependency to the [intellij.plugins](tools-gradle-intellij-plugin.html#intellij-extension-plugins) parameter in the build script:
 
 Kotlin:
 

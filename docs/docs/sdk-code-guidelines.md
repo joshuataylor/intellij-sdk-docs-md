@@ -1,7 +1,7 @@
 # SDK Code Sample Guidelines
 
 This document describes the coding guidelines used for authoring open-source IntelliJ Platform SDK code samples.
-Before you begin, please read this page thoroughly, as well as the [Code of Conduct](intellij-sdk-docs-original-code-of-conduct.html) and [License](https://github.com/JetBrains/intellij-sdk-docs/blob/main/LICENSE.txt) documents.
+Before starting, read this page thoroughly, as well as the [Code of Conduct](intellij-sdk-docs-original-code-of-conduct.html) and [License](https://github.com/JetBrains/intellij-sdk-docs/blob/main/LICENSE.txt) documents.
 
 For information about contributing to the IntelliJ Platform itself, visit [Contributing to the IntelliJ Platform](platform-contributions.html).
 
@@ -139,7 +139,7 @@ For SDK code samples, a few alterations are needed to the default Gradle build s
 
 ## plugin.xml Conventions
 
-A consistent structure for the `plugin.xml` [configuration file](plugin-configuration-file.html) of an SDK code sample is important because we want to draw attention to the unique parts of the file for a plugin.
+A consistent structure for the `plugin.xml` [configuration file](plugin-configuration-file.html) of an SDK code sample is important because it draws attention to the unique parts of the file for a plugin.
 Comment profusely about unique elements and configurations, and comment sparingly for the rest.
 
 The sequence of elements in an SDK code sample `plugin.xml` file is:

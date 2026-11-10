@@ -37,7 +37,7 @@ Examples:
 
 ## Grouping Results
 
-To have the title of the found element be correctly displayed in the title of the Find Usages tool window, you need to provide an implementation of the [ElementDescriptionProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/ElementDescriptionProvider.java) interface.
+To have the title of the found element be correctly displayed in the title of the Find Usages tool window, provide an implementation of the [ElementDescriptionProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/ElementDescriptionProvider.java) interface.
 The [ElementDescriptionLocation](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/ElementDescriptionLocation.java) passed to the provider in this case will be an instance of [UsageViewLongNameLocation](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/usageView/src/com/intellij/usageView/UsageViewLongNameLocation.java).
 
 Example:

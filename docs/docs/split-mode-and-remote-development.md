@@ -33,7 +33,7 @@ Remote development support in the IDE provides several benefits for end users:
 
 * Use more powerful hardware than a local laptop.
 
-* Work on a different OS than the one you’re running locally (useful for cross-platform development).
+* Work on a different OS than the local one (useful for cross-platform development).
 
 * Use the laptop as a thin client (often no need to keep source code locally).
 

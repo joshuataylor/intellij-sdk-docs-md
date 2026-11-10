@@ -1,11 +1,11 @@
 # Popups
 
 The IntelliJ Platform user interface makes extensive use of popups - semi-modal windows that have no chrome (explicit closing buttons) and disappear automatically on focus loss.
-Making use of these controls in your plugin ensures a consistent user experience between your plugin and the rest of the IDE.
+Making use of these controls in a plugin ensures a consistent user experience between the plugin and the rest of the IDE.
 
 Popups can optionally display a title, are optionally movable and resizable (and support remembering their size), and can be nested (show another popup when an item is selected).
 
-The [JBPopupFactory](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/openapi/ui/popup/JBPopupFactory.java) interface allows you to create popups that display different kinds of components, depending on your specific needs.
+The [JBPopupFactory](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/openapi/ui/popup/JBPopupFactory.java) interface creates popups that display different kinds of components, depending on specific needs.
 The most commonly used methods are:
 
 | Method |Description |
@@ -18,7 +18,7 @@ The most commonly used methods are:
 ## Action Groups
 
 Action group popups support different ways of choosing an action from the keyboard, in addition to the normal arrow keys.
-By passing one of the constants in the [JBPopupFactory.ActionSelectionAid](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/openapi/ui/popup/JBPopupFactory.java) enumeration, you can choose whether an action can be selected by
+Pass one of the constants in the [JBPopupFactory.ActionSelectionAid](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/openapi/ui/popup/JBPopupFactory.java) enumeration to choose whether an action can be selected by
 
 * pressing a key corresponding to its sequential number
 
@@ -44,12 +44,12 @@ The key methods to override are:
 
 * `onChosen()` - called when an item is selected
 
-By returning a new popup step from the `onChosen()` method, you can implement hierarchical (nested) popups.
+Return a new popup step from the `onChosen()` method to implement hierarchical (nested) popups.
 
 ## Showing Popup
 
-Once you've created the popup, you need to display it by calling one of the `show()` methods.
-You can let the IntelliJ Platform automatically choose the position based on the context, by calling `showInBestPositionFor()`, or specify the position explicitly through methods like `showUnderneathOf()` and `showInCenterOf()`.
+Once the popup is created, display it by calling one of the `show()` methods.
+Let the IntelliJ Platform automatically choose the position based on the context, by calling `showInBestPositionFor()`, or specify the position explicitly through methods like `showUnderneathOf()` and `showInCenterOf()`.
 
 Note:
 
@@ -61,5 +61,5 @@ To perform some action when the popup is closed, use one of the following approa
 
 * override a method of the popup contents such as [PopupStep.onChosen()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-ui/src/openapi/ui/popup/PopupStep.java)
 
-* attach an event handler to your own component within the popup
+* attach an event handler to a custom component within the popup
 

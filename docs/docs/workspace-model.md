@@ -25,8 +25,8 @@ Different project model parts are stored in separate project-level and module-le
 etc.).
 
 They're implemented independently, and the project model has no single entry point.
-This leads to code duplication and complicates bulk modifications of project model elements, since you need to manually track modifiable instances of the model elements
-or create special wrappers to do it (see [IdeModifiableModelsProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/external-system-api/src/com/intellij/openapi/externalSystem/service/project/IdeModifiableModelsProvider.java)).
+This leads to code duplication and complicates bulk modifications of project model elements, since it requires manually tracking modifiable instances of the model elements
+or creating special wrappers to do it (see [IdeModifiableModelsProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/external-system-api/src/com/intellij/openapi/externalSystem/service/project/IdeModifiableModelsProvider.java)).
 
 ### Serialization
 

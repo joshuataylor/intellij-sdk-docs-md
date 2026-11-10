@@ -56,7 +56,7 @@ To save the PSI file to disk, use its parent directory's [PsiDirectory.add()](ht
 
 ## How do I get notified when PSI files change?
 
-`PsiManager.addPsiTreeChangeListener()` allows you to receive notifications about all changes to the PSI tree of a project.
+Use `PsiManager.addPsiTreeChangeListener()` to receive notifications about all changes to the PSI tree of a project.
 Alternatively, register [PsiTreeChangeListener](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiTreeChangeListener.java)
 in [com.intellij.psi.treeChangeListener](https://jb.gg/ipe?extensions=com.intellij.psi.treeChangeListener) extension point
 .

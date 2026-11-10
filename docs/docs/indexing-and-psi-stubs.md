@@ -15,8 +15,8 @@ File-based indexes are built directly over the content of files.
 Stub indexes are built over serialized stub trees.
 A stub tree for a source file is a subset of its [PSI](psi.html) tree, which contains only externally visible declarations and is serialized in a compact binary format.
 
-Querying a file-based index gets you the set of files matching a specific condition.
-Querying a stub index gets you the set of matching PSI elements.
+Querying a file-based index returns the set of files matching a specific condition.
+Querying a stub index returns the set of matching PSI elements.
 Therefore, custom language plugin developers typically use [stub indexes](stub-indexes.html) in their plugin implementations.
 
 Tip:
@@ -107,7 +107,7 @@ Use [lexer](implementing-lexer.html) information instead of parsed trees if poss
 
 If impossible, use light AST which doesn't create memory-hungry AST nodes inside, so traversing it might be faster.
 Obtain [LighterAST](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/lang/LighterAST.java) by casting `FileContent` input parameter to [PsiDependentFileContent](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/util/indexing/PsiDependentFileContent.java) and calling `getLighterAST()`.
-Make sure to traverse only the nodes you need to.
+Make sure to traverse only the required nodes.
 See also [RecursiveLighterASTNodeWalkingVisitor](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-impl/src/com/intellij/psi/impl/source/tree/RecursiveLighterASTNodeWalkingVisitor.java) and [LightTreeUtil](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-impl/src/com/intellij/psi/impl/source/tree/LightTreeUtil.java) for useful utility methods.
 
 For [stub index](stub-indexes.html), implement [LightStubBuilder](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-impl/src/com/intellij/psi/stubs/LightStubBuilder.java).

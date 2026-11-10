@@ -3,7 +3,7 @@
 All available UI Customization Keys that can be used in [Custom Themes](themes-customize.html) must be defined in a dedicated `*.themeMetadata.json` file which is registered via [com.intellij.themeMetadataProvider](https://jb.gg/ipe?extensions=com.intellij.themeMetadataProvider) extension point
 .
 
-The following minimal sample demonstrates all details required when exposing UI customization keys of your plugin's UI.
+The following minimal sample demonstrates all details required when exposing UI customization keys of a plugin's UI.
 
 `/resources/META-INF/plugin.xml`:
 

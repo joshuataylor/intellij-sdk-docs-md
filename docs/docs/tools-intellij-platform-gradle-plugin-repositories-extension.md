@@ -78,7 +78,7 @@ It includes:
 ## Working in Isolated Networks
 
 When Gradle runs in an isolated network, it cannot reach the public repositories used by IntelliJ Platform artifacts, plugins, and additional dependencies.
-In such setups, avoid using `defaultRepositories()` and replace it with your internal mirror repositories.
+In such setups, avoid using `defaultRepositories()` and replace it with internal mirror repositories.
 Even with mirrors, keep `localPlatformArtifacts()` in `repositories {}` because it is a local Ivy repository required for bundled plugins, local IDEs, and other local artifacts.
 
 The `defaultRepositories()` helper adds the following remote repositories.

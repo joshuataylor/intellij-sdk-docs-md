@@ -15,7 +15,7 @@ One use case for additional configuration files is when a plugin provides option
 
 ## Useful Resources
 
-Please make sure to follow the guidelines from [Best practices for listing your plugin](https://plugins.jetbrains.com/docs/marketplace/best-practices-for-listing.html) for an optimal presentation of your plugin on JetBrains Marketplace.
+Please make sure to follow the guidelines from [Best practices for listing your plugin](https://plugins.jetbrains.com/docs/marketplace/best-practices-for-listing.html) for an optimal presentation of the plugin on JetBrains Marketplace.
 The Busy Plugin Developers. Episode 2 discusses [5 tips for optimizing JetBrains Marketplace plugin page](https://youtu.be/oB1GA9JeeiY?t=52) in more detail.
 
 See also [Marketing](marketing.html) about widgets and badges.

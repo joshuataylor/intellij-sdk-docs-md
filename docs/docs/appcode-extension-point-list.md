@@ -12,7 +12,7 @@ See [IntelliJ Platform Extension Point and Listener List](intellij-platform-exte
 
 Warning:
 
-With the release of AppCode 2022.3, we're sunsetting the product.
+With the release of AppCode 2022.3, JetBrains is sunsetting the product.
 Please see this [blog post](https://blog.jetbrains.com/appcode/2022/12/appcode-2022-3-release-and-end-of-sales-and-support/) for details.
 
 ## AppCode Extension Point and Listener List
@@ -27,7 +27,7 @@ See [IntelliJ Platform Extension Point and Listener List](intellij-platform-exte
 
 Warning:
 
-With the release of AppCode 2022.3, we're sunsetting the product.
+With the release of AppCode 2022.3, JetBrains is sunsetting the product.
 Please see this [blog post](https://blog.jetbrains.com/appcode/2022/12/appcode-2022-3-release-and-end-of-sales-and-support/) for details.
 
 34 Extension Points and 6 Listeners for AppCode 2022.3

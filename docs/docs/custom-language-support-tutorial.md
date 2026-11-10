@@ -1,6 +1,6 @@
 # Custom Language Support Tutorial
 
-In this tutorial, we will add support for a [.properties](https://en.wikipedia.org/wiki/.properties) language and its usages within Java code.
+This tutorial adds support for a [.properties](https://en.wikipedia.org/wiki/.properties) language and its usages within Java code.
 
 Tip: Navigating this tutorial
 

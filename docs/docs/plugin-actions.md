@@ -3,7 +3,7 @@
 The IntelliJ Platform provides the concept of actions.
 An action is a class derived from [AnAction](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnAction.java), whose `actionPerformed()` method is called when its menu item or toolbar button is selected.
 
-Actions are the most common way for a user to invoke the functionality of your plugin.
+Actions are the most common way for a user to invoke the functionality of a plugin.
 An action can be invoked from a menu or a toolbar, using a keyboard shortcut or the `Help | Find Action...` lookup.
 
 Actions are organized into groups, which, in turn, can contain other groups.

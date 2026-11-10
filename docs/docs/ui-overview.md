@@ -67,7 +67,7 @@ On Windows and Linux, the toolbar also includes the Hamburger button:
 On clicking the Hamburger button, the menu items are shown on the right:
 
 ![Main menu expanded](images/ui_overview_main_toolbar_windows_expanded.png)
-You can also opt for showing the menu above the toolbar:
+The user can also opt for showing the menu above the toolbar:
 
 ![Main menu expanded on a separate line](images/ui_overview_main_toolbar_windows_expanded_dark_down.png)
 
@@ -128,7 +128,7 @@ See more in [implementation details](inlay-hints.html) and [user guidelines](htt
 
 ### Floating toolbar
 
-A small toolbar that appears when you select a code fragment in the editor. It contains buttons and controls for the most popular actions relevant in the current context,
+A small toolbar that appears when the user selects a code fragment in the editor. It contains buttons and controls for the most popular actions relevant in the current context,
 such as quick fixes, AI-actions, basic refactorings, and code-formatting options:
 
 ![Floating toolbar](images/ui_overview_floating_toolbar.png)
@@ -142,7 +142,7 @@ The status bar on the bottom of the main window displays information on the curr
 ### Navigation bar
 
 The left part of the status bar by default is occupied by the navigation bar that is a compact alternative for the Project tool window.
-It shows a path to the selected file and allows you to go to other files and directories using this path:
+It shows a path to the selected file and allows the user to go to other files and directories using this path:
 
 ![Navigation bar](images/ui_overview_navigation_bar.png)
 

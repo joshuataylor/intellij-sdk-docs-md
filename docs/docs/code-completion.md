@@ -47,7 +47,7 @@ specifying the context in which this completion variant is applicable.
 The [CompletionProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/codeInsight/completion/CompletionProvider.java) then adds the items to show in the completion list.
 
 Keep in mind that the pattern is checked against the leaf PSI element.
-If you want to match a composite element, use `withParent()` or `withSuperParent()` methods.
+To match a composite element, use `withParent()` or `withSuperParent()` methods.
 
 If completion items do not depend on indexes (e.g., keywords), it can be marked as [dumb aware](indexing-and-psi-stubs.html#DumbAwareAPI).
 

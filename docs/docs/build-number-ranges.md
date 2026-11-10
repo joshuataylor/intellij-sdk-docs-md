@@ -1,6 +1,6 @@
 # Build Number Ranges
 
-Use this reference of build number ranges to specify the correct `since-build` and `until-build` values in your plugin descriptor.
+Use this reference of build number ranges to specify the correct `since-build` and `until-build` values in the plugin descriptor.
 
 Setting the actual values in `[plugin.xml](plugin-configuration-file.html)` is managed by the `patchPluginXml` Gradle task
 (Reference: [2.x](tools-intellij-platform-gradle-plugin-tasks.html#patchPluginXml), [1.x](tools-gradle-intellij-plugin.html#tasks-patchpluginxml)).
@@ -61,7 +61,7 @@ This gives more flexibility for third-party plugins and IDE developers.
 Plugins may specify compatibility versions more precisely (for example, requiring a specific bugfix release); IDE vendors may have build numbers based on a specific IntelliJ Platform version and specify an additional internal version (for example, `256.42` in `XX-162.94.11.256.42`) to allow plugin developers for their IDE to specify compatibility.
 
 Multipart build numbers can also be used in the `since-build` and `until-build` attributes of `idea-version`.
-Usually you should omit the product ID and use only the branch number and build number, for example:
+Usually, omit the product ID and use only the branch number and build number, for example:
 
 Any 213 branch version:
 
@@ -86,10 +86,10 @@ See also [&quot;What versions of IntelliJ-based IDEs are supported?&quot;](https
 
 ## Targeting Multiple IDE Versions
 
-Tip: Which versions should your plugin support?
+Tip: Which versions should a plugin support?
 
 For new plugins, it is recommended to support current and previous stable versions.
-For example, if the current platform version is 2026.3.*, start developing your plugin by targeting 2026.2.*.
+For example, if the current platform version is 2026.3.*, start developing the plugin by targeting 2026.2.*.
 This will support:
 
 * 2026.3.* - current major version

@@ -79,7 +79,7 @@ Note:
 See [WebStorm Extension Point and Listener List](webstorm-extension-point-list.html) for the complete list.
 
 See [Exploring APIs as a Consumer](plugin-compatibility.html#exploring-apis-as-a-consumer).
-Test your plugin with any version of WebStorm you wish to support.
+Test the plugin with every supported version of WebStorm.
 
 ### JavaScript Test Framework
 

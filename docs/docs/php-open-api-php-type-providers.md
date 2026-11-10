@@ -48,7 +48,7 @@ Here, since the `$a` parameter has a `string` type hint, PhpStorm can infer the 
 
 Incomplete types are types that need additional information from other project files besides the containing file.
 
-Suppose we have two files:
+Consider two files:
 
 `foo.php`:
 
@@ -69,7 +69,7 @@ $a = foo();
 echo $a;
 ```
 
-In the `main.php` file, we call the `foo()`, which is defined in another `foo.php` file.
+In the `main.php` file, `foo()` is called, which is defined in another `foo.php` file.
 Because of this, PhpStorm won't be able to infer the type of the `$a` variable during the indexing stage, since it depends on the definition of the `foo()` from another file.
 
 For such cases, PhpStorm will create an Incomplete type in which writes all the necessary information to resolve the type when it finishes indexing.
@@ -199,7 +199,7 @@ public interface PhpTypeProvider4 {
 }
 ```
 
-To implement `PhpTypeProvider4`, you need to override 4 methods:
+To implement `PhpTypeProvider4`, override 4 methods:
 
 1. `getKey()` returns a character that will be unique for this type provider.
 This can be any character, as long as it's unique, for example, PhpStorm uses hieroglyphs.
@@ -212,14 +212,14 @@ In this case, there will be an error stating that the key is duplicated, which w
 
 2. `getType()` returns the type of the expression for the given element.
 It's called at the indexing stage, and therefore its implementation can't access any information from the index and must rely only on local information.
-If you need some information, then pack the required data into a string and return an Incomplete type based on this string.
+If some information is needed, then pack the required data into a string and return an Incomplete type based on this string.
 
 3. `complete()` resolves an Incomplete type into a Complete type.
 All strings of Incomplete types are sequentially passed to this method, it should return a Complete type for them.
 
 4. `getBySignature()` provides additional elements or references.
 
-You can also override the `emptyResultIsComplete()`, which indicates whether the `null` returned from the `complete()` is a valid result, which means that PhpStorm won't add the `mixed` to the resulting type.
+Optionally, override the `emptyResultIsComplete()`, which indicates whether the `null` returned from the `complete()` is a valid result, which means that PhpStorm won't add the `mixed` to the resulting type.
 
 ## Example Implementation
 

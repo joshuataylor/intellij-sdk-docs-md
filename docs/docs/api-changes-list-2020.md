@@ -124,7 +124,7 @@ Support for JavaFX deprecated
 : This was an internal utility method not intended for use in plugins. Use `FileTypeManager.getInstance().findFileTypeByName()` instead.
 
 `javassist` package removed
-: [Javassist](https://github.com/jboss-javassist/javassist) library was removed, bundle it with your plugin instead.
+: [Javassist](https://github.com/jboss-javassist/javassist) library was removed, bundle it with the plugin instead.
 
 `com.intellij.compiler.backwardRefs.LanguageCompilerRefAdapter.INSTANCES` field removed
 : This field leaked instances of plugin's extensions on plugin unloading. Use `com.intellij.compiler.backwardRefs.LanguageCompilerRefAdapter#EP_NAME.getExtensionList()` directly instead.
@@ -312,7 +312,7 @@ Images module functionality (package `org.intellij.images.*`) extracted to plugi
 
 * Add to `build.gradle`: ```GROOVY intellij { plugins = ['platform-images'] } ```
 
-* If your plugin depends on other plugins using `com.intellij.platform.images` (e.g., CSS), please make sure to use `gradle-intellij-plugin` >=0.4.19
+* If a plugin depends on other plugins using `com.intellij.platform.images` (e.g., CSS), please make sure to use `gradle-intellij-plugin` >=0.4.19
 
 ### Python Plugin 2020.1
 

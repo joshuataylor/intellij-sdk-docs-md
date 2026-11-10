@@ -3,7 +3,7 @@
 Tip: Kotlin Coroutines×IntelliJ Platform
 
 This section focuses on explaining coroutines in the specific context of the [IntelliJ Platform](intellij-platform.html).
-If you are not experienced with Kotlin Coroutines, it is highly recommended to get familiar with
+For developers not experienced with Kotlin Coroutines, it is highly recommended to get familiar with
 [Learning Resources](kotlin-coroutines.html#learning-resources) first.
 
 Coroutines are always executed in a [context](https://kotlinlang.org/docs/coroutine-context-and-dispatchers.html) represented by [CoroutineContext](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.coroutines/-coroutine-context/).

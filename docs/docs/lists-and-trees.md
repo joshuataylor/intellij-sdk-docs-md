@@ -4,8 +4,8 @@
 
 `JBList` and `Tree`
 
-Whenever you would normally use a standard [Swing JList](https://docs.oracle.com/en/java/javase/24/docs/api/java.desktop/javax/swing/JList.html) component,
-it's recommended to use the [JBList](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/ui/components/JBList.java) class as drop-in replacement.
+Instead of a standard [Swing JList](https://docs.oracle.com/en/java/javase/24/docs/api/java.desktop/javax/swing/JList.html) component,
+use the [JBList](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/ui/components/JBList.java) class as drop-in replacement.
 `JBList` supports the following additional features on top of `JList`:
 
 * Drawing a tooltip with complete text of an item if the item doesn't fit into the list box width.
@@ -22,15 +22,15 @@ In addition to the features of [JBList](https://github.com/JetBrains/intellij-co
 
 `ColoredListCellRenderer` and `ColoredTreeCellRenderer`
 
-When you need to customize the presentation of items in a list box or a tree, it's recommended to use the [ColoredListCellRenderer](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/ui/ColoredListCellRenderer.java) or [ColoredTreeCellRenderer](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/ui/ColoredTreeCellRenderer.java) classes as the cell renderer.
-These classes allow you to compose the presentation out of multiple text fragments with different attributes by calling `append()` and to set an optional icon for the item by calling `setIcon()`.
+To customize the presentation of items in a list box or a tree, use the [ColoredListCellRenderer](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/ui/ColoredListCellRenderer.java) or [ColoredTreeCellRenderer](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/ui/ColoredTreeCellRenderer.java) classes as the cell renderer.
+With these classes, you can compose the presentation out of multiple text fragments with different attributes by calling `append()` and set an optional icon for the item by calling `setIcon()`.
 The renderer automatically takes care of setting the correct text color for selected items and of many other platform-specific rendering details.
 
 ## 
 
 `ListSpeedSearch` and `TreeSpeedSearch`
 
-To facilitate keyboard-based selection of items in a list box or a tree, you can install a speed search handler on it using the [ListSpeedSearch](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-impl/src/com/intellij/ui/ListSpeedSearch.java) and [TreeSpeedSearch](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-impl/src/com/intellij/ui/TreeSpeedSearch.java).
+To facilitate keyboard-based selection of items in a list box or a tree, install a speed search handler on it using the [ListSpeedSearch](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-impl/src/com/intellij/ui/ListSpeedSearch.java) and [TreeSpeedSearch](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-impl/src/com/intellij/ui/TreeSpeedSearch.java).
 This can be done simply by calling `new ListSpeedSearch(list)` or `new TreeSpeedSearch(tree)`.
 To customize the text which is used to locate the element, override the `getElementText()` method.
 Alternatively, you can pass a function to convert items to strings.
@@ -47,13 +47,13 @@ The position of the toolbar above or below the list depends on the platform unde
 
 To use a toolbar decorator:
 
-* If you need to support removing and reordering of items in a list box, make sure the model of your list implements the [EditableModel](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/util/ui/src/com/intellij/util/ui/EditableModel.java) interface. [CollectionListModel](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/util/ui/src/com/intellij/ui/CollectionListModel.java) is a handy model class that implements this interface.
+* To support removing and reordering of items in a list box, make sure the list model implements the [EditableModel](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/util/ui/src/com/intellij/util/ui/EditableModel.java) interface. [CollectionListModel](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/util/ui/src/com/intellij/ui/CollectionListModel.java) is a handy model class that implements this interface.
 
 * Call [ToolbarDecorator.createDecorator()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/ui/ToolbarDecorator.java) to create a decorator instance.
 
-* If you need to support adding and/or removing items, call `setAddAction()` and/or `setRemoveAction()`.
+* To support adding and/or removing items, call `setAddAction()` and/or `setRemoveAction()`.
 
-* If you need other buttons in additional to the standard ones, call `addExtraAction()` or `setActionGroup()`.
+* To add other buttons in addition to the standard ones, call `addExtraAction()` or `setActionGroup()`.
 
-* Call `createPanel()` and add the component it returns to your panel.
+* Call `createPanel()` and add the component it returns to the panel.
 

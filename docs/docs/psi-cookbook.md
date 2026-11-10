@@ -30,8 +30,8 @@ See also the [PSI Performance](psi-performance.html) section.
 
 Note:
 
-If your plugin depends on Java functionality, see [Java](plugin-compatibility.html#java).
-Also consider using [UAST](uast.html) if your plugin supports other JVM languages.
+If the plugin depends on Java functionality, see [Java](plugin-compatibility.html#java).
+Also consider using [UAST](uast.html) if the plugin supports other JVM languages.
 
 ### How do I find all inheritors of a class?
 

@@ -248,7 +248,7 @@ To merge submodule content into the main plugin JAR file, use `pluginComposedMod
 
 Plugin ID: `org.jetbrains.intellij.platform.settings`
 
-If you define project repositories within the `settings.gradle.kts` using the `dependencyResolutionManagement`, make sure to include the Settings plugin in `settings.gradle.kts`.
+If project repositories are defined within the `settings.gradle.kts` using the `dependencyResolutionManagement`, make sure to include the Settings plugin in `settings.gradle.kts`.
 
 This approach allows for omitting the `repositories {}` definition in the `build.gradle.kts` files. See [Dependency Resolution Management](tools-intellij-platform-gradle-plugin.html#configuration.dependencyResolutionManagement) for more details.
 

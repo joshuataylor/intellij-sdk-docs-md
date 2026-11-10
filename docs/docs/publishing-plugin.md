@@ -52,9 +52,9 @@ If the project is configured to rely on [Plugin Signing](plugin-signing.html), u
 The resulting ZIP file is located in `build/distributions` and can then be installed in the IDE via [Install Plugin from Disk...](https://www.jetbrains.com/help/idea/managing-plugins.html#install_plugin_from_disk) action
 or uploaded to a [Custom Plugin Repository](custom-plugin-repository.html).
 
-### Providing Your Personal Access Token to Gradle
+### Providing the Personal Access Token to Gradle
 
-To deploy a plugin to the JetBrains Marketplace, supply the Personal Access Token, which can be found on your profile page in the [My Tokens](https://plugins.jetbrains.com/author/me/tokens) section.
+To deploy a plugin to the JetBrains Marketplace, supply the Personal Access Token, which can be found on the profile page in the [My Tokens](https://plugins.jetbrains.com/author/me/tokens) section.
 
 To create a new token, provide its name and click the Generate Token button.
 A new token will be created and displayed right below.

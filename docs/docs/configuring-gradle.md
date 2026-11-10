@@ -47,10 +47,10 @@ See [Configuration](tools-intellij-platform-gradle-plugin.html#configuration) fo
 
 ## Target Platform and Dependencies
 
-Tip: Which versions should your plugin support?
+Tip: Which versions should a plugin support?
 
 For new plugins, it is recommended to support current and previous stable versions.
-For example, if the current platform version is 2026.3.*, start developing your plugin by targeting 2026.2.*.
+For example, if the current platform version is 2026.3.*, start developing the plugin by targeting 2026.2.*.
 This will support:
 
 * 2026.3.* - current major version

@@ -4,7 +4,7 @@ Follow these guidelines to convert an existing custom theme to an Islands theme.
 
 ## Defining the Parent Theme
 
-We recommend creating Islands custom themes based on the default Islands themes.
+Create Islands custom themes based on the default Islands themes.
 To do that, define the parent theme at the beginning of the `*.theme.json` file.
 An example for a dark custom theme:
 

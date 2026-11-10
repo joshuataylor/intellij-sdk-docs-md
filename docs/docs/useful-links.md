@@ -6,7 +6,7 @@ The following links represent useful resources for working with the IntelliJ Pla
 
 Note:
 
-Use [Writerside](https://plugins.jetbrains.com/plugin/20158-writerside) to create and publish documentation for your plugin.
+Use [Writerside](https://plugins.jetbrains.com/plugin/20158-writerside) to create and publish documentation for a plugin.
 
 * [IDE Settings, Caches, Logs, and Plugins](https://intellij-support.jetbrains.com/hc/en-us/articles/206544519-Directories-used-by-the-IDE-to-store-settings-caches-plugins-and-logs)
 

@@ -21,12 +21,12 @@ For plugins targeting IntelliJ Platform version 2023.1 or later, it is recommend
 
 A [DocumentationProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/lang/documentation/DocumentationProvider.java)
 helps users by showing documentation for symbols like method calls inside the editor.
-For the custom language tutorial, we're implementing a version of this extension point (EP) for the Simple Language that shows the key/value,
+This tutorial implements a version of this extension point (EP) for the Simple Language that shows the key/value,
 the file where it is defined, and any related documentation comment.
 
 ## Implement a Documentation Provider and Register the EP
 
-In the first step, we create an empty class that extends
+In the first step, create an empty class that extends
 [AbstractDocumentationProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/lang/documentation/AbstractDocumentationProvider.java)
 and register it in the `[plugin.xml](plugin-configuration-file.html)`.
 
@@ -47,15 +47,15 @@ Make sure the extension is registered in the `plugin.xml` as shown below:
 
 ## Ensure That the Correct PSI Element Is Used
 
-For the Simple Language, we consider two use-cases:
+For the Simple Language, consider two use-cases:
 
 1. A Simple key is [used inside a Java string literal](reference-contributor.html),
-and we would like to show documentation for the key/value right from the reference inside the Java file.
+and the documentation for the key/value should be shown right from the reference inside the Java file.
 
-2. The cursor is already over a key/value definition inside a Simple file, in which case we would also like to show its documentation.
+2. The cursor is already over a key/value definition inside a Simple file, in which case its documentation should also be shown.
 
 To ensure that the IntelliJ Platform chooses the correct element of type `SimpleProperty` when `View | Quick Documentation` is called,
-we create a dummy implementation of `generateDoc()`:
+create a dummy implementation of `generateDoc()`:
 
 ```JAVA
 @Override
@@ -65,22 +65,22 @@ public @Nullable String generateDoc(PsiElement element,
 }
 ```
 
-Now, we set a breakpoint in our dummy implementation, debug the plugin, and call `View | Quick Documentation`
+Now, set a breakpoint in the dummy implementation, debug the plugin, and call `View | Quick Documentation`
 for the Simple property both in the Java file and the Simple file.
-We do this by placing the cursor over the key and invoking `View | Quick Documentation` to show the documentation.
+Do this by placing the cursor over the key and invoking `View | Quick Documentation` to show the documentation.
 
-In both cases, we find that the element provided is `SimplePropertyImpl`, which is exactly what we hoped for.
-However, there are two drawbacks: inside a Java string, your cursor needs to be directly over `key` in the string `"simple:key"` to make Quick Documentation work.
+In both cases, the element provided is `SimplePropertyImpl`, which is exactly the expected element.
+However, there are two drawbacks: inside a Java string, the cursor needs to be directly over `key` in the string `"simple:key"` to make Quick Documentation work.
 Since the Simple Language only allows for one property per string,
-it would be nice if Quick Documentation worked no matter where your cursor was positioned in the string as long as the string contained a Simple property.
+it would be nice if Quick Documentation worked no matter where the cursor was positioned in the string as long as the string contained a Simple property.
 Inside a Simple file, the situation is similar, and calling `View | Quick Documentation` only works when the cursor is positioned on the key.
 
 Refer to the [Addendum](#addendum) below, which explains how to improve on this situation by additionally overriding the `getCustomDocumentationElement()` method.
 
 ## Extract Documentation Comments from Key/Value Definitions
 
-While `SimpleProperty` elements will provide us with their key and value, we have no direct access to a possible comment that is preceding the key/value definition.
-Since we would like to show this comment in the documentation as well, we need a small helper function that extracts the text from the comment.
+While `SimpleProperty` elements provide their key and value, there is no direct access to a possible comment that is preceding the key/value definition.
+To show this comment in the documentation as well, add a small helper function that extracts the text from the comment.
 This function will reside in the `SimpleUtil` class and will find, for instance, the comment preceding `apikey` in the following short example:
 
 ```PROPERTIES
@@ -92,7 +92,7 @@ apikey=ph342m91337h4xX0r5k!11Zz!
 
 The following implementation will check if there is any comment preceding a `SimpleProperty`, and if there is,
 it will collect all comment lines until it reaches either the previous key/value definition or the beginning of the file.
-One caveat is that since we're collecting the comment lines backwards, we need to reverse the list before joining them into a single string.
+One caveat is that since the comment lines are collected backwards, the list must be reversed before joining them into a single string.
 A simple regex is used to remove the leading hash characters and whitespaces from each line.
 
 ```JAVA
@@ -116,7 +116,7 @@ public static @NotNull String findDocumentationComment(SimpleProperty property) 
 ## Render the Documentation
 
 With easy ways to access the key, the value, the file, and a possible documentation comment,
-we now have everything in place to provide a useful implementation of `generateDoc()`.
+everything is in place to provide a useful implementation of `generateDoc()`.
 
 ```JAVA
 /**
@@ -184,9 +184,9 @@ After implementing all the steps above, the IDE will show the rendered documenta
 
 ## Implement Additional Functionality
 
-We can provide implementations for additional functionality that comes with a `DocumentationProvider`.
+A `DocumentationProvider` can also implement additional functionality.
 For instance, when simply hovering the mouse over the code, it also shows documentation after a short delay.
-It's not necessary that this popup shows the exact same information as when calling `View | Quick Documentation`, but for this tutorial, we'll do just that.
+It's not necessary that this popup shows the exact same information as when calling `View | Quick Documentation`, but this tutorial does just that.
 
 ```JAVA
 /**
@@ -220,7 +220,7 @@ public @Nullable String getQuickNavigateInfo(PsiElement element, PsiElement orig
 Finally, `View | Quick Documentation` can also be called from a selected entry within the autocompletion popup.
 In that case, language developers need to ensure that the correct PSI element for generating the documentation is provided.
 In the case of Simple Language, the lookup element is already a `SimpleProperty` and no additional work needs to be done.
-In other circumstances, you can override `getDocumentationElementForLookupItem()`and return the correct PSI element.
+In other circumstances, override `getDocumentationElementForLookupItem()`and return the correct PSI element.
 
 ## Addendum: Choosing a Better Target Element
 

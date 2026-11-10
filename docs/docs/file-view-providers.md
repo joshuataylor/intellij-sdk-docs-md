@@ -35,7 +35,7 @@ To create a file type that has multiple interspersing trees for different langua
 the [com.intellij.fileType.fileViewProviderFactory](https://jb.gg/ipe?extensions=com.intellij.fileType.fileViewProviderFactory) extension point
 .
 
-Implement [FileViewProviderFactory](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/FileViewProviderFactory.java) and return your `FileViewProvider` implementation from `createFileViewProvider()` method.
+Implement [FileViewProviderFactory](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/FileViewProviderFactory.java) and return the custom `FileViewProvider` implementation from `createFileViewProvider()` method.
 
 Register as follows in `[plugin.xml](plugin-configuration-file.html)`:
 

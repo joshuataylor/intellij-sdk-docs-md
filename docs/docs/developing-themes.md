@@ -1,6 +1,6 @@
 # Developing a Theme
 
-This documentation section will help you get started with developing theme plugins for the IntelliJ Platform-based IDEs.
+This documentation section describes how to get started with developing theme plugins for the IntelliJ Platform-based IDEs.
 
 The DevKit-based theme development workflow includes:
 

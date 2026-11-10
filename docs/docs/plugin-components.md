@@ -20,7 +20,7 @@ To manage some state or logic that is only necessary when the user performs a sp
 
 ### Persisting State
 
-To store the state of your plugin at the application or project level, use a [Service](plugin-services.html) and implement the `PersistentStateComponent` interface.
+To store the state of a plugin at the application or project level, use a [Service](plugin-services.html) and implement the `PersistentStateComponent` interface.
 See [Persisting State of Components](persisting-state-of-components.html) for details.
 
 ### Subscribing to Events

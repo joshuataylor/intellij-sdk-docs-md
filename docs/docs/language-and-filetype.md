@@ -107,7 +107,7 @@ in `[plugin.xml](plugin-configuration-file.html)` and registered with `*.simple`
 
 [Run](creating-plugin-project.html#running-the-plugin) the plugin.
 
-Create an empty file with the extension `.simple`, and IntelliJ IDEA automatically associates it with our language.
+Create an empty file with the extension `.simple`, and IntelliJ IDEA automatically associates it with the Simple language.
 Note the appearance of the Simple Language file icon next to the `test.simple` file in the Project Tool Window, and the editor tab for the file.
 
 ![File Type Factory](images/file_type_factory.png)

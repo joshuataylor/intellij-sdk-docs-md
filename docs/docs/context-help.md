@@ -36,7 +36,7 @@ Fill in [empty states](empty-state.html) of tool windows, tables, trees, and oth
 
 ## When to use
 
-Below you will find rules for [tooltips](tooltip.html) and [inline texts](inline-help-text.html).
+Below are rules for [tooltips](tooltip.html) and [inline texts](inline-help-text.html).
 
 |        ![Explain a setting](images/context_help_explain.png)      |         Explain complex behavior that a short action or a setting name cannot convey clearly.        |
 |        ![Input format requirements](images/context_help_input_format.png)      |         Provide input format requirements and examples.        |
@@ -50,7 +50,7 @@ Below you will find rules for [tooltips](tooltip.html) and [inline texts](inline
 
 ### Do not explain UI
 
-Do not use context help to explain how the user interface works. If you need to explain that, consider redesigning the UI.
+Do not use context help to explain how the user interface works. If it needs explaining, consider redesigning the UI.
 
 |        Correct       ![Don't explain how UI elements should work](images/context_help_explain_ui_correct.png)      |       Incorrect       ![Incorrect UI requires additional explanation](images/context_help_explain_ui_incorrect.png)      |
 

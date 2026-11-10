@@ -109,8 +109,8 @@ Within the `<template>...</template>` elements in the `Markdown.xml` [Live Templ
 </template>
 ```
 
-It is not always necessary to define your own `TemplateContextType`, as there are many existing template contexts already defined in the IntelliJ Platform.
-Consider reusing one of the many existing template context types that inherit from `TemplateContextType` if you are augmenting language support to an existing area.
+It is not always necessary to define a custom `TemplateContextType`, as there are many existing template contexts already defined in the IntelliJ Platform.
+Consider reusing one of the many existing template context types that inherit from `TemplateContextType` if the plugin augments language support to an existing area.
 
 ## Completing the Live Template Implementation
 

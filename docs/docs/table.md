@@ -39,7 +39,7 @@ Do not use tables:
 
 A label is optional for tables.
 
-Add a label if the table content is not obvious from the dialog title or the table header. For example, in the table that lets you configure filters for import and completion per-scope:
+Add a label if the table content is not obvious from the dialog title or the table header. For example, in the table that lets the user configure filters for import and completion per-scope:
 
 ![Table label](images/table_label.png)
 Avoid a label if it duplicates the dialog title or the table header. For example, there is no need for a label in the `JavaScript | Libraries` table since the Settings page title and the table context make it clear what is in the table:
@@ -133,7 +133,7 @@ Use the [ToolbarDecorator](https://github.com/JetBrains/intellij-community/tree/
 
 Zebra striping is alternate highlighting of lines or rows in data tables or forms.
 
-Use stripes if you want to help users distinguish between different data sets. For example, the current branch is highlighted differently from other branches:
+Use stripes to help users distinguish between different data sets. For example, the current branch is highlighted differently from other branches:
 
 ![History zebra](images/history-zebra.png)
 Do not use stripes In a simple data set as guides to track content between columns. Alternating backgrounds create two distinct layers of focus while the type of data in different rows is the same.
@@ -249,9 +249,9 @@ Correct
 Incorrect
 
 ![File colors too wide](images/fileColorsTooWide.png)
-The minimum table width is 350px. If a table is too narrow after you have adjusted column widths, add space to the rightmost column.
+The minimum table width is 350px. If a table is too narrow after adjusting column widths, add space to the rightmost column.
 
-Add space to the rightmost column if you need to align it with other tables in the same window.
+Add space to the rightmost column if it needs to be aligned with other tables in the same window.
 
 If content doesn't fit a cell's width, cut the text by the right border:
 

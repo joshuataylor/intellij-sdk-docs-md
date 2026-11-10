@@ -250,7 +250,7 @@ If it is, return a [RefactoringElementListener](https://github.com/JetBrains/int
 
 Plugins can modify existing run configurations before they are run, e.g., by adding additional process parameters.
 However, there is no single platform-wide extension point, and different IDEs provide different configuration base classes and extension points, allowing for their modifications.
-To see what is possible in your case, check the [RunConfigurationExtensionBase](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/execution/src/com/intellij/execution/configuration/RunConfigurationExtensionBase.java) inheritors.
+To see what is possible in a specific case, check the [RunConfigurationExtensionBase](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/execution/src/com/intellij/execution/configuration/RunConfigurationExtensionBase.java) inheritors.
 Examples:
 
 * [RunConfigurationExtension](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/java/execution/impl/src/com/intellij/execution/RunConfigurationExtension.java) implementations registered in [com.intellij.runConfigurationExtension](https://jb.gg/ipe?extensions=com.intellij.runConfigurationExtension) extension point allow for modifying Java run configurations extending [RunConfigurationBase](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/execution/src/com/intellij/execution/configurations/RunConfigurationBase.java).

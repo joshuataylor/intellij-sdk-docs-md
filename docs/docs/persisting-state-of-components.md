@@ -236,7 +236,7 @@ Note:
 For application-level storage, it is strongly recommended to use a custom file.
 Using of `other.xml` is deprecated.
 
-When planning your storage location, consider its intended purpose.
+When planning the storage location, consider its intended purpose.
 A project-level custom file should be preferred for storing plugin settings.
 To store cached values, use `@Storage(StoragePathMacros.CACHE_FILE)`.
 Refer to [StoragePathMacros](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/projectModel-api/src/com/intellij/openapi/components/StoragePathMacros.java) for commonly used macros.
@@ -251,7 +251,7 @@ Note:
 Consider using annotation parameters only to achieve backward compatibility.
 Otherwise, feel free to file issues about specific serialization cosmetics.
 
-If you want to use the default bean serialization but need to customize the storage format in XML (for example, for compatibility with previous versions of a plugin or externally defined XML formats), use the
+To use the default bean serialization but customize the storage format in XML (for example, for compatibility with previous versions of a plugin or externally defined XML formats), use the
 [@Tag](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/util/src/com/intellij/util/xmlb/annotations/Tag.java),
 [@Attribute](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/util/src/com/intellij/util/xmlb/annotations/Attribute.java),
 [@Property](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/util/src/com/intellij/util/xmlb/annotations/Property.java),
@@ -564,7 +564,7 @@ Kotlin:
 val hasSavedStyle = PropertiesComponent.getInstance().isValueSet(PREVIEW_STYLE_KEY)
 ```
 
-Use `isValueSet()` only when you must distinguish a saved value from an absent key.
+Use `isValueSet()` only when a saved value must be distinguished from an absent key.
 
 ### Storage Mechanism
 

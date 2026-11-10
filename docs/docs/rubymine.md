@@ -72,7 +72,7 @@ Note:
 See [RubyMine Extension Point and Listener List](rubymine-extension-point-list.html) for the complete list.
 
 Use the [Exploring APIs as a Consumer](plugin-compatibility.html#exploring-apis-as-a-consumer) process to identify the library `ruby.jar`.
-Test your plugin with any version of RubyMine you intend to support.
+Test the plugin with every supported version of RubyMine.
 
 ### RubyMine Test Framework
 
