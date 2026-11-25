@@ -59,7 +59,8 @@ The plugin consists of at least three modules, namely frontend, backend, and sha
 
 4. Continue moving the code between modules with a higher level of granularity:
 
-Example: consider a plugin that provides a tool window which receives data to display from an external CLI tool that analyzes a project. Steps to perform:
+Example: consider a plugin that provides a tool window which receives data to display from an external CLI tool that analyzes a project.
+Steps to perform:
 
 1. Move the tool window implementation to the frontend and register it in its XML descriptor.
 
@@ -181,7 +182,8 @@ There, an eventually consistent mutable shared state is implemented to make it p
 4. Load large state: avoid “send everything at once” RPC implementations; use paging/lazy loading, and request only what the UI needs now.
 Example: [BackendRecentFileEventsModel.kt](https://github.com/JetBrains/intellij-community/blob/1c3952828ff3af2d18f99a6721c48bb22f97bd57/platform/recentFiles/backend/src/com/intellij/platform/recentFiles/backend/BackendRecentFileEventsModel.kt#L164)
 
-5. Do not load data too frequently: avoid chatty RPC (per keystroke, per scroll tick). Batch requests, cache results, debounce UI events.
+5. Do not load data too frequently: avoid chatty RPC (per keystroke, per scroll tick).
+Batch requests, cache results, debounce UI events.
 Example: [RecentFilesEditorTypingListener.kt](https://github.com/JetBrains/intellij-community/blob/1c3952828ff3af2d18f99a6721c48bb22f97bd57/platform/recentFiles/frontend/src/com/intellij/platform/recentFiles/frontend/RecentFilesEditorTypingListener.kt)
 
 Expected Outcome

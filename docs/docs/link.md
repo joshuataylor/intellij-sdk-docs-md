@@ -10,13 +10,15 @@ Implementation: [ActionLink](https://github.com/JetBrains/intellij-community/tre
 
 ### Navigation inside a window
 
-Use a regular link for navigation between pages of the same window. In the example below Manage scopes… opens another page in Settings for editing the values.
+Use a regular link for navigation between pages of the same window.
+In the example below Manage scopes… opens another page in Settings for editing the values.
 
 |          Correct         ![A vertical list of three options: 'Non-Project Files', 'Problems', and 'Production', followed by a 'Manage scopes…' link below.](images/link_when_to_1_correct.png)      |         Incorrect         ![A vertical list of three options: 'Non-Project Files', 'Problems', and 'Production', followed 'Manage scopes' button below.](images/link_when_to_1_incorrect.png)      |
 
 ### Web resources
 
-Use an external link for navigation to web resources. See below for the [external link icon](#external-link-icon).
+Use an external link for navigation to web resources.
+See below for the [external link icon](#external-link-icon).
 
 ![Text 'Learn more about what is logged' with 'what is logged' as an external link with an arrow icon.](images/link_when_to_2.png)
 
@@ -46,7 +48,8 @@ For example, links in the Push Commits window help understand the relation betwe
 
 ### Primary actions
 
-Use a [button](button.html) or a [drop down list](drop-down.html) for primary actions. These controls can be selected from the keyboard and are bigger and easier to click.
+Use a [button](button.html) or a [drop down list](drop-down.html) for primary actions.
+These controls can be selected from the keyboard and are bigger and easier to click.
 
 |          Correct         ![The Commit Message input with primary and secondary actions as buttons.](images/link_when_not_to_1_correct.png)      |         Incorrect         ![The Commit Message input with primary and secondary actions as links.](images/link_when_not_to_1_incorrect.png)      |
 
@@ -84,7 +87,8 @@ Follow the [sentence capitalization](capitalization.html#sentence) guideline.
 
 #### Ellipsis
 
-Add an ellipsis to a link if it opens another UI area where input is possible. See examples for the [Button](button.html).
+Add an ellipsis to a link if it opens another UI area where input is possible.
+See examples for the [Button](button.html).
 
 |        Correct       ![A vertical list of three options: 'Non-Project Files', 'Problems', and 'Production', followed by a 'Manage scopes…' link below. The link has an ellipsis in the end.](images/link_how_to_2_correct.png)      |       Incorrect       ![Vertical list of three options: 'Non-Project Files', 'Problems', and 'Production', followed by a 'Manage scopes' link below. The link doesn't have an ellipsis in the end.](images/link_how_to_2_incorrect.png)      |
 
@@ -113,7 +117,8 @@ Make a link the minimum phrase that is enough to understand what will happen wit
 
 ### External link icon
 
-Add the arrow icon for an external link. The icon shows that the user will switch to a browser and lose the current context.
+Add the arrow icon for an external link.
+The icon shows that the user will switch to a browser and lose the current context.
 
 ![Text 'Learn more about what is logged' where 'what is logged' is an external link with the external link icon.](images/link_how_to_8.png)
 #### Implementation
@@ -140,13 +145,15 @@ externalLink.setExternalLinkIcon();
 
 ### Help icon
 
-Use the help icon in links in [empty states](empty-state.html) to indicate that this is an external help resource. The arrow icon in this case is unnecessary.
+Use the help icon in links in [empty states](empty-state.html) to indicate that this is an external help resource.
+The arrow icon in this case is unnecessary.
 
 |        Correct       ![Empty state in the Database tool window with an explanation text and a help source link 'Defining a database' with the help icon.](images/link_how_to_9_correct.png)      |       Incorrect       ![Empty state in the Database tool window with an explanation text and an external link 'Defining a database' with the external link icon.](images/link_how_to_9_incorrect.png)      |
 
 ### Drop-down link
 
-Drop-down links show a context menu or a popup. To implement, use [DropDownLink](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/ui/components/DropDownLink.kt).
+Drop-down links show a context menu or a popup.
+To implement, use [DropDownLink](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/ui/components/DropDownLink.kt).
 
 ![Control 'Changes from 2 commits' where '2 commits' is a drop-down link opening a list of all commits](images/link_dropdown.png)
 

@@ -45,9 +45,10 @@ public static ItemPresentation getPresentation(final SimpleProperty element) {
 }
 ```
 
-In addition, to provide an icon for the displayed items, extend [IconProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/ide/IconProvider.java) and register
-it in [com.intellij.iconProvider](https://jb.gg/ipe?extensions=com.intellij.iconProvider) extension point
-. See [SimplePropertyIconProvider](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimplePropertyIconProvider.java):
+In addition, to provide an icon for the displayed items, extend [IconProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/ide/IconProvider.java)
+and register it in [com.intellij.iconProvider](https://jb.gg/ipe?extensions=com.intellij.iconProvider) extension point
+.
+See [SimplePropertyIconProvider](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimplePropertyIconProvider.java):
 
 ```JAVA
 final class SimplePropertyIconProvider extends IconProvider {
@@ -107,8 +108,7 @@ final class SimpleChooseByNameContributor implements ChooseByNameContributorEx {
 
 ## Register the Go To Symbol Contributor
 
-The `SimpleChooseByNameContributor` implementation is registered with the IntelliJ Platform in the plugin configuration file
-using the [com.intellij.gotoSymbolContributor](https://jb.gg/ipe?extensions=com.intellij.gotoSymbolContributor) extension point
+The `SimpleChooseByNameContributor` implementation is registered with the IntelliJ Platform in the plugin configuration file using the [com.intellij.gotoSymbolContributor](https://jb.gg/ipe?extensions=com.intellij.gotoSymbolContributor) extension point
 .
 
 ```XML

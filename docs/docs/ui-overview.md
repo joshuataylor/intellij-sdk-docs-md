@@ -100,10 +100,12 @@ See implementation details in [Editor basics](editor-basics.html).
 
 ### Editor tabs
 
-Tabs display the file name and extension. They can be [pinned](https://www.jetbrains.com/help/idea/using-code-editor.html#pin-or-unpin-a-tab), [opened in separate windows](https://www.jetbrains.com/help/idea/using-code-editor.html#detach_tab) or in a [split view](https://www.jetbrains.com/help/idea/using-code-editor.html#split_screen).
+Tabs display the file name and extension.
+They can be [pinned](https://www.jetbrains.com/help/idea/using-code-editor.html#pin-or-unpin-a-tab), [opened in separate windows](https://www.jetbrains.com/help/idea/using-code-editor.html#detach_tab) or in a [split view](https://www.jetbrains.com/help/idea/using-code-editor.html#split_screen).
 
 ![Editor tabs](images/ui_overview_tabs.png)
-See more details on working with tabs in the editor in [Editor tabs](https://www.jetbrains.com/help/idea/using-code-editor.html#manage_tabs). For UI component reference, go to [Tabs](tabs.html).
+See more details on working with tabs in the editor in [Editor tabs](https://www.jetbrains.com/help/idea/using-code-editor.html#manage_tabs).
+For UI component reference, go to [Tabs](tabs.html).
 
 ### Inspection widget
 
@@ -114,7 +116,8 @@ See more in [File and project analysis](https://www.jetbrains.com/help/idea/file
 
 ### Gutter
 
-A vertical area along the left side of the editor that provides important information and action icons within easy reach. It shows line numbers and buttons for folding, navigating, and running and debugging code along with VCS stripes and other controls.
+A vertical area along the left side of the editor that provides important information and action icons within easy reach.
+It shows line numbers and buttons for folding, navigating, and running and debugging code along with VCS stripes and other controls.
 
 ![Editor gutter](images/ui_overview_gutter.png)
 See more in [Editor gutter](https://www.jetbrains.com/help/idea/editor-gutter.html).
@@ -128,7 +131,8 @@ See more in [implementation details](inlay-hints.html) and [user guidelines](htt
 
 ### Floating toolbar
 
-A small toolbar that appears when the user selects a code fragment in the editor. It contains buttons and controls for the most popular actions relevant in the current context,
+A small toolbar that appears when the user selects a code fragment in the editor.
+It contains buttons and controls for the most popular actions relevant in the current context,
 such as quick fixes, AI-actions, basic refactorings, and code-formatting options:
 
 ![Floating toolbar](images/ui_overview_floating_toolbar.png)
@@ -173,8 +177,8 @@ New project wizard:
 
 ## Popups
 
-A popup is a lightweight window that appears above the application screen. Unlike the dialogs, popups do not have the standard OS
-title bar and are usually dismissed by clicking outside.
+A popup is a lightweight window that appears above the application screen.
+Unlike the dialogs, popups do not have the standard OS title bar and are usually dismissed by clicking outside.
 
 ### Popup examples
 
@@ -203,7 +207,8 @@ Alerts are modal windows that draw the user's attention to crucial information o
 
 ### Banners
 
-[Banners](banner.html) appear on top of the editor or in tool windows. They inform the user about the state of a specific context and suggest context-related actions and quick fixes.
+[Banners](banner.html) appear on top of the editor or in tool windows.
+They inform the user about the state of a specific context and suggest context-related actions and quick fixes.
 
 ![Banner](images/ui_overview_banner.png)
 

@@ -40,7 +40,7 @@ This reduces the size of the serialized stub tree data.
 See also [DataInputOutputUtil](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/util/src/com/intellij/util/io/DataInputOutputUtil.java).
 
 To change the stored binary format for the stubs (for example, to store some additional data or some new elements), make sure to advance the stub version returned from `IStubFileElementType.getStubVersion()` for the language.
-This will cause the stubs and [Stub Indexes](#stub-indexes) to be rebuilt, and will avoid mismatches between the stored data format and the code trying to load it.
+This will cause the stubs and [stub indexes](#stub-indexes) to be rebuilt, and will avoid mismatches between the stored data format and the code trying to load it.
 
 It is critical to ensure that all information stored in the stub tree depends only on the contents of the file for which stubs are being built, and does not depend on any external files or any other data.
 Otherwise, the stub tree will not be rebuilt when external dependencies change, leading to stale and incorrect data in the stub tree.

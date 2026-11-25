@@ -160,7 +160,7 @@ org.jetbrains.intellij.platform.localPlatformArtifacts=/path/to/localPlatformArt
 
 
 
-When the [buildSearchableOptions](tools-intellij-platform-gradle-plugin-tasks.html#buildSearchableOptions) doesn't produce any results, for example, when the plugin doesn't implement any [Settings](settings.html), a warning is shown to suggest disabling it for better performance with [buildSearchableOptions](tools-intellij-platform-gradle-plugin-extension.html#intellijPlatform-buildSearchableOptions).
+When the [buildSearchableOptions task](tools-intellij-platform-gradle-plugin-tasks.html#buildSearchableOptions) doesn't produce any results, for example, when the plugin doesn't implement any [settings](settings.html), a warning is shown to suggest disabling it for better performance with the [buildSearchableOptions property](tools-intellij-platform-gradle-plugin-extension.html#intellijPlatform-buildSearchableOptions).
 
 
 
@@ -267,8 +267,8 @@ org.jetbrains.intellij.platform.productsReleasesJetBrainsIdesUrl=https://...
 `selfUpdateCheck`
 
 Checks whether the currently used IntelliJ Platform Gradle Plugin is outdated and if a new release is available.
-The plugin performs an update check on every run asking the GitHub Releases page for the redirection URL
-to the latest version with `HEAD` HTTP request: [https://github.com/JetBrains/intellij-platform-gradle-plugin/releases/latest](https://github.com/JetBrains/intellij-platform-gradle-plugin/releases/latest).
+The plugin performs an update check on every run asking the GitHub Releases page for the redirection URL to the latest version with `HEAD` HTTP request:
+[https://github.com/JetBrains/intellij-platform-gradle-plugin/releases/latest](https://github.com/JetBrains/intellij-platform-gradle-plugin/releases/latest).
 
 If the current version is outdated, the plugin will emit a warning with its current and the latest version.
 
@@ -276,7 +276,8 @@ Feature respects the Gradle [--offline](https://docs.gradle.org/current/userguid
 
 Tip:
 
-It is strongly suggested to always use the latest available version. Older plugin versions may also not fully support the latest IDE releases.
+It is strongly suggested to always use the latest available version.
+Older plugin versions may also not fully support the latest IDE releases.
 
 Default value
 : `true`
@@ -308,7 +309,8 @@ Set [PrepareSandboxTask.subscriptionKey](tools-intellij-platform-gradle-plugin-t
 
 Warning: 
 
-Keep the key file outside version control. The property contains its path, not the subscription key itself.
+Keep the key file outside version control.
+The property contains its path, not the subscription key itself.
 
 
 
@@ -490,7 +492,8 @@ org.jetbrains.intellij.platform.addDefaultIntelliJPlatformDependencies=false
 
 
 
-Specifies the URL from which the list of JetBrains IDE CDN release builds is fetched. This listing is used for mapping IDE releases to build numbers (for example, to download the corresponding JetBrains Client archive).
+Specifies the URL from which the list of JetBrains IDE CDN release builds is fetched.
+This listing is used for mapping IDE releases to build numbers (for example, to download the corresponding JetBrains Client archive).
 
 
 
@@ -507,7 +510,9 @@ org.jetbrains.intellij.platform.productsReleasesCdnBuildsUrl=https://...
 
 `verifyPluginProjectConfigurationMutedMessages`
 
-Allows muting specific messages reported by the [verifyPluginProjectConfiguration](tools-intellij-platform-gradle-plugin-tasks.html#verifyPluginProjectConfiguration) task. The property accepts a comma-separated list of message patterns. Each pattern is matched against the message text using a case-sensitive substring search.
+Allows muting specific messages reported by the [verifyPluginProjectConfiguration](tools-intellij-platform-gradle-plugin-tasks.html#verifyPluginProjectConfiguration) task.
+The property accepts a comma-separated list of message patterns.
+Each pattern is matched against the message text using a case-sensitive substring search.
 
 Default value
 : empty (no messages are muted)

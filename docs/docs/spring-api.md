@@ -120,7 +120,7 @@ Version 14: implement `SpringInfrastructureBean`, such beans obtain a special ic
 
 ### XML Configuration
 
-All support for XML-based Spring configuration files is provided via [DOM-API](xml-dom-api.html).
+All support for XML-based Spring configuration files is provided via [DOM API](xml-models-dom.html).
 
 #### Add Support for Additional Spring Namespace
 
@@ -166,8 +166,7 @@ See `com.intellij.spring.spi.SpringSpiManager`.
 
 #### Add Inspections to Spring Validator
 
-Add additional inspections (e.g., for custom namespace) to Spring Validator (Settings|Compiler|Validation) via `com.intellij.spring.SpringInspectionsRegistry$Contributor`
-in [com.intellij.spring.inspectionsRegistryContributor](https://jb.gg/ipe?extensions=com.intellij.spring.inspectionsRegistryContributor) extension point
+Add additional inspections (e.g., for custom namespace) to Spring Validator (Settings|Compiler|Validation) via `com.intellij.spring.SpringInspectionsRegistry$Contributor` in [com.intellij.spring.inspectionsRegistryContributor](https://jb.gg/ipe?extensions=com.intellij.spring.inspectionsRegistryContributor) extension point
 .
 
 #### Add Additional Files to Spring Validator

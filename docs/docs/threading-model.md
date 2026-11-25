@@ -284,7 +284,8 @@ To better understand what problem `ModalityState` solves, consider the following
 
 5. The user clicks Yes or No in the dialog, and it executes some code based on the answer.
 
-6. Now, the code to be executed as the result of the user's answer has to deal with the changed data model it was not prepared for. For example, it was supposed to execute changes in the PSI that might be already invalid.
+6. Now, the code to be executed as the result of the user's answer has to deal with the changed data model it was not prepared for.
+For example, it was supposed to execute changes in the PSI that might be already invalid.
 
 ```MERMAID
 ---
@@ -457,8 +458,8 @@ Meanwhile, try to speed up as much as possible in the plugin as it will be gener
 
 #### Action Update
 
-For implementations of [AnAction](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnAction.java), plugin authors should specifically
-review the documentation of `AnAction.getActionUpdateThread()` in the [Action System](action-system.html) section as it describes how threading works for actions.
+For implementations of [AnAction](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnAction.java),
+plugin authors should specifically review the documentation of `AnAction.getActionUpdateThread()` in the [Action System](action-system.html) section as it describes how threading works for actions.
 
 #### Minimize Write Actions Scope
 

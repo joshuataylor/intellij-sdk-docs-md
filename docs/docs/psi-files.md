@@ -2,10 +2,11 @@
 
 A PSI (Program Structure Interface) file is the root of a structure representing a file's contents as a hierarchy of elements in a particular programming language.
 
-[PsiFile](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiFile.java) is the common base class for all PSI files, while files in a specific language are usually represented by its subclasses.  For example, [PsiJavaFile](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/java/java-psi-api/src/com/intellij/psi/PsiJavaFile.java) represents a Java file, and [XmlFile](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/xml/xml-psi-api/src/com/intellij/psi/xml/XmlFile.java) represents an XML file.
+[PsiFile](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiFile.java) is the common base class for all PSI files, while files in a specific language are usually represented by its subclasses.
+For example, [PsiJavaFile](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/java/java-psi-api/src/com/intellij/psi/PsiJavaFile.java) represents a Java file, and [XmlFile](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/xml/xml-psi-api/src/com/intellij/psi/xml/XmlFile.java) represents an XML file.
 
-Unlike [Virtual Files](virtual-file.html) and [Documents](documents.html), which have application scope (even if multiple projects are open, each file is represented by the same
-[VirtualFile](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/openapi/vfs/VirtualFile.java) instance), PSI has [Project](project.html) scope:
+Unlike [virtual files](virtual-file.html) and [documents](documents.html), which have application scope (even if multiple projects are open, each file is represented by the same
+[VirtualFile](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/openapi/vfs/VirtualFile.java) instance), PSI has [project](project.html) scope:
 the same file is represented by multiple `PsiFile` instances if the file belongs to multiple projects open at the same time.
 
 ## How do I get a PSI file?
@@ -42,11 +43,11 @@ LanguageParserDefinitions.INSTANCE
     .createFile(fileViewProvider);
 ```
 
-Like [Documents](documents.html), PSI files are created on-demand when the PSI is accessed for a particular file.
+Like [documents](documents.html), PSI files are created on-demand when the PSI is accessed for a particular file.
 
 ## How long do PSI files persist?
 
-Like [Documents](documents.html), PSI files are weakly referenced from the corresponding `VirtualFile` instances and can be garbage-collected if not referenced by anyone.
+Like documents, PSI files are weakly referenced from the corresponding `VirtualFile` instances and can be garbage-collected if not referenced by anyone.
 
 ## How do I create a PSI file?
 

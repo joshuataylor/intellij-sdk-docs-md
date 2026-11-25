@@ -6,7 +6,8 @@ Implementation: [EditorNotificationProvider](https://github.com/JetBrains/intell
 Related: [Editor Banner](informing-users.html#editor-banner)
 </tldr>
 
-A banner notification informs the user about the state of a specific context in the project. For example, when there is a missing or broken configuration for some file.
+A banner notification informs the user about the state of a specific context in the project.
+For example, when there is a missing or broken configuration for some file.
 
 ![Banner error](images/banner_error.png)
 
@@ -20,7 +21,8 @@ Reconnecting to the database is required to make edits.
 ![Dialog example](images/dialog-example.png)
 The component needs to be installed to run the available virtual devices.
 
-Do not use a banner if there is no particular UI component it can be tied to. Use a [balloon notification](balloon.html) in the main window instead.
+Do not use a banner if there is no particular UI component it can be tied to.
+Use a [balloon notification](balloon.html) in the main window instead.
 
 For all other cases, choose another notification type.
 

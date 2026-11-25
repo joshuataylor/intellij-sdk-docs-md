@@ -57,8 +57,7 @@ final class SimpleStructureAwareNavbar extends StructureAwareNavBarModelExtensio
 
 ## Register the Structure-Aware Navbar
 
-The `SimpleStructureAwareNavbar` implementation is registered with the IntelliJ Platform in the plugin
-configuration file using the [com.intellij.navbar](https://jb.gg/ipe?extensions=com.intellij.navbar) extension point
+The `SimpleStructureAwareNavbar` implementation is registered with the IntelliJ Platform in the plugin configuration file using the [com.intellij.navbar](https://jb.gg/ipe?extensions=com.intellij.navbar) extension point
 .
 
 ```XML

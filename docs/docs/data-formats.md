@@ -21,7 +21,8 @@ If there is a space between the number and the unit, use a non-breaking space.
 
 ## Date and time
 
-By default, the date and time formats are taken from the system settings. The format can be changed on the `Settings | Appearance & Behavior | System Settings | Date Formats` page.
+By default, the date and time formats are taken from the system settings.
+The format can be changed on the `Settings | Appearance & Behavior | System Settings | Date Formats` page.
 
 See the table below to understand in which cases to show date and time.
 
@@ -30,7 +31,7 @@ See the table below to understand in which cases to show date and time.
 | Date |         Today           05 Jan           05 Jan 2017        |         Omit the time for events if the exact time does not matter, e.g., Annotate panel.           Use Today and Yesterday for the last two days, use exact date for all other days.           Do not show the year if it’s within the current calendar year.        |
 | Date and time |         Today, 14:04           05 Jan, 14:04           05 Jan 2019, 14:04        |When it is important to know the exact sequence of actions, e.g., Version Control Log. |
 | Time |22:49 |Omit date if the event happened today and it’s clear from the context. |
-| Date and day of week |Tuesday, 30 August |         Use as headers in timelines, e.g., Event Log. The day of the week helps to quickly understand how long ago was the event.           Use Today and Yesterday for the last two days, use exact date for all other days.        |
+| Date and day of week |Tuesday, 30 August |         Use as headers in timelines, e.g., Event Log.         The day of the week helps to quickly understand how long ago was the event.           Use Today and Yesterday for the last two days, use exact date for all other days.        |
 | Approximate time |        A moment ago          10 minutes ago          2 hours ago        |Use for a single event that happened recently, e.g., in the Status bar:           ![Approximate](images/approximate.png)         Do not use in tables as it’s harder to compare.           If more than 12 hours have passed since the event, use Date format.        |
 
 ![Vcs log](images/vcs_log.png)
@@ -44,7 +45,7 @@ Event Log
 |  | Examples  | When and how to use  |
 ---------------------------------------
 | Period |         10 milliseconds           10 seconds           10 minutes           1 hour        |Space is not limited, e.g. Settings dialog:         ![Period](images/period.png)      |
-| Time-lapse |         1 h 30 m 30 s           1 h 30 m 30.035 s           1 h           1 h 0 m 30 s           1 m 30 s           05 Jan 2019, 14:04        |Use for changing duration. Select units depending on the process type. E.g., Unit tests usually run less than a minute, so show only seconds and milliseconds. Build tasks usually run more than a minute, so show minutes and seconds.           Omit hours and seconds that do not provide additional data.    |
+| Time-lapse |         1 h 30 m 30 s           1 h 30 m 30.035 s           1 h           1 h 0 m 30 s           1 m 30 s           05 Jan 2019, 14:04        |Use for changing duration.         Select units depending on the process type.         E.g., Unit tests usually run less than a minute, so show only seconds and milliseconds.         Build tasks usually run more than a minute, so show minutes and seconds.           Omit hours and seconds that do not provide additional data.    |
 | Time-lapse condensed [ISO 8601 standard](https://en.wikipedia.org/wiki/ISO_8601) |1:30:01.350 |Use when space is limited or to describe a range, e.g. 1:30:01.350 – 1:30:02.350  |
 
 ![Run](images/run.png)
@@ -86,7 +87,8 @@ Use the rules below to make it easier to compare numbers in one column.
 Right-align numeric values.
 
 ![Data formats table](images/data_formats_table.png)
-Include the unit in the column header if all values share the same unit. Convert each number to use the same unit.
+Include the unit in the column header if all values share the same unit.
+Convert each number to use the same unit.
 If it’s not possible, e.g., the scatter of numbers is too large, include the unit with each value.
 
 | Incorrect |Correct |

@@ -9,7 +9,8 @@ The easiest way to do so is to clone the repository, track the work in Git, and 
 
 ## General Architectural Principles
 
-Follow common Java architectural principles as closely as possible. "Effective Java" by Joshua Bloch is the right place to start.
+Follow common Java architectural principles as closely as possible.
+"Effective Java" by Joshua Bloch is the right place to start.
 
 ## Tests
 

@@ -19,22 +19,21 @@ Fill in the empty states with the following:
 
 ### Explain the current state
 
-The default pattern is `No [entity] added.` If `added`, `created`, `configured`, or other words act as synonyms in a particular case, use `added` for consistency.
+The default pattern is `No [entity] added.`
+If `added`, `created`, `configured`, or other words act as synonyms in a particular case, use `added` for consistency.
 
 |        Correct       ![Correct text in the empty state](images/empty_state_reason_correct.png)      |       Incorrect       ![Incorrect text in the empty state](images/empty_state_reason_incorrect.png)      |
 
 ### Be precise
 
 Do not introduce new entities that are not used in the current context.
-Instead, use the terms from the current UI so that the user understands
-what exactly is missing:
+Instead, use the terms from the current UI so that the user understands what exactly is missing:
 
 |        Correct       ![The reason is clear](images/empty_state_clear_reason.png)      |       Incorrect       ![The reason is not clear](images/empty_state_unclear_reason.png) |
 
 ## Actions to fill the area
 
-An action makes it easier to understand what to start with
-instead of searching for the appropriate icon on the toolbar.
+An action makes it easier to understand what to start with instead of searching for the appropriate icon on the toolbar.
 It can also educate about the shortcut.
 
 ### Use one or two actions
@@ -50,9 +49,8 @@ If there is enough space (for example, in horizontal tool windows), you can use 
 
 ### Open menus from the toolbar
 
-If an action opens a toolbar menu, open it at the same position where it
-would be opened with the corresponding toolbar button. This would explain
-which toolbar icon opens the menu.
+If an action opens a toolbar menu, open it at the same position where it would be opened with the corresponding toolbar button.
+This would explain which toolbar icon opens the menu.
 
 |        Correct       ![Toolbar menu](images/empty_state_menu_correct.png)      |       Incorrect       ![Menu under the action](images/empty_state_menu_incorrect.png)      |
 
@@ -65,9 +63,8 @@ add a text describing all the required steps:
 
 ### Hide the toolbar
 
-Hide the area's toolbar if it does not have the same action as
-in the empty state. Usually, all other toolbar actions are not
-relevant in this case.
+Hide the area's toolbar if it does not have the same action as in the empty state.
+Usually, all other toolbar actions are not relevant in this case.
 
 Correct
 

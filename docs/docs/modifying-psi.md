@@ -13,7 +13,8 @@ See [the Documents article](documents.html#what-are-the-rules-of-working-with-do
 The PSI elements to add to the tree or replace existing PSI elements are usually created from text.
 In most cases, the flow is:
 
-1. Use [PsiFileFactory.createFileFromText()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiFileFactory.java) to create a new file that contains the code construct that needs to be added to the tree or used as a replacement for an existing element. See also [How do I create a PSI file?](psi-files.html#how-do-i-create-a-psi-file).
+1. Use [PsiFileFactory.createFileFromText()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiFileFactory.java) to create a new file that contains the code construct that needs to be added to the tree or used as a replacement for an existing element.
+See also [How do I create a PSI file?](psi-files.html#how-do-i-create-a-psi-file).
 
 2. Traverse the resulting tree to locate the required element and then pass it to `add()` or `replace()`.
 

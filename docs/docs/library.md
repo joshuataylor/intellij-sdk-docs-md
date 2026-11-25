@@ -22,7 +22,8 @@ The library classes are visible within the project, and the library information 
 
 ### Global Library
 
-The library information is recorded in the `applicationLibraries.xml` file in `$USER_HOME$/.IntelliJIdea/config/options` directory. Global libraries are similar to project libraries but are visible for different projects.
+The library information is recorded in the `applicationLibraries.xml` file in `$USER_HOME$/.IntelliJIdea/config/options` directory.
+Global libraries are similar to project libraries but are visible for different projects.
 
 ## Working with Libraries
 
@@ -152,8 +153,9 @@ More details on libraries can be found in the [plugin_model](https://github.com/
 
 ## Predefined Libraries
 
-[AdditionalLibraryRootsProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/projectModel-api/src/com/intellij/openapi/roots/AdditionalLibraryRootsProvider.java) registered in [com.intellij.additionalLibraryRootsProvider](https://jb.gg/ipe?extensions=com.intellij.additionalLibraryRootsProvider) extension point
-allows
-providing synthetic/predefined libraries ([SyntheticLibrary](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/projectModel-api/src/com/intellij/openapi/roots/SyntheticLibrary.java)) in a project without exposing them in the model.
+[AdditionalLibraryRootsProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/projectModel-api/src/com/intellij/openapi/roots/AdditionalLibraryRootsProvider.java)
+registered in [com.intellij.additionalLibraryRootsProvider](https://jb.gg/ipe?extensions=com.intellij.additionalLibraryRootsProvider) extension point
+allows providing synthetic/predefined libraries
+([SyntheticLibrary](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/projectModel-api/src/com/intellij/openapi/roots/SyntheticLibrary.java)) in a project without exposing them in the model.
 By default, they're also hidden from the UI.
 

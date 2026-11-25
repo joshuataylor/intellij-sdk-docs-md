@@ -16,9 +16,10 @@ which indicates it is private API and must not be used outside of IntelliJ Platf
 
 Tip: ApiStatus.Internal Javadoc
 
-Indicates that the annotated element (class, method, field, etc.) must not be considered as a public API. It's made visible to allow
-usages in other packages of the declaring library, but it must not be used outside of that library. Such elements
-may be renamed, changed, or removed in future versions.
+Indicates that the annotated element (class, method, field, etc.) must not be considered as a public API.
+It's made visible to allow usages in other packages of the declaring library,
+but it must not be used outside of that library.
+Such elements may be renamed, changed, or removed in future versions.
 
 Such violations are reported from [Plugin Verifier](verifying-plugin-compatibility.html#plugin-verifier) and are highlighted in the IDE using a [dedicated inspection](verifying-plugin-compatibility.html#ide-support).
 

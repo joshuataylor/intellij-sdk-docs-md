@@ -6,8 +6,8 @@ Product Help: [Find Usages](https://www.jetbrains.com/help/idea/find-highlight-u
 
 The Find Usages action is a multi-step process, and each step of the process requires involvement from the custom language plugin.
 
-The language plugin participates in the Find Usages process by registering an implementation of [FindUsagesProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/indexing-api/src/com/intellij/lang/findUsages/FindUsagesProvider.java) in
-the [com.intellij.lang.findUsagesProvider](https://jb.gg/ipe?extensions=com.intellij.lang.findUsagesProvider) extension point
+The language plugin participates in the Find Usages process by registering an implementation of [FindUsagesProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/indexing-api/src/com/intellij/lang/findUsages/FindUsagesProvider.java)
+in the [com.intellij.lang.findUsagesProvider](https://jb.gg/ipe?extensions=com.intellij.lang.findUsagesProvider) extension point
 , and through the PSI implementation using [PsiNamedElement](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiNamedElement.java) and [PsiReference](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiReference.java).
 
 Tip:

@@ -1,6 +1,7 @@
 # Notifications
 
-Notifications inform users about the status of user or system initiated operations. They can have different actions depending on the message.
+Notifications inform users about the status of user or system initiated operations.
+They can have different actions depending on the message.
 
 Types of notifications:
 

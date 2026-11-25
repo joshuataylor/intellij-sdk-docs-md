@@ -10,8 +10,7 @@ To declare an entity type, a Kotlin interface has to be created, which directly 
 [WorkspaceEntity](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/workspace/storage/src/com/intellij/platform/workspace/storage/WorkspaceEntity.kt).
 The entity interface must contain read-only properties only.
 
-A nested `Builder` interface with setters for these properties, and a `companion` object which allows creating instances of the entity
-are generated automatically along with the implementations (see [Generating Entity Implementations](#generating-entity-implementations)).
+A nested `Builder` interface with setters for these properties, and a `companion` object which allows creating instances of the entity are generated automatically along with the implementations (see [Generating Entity Implementations](#generating-entity-implementations)).
 The platform currently provides some predefined types of entities
 (see [entities](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/workspace/jps/src/com/intellij/platform/workspace/jps/entities) package),
 but they're supposed to be used only for interoperability with code which uses the project model API.
@@ -142,8 +141,7 @@ on the currently open file.
 Entity implementations can also be generated via the Generate implementation quick-fix on the interface's name element,
 which is provided by inspection `Plugin DevKit | Workspace model | Generate implementation`.
 
-Along with generating implementations for the interfaces in the `gen` source folder, this action also adds the `Builder` interface
-to an entity as well as some additional methods in the file where the entity is located.
+Along with generating implementations for the interfaces in the `gen` source folder, this action also adds the `Builder` interface to an entity as well as some additional methods in the file where the entity is located.
 
 Comments surround all generated blocks:
 
@@ -152,5 +150,6 @@ Comments surround all generated blocks:
 //endregion
 ```
 
-Don't edit the generated code blocks. If something is wrong with the generated code, try re-executing the action.
+Don't edit the generated code blocks.
+If something is wrong with the generated code, try re-executing the action.
 

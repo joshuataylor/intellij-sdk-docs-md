@@ -121,7 +121,8 @@ Use a subobject when creating keys for one of the following:
 
 ### Gradient Color
 
-If a component has a gradient color, add the words "start" and "end" for the beginning and ending of a gradient. Examples:
+If a component has a gradient color, add the words "start" and "end" for the beginning and ending of a gradient.
+Examples:
 
 * `Button.startBorderColor` / `Button.endBorderColor`
 
@@ -129,7 +130,8 @@ If a component has a gradient color, add the words "start" and "end" for the beg
 
 ### Capitalization
 
-Capitalize Object and SubObject. Use lowerCamelCase for property.
+Capitalize Object and SubObject.
+Use lowerCamelCase for property.
 
 ### Do Not Use
 

@@ -2,13 +2,15 @@
 
 Follow these guidelines to select the correct size when creating a dialog or a popup for IntelliJ-based products.
 
-For simple cases use the [default sizes](#default-sizes). When they don't work well, set [minimum sizes for components](#minimum-sizes-for-components).
+For simple cases use the [default sizes](#default-sizes).
+When they don't work well, set [minimum sizes for components](#minimum-sizes-for-components).
 
 ## Default sizes
 
 ### Dialog
 
-There are four recommended window sizes for dialogs: small, medium, large, and extra large. Select the size depending on the amount of content required to keep the important information visible.
+There are four recommended window sizes for dialogs: small, medium, large, and extra large.
+Select the size depending on the amount of content required to keep the important information visible.
 
 ![A preview of recommended window sizes for dialogs: extra small, small, medium, and large](images/dialog_popup_sizes.png)
 Note:
@@ -91,16 +93,19 @@ The default width and height are adaptable to the content inside if it exceeds t
 
 #### Content-rich popups
 
-If a popup has multiple sections and long texts, set the default width to medium (500 px) or large (750 px). When the default width doesn't work, set the [minimum sizes for components](#minimum-sizes-for-components).
+If a popup has multiple sections and long texts, set the default width to medium (500 px) or large (750 px).
+When the default width doesn't work, set the [minimum sizes for components](#minimum-sizes-for-components).
 
-Height is adaptable based on the content. If a popup has a scrollable content, set the default height respectively: medium (350 px) or large (525 px), and use a [scrollbar](scrollbar.html).
+Height is adaptable based on the content.
+If a popup has a scrollable content, set the default height respectively: medium (350 px) or large (525 px), and use a [scrollbar](scrollbar.html).
 
 |           Medium            ![Documentation popup 500 px wide](images/dialog_popup_sizes_popup_adaptive_height.png)        |
 |           Large            ![Search Everywhere popup 750 px wide](images/dialog_popup_sizes_popup_m.png)        |
 
 #### Maximum width and height
 
-Set the maximum width and height to 80% of the screen size. Use a [scrollbar](scrollbar.html) if the popup's content exceeds the set dimensions.
+Set the maximum width and height to 80% of the screen size.
+Use a [scrollbar](scrollbar.html) if the popup's content exceeds the set dimensions.
 
 ### Tool windows
 
@@ -122,7 +127,8 @@ For example, the vertical Project tool window and the horizontal Build tool wind
 
 ## Minimum sizes for components
 
-When the default sizes are either too big or too small for a window, or the window has a complex layout, add minimum sizes to content inside the window. This will make the content displayed correctly and reduce any potential issues caused by resizing the window.
+When the default sizes are either too big or too small for a window, or the window has a complex layout, add minimum sizes to content inside the window.
+This will make the content displayed correctly and reduce any potential issues caused by resizing the window.
 
 ### How to set the size correctly
 
@@ -152,28 +158,34 @@ In any other case, select the width appropriate for the most common values in th
 
 #### Example 1
 
-The Rename Inheritors dialog has a table with FQNs. Add 350 px as the minimum width for a table column. This will make the dialog wider than the default Medium size (500 px) but will show more of FQNs.
+The Rename Inheritors dialog has a table with FQNs.
+Add 350 px as the minimum width for a table column.
+This will make the dialog wider than the default Medium size (500 px) but will show more of FQNs.
 
 |              Correct             ![The Rename Inheritors dialog has a minimum width set for each table column](images/dialog_popup_sizes_example_1_correct.png)           |
 |              Acceptable             ![The Rename Inheritors dialog has the Medium size as default](images/dialog_popup_sizes_example_1_acceptable.png)           |
 
 #### Example 2
 
-The Settings dialog has the default extra large size 1000 px. In Code Style | Java set 400 px as the minimum width of the code editor. This will make the dialog wider but will show more code.
+The Settings dialog has the default extra large size 1000 px.
+In Code Style | Java set 400 px as the minimum width of the code editor.
+This will make the dialog wider but will show more code.
 
 |              Correct             ![The code snippet in the Code Style settings for Java is 400 px, making the dialog wider](images/dialog_popup_sizes_example_2_correct.png)           |
 |              Acceptable             ![Settings dialog is 1000 px wide](images/dialog_popup_sizes_example_2_acceptable.png)           |
 
 #### Example 3
 
-Instead of setting a default size for the Diagram popup, add 100 px horizontal and vertical insets inside it and make the width and height adaptive to its content. This will help small diagrams be more noticeable and make the Diagram popup of any size easier to read.
+Instead of setting a default size for the Diagram popup, add 100 px horizontal and vertical insets inside it and make the width and height adaptive to its content.
+This will help small diagrams be more noticeable and make the Diagram popup of any size easier to read.
 
 |              Correct             ![Diagram popup has 100 px insets from its borders to its content](images/dialog_popup_sizes_example_3_correct.png)          |
 |              Acceptable             ![Diagram popup is set to the default small size](images/dialog_popup_sizes_example_3_acceptable.png)          |
 
 ## Empty state
 
-Some components, for example, tables, can have an [empty state](empty-state.html) when there is no content. In this case, the minimum size of a component in both empty and filled states is defined by its filled state.
+Some components, for example, tables, can have an [empty state](empty-state.html) when there is no content.
+In this case, the minimum size of a component in both empty and filled states is defined by its filled state.
 
 For example, the size of the Custom Plugin Repository dialog is defined by the minimum size of the table that contains URLs (minimum 350 px wide), and not by the size of the smaller empty state:
 

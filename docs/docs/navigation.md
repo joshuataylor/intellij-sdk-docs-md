@@ -25,8 +25,8 @@ If there are several target symbols or several navigation targets defined for a 
 then the IDE shows the navigation popup to ask the user to choose where to go.
 
 The [NavigationTarget](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/platform/backend/navigation/NavigationTarget.java)
-is essentially a pair of a `Navigatable` and
-a [TargetPresentation](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/platform/backend/presentation/TargetPresentation.kt)
+is essentially a pair of a `Navigatable`
+and a [TargetPresentation](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/platform/backend/presentation/TargetPresentation.kt)
 instances (where to go and what to show in the popup).
 
 To provide navigation targets by a `Symbol`, either:
@@ -37,9 +37,8 @@ To provide navigation targets by a `Symbol`, either:
 
 ## Showing Usages
 
-If there are no navigation targets available, then the IntelliJ Platform starts finding usages of the target symbol
-obtained by resolving a [reference](declarations-and-references.html#references)
-or from a [declaration](declarations-and-references.html#declarations).
+If there are no navigation targets available,
+then the IntelliJ Platform starts finding usages of the target symbol obtained by resolving a [reference](declarations-and-references.html#references) or from a [declaration](declarations-and-references.html#declarations).
 
 Note:
 

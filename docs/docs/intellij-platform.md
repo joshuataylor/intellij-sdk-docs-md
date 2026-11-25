@@ -21,9 +21,9 @@ The IntelliJ Platform includes [parsers](implementing-parser-and-psi.html) and a
 
 ## Plugins
 
-Products built on the IntelliJ Platform are extensible applications, with the platform being responsible for creating [Extensions](plugin-extensions.html).
+Products built on the IntelliJ Platform are extensible applications, with the platform being responsible for creating [extensions](plugin-extensions.html).
 The IntelliJ Platform fully supports [plugins](developing-plugins.html), and JetBrains hosts the [JetBrains Marketplace](https://plugins.jetbrains.com), which can be used to distribute plugins that support one or more of the products.
-It is also possible to distribute plugins using a [Custom Plugin Repository](custom-plugin-repository.html).
+It is also possible to distribute plugins using a [custom plugin repository](custom-plugin-repository.html).
 
 Plugins can extend the platform in many ways, from adding a simple menu item to adding support for a complete language, build system, and debugger.
 Many of the existing IntelliJ Platform features are implemented as plugins that can be included or excluded depending on the needs of the end product.

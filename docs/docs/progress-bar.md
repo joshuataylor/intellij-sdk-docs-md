@@ -18,7 +18,8 @@ Use a progress bar to indicate long-running operations that don’t block the us
 
 ### Background content update
 
-When it is important to show that content is being updated, use an inline progress bar for background updates. The user can continue working with the content while a background process is performed.
+When it is important to show that content is being updated, use an inline progress bar for background updates.
+The user can continue working with the content while a background process is performed.
 Do not show a process name for an inline progress.
 
 ![09 inline processes](images/09%20inline_processes.png)
@@ -33,7 +34,8 @@ Display a progress bar near the button while the action is being performed.
 
 ### Types
 
-Use a determinate progress bar if the process duration is known. Otherwise, use indeterminate progress bar:
+Use a determinate progress bar if the process duration is known.
+Otherwise, use indeterminate progress bar:
 
 ![02 determinate and indeterminate](images/02%20determinate_and_%20indeterminate.png)
 If an indeterminate process reaches a point where its duration can be determined, switch to a determinate progress bar:
@@ -47,7 +49,8 @@ A progress bar can have a process name and process details.
 #### Process name
 
 Show the name of an operation being performed above the progress bar.
-Use the continuous form of the verb that describes the operation. Add an ellipsis at the end to indicate that the process is ongoing.
+Use the continuous form of the verb that describes the operation.
+Add an ellipsis at the end to indicate that the process is ongoing.
 
 ![05 process name](images/05_process%20name.png)
 If the vertical space is limited, place the process name with a colon on the left:
@@ -58,7 +61,8 @@ If the vertical space is limited, place the process name with a colon on the lef
 
 Show information about the current stage of an operation to make long-running tasks more predictable and manageable.
 
-Show details below the progress bar on a single line. The length of details is limited by the width of the progress bar.
+Show details below the progress bar on a single line.
+The length of details is limited by the width of the progress bar.
 
 ![05 process details](images/05_process%20details.png)
 Details example:
@@ -75,12 +79,14 @@ Details example:
 
 ### Process controls
 
-Place process controls on the right next to the progress bar. On hover over the icon, show the name of the control under the progress bar instead of process details.
+Place process controls on the right next to the progress bar.
+On hover over the icon, show the name of the control under the progress bar instead of process details.
 
 ![17 stop button](images/17%20stop_button.png)
 #### Cancel or Stop button
 
-Add a Cancel button if the process can be safely interrupted. If interrupting the process does not restore the system to its previous state, name the button Stop.
+Add a Cancel button if the process can be safely interrupted.
+If interrupting the process does not restore the system to its previous state, name the button Stop.
 
 ![17 cancel button](images/17%20cancel_button.png)
 
@@ -93,7 +99,7 @@ Note:
 It is recommended to run the process in the background so it doesn’t interrupt the user, instead of offering a pause option.
 
 |        ![Pause button](images/18%20pause_button.png)      |       Replace process details with the "Pause" comment on hover over the Pause icon.        |
-|           ![Process on pause](images/19%20resume_button.png)          |         If a user pauses the process, show "Paused" under the progress bar. Replace the Pause icon with Resume.         |
+|           ![Process on pause](images/19%20resume_button.png)          |         If a user pauses the process, show "Paused" under the progress bar.         Replace the Pause icon with Resume.         |
 |           ![Resume button](images/20%20resume_button.png)          |         Show "Resume" under the progress bar and when hovered over the Resume button.         |
 
 #### Process status
@@ -109,7 +115,9 @@ Note:
 
 Place the progress bar in a modal dialog if the IDE cannot function properly until  the process is completed.
 
-Use a process name as a dialog or popup header, capitalize the title and remove the ellipsis. Process details appear above the progress bar. For a single progress bar, use a button to cancel or pause the process instead of an icon:
+Use a process name as a dialog or popup header, capitalize the title and remove the ellipsis.
+Process details appear above the progress bar.
+For a single progress bar, use a button to cancel or pause the process instead of an icon:
 
 ![13 in dialog](images/13%20in_dialog.png)
 For several processes in a group, add a common header and use icons for process controls:

@@ -107,7 +107,8 @@ are in the table below:
 
 (2) Either `displayName` or `key` and `bundle` must be specified depending on whether the displayed Settings name is localized.
 
-(3) If both `groupId` and `parentId` are specified, a warning is logged. Also, see default entry in [Values for Parent ID Attribute](#values-for-parent-id-attribute).
+(3) If both `groupId` and `parentId` are specified, a warning is logged.
+Also, see default entry in [Values for Parent ID Attribute](#values-for-parent-id-attribute).
 
 #### Values for Parent ID Attribute
 
@@ -184,16 +185,19 @@ To open the Settings dialog or show a specific `Configurable`, see [ShowSettings
 Implementations based on `Configurable` can implement marker interfaces, which provide additional flexibility in the implementation.
 
 `Configurable.NoScroll`
-: Do not add scroll bars to the form. By default, a plugin's Settings component is put into a scrollable pane.
+: Do not add scroll bars to the form.
+By default, a plugin's Settings component is put into a scrollable pane.
 However, a Settings panel can have a `JTree`, which requires its own `JScrollPane`.
 So `NoScroll` should be used to remove the outer `JScrollPane`.
 
 `Configurable.NoMargin`
-: Do not add an empty border to the form. By default, an empty border is added for a plugin's Settings component.
+: Do not add an empty border to the form.
+By default, an empty border is added for a plugin's Settings component.
 
 `Configurable.Beta`
 : (2022.3) Adds Beta label next to settings page title in Settings tree.
-Deprecated since 2026.3 and scheduled for removal: The Settings tree no longer reads this interface. Use the [beta=&quot;true&quot;](#table-of-attributes) attribute instead.
+Deprecated since 2026.3 and scheduled for removal: The Settings tree no longer reads this interface.
+Use the [beta=&quot;true&quot;](#table-of-attributes) attribute instead.
 
 #### 
 

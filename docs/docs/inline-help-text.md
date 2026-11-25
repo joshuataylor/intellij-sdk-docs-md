@@ -52,7 +52,8 @@ Place the link at the end of the text where possible so that it does not disrupt
 
 #### Avoid highlighting
 
-Avoid text highlighting. Usually, the help text is short, and no highlighting in bold or italics is needed:
+Avoid text highlighting.
+Usually, the help text is short, and no highlighting in bold or italics is needed:
 |        Correct       ![Avoid highlighting: correct](images/inline_text_formatting_correct.png)      |       Incorrect       ![Avoid highlighting: incorrect](images/inline_text_formatting_incorrect.png)      |
 
 #### Avoid brackets

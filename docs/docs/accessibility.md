@@ -258,7 +258,8 @@ Refer to the [list](https://docs.oracle.com/en/java/javase/21/docs/api/java.desk
 
 Note:
 
-Look at similar Swing components to see which interfaces they implement. For example, when working on a new slider-like component, check the interfaces implemented by [JSlider.AccessibleJSlider](https://docs.oracle.com/en/java/javase/21/docs/api/java.desktop/javax/swing/JSlider.AccessibleJSlider.html).
+Look at similar Swing components to see which interfaces they implement.
+For example, when working on a new slider-like component, check the interfaces implemented by [JSlider.AccessibleJSlider](https://docs.oracle.com/en/java/javase/21/docs/api/java.desktop/javax/swing/JSlider.AccessibleJSlider.html).
 
 ### Announcing live changes
 
@@ -266,7 +267,8 @@ Screen readers announce accessible property changes of the currently focused com
 For example, when a user checks a checkbox, the screen reader announces the new state.
 This happens through property change events fired by the component.
 
-However, in some cases, users need to be notified of changes outside the focused component. Or the event to notify about doesn't fit into existing property change support.
+However, in some cases, users need to be notified of changes outside the focused component.
+Or the event to notify about doesn't fit into existing property change support.
 
 For these scenarios, use [AccessibleAnnouncerUtil.announce()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/util/ui/src/com/intellij/util/ui/accessibility/AccessibleAnnouncerUtil.java) to make screen readers announce a specific string.
 

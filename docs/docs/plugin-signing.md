@@ -28,7 +28,7 @@ JetBrains Marketplace uses AWS KMS as a signature provider to sign plugin distri
 
 For signing, the [Marketplace ZIP Signer](https://github.com/JetBrains/marketplace-zip-signer) library is used.
 For Gradle-based projects, it can be used conveniently using the provided tasks via [Gradle Integration](#gradle-integration).
-Alternatively, a standalone [CLI Tool](#cli-tool) can be used.
+Alternatively, a standalone [CLI tool](#cli-tool) can be used.
 
 Both methods require a private certificate key to be present.
 
@@ -91,8 +91,7 @@ Information about generating a public key based on the private key will be added
 #### IntelliJ Platform Gradle Plugin (2.x)
 
 The [IntelliJ Platform Gradle Plugin (2.x)](tools-intellij-platform-gradle-plugin.html) provides the [signPlugin](tools-intellij-platform-gradle-plugin-tasks.html#signPlugin) task,
-which will be executed automatically right before the [publishPlugin](tools-intellij-platform-gradle-plugin-tasks.html#publishPlugin) task
-when [signPlugin.certificateChain](tools-intellij-platform-gradle-plugin-tasks.html#signPlugin-certificateChain) and [signPlugin.privateKey](tools-intellij-platform-gradle-plugin-tasks.html#signPlugin-privateKey) properties are specified.
+which will be executed automatically right before the [publishPlugin](tools-intellij-platform-gradle-plugin-tasks.html#publishPlugin) task when [signPlugin.certificateChain](tools-intellij-platform-gradle-plugin-tasks.html#signPlugin-certificateChain) and [signPlugin.privateKey](tools-intellij-platform-gradle-plugin-tasks.html#signPlugin-privateKey) properties are specified.
 Otherwise, it'll be skipped.
 
 See [intellijPlatform.signing](tools-intellij-platform-gradle-plugin-extension.html#intellijPlatform-signing) for configuration reference.
@@ -105,8 +104,8 @@ Use [signPlugin.certificateChainFile](tools-intellij-platform-gradle-plugin-task
 
 #### Gradle IntelliJ Plugin (1.x)
 
-The [Gradle IntelliJ Plugin (1.x)](tools-gradle-intellij-plugin.html) provides the [signPlugin](tools-gradle-intellij-plugin.html#tasks-signplugin) task, which will be executed automatically right before the [publishPlugin](tools-gradle-intellij-plugin.html#tasks-publishplugin) task
-when [signPlugin.certificateChain](tools-gradle-intellij-plugin.html#tasks-signplugin-certificatechain) and [signPlugin.privateKey](tools-gradle-intellij-plugin.html#tasks-signplugin-privatekey) properties are specified.
+The [Gradle IntelliJ Plugin (1.x)](tools-gradle-intellij-plugin.html) provides the [signPlugin](tools-gradle-intellij-plugin.html#tasks-signplugin) task,
+which will be executed automatically right before the [publishPlugin](tools-gradle-intellij-plugin.html#tasks-publishplugin) task when [signPlugin.certificateChain](tools-gradle-intellij-plugin.html#tasks-signplugin-certificatechain) and [signPlugin.privateKey](tools-gradle-intellij-plugin.html#tasks-signplugin-privatekey) properties are specified.
 Otherwise, it'll be skipped.
 
 An example [signPlugin](tools-gradle-intellij-plugin.html#tasks-signplugin) task configuration may look like this:
@@ -169,8 +168,8 @@ publishPlugin {
 
 ##### Using Files
 
-Instead of using the [signPlugin.privateKey](tools-gradle-intellij-plugin.html#tasks-signplugin-privatekey) and [signPlugin.certificateChain](tools-gradle-intellij-plugin.html#tasks-signplugin-certificatechain) properties which expect the key and certificate chain
-content to be provided directly, it's also possible to specify the paths to the files containing the key and certificate chain content.
+Instead of using the [signPlugin.privateKey](tools-gradle-intellij-plugin.html#tasks-signplugin-privatekey) and [signPlugin.certificateChain](tools-gradle-intellij-plugin.html#tasks-signplugin-certificatechain) properties which expect the key and certificate chain content to be provided directly,
+it's also possible to specify the paths to the files containing the key and certificate chain content.
 To do that, use the [signPlugin.privateKeyFile](tools-gradle-intellij-plugin.html#tasks-signplugin-privatekeyfile) and [signPlugin.certificateChainFile](tools-gradle-intellij-plugin.html#tasks-signplugin-certificatechainfile) properties instead.
 
 Kotlin:
@@ -275,7 +274,7 @@ java -jar marketplace-zip-signer-cli.jar sign\
 
 ## Signing for Custom Repositories
 
-Signing plugins hosted on a [Custom Plugin Repository](custom-plugin-repository.html) can be achieved for added trust between the repository and installation.
+Signing plugins hosted on a [custom plugin repository](custom-plugin-repository.html) can be achieved for added trust between the repository and installation.
 However, unlike JetBrains Marketplace, the custom repository will not re-sign the plugin with the JetBrains key.
 Instead, a trusted private CA or self-signed certificate can be used to sign and validate plugins.
 

@@ -241,7 +241,8 @@ Highlights:
 
 `/html/vue-directives`
 : Use `/html/vue-directives` to contribute Vue directives.
-Use `attribute-value` property to specify the type of value expression. E.g.:
+Use `attribute-value` property to specify the type of value expression.
+E.g.:
 : ```JSON
 {
 "attribute-value": {
@@ -311,7 +312,8 @@ Example:
 ```
 
 `html/vue-model`
-: Use `html/vue-model` to contribute settings for Vue model directive. E.g.:
+: Use `html/vue-model` to contribute settings for Vue model directive.
+E.g.:
 : ```JSON
 {
 "vue-model": {
@@ -328,7 +330,8 @@ A Vue `/html/vue-directives` contribution supports:
 
 
 `/html/argument`
-: Use `/html/argument` as a Vue directive argument. E.g.:
+: Use `/html/argument` as a Vue directive argument.
+E.g.:
 : ```JSON
 {
   "argument": {
@@ -347,7 +350,8 @@ A Vue `/html/vue-directives` contribution supports:
 ```
 
 `/html/modifiers`
-: Use `/html/modifiers` as a Vue directive modifier. E.g.:
+: Use `/html/modifiers` as a Vue directive modifier.
+E.g.:
 : ```JSON
 {
 "modifiers": [

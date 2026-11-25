@@ -312,8 +312,7 @@ See also:
 
 Tip: Bundled vs. Non-Bundled Plugins
 
-Use the correct function depending on whether the
-targeted plugin is bundled with the Target Platform or not.
+Use the correct function depending on whether the targeted plugin is bundled with the Target Platform or not.
 
 ### Bundled Plugin
 

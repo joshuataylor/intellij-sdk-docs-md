@@ -85,7 +85,7 @@ This can be used to, for example:
 
 ### Resource Cleanup
 
-Use [Services](plugin-services.html) implementing [Disposable](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/util/src/com/intellij/openapi/Disposable.java) and perform cleanup in `Disposable.dispose()`.
+Use [services](plugin-services.html) implementing [Disposable](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/util/src/com/intellij/openapi/Disposable.java) and perform cleanup in `Disposable.dispose()`.
 
 ## Troubleshooting
 

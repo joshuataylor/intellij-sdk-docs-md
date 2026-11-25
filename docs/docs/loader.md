@@ -16,7 +16,8 @@ Follow the rules for [progress indicators](progress-indicators.html).
 
 ## How to use
 
-The loader form and sizes are the same in all themes. Use the default 16×16 loader in all cases.
+The loader form and sizes are the same in all themes.
+Use the default 16×16 loader in all cases.
 
 Kotlin:
 
@@ -38,7 +39,8 @@ new JLabel(
 );
 ```
 
-A loader may have a label if the process is long and the loader is shown in an empty area. In this case, use a [progress text](progress-text.html) as the label:
+A loader may have a label if the process is long and the loader is shown in an empty area.
+In this case, use a [progress text](progress-text.html) as the label:
 
 ![Loader with progress text](images/loader_with_progress_text.png)
 Remove the loader as soon as the process completes.

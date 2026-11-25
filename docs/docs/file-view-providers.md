@@ -31,8 +31,7 @@ What can I do with a `FileViewProvider`?
 
 How do I extend the `FileViewProvider`?
 
-To create a file type that has multiple interspersing trees for different languages, a plugin must contain an extension to
-the [com.intellij.fileType.fileViewProviderFactory](https://jb.gg/ipe?extensions=com.intellij.fileType.fileViewProviderFactory) extension point
+To create a file type that has multiple interspersing trees for different languages, a plugin must contain an extension to the [com.intellij.fileType.fileViewProviderFactory](https://jb.gg/ipe?extensions=com.intellij.fileType.fileViewProviderFactory) extension point
 .
 
 Implement [FileViewProviderFactory](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/FileViewProviderFactory.java) and return the custom `FileViewProvider` implementation from `createFileViewProvider()` method.

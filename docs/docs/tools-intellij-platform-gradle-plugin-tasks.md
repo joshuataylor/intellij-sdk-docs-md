@@ -70,7 +70,7 @@ Available in: [Platform](tools-intellij-platform-gradle-plugin-plugins.html#plat
 
 Depends on: The six [buildPluginVariants_&lt;os&gt;_&lt;arch&gt;](#buildPluginVariants-variant-tasks) tasks when native variants are enabled
 
-Extends: [DefaultTask](https://docs.gradle.org/current/dsl/org.gradle.api.DefaultTask.html)
+Extends: [DefaultTask](https://docs.gradle.org/current/javadoc/org/gradle/api/DefaultTask.html)
 
 Sources: [BuildPluginVariantsTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.1/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/BuildPluginVariantsTask.kt)
 </tldr>
@@ -125,7 +125,7 @@ Sources: [BuildSearchableOptionsTask](https://github.com/JetBrains/intellij-plat
 </tldr>
 
 Builds the index of UI components (searchable options) for the plugin.
-This task runs a headless IDE instance to collect all the available options provided by the plugin's [Settings](settings.html).
+This task runs a headless IDE instance to collect all the available options provided by the plugin's [settings](settings.html).
 
 The task is skipped automatically when the main plugin descriptor and plugin module descriptors don't declare `Configurable` extension points.
 Use the [forceBuildSearchableOptions](tools-intellij-platform-gradle-plugin-gradle-properties.html#forceBuildSearchableOptions) Gradle property to force execution even when descriptor analysis would skip it.
@@ -208,7 +208,7 @@ Type
 <tldr>
 Available in: [Platform](tools-intellij-platform-gradle-plugin-plugins.html#platform), [Module](tools-intellij-platform-gradle-plugin-plugins.html#module)
 
-Extends: [DefaultTask](https://docs.gradle.org/current/dsl/org.gradle.api.DefaultTask.html), [KotlinMetadataAware](tools-intellij-platform-gradle-plugin-task-awares.html#KotlinMetadataAware)
+Extends: [DefaultTask](https://docs.gradle.org/current/javadoc/org/gradle/api/DefaultTask.html), [KotlinMetadataAware](tools-intellij-platform-gradle-plugin-task-awares.html#KotlinMetadataAware)
 
 Sources: [GenerateManifestTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.1/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/GenerateManifestTask.kt)
 </tldr>
@@ -485,7 +485,7 @@ Type
 <tldr>
 Available in: [Platform](tools-intellij-platform-gradle-plugin-plugins.html#platform)
 
-Extends: [DefaultTask](https://docs.gradle.org/current/dsl/org.gradle.api.DefaultTask.html)
+Extends: [DefaultTask](https://docs.gradle.org/current/javadoc/org/gradle/api/DefaultTask.html)
 
 Sources: [GenerateSplitModeRunConfigurationsTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.1/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/GenerateSplitModeRunConfigurationsTask.kt)
 </tldr>
@@ -550,7 +550,7 @@ Default value
 <tldr>
 Available in: [Platform](tools-intellij-platform-gradle-plugin-plugins.html#platform), [Module](tools-intellij-platform-gradle-plugin-plugins.html#module), [Base](tools-intellij-platform-gradle-plugin-plugins.html#base), [GrammarKit](tools-intellij-platform-gradle-plugin-plugins.html#grammarkit)
 
-Extends: [DefaultTask](https://docs.gradle.org/current/dsl/org.gradle.api.DefaultTask.html), [IntelliJPlatformVersionAware](tools-intellij-platform-gradle-plugin-task-awares.html#IntelliJPlatformVersionAware), [ModuleAware](tools-intellij-platform-gradle-plugin-task-awares.html#ModuleAware)
+Extends: [DefaultTask](https://docs.gradle.org/current/javadoc/org/gradle/api/DefaultTask.html), [IntelliJPlatformVersionAware](tools-intellij-platform-gradle-plugin-task-awares.html#IntelliJPlatformVersionAware), [ModuleAware](tools-intellij-platform-gradle-plugin-task-awares.html#ModuleAware)
 
 Sources: [InitializeIntelliJPlatformPluginTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.1/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/InitializeIntelliJPlatformPluginTask.kt)
 </tldr>
@@ -624,7 +624,7 @@ Type
 
 `module`
 
-Defines that the current project has only the [Module](tools-intellij-platform-gradle-plugin-plugins.html#module) applied but no [Platform](tools-intellij-platform-gradle-plugin-plugins.html#platform).
+Defines that the current project has only the [Module plugin](tools-intellij-platform-gradle-plugin-plugins.html#module) applied but no [Platform plugin](tools-intellij-platform-gradle-plugin-plugins.html#platform).
 
 Type
 : `Property<Boolean>`
@@ -638,7 +638,7 @@ Available in: [Platform](tools-intellij-platform-gradle-plugin-plugins.html#plat
 
 Depends on: [jar](https://docs.gradle.org/current/dsl/org.gradle.jvm.tasks.Jar.html)
 
-Extends: [DefaultTask](https://docs.gradle.org/current/dsl/org.gradle.api.DefaultTask.html), [JavaCompilerAware](tools-intellij-platform-gradle-plugin-task-awares.html#JavaCompilerAware)
+Extends: [DefaultTask](https://docs.gradle.org/current/javadoc/org/gradle/api/DefaultTask.html), [JavaCompilerAware](tools-intellij-platform-gradle-plugin-task-awares.html#JavaCompilerAware)
 
 Sources: [InstrumentCodeTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.1/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/InstrumentCodeTask.kt)
 </tldr>
@@ -647,7 +647,9 @@ Executes the code instrumentation using the Ant tasks provided by the used Intel
 The code instrumentation scans the compiled Java and Kotlin classes for JetBrains Annotations usages to replace them with their relevant functionalities.
 
 The task is controlled with the [intellijPlatform.instrumentCode](tools-intellij-platform-gradle-plugin-extension.html#intellijPlatform-instrumentCode) extension property, enabled by default.
-To properly run the instrumentation, a Java Compiler dependency must be available. This is applied by default by the plugin; the former `instrumentationTools()` helper was removed and calling it is no longer necessary. You can still add and configure the dependency manually via [javaCompiler()](tools-intellij-platform-gradle-plugin-dependencies-extension.html#code-instrumentation) if needed.
+To properly run the instrumentation, a Java Compiler dependency must be available.
+This is applied by default by the plugin; the former `instrumentationTools()` helper was removed and calling it is no longer necessary.
+You can still add and configure the dependency manually via [javaCompiler()](tools-intellij-platform-gradle-plugin-dependencies-extension.html#code-instrumentation) if needed.
 This dependency is resolved via the [intellijDependencies()](tools-intellij-platform-gradle-plugin-repositories-extension.html#additional-repositories) repository, which can be added separately or using the [defaultRepositories()](tools-intellij-platform-gradle-plugin-repositories-extension.html#default-repositories) helper.
 
 See also:
@@ -779,7 +781,7 @@ Default value
 <tldr>
 Available in: [Platform](tools-intellij-platform-gradle-plugin-plugins.html#platform)
 
-Extends: [DefaultTask](https://docs.gradle.org/current/dsl/org.gradle.api.DefaultTask.html), [IntelliJPlatformVersionAware](tools-intellij-platform-gradle-plugin-task-awares.html#IntelliJPlatformVersionAware)
+Extends: [DefaultTask](https://docs.gradle.org/current/javadoc/org/gradle/api/DefaultTask.html), [IntelliJPlatformVersionAware](tools-intellij-platform-gradle-plugin-task-awares.html#IntelliJPlatformVersionAware)
 
 Sources: [PatchPluginXmlTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.1/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/PatchPluginXmlTask.kt)
 </tldr>
@@ -1033,7 +1035,7 @@ Available in: [Platform](tools-intellij-platform-gradle-plugin-plugins.html#plat
 
 Depends on: [buildSearchableOptions](#buildSearchableOptions), [prepareSandbox](#prepareSandbox)
 
-Extends: [DefaultTask](https://docs.gradle.org/current/dsl/org.gradle.api.DefaultTask.html), [PluginAware](tools-intellij-platform-gradle-plugin-task-awares.html#PluginAware)
+Extends: [DefaultTask](https://docs.gradle.org/current/javadoc/org/gradle/api/DefaultTask.html), [PluginAware](tools-intellij-platform-gradle-plugin-task-awares.html#PluginAware)
 
 Sources: [PrepareJarSearchableOptionsTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.1/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/PrepareJarSearchableOptionsTask.kt)
 </tldr>
@@ -1097,7 +1099,7 @@ Available in: [Platform](tools-intellij-platform-gradle-plugin-plugins.html#plat
 
 Depends on: [composedJar](#composedJar)
 
-Extends: [DefaultTask](https://docs.gradle.org/current/dsl/org.gradle.api.DefaultTask.html)
+Extends: [DefaultTask](https://docs.gradle.org/current/javadoc/org/gradle/api/DefaultTask.html)
 
 Sources: [PreparePluginVariantTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.1/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/PreparePluginVariantTask.kt)
 </tldr>
@@ -1325,7 +1327,7 @@ Available in: [Platform](tools-intellij-platform-gradle-plugin-plugins.html#plat
 
 Depends on: [prepareTestSandbox](#prepareTestSandbox)
 
-Extends: [DefaultTask](https://docs.gradle.org/current/dsl/org.gradle.api.DefaultTask.html), [TestableAware](tools-intellij-platform-gradle-plugin-task-awares.html#TestableAware)
+Extends: [DefaultTask](https://docs.gradle.org/current/javadoc/org/gradle/api/DefaultTask.html), [TestableAware](tools-intellij-platform-gradle-plugin-task-awares.html#TestableAware)
 
 Sources: [PrepareTestTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.1/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/PrepareTestTask.kt)
 </tldr>
@@ -1371,7 +1373,7 @@ The [prepareSandbox](#prepareSandbox) task instance configured to work with the 
 <tldr>
 Available in: [Platform](tools-intellij-platform-gradle-plugin-plugins.html#platform), [Module](tools-intellij-platform-gradle-plugin-plugins.html#module), [Base](tools-intellij-platform-gradle-plugin-plugins.html#base), [GrammarKit](tools-intellij-platform-gradle-plugin-plugins.html#grammarkit)
 
-Extends: [DefaultTask](https://docs.gradle.org/current/dsl/org.gradle.api.DefaultTask.html), [IntelliJPlatformVersionAware](tools-intellij-platform-gradle-plugin-task-awares.html#IntelliJPlatformVersionAware)
+Extends: [DefaultTask](https://docs.gradle.org/current/javadoc/org/gradle/api/DefaultTask.html), [IntelliJPlatformVersionAware](tools-intellij-platform-gradle-plugin-task-awares.html#IntelliJPlatformVersionAware)
 
 Sources: [PrintBundledModulesTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.1/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/PrintBundledModulesTask.kt)
 </tldr>
@@ -1404,7 +1406,7 @@ Type
 <tldr>
 Available in: [Platform](tools-intellij-platform-gradle-plugin-plugins.html#platform), [Module](tools-intellij-platform-gradle-plugin-plugins.html#module), [Base](tools-intellij-platform-gradle-plugin-plugins.html#base), [GrammarKit](tools-intellij-platform-gradle-plugin-plugins.html#grammarkit)
 
-Extends: [DefaultTask](https://docs.gradle.org/current/dsl/org.gradle.api.DefaultTask.html), [IntelliJPlatformVersionAware](tools-intellij-platform-gradle-plugin-task-awares.html#IntelliJPlatformVersionAware)
+Extends: [DefaultTask](https://docs.gradle.org/current/javadoc/org/gradle/api/DefaultTask.html), [IntelliJPlatformVersionAware](tools-intellij-platform-gradle-plugin-task-awares.html#IntelliJPlatformVersionAware)
 
 Sources: [PrintBundledPluginsTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.1/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/PrintBundledPluginsTask.kt)
 </tldr>
@@ -1437,7 +1439,7 @@ Type
 <tldr>
 Available in: [Platform](tools-intellij-platform-gradle-plugin-plugins.html#platform), [Module](tools-intellij-platform-gradle-plugin-plugins.html#module), [Base](tools-intellij-platform-gradle-plugin-plugins.html#base), [GrammarKit](tools-intellij-platform-gradle-plugin-plugins.html#grammarkit)
 
-Extends: [DefaultTask](https://docs.gradle.org/current/dsl/org.gradle.api.DefaultTask.html), [ProductReleasesValueSource.FilterParameters](tools-intellij-platform-gradle-plugin-types.html#ProductReleasesFilterParameters)
+Extends: [DefaultTask](https://docs.gradle.org/current/javadoc/org/gradle/api/DefaultTask.html), [ProductReleasesValueSource.FilterParameters](tools-intellij-platform-gradle-plugin-types.html#ProductReleasesFilterParameters)
 
 Sources: [PrintProductsReleasesTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.1/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/PrintProductsReleasesTask.kt)
 </tldr>
@@ -1474,7 +1476,7 @@ Available in: [Platform](tools-intellij-platform-gradle-plugin-plugins.html#plat
 
 Depends on: [buildPluginVariants](#buildPluginVariants) when native variants are enabled; otherwise [buildPlugin](#buildPlugin) and [signPlugin](#signPlugin)
 
-Extends: [DefaultTask](https://docs.gradle.org/current/dsl/org.gradle.api.DefaultTask.html)
+Extends: [DefaultTask](https://docs.gradle.org/current/javadoc/org/gradle/api/DefaultTask.html)
 
 Sources: [PublishPluginTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.1/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/PublishPluginTask.kt)
 </tldr>
@@ -2283,7 +2285,7 @@ Available in: [Platform](tools-intellij-platform-gradle-plugin-plugins.html#plat
 
 Depends on: [patchPluginXml](#patchPluginXml)
 
-Extends: [DefaultTask](https://docs.gradle.org/current/dsl/org.gradle.api.DefaultTask.html), [IntelliJPlatformVersionAware](tools-intellij-platform-gradle-plugin-task-awares.html#IntelliJPlatformVersionAware), [KotlinMetadataAware](tools-intellij-platform-gradle-plugin-task-awares.html#KotlinMetadataAware), [RuntimeAware](tools-intellij-platform-gradle-plugin-task-awares.html#RuntimeAware), [PluginAware](tools-intellij-platform-gradle-plugin-task-awares.html#PluginAware), [ModuleAware](tools-intellij-platform-gradle-plugin-task-awares.html#ModuleAware), [ProblemsAware](tools-intellij-platform-gradle-plugin-task-awares.html#ProblemsAware)
+Extends: [DefaultTask](https://docs.gradle.org/current/javadoc/org/gradle/api/DefaultTask.html), [IntelliJPlatformVersionAware](tools-intellij-platform-gradle-plugin-task-awares.html#IntelliJPlatformVersionAware), [KotlinMetadataAware](tools-intellij-platform-gradle-plugin-task-awares.html#KotlinMetadataAware), [RuntimeAware](tools-intellij-platform-gradle-plugin-task-awares.html#RuntimeAware), [PluginAware](tools-intellij-platform-gradle-plugin-task-awares.html#PluginAware), [ModuleAware](tools-intellij-platform-gradle-plugin-task-awares.html#ModuleAware), [ProblemsAware](tools-intellij-platform-gradle-plugin-task-awares.html#ProblemsAware)
 
 Sources: [VerifyPluginProjectConfigurationTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.1/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/VerifyPluginProjectConfigurationTask.kt)
 </tldr>
@@ -2544,7 +2546,7 @@ Available in: [Platform](tools-intellij-platform-gradle-plugin-plugins.html#plat
 
 Depends on: [prepareSandbox](#prepareSandbox)
 
-Extends: [DefaultTask](https://docs.gradle.org/current/dsl/org.gradle.api.DefaultTask.html), [SandboxAware](tools-intellij-platform-gradle-plugin-task-awares.html#SandboxAware)
+Extends: [DefaultTask](https://docs.gradle.org/current/javadoc/org/gradle/api/DefaultTask.html), [SandboxAware](tools-intellij-platform-gradle-plugin-task-awares.html#SandboxAware)
 
 Sources: [VerifyPluginStructureTask](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.1/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/VerifyPluginStructureTask.kt)
 </tldr>

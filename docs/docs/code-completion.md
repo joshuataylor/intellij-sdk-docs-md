@@ -8,8 +8,7 @@ Two types of code completion can be provided by custom language plugins: referen
 
 Reference completion is easier to implement but supports only the basic completion action.
 
-Contributor-based completion provides more features, supports all completion types
-(`Code | Code Completion | Basic` and `Type Matching`),
+Contributor-based completion provides more features, supports all completion types (`Code | Code Completion | Basic` and `Type Matching`),
 and can be used, for example, to implement keyword completion.
 
 ## Reference Completion
@@ -19,8 +18,8 @@ This method needs to return an array of objects containing either strings, [PsiE
 If a `PsiElement` instance is returned in the array, the completion list shows the icon for the element.
 
 A common way to implement `getVariants()` is to use the same function for walking up the tree as in [PsiReference.resolve()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiReference.java)
-using a [PsiScopeProcessor](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/scope/PsiScopeProcessor.java) which collects all declarations passed to its `execute()` method and returns
-them as an array for filling the completion list.
+using a [PsiScopeProcessor](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/scope/PsiScopeProcessor.java)
+which collects all declarations passed to its `execute()` method and returns them as an array for filling the completion list.
 
 ### Symbol Reference Completion
 
@@ -42,8 +41,8 @@ Note:
 
 Note that the Javadoc of that class contains a detailed FAQ for implementing code completion.
 
-The core scenario of using [CompletionContributor](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/codeInsight/completion/CompletionContributor.java) consists of calling the `extend()` method and passing in the [Element Pattern](element-patterns.html)
-specifying the context in which this completion variant is applicable.
+The core scenario of using [CompletionContributor](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/codeInsight/completion/CompletionContributor.java) consists of calling the `extend()` method
+and passing in the [Element Pattern](element-patterns.html) specifying the context in which this completion variant is applicable.
 The [CompletionProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/codeInsight/completion/CompletionProvider.java) then adds the items to show in the completion list.
 
 Keep in mind that the pattern is checked against the leaf PSI element.
@@ -94,13 +93,12 @@ Example: add parentheses for a method call ([ParenthesesInsertHandler](https://g
 
 The item presentation can also be performed via (re-usable) [LookupElementRenderer](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/codeInsight/lookup/LookupElementRenderer.java).
 
-For expensive calculations (for example, the presentation of an item to be shown depends on other items), use `LookupElementBuilder.withExpensiveRenderer()` to invoke the renderer in the background
-while the completion list is already populating.
+For expensive calculations (for example, the presentation of an item to be shown depends on other items),
+use `LookupElementBuilder.withExpensiveRenderer()` to invoke the renderer in the background while the completion list is already populating.
 
 ### Sorting
 
-Use [PrioritizedLookupElement](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/codeInsight/completion/PrioritizedLookupElement.java) to control item sorting
-if all lookup items are guaranteed to be provided by this `CompletionContributor`.
+Use [PrioritizedLookupElement](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/codeInsight/completion/PrioritizedLookupElement.java) to control item sorting if all lookup items are guaranteed to be provided by this `CompletionContributor`.
 
 ## Code Completion FAQ
 

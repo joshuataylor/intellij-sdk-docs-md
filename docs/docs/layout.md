@@ -28,10 +28,12 @@ By default, put input controls with labels of similar length on different lines 
 Do not align input boxes on the left side if one label is twice as long as the other one or even longer.
 
 ![1 02 input different labels incorrect](images/1_02_input_different_labels_incorrect.png)![1 02 input different labels correct](images/1_02_input_different_labels_correct.png)
-If several related input controls have labels of up to 10 characters and their input boxes are short, organize them in two columns. Do not use more than two columns.
+If several related input controls have labels of up to 10 characters and their input boxes are short, organize them in two columns.
+Do not use more than two columns.
 
 ![1 03 short inputs](images/1_03_short_inputs.png)
-If an input box is long, and the horizontal space is limited, place the label above the box. Otherwise, always put the label and the box on the same line.
+If an input box is long, and the horizontal space is limited, place the label above the box.
+Otherwise, always put the label and the box on the same line.
 
 ![1 04 input top label](images/1_04_input_top_label.png)
 #### Separated by other controls
@@ -39,7 +41,8 @@ If an input box is long, and the horizontal space is limited, place the label ab
 If there are two input controls with labels of similar length that are separated from each other by a single control, align their input boxes on the left side.
 
 ![1 05 separated by one](images/1_05_separated_by_one.png)
-Align only the input boxes of the neighboring input controls. If there are several input controls on a page, and they are separated from each other by two or more other UI elements, do not align their input boxes.
+Align only the input boxes of the neighboring input controls.
+If there are several input controls on a page, and they are separated from each other by two or more other UI elements, do not align their input boxes.
 
 ![1 06 separated by two](images/1_06_separated_by_two.png)
 If input groups are separated by a group of other UI controls, align only the boxes located within one group.
@@ -55,7 +58,9 @@ Note:
 This alignment is inconsistent with macOS guidelines, but the aim is to maintain consistency in all JetBrains IDEs on all supported platforms.
 
 ![1 08 label alignment](images/1_08_label_alignment.png)
-Align the right borders of input boxes that have a similar length. For alignment, use [built-in icons](built-in-button.html). Do not use buttons.
+Align the right borders of input boxes that have a similar length.
+For alignment, use [built-in icons](built-in-button.html).
+Do not use buttons.
 
 ![1 09 built in button](images/1_09_built_in_button.png)
 
@@ -86,7 +91,8 @@ If a checkbox group does not have a label, align it with other independent contr
 * Arrange checkboxes with labels of up to 15 characters in 3 columns.
 
 ![2 05 checkbox 3 columns](images/2_05_checkbox_3_columns.png)
-Do not arrange radio buttons from one group in several columns. Splitting a group of radio buttons into two or more columns makes it unclear that all these radio buttons belong to the same setting.
+Do not arrange radio buttons from one group in several columns.
+Splitting a group of radio buttons into two or more columns makes it unclear that all these radio buttons belong to the same setting.
 
 ![2 06 radio columns incorrect](images/2_06_radio_columns_incorrect.png)
 
@@ -98,13 +104,15 @@ Align an independent button or link to the left with other controls.
 If there are 2–3 buttons or links with labels of up to 30 characters each, place them on one line.
 
 ![3 02 button line](images/3_02_button_line.png)
-Do not arrange buttons or links in several columns. Such a layout takes more time to parse visually.
+Do not arrange buttons or links in several columns.
+Such a layout takes more time to parse visually.
 
 ![3 03 button columns](images/3_03_button_columns.png)
 
 ### Lists, trees and tables
 
-Choose a control width such that most of the common values are visible. Take the whole width of the dialog if necessary.
+Choose a control width such that most of the common values are visible.
+Take the whole width of the dialog if necessary.
 
 ![4 01 table full width](images/4_01_table_full_width.png)
 If the dialog containing the control is noticeably wider than the control itself, reduce the length of the control.
@@ -121,7 +129,8 @@ If there are several lists, trees, or tables in a dialog, make them of the same 
 
 Align controls according to the rules below to show that they are related.
 
-Place 2–3 related UI controls on the same line if each control takes up to 30 characters. This way the user needs to read just one line, and it is quicker to see that the controls depend on each other.
+Place 2–3 related UI controls on the same line if each control takes up to 30 characters.
+This way the user needs to read just one line, and it is quicker to see that the controls depend on each other.
 
 ![5 01 dependent one line](images/5_01_dependent_one_line.png)
 In all other cases, place interrelated controls on different lines:
@@ -134,7 +143,8 @@ Main control: labeled input control.
 * If an input's label is long or the input box is very short, align by the label and add a horizontal inset.
 
 ![5 04 dependent on field long label](images/5_04_dependent_on_field_long_label.png)
-Main control: checkbox or radio button. Align dependent controls by the label.
+Main control: checkbox or radio button.
+Align dependent controls by the label.
 
 ![5 02 dependent on checkbox](images/5_02_dependent_on_checkbox.png)
 When the main control or one of the dependent controls takes the whole width of a panel, left align all elements.
@@ -150,14 +160,16 @@ When the main control takes the whole width of a panel, and there is one small d
 ![5 07 whole width top right corner](images/5_07_whole_width_top_right_corner.png)
 See the [Inline help text](inline-help-text.html#placement) and [Tooltip](tooltip.html#question-mark-icon-for-help-tooltips) articles for details on how to arrange help information in dialogs.
 
-If controls do not depend on each other, left-align them all. Otherwise, the user might think that controls are linked.
+If controls do not depend on each other, left-align them all.
+Otherwise, the user might think that controls are linked.
 
 ![5 09 incorrect alignment](images/5_09_incorrect_alignment.png)
 The spinners do not depend on the top checkbox.
 
 ## Organize with insets
 
-Use vertical insets to break a list of controls into easily readable groups. Compare:
+Use vertical insets to break a list of controls into easily readable groups.
+Compare:
 
 Incorrect
 
@@ -169,12 +181,15 @@ Correct
 ![6 02 group insets correct](images/6_02_group_insets_correct.png)
 Scanning a list of controls becomes easier when vertical insets are added between the groups of controls.
 
-Treat insets with extra care and make sure that elements within a group are actually related. An unnecessary inset may create a false impression that the controls are grouped. This complicates the UI and might cause confusion.
+Treat insets with extra care and make sure that elements within a group are actually related.
+An unnecessary inset may create a false impression that the controls are grouped.
+This complicates the UI and might cause confusion.
 
 Incorrect
 
 ![6 04 inset incorrect](images/6_04_inset_incorrect.png)
-The first checkbox depends on the combo box which is shown with the horizontal inset. However, the checkboxes appear grouped because they are closer.
+The first checkbox depends on the combo box which is shown with the horizontal inset.
+However, the checkboxes appear grouped because they are closer.
 
 Correct
 
@@ -191,7 +206,8 @@ The checkboxes and the "Length" fields look independent because the horizontal i
 Better
 
 ![6 05 hor inset better](images/6_05_hor_inset_better.png)
-With smaller horizontal and bigger vertical insets, the checkboxes and the "Length" fields look related. However, it could be made better if the repeating word "Separator" appears only once.
+With smaller horizontal and bigger vertical insets, the checkboxes and the "Length" fields look related.
+However, it could be made better if the repeating word "Separator" appears only once.
 
 Correct
 

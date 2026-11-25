@@ -15,16 +15,16 @@ Whitespace should not be covered by blocks unless it is intended to be left as i
 
 ## Inspecting Formatting Blocks
 
-To understand how formatting works in practice, open a small code sample in an existing language and
-use the [built-in PSI viewer](explore-api.html#internalMode) to inspect how formatting blocks are built.
+To understand how formatting works in practice, open a small code sample in an existing language
+and use the [built-in PSI viewer](explore-api.html#internalMode) to inspect how formatting blocks are built.
 To invoke the builtin PSI viewer with the possibility of inspecting Block Structure,
 use `Tools | View PSI Structure...` or `Tools | View PSI Structure of Current File...`.
 
 ![Formatting Blocks Structure](images/psi_viewer_formatting_blocks.png)
 The image above shows a snippet of code at the top, the PSI structure at the bottom left and the block structure at the bottom right.
 Like in this example, the structure of blocks is usually built to reflect the PSI structure of the file.
-In other words, there is a root block that covers the entire file and its nested children cover smaller portions like classes, functions, etc. down to
-statements, identifiers, or braces.
+In other words, there is a root block that covers the entire file
+and its nested children cover smaller portions like classes, functions, etc. down to statements, identifiers, or braces.
 Comparing the PSI and block structure above reveals obvious similarities in the nesting.
 
 While the structure of formatting blocks and PSI are usually similar, they do not have to match one-to-one:
@@ -44,8 +44,8 @@ To format a file or a file fragment, the following steps are required:
 
 `FormattingModelBuilder` and `FormattingModel`
 
-When implementing a `FormattingModelBuilder`, it is common to use the `createModel()` method and its `FormattingContext` argument to set the stage
-for building the formatting blocks with the `FormattingModel`.
+When implementing a `FormattingModelBuilder`,
+it is common to use the `createModel()` method and its `FormattingContext` argument to set the stage for building the formatting blocks with the `FormattingModel`.
 Typically, the following steps are part of this preparation:
 
 * Retrieve both global and custom code style settings. Use the `codeStyleSettings` property of the `FormattingContext` to retrieve the settings which in turn provide access to custom settings through `getCustomSettings()`. These are commonly passed along and will be used to determine the correct amount of whitespace for indentations, wraps, etc. when building the tree of formatting blocks.
@@ -70,11 +70,12 @@ However, in most cases, the `PsiBasedFormattingModel` should meet the requiremen
 
 Building the `Block` Tree
 
-Instead of implementing `Block`, [AbstractBlock](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/code-style-impl/src/com/intellij/psi/formatter/common/AbstractBlock.java)
-should be used as a base class which provides useful default implementations.
+Instead of implementing `Block`,
+[AbstractBlock](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/code-style-impl/src/com/intellij/psi/formatter/common/AbstractBlock.java) should be used as a base class
+which provides useful default implementations.
 Although the block implementation of a plugin is specific to the custom language, for the implementation of `AbstractBlock` some general remarks can be given.
-It is common to store an instance of the `SpacingBuilder` which can directly be used when implementing the `getSpacing()` method
-by calling the `getSpacing()` method of the `SpacingBuilder`.
+It is common to store an instance of the `SpacingBuilder`
+which can directly be used when implementing the `getSpacing()` method by calling the `getSpacing()` method of the `SpacingBuilder`.
 
 Much of the work when implementing `AbstractBlock` goes into implementing `buildChildren()` that calculates blocks for the children of the current block's AST node.
 Use `getNode().getChildren()` to retrieve the AST node's children of the current block,
@@ -92,10 +93,10 @@ like a closing parenthesis of the parameter list or the trailing semicolon of a 
 otherwise, it's called on the parent block.
 
 As an example, think of contexts (also called blocks) in languages like Java or C that are wrapped in curly braces.
-If the `ASTNode` of the current block is such a context or container element, the `getChildAttributes()` method could return
-`Indent.getNormalIndent()` to indent block elements in such a context.
-Similarly, the `isComplete()` method could check if for such context elements the first and last child are indeed the open and close
-curly braces and return `false` if not.
+If the `ASTNode` of the current block is such a context or container element,
+the `getChildAttributes()` method could return `Indent.getNormalIndent()` to indent block elements in such a context.
+Similarly, the `isComplete()` method could check if for such context elements the first and last child are indeed the open and close curly braces
+and return `false` if not.
 
 If the formatting operation doesn't affect the entire file (for example, if the formatter is called to format the pasted block of text), a complete tree of blocks is not built.
 Rather, only blocks for the text range covered by the formatting operation and their parents are built.
@@ -130,8 +131,7 @@ The formatting model can also specify that the formatter may not modify the spac
 
 [SpacingBuilder](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/code-style-api/src/com/intellij/formatting/SpacingBuilder.java) helps to build a rule-based configuration for spacing and is an easy way to specify when to put spaces before, after, between, or inside certain elements.
 The rules typically reflect all possible spacing settings for a language.
-An example on how to implement such a spacing builder can be found in the
-[Custom Language Support Tutorial: Formatter](formatter.html#define-a-formatting-model-builder).
+An example on how to implement such a spacing builder can be found in the [Custom Language Support Tutorial: Formatter](formatter.html#define-a-formatting-model-builder).
 
 #### Wrap
 
@@ -224,8 +224,8 @@ See [Rearranger](https://github.com/JetBrains/intellij-community/tree/idea/263.7
 ## Code Style Settings
 
 To set the default indent size for a plugin's language and allow user configuration of tab and indent sizes,
-implement the [FileTypeIndentOptionsProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-api/src/com/intellij/psi/codeStyle/FileTypeIndentOptionsProvider.java)
-interface and register it at the [com.intellij.fileTypeIndentOptionsProvider](https://jb.gg/ipe?extensions=com.intellij.fileTypeIndentOptionsProvider) extension point
+implement the [FileTypeIndentOptionsProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-api/src/com/intellij/psi/codeStyle/FileTypeIndentOptionsProvider.java) interface
+and register it at the [com.intellij.fileTypeIndentOptionsProvider](https://jb.gg/ipe?extensions=com.intellij.fileTypeIndentOptionsProvider) extension point
 .
 The return value of `createIndentOptions()` sets the default indent size.
 
@@ -238,8 +238,7 @@ Use [LanguageFormattingRestriction](https://github.com/JetBrains/intellij-commun
 
 ## External Code Formatter
 
-Register [AsyncDocumentFormattingService](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/code-style-api/src/com/intellij/formatting/service/AsyncDocumentFormattingService.java) implementation
-in the [com.intellij.formattingService](https://jb.gg/ipe?extensions=com.intellij.formattingService) extension point
+Register [AsyncDocumentFormattingService](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/code-style-api/src/com/intellij/formatting/service/AsyncDocumentFormattingService.java) implementation in the [com.intellij.formattingService](https://jb.gg/ipe?extensions=com.intellij.formattingService) extension point
 to invoke external formatter instead of IDE's builtin formatter.
 
 Example:

@@ -30,16 +30,16 @@ to be notified about all file open/closed/selection changed events.
 
 ### How can I set a custom editor tab name and tooltip?
 
-[EditorTabTitleProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/ide-core-impl/src/com/intellij/openapi/fileEditor/impl/EditorTabTitleProvider.kt) registered in [com.intellij.editorTabTitleProvider](https://jb.gg/ipe?extensions=com.intellij.editorTabTitleProvider) extension point
-allows
-for specifying custom names and tooltips displayed in the title of editor tabs.
+[EditorTabTitleProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/ide-core-impl/src/com/intellij/openapi/fileEditor/impl/EditorTabTitleProvider.kt)
+registered in [com.intellij.editorTabTitleProvider](https://jb.gg/ipe?extensions=com.intellij.editorTabTitleProvider) extension point
+allows for specifying custom names and tooltips displayed in the title of editor tabs.
 If access to indexes is not required, it can be marked [dumb aware](indexing-and-psi-stubs.html#DumbAwareAPI).
 
 ### How can I set a custom editor tab background color?
 
-[EditorTabColorProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/ide-core-impl/src/com/intellij/openapi/fileEditor/impl/EditorTabColorProvider.java) registered in [com.intellij.editorTabColorProvider](https://jb.gg/ipe?extensions=com.intellij.editorTabColorProvider) extension point
-allows
-for the modification of the background color for specific files.
+[EditorTabColorProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/ide-core-impl/src/com/intellij/openapi/fileEditor/impl/EditorTabColorProvider.java)
+registered in [com.intellij.editorTabColorProvider](https://jb.gg/ipe?extensions=com.intellij.editorTabColorProvider) extension point
+allows for the modification of the background color for specific files.
 If access to indexes is not required, it can be marked [dumb aware](indexing-and-psi-stubs.html#DumbAwareAPI).
 
 ### How do I open a text editor for a "fake" file?

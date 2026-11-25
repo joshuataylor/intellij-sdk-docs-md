@@ -31,8 +31,8 @@ The Gradle plugin must be chosen depending on the target
 
 ## Keep Up To Date
 
-IntelliJ Platform Gradle Plugin (2.x) and [Gradle](https://gradle.org/install/) build system are constantly developed, and every new release
-brings important bug fixes, new features, and improvements that make the development more efficient.
+IntelliJ Platform Gradle Plugin (2.x) and [Gradle](https://gradle.org/install/) build system are constantly developed,
+and every new release brings important bug fixes, new features, and improvements that make the development more efficient.
 
 It is strongly recommended to keep updating both Gradle and IntelliJ Platform Gradle Plugin to the latest versions.
 Newer IDE releases might not be supported fully in older releases of the IntelliJ Platform Gradle Plugin.
@@ -79,13 +79,11 @@ see [Setting Up IntelliJ Platform](tools-intellij-platform-gradle-plugin.html#se
 IntelliJ Platform plugin projects may depend on either bundled or third-party plugins defined in the `dependencies {}` block,
 see [Plugins](tools-intellij-platform-gradle-plugin-dependencies-extension.html#plugins) for details.
 
-The runtime dependency must be added in the [Plugin Configuration](plugin-configuration-file.html) (`plugin.xml`) file as described in
-[Plugin Dependencies](plugin-dependencies.html#dependency-declaration-in-pluginxml).
+The runtime dependency must be added in the [Plugin Configuration](plugin-configuration-file.html) (`plugin.xml`) file as described in [Plugin Dependencies](plugin-dependencies.html#dependency-declaration-in-pluginxml).
 
 ## Run IDE Task
 
-By default, the [runIde](tools-intellij-platform-gradle-plugin-tasks.html#runIde) task will use the same version of the IntelliJ Platform
-for the IDE Development instance as was used for building the plugin.
+By default, the [runIde](tools-intellij-platform-gradle-plugin-tasks.html#runIde) task will use the same version of the IntelliJ Platform for the IDE Development instance as was used for building the plugin.
 
 ## Verifying Plugin
 

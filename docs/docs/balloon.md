@@ -58,9 +58,11 @@ Use a suggestion notification to ask the user for an additional input or action 
 
 ### Sticky or timed
 
-Sticky notifications stay on screen until the user clicks any of its actions or closes it. By default, use this behavior for [suggestion notifications](#suggestion-and-timeline-notifications).
+Sticky notifications stay on screen until the user clicks any of its actions or closes it.
+By default, use this behavior for [suggestion notifications](#suggestion-and-timeline-notifications).
 
-Timed notifications stay on screen for 10 seconds and then hide. By default, use this behavior for [timeline notifications](#suggestion-and-timeline-notifications).
+Timed notifications stay on screen for 10 seconds and then hide.
+By default, use this behavior for [timeline notifications](#suggestion-and-timeline-notifications).
 
 Change the default behavior if it makes sense in a particular use case.
 
@@ -84,7 +86,8 @@ Use in all other cases.
 
 ![An information notification requesting to fill a survey about a plugin](images/notification_balloon_severity_info.png)
 
-When possible, use a plugin or functionality icon instead of the Info icon. This helps identifing the source of the notification quicker.
+When possible, use a plugin or functionality icon instead of the Info icon.
+This helps identifing the source of the notification quicker.
 
 ![Two notifications with dedicated icons instead of the generic info icon: database connection found with the database icon and suggested plugins found with the generic plugin icon](images/notification_balloon_plugin_icon.png)
 
@@ -100,11 +103,13 @@ Follow the [punctuation rules](punctuation.html).
 
 #### Title
 
-Describe the event and the context in which it occurred. The context could be the name of a plugin, library, or functionality.
+Describe the event and the context in which it occurred.
+The context could be the name of a plugin, library, or functionality.
 
 #### Body
 
-Provide the details on the event or system state to help users decide what to do next. Consider answering these questions:
+Provide the details on the event or system state to help users decide what to do next.
+Consider answering these questions:
 
 * What was the cause of this state?
 
@@ -128,7 +133,8 @@ Incorrect
 
 #### Long messages are collapsed
 
-Only the first two lines of the body text are visible by default, the rest is shown when expanded. Place the most important information in the beginning of the body text so it is visible by default.
+Only the first two lines of the body text are visible by default, the rest is shown when expanded.
+Place the most important information in the beginning of the body text so it is visible by default.
 
 ![A notification about Windows Defender slowing down the IDE in the collapsed and expanded states. The notification body is long and takes 9 lines](images/notification_balloon_body_two_lines.png)
 
@@ -138,7 +144,8 @@ Add actions to help users take the next steps: fix a problem, view relevant info
 
 #### Number of actions
 
-The preferable number of actions is two, as it is easier for the user to choose. If more than two actions are useful, place the most likely to be used first, and hide the others under the More dropdown:
+The preferable number of actions is two, as it is easier for the user to choose.
+If more than two actions are useful, place the most likely to be used first, and hide the others under the More dropdown:
 
 ![The Windows Defender notification with the primary action "Exclude folders" on the left and 3 more actions under the "More" dropdown link](images/notification_balloon_more_actions.png)
 
@@ -168,7 +175,8 @@ Use sentence capitalization for all actions in notification balloons.
 
 ## Naming a notification group
 
-Each notification balloon belongs to a group. Groups can be seen in `Settings | Appearance & Behavior | Notifications`.
+Each notification balloon belongs to a group.
+Groups can be seen in `Settings | Appearance & Behavior | Notifications`.
 
 To name a notification group, follow these rules:
 

@@ -3,10 +3,9 @@
 The IntelliJ Platform supports representing a plugin with a logo.
 A Plugin Logo is intended to be a unique representation of a plugin's functionality, technology, or company.
 
-When opening `plugin.xml` in editor, inspection
-Plugin DevKit | Plugin descriptor | Plugin Logo check (2024.3+,
-for earlier versions Plugin DevKit | Plugin descriptor | Plugin.xml validity)
-will highlight a missing plugin icon.
+When opening `plugin.xml` in editor,
+inspection Plugin DevKit | Plugin descriptor | Plugin Logo check (2024.3+,
+for earlier versions Plugin DevKit | Plugin descriptor | Plugin.xml validity) will highlight a missing plugin icon.
 
 Note: icons and images used within a plugin have different requirements.
 See [Working with Icons](icons.html) for more information.

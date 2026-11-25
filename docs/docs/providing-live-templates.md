@@ -64,8 +64,8 @@ See [Live Templates Configuration File](live-templates-configuration-file.html) 
 
 Tip:
 
-To [localize](providing-translations.html) the description, instead of the `description` attribute, use `key` and `resource-bundle` attributes pointing to a key
-in a [message bundle](internationalization.html#message-bundles).
+To [localize](providing-translations.html) the description, instead of the `description` attribute,
+use `key` and `resource-bundle` attributes pointing to a key in a [message bundle](internationalization.html#message-bundles).
 A quick fix to extract the localized key is available since 2024.2.
 
 Copy this file into the [plugin's resources folder](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/live_templates/src/main/resources/liveTemplates).

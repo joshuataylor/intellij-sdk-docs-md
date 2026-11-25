@@ -20,7 +20,8 @@ Then, a notification instance itself.
 
 Declare a notification group as an extension in the plugin descriptor.
 It is registered using the [com.intellij.notificationGroup](https://jb.gg/ipe?extensions=com.intellij.notificationGroup) extension point.
-Set the display type to `BALLOON` constant. Then, provide a human-readable identifier.
+Set the display type to `BALLOON` constant.
+Then, provide a human-readable identifier.
 
 ```XML
 <extensions defaultExtensionNs="com.intellij">
@@ -30,7 +31,8 @@ Set the display type to `BALLOON` constant. Then, provide a human-readable ident
 
 Tip:
 
-A good ID completes this phrase: "Notifications in this group tell the user about…". See the [UI Guidelines for further tips on naming conventions](balloon.html#naming-a-notification-group).
+A good ID completes this phrase: "Notifications in this group tell the user about…".
+See the [UI Guidelines for further tips on naming conventions](balloon.html#naming-a-notification-group).
 
 ## Timeline notification
 
@@ -54,7 +56,8 @@ Tip:
 
 Use [Plugin DevKit](https://plugins.jetbrains.com/plugin/22851-plugin-devkit/) to get the code insight for notification group identifiers.
 
-By default, a notification is timed, as it will automatically disappear after 10 seconds. However, it will remain in the Notifications tool window, until cleared, in the Timeline section.
+By default, a notification is timed, as it will automatically disappear after 10 seconds.
+However, it will remain in the Notifications tool window, until cleared, in the Timeline section.
 
 ## Configuring Notifications
 

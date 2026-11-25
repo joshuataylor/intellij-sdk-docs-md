@@ -4,7 +4,8 @@ There are two default color themes: IntelliJ Light and Darcula.
 
 ![01 default themes](images/01_default_themes.png)
 
-Use the colors consistently within the default themes. To do so, follow these guidelines:
+Use the colors consistently within the default themes.
+To do so, follow these guidelines:
 
 * [Icons](icons.html)
 
@@ -22,9 +23,13 @@ A color key is a name of a color property in a particular component, e.g. `Combo
 ![02 keys naming](images/02_keys_naming.png)
 Color keys of a combo box
 
-Each key has two default color values: one for IntelliJ Light and another for Darcula. Example: `ComboBox.background` is #FFFFFF in IntelliJ Light and #3C3F41 in Darcula.
+Each key has two default color values: one for IntelliJ Light and another for Darcula.
+Example: `ComboBox.background` is #FFFFFF in IntelliJ Light and #3C3F41 in Darcula.
 
-Keys allow creating [custom color themes](themes-getting-started.html). A custom theme is one of the default themes plus a set of color keys with new values in a JSON file. Example: the High contrast theme is a custom theme based on Darcula. New color values are stored in the [HighContrast.theme.json](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-resources/src/themes/HighContrast.theme.json) JSON file.
+Keys allow creating [custom color themes](themes-getting-started.html).
+A custom theme is one of the default themes plus a set of color keys with new values in a JSON file.
+Example: the High contrast theme is a custom theme based on Darcula.
+New color values are stored in the [HighContrast.theme.json](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-resources/src/themes/HighContrast.theme.json) JSON file.
 
 See custom themes in the [JetBrains Marketplace](https://plugins.jetbrains.com/search?tags=Theme) repository.
 
@@ -71,7 +76,9 @@ If a color is needed:
 
 Example
 
-Incorrect: A new component with a light-blue background reuses `Focus.borderColor`, which has a light-blue color in the default themes. A theme author decides they need a bright focus border and changes the color value for `Focus.borderColor`. As a result, the new component has a bright background with the text unreadable over it.
+Incorrect: A new component with a light-blue background reuses `Focus.borderColor`, which has a light-blue color in the default themes.
+A theme author decides they need a bright focus border and changes the color value for `Focus.borderColor`.
+As a result, the new component has a bright background with the text unreadable over it.
 
 Correct: A new component with a light-blue background has its own color key `ComponentName.background`.
 

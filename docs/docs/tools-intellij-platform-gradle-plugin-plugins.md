@@ -250,7 +250,8 @@ Plugin ID: `org.jetbrains.intellij.platform.settings`
 
 If project repositories are defined within the `settings.gradle.kts` using the `dependencyResolutionManagement`, make sure to include the Settings plugin in `settings.gradle.kts`.
 
-This approach allows for omitting the `repositories {}` definition in the `build.gradle.kts` files. See [Dependency Resolution Management](tools-intellij-platform-gradle-plugin.html#configuration.dependencyResolutionManagement) for more details.
+This approach allows for omitting the `repositories {}` definition in the `build.gradle.kts` files.
+See [Dependency Resolution Management](tools-intellij-platform-gradle-plugin.html#configuration.dependencyResolutionManagement) for more details.
 
 The Settings plugin also defaults the `kotlin.stdlib.default.dependency` property to `false` for every project before project plugins are applied.
 This prevents the Kotlin Gradle plugin from adding the Kotlin Standard Library dependency automatically, which could conflict with the version bundled in the IntelliJ Platform.

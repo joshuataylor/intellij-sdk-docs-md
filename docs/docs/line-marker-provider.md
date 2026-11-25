@@ -115,8 +115,7 @@ final class MyCorrectLineMarkerProvider implements LineMarkerProvider {
 
 ## Register the Line Marker Provider
 
-The `SimpleLineMarkerProvider` implementation is registered with the IntelliJ Platform in the plugin configuration file using
-the [com.intellij.codeInsight.lineMarkerProvider](https://jb.gg/ipe?extensions=com.intellij.codeInsight.lineMarkerProvider) extension point
+The `SimpleLineMarkerProvider` implementation is registered with the IntelliJ Platform in the plugin configuration file using the [com.intellij.codeInsight.lineMarkerProvider](https://jb.gg/ipe?extensions=com.intellij.codeInsight.lineMarkerProvider) extension point
 .
 
 ```XML

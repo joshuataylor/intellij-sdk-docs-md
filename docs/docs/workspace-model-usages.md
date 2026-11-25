@@ -307,8 +307,8 @@ To eliminate these shortcomings, use
 It represents a pointer to an entity which can be stored anywhere.
 The pointer can be obtained via
 [WorkspaceEntity.createPointer()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/workspace/storage/src/com/intellij/platform/workspace/storage/WorkspaceEntity.kt).
-An instance of this class stores an internal ID of the entity and doesn't contain the pointer to the original storage, so it's ok to
-store them in long-living data structures as it won't create a memory leak.
+An instance of this class stores an internal ID of the entity and doesn't contain the pointer to the original storage,
+so it's ok to store them in long-living data structures as it won't create a memory leak.
 
 The pointer will resolve to the same entity for the same storage and will survive modifications.
 If the entity is removed or replaced by a different one via

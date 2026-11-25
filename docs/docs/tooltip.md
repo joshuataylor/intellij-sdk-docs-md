@@ -14,7 +14,7 @@ There are three types of tooltips:
 
 |          ![Action tooltip](images/tooltip_action.png)      |         Action          Shows an action name or label for icons and unlabeled controls such as main toolbar widgets, and a shortcut if available.           Required: action name           Optional: shortcut        |
 |          ![Action help tooltip](images/tooltip_help_action.png)      |         Action help          Shows help text for icons and unlabeled controls in addition to an action name or label.           Required: action name, help text           Optional: shortcut, link        |
-|          ![Help tooltip](images/tooltip_help.png)      |         Help         Shows help text for all other controls. It is shown on hovering the [question mark icon](#question-mark-icon-for-help-tooltips).           Required: help text. Action name or label is not required because it is shown in the UI.           Optional: shortcut, link.        |
+|          ![Help tooltip](images/tooltip_help.png)      |         Help         Shows help text for all other controls.             It is shown on hovering the [question mark icon](#question-mark-icon-for-help-tooltips).           Required: help text.             Action name or label is not required because it is shown in the UI.           Optional: shortcut, link.        |
 
 All icons and unlabeled controls should have an Action or an Action help tooltip.
 
@@ -42,13 +42,17 @@ Use Action help and Help tooltips according to the [Context help](context-help.h
 
 ### Text length
 
-The text width in an action tooltip is not limited. The text width in a help tooltip is limited by 250px.
+The text width in an action tooltip is not limited.
+The text width in a help tooltip is limited by 250px.
 
-Show no more than 10 lines of help text. If the text does not fit, leave only the essential information and add a link to a help article.
+Show no more than 10 lines of help text.
+If the text does not fit, leave only the essential information and add a link to a help article.
 
 |              Correct             ![A tooltip with a long help text](images/tooltip_text_length_correct.png)          |             Incorrect             ![A tooltip with a too long help text](images/tooltip_text_length_incorrect.png) |
 
-If the help text is longer than 5 lines, separate the text into paragraphs with the `<p>` tag. The `<p>` tag adds vertical space between paragraphs to visually separate them. Do not use the `<br/>` tag as it does not add space.
+If the help text is longer than 5 lines, separate the text into paragraphs with the `<p>` tag.
+The `<p>` tag adds vertical space between paragraphs to visually separate them.
+Do not use the `<br/>` tag as it does not add space.
 
 #### Implementation
 
@@ -76,7 +80,8 @@ new HelpTooltip().setDescription(LONG_TEXT).installOn(component);
 
 ### Text style formatting
 
-Avoid using style formatting in the help text. Usually, the text is short and no bold or italics are needed.
+Avoid using style formatting in the help text.
+Usually, the text is short and no bold or italics are needed.
 
 |              Correct             ![Text without formatting](images/tooltip_text_formatting_correct.png)          |             Incorrect             ![Text with formatting](images/tooltip_text_formatting_incorrect.png) |
 
@@ -90,7 +95,8 @@ Avoid using style formatting in the help text. Usually, the text is short and no
 
 ### Question mark icon for help tooltips
 
-Always use the help tooltip with the question mark icon. Without the icon, it is unclear which component has help information.
+Always use the help tooltip with the question mark icon.
+Without the icon, it is unclear which component has help information.
 
 Always place the question mark icon to the right of the corresponding UI component.
 
@@ -138,7 +144,8 @@ If the mouse cursor stays in the tooltip trigger area, tooltips are also hidden 
 |          Action help      |      |         30 seconds           ide.helptooltip.full.dismissDelay        |
 |          Help      |      |         Never hides      |
 
-If a tooltip has a link, it is possible to move the mouse cursor over the tooltip. The tooltip does not close automatically when the cursor is over it.
+If a tooltip has a link, it is possible to move the mouse cursor over the tooltip.
+The tooltip does not close automatically when the cursor is over it.
 
 Tooltips are positioned automatically depending on the mouse cursor location.
 

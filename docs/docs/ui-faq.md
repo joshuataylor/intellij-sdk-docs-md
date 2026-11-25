@@ -70,8 +70,7 @@ UI Guidelines: [Layout](layout.html)
 </tldr>
 
 Always create borders and insets via factory methods from [JBUI.Borders](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/util/ui/src/com/intellij/util/ui/JBUI.java) and [JBUI.Insets](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/util/ui/src/com/intellij/util/ui/JBUI.java), which create DPI-aware instances.
-Using standard DPI-agnostic instances (reported by inspection `Plugin DevKit | Code | Use DPI-aware borders` and `Plugin DevKit | Code | Use DPI-aware insets`)
-can result in UI layout problems.
+Using standard DPI-agnostic instances (reported by inspection `Plugin DevKit | Code | Use DPI-aware borders` and `Plugin DevKit | Code | Use DPI-aware insets`) can result in UI layout problems.
 
 If DPI-aware insets are used in an empty border (`JBUI.Borders.empty()`), then the insets will be updated automatically, for example, if scaling is changed because the `IDE Zoom` action was performed or for any other reason.
 If the insets are used elsewhere, manually call `JBInsets.update()` in the component's `updateUI()` method to update the insets accordingly.
@@ -85,7 +84,7 @@ Plugins may need to override icons for existing elements, for example, for XML/J
 Use [FileIconProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/ide/FileIconProvider.java)
 registered in [com.intellij.fileIconProvider](https://jb.gg/ipe?extensions=com.intellij.fileIconProvider) extension point
 
-to provide custom icons for [Virtual Files](virtual-file.html).
+to provide custom icons for [virtual files](virtual-file.html).
 
 For [PSI elements](psi.html), implement [IconProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/ide/IconProvider.java)
 and register in [com.intellij.iconProvider](https://jb.gg/ipe?extensions=com.intellij.iconProvider) extension point

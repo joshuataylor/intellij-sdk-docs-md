@@ -67,7 +67,8 @@ Migrate to the following replacements:
   * Old: Custom tabs New: Implement [SeTabFactory](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/searchEverywhere/frontend/src/SeTabFactory.kt) and register it in the [com.intellij.searchEverywhere.tabFactory](https://jb.gg/ipe?extensions=com.intellij.searchEverywhere.tabFactory) extension point
 : The [com.intellij.ide.actions.searcheverywhere.remote](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-api/src/com/intellij/ide/actions/searcheverywhere/remote) classes are obsolete without replacement, because the new API supports remote development by design.
 The new API is marked as `@ApiStatus.Experimental`.
-In 2027.1, the deprecated API will be disabled by default via a registry key. In 2027.2, it will be removed.
+In 2027.1, the deprecated API will be disabled by default via a registry key.
+In 2027.2, it will be removed.
 
 
 Report missing functionality on the [JetBrains Platform Forum](https://platform.jetbrains.com).
@@ -142,7 +143,9 @@ Migrate thread-safe listeners without UI dependencies from `VFS_CHANGES`/[addAsy
 
 
 New LSP API features
-: Language Server Protocol support gains Range Formatting (`textDocument/rangeFormatting`), Code Lens (`textDocument/codeLens`), and Optimize Imports (`textDocument/codeAction` with `source.organizeImports`). ``Also includes a major rewrite of LSP highlighting for improved performance. See [Language Server Protocol (LSP)](language-server-protocol.html).
+: Language Server Protocol support gains Range Formatting (`textDocument/rangeFormatting`), Code Lens (`textDocument/codeLens`), and Optimize Imports (`textDocument/codeAction` with `source.organizeImports`).
+Also includes a major rewrite of LSP highlighting for improved performance.
+See [Language Server Protocol (LSP)](language-server-protocol.html).
 
 
 `OSProcessHandler.waitFor()` on EDT or under read lock logs error

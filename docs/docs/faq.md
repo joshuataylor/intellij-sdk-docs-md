@@ -1,6 +1,7 @@
 # Plugin Development FAQ
 
-This page contains miscellaneous FAQs. See [Problems with Code - Support Issues](getting-help.html#problems-with-code-support-issues) on how to post new questions.
+This page contains miscellaneous FAQs.
+See [Problems with Code - Support Issues](getting-help.html#problems-with-code-support-issues) on how to post new questions.
 
 Tip:
 
@@ -20,15 +21,13 @@ See also [Explore the IntelliJ Platform API](explore-api.html) for more informat
 
 Tip:
 
-See also [XML DOM API](xml-dom-api.html).
+See also [XML Models (DOM)](xml-models-dom.html).
 
 ### How do I register a DTD or XSD?
 
 To register a bundled DTD/XSD file, use [com.intellij.standardResource](https://jb.gg/ipe?extensions=com.intellij.standardResource) extension point
-
 for static
 or [com.intellij.standardResourceProvider](https://jb.gg/ipe?extensions=com.intellij.standardResourceProvider) extension point
-
 for programmatic registration.
 
 ## Refactoring

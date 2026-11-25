@@ -90,7 +90,8 @@ Notes:
 
 [ProductMode](https://github.com/JetBrains/intellij-platform-gradle-plugin/tree/2.20.1/src/main/kotlin/org/jetbrains/intellij/platform/gradle/ProductMode.kt)
 
-Describes a mode in which a product may be started. This can be configured on the target platform dependency to influence how the IDE is started for development and testing.
+Describes a mode in which a product may be started.
+This can be configured on the target platform dependency to influence how the IDE is started for development and testing.
 
 | Name |Description |
 ---------------------

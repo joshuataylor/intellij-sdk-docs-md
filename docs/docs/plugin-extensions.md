@@ -47,10 +47,8 @@ Auto-completion, Quick Documentation, and other code insight features are availa
 
 Procedure: Declaring Extension
 
-To clarify this procedure, consider the following sample section of the `plugin.xml` file that defines two extensions designed
-to access the [com.intellij.appStarter](https://jb.gg/ipe?extensions=com.intellij.appStarter)
+To clarify this procedure, consider the following sample section of the `plugin.xml` file that defines two extensions designed to access the [com.intellij.appStarter](https://jb.gg/ipe?extensions=com.intellij.appStarter)
 and [com.intellij.projectTemplatesFactory](https://jb.gg/ipe?extensions=com.intellij.projectTemplatesFactory)
-
 extension points in the IntelliJ Platform,
 and one extension to access the `another.plugin.myExtensionPoint` extension point in another plugin `another.plugin`:
 
@@ -124,7 +122,8 @@ Properties marked as `@Deprecated` or annotated with any of [ApiStatus](https://
 
 #### Enum properties
 
-`Enum` attributes support code insight with lowerCamelCased notation. Note: The `Enum` implementation must not override `toString()`.
+`Enum` attributes support code insight with lowerCamelCased notation.
+Note: The `Enum` implementation must not override `toString()`.
 
 #### I18n
 

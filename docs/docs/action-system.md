@@ -63,12 +63,11 @@ Actions that run the update session on the BGT should not access the Swing compo
 Conversely, actions that specify to run their update on EDT must not access PSI, VFS, or project data but have access to Swing components and other UI models.
 
 All accessible data is provided by the `DataContext` as explained in [Determining the Action Context](#determining-the-action-context).
-When switching from BGT to EDT is necessary, actions can use `AnActionEvent.getUpdateSession()` to
-access the [UpdateSession](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/UpdateSession.java) and
-then call `UpdateSession.compute()` to run a function on EDT.
+When switching from BGT to EDT is necessary, actions can use `AnActionEvent.getUpdateSession()` to access the
+[UpdateSession](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/UpdateSession.java)
+and then call `UpdateSession.compute()` to run a function on EDT.
 
-Inspection `Plugin DevKit | Code | ActionUpdateThread is missing` highlights missing implementation of
-`AnAction.getActionUpdateThread()`.
+Inspection `Plugin DevKit | Code | ActionUpdateThread is missing` highlights missing implementation of `AnAction.getActionUpdateThread()`.
 
 #### 
 
@@ -149,7 +148,7 @@ Warning: Reusable Logic
 
 Reusable logic must not be exposed in the `AnAction` implementation via `static` methods (Java) or `companion object` (Kotlin).
 
-Instead, introduce dedicated methods in utility classes or [Services](plugin-services.html).
+Instead, introduce dedicated methods in utility classes or [services](plugin-services.html).
 
 By using the `AnActionEvent` methods and `CommonDataKeys`, objects such as the `Project`, `Editor`, `PsiFile`, and other information is available.
 For example, the `actionPerformed()` method can modify, remove, or add PSI elements to a file open in the editor.

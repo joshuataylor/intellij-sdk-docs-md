@@ -6,7 +6,7 @@ Product Help: [Colors and fonts](https://www.jetbrains.com/help/idea/configuring
 UI Guidelines: [Inspections](inspections.html)
 </tldr>
 
-The syntax and error highlighting are performed on multiple levels: [Lexer](#lexer), [Parser](#parser), and [Annotator](#annotator)/[External Annotator](#external-annotator).
+The syntax and error highlighting are performed on multiple levels: [lexer](#lexer), [parser](#parser), and [annotator](#annotator)/[external annotator](#external-annotator).
 
 ## Text Attributes Key
 
@@ -136,7 +136,7 @@ Use [HtmlSyntaxInfoUtil](https://github.com/JetBrains/intellij-community/tree/id
 Register [RainbowVisitor](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-impl/src/com/intellij/codeInsight/daemon/RainbowVisitor.java)
 in [com.intellij.highlightVisitor](https://jb.gg/ipe?extensions=com.intellij.highlightVisitor) extension point
 .
-[Color Settings](#color-settings) must implement [RainbowColorSettingsPage](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/openapi/options/colors/RainbowColorSettingsPage.java) in addition.
+The [color settings page](#color-settings) must implement [RainbowColorSettingsPage](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/openapi/options/colors/RainbowColorSettingsPage.java) in addition.
 
 ## Parser
 
@@ -151,7 +151,7 @@ The third level of highlighting is performed through [Annotator](https://github.
 A plugin can register one or more annotators in the [com.intellij.annotator](https://jb.gg/ipe?extensions=com.intellij.annotator) extension point
 , and these annotators are called during the background highlighting pass to process the elements in the custom language's PSI tree.
 Attribute `language` should be set to the Language ID where this annotator applies to.
-If highlighting data requires invoking external tools, use an [External Annotator](#external-annotator) instead.
+If highlighting data requires invoking external tools, use an [external annotator](#external-annotator) instead.
 
 Annotators can analyze not only the syntax, but also the semantics using PSI, and thus can provide much more complex syntax and error highlighting logic.
 The annotator can also provide quick fixes to problems it detects.
@@ -195,15 +195,17 @@ Examples:
 ## External Annotator
 
 If the custom language employs external tools for validating files in the language (for example, using the Xerces library for XML schema validation),
-it can provide an implementation of [ExternalAnnotator](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/lang/annotation/ExternalAnnotator.java) and register
-it in [com.intellij.externalAnnotator](https://jb.gg/ipe?extensions=com.intellij.externalAnnotator) extension point
+it can provide an implementation of
+[ExternalAnnotator](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/lang/annotation/ExternalAnnotator.java)
+and register it in [com.intellij.externalAnnotator](https://jb.gg/ipe?extensions=com.intellij.externalAnnotator) extension point
 (`language` attribute must be specified).
 
 The `ExternalAnnotator` highlighting has the lowest priority and is invoked only after all other background processing has completed.
 It uses the same [AnnotationHolder](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/lang/annotation/AnnotationHolder.java) for converting the output of the external tool into editor highlighting.
 
-To skip running specific `ExternalAnnotator` for a given file, register an [ExternalAnnotatorsFilter](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/lang/ExternalAnnotatorsFilter.java) extension
-in [com.intellij.daemon.externalAnnotatorsFilter](https://jb.gg/ipe?extensions=com.intellij.daemon.externalAnnotatorsFilter) extension point
+To skip running specific `ExternalAnnotator` for a given file, register an
+[ExternalAnnotatorsFilter](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/lang/ExternalAnnotatorsFilter.java)
+extension in [com.intellij.daemon.externalAnnotatorsFilter](https://jb.gg/ipe?extensions=com.intellij.daemon.externalAnnotatorsFilter) extension point
 .
 
 To enable running `ExternalAnnotator` during indexing in [dumb mode](indexing-and-psi-stubs.html#dumb-mode), it can be marked [dumb aware](indexing-and-psi-stubs.html#DumbAwareAPI) (2023.3).

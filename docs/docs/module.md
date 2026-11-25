@@ -47,7 +47,7 @@ A dependency can be a reference to an [SDK](sdk.html), a [library](library.html)
 
 ### Facets
 
-The list of framework-specific configuration entries represented in a dedicated [Facet](facet.html).
+The list of framework-specific configuration entries represented in a dedicated [facet](facet.html).
 
 ### Other
 

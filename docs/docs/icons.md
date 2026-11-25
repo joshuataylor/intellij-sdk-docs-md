@@ -9,11 +9,11 @@ See also: [User Interface FAQ - Icons](ui-faq.html#icons)
 </tldr>
 
 Icons are used widely by IntelliJ Platform plugins.
-Plugins need icons mostly for [actions](action-system.html), custom component renderers, [Tool Windows](tool-windows.html), etc.
+Plugins need icons mostly for [actions](action-system.html), custom component renderers, [tool windows](tool-windows.html), etc.
 
 Tip:
 
-A [Plugin Logo](plugin-icon-file.html), which represents the plugin itself, has different requirements than icons used within plugins.
+A [plugin logo](plugin-icon-file.html), which represents the plugin itself, has different requirements than icons used within plugins.
 
 ## Platform vs. Custom Icons
 
@@ -134,8 +134,8 @@ Required icon sizes depend on the usage as listed in the following table:
 | Editor gutter |12×12 |
 | Editor gutter for [New UI](https://www.jetbrains.com/help/idea/new-ui.html) |14×14 |
 
-As SVG icons can be scaled arbitrarily, they provide good results in HiDPI environments or when used in combination with
-bigger screen fonts (e.g., in [Presentation Mode](https://www.jetbrains.com/help/idea/ide-viewing-modes.html)).
+As SVG icons can be scaled arbitrarily,
+they provide good results in HiDPI environments or when used in combination with bigger screen fonts (e.g., in [Presentation Mode](https://www.jetbrains.com/help/idea/ide-viewing-modes.html)).
 
 A base size denoting the size (in the user space) of the rendered image in 1x scale should be provided.
 The size is set via the `width` and `height` attributes omitting the size units.
@@ -241,8 +241,7 @@ To work as expected, the New UI requires specific colors for icon content.
 This is necessary for situations where tool window buttons are active, during which the background is highlighted.
 To enhance contrast, the IntelliJ Platform dynamically alters the icon's content color to white.
 
-Hence, for the creation of light and dark mode variants, plugin authors must use the following
-prescribed colors within their icons:
+Hence, for the creation of light and dark mode variants, plugin authors must use the following prescribed colors within their icons:
 
 | Theme |Color Code |
 ---------------------

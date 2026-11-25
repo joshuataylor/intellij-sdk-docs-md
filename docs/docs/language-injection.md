@@ -107,7 +107,7 @@ as an example implementation.
 
 Create an XML file with the injection configuration.
 Export existing injections from the IntelliLang settings to create a template and then edit it.
-[Element Patterns](element-patterns.html) are used to specify the context where injections will take place.
+[Element patterns](element-patterns.html) are used to specify the context where injections will take place.
 Custom language authors can use the specific patterns returned from their implementation of
 [JavaLanguageInjectionSupport.getPatternClasses](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/java/langInjection/src/org/intellij/plugins/intelliLang/inject/java/JavaLanguageInjectionSupport.java).
 
@@ -309,8 +309,8 @@ Now, inside the editor the injected portion will work as expected where foo is t
 
 ## Formatting
 
-To control delegation of formatting to containing file, implement [InjectedFormattingOptionsProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/code-style-api/src/com/intellij/formatting/InjectedFormattingOptionsProvider.java) and
-register in [com.intellij.formatting.injectedOptions](https://jb.gg/ipe?extensions=com.intellij.formatting.injectedOptions) extension point
+To control delegation of formatting to containing file, implement [InjectedFormattingOptionsProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/code-style-api/src/com/intellij/formatting/InjectedFormattingOptionsProvider.java)
+and register in [com.intellij.formatting.injectedOptions](https://jb.gg/ipe?extensions=com.intellij.formatting.injectedOptions) extension point
 .
 
 ## Injection Highlighting

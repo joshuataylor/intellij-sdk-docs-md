@@ -85,8 +85,7 @@ Currently, IDEs provide built-in integration for the following language features
 
 * JavaScript: string-literals, object properties, object literals, and symbols (in JavaScript and TypeScript)
 
-The following sections provide information on how to implement Poly Symbols for plugins and how to
-define them statically through JSON schemas:
+The following sections provide information on how to implement Poly Symbols for plugins and how to define them statically through JSON schemas:
 
 * [Implementing Poly Symbols](polysymbols-implementation.html)
 

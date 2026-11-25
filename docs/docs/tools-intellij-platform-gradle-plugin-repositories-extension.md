@@ -163,7 +163,7 @@ To refer to its plugins, use the [plugin(id, version)](tools-intellij-platform-g
 It is also possible to resolve plugins from regular Maven repositories other than JetBrains Marketplace.
 In such a case, refer to them using [plugin(id, version, group)](tools-intellij-platform-gradle-plugin-dependencies-extension.html#plugins), which will build `group:id:version` plugin coordinates.
 
-The third possibility is to use the [Custom Plugin Repository](custom-plugin-repository.html) with optional authorization credentials provided by defining the URL to the XML listing file, like:
+The third possibility is to use a [custom plugin repository](custom-plugin-repository.html) with optional authorization credentials provided by defining the URL to the XML listing file, like:
 
 Kotlin:
 
@@ -231,8 +231,7 @@ See also:
 Tip: localPlatformArtifacts() and defaultRepositories()
 
 Note that unless using recommended default [defaultRepositories()](#default-repositories),
-the [localPlatformArtifacts()](#additional-repositories) entry needs to be added to the `repositories {}` block
-explicitly to use local dependencies (bundled plugins, local IDE, custom plugin repositories, etc.).
+the [localPlatformArtifacts()](#additional-repositories) entry needs to be added to the `repositories {}` block explicitly to use local dependencies (bundled plugins, local IDE, custom plugin repositories, etc.).
 
 Note: Something missing?
 

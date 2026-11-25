@@ -1,16 +1,21 @@
 # Writing Short and Clear
 
-Texts in user interfaces should be short and clear. Short texts save reading time. Clear texts lead to fewer mistakes. Editing methods described below can help with that.
+Texts in user interfaces should be short and clear.
+Short texts save reading time.
+Clear texts lead to fewer mistakes.
+Editing methods described below can help with that.
 
 ## Use simple constructions
 
-Use simple verb forms. Prefer present tense.
+Use simple verb forms.
+Prefer present tense.
 
 Use simple sentences: one idea per sentence.
 
 Avoid passive voice.
 
-This way, the same meaning can be expressed with fewer words. Compare:
+This way, the same meaning can be expressed with fewer words.
+Compare:
 
 Those resources that are available locally → Local resources
 
@@ -26,7 +31,10 @@ Words like general, advanced, and options do not add useful information and can 
 ![Generic options](images/generic-options.png)
 No meaning is lost after removing group headers "General" and "Options".
 
-Some generic words cannot be removed. They can appear in actionable elements like buttons, checkboxes, or links. Or removing a group header could break a dialog layout. In such cases, use a more informative label instead:
+Some generic words cannot be removed.
+They can appear in actionable elements like buttons, checkboxes, or links.
+Or removing a group header could break a dialog layout.
+In such cases, use a more informative label instead:
 
 ![Generic renamed link](images/generic-renamed-link.png)
 The link "Learn more" does not explain what useful information could be there for the user to click it.
@@ -36,7 +44,8 @@ The link "Learn more" does not explain what useful information could be there fo
 Remove verbs that explain the function of a UI control:
 
 ![Obvious specify](images/obvious-specify.png)
-Text boxes are made for input — an explicit instruction "specify" duplicates the meaning expressed by the text field. Additional information can be given under the field — see [Context help](context-help.html).
+Text boxes are made for input — an explicit instruction "specify" duplicates the meaning expressed by the text field.
+Additional information can be given under the field — see [Context help](context-help.html).
 
 |  ![Obvious prefer](images/obvious-prefer.png) A selected radio button means its option is "preferred".   | ![Obvious allow](images/obvious-allow.png) A checked checkbox means its feature is "allowed".   |
 
@@ -46,7 +55,8 @@ Remove words with a meaning that is already expressed in the label:
 
 ## Do not address the user
 
-A user interface is for a person who uses it. Addressing this person is unnecessary because they by default perceive the text they see as for them:
+A user interface is for a person who uses it.
+Addressing this person is unnecessary because they by default perceive the text they see as for them:
 
 ![Addressing1](images/addressing1.png)
 ![Addressing2](images/addressing2.png)
@@ -54,7 +64,8 @@ The whole phrase after the comma is not needed because its meaning is already ex
 
 ## Remove duplicates
 
-If the repeating word appears in element labels, move it to the beginning. Finding a setting becomes faster as the user scans only meaningful words:
+If the repeating word appears in element labels, move it to the beginning.
+Finding a setting becomes faster as the user scans only meaningful words:
 
 ![Writing short duplicates](images/writing_short_duplicates.png)
 Remove duplicates in meaning:
@@ -77,14 +88,17 @@ Remove duplicates in meaning:
 Feature authors know how it works from the inside and tend to describe it from the implementation point of view:
 
 ![Indent options before](images/indent-options-before.png)
-A person not familiar with implementation details won’t know what the Automatic indent options detector is, why file’s indent options have been overwritten and what indent size=2 means. Translated to the "human" language, the message reads:
+A person not familiar with implementation details won’t know what the Automatic indent options detector is, why file’s indent options have been overwritten and what indent size=2 means.
+Translated to the "human" language, the message reads:
 
 ![Indent options after](images/indent-options-after.png)
-Always write UI text from a user’s perspective. Avoid technical terms, jargon and descriptions of inner logic that a user might not know.
+Always write UI text from a user’s perspective.
+Avoid technical terms, jargon and descriptions of inner logic that a user might not know.
 
 ## Write for first-time users
 
-After writing a UI text, imagine seeing it for the first time and try to understand what might be unclear or confusing. Then correct if necessary.
+After writing a UI text, imagine seeing it for the first time and try to understand what might be unclear or confusing.
+Then correct if necessary.
 
 ![First time file colors before](images/first-time-file-colors-before.png)
 For a first-time user, Enable File Colors enables or disables the other two options (but it does not).
@@ -95,10 +109,13 @@ Rewritten: now all options are equal.
 More examples:
 
 ![First time auto insert](images/first-time-auto-insert.png)
-Before: The title can be read as "Auto-insert when only one checkbox is on" raising the question of how it works when both checkboxes are on. After: Replacing choice with completion option makes the title unambiguous.
+Before: The title can be read as "Auto-insert when only one checkbox is on" raising the question of how it works when both checkboxes are on.
+After: Replacing choice with completion option makes the title unambiguous.
 
 ![First time smart keys](images/first-time-smart-keys.png)
-Before: What do smart Home and End keys do? What do they do if they are not smart? After: The added text explains what the options do so that the reader can make an informed choice.
+Before: What do smart Home and End keys do?
+What do they do if they are not smart?
+After: The added text explains what the options do so that the reader can make an informed choice.
 
 ## Examples
 

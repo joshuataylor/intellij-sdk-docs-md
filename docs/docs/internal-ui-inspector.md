@@ -61,9 +61,7 @@ Custom Swing components can also provide additional properties via [UiInspectorC
 
 ## Inspecting Settings
 
-Enable `Internal Actions | UI | Debugging Info in UI` (2024.2+)
-(`View | Appearance | Details in Tree View` in earlier versions)
-in [Internal Mode](enabling-internal.html) to show Settings page `id` in the tree.
+Enable `Internal Actions | UI | Debugging Info in UI` (2024.2+) (`View | Appearance | Details in Tree View` in earlier versions) in [Internal Mode](enabling-internal.html) to show Settings page `id` in the tree.
 
 Some additional properties are available when inspecting the Settings dialog (2023.1+).
 

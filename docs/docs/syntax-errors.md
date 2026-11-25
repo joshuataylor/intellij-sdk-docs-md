@@ -25,8 +25,8 @@ In some cases highlighting syntax errors is insufficient or even unnecessary:
 The IntelliJ Platform allows plugins to disable highlighting particular syntax errors.
 These errors can be optionally handled by additional Annotators or [Inspections](code-inspections.html) if needed.
 
-To control which `PsiErrorElement`s should be reported and which can be ignored, a plugin has to provide an implementation of [HighlightErrorFilter](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/codeInsight/highlighting/HighlightErrorFilter.java) and
-register it in the [com.intellij.highlightErrorFilter](https://jb.gg/ipe?extensions=com.intellij.highlightErrorFilter) extension point
+To control which `PsiErrorElement`s should be reported and which can be ignored, a plugin has to provide an implementation of [HighlightErrorFilter](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/codeInsight/highlighting/HighlightErrorFilter.java)
+and register it in the [com.intellij.highlightErrorFilter](https://jb.gg/ipe?extensions=com.intellij.highlightErrorFilter) extension point
 .
 It contains a single abstract method `shouldHighlightErrorElement()` which should return `false` if a given `PsiErrorElement` should not be highlighted in the editor.
 

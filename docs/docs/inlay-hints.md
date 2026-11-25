@@ -172,8 +172,7 @@ Examples:
 
 ### Further Tips
 
-1. Go to
-`Settings | Editor | Inlay Hints` ([Product Help](https://www.jetbrains.com/help/idea/inlay-hints.html)) and check out inlays that have already been implemented.
+1. Go to `Settings | Editor | Inlay Hints` ([Product Help](https://www.jetbrains.com/help/idea/inlay-hints.html)) and check out inlays that have already been implemented.
 
 2. To support multiple languages with a single type of inlay hints, see declarative
 [InlayHintsProviderFactory](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-api/src/com/intellij/codeInsight/hints/declarative/InlayHintsProviderFactory.kt) (2023.1+)

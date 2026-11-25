@@ -4,7 +4,8 @@ JetBrains provides an official plugin repository [JetBrains Marketplace](https:/
 
 Warning:
 
-These pages have moved to [JetBrains Marketplace Documentation](https://plugins.jetbrains.com/docs/marketplace). Please update bookmarks.
+These pages have moved to [JetBrains Marketplace Documentation](https://plugins.jetbrains.com/docs/marketplace).
+Please update bookmarks.
 
 For convenience, pages previously part of this documentation are linked below:
 

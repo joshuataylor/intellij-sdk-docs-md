@@ -1,8 +1,7 @@
 # IDE Development Instance
 
 A plugin project can be run or debugged from within the development instance of IntelliJ IDEA.
-Selecting the `runIde` task for a Gradle-based project (or [Run](running-and-debugging-a-theme.html) menu for a Plugin DevKit-based project)
-will launch a Development Instance of the target IDE with the current development version of the plugin enabled.
+Selecting the `runIde` task for a Gradle-based project (or [Run](running-and-debugging-a-theme.html) menu for a Plugin DevKit-based project) will launch a Development Instance of the target IDE with the current development version of the plugin enabled.
 
 This page describes how to control some settings for the Development Instance.
 
@@ -83,14 +82,12 @@ Auto-Reload is enabled by default.
 Set property [intellijPlatform.autoReload](tools-intellij-platform-gradle-plugin-extension.html#intellijPlatform-autoReload) to `false` to disable it explicitly,
 see [How to disable the automatic reload of dynamic plugins?](tools-intellij-platform-gradle-plugin-faq.html#how-to-disable-the-automatic-reload-of-dynamic-plugins)
 
-After starting the sandbox IDE instance, run the [buildPlugin](tools-intellij-platform-gradle-plugin-tasks.html#buildPlugin) task after modifications
-in the plugin project and switch back focus to the sandbox instance to trigger reload.
+After starting the sandbox IDE instance, run the [buildPlugin](tools-intellij-platform-gradle-plugin-tasks.html#buildPlugin) task after modifications in the plugin project
+and switch back focus to the sandbox instance to trigger reload.
 
 Warning:
 
-[buildSearchableOptions](tools-intellij-platform-gradle-plugin-tasks.html#buildSearchableOptions) task must currently be
-[disabled explicitly](tools-intellij-platform-gradle-plugin-faq.html#how-to-disable-building-the-searchable-options) to work around
-Only one instance of IDEA can be run at a time problem.
+[buildSearchableOptions](tools-intellij-platform-gradle-plugin-tasks.html#buildSearchableOptions) task must currently be [disabled explicitly](tools-intellij-platform-gradle-plugin-faq.html#how-to-disable-building-the-searchable-options) to work around Only one instance of IDEA can be run at a time problem.
 
 ### Gradle IntelliJ Plugin (1.x)
 
@@ -110,9 +107,7 @@ and switch focus back to the sandbox instance to trigger reload.
 
 Warning:
 
-[buildSearchableOptions](tools-gradle-intellij-plugin.html#tasks-buildsearchableoptions) task must currently be
-[disabled explicitly](tools-gradle-intellij-plugin-faq.html#how-to-disable-building-searchable-options) to work around
-Only one instance of IDEA can be run at a time problem.
+[buildSearchableOptions](tools-gradle-intellij-plugin.html#tasks-buildsearchableoptions) task must currently be [disabled explicitly](tools-gradle-intellij-plugin-faq.html#how-to-disable-building-searchable-options) to work around Only one instance of IDEA can be run at a time problem.
 
 ### Plugin DevKit
 
@@ -127,7 +122,7 @@ This information is stored in a different location than for the [installed IDE i
 
 ### IntelliJ Platform Gradle Plugin (2.x)
 
-The default Sandbox Home location in a [IntelliJ Platform Gradle Plugin (2.x)](tools-intellij-platform-gradle-plugin.html) plugin project is:
+The default Sandbox Home location in a plugin project using the [IntelliJ Platform Gradle Plugin (2.x)](tools-intellij-platform-gradle-plugin.html) is:
 
 * Windows: `$PROJECT_DIRECTORY$\build\$TARGET_IDE$\idea-sandbox`
 
@@ -143,7 +138,7 @@ Gradle IntelliJ Plugin (1.x) is no longer under active development.
 
 Whenever possible, use [IntelliJ Platform Gradle Plugin (2.x)](tools-intellij-platform-gradle-plugin.html) instead.
 
-The default Sandbox Home location in a [Gradle IntelliJ Plugin (1.x)](tools-gradle-intellij-plugin.html) plugin project is:
+The default Sandbox Home location in a plugin project using the [Gradle IntelliJ Plugin (1.x)](tools-gradle-intellij-plugin.html) is:
 
 * Windows: `$PROJECT_DIRECTORY$\build\idea-sandbox`
 

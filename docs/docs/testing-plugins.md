@@ -26,7 +26,7 @@ See also [How to replace a component/service in tests?](testing-faq.html#how-to-
 ## Integration and UI Tests
 
 [Video](https://www.youtube.com/v/UJexzfG01Qo)
-Check out [Introduction to Integration Tests](integration-tests-intro.html) tutorial that guides through setup process and writing the first test.
+Check out the [Introduction to Integration Tests](integration-tests-intro.html) tutorial that guides through setup process and writing the first test.
 
 ## Topics
 

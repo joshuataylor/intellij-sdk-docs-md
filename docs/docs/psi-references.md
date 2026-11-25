@@ -1,6 +1,7 @@
 # PSI References
 
-A reference in a PSI tree is an object that represents a link from a usage of a particular element in the code to the corresponding declaration. Resolving a reference means locating the declaration to which a specific usage refers.
+A reference in a PSI tree is an object that represents a link from a usage of a particular element in the code to the corresponding declaration.
+Resolving a reference means locating the declaration to which a specific usage refers.
 
 The most common type of reference is defined by language semantics.
 For example, consider a simple Java method:
@@ -59,7 +60,7 @@ Implement [PsiReferenceContributor](https://github.com/JetBrains/intellij-commun
 .
 
 Attribute `language` should be set to the Language ID where this contributor applies to.
-The exact places to contribute references to are then specified using [Element Patterns](element-patterns.html) in calls to `PsiReferenceRegistrar.registerReferenceProvider()`.
+The exact places to contribute references to are then specified using [element patterns](element-patterns.html) in calls to `PsiReferenceRegistrar.registerReferenceProvider()`.
 
 See also [Reference Contributor tutorial](reference-contributor.html).
 

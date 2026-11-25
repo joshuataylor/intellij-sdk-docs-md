@@ -226,8 +226,7 @@ In other circumstances, override `getDocumentationElementForLookupItem()`and ret
 
 To be able to call `View | Quick Documentation` for Simple properties in all places of a Java string literal, two steps are required:
 
-1. The extension point needs to be changed from `com.intellij.lang.documentationProvider` to `com.intellij.documentationProvider` because only then
-the Simple DocumentationProvider is called for PSI elements with a different language.
+1. The extension point needs to be changed from `com.intellij.lang.documentationProvider` to `com.intellij.documentationProvider` because only then the Simple DocumentationProvider is called for PSI elements with a different language.
 
 2. The `getCustomDocumentationElement()` method needs to be implemented to find the correct target PSI element for creating the documentation.
 

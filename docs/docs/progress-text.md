@@ -62,7 +62,8 @@ Show another progress indicator, e.g., a loader as in the example below, if load
 
 ### Trees
 
-Do not show details or a link to cancel the operation for progress in trees and lists. Only show the process name since space is limited here.
+Do not show details or a link to cancel the operation for progress in trees and lists.
+Only show the process name since space is limited here.
 
 ## Sizes and placement
 

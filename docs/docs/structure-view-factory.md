@@ -145,8 +145,7 @@ public class SimpleStructureViewElement implements StructureViewTreeElement, Sor
 
 ## Register the Structure View Factory
 
-The `SimpleStructureViewFactory` implementation is registered with the IntelliJ Platform in the plugin configuration file using
-the [com.intellij.lang.structureViewExtension](https://jb.gg/ipe?extensions=com.intellij.lang.structureViewExtension) extension point
+The `SimpleStructureViewFactory` implementation is registered with the IntelliJ Platform in the plugin configuration file using the [com.intellij.lang.structureViewExtension](https://jb.gg/ipe?extensions=com.intellij.lang.structureViewExtension) extension point
 .
 
 ```XML

@@ -485,7 +485,7 @@ Acceptable values
 
 * `maven { repositoryUrl }` - use custom Maven repository with plugins and configurable additional parameters (credentials, authentication, etc.)
 
-* `custom(pluginsXmlUrl)` - use [Custom Plugin Repository](custom-plugin-repository.html)
+* `custom(pluginsXmlUrl)` - use a [custom plugin repository](custom-plugin-repository.html)
 
 #### 
 
@@ -597,7 +597,7 @@ Default value
 `buildSearchableOptions`
 
 Builds an index of UI components (searchable options) for the plugin.
-This task runs a headless IDE instance to collect all the available options provided by the plugin's [Settings](settings.html).
+This task runs a headless IDE instance to collect all the available options provided by the plugin's [settings](settings.html).
 
 Note, this is a [runIde](#tasks-runide)-based task with predefined arguments and all properties of the [runIde](#tasks-runide) task are also applied to [buildSearchableOptions](#tasks-buildsearchableoptions) tasks.
 
@@ -869,7 +869,7 @@ Default value
 `listBundledPlugins`
 
 Lists all IDs of plugins bundled within the currently targeted IDE.
-This can be used to determine Plugin ID for setting up [Plugin Dependencies](plugin-dependencies.html).
+This can be used to determine Plugin ID for setting up [plugin dependencies](plugin-dependencies.html).
 
 See also [printBundledPlugins](#tasks-printBundledPlugins).
 
@@ -919,7 +919,8 @@ See also [printProductsReleases](#tasks-printproductsreleases).
 
 `productsReleasesUpdateFiles`
 
-Path to the products releases update files. By default, one is downloaded from `IntelliJPluginConstants.IDEA_PRODUCTS_RELEASES_URL`.
+Path to the products releases update files.
+By default, one is downloaded from `IntelliJPluginConstants.IDEA_PRODUCTS_RELEASES_URL`.
 
 Type
 : `FileCollection`
@@ -1707,7 +1708,8 @@ Default value
 
 `runtimeDir`
 
-The path to the directory containing the JVM runtime. Overrides [runPluginVerifier.jbrVersion](#tasks-runpluginverifier-jbrversion).
+The path to the directory containing the JVM runtime.
+Overrides [runPluginVerifier.jbrVersion](#tasks-runpluginverifier-jbrversion).
 
 Type
 : `String`

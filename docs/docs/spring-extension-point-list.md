@@ -13,7 +13,7 @@ See [IntelliJ Platform Extension Point and Listener List](intellij-platform-exte
 Note:
 
 Spring API Extension Points and Listeners are available in the Spring-related plugins,
-which are available in [IntelliJ IDEA Plugin Development](idea.html).
+which are available in [IntelliJ IDEA](idea.html).
 
 73 Extension Points and 6 Listeners
 

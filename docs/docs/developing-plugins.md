@@ -7,7 +7,7 @@ In some cases, implementing an actual IntelliJ Platform plugin might not be nece
 IntelliJ Platform plugins can be developed by using [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) with the [Plugin DevKit](https://plugins.jetbrains.com/plugin/22851-plugin-devkit) plugin installed.
 It is highly recommended to always use the latest available version of the IDE and Plugin DevKit, as the plugin development tooling is constantly improved.
 
-Before starting with the actual development, make sure to understand all requirements to achieve best [Plugin User Experience (UX)](plugin-user-experience.html).
+Before starting with the actual development, make sure to understand all requirements to achieve the best [plugin user experience](plugin-user-experience.html).
 
 ## Gradle Build System
 

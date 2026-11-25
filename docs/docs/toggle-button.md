@@ -13,7 +13,8 @@ The toggle button is used to switch between On and Off states.
 Use the toggle button to switch the state of an item in search results:
 
 ![Example se](images/example_se.png)
-Do not use the toggle button for items in dialogs and menus. Instead, use a checkbox in dialogs and a checkmark in menus:
+Do not use the toggle button for items in dialogs and menus.
+Instead, use a checkbox in dialogs and a checkmark in menus:
 
 ![When to use dialog or menu](images/when_to_use_dialog_or_menu.png)
 
@@ -56,7 +57,8 @@ A toggle button is implemented with [OnOffButton](https://github.com/JetBrains/i
 But generally, do not use the class directly.
 The IDE automatically places the buttons in the search feed if one of the patterns described below is followed:
 
-1. If this is a system or editor or another kind of settings, register the corresponding [BooleanOptionDescription](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/ide/ui/search/BooleanOptionDescription.java) for the option. The options can be bound (but not limited) to a [SearchTopHitProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/ide/SearchTopHitProvider.kt) instance which is registered in `plugin.xml` with the `<search.topHitProvider implementation="fq.class.name"/>` tag.
+1. If this is a system or editor or another kind of settings, register the corresponding [BooleanOptionDescription](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/ide/ui/search/BooleanOptionDescription.java) for the option.
+The options can be bound (but not limited) to a [SearchTopHitProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/ide/SearchTopHitProvider.kt) instance which is registered in `plugin.xml` with the `<search.topHitProvider implementation="fq.class.name"/>` tag.
 
 For example, see [SystemOptionsTopHitProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-impl/src/com/intellij/ide/ui/SystemOptionsTopHitProvider.java) that represents matching of Reopen last project on startup checkbox to `BooleanOptionDescription`.
 

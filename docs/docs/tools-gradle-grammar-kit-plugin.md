@@ -10,7 +10,8 @@ The [Gradle Grammar-Kit Plugin](https://github.com/JetBrains/gradle-grammar-kit-
 
 Note: Known Limitations
 
-The plugin does not support two-pass generation. Therefore, it does not support method mixins.
+The plugin does not support two-pass generation.
+Therefore, it does not support method mixins.
 
 Tip:
 

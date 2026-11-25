@@ -47,7 +47,8 @@ Add separators between the toolbar drop-down and icons:
 If a drop-down is controlled by buttons, add a border, as separators will break the connection between the controlling icons and the drop-down:
 
 ![Toolbar main](images/toolbar_main.png)
-The toolbar drop-down does not get the focus. Highlight it on hover the same way as toolbar icons.
+The toolbar drop-down does not get the focus.
+Highlight it on hover the same way as toolbar icons.
 
 ![Toolbar dropdown hover](images/toolbar_dropdown_hover.png)
 ### Menu
@@ -55,7 +56,8 @@ The toolbar drop-down does not get the focus. Highlight it on hover the same way
 #### Control
 
 Open the drop-down menu when clicking anywhere on a drop-down list.
-Open the menu down by default. If there is not enough space, open the menu up.
+Open the menu down by default.
+If there is not enough space, open the menu up.
 
 Select the first option when the menu opens.
 
@@ -82,7 +84,8 @@ A toolbar drop-down list can have submenus.
 
 ### Submenu
 
-A submenu is a menu item that shows a list of nested items. A submenu includes a triangular indicator that distinguishes it from other menu items.
+A submenu is a menu item that shows a list of nested items.
+A submenu includes a triangular indicator that distinguishes it from other menu items.
 
 Use item submenus to group related options and to show hierarchy:
 
@@ -91,7 +94,8 @@ Show the submenu list on hovering over an item.
 
 If the selection moves with the Up and Down arrow keys, show the submenu list on pressing the Right arrow or the Enter key.
 
-Avoid submenus inside submenus. Submenus hide choices too deep and are difficult to navigate.
+Avoid submenus inside submenus.
+Submenus hide choices too deep and are difficult to navigate.
 
 ## Sizes and placement
 

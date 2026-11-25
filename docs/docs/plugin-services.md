@@ -31,7 +31,7 @@ Project/Module-level service constructors can have a [Project](https://github.co
 
 Warning: Do not use Constructor Injection
 
-Using constructor injection of dependency services is deprecated (and not supported in [Light Services](#light-services)) for performance reasons.
+Using constructor injection of dependency services is deprecated (and not supported in [light services](#light-services)) for performance reasons.
 
 Other service dependencies must be [acquired only when needed](#retrieving-a-service) in all corresponding methods, e.g., if a service is needed to get some data or execute a task, retrieve the service before calling its methods.
 Do not retrieve services in constructors to store them in class fields.
@@ -43,7 +43,7 @@ Use inspection Plugin DevKit | Code | Non-default constructors for service and e
 When using [Kotlin Coroutines](kotlin-coroutines.html), a distinct service [scope](coroutine-scopes.html) can be injected as parameter.
 
 The Application Service and Project Service scopes are bound to an application and project [service](#types) lifetimes accordingly.
-They are children of the [Intersection Scopes](coroutine-scopes.html#intersection-scopes), which means that they are canceled when the application/project is closed or a plugin is unloaded.
+They are children of the [intersection scopes](coroutine-scopes.html#intersection-scopes), which means that they are canceled when the application/project is closed or a plugin is unloaded.
 
 The service scope is provided to services via constructor injection.
 The following constructor signatures are supported:

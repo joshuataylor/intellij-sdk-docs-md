@@ -8,8 +8,7 @@ GitHub: [Releases &amp; Changelog](https://github.com/JetBrains/intellij-platfor
 JetBrains Platform Forum: [Gradle Build Scripts](https://platform.jetbrains.com/c/intellij-platform/gradle-build-scripts/6) category
 </tldr>
 
-The IntelliJ Platform Gradle Plugin 2.x is a [Gradle](https://docs.gradle.org/current/userguide/userguide.html)
-plugin for building, testing, verifying, configuring environments, and publishing plugins for IntelliJ-based IDEs.
+The IntelliJ Platform Gradle Plugin 2.x is a [Gradle](https://docs.gradle.org/current/userguide/userguide.html) plugin for building, testing, verifying, configuring environments, and publishing plugins for IntelliJ-based IDEs.
 It is the successor of [Gradle IntelliJ Plugin (1.x)](tools-gradle-intellij-plugin.html) which is no longer under active development.
 
 Learn more about it in the [Release Announcement](https://blog.jetbrains.com/platform/2024/07/intellij-platform-gradle-plugin-2-0/).
@@ -34,8 +33,7 @@ Note:
 
 Note that the plugin has a new ID `org.jetbrains.intellij.platform`.
 
-To apply the IntelliJ Platform Gradle Plugin to a project, add the following entry to the `plugins`
-block in the Gradle build file:
+To apply the IntelliJ Platform Gradle Plugin to a project, add the following entry to the `plugins` block in the Gradle build file:
 
 Kotlin:
 
@@ -98,7 +96,7 @@ To update all dependencies in the dependency cache, use the `--refresh-dependenc
 The IntelliJ Platform Gradle Plugin consists of [plugins](tools-intellij-platform-gradle-plugin-plugins.html) which can be applied depending on the purpose.
 By default, the [Platform](tools-intellij-platform-gradle-plugin-plugins.html#platform) plugin (`org.jetbrains.intellij.platform`) should be applied to the main plugin project module.
 
-When working in a [Multi-Module Project Structure](#multi-module-project-structure) it is required to use [Module](tools-intellij-platform-gradle-plugin-plugins.html#module) plugin (`org.jetbrains.intellij.platform.module`) instead of creating tasks and configurations specific to the main module only.
+When working in a [multi-module project](#multi-module-project-structure), it is required to use the [Module plugin](tools-intellij-platform-gradle-plugin-plugins.html#module) (`org.jetbrains.intellij.platform.module`) instead of creating tasks and configurations specific to the main module only.
 
 The [Settings](tools-intellij-platform-gradle-plugin-plugins.html#settings) plugin (`org.jetbrains.intellij.platform.settings`) allows for adding plugin development related repositories right in the `settings.gradle.kts` file if project configuration involves [Dependency Resolution Management](#configuration.dependencyResolutionManagement).
 
@@ -426,8 +424,7 @@ dependencies {
 Tip: localPlatformArtifacts() and defaultRepositories()
 
 Note that unless using recommended default [defaultRepositories()](tools-intellij-platform-gradle-plugin-repositories-extension.html#default-repositories),
-the [localPlatformArtifacts()](tools-intellij-platform-gradle-plugin-repositories-extension.html#additional-repositories) entry needs to be added to the `repositories {}` block
-explicitly to use local dependencies (bundled plugins, local IDE, custom plugin repositories, etc.).
+the [localPlatformArtifacts()](tools-intellij-platform-gradle-plugin-repositories-extension.html#additional-repositories) entry needs to be added to the `repositories {}` block explicitly to use local dependencies (bundled plugins, local IDE, custom plugin repositories, etc.).
 
 ### Setting Up Plugin Dependencies
 
@@ -476,8 +473,7 @@ dependencies {
 Tip: localPlatformArtifacts() and defaultRepositories()
 
 Note that unless using recommended default [defaultRepositories()](tools-intellij-platform-gradle-plugin-repositories-extension.html#default-repositories),
-the [localPlatformArtifacts()](tools-intellij-platform-gradle-plugin-repositories-extension.html#additional-repositories) entry needs to be added to the `repositories {}` block
-explicitly to use local dependencies (bundled plugins, local IDE, custom plugin repositories, etc.).
+the [localPlatformArtifacts()](tools-intellij-platform-gradle-plugin-repositories-extension.html#additional-repositories) entry needs to be added to the `repositories {}` block explicitly to use local dependencies (bundled plugins, local IDE, custom plugin repositories, etc.).
 
 ### Multi-Module Project Structure
 

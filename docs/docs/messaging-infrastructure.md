@@ -56,7 +56,8 @@ Display name
 : Human-readable name used for logging/monitoring purposes.
 
 Broadcast direction
-: See [Broadcasting](#broadcasting) for more details. The default value is `TO_CHILDREN`.
+: See [Broadcasting](#broadcasting) for more details.
+The default value is `TO_CHILDREN`.
 
 Listener class
 : A business interface for a particular topic.

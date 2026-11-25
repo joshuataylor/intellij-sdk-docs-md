@@ -1,12 +1,12 @@
 # PHP Type Providers
 
-Type inference in PhpStorm is built on top of type providers, each of which is responsible for inferring the types of
-specific PSI elements.
+Type inference in PhpStorm is built on top of type providers,
+each of which is responsible for inferring the types of specific PSI elements.
 For example, `com.jetbrains.php.lang.psi.resolve.types.PhpArrayAccessTP` is responsible for inferring the types of expressions like `$arr[10]`.
 There are dozens of such providers, and they all work one after another to provide type information when needed.
 
-All providers inherit from `com.jetbrains.php.lang.psi.resolve.types.PhpTypeProvider4`, which is registered in
-the [com.jetbrains.php.typeProvider4](https://jb.gg/ipe?extensions=com.jetbrains.php.typeProvider4) extension point
+All providers inherit from `com.jetbrains.php.lang.psi.resolve.types.PhpTypeProvider4`,
+which is registered in the [com.jetbrains.php.typeProvider4](https://jb.gg/ipe?extensions=com.jetbrains.php.typeProvider4) extension point
 .
 
 ## Types in PhpStorm
@@ -305,8 +305,7 @@ public class PhpUnitFiledInitializedInSetUpMethodsTP implements PhpTypeProvider4
 
 Register the `PhpUnitFiledInitializedInSetUpMethodsTP`
 
-The `PhpUnitFiledInitializedInSetUpMethodsTP` implementation is registered with the IntelliJ Platform in the
-plugin configuration file using the [com.jetbrains.php.typeProvider4](https://jb.gg/ipe?extensions=com.jetbrains.php.typeProvider4) extension point
+The `PhpUnitFiledInitializedInSetUpMethodsTP` implementation is registered with the IntelliJ Platform in the plugin configuration file using the [com.jetbrains.php.typeProvider4](https://jb.gg/ipe?extensions=com.jetbrains.php.typeProvider4) extension point
 .
 
 ```XML

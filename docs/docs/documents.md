@@ -19,14 +19,14 @@ How do I get a `Document`?
 
 What can I do with a `Document`?
 
-It supports any operations that access or modify the file contents on the "plain text" level (as a sequence of characters, not as a tree of [Program Structure Interface (PSI)](psi.html) elements).
+It supports any operations that access or modify the file contents on the "plain text" level (as a sequence of characters, not as a tree of [PSI](psi.html) elements).
 
 ## 
 
 Where does a `Document` come from?
 
 `Document` instances are created when some operation needs to access the text contents of a file (in particular, this is necessary to build the PSI for a file).
-Also, document instances not linked to any [Virtual Files](virtual-file.html) can be created temporarily, for example, representing the contents of a text editor field in a dialog.
+Also, document instances not linked to any [virtual file](virtual-file.html) can be created temporarily, for example, representing the contents of a text editor field in a dialog.
 
 ## 
 
@@ -78,6 +78,5 @@ This is particularly useful for obtaining text location/offset information about
 
 Use `Document.createGuardedBlock()`.
 
-[EditorActionManager.setReadonlyFragmentModificationHandler()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/openapi/editor/actionSystem/EditorActionManager.java) can
-be used to customize the behavior when the user attempts to modify a read-only region.
+[EditorActionManager.setReadonlyFragmentModificationHandler()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/openapi/editor/actionSystem/EditorActionManager.java) can be used to customize the behavior when the user attempts to modify a read-only region.
 

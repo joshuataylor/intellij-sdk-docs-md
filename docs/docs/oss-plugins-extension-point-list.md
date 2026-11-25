@@ -6,7 +6,7 @@ Repository: [intellij-plugins](https://github.com/JetBrains/intellij-plugins/tre
 See Also: [Extensions](plugin-extensions.html), [Listeners](plugin-listeners.html)
 </tldr>
 
-Overview of Extension Points and Listeners for open source plugins available in [IntelliJ IDEA Plugin Development](idea.html) and other IDEs.
+Overview of Extension Points and Listeners for open source plugins available in [IntelliJ IDEA](idea.html) and other IDEs.
 
 Tip:
 

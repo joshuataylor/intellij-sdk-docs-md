@@ -168,8 +168,9 @@ Console [Filter](https://github.com/JetBrains/intellij-community/tree/idea/263.7
 To attach a filter to the console, use `CommandLineState.addConsoleFilters()` or [TextConsoleBuilder.addFilter()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/consoleView/src/com/intellij/execution/filters/TextConsoleBuilder.java) if the console is created manually.
 Two standard filter implementations are [RegexpFilter](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/consoleView/src/com/intellij/execution/filters/RegexpFilter.java) and [UrlFilter](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/execution-impl/src/com/intellij/execution/filters/UrlFilter.java).
 
-Console filters can be also provided by implementing [ConsoleFilterProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/consoleView/src/com/intellij/execution/filters/ConsoleFilterProvider.java) and registering
-it in [com.intellij.consoleFilterProvider](https://jb.gg/ipe?extensions=com.intellij.consoleFilterProvider) extension point
+Console filters can be also provided by implementing
+[ConsoleFilterProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/consoleView/src/com/intellij/execution/filters/ConsoleFilterProvider.java)
+and registering it in [com.intellij.consoleFilterProvider](https://jb.gg/ipe?extensions=com.intellij.consoleFilterProvider) extension point
 .
 
 ## Listening for Execution Events

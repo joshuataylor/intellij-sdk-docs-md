@@ -21,7 +21,8 @@ Use description text to:
 
 Follow general rules in [Writing short and clear](writing-short.html) and [Punctuation](punctuation.html).
 
-Use the default text style for plain text. Increase line height by 3px from the default value.
+Use the default text style for plain text.
+Increase line height by 3px from the default value.
 
 Use [H4 bold](typography.html) (Default bold) for headings or to highlight important words:
 
@@ -46,13 +47,15 @@ If the text does not fit, add a scrollbar:
 
 ### Appearance
 
-Do not add borders around the description text. Use the panel color for the background.
+Do not add borders around the description text.
+Use the panel color for the background.
 
 | Incorrect |Correct |
 ----------------------
 | ![09 frame incorrect](images/09_frame_incorrect.png) |![09 frame correct](images/09_frame_correct.png) |
 
-For [links](link.html), use the default link color: `Link.activeForeground`. Underline links on hover:
+For [links](link.html), use the default link color: `Link.activeForeground`.
+Underline links on hover:
 
 ![10 link](images/10_link.png)
 

@@ -1,12 +1,15 @@
 # Tool Window
 
-A tool window is a pane inside the main IDE window. For information about tool windows, see [IntelliJ IDEA Web Help](https://www.jetbrains.com/help/idea/tool-windows.html). For information about implementing tool windows, see [Tool Windows](tool-windows.html).
+A tool window is a pane inside the main IDE window.
+For information about tool windows, see [IntelliJ IDEA Web Help](https://www.jetbrains.com/help/idea/tool-windows.html).
+For information about implementing tool windows, see [Tool Windows](tool-windows.html).
 
 ![Toolwindow](images/toolwindow.png)
 
 ## When to use
 
-Tool windows provide access to information, tools, and services that support coding. They let users manage the project, run and debug applications, view git changes, and work with external systems — all without leaving the main workspace.
+Tool windows provide access to information, tools, and services that support coding.
+They let users manage the project, run and debug applications, view git changes, and work with external systems — all without leaving the main workspace.
 
 ## Tool window structure
 
@@ -23,7 +26,9 @@ Tool windows provide access to information, tools, and services that support cod
 
 ### Icon
 
-Add an icon for the tool window button. The icon should be created in two sizes: 20×20px and 16×16px, grey, and monochromatic. See how to create icons in the [icons guidelines](icons-style.html).
+Add an icon for the tool window button.
+The icon should be created in two sizes: 20×20px and 16×16px, grey, and monochromatic.
+See how to create icons in the [icons guidelines](icons-style.html).
 
 #### Icon badge for feedback
 
@@ -35,23 +40,28 @@ Do not change the icon for the tool window button when the content changes.
 
 ### Tabs
 
-Add [tabs](tabs.html) to group related content or create similar instances, like run sessions, history for files, find results. The tabs for similar entities should be closable.
+Add [tabs](tabs.html) to group related content or create similar instances, like run sessions, history for files, find results.
+The tabs for similar entities should be closable.
 
 ![Toolwindow tabs](images/toolwindow_tabs.png)
 
 ### Toolbar
 
-Add a toolbar for [frequently used actions and filters](toolbar.html#what-items-to-add-on-toolbar). For more details, see the [toolbar guidelines](toolbar.html).
+Add a toolbar for [frequently used actions and filters](toolbar.html#what-items-to-add-on-toolbar).
+For more details, see the [toolbar guidelines](toolbar.html).
 
 ## How to use
 
 ### Visibility
 
-If a tool window has no content yet, show its button by default only if the window contains basic functionality that is likely to be used for all projects, for example, Version Control or Problems. Otherwise, hide the tool window button by default. Hidden tool windows are still available under More tool windows menu.
+If a tool window has no content yet, show its button by default only if the window contains basic functionality that is likely to be used for all projects, for example, Version Control or Problems.
+Otherwise, hide the tool window button by default.
+Hidden tool windows are still available under More tool windows menu.
 
 | Correct![Toolwindow more correct](images/toolwindow_more_correct.png) |Incorrect![Toolwindow more incorrect](images/toolwindow_more_incorrect.png) |
 
-Don't show the tool window button if the tool window is not relevant to the current project configuration. For example, don't show the Maven tool window for a project without Maven configuration files.
+Don't show the tool window button if the tool window is not relevant to the current project configuration.
+For example, don't show the Maven tool window for a project without Maven configuration files.
 
 ### Orientation
 

@@ -14,7 +14,8 @@ Procedure: Required Steps
 ## 1. Locating Plugin ID and Preparing Sandbox
 
 A compatible version must be chosen carefully according to the plugin's [compatibility](build-number-ranges.html).
-For non-bundled plugins, it is not possible to specify the minimum/maximum version for the dependent plugin. ([Issue](https://youtrack.jetbrains.com/issue/IDEABKL-7906))
+For non-bundled plugins, it is not possible to specify the minimum/maximum version for the dependent plugin.
+([Issue](https://youtrack.jetbrains.com/issue/IDEABKL-7906))
 
 ### JetBrains Marketplace
 
@@ -91,7 +92,8 @@ dependencies {
 }
 ```
 
-For bundled plugins, use `bundledPlugin()`. Use `plugin()` for non-bundled plugins (for example, from [JetBrains Marketplace](https://plugins.jetbrains.com)).
+For bundled plugins, use `bundledPlugin()`.
+Use `plugin()` for non-bundled plugins (for example, from [JetBrains Marketplace](https://plugins.jetbrains.com)).
 
 See [Plugins](tools-intellij-platform-gradle-plugin-dependencies-extension.html#plugins) for full reference and additional options.
 

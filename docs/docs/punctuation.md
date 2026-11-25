@@ -1,10 +1,12 @@
 # Punctuation
 
-Use the following rules for labels and description texts in IntelliJ user interfaces. For punctuation in numbers and times, see [Data formats](data-formats.html).
+Use the following rules for labels and description texts in IntelliJ user interfaces.
+For punctuation in numbers and times, see [Data formats](data-formats.html).
 
 ## Ellipsis
 
-End an action name with an ellipsis if it opens a dialog where input is required or possible. An ellipsis helps users understand if an action is immediate, or additional interaction is to follow.
+End an action name with an ellipsis if it opens a dialog where input is required or possible.
+An ellipsis helps users understand if an action is immediate, or additional interaction is to follow.
 
 This rule applies to actions in the following controls: [button](button.html), [link](link.html), menu item.
 
@@ -15,14 +17,16 @@ Examples:
 |          Project Structure…      |         Opens a complex dialog where input is not required but possible      |
 |          Tip of the Day           About IntelliJ IDEA        |         Opens dialogs that just show information, no input is either required or possible      |
 
-Use an ellipsis at the end of a truncated text if there is no scrollbar and this is not a table column, see [truncation in table columns](table.html#sizes-and-placement). Provide a way to show the full text, for example, expand the control or show a tooltip on hover.
+Use an ellipsis at the end of a truncated text if there is no scrollbar and this is not a table column, see [truncation in table columns](table.html#sizes-and-placement).
+Provide a way to show the full text, for example, expand the control or show a tooltip on hover.
 
 ![2 01 truncated text](images/2_01_truncated_text.png)
 A notification can be expanded to show the full text.
 
 Use an ellipsis with verbs describing an ongoing process, for example, Searching… See more examples in [Progress text](progress-text.html).
 
-Use the ellipsis character … (`U+2026` in Unicode). Do not use three separate "dot" characters.
+Use the ellipsis character … (`U+2026` in Unicode).
+Do not use three separate "dot" characters.
 
 ## Period
 
@@ -88,7 +92,8 @@ Use single quotation marks by default.
 
 Note:
 
-Use a straight single quotation mark ' (`U+0027`). Do not use opening and closing quotation marks ‘ ’ (`U+2018`/`U+2019`).
+Use a straight single quotation mark ' (`U+0027`).
+Do not use opening and closing quotation marks ‘ ’ (`U+2018`/`U+2019`).
 
 Indexing library 'KotlinJavaRuntime'
 
@@ -116,5 +121,6 @@ Forgot password? → Remind password
 
 ## Exclamation points
 
-Do not use. Exclamation points can cause the sentence tone to be interpreted as aggressive, condescending, or overly informal.
+Do not use.
+Exclamation points can cause the sentence tone to be interpreted as aggressive, condescending, or overly informal.
 

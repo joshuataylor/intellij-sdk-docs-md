@@ -57,7 +57,7 @@ application/project [services](plugin-services.html) provided by a plugin.
 ### Service Scopes
 
 The Application Service and Project Service scopes are bound to an application and project [service](plugin-services.html#types) lifetimes accordingly.
-They are children of the [Intersection Scopes](#intersection-scopes), which means that they are canceled when the application/project is closed or a plugin is unloaded.
+They are children of the [intersection scopes](#intersection-scopes), which means that they are canceled when the application/project is closed or a plugin is unloaded.
 
 The service scope is provided to services via constructor injection.
 The following constructor signatures are supported:

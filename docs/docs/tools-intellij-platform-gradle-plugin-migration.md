@@ -119,8 +119,7 @@ See:
 Tip: localPlatformArtifacts() and defaultRepositories()
 
 Note that unless using recommended default [defaultRepositories()](tools-intellij-platform-gradle-plugin-repositories-extension.html#default-repositories),
-the [localPlatformArtifacts()](tools-intellij-platform-gradle-plugin-repositories-extension.html#additional-repositories) entry needs to be added to the `repositories {}` block
-explicitly to use local dependencies (bundled plugins, local IDE, custom plugin repositories, etc.).
+the [localPlatformArtifacts()](tools-intellij-platform-gradle-plugin-repositories-extension.html#additional-repositories) entry needs to be added to the `repositories {}` block explicitly to use local dependencies (bundled plugins, local IDE, custom plugin repositories, etc.).
 
 ### 
 
@@ -148,8 +147,7 @@ See: [Custom Target Platforms](tools-intellij-platform-gradle-plugin-dependencie
 Tip: localPlatformArtifacts() and defaultRepositories()
 
 Note that unless using recommended default [defaultRepositories()](tools-intellij-platform-gradle-plugin-repositories-extension.html#default-repositories),
-the [localPlatformArtifacts()](tools-intellij-platform-gradle-plugin-repositories-extension.html#additional-repositories) entry needs to be added to the `repositories {}` block
-explicitly to use local dependencies (bundled plugins, local IDE, custom plugin repositories, etc.).
+the [localPlatformArtifacts()](tools-intellij-platform-gradle-plugin-repositories-extension.html#additional-repositories) entry needs to be added to the `repositories {}` block explicitly to use local dependencies (bundled plugins, local IDE, custom plugin repositories, etc.).
 
 ### 
 

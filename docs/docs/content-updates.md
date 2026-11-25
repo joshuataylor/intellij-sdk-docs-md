@@ -24,6 +24,8 @@ Minor Changes and Additions
 
 * Document the [beta](settings-guide.html#table-of-attributes) attribute of settings declarations, which replaces the deprecated `Configurable.Beta`.
 
+* Rewrite the [XML Models (DOM)](xml-models-dom.html) page and split it into [Defining a DOM Model](defining-dom-model.html), [Working with DOM Elements](working-with-dom-elements.html), [DOM Highlighting and Resolving](dom-highlighting-and-resolving.html), and the deprecated [DOM-Based GUI](dom-based-gui.html) pages.
+
 ### October
 
 Roaming Settings
@@ -83,7 +85,7 @@ Threading Kotlin Notebooks
 : Link [Kotlin Notebooks](threading-model.html#kotlin-notebooks) explaining core threading model concepts.
 
 Minor Changes and Additions
-: * Add [Using Custom Icons from the Dotnet Rider Plugin Part](rider.html#using-custom-icons-from-the-dotnet-rider-plugin-part) Using Custom Icons from the Dotnet Rider Plugin Part.
+: * Add [Using Custom Icons from the Dotnet Rider Plugin Part](rider.html#using-custom-icons-from-the-dotnet-rider-plugin-part) section.
 
 * Update [LSP supported features](language-server-protocol.html#supported-features).
 
@@ -297,11 +299,11 @@ Documentation
 ### March
 
 Poly Symbols
-: Add [Poly Symbols](polysymbols.html) documentation, which is a framework that simplifies web technology development
-by utilizing the [Symbols](symbols.html) API and supporting custom syntaxes.
+: Add [Poly Symbols](polysymbols.html) documentation,
+which is a framework that simplifies web technology development by utilizing the [Symbols](symbols.html) API and supporting custom syntaxes.
 
 Open Source Plugins Extension Points
-: Added [Open Source Plugins Extension Point and Listener List](oss-plugins-extension-point-list.html) for plugins bundled with [IntelliJ IDEA Plugin Development](idea.html) and other IDEs.
+: Added [Open Source Plugins Extension Point and Listener List](oss-plugins-extension-point-list.html) for plugins bundled with [IntelliJ IDEA](idea.html) and other IDEs.
 
 ### February
 
@@ -467,7 +469,9 @@ IDE Infrastructure
 : [IDE Infrastructure](ide-infrastructure.html) handles Logging, Error Reporting, Runtime Information, and how to provide Context Help.
 
 Extension Point Lists: Listeners, Deprecation status
-: [IntelliJ Platform Extension Point and Listener List](intellij-platform-extension-point-list.html) now contains sections listing all provided [Listener](plugin-listeners.html) Topics. See also corresponding Extension Point Lists under Product Specific. Also, all deprecated API now has a dedicated tag.
+: [IntelliJ Platform Extension Point and Listener List](intellij-platform-extension-point-list.html) now contains sections listing all provided [Listener](plugin-listeners.html) Topics.
+See also corresponding Extension Point Lists under Product Specific.
+Also, all deprecated API now has a dedicated tag.
 
 ### July
 
@@ -519,7 +523,8 @@ Extension Point List
 ### August
 
 README added to Code Samples
-: All code samples used in this guide now come with `README`, making it easier to browse them. They can be conveniently accessed via a [separate GitHub repository](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/).
+: All code samples used in this guide now come with `README`, making it easier to browse them.
+They can be conveniently accessed via a [separate GitHub repository](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/).
 
 ### June
 

@@ -95,7 +95,7 @@ This table is not exhaustive, to see a list of all available modules, invoke cod
 
 The [Java language functionality](https://blog.jetbrains.com/platform/2019/06/java-functionality-extracted-as-a-plugin/) was extracted as a plugin from the IntelliJ Platform in 2019.2 release.
 This refactoring separated the Java implementation from the other, non-language portions of the platform.
-A dependency on the Java plugin (Plugin ID `com.intellij.java`) must be set up using [Plugin Dependencies](plugin-dependencies.html).
+A dependency on the Java plugin (Plugin ID `com.intellij.java`) must be set up as described in [Plugin Dependencies](plugin-dependencies.html).
 
 #### AppCode/CLion
 

@@ -126,8 +126,7 @@ final class SimpleFoldingBuilder extends FoldingBuilderEx implements DumbAware {
 
 ## Register the Folding Builder
 
-The `SimpleFoldingBuilder` implementation is registered with the IntelliJ Platform in the plugin configuration file using
-the [com.intellij.lang.foldingBuilder](https://jb.gg/ipe?extensions=com.intellij.lang.foldingBuilder) extension point
+The `SimpleFoldingBuilder` implementation is registered with the IntelliJ Platform in the plugin configuration file using the [com.intellij.lang.foldingBuilder](https://jb.gg/ipe?extensions=com.intellij.lang.foldingBuilder) extension point
 .
 
 ```XML

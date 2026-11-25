@@ -76,8 +76,7 @@ final class SimpleCodeStyleSettingsProvider extends CodeStyleSettingsProvider {
 
 ## Register the Code Style Settings Provider
 
-The `SimpleCodeStyleSettingsProvider` implementation is registered with the IntelliJ Platform in the plugin configuration file
-using the [com.intellij.codeStyleSettingsProvider](https://jb.gg/ipe?extensions=com.intellij.codeStyleSettingsProvider) extension point
+The `SimpleCodeStyleSettingsProvider` implementation is registered with the IntelliJ Platform in the plugin configuration file using the [com.intellij.codeStyleSettingsProvider](https://jb.gg/ipe?extensions=com.intellij.codeStyleSettingsProvider) extension point
 .
 
 ```XML
@@ -133,8 +132,7 @@ final class SimpleLanguageCodeStyleSettingsProvider extends LanguageCodeStyleSet
 
 ## Register the Language Code Style Settings Provider
 
-The ``SimpleLanguageCodeStyleSettingsProvider` implementation is registered with the IntelliJ Platform in the plugin configuration file
-using the [com.intellij.langCodeStyleSettingsProvider](https://jb.gg/ipe?extensions=com.intellij.langCodeStyleSettingsProvider) extension point
+The ``SimpleLanguageCodeStyleSettingsProvider` implementation is registered with the IntelliJ Platform in the plugin configuration file using the [com.intellij.langCodeStyleSettingsProvider](https://jb.gg/ipe?extensions=com.intellij.langCodeStyleSettingsProvider) extension point
 .
 
 ```XML

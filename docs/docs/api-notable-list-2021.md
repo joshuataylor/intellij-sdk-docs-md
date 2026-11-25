@@ -20,7 +20,9 @@ Highlighting API exposes priority range
 ### IntelliJ Platform 2021.2
 
 Unit test mode: non-production `IconManager`
-: Now `com.intellij.ui.IconManager.createDeferredIcon()` doesn't use `iconProducer` which might result in "wrong" composite icons and failed assertions. Override `UsefulTestCase.isIconRequired()` returning `true` to restore production icons. Alternatively, invoke `Registry.get("psi.deferIconLoading").setValue(false)` in `setUp()` and `Registry.get("psi.deferIconLoading").resetToDefault()` in `tearDown()`.
+: Now `com.intellij.ui.IconManager.createDeferredIcon()` doesn't use `iconProducer` which might result in "wrong" composite icons and failed assertions.
+Override `UsefulTestCase.isIconRequired()` returning `true` to restore production icons.
+Alternatively, invoke `Registry.get("psi.deferIconLoading").setValue(false)` in `setUp()` and `Registry.get("psi.deferIconLoading").resetToDefault()` in `tearDown()`.
 
 Constructor Injection disabled for Extensions
 : Please obtain necessary components only when needed (logged as ERROR now).
@@ -35,14 +37,17 @@ to customize [language injection](language-injection.html#languageinjectioncontr
 ### IntelliJ IDEA 2021.2
 
 Unbundled plugins
-: Several plugins (Arquillian, AspectJ, CoffeeScript, Debugger Support for JSP (JSR45), Drools, Guice, Helidon, Java EE: Enterprise Java Beans (EJB), Spring OSGi, Spring Web Flow) have been unbundled. The IDE will suggest installation if the project contains related framework dependency. If a plugin depends on them, users will need to install them from the [JetBrains Marketplace](https://plugins.jetbrains.com).
+: Several plugins (Arquillian, AspectJ, CoffeeScript, Debugger Support for JSP (JSR45), Drools, Guice, Helidon, Java EE: Enterprise Java Beans (EJB), Spring OSGi, Spring Web Flow) have been unbundled.
+The IDE will suggest installation if the project contains related framework dependency.
+If a plugin depends on them, users will need to install them from the [JetBrains Marketplace](https://plugins.jetbrains.com).
 
 ## 2021.1
 
 ### IntelliJ Platform 2021.1
 
 Add unambiguous imports on the fly for custom languages
-: Override [ReferenceImporter#isAddUnambiguousImportsOnTheFlyEnabled()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-impl/src/com/intellij/codeInsight/daemon/ReferenceImporter.java) and provide corresponding user setting. Implement `HintAction` with `fixSilently()` and hook it up to highlighting as a quick fix for unresolved reference.
+: Override [ReferenceImporter#isAddUnambiguousImportsOnTheFlyEnabled()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-impl/src/com/intellij/codeInsight/daemon/ReferenceImporter.java) and provide corresponding user setting.
+Implement `HintAction` with `fixSilently()` and hook it up to highlighting as a quick fix for unresolved reference.
 
 Ability to override encoding per `VirtualFile`
 : Implement [FileEncodingProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/openapi/vfs/encoding/FileEncodingProvider.java) and register in [com.intellij.fileEncodingProvider](https://jb.gg/ipe?extensions=com.intellij.fileEncodingProvider) extension point

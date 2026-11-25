@@ -22,8 +22,7 @@ To create, search, and access the list of facets for a module, use [FacetManager
 
 ### Facet-Based Tool Window
 
-A [tool window](tool-windows.html) dependent on the existence of given facet(s) can be registered
-via [com.intellij.facet.toolWindow](https://jb.gg/ipe?extensions=com.intellij.facet.toolWindow) extension point
+A [tool window](tool-windows.html) dependent on the existence of given facet(s) can be registered via [com.intellij.facet.toolWindow](https://jb.gg/ipe?extensions=com.intellij.facet.toolWindow) extension point
 .
 
 ## Facet Basics Sample

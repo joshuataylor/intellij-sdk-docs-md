@@ -8,7 +8,8 @@ Progress indicators inform users that an operation is in progress and the applic
 
 ## When to use
 
-Show for operations that last more than 1 second. Do not show for shorter operations.
+Show for operations that last more than 1 second.
+Do not show for shorter operations.
 Remove the indicator after an operation is completed.
 
 ## Types

@@ -2,14 +2,14 @@
 
 A number of commonly used minor features are listed in the following format:
 
-EP: `fully.qualified.extensionPointName` — Extension Point Name (must be specified in `[plugin.xml](plugin-configuration-file.html)`). Click to browse usages in existing implementations of open-source plugins.
+EP: `fully.qualified.extensionPointName` — Extension Point Name (must be specified in `[plugin.xml](plugin-configuration-file.html)`).
+Click to browse usages in existing implementations of open-source plugins.
 
 `com.extensionPoint.class` description text — Extension Point class/interface to provide functionality
 
 Tip: Locating more Language EPs
 
-See also [IntelliJ Platform Extension Point and Listener List](intellij-platform-extension-point-list.html) to discover more Language-related Extension Points
-as well as the general guide [Explore the IntelliJ Platform API](explore-api.html).
+See also [IntelliJ Platform Extension Point and Listener List](intellij-platform-extension-point-list.html) to discover more Language-related Extension Points as well as the general guide [Explore the IntelliJ Platform API](explore-api.html).
 
 ## Editing
 
@@ -83,8 +83,7 @@ EP: [com.intellij.statementUpDownMover](https://jb.gg/ipe?extensions=com.intelli
 
 [StatementUpDownMover](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-api/src/com/intellij/codeInsight/editorActions/moveUpDown/StatementUpDownMover.java)
 allows for customizing the behavior of moving statements up and down.
-This can be used to keep code syntactically correct when moving code in the editor, e.g., when moving
-a variable declaration.
+This can be used to keep code syntactically correct when moving code in the editor, e.g., when moving a variable declaration.
 
 ### Splitting and Joining List Constructs
 
@@ -92,9 +91,7 @@ EP: [com.intellij.listSplitJoinContext](https://jb.gg/ipe?extensions=com.intelli
 
 [ListSplitJoinContext](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-impl/src/com/intellij/openapi/editor/actions/lists/ListSplitJoinContext.kt)
 needs to be implemented to define the exact behavior of splitting and joining list-like constructs in a language.
-The UI will show implementations of this EP as an
-[intention action](https://www.jetbrains.com/help/idea/intention-actions.html)
-at appropriate locations.
+The UI will show implementations of this EP as an [intention action](https://www.jetbrains.com/help/idea/intention-actions.html) at appropriate locations.
 Developers can use the abstract classes in
 [DefaultListSplitJoinContext](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-impl/src/com/intellij/openapi/editor/actions/lists/DefaultListSplitJoinContext.kt)
 for their implementation.
@@ -123,14 +120,12 @@ EP: [com.intellij.referenceInjector](https://jb.gg/ipe?extensions=com.intellij.r
 EP: [com.intellij.problemHighlightFilter](https://jb.gg/ipe?extensions=com.intellij.problemHighlightFilter)
 , [com.intellij.problemFileHighlightFilter](https://jb.gg/ipe?extensions=com.intellij.problemFileHighlightFilter)
 
-[ProblemHighlightFilter](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/codeInsight/daemon/ProblemHighlightFilter.java) and
-the [com.intellij.problemFileHighlightFilter](https://jb.gg/ipe?extensions=com.intellij.problemFileHighlightFilter) extension point
-(which implements
-[Condition&lt;VirtualFile&gt;](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/util/src/com/intellij/openapi/util/Condition.java))
-are used to filter out files that should not be error-highlighted because they are, e.g., outside
-the current project scope.
-Note that these filters should be permissive and only prevent highlighting for files that are absolutely
-known to be outside the scope.
+[ProblemHighlightFilter](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/analysis-api/src/com/intellij/codeInsight/daemon/ProblemHighlightFilter.java)
+and the [com.intellij.problemFileHighlightFilter](https://jb.gg/ipe?extensions=com.intellij.problemFileHighlightFilter) extension point
+
+(which implements [Condition&lt;VirtualFile&gt;](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/util/src/com/intellij/openapi/util/Condition.java))
+are used to filter out files that should not be error-highlighted because they are, e.g., outside the current project scope.
+Note that these filters should be permissive and only prevent highlighting for files that are absolutely known to be outside the scope.
 
 ### Semantic Highlight Usages
 
@@ -179,8 +174,7 @@ Including/included files can then be obtained via [FileIncludeManager](https://g
 EP: [com.intellij.completion.plainTextSymbol](https://jb.gg/ipe?extensions=com.intellij.completion.plainTextSymbol)
 
 [PlainTextSymbolCompletionContributor](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-api/src/com/intellij/codeInsight/completion/PlainTextSymbolCompletionContributor.java)
-provides a simple way to extract lookup elements from a file so that users have completion available
-in, e.g., plain text editors like VCS commit messages.
+provides a simple way to extract lookup elements from a file so that users have completion available in, e.g., plain text editors like VCS commit messages.
 
 ### Reader Mode
 
@@ -188,9 +182,7 @@ EP: [com.intellij.readerModeMatcher](https://jb.gg/ipe?extensions=com.intellij.r
 
 [ReaderModeMatcher](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/codeInsight/actions/ReaderModeMatcher.kt)
 provides a way to decide if files are shown in the correct mode: reader mode vs. normal editor mode.
-Please see
-[the documentation](https://www.jetbrains.com/help/idea/reader-mode.html)
-to get familiar with reader mode.
+Please see [the documentation](https://www.jetbrains.com/help/idea/reader-mode.html) to get familiar with reader mode.
 
 ### Provide Fully Qualified Names (FQN) for Elements
 
@@ -214,11 +206,9 @@ Register the action with the popup menu group `<add-to-group group-id="CopyRefer
 EP: [com.intellij.testSourcesFilter](https://jb.gg/ipe?extensions=com.intellij.testSourcesFilter)
 
 [TestSourcesFilter](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/projectModel-api/src/com/intellij/openapi/roots/TestSourcesFilter.java)
-allows for telling the IDE that a file is a test file; even it's not located in a directory marked as
-test root.
+allows for telling the IDE that a file is a test file; even it's not located in a directory marked as test root.
 This can be used in situations where test files are located next to source files.
-If these files can be distinguished either by filename or content from source files, implementing this
-EP will mark them as test files for the IDE.
+If these files can be distinguished either by filename or content from source files, implementing this EP will mark them as test files for the IDE.
 
 ## Refactoring
 

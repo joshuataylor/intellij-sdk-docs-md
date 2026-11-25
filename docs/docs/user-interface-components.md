@@ -14,7 +14,7 @@ Use [UI Inspector](internal-ui-inspector.html) to locate the underlying Swing co
 
 Note:
 
-UI forms like [Dialogs](dialog-wrapper.html) or [Settings](settings.html) should use [Kotlin UI DSL](kotlin-ui-dsl-version-2.html) (IntelliJ Platform 2021.3+).
+UI forms like [dialogs](dialog-wrapper.html) or [settings](settings.html) should use [Kotlin UI DSL](kotlin-ui-dsl-version-2.html) (IntelliJ Platform 2021.3+).
 
 Using UI Designer plugin with Kotlin is [not supported](https://youtrack.jetbrains.com/issue/KTIJ-791).
 

@@ -2,8 +2,7 @@
 
 The Workspace Model represents the project's structure and all its elements, such as [modules](module.html), [libraries](library.html), [SDKs](sdk.html), [facets](facet.html),
 and other configurable project components.
-It provides a generic storage for entities describing the user's workspace while maintaining full
-[interoperability](#interoperability) with the [Project Model](project-model.html).
+It provides a generic storage for entities describing the user's workspace while maintaining full [interoperability](#interoperability) with the [Project Model](project-model.html).
 
 Note: Workspace Model API (2024.2+)
 
@@ -13,8 +12,7 @@ See [Interoperability with Project Model API](#interoperability) and [Usage Exam
 
 ## Why a New API?
 
-There are several problems with the approach that has been used to represent the [project model](project-model.html) (configuration of modules, libraries, facet, artifacts, etc.)
-in the IntelliJ Platform for more than 15 years.
+There are several problems with the approach that has been used to represent the [project model](project-model.html) (configuration of modules, libraries, facet, artifacts, etc.) in the IntelliJ Platform for more than 15 years.
 
 ### Structure
 
@@ -25,7 +23,8 @@ Different project model parts are stored in separate project-level and module-le
 etc.).
 
 They're implemented independently, and the project model has no single entry point.
-This leads to code duplication and complicates bulk modifications of project model elements, since it requires manually tracking modifiable instances of the model elements
+This leads to code duplication and complicates bulk modifications of project model elements,
+since it requires manually tracking modifiable instances of the model elements
 or creating special wrappers to do it (see [IdeModifiableModelsProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/external-system-api/src/com/intellij/openapi/externalSystem/service/project/IdeModifiableModelsProvider.java)).
 
 ### Serialization
@@ -62,8 +61,7 @@ This makes it harder to reuse them for other languages and technologies, and the
 ## Concepts and Implementation
 
 Workspace Model introduces a unified data structure that stores the project configuration and doesn't have to be used from the IDE process.
-The implementation heavily relies on [Persistent Data Structure](https://en.wikipedia.org/wiki/Persistent_data_structure) that allows using a
-model snapshot without fear that it will be modified during an interaction.
+The implementation heavily relies on [Persistent Data Structure](https://en.wikipedia.org/wiki/Persistent_data_structure) that allows using a model snapshot without fear that it will be modified during an interaction.
 
 ### Entities
 
@@ -94,8 +92,7 @@ It is also possible to [link objects](workspace-model-entity-read.html#arbitrary
 
 ## Interoperability with Project Model API
 
-New implementations of the [Project Model](project-model.html) interfaces store their data in
-Workspace Model in corresponding entities.
+New implementations of the [Project Model](project-model.html) interfaces store their data in Workspace Model in corresponding entities.
 
 The following table maps to corresponding Workspace Model API and usage samples.
 

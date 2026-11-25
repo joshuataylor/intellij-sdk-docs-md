@@ -10,12 +10,11 @@ However, for most languages, this is not necessary, and the standard `StructureV
 
 Tip:
 
-To modify an existing Structure View (e.g., add/filter nodes of builtin language support), use [StructureViewExtension](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-impl/src/com/intellij/ide/structureView/StructureViewExtension.java) registered
-in [com.intellij.lang.structureViewExtension](https://jb.gg/ipe?extensions=com.intellij.lang.structureViewExtension) extension point
+To modify an existing Structure View (e.g., add/filter nodes of builtin language support), use [StructureViewExtension](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-impl/src/com/intellij/ide/structureView/StructureViewExtension.java) registered in [com.intellij.lang.structureViewExtension](https://jb.gg/ipe?extensions=com.intellij.lang.structureViewExtension) extension point
 .
 
-The starting point for the structure view is [PsiStructureViewFactory](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/lang/PsiStructureViewFactory.java), which is registered
-in the [com.intellij.lang.psiStructureViewFactory](https://jb.gg/ipe?extensions=com.intellij.lang.psiStructureViewFactory) extension point
+The starting point for the structure view is [PsiStructureViewFactory](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/lang/PsiStructureViewFactory.java),
+which is registered in the [com.intellij.lang.psiStructureViewFactory](https://jb.gg/ipe?extensions=com.intellij.lang.psiStructureViewFactory) extension point
 .
 
 Examples:

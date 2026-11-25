@@ -20,8 +20,8 @@ Examples:
 
 If a renamed reference extends [PsiReferenceBase](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/PsiReferenceBase.java), renaming is performed by invoking the [ElementManipulator.handleContentChange()](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/psi/ElementManipulator.java), responsible for handling the content change and calculating the text range of reference inside the element.
 
-To disable renaming for specific elements, implement `com.intellij.openapi.util.Condition<T>` for PsiElement of type `T` and register it
-in [com.intellij.vetoRenameCondition](https://jb.gg/ipe?extensions=com.intellij.vetoRenameCondition) extension point
+To disable renaming for specific elements, implement `com.intellij.openapi.util.Condition<T>` for PsiElement of type `T`
+and register it in [com.intellij.vetoRenameCondition](https://jb.gg/ipe?extensions=com.intellij.vetoRenameCondition) extension point
 .
 
 ## Name Validation

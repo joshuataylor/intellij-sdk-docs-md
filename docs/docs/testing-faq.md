@@ -99,7 +99,7 @@ When targeting 2024.2 or later, see also [How to handle ProjectActivity?](#how-t
 
 ### How to avoid test failure when using resources?
 
-In some situations, added or changed files (e.g. XML DTDs provided by a plugin) are not refreshed in [Virtual File System](virtual-file-system.html).
+In some situations, added or changed files (e.g. XML DTDs provided by a plugin) are not refreshed in the [Virtual File System](virtual-file-system.html).
 In such cases, delete the `test-system/caches` folder in the [sandbox directory](ide-development-instance.html#the-development-instance-sandbox-directory) and try again.
 
 ### How to enable DEBUG/TRACE logging?
@@ -173,7 +173,8 @@ Use [ExtensionTestUtil](https://github.com/JetBrains/intellij-community/tree/ide
 
 ### How to wait for a specified amount of time?
 
-If possible, use the [How to wait for condition with timeout?](#how-to-wait-for-condition-with-timeout) approach. Otherwise, call `com.intellij.util.TimeoutUtil.sleep()`.
+If possible, use the [How to wait for condition with timeout?](#how-to-wait-for-condition-with-timeout) approach.
+Otherwise, call `com.intellij.util.TimeoutUtil.sleep()`.
 
 ### How to wait for condition with timeout?
 

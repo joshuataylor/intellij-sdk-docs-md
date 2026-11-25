@@ -95,7 +95,7 @@ When implementing a run configuration class, consider using one of the standard 
 
 * [LocatableConfigurationBase](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/execution/src/com/intellij/execution/configurations/LocatableConfigurationBase.java) - a base class for [configurations that can be created from context](#creating-a-run-configuration-from-context).
 
-* [ModuleBasedConfiguration](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/execution/src/com/intellij/execution/configurations/ModuleBasedConfiguration.java) - a base class for a configuration that is associated with a specific [Module](module.html) (e.g., Java run configurations use the selected module to determine the run classpath).
+* [ModuleBasedConfiguration](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/execution/src/com/intellij/execution/configurations/ModuleBasedConfiguration.java) - a base class for a configuration that is associated with a specific [module](module.html) (e.g., Java run configurations use the selected module to determine the run classpath).
 
 ### 
 
@@ -144,8 +144,8 @@ If a plugin requires creating run configurations programmatically, .e.g, from a 
 ## Creating a Run Configuration from Context
 
 Run configurations can be created and run from context, e.g., by right-clicking an application main method, a test class/method, etc., directly in the editor or the project view.
-This is achieved by implementing [LazyRunConfigurationProducer](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/execution/src/com/intellij/execution/actions/LazyRunConfigurationProducer.kt) and registering
-it in [com.intellij.runConfigurationProducer](https://jb.gg/ipe?extensions=com.intellij.runConfigurationProducer) extension point
+This is achieved by implementing [LazyRunConfigurationProducer](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/execution/src/com/intellij/execution/actions/LazyRunConfigurationProducer.kt)
+and registering it in [com.intellij.runConfigurationProducer](https://jb.gg/ipe?extensions=com.intellij.runConfigurationProducer) extension point
 .
 
 The extension requires implementing the following methods:
@@ -190,7 +190,8 @@ In case the run configuration settings are incomplete, the method should throw o
 
 * [RuntimeConfigurationError](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/execution/src/com/intellij/execution/configurations/RuntimeConfigurationError.java) - in case of a fatal error that makes it impossible to execute the run configuration
 
-If the configuration contains any warnings or errors, its icon will be patched with the error indicator and the message will be displayed on the configuration settings page. In case of `RuntimeConfigurationError`, if a user tries to execute the configuration, the run configuration settings dialog will be presented so that the user can fix the issues before the execution.
+If the configuration contains any warnings or errors, its icon will be patched with the error indicator and the message will be displayed on the configuration settings page.
+In case of `RuntimeConfigurationError`, if a user tries to execute the configuration, the run configuration settings dialog will be presented so that the user can fix the issues before the execution.
 
 All the mentioned exceptions allow providing a quick fix for the reported issue.
 If the quick fix implementation is provided, the quick fix button will be displayed next to the error message.
@@ -269,8 +270,8 @@ To substitute variable references with the actual references, it is required to 
 Sometimes, it is necessary to perform specific tasks before a configuration is actually run, e.g., build the project, run a build tool preparation task, launch a web browser, etc.
 Plugins can provide custom tasks that can be added by users to a created run configuration.
 
-To provide a custom task, implement [BeforeRunTaskProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/execution/src/com/intellij/execution/BeforeRunTaskProvider.java) and register it
-in [com.intellij.stepsBeforeRunProvider](https://jb.gg/ipe?extensions=com.intellij.stepsBeforeRunProvider) extension point
+To provide a custom task, implement [BeforeRunTaskProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/execution/src/com/intellij/execution/BeforeRunTaskProvider.java)
+and register it in [com.intellij.stepsBeforeRunProvider](https://jb.gg/ipe?extensions=com.intellij.stepsBeforeRunProvider) extension point
 .
 The provider implementation is responsible for creating a task instance for a given run configuration and executing the task.
 
@@ -304,7 +305,7 @@ See their Javadocs for the details.
 
 ### Providing Custom Macros
 
-If the predefined list of macros is not enough, a plugin can provide custom macros by extending [Macro](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/macro/src/com/intellij/ide/macro/Macro.java) and
-registering it in the [com.intellij.macro](https://jb.gg/ipe?extensions=com.intellij.macro) extension point
+If the predefined list of macros is not enough, a plugin can provide custom macros by extending [Macro](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/macro/src/com/intellij/ide/macro/Macro.java)
+and registering it in the [com.intellij.macro](https://jb.gg/ipe?extensions=com.intellij.macro) extension point
 .
 

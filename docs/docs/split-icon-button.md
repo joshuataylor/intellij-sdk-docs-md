@@ -25,13 +25,15 @@ To decide whether to add actions to the toolbar, follow the [Toolbar](toolbar.ht
 
 ### Add icons to all menu actions
 
-Make sure that all actions in the drop-down menu have icons. When an action is selected, its icon will be shown on the toolbar.
+Make sure that all actions in the drop-down menu have icons.
+When an action is selected, its icon will be shown on the toolbar.
 
 ![Split icon button main action icon](images/split_icon_button_main_action_icon.png)
 
 ### Disable unavailable actions
 
-Do not hide the unavailable actions but show them as disabled to help users locate them in the future. The action menu should always open even if all the items in it are disabled.
+Do not hide the unavailable actions but show them as disabled to help users locate them in the future.
+The action menu should always open even if all the items in it are disabled.
 
 ![Split icon button disabled item](images/split_icon_button_disabled_item.png)
 

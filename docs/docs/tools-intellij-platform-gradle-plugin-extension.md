@@ -135,7 +135,7 @@ See also:
 
 `instrumentCode`
 
-Enables the [instrumentCode](tools-intellij-platform-gradle-plugin-tasks.html#instrumentCode) of the compiled classes.
+Enables the [code instrumentation](tools-intellij-platform-gradle-plugin-tasks.html#instrumentCode) of the compiled classes.
 
 Controls the execution of the [instrumentCode](tools-intellij-platform-gradle-plugin-tasks.html#instrumentCode) task.
 

@@ -104,8 +104,7 @@ dependencies {
 
 ## Dependency on bundled plugin is not resolved after migrating from 1.x
 
-Using [Gradle IntelliJ Plugin (1.x)](tools-gradle-intellij-plugin.html), specifying the directory name of the plugin was possible when adding a dependency on a bundled plugin
-for compatibility reasons.
+Using [Gradle IntelliJ Plugin (1.x)](tools-gradle-intellij-plugin.html), specifying the directory name of the plugin was possible when adding a dependency on a bundled plugin for compatibility reasons.
 Now, using the actual plugin ID is required.
 For example, provide plugin ID `com.intellij.java` instead of its directory name `java`.
 A migration hint is provided for this and some other commonly used cases.
@@ -300,7 +299,8 @@ jacocoTestCoverageVerification {
 
 Kotlin compiler throws `Out of memory. Java heap space` error
 
-Please upgrade to Kotlin 1.9.0. See the [Incremental compilation](using-kotlin.html#incremental-compilation) section if using Kotlin 1.8.20.
+Please upgrade to Kotlin 1.9.0.
+See the [Incremental compilation](using-kotlin.html#incremental-compilation) section if using Kotlin 1.8.20.
 
 ## How to check the latest available EAP release?
 

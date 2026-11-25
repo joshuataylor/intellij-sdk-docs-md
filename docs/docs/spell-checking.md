@@ -22,8 +22,7 @@ Examples:
 
 `SpellcheckingStrategy`
 
-`SpellcheckingStrategy` adjusts the spell checking behavior for PSI elements of a custom language
-by providing methods to define:
+`SpellcheckingStrategy` adjusts the spell checking behavior for PSI elements of a custom language by providing methods to define:
 
 1. Which PSI elements should be checked by this strategy.
 
@@ -31,8 +30,7 @@ by providing methods to define:
 
 3. How the text is broken into single words.
 
-The class already contains a default strategy for spell checking of basic parts such as comments,
-identifiers and plain text.
+The class already contains a default strategy for spell checking of basic parts such as comments, identifiers and plain text.
 If nothing else is needed, just inherit from this class and register it.
 
 To check spelling for some specific elements in the language, override `getTokenizer()`
@@ -45,11 +43,9 @@ and is explained below.
 
 `Tokenizer`
 
-The `tokenize()` method of `Tokenizer` defines which portions of a PSI element
-need to be spell-checked by feeding them into the
+The `tokenize()` method of `Tokenizer` defines which portions of a PSI element need to be spell-checked by feeding them into the
 [TokenConsumer](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/spellchecker/src/com/intellij/spellchecker/tokenizer/TokenConsumer.java).
-In the simplest case, the whole PSI element is consumed and its entire text is split into words and
-checked for spelling.
+In the simplest case, the whole PSI element is consumed and its entire text is split into words and checked for spelling.
 For these simple cases, `SpellcheckingStrategy` already contains predefined tokenizers:
 
 * `SpellcheckingStrategy.TEXT_TOKENIZER` for simple text elements.
@@ -61,8 +57,7 @@ For these simple cases, `SpellcheckingStrategy` already contains predefined toke
 * `myXmlAttributeTokenizer` for XML attributes.
 
 However, there are situations where only fragments of the PSI element are textual content.
-In these cases, `tokenize()` can take care of extracting the correct text-ranges and feed them
-sequentially into the `TokenConsumer`.
+In these cases, `tokenize()` can take care of extracting the correct text-ranges and feed them sequentially into the `TokenConsumer`.
 If elements in the language require such special handling, then define a tokenizer by deriving from `Tokenizer`
 and implement `tokenize()` with the required logic.
 
@@ -75,24 +70,21 @@ Example:
 
 In `Tokenizer.tokenize()` the `consumeToken()` method can take an instance of
 [Splitter](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/spellchecker/src/com/intellij/spellchecker/inspections/Splitter.java) as the second argument.
-The `Splitter` defines how the text is broken into words which is not always as simple as splitting
-at white space.
-Consider, for instance, identifiers or variables that follow camel-case or snake-case naming and that
-need to be separated differently to spell check single parts.
+The `Splitter` defines how the text is broken into words which is not always as simple as splitting at white space.
+Consider, for instance, identifiers or variables that follow camel-case or snake-case naming and that need to be separated differently to spell check single parts.
 As an example, please see how
 [IdentifierSplitter](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/spellchecker/src/com/intellij/spellchecker/inspections/IdentifierSplitter.java),
 splits identifiers into separate words.
 
-A custom language can define special splitting rules for elements by deriving from `Splitter` and
-implementing the logic for obtaining words from the passed text in the `split()` method.
+A custom language can define special splitting rules for elements by deriving from `Splitter` and implementing the logic for obtaining words from the passed text in the `split()` method.
 
 ## Suppressing Spellchecking
 
 Custom languages that support the suppression of inspection annotations can derive from
 [SuppressibleSpellcheckingStrategy](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/spellchecker/src/com/intellij/spellchecker/tokenizer/SuppressibleSpellcheckingStrategy.java)
 to make spell checking suppressible.
-The implementation overrides `isSuppressedFor()` to check if a spell check warning is suppressed for the passed element and
-overriding `getSuppressActions()` to add quick fix actions that suppress warnings.
+The implementation overrides `isSuppressedFor()` to check if a spell check warning is suppressed for the passed element
+and overriding `getSuppressActions()` to add quick fix actions that suppress warnings.
 
 Example:
 [XmlSpellcheckingStrategy](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/spellchecker/xml/src/XmlSpellcheckingStrategy.java)
@@ -106,8 +98,8 @@ Example:
 Some custom languages may have a distinct fixed set of words or key identifiers.
 These words can be provided in additional dictionaries from
 [BundledDictionaryProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/spellchecker/src/com/intellij/spellchecker/BundledDictionaryProvider.java).
-Implement `getBundledDictionaries()` to return paths to the word dictionaries (`*.dic` files) and
-register it with the [com.intellij.spellchecker.bundledDictionaryProvider](https://jb.gg/ipe?extensions=com.intellij.spellchecker.bundledDictionaryProvider) extension point
+Implement `getBundledDictionaries()` to return paths to the word dictionaries (`*.dic` files)
+and register it with the [com.intellij.spellchecker.bundledDictionaryProvider](https://jb.gg/ipe?extensions=com.intellij.spellchecker.bundledDictionaryProvider) extension point
 .
 
 Example:

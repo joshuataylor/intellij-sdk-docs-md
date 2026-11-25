@@ -161,7 +161,8 @@ The Context object stores IDE runtime configuration:
 
 * Custom VM options, paths, and SDK settings.
 
-By default, the IDE version provided by the sandbox is used for tests. A different version can be specified with:
+By default, the IDE version provided by the sandbox is used for tests.
+A different version can be specified with:
 
 262+:
 

@@ -6,9 +6,11 @@ Implementation: [JBFont](https://github.com/JetBrains/intellij-community/tree/id
 
 ## UI font
 
-[Inter](https://github.com/rsms/inter) is used for the IDE user interface by default. The default font size is the same for all supported OS: 13.
+[Inter](https://github.com/rsms/inter) is used for the IDE user interface by default.
+The default font size is the same for all supported OS: 13.
 
-Users can change the default font in Settings | Appearance. If the default font size is changed, other font sizes used in the UI are scaled respectively.
+Users can change the default font in Settings | Appearance.
+If the default font size is changed, other font sizes used in the UI are scaled respectively.
 
 Use the built-in text styles from the table below whenever possible.
 
@@ -18,15 +20,16 @@ Implementation example for font styles: [LabelSizeDemoAction](https://github.com
 
 |  Font  | Font size  | Usage Examples  |
 -----------------------------------------
-|  H1 `JBFont.h1().asBold()`   | Default +5  |         Main page header. Example: Plugin name      |
-|  H2 `JBFont.h2().asBold()`   | Default +3  |         Small page header. Example: Headers in a plugin description      |
-|  Default `JBFont.regular()`   | Default  |         Main UI font. Examples: Labels, inputs, links, trees, tables, and other controls      |
+|  H1 `JBFont.h1().asBold()`   | Default +5  |         Main page header.         Example: Plugin name      |
+|  H2 `JBFont.h2().asBold()`   | Default +3  |         Small page header.         Example: Headers in a plugin description      |
+|  Default `JBFont.regular()`   | Default  |         Main UI font.         Examples: Labels, inputs, links, trees, tables, and other controls      |
 |  Default semibold  `JBFont.regular().asBold()`    | Default  |         Header in dialogs, popups, notifications, tool windows, Got It tooltips        |
 |  Paragraph  |          Default            Line height default +3        |         Multiline description text      |
 | Medium `JBFont.medium()`   |Default –1 |         Help text      |
 |  Medium semibold `JBFont.medium().asBold()`    |Default –1 |         Group headers in popups      |
 
-If none of the built-in sizes work and a custom one is needed, define it as the default size +/- constant value. Do not hardcode font sizes.
+If none of the built-in sizes work and a custom one is needed, define it as the default size +/- constant value.
+Do not hardcode font sizes.
 
 ### Examples in UI
 
@@ -46,7 +49,8 @@ Plugin page:
 |  Default  | Default  | Code in the editor, code snippets, completion popup, and documentation popup  |
 |  Small  | Default –1  | Line number in the editor |
 
-Users can change the editor font in Editor | Color scheme | Color Scheme Font. If the default font size is changed, other font sizes used in the editor are scaled respectively.
+Users can change the editor font in Editor | Color scheme | Color Scheme Font.
+If the default font size is changed, other font sizes used in the editor are scaled respectively.
 
 ### Examples in editor
 

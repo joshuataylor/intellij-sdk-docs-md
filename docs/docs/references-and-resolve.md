@@ -6,8 +6,9 @@ Resolving references allows users to navigate from a PSI element usage (accessin
 This feature is required to support the `Navigate | Declaration or Usages` action invoked by `Ctrl/Cmd+B` or clicking the mouse button while holding `Ctrl/Cmd` key, and it is a prerequisite for implementing [finding usages](find-usages.html), [rename refactoring](rename-refactoring.html), and [code completion](code-completion.html).
 
 The `View | Quick Definition` action is based on the same mechanism, so it becomes automatically available for all references that can be resolved by the language plugin.
-To customize the exact document range to show in the popup (e.g., include "surrounding" code or comments), provide [ImplementationTextSelectioner](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-api/src/com/intellij/codeInsight/hint/ImplementationTextSelectioner.java) registered
-in [com.intellij.lang.implementationTextSelectioner](https://jb.gg/ipe?extensions=com.intellij.lang.implementationTextSelectioner) extension point
+To customize the exact document range to show in the popup (e.g., include "surrounding" code or comments), provide
+[ImplementationTextSelectioner](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-api/src/com/intellij/codeInsight/hint/ImplementationTextSelectioner.java)
+registered in [com.intellij.lang.implementationTextSelectioner](https://jb.gg/ipe?extensions=com.intellij.lang.implementationTextSelectioner) extension point
 .
 
 ## PSI References

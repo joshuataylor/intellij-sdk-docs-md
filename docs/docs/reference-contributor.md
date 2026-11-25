@@ -204,8 +204,7 @@ final class SimpleReferenceContributor extends PsiReferenceContributor {
 
 ## Register the Reference Contributor
 
-The `SimpleReferenceContributor` implementation is registered using
-the [com.intellij.psi.referenceContributor](https://jb.gg/ipe?extensions=com.intellij.psi.referenceContributor) extension point
+The `SimpleReferenceContributor` implementation is registered using the [com.intellij.psi.referenceContributor](https://jb.gg/ipe?extensions=com.intellij.psi.referenceContributor) extension point
 and specifying `language="JAVA"`.
 
 ```XML
@@ -246,8 +245,7 @@ final class SimpleRefactoringSupportProvider extends RefactoringSupportProvider 
 
 ## Register the Refactoring Support Provider
 
-The `SimpleRefactoringSupportProvider` implementation is registered with the IntelliJ Platform in the plugin configuration file
-using the [com.intellij.lang.refactoringSupport](https://jb.gg/ipe?extensions=com.intellij.lang.refactoringSupport) extension point
+The `SimpleRefactoringSupportProvider` implementation is registered with the IntelliJ Platform in the plugin configuration file using the [com.intellij.lang.refactoringSupport](https://jb.gg/ipe?extensions=com.intellij.lang.refactoringSupport) extension point
 .
 
 ```XML

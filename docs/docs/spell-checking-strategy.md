@@ -85,8 +85,7 @@ final class SimpleSpellcheckingStrategy extends SpellcheckingStrategy {
 
 ## Register the SimpleSpellcheckingStrategy
 
-The implementation is registered with the IntelliJ Platform in the plugin
-configuration file using the [com.intellij.spellchecker.support](https://jb.gg/ipe?extensions=com.intellij.spellchecker.support) extension point
+The implementation is registered with the IntelliJ Platform in the plugin configuration file using the [com.intellij.spellchecker.support](https://jb.gg/ipe?extensions=com.intellij.spellchecker.support) extension point
 .
 
 ```XML

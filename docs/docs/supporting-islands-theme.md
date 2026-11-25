@@ -77,8 +77,8 @@ The keys are applied to all tabs, not only the editor tabs.
 
 | Property |State: Key |Description |
 -------------------------------------
-| Border |Selected:              `EditorTabs.underlinedBorderColor`               Selected inactive:              `EditorTabs.inactiveUnderlinedTabBorderColor`          |An existing color key. Previously, it was used for the bright tab underline. Leave the color value as is, or adjust if it appears too bright. |
-| Background |Selected:              `EditorTabs.underlinedTabBackground`               Selected inactive:              `EditorTabs.inactiveUnderlinedTabBackground`          |A new color key for the background under the tab label. Provide a color that has enough contrast with the label. |
+| Border |Selected:              `EditorTabs.underlinedBorderColor`               Selected inactive:              `EditorTabs.inactiveUnderlinedTabBorderColor`          |An existing color key.             Previously, it was used for the bright tab underline.             Leave the color value as is, or adjust if it appears too bright. |
+| Background |Selected:              `EditorTabs.underlinedTabBackground`               Selected inactive:              `EditorTabs.inactiveUnderlinedTabBackground`          |A new color key for the background under the tab label.             Provide a color that has enough contrast with the label. |
 
 The background of the editor tab bar is defined with the `EditorTabs.background` key and should have the same color as the editor.
 
@@ -95,8 +95,8 @@ The only exception is `Island.borderColor` which should be set manually.
 | Key |Default value |Description |
 -----------------------------------
 | `Islands` |1 |Defines the theme as the Islands theme. |
-| `Island.arc`              `Island.arc.compact`          |20              16          |Border radius of the islands. The value is 2x, the actual radius in the UI is 10 px. |
-| `Island.borderWidth`              `Island.borderWidth.compact`          |5              4          |The distance between islands. The actual distance appearing in the UI is 1 px less. |
-| `Island.borderColor` |Theme color |Supply the chosen value. It is recommended to use the same color as for `ToolWindows.background`. |
+| `Island.arc`              `Island.arc.compact`          |20              16          |Border radius of the islands.             The value is 2x, the actual radius in the UI is 10 px. |
+| `Island.borderWidth`              `Island.borderWidth.compact`          |5              4          |The distance between islands.             The actual distance appearing in the UI is 1 px less. |
+| `Island.borderColor` |Theme color |Supply the chosen value.             It is recommended to use the same color as for `ToolWindows.background`. |
 | `Island.inactiveAlpha` |0.44 |When the main IDE window is not in focus, to show the inactive state, all content "beneath" the islands is covered with an overlay with this transparency value. |
 

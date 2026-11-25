@@ -85,7 +85,8 @@ CLion provides two C/C++ language engines:
 
 Warning:
 
-The Classic C/C++ engine is deprecated. Nova is the default engine, and the two are mutually exclusive, so a Classic-based plugin works only for users who switch back to Classic.
+The Classic C/C++ engine is deprecated.
+Nova is the default engine, and the two are mutually exclusive, so a Classic-based plugin works only for users who switch back to Classic.
 Target the Nova APIs for new plugins and migrate existing ones — otherwise their users remain stuck on Classic.
 
 ### Using the Classic C/C++ Language APIs

@@ -166,7 +166,7 @@ Note:
 
 `PasswordSafe` does not provide an API to retrieve all stored credentials,
 nor does it allow retrieving all stored usernames or similar identites.
-If the current user identity must be persisted, for example, authenticated user, store it separately using [Persisting State of Components](persisting-state-of-components.html).
+If the current user identity must be persisted, for example, authenticated user, store it separately in a [persistent state component](persisting-state-of-components.html).
 
 ## API Key Management
 

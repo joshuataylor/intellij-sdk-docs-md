@@ -58,15 +58,17 @@ Coroutine Scope
 ## D
 
 Document Object Model (DOM)
-: [XML DOM API](xml-dom-api.html) abstracts working with XML files based on a custom semantic model.
+: [DOM](xml-models-dom.html) abstracts working with XML files based on a custom semantic model.
 
 ## E
 
 Event Dispatch Thread (EDT)
-: The [Event Dispatch Thread](https://docs.oracle.com/javase/tutorial/uiswing/concurrency/dispatch.html) handles all Swing events. See also [Threading Model](threading-model.html) and [EDT Dispatcher](coroutine-dispatchers.html#edt-dispatcher).
+: The [Event Dispatch Thread](https://docs.oracle.com/javase/tutorial/uiswing/concurrency/dispatch.html) handles all Swing events.
+See also [Threading Model](threading-model.html) and [EDT Dispatcher](coroutine-dispatchers.html#edt-dispatcher).
 
 Extension Point (EP)
-: Most functionality is provided by [Using Extension Points](plugin-extensions.html) provided by the platform or plugins. Plugins can also [define their own](plugin-extension-points.html) to allow extensibility.
+: Most functionality is provided by [Using Extension Points](plugin-extensions.html) provided by the platform or plugins.
+Plugins can also [define their own](plugin-extension-points.html) to allow extensibility.
 
 External System (ES)
 : [External System Integration](external-system-integration.html) allows integrating external project management systems.
@@ -116,7 +118,8 @@ JetBrains Runtime (JBR)
 ## N
 
 Non-Blocking Read Action (NBRA)
-: A → [Read Action](#read-action) that is canceled by a → [Write Action](#write-action). See also [Non-Blocking Read Actions](threading-model.html#non-blocking-read-actions).
+: A → [Read Action](#read-action) that is canceled by a → [Write Action](#write-action).
+See also [Non-Blocking Read Actions](threading-model.html#non-blocking-read-actions).
 
 ## P
 
@@ -135,7 +138,8 @@ Program Structure Interface (PSI)
 ## R
 
 Read Action (RA)
-: Allows accessing code-related data structures for reading purposes. See also [Threading Model](threading-model.html).
+: Allows accessing code-related data structures for reading purposes.
+See also [Threading Model](threading-model.html).
 
 → [Non-Blocking Read Action](#non-blocking-read-action)
 
@@ -183,7 +187,8 @@ Virtual File System (VFS)
 ## W
 
 Write Action (WA)
-: Allows accessing code-related data structures for writing purposes. See also [Threading Model](threading-model.html).
+: Allows accessing code-related data structures for writing purposes.
+See also [Threading Model](threading-model.html).
 
 → [Read Action](#read-action)
 

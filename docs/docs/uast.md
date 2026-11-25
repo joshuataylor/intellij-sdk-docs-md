@@ -3,8 +3,7 @@
 UAST (Unified Abstract Syntax Tree) is an abstraction layer on the [PSI](psi-elements.html) of different programming languages targeting the JVM (Java Virtual Machine).
 It provides a unified API for working with common language elements like classes and method declarations, literal values, and control flow operators.
 
-Different JVM languages have their own [PSI](psi-elements.html), but many IDE features like inspections, gutter markers, reference injection, and many others
-work the same way for all these languages.
+Different JVM languages have their own [PSI](psi-elements.html), but many IDE features like inspections, gutter markers, reference injection, and many others work the same way for all these languages.
 Using UAST allows providing features that will work across all [supported JVM languages](#which-languages-are-supported) using a single implementation.
 
 Presentation [Writing IntelliJ Plugins for Kotlin](https://www.youtube.com/watch?v=j2tvi4GbOr4) offers a thorough overview of using UAST in real-world scenarios.
@@ -152,8 +151,7 @@ For really hard performance optimization consider using `UastLanguagePlugin.getP
 
 `ULiteralExpression` should not be used for strings
 
-[ULiteralExpression](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/uast/uast-common/src/org/jetbrains/uast/expressions/ULiteralExpression.kt) represents
-literal values like numbers, booleans, and string.
+[ULiteralExpression](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/uast/uast-common/src/org/jetbrains/uast/expressions/ULiteralExpression.kt) represents literal values like numbers, booleans, and string.
 Although string values are also literals, `ULiteralExpression` is not very handy to work with them.
 For instance, it doesn't handle Kotlin's string interpolations.
 To process string literals when evaluating their value or to perform language injection, use [UInjectionHost](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/uast/uast-common/src/org/jetbrains/uast/expressions/UInjectionHost.kt) instead.
@@ -170,7 +168,8 @@ This "implements" is considered deprecated and might be removed in the future.
 Also, there is the `UElement#psi` property; it returns the same element as `javaPsi` or the `sourcePsi`.
 As it is hard to guess what will be returned, it is also deprecated.
 
-Thus, `sourcePsi` and `javaPsi` should be the only ways to obtain `PsiElement` from `UElement`. See the [corresponding section](#uast-to-psi-conversion).
+Thus, `sourcePsi` and `javaPsi` should be the only ways to obtain `PsiElement` from `UElement`.
+See the [corresponding section](#uast-to-psi-conversion).
 
 ### Using UAST or PSI
 

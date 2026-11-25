@@ -10,18 +10,16 @@ Plugin authors implement
 to show documentation for particular [PSI elements](psi-elements.html).
 
 Implementations of `DocumentationProvider` can be registered either at the [com.intellij.documentationProvider](https://jb.gg/ipe?extensions=com.intellij.documentationProvider) extension point
-or
-the [com.intellij.lang.documentationProvider](https://jb.gg/ipe?extensions=com.intellij.lang.documentationProvider) extension point
+
+or the [com.intellij.lang.documentationProvider](https://jb.gg/ipe?extensions=com.intellij.lang.documentationProvider) extension point
 .
-It is recommended to use the latter one when creating documentation that targets a specific language because providers registered
-as `com.intellij.lang.documentationProvider` will only be called for elements from that language.
+It is recommended to use the latter one when creating documentation that targets a specific language because providers registered as `com.intellij.lang.documentationProvider` will only be called for elements from that language.
 This is the reason they require the `language` attribute when registering the EP in the `[plugin.xml](plugin-configuration-file.html)`.
 The bigger picture here is that documentation providers co-exist and if there is more than one provider for the same element,
 the first one that returns a value different from `null` wins.
 
 Although discouraged, the ordering of documentation providers can be influenced by using the `order` attribute when registering the extension.
-For instance, PythonCore [plugin.xml](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/python/pluginCore/resources/META-INF/plugin.xml) uses the following to call the external documentation
-provider before the default one (registered with `id="pythonDocumentationProvider"`):
+For instance, PythonCore [plugin.xml](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/python/pluginCore/resources/META-INF/plugin.xml) uses the following to call the external documentation provider before the default one (registered with `id="pythonDocumentationProvider"`):
 
 ```XML
 <lang.documentationProvider

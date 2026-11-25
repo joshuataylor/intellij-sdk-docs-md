@@ -24,7 +24,8 @@ The Gradle plugin must be chosen depending on the target
 ### IntelliJ Platform 2022.3
 
 Display of previews for Intentions and Quick Fixes
-: Intentions and Quick Fix actions now display a preview for the code changes. Read [this article](code-intentions-preview.html) to learn more about this feature.
+: Intentions and Quick Fix actions now display a preview for the code changes.
+Read [this article](code-intentions-preview.html) to learn more about this feature.
 
 Specify language for Intention
 : Specify `<language>` in [com.intellij.intentionAction](https://jb.gg/ipe?extensions=com.intellij.intentionAction) extension point
@@ -48,7 +49,9 @@ Mapping New UI icons
 ### IntelliJ IDEA 2022.3
 
 Unbundled plugins
-: Several plugins (Haml, Jakarta EE: WebSockets, JBoss Seam, Spring WebSocket, Stylus, Tapestry, Vaadin, ZKM-Unscramble) have been unbundled. The IDE will suggest installation if the project contains related framework dependency. If a plugin depends on them, users will need to install them from the [JetBrains Marketplace](https://plugins.jetbrains.com).
+: Several plugins (Haml, Jakarta EE: WebSockets, JBoss Seam, Spring WebSocket, Stylus, Tapestry, Vaadin, ZKM-Unscramble) have been unbundled.
+The IDE will suggest installation if the project contains related framework dependency.
+If a plugin depends on them, users will need to install them from the [JetBrains Marketplace](https://plugins.jetbrains.com).
 
 ## 2022.2
 
@@ -62,7 +65,8 @@ Highlighting References
 ### IntelliJ Platform 2022.1
 
 New Project Wizard
-: The New Project wizard has been refreshed and some base [ModuleBuilder](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-core/src/com/intellij/ide/util/projectWizard/ModuleBuilder.java) implementations return `false` from the `isAvailable()` method. If a module builder extends a base class and is hidden in the 2022.1 wizard, override the method to return `true`.
+: The New Project wizard has been refreshed and some base [ModuleBuilder](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-core/src/com/intellij/ide/util/projectWizard/ModuleBuilder.java) implementations return `false` from the `isAvailable()` method.
+If a module builder extends a base class and is hidden in the 2022.1 wizard, override the method to return `true`.
 
 External System Test Framework
 : Available as `com.jetbrains.intellij.platform:external-system-test-framework` from [IntelliJ Platform Artifacts Repositories](intellij-artifacts.html), see [Testing](external-system-integration.html#testing).
@@ -70,7 +74,9 @@ External System Test Framework
 ### IntelliJ IDEA 2022.1
 
 Unbundled plugins
-: Several plugins (Grails, Jakarta EE: Batch Applications, Jakarta EE: Server Faces (JSF), Jakarta EE: Web Services (JAX-WS), Jetty, Smali Support, Spring Batch, Spring Integration Patterns, Spring Web Services, WebLogic, WebSphere) have been unbundled. The IDE will suggest installation if the project contains related framework dependency. If a plugin depends on them, users will need to install them from the [JetBrains Marketplace](https://plugins.jetbrains.com).
+: Several plugins (Grails, Jakarta EE: Batch Applications, Jakarta EE: Server Faces (JSF), Jakarta EE: Web Services (JAX-WS), Jetty, Smali Support, Spring Batch, Spring Integration Patterns, Spring Web Services, WebLogic, WebSphere) have been unbundled.
+The IDE will suggest installation if the project contains related framework dependency.
+If a plugin depends on them, users will need to install them from the [JetBrains Marketplace](https://plugins.jetbrains.com).
 
 ### Maven Plugin 2022.1
 

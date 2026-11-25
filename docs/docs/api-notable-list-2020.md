@@ -10,7 +10,8 @@ IntelliJ Platform migrated to Java 11
 : Using Java 11 is now required, please see [blog post](https://blog.jetbrains.com/platform/2020/09/intellij-project-migrates-to-java-11/).
 
 Internal changes in Project Model
-: Internal changes related to a significant redesign of the representation of project models have been made, please see [blog post](https://blog.jetbrains.com/platform/2020/10/new-implementation-of-project-model-interfaces-in-2020-3/) for details. This shouldn't affect any plugins using the IntelliJ API properly and which don't access internal classes.
+: Internal changes related to a significant redesign of the representation of project models have been made, please see [blog post](https://blog.jetbrains.com/platform/2020/10/new-implementation-of-project-model-interfaces-in-2020-3/) for details.
+This shouldn't affect any plugins using the IntelliJ API properly and which don't access internal classes.
 
 Reparsing of `IReparseableLeafElementType`
 : For elements whose `IElementType` implements this interface, platform attempts reparse when a modification is made right before or after the leaf element preventing reparsing the whole file.
@@ -35,7 +36,8 @@ File Type association with the IDE
 
 Reader Mode customization
 : Implement [ReaderModeProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/editor-ui-api/src/com/intellij/codeInsight/actions/ReaderModeProvider.kt) and register in [com.intellij.readerModeProvider](https://jb.gg/ipe?extensions=com.intellij.readerModeProvider) extension point
-to apply custom settings for files rendered in reader mode. Provide `com.intellij.codeInsight.actions.ReaderModeMatcher` to disable Reader Mode for particular set of files.
+to apply custom settings for files rendered in reader mode.
+Provide `com.intellij.codeInsight.actions.ReaderModeMatcher` to disable Reader Mode for particular set of files.
 
 Text Editor customization
 : Implement [TextEditorCustomizer](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-impl/src/com/intellij/openapi/fileEditor/impl/text/TextEditorCustomizer.kt) and register in [com.intellij.textEditorCustomizer](https://jb.gg/ipe?extensions=com.intellij.textEditorCustomizer) extension point
@@ -62,7 +64,8 @@ Constructor Injection in `Configurable` forbidden
 : Please obtain necessary components only when needed (logged as ERROR now).
 
 `VirtualFile` lookup via `Path`
-: Added `VirtualFileManager.findFileByNioPath()`/`refreshAndFindFileByNioPath()`. See also `VirtualFile.toNioPath()`.
+: Added `VirtualFileManager.findFileByNioPath()`/`refreshAndFindFileByNioPath()`.
+See also `VirtualFile.toNioPath()`.
 
 Tooltip descriptions for icons
 : Register resource bundle via [com.intellij.iconDescriptionBundle](https://jb.gg/ipe?extensions=com.intellij.iconDescriptionBundle) extension point
@@ -79,7 +82,8 @@ Support for WebP images
 
 FileType mapping via hashbang (`#!`)
 : Specify `hashBangs` attribute in [com.intellij.fileType](https://jb.gg/ipe?extensions=com.intellij.fileType) extension point
-. [Issue](https://youtrack.jetbrains.com/issue/IDEA-175757)
+.
+[Issue](https://youtrack.jetbrains.com/issue/IDEA-175757)
 
 Add information to About dialog
 : Implement [AboutPopupDescriptionProvider](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-impl/src/com/intellij/ide/AboutPopupDescriptionProvider.kt) and register in [com.intellij.aboutPopupDescriptionProvider](https://jb.gg/ipe?extensions=com.intellij.aboutPopupDescriptionProvider) extension point
@@ -90,7 +94,8 @@ Previewing Intention/Quick Fix
 
 Delegate Run Anything/Terminal commands to IDE features
 : Switch to matching IDE feature by implementing [TerminalShellCommandHandler](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/execution-impl/src/com/intellij/terminal/TerminalShellCommandHandler.kt) ([com.intellij.terminal.shellCommandHandler](https://jb.gg/ipe?extensions=com.intellij.terminal.shellCommandHandler) extension point
-). [Blog post](https://blog.jetbrains.com/idea/2020/07/run-ide-features-from-the-terminal/)
+).
+[Blog post](https://blog.jetbrains.com/idea/2020/07/run-ide-features-from-the-terminal/)
 
 Deprecating JavaFX in favor of JCEF
 : JetBrains recommends switching to [JCEF](embedded-browser-jcef.html), please see [blog post](https://blog.jetbrains.com/platform/2020/07/javafx-and-jcef-in-the-intellij-platform/) for details.
@@ -104,7 +109,8 @@ Validating Lexer for editor highlighting
 ### IntelliJ IDEA 2020.2
 
 Unbundled plugins
-: Several plugins (ASP, CFML, Flash/Flex, GWT, JBoss Seam Pageflow, JBoss Seam, JBoss jBPM, OSGi, Play Framework, Resin, Seam Navigation, Tapestry, Virgo/dmServer) for no longer actively maintained technology have been unbundled. If a plugin depends on them, users will need to install them from the [JetBrains Marketplace](https://plugins.jetbrains.com).
+: Several plugins (ASP, CFML, Flash/Flex, GWT, JBoss Seam Pageflow, JBoss Seam, JBoss jBPM, OSGi, Play Framework, Resin, Seam Navigation, Tapestry, Virgo/dmServer) for no longer actively maintained technology have been unbundled.
+If a plugin depends on them, users will need to install them from the [JetBrains Marketplace](https://plugins.jetbrains.com).
 
 ## 2020.1
 
@@ -136,8 +142,11 @@ Override text presentation for actions depending on menu context
 : Set the [&lt;override-text&gt;](plugin-configuration-file.html#idea-plugin__actions__action__override-text) element within the [&lt;action&gt;](plugin-configuration-file.html#idea-plugin__actions__action) declaration in `[plugin.xml](plugin-configuration-file.html)`.
 
 Changes in Project Open/Import
-: Import from Existing Sources has been removed from the Welcome Screen, leaving only Open or Import, which calls a different extension than the one previously used to contribute a wizard step to Import from Existing Sources (which is still available in the File menu). To support Open or Import, a plugin must provide [ProjectOpenProcessor](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/projectImport/ProjectOpenProcessor.kt).
-`ProjectOpenProcessor.canOpenProject()` should return `true` for the folder selected by the user only if it guarantees `doOpenProject()` can handle it. If there are several matching processors, a simple chooser dialog is shown. If additional manual configuration is necessary, a modal dialog can be shown in `doOpenProject()` - however, it is highly recommended performing all setup automatically (like Maven and Gradle plugins do).
+: Import from Existing Sources has been removed from the Welcome Screen, leaving only Open or Import, which calls a different extension than the one previously used to contribute a wizard step to Import from Existing Sources (which is still available in the File menu).
+To support Open or Import, a plugin must provide [ProjectOpenProcessor](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/projectImport/ProjectOpenProcessor.kt).
+`ProjectOpenProcessor.canOpenProject()` should return `true` for the folder selected by the user only if it guarantees `doOpenProject()` can handle it.
+If there are several matching processors, a simple chooser dialog is shown.
+If additional manual configuration is necessary, a modal dialog can be shown in `doOpenProject()` - however, it is highly recommended performing all setup automatically (like Maven and Gradle plugins do).
 
 ### IntelliJ IDEA 2020.1
 
@@ -145,5 +154,6 @@ EOL for JetBrains TFS Plugin
 : Please use [Azure DevOps](https://plugins.jetbrains.com/plugin/7981-azure-devops) plugin instead, see [blog post](https://blog.jetbrains.com/idea/2020/01/end-of-support-for-tfs-2014-and-older/) for more details.
 
 Unbundled plugins
-: Several plugins (Cloud Foundry, Google App Engine) for no longer actively maintained technology have been unbundled. If a plugin depends on them, users will need to install them from the [JetBrains Marketplace](https://plugins.jetbrains.com).
+: Several plugins (Cloud Foundry, Google App Engine) for no longer actively maintained technology have been unbundled.
+If a plugin depends on them, users will need to install them from the [JetBrains Marketplace](https://plugins.jetbrains.com).
 

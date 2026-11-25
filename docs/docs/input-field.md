@@ -10,7 +10,8 @@ An input field allows users to enter or edit a text line using the keyboard.
 
 ## When to use
 
-Use an input field if it’s not possible to enumerate the most likely values. Otherwise, use a [combo box](combo-box.html) or a [drop-down list](drop-down.html).
+Use an input field if it’s not possible to enumerate the most likely values.
+Otherwise, use a [combo box](combo-box.html) or a [drop-down list](drop-down.html).
 
 | Correct |Incorrect |
 | ![Input when to correct](images/input_when_to_correct.png) |![Input when to incorrect](images/input_when_to_incorrect.png) |
@@ -38,13 +39,15 @@ For more details, see [Expand button](built-in-button.html#expand-a-field).
 
 ### Many predefined values
 
-If there are many predefined values (for example, code snippets, commit author), add completion to the input field [TextFieldWithCompletion](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-impl/src/com/intellij/util/textCompletion/TextFieldWithCompletion.java). Show the completion popup when the user starts typing.
+If there are many predefined values (for example, code snippets, commit author), add completion to the input field [TextFieldWithCompletion](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-impl/src/com/intellij/util/textCompletion/TextFieldWithCompletion.java).
+Show the completion popup when the user starts typing.
 
 ![Input completion](images/input_completion.png)
 
 ### Built-in buttons
 
-Use [built-in buttons](built-in-button.html) to help the user enter data. For example, to browse the disk.
+Use [built-in buttons](built-in-button.html) to help the user enter data.
+For example, to browse the disk.
 
 ### Search
 
@@ -102,19 +105,22 @@ If an input field is disabled, disable the label too.
 
 #### Selectable label
 
-Make the label text selectable. The user may want to search for this option on the Internet or to send a question to support.
+Make the label text selectable.
+The user may want to search for this option on the Internet or to send a question to support.
 
 ![Input label selected](images/input_label_selected.png)
 
 #### Positioning a label
 
-Place the label on the left or above the input field. For more details, see the [Layout](layout.html) topic.
+Place the label on the left or above the input field.
+For more details, see the [Layout](layout.html) topic.
 
 | Correct![Input positioning label 1](images/input_positioning_label_1.png) |Correct![Input positioning label 2](images/input_positioning_label_2.png) |
 
 ### Placeholder
 
-Placeholder is gray text placed inside an input field. To show placeholder text, use `JBTextField.getEmptyText().setText(...)`.
+Placeholder is gray text placed inside an input field.
+To show placeholder text, use `JBTextField.getEmptyText().setText(...)`.
 
 #### General rules
 
@@ -141,25 +147,29 @@ If the user overwrites the value, it can be restored by removing the new value f
 
 #### Showing examples
 
-Don't use the placeholder to show examples because the user can get the impression that the field is already filled. Provide examples or explanation under the input field (see [Context help](context-help.html)):
+Don't use the placeholder to show examples because the user can get the impression that the field is already filled.
+Provide examples or explanation under the input field (see [Context help](context-help.html)):
 
 | Correct![Input placeholder example correct](images/input_placeholder_example_correct.png) |Incorrect![Input placeholder example incorrect](images/input_placeholder_example_incorrect.png) |
 
 #### Don't use placeholders as labels
 
-Don't use the placeholder as the field label. After the field has been filled, it is difficult to understand its purpose.
+Don't use the placeholder as the field label.
+After the field has been filled, it is difficult to understand its purpose.
 
 | Correct![Input placeholder label correct](images/input_placeholder_label_correct.png) |Incorrect![Input placeholder label incorrect](images/input_placeholder_label_incorrect.png) |
 
 ### Prefilled value
 
-Pre-fill the field if it has the default or a frequently used value. Use the default text color for pre-filled values:
+Pre-fill the field if it has the default or a frequently used value.
+Use the default text color for pre-filled values:
 
 ![Input prefilled](images/input_prefilled.png)
 Note:
 When naming a default entity like `scope` or `notebook` which can have multiple entities in a group, pre-fill it using the entity name with a sequential number: `scope-1`, `scope-2`, etc.
 
-Don't use Unnamed as a prefilled value. It takes time to read it and does not help the user to fill the form.
+Don't use Unnamed as a prefilled value.
+It takes time to read it and does not help the user to fill the form.
 
 | Correct![Input prefilled unnamed correct](images/input_prefilled_unnamed_correct.png) |Incorrect![Input prefilled unnamed incorrect](images/input_prefilled_unnamed_incorrect.png) |
 
@@ -174,7 +184,8 @@ If users are more likely to re-enter the entire value, select the whole text whe
 
 ### Validation
 
-If the user enters an invalid value, highlight the field with red and show an error message in a tooltip. For more details, see [Validation errors](validation-errors.html).
+If the user enters an invalid value, highlight the field with red and show an error message in a tooltip.
+For more details, see [Validation errors](validation-errors.html).
 
 ![Input validation](images/input_validation.png)
 
@@ -182,7 +193,8 @@ If the user enters an invalid value, highlight the field with red and show an er
 
 ### Width
 
-Choose the width appropriate for the most common values, but not less than 65px. The field width helps the user understand what value is expected and to make sure that they fill the field correctly.
+Choose the width appropriate for the most common values, but not less than 65px.
+The field width helps the user understand what value is expected and to make sure that they fill the field correctly.
 
 | Correct![Input width 1 correct](images/input_width_1_correct.png) |Incorrect![Input width 1 incorrect](images/input_width_1_incorrect.png) |
 

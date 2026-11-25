@@ -54,8 +54,8 @@ or
 finds all files containing extension points.
 Use `*ExtensionPoints.xml` as the search pattern and select the All Places scope.
 
-However, if a bundled or third-party plugin exposes EPs for others to implement, these EPs are defined in the `plugin.xml` files
-of the plugins and not in the `*ExtensionPoints.xml` files of the IntelliJ Platform.
+However, if a bundled or third-party plugin exposes EPs for others to implement,
+these EPs are defined in the `plugin.xml` files of the plugins and not in the `*ExtensionPoints.xml` files of the IntelliJ Platform.
 One such example is the EPs exposed by the Markdown plugin that adds support for custom languages inside fenced code blocks of Markdown files.
 
 ### Use Advanced Search
@@ -75,8 +75,7 @@ to find all the files that meet the following criteria:
 ![Search Structurally for plugin.xml](images/search_structurally_for_plugin_xml.png)
 The search results will contain many plugin XML files.
 To find specific implementations of EPs in third-party plugins, use the IntelliJ Platform Explorer ([Search the IntelliJ Platform Explorer](#search-the-intellij-platform-explorer)).
-Inspecting the `plugin.xml` files of other plugins not only helps to discover new features but also shows how things like menu entries or
-notification groups can be defined in the XML file.
+Inspecting the `plugin.xml` files of other plugins not only helps to discover new features but also shows how things like menu entries or notification groups can be defined in the XML file.
 
 ## Navigating the IntelliJ Platform Source Code
 

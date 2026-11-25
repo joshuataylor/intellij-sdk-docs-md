@@ -67,8 +67,7 @@ The intention description is available in the UI in two places:
 
 * near the selected intention action in the [Context Actions](https://www.jetbrains.com/help/idea/intention-actions.html#apply-intention-actions) popup in the editor when [Preview](code-intentions-preview.html) cannot be shown.
 
-The before/after examples are available in the UI
-under `Settings | Editor | Intentions | SDK Intentions | SDK: Convert ternary operator to if statement`.
+The before/after examples are available in the UI under `Settings | Editor | Intentions | SDK Intentions | SDK: Convert ternary operator to if statement`.
 
 The plugin provides description and before/after examples files in the `resources/intentionDescriptions/ConditionalOperatorConverter` directory:
 

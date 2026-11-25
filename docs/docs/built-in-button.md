@@ -6,8 +6,8 @@ A built-in button is an icon placed inside an input control.
 
 ### Implementation
 
-To place a button inside a text field, use [ExtendableTextField](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/ui/components/fields/ExtendableTextField.java) and
-its `addExtension()` method.
+To place a button inside a text field, use [ExtendableTextField](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/platform-api/src/com/intellij/ui/components/fields/ExtendableTextField.java)
+and its `addExtension()` method.
 
 ## When to use
 
@@ -86,7 +86,8 @@ Use the List icon to select a value from the list of objects such as classes, me
 
 ### Add value
 
-Use the Add button to select multiple values, such as files, variables, folder paths. The selected values will be added to the existing list.
+Use the Add button to select multiple values, such as files, variables, folder paths.
+The selected values will be added to the existing list.
 
 ![Add a value to the field](images/built_in_button_add.png)
 
@@ -94,13 +95,15 @@ Use the Add button to select multiple values, such as files, variables, folder p
 
 ### Cut, Copy, Paste
 
-Do not use the Copy, Paste or Cut button. Instead, make sure these actions are available on pressing `Cmd/Ctrl+X`, `Cmd/Ctrl+C`, and `Cmd/Ctrl+V` shortcuts or  from the context menu.
+Do not use the Copy, Paste or Cut button.
+Instead, make sure these actions are available on pressing `Cmd/Ctrl+X`, `Cmd/Ctrl+C`, and `Cmd/Ctrl+V` shortcuts or  from the context menu.
 
 |      Correct     ![Browse button](images/built_in_button_copy_correct.png)  |     Incorrect     ![Incorrect browse button](images/built_in_button_copy_incorrect.png)  |
 
 ### Help, Info
 
-Do not use the Help or Info buttons to open an external link or a hint. Use the [context help](context-help.html) instead.
+Do not use the Help or Info buttons to open an external link or a hint.
+Use the [context help](context-help.html) instead.
 
 | Correct ![Context help ](images/built_in_button_help_correct.png) |Incorrect ![Incorrect browse button](images/built_in_button_help_incorrect.png) |
 

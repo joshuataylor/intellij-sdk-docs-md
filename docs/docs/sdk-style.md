@@ -72,9 +72,11 @@ If immediate resolution isn't possible, write a YouTrack [SDK Issue](https://you
 
 ### Text Format Conventions
 
-Start every sentence on a new line.
-For very long sentences, add additional line breaks after `,`, `:` or other sensible places.
-Very long [links](#links) should also be on a separate line.
+Start every sentence on a new line, which keeps diffs readable.
+For very long sentences, add additional line breaks at clause boundaries
+(after `,` or `:`, or before `and`/`which`), never at a fixed width.
+Very long [links](#links), typically links to IntelliJ Platform classes, should also be on a separate line.
+Indent continuation lines in list items, and start them with `>` in callouts.
 
 Consistent text styles are used to standardize references and keywords:
 
@@ -126,7 +128,7 @@ General Markdown links have the default Markdown link style:
 
 * `[Gradle](https://gradle.org)` ([Gradle](https://gradle.org)) links to an external site, such as companies, articles, etc. If the URL contains a `%` character, append `{ignore-vars="true"}`.
 
-* Linking to pages and page sections within the SDK documentation: * `[Page Title](page.md)` or `[](page.md)` (use page title as link text) links to an SDK doc page (all located under `/topics`). Note that the extension is `.md`, NOT `.html`. * Specific sections on pages in the SDK documentation are linked by using section anchors. The anchor name will be all lower case, and spaces are replaced with `-`, e.g. `## Page setup` becomes `#page-setup`. Once the anchor (`#`) character of the link is entered, the IDE code completion feature shows the available sections. * `[Link to a section on the current page](#another-section)` links to a heading on the current page. * `[Link to the section on another page](other_page.md#another-section)` links to a heading on another page. If the desired link label is the same as an SDK doc page or section title, leave the label part empty, e.g., `[](test-page.md)` or `[](test-page.md#section-1)`. The empty link label will be automatically filled with the actual page or section title.
+* Linking to pages and page sections within the SDK documentation: * `[Page Title](page.md)` or `[](page.md)` (use page title as link text) links to an SDK doc page (all located under `/topics`). Note that the extension is `.md`, NOT `.html`. * Specific sections on pages in the SDK documentation are linked by using section anchors. The anchor name will be all lower case, and spaces are replaced with `-`, e.g. `## Page setup` becomes `#page-setup`. Once the anchor (`#`) character of the link is entered, the IDE code completion feature shows the available sections. * `[Link to a section on the current page](#another-section)` links to a heading on the current page. * `[Link to the section on another page](other_page.md#another-section)` links to a heading on another page. If the text refers to an SDK doc page or section by its title, leave the label part empty, e.g., `[](test-page.md)` or `[](test-page.md#section-1)`. The empty link label will be automatically filled with the actual page or section title. Do not use an empty label when the link marks a concept in running text, as the rendered title often does not fit the sentence grammatically. For example, write `See [](plugin_services.md) for details.`, but `introduce methods in [services](plugin_services.md)` instead of `introduce methods in [](plugin_services.md)`, which renders "introduce methods in Services".
 
 #### Links to IntelliJ Platform Source
 
@@ -249,8 +251,7 @@ Tip: A useful title
 
 This is a note.
 We have a lot of text.
-Don't make everyone read it fully by
-adding a good title.
+Don't make everyone read it fully by adding a good title.
 
 ### Images
 
@@ -312,6 +313,15 @@ Prefer the imperative over "you can" or "you should", but keep "you" if the alte
 * Avoid: "You can add a dependency in your plugin descriptor."
 
 * Prefer: "Add a dependency in the plugin descriptor."
+
+Use "we", "our", or "us" only when it means JetBrains as an organization, for example, in recommendations, plans, or support information.
+Never use it for the IntelliJ Platform code, the author, or the author and reader together.
+
+* Avoid: "We cache the model." or "Let's create a class."
+
+* Prefer: "The IntelliJ Platform caches the model." or "Create a class."
+
+* Acceptable: "We recommend migrating to the new API." or "Let us know via the issue tracker."
 
 ## Table of Contents
 

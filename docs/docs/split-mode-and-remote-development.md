@@ -25,7 +25,8 @@ In Split Mode, the frontend process renders the user interface, while the backen
 The backend may run on the same machine, on another host, in a container, or in the cloud.
 
 Plugins that provide user interface, typing assistance, or other latency-sensitive features should account for this model from the beginning.
-This article explains the terminology, motivation, and architecture behind remote development in JetBrains IDEs, also known as Split Mode. It also describes how to run, debug, and test an IDE in Split Mode.
+This article explains the terminology, motivation, and architecture behind remote development in JetBrains IDEs, also known as Split Mode.
+It also describes how to run, debug, and test an IDE in Split Mode.
 
 ## Remote Development Support Benefits
 
@@ -105,8 +106,8 @@ A more detailed architecture is presented on the following diagram:
 
 ![Low-level architecture overview](images/split-mode-low-level-architecture.png)
 Frontend and backend code communicate with each other via RPC calls.
-The RPC framework provided by the IntelliJ Platform implies the existence of a shared plugin module, which gets loaded
-regardless of which IDE mode is active.
+The RPC framework provided by the IntelliJ Platform implies the existence of a shared plugin module,
+which gets loaded regardless of which IDE mode is active.
 
 Relations between modules are as follows:
 
@@ -118,14 +119,12 @@ Relations between modules are as follows:
 
 Thus, the primary flow is to get or send data from the frontend to the backend via RPC.
 
-Data sent through RPC must be serializable; the kotlinx.serialization framework is used for that
-purpose. The data is sent over a secure protocol under the hood, so there is no need to apply
-additional measures.
+Data sent through RPC must be serializable; the kotlinx.serialization framework is used for that purpose.
+The data is sent over a secure protocol under the hood, so there is no need to apply additional measures.
 
-In a monolithic IDE, the whole machinery works inside a single process, and there is no network
-access during RPC execution. In fact, one can consider the RPC function call a regular suspend
-function call in Kotlin, and thus features properly implemented for Split Mode naturally work well
-in a monolithic IDE.
+In a monolithic IDE, the whole machinery works inside a single process, and there is no network access during RPC execution.
+In fact, one can consider the RPC function call a regular suspend function call in Kotlin,
+and thus features properly implemented for Split Mode naturally work well in a monolithic IDE.
 
 ## Running the Sandbox IDE in Split Mode
 
@@ -138,7 +137,7 @@ There are two common needs here:
 1. Plugin business logic can be tested by regular unit tests using the IntelliJ test framework (see [IntelliJ Platform Testing Extension](tools-intellij-platform-gradle-plugin-testing-extension.html#intellijPlatformTesting)).
 
 Tests that verify the functionality of a specific class can be placed in any content module.
-However, testing the plugin as a whole requires placing test classes into the root plugin module
+However, testing the plugin as a whole requires placing test classes into the root plugin module.
 This is necessary for the correct classpath assembly, which will include the `plugin.xml` file and properly register all plugin extensions from all content modules.
 
 2. Plugin UI in Split Mode can be tested by the integrated UI test framework (see [Integration Tests: UI Testing](integration-tests-ui.html#interaction-with-components)).
@@ -157,7 +156,9 @@ To enable additional `DEBUG` or `TRACE` logging categories for the split-mode ba
 
 ## Testing Split Mode Manually and Emulating Latency
 
-Deploying the backend to a real remote machine is not the easiest or fastest way to check that the feature has been properly split. The major problem with features working in a Split Mode IDE is that they are exposed to latency issues. This can be easily emulated within a locally running Split Mode.
+Deploying the backend to a real remote machine is not the easiest or fastest way to check that the feature has been properly split.
+The major problem with features working in a Split Mode IDE is that they are exposed to latency issues.
+This can be easily emulated within a locally running Split Mode.
 
 Procedure: Emulating Slow Connection to the Backend
 

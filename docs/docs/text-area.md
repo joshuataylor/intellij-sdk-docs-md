@@ -10,7 +10,8 @@ A text area allows users to enter or edit multi-line text.
 
 ## When to use
 
-Use a text area if input is unconstrained and long, or if the newline character is a valid value. Example: commit message or code snippets.
+Use a text area if input is unconstrained and long, or if the newline character is a valid value.
+Example: commit message or code snippets.
 
 Do not use a text area if:
 
@@ -37,8 +38,9 @@ If a new file template is added and the text area is empty, the label is require
 
 Do not put units on the right of the text area.
 
-Do not use a [group header](group-header.html) instead of the text area label. The horizontal
-line is redundant here. Use [context help](context-help.html) to explain the field behavior.
+Do not use a [group header](group-header.html) instead of the text area label.
+The horizontal line is redundant here.
+Use [context help](context-help.html) to explain the field behavior.
 
 Incorrect
 
@@ -62,7 +64,8 @@ Save the current value, so that the user can return to it while navigating throu
 
 ### Validation
 
-If the user types an invalid value, highlight the text area with red and show an error message in a tooltip. For more details, see [Validation errors](validation-errors.html).
+If the user types an invalid value, highlight the text area with red and show an error message in a tooltip.
+For more details, see [Validation errors](validation-errors.html).
 
 ![Text area error](images/text_area_error.png)
 
@@ -73,9 +76,14 @@ Recommended sizes:
 ![Text area sizes](images/text_area_sizes.png)
 This is the default size, it can be changed if the dialog is resized.
 
-Height. The minimum text area height is 3 lines ~55px, so the user understands that it’s multi-line. The maximum height is not limited and should be appropriate for the most common values.
+Height.
+The minimum text area height is 3 lines ~55px, so the user understands that it’s multi-line.
+The maximum height is not limited and should be appropriate for the most common values.
 
-Width. The minimum text area width is 270px. It’s inconvenient to use a narrower field due to frequent line breaks. The maximum width is 80 symbols ~600px, otherwise, it’s hard to read the text.
+Width.
+The minimum text area width is 270px.
+It’s inconvenient to use a narrower field due to frequent line breaks.
+The maximum width is 80 symbols ~600px, otherwise, it’s hard to read the text.
 
 Size the text area to display an integral number of lines of text:
 
@@ -83,7 +91,8 @@ Size the text area to display an integral number of lines of text:
 ----------------------
 | ![Text area size 2](images/text_area_size_2.png) |![Text area size 3](images/text_area_size_3.png) |
 
-Do not resize a text area on input. It will change the position of other controls and they can become hardly discoverable.
+Do not resize a text area on input.
+It will change the position of other controls and they can become hardly discoverable.
 
 If the text is long and does not fit the text area, add [scrollbar](scrollbar.html).
 

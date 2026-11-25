@@ -20,7 +20,8 @@ Use a search field when specific objects are difficult to find at a glance:
 
 ### Label
 
-Don't add a label Search to the search field. The magnifying glass icon is self-explanatory.
+Don't add a label Search to the search field.
+The magnifying glass icon is self-explanatory.
 
 | Correct![Search field label correct](images/search_field_label_correct.png) |Incorrect![Search field label incorrect](images/search_field_label_incorrect.png) |
 
@@ -47,7 +48,8 @@ Icon buttons should change background color when enabled so that it is clear whi
 
 ### Tab navigation
 
-Make icon buttons easily accessible with Tab. Focused button should have a colored border.
+Make icon buttons easily accessible with Tab.
+Focused button should have a colored border.
 
 ![Search field tab focus](images/search_field_tab_focus.png)
 
@@ -64,20 +66,23 @@ This way, option buttons won't jump when the clear button appears.
 
 ### Multiline search strings
 
-If multiline search is needed, use the New Line ![](images/search_field_new_line_icon.png) action button. It should be placed on the left of the rest of the search options.
+If multiline search is needed, use the New Line ![](images/search_field_new_line_icon.png) action button.
+It should be placed on the left of the rest of the search options.
 
 ![Search field multiline](images/search_field_multiline.png)
 The default shortcut for the New Line action: `⇧⌘⏎` for macOS and `Ctrl + Shift + Enter` for Windows/Linux.
 
 ### Filters
 
-Provide filters for complex searches. Don't use filter attributes in the search query.
+Provide filters for complex searches.
+Don't use filter attributes in the search query.
 
 | Correct![Search field attributes correct](images/search_field_attributes_correct.png) |Incorrect![Search field attributes incorrect](images/search_field_attributes_incorrect.png) |
 
 ### Search history
 
-Use the magnifying glass icon with an arrow when search history is available. Show search history in a popup when clicking on the magnifying glass icon.
+Use the magnifying glass icon with an arrow when search history is available.
+Show search history in a popup when clicking on the magnifying glass icon.
 
 ![Search field history](images/search_field_history.png)
 The keyboard shortcut for the History action is `Alt + Down` on all systems.
@@ -98,7 +103,8 @@ For example, the search field in Settings dialog is aligned with the filtered se
 ![Search field placement](images/search_field_placement.png)
 #### Speed Search
 
-Show the search field on demand when search is supplementary to other functionality or if space is limited. The search field should be accessible with `⌘+F` on macOS and `Ctrl + F` on Windows/Linux.
+Show the search field on demand when search is supplementary to other functionality or if space is limited.
+The search field should be accessible with `⌘+F` on macOS and `Ctrl + F` on Windows/Linux.
 For example, space in the Project view is limited and too loaded to always show the Search bar:
 
 ![Search field project](images/search_field_project.png)

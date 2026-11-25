@@ -26,13 +26,16 @@ When describing a problem, prefer adjectives to complex nouns:
 Do not repeat the group titles in the inspection name:
 
 ![Inspections group](images/inspections_group.png)
-Do not use the word "problems" or other words that describe how inspections function in general (i.e. "check", "inspection", or "issue"). An inspection is supposed to check code for problems, so mentioning it in its name is not needed.
+Do not use the word "problems" or other words that describe how inspections function in general (i.e. "check", "inspection", or "issue").
+An inspection is supposed to check code for problems, so mentioning it in its name is not needed.
 
 ![Problem](images/problem.png)
-Do not use the words "warning" and "error" in inspection names. Such a name will become incorrect and misleading if the inspection severity level changes.
+Do not use the words "warning" and "error" in inspection names.
+Such a name will become incorrect and misleading if the inspection severity level changes.
 
 ![Inspections warning](images/inspections_warning.png)
-Do not use parentheses in inspection names. All supporting information can be moved to inspection descriptions.
+Do not use parentheses in inspection names.
+All supporting information can be moved to inspection descriptions.
 
 ![Parens](images/parens.png)
 If an inspection is powered by a third-party code quality tool, use the name of this tool in the inspection name.
@@ -41,7 +44,9 @@ If an inspection is powered by a third-party code quality tool, use the name of 
 
 ## Descriptions
 
-Start descriptions with a verb, e.g. "Reports". Use "Run" for external tools. Do not begin a description with "This inspection".
+Start descriptions with a verb, e.g. "Reports".
+Use "Run" for external tools.
+Do not begin a description with "This inspection".
 
 ![Start](images/start.png)
 Provide details, such as:
@@ -84,7 +89,8 @@ If a quick-fix is not available, describe in more detail a way to resolve the pr
 
 ## Quick-fixes
 
-Describe the action that fixes the problem. For wording, follow the rules for [buttons](button.html).
+Describe the action that fixes the problem.
+For wording, follow the rules for [buttons](button.html).
 
 Use single quotes for the referenced piece of code.
 

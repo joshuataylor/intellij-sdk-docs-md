@@ -44,8 +44,8 @@ See the [project_model](https://github.com/JetBrains/intellij-sdk-code-samples/t
 
 ### Working with a Custom SDK
 
-To create a custom SDK, provide a class extending [SdkType](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-core/src/com/intellij/openapi/projectRoots/SdkType.java), leave `saveAdditionalData()` blank, and register it
-in the [com.intellij.sdkType](https://jb.gg/ipe?extensions=com.intellij.sdkType) extension point
+To create a custom SDK, provide a class extending [SdkType](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-core/src/com/intellij/openapi/projectRoots/SdkType.java), leave `saveAdditionalData()` blank,
+and register it in the [com.intellij.sdkType](https://jb.gg/ipe?extensions=com.intellij.sdkType) extension point
 .
 
 To make SDK settings persistent, override `setupSdkPaths()` and save settings by `modificator.commitChanges()`:
@@ -71,8 +71,8 @@ The recommended way of managing "SDK" settings is to create a [CustomStepProject
 
 Prompting the user with a notification to set up an SDK can help them get up-and-running with a plugin faster.
 Use [com.intellij.projectSdkSetupValidator](https://jb.gg/ipe?extensions=com.intellij.projectSdkSetupValidator) extension point
-to register
-an implementation of [ProjectSdkSetupValidator](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-impl/src/com/intellij/codeInsight/daemon/ProjectSdkSetupValidator.java)
+to register an implementation of
+[ProjectSdkSetupValidator](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/lang-impl/src/com/intellij/codeInsight/daemon/ProjectSdkSetupValidator.java)
 to notify the user if they are missing an SDK.
 
 The following is a simplified example that checks whether an instance of "DemoSdk" has been configured in the project when the user opens a "DemoFileType":

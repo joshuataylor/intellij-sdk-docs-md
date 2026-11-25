@@ -226,8 +226,7 @@ Do not use `object` but `class`
 
 Plugins may use [Kotlin classes](https://kotlinlang.org/docs/classes.html) (`class` keyword) to implement declarations in the [plugin configuration file](plugin-configuration-file.html).
 When registering an [extension](plugin-extensions.html), the platform uses a dependency injection framework to instantiate these classes at runtime.
-For this reason, plugins must not use [Kotlin objects](https://kotlinlang.org/docs/object-declarations.html#object-declarations-overview) (`object` keyword)
-to implement any `[plugin.xml](plugin-configuration-file.html)` declarations.
+For this reason, plugins must not use [Kotlin objects](https://kotlinlang.org/docs/object-declarations.html#object-declarations-overview) (`object` keyword) to implement any `[plugin.xml](plugin-configuration-file.html)` declarations.
 Managing the lifecycle of extensions is the platform's responsibility, and instantiating these classes as Kotlin singletons may cause issues.
 
 A notable exception is [FileType](https://github.com/JetBrains/intellij-community/tree/idea/263.7307.200/platform/core-api/src/com/intellij/openapi/fileTypes/FileType.java)

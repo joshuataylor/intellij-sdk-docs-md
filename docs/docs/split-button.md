@@ -10,8 +10,7 @@ A split button is a combination of a regular [button](button.html) and a drop-do
 
 ## Anatomy
 
-A split button consists of the main action on the left and a drop-down button that shows a dropdown
-with less common actions on the right:
+A split button consists of the main action on the left and a drop-down button that shows a dropdown with less common actions on the right:
 
 ![Split button action anatomy](images/split_button_anatomy.png)
 
@@ -19,8 +18,7 @@ with less common actions on the right:
 
 ### More than two related actions
 
-When there are more than two actions related to the main action, and there is not enough space for separate buttons, put these actions into
-the dropdown menu:
+When there are more than two actions related to the main action, and there is not enough space for separate buttons, put these actions into the dropdown menu:
 
 ![Related actions in a split button](images/split_button_related_actions.png)
 
@@ -33,8 +31,10 @@ To avoid accidental clicks on a dangerous action, hide it in the dropdown menu i
 An uncommon dangerous action can be the only action in the menu.
 
 Note:
-Uncommon actions are the actions called in rare cases for specific purposes. For example, the Force Push action, unlike the Commit and Push... action, is available under certain circumstances
-and covers rare user scenarios. Thus, it can be considered as uncommon and hidden in the dropdown menu.
+Uncommon actions are the actions called in rare cases for specific purposes.
+For example, the Force Push action, unlike the Commit and Push... action, is available under certain circumstances
+and covers rare user scenarios.
+Thus, it can be considered as uncommon and hidden in the dropdown menu.
 
 ## When not to use
 
@@ -84,7 +84,8 @@ Show a tooltip:
 
 ### Dropdown menu
 
-Place related actions into the dropdown menu. Do not duplicate the main action in the dropdown menu, otherwise it is confusing how to trigger the main action — with the button or from the menu.
+Place related actions into the dropdown menu.
+Do not duplicate the main action in the dropdown menu, otherwise it is confusing how to trigger the main action — with the button or from the menu.
 
 Incorrect
 

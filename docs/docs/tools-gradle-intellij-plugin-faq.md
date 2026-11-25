@@ -290,7 +290,8 @@ It is also possible to refer to the sandbox directory of another Gradle project 
 
 Kotlin compiler throws `Out of memory. Java heap space` error
 
-Please upgrade to Kotlin 1.9.0. See the [Incremental compilation](using-kotlin.html#incremental-compilation) section if using Kotlin 1.8.20.
+Please upgrade to Kotlin 1.9.0.
+See the [Incremental compilation](using-kotlin.html#incremental-compilation) section if using Kotlin 1.8.20.
 
 Note: Something missing?
 
