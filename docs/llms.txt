@@ -39544,6 +39544,7 @@ This data is updated daily and also available in [JSON](https://jb.gg/android-st
 
 | Release Name |Channel |Version |IntelliJ IDEA Version |Release Date |
 -----------------------------------------------------------------------
+| Stingray 1    2026.3.1 Canary 3   |![Canary](https://img.shields.io/badge/-Canary-lightgrey?style=flat-square) |2026.3.1.3AI‑263.7307.200.2631.17021371   |2026.3263.7307.200   |Nov 24, 2026 |
 | Stingray 1    2026.3.1 Canary 2   |![Canary](https://img.shields.io/badge/-Canary-lightgrey?style=flat-square) |2026.3.1.2AI‑263.7307.200.2631.16977666   |2026.3263.7307.200   |Nov 20, 2026 |
 | Stingray 1    2026.3.1 Canary 1   |![Canary](https://img.shields.io/badge/-Canary-lightgrey?style=flat-square) |2026.3.1.1AI‑263.7307.200.2631.16910149   |2026.3263.7307.200   |Nov 16, 2026 |
 | Rabbit 3    2026.2.3 RC 1   |![RC](https://img.shields.io/badge/-RC-red?style=flat-square) |2026.2.3.4AI‑262.10968.63.2623.16898116   |2026.2.3262.10968.63   |Nov 11, 2026 |
