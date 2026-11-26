@@ -14,10 +14,12 @@ This data is updated daily and also available in [JSON](https://jb.gg/android-st
 | Stingray 1    2026.3.1 Canary 3   |![Canary](https://img.shields.io/badge/-Canary-lightgrey?style=flat-square) |2026.3.1.3AI‑263.7307.200.2631.17021371   |2026.3263.7307.200   |Nov 24, 2026 |
 | Stingray 1    2026.3.1 Canary 2   |![Canary](https://img.shields.io/badge/-Canary-lightgrey?style=flat-square) |2026.3.1.2AI‑263.7307.200.2631.16977666   |2026.3263.7307.200   |Nov 20, 2026 |
 | Stingray 1    2026.3.1 Canary 1   |![Canary](https://img.shields.io/badge/-Canary-lightgrey?style=flat-square) |2026.3.1.1AI‑263.7307.200.2631.16910149   |2026.3263.7307.200   |Nov 16, 2026 |
+| Rabbit 3    2026.2.3 RC 2   |![RC](https://img.shields.io/badge/-RC-red?style=flat-square) |2026.2.3.5AI‑262.10968.63.2623.17021952   |2026.2.3262.10968.63   |Nov 24, 2026 |
 | Rabbit 3    2026.2.3 RC 1   |![RC](https://img.shields.io/badge/-RC-red?style=flat-square) |2026.2.3.4AI‑262.10968.63.2623.16898116   |2026.2.3262.10968.63   |Nov 11, 2026 |
 | Rabbit 3    2026.2.3 Canary 3   |![Canary](https://img.shields.io/badge/-Canary-lightgrey?style=flat-square) |2026.2.3.3AI‑262.10968.63.2623.16840739   |2026.2.3262.10968.63   |Nov 5, 2026 |
 | Rabbit 3    2026.2.3 Canary 2   |![Canary](https://img.shields.io/badge/-Canary-lightgrey?style=flat-square) |2026.2.3.2AI‑262.10968.63.2623.16736312   |2026.2.3262.10968.63   |Oct 28, 2026 |
 | Rabbit 3    2026.2.3 Canary 1   |![Canary](https://img.shields.io/badge/-Canary-lightgrey?style=flat-square) |2026.2.3.1AI‑262.10968.63.2623.16689957   |2026.2.3262.10968.63   |Oct 22, 2026 |
+| Rabbit 2    2026.2.2 Patch 3   |![Patch](https://img.shields.io/badge/-Patch-orange?style=flat-square) |2026.2.2.11AI‑262.10968.63.2622.17032966   |2026.2.3262.10968.63   |Nov 25, 2026 |
 | Rabbit 2    2026.2.2 Patch 2   |![Patch](https://img.shields.io/badge/-Patch-orange?style=flat-square) |2026.2.2.10AI‑262.10968.63.2622.16975389   |2026.2.3262.10968.63   |Nov 20, 2026 |
 | Rabbit 2    2026.2.2 Patch 1   |![Patch](https://img.shields.io/badge/-Patch-orange?style=flat-square) |2026.2.2.9AI‑262.10968.63.2622.16840690   |2026.2.3262.10968.63   |Nov 5, 2026 |
 | Rabbit 2    2026.2.2   |![Release](https://img.shields.io/badge/-Release-blue?style=flat-square) |2026.2.2.8AI‑262.10968.63.2622.16730706   |2026.2.3262.10968.63   |Oct 28, 2026 |
